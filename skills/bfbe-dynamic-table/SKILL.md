@@ -178,7 +178,7 @@ Six pages, the last published at the top, one row each, from a query loop. From 
 ```json
 {"name": "bfbe-dynamic-table", "settings": {
   "source": "loop", "hasLoop": true,
-  "query": {"post_type": ["page"], "posts_per_page": 6, "orderby": "date", "order": "DESC"},
+  "query": {"objectType": "post", "post_type": ["page"], "posts_per_page": 6, "orderby": "date", "order": "DESC"},
   "columns": [
     {"label": "Title", "key": "{post_title}", "sortable": true},
     {"label": "Published", "key": "{post_date}", "format": "date", "sortable": true},

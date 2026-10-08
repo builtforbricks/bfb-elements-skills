@@ -148,7 +148,7 @@ Copy button inside a looped Block card, beside the post title.
   "name": "bfbe-copy",
   "settings": {
     "hasLoop": true,
-    "query": { "post_type": ["post"], "posts_per_page": 3 },
+    "query": { "objectType": "post", "post_type": ["post"], "posts_per_page": 3 },
     "text": "{post_url}",
     "label": "Copy link", "successLabel": "Link copied"
   }

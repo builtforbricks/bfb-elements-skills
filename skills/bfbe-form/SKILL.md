@@ -516,7 +516,7 @@ in CSS or a script, give it a class in `_cssClasses`, never `_cssId`: component 
   multiplying the total and `note` following it (`"/month"`). `show` (`plain`, `segments`, `cards`, `pills`, `swatches`,
   `images`, `content`) suits `radio`, `multi` and `period`; `content` takes one child element per choice, in order.
 - More Choice keys: a single tick box prices with `price`; **Go on when chosen** `advance` (`radio`, `rating`) moves to
-  the next step; `noPreselect` leaves a `radio` empty; `ddSearch` and `ddMulti` shape a dropdown.
+  the next step; a `radio` preselects its first option, so the total starts above zero, unless `noPreselect` is set; `priceOn` only shows each option's price beside it, the total counts it either way; `ddSearch` and `ddMulti` shape a dropdown.
 - `bfbe-form-number`: `type` `number` (default), `slider`, `range` (two handles, both ends in one answer) or `fixed` (adds
   `price`, not shown). `min`, `max`, `step`, `start`, `startEmpty`, `unit`; `price` per unit, `times`, `was`, and `tiers`
   rows `{upTo, rate}` with `tiersMode` `stepped` or `graduated`.

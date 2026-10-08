@@ -145,12 +145,12 @@ Styling only, every key in the schema file: `buttonTypography`, `buttonBackgroun
 - **Selector trigger** (`trigger: "selector"`, `selector: ".open-offer"`): a click on a matching element or anything inside it opens the modal, and the click's default is cancelled, so a matched link does not navigate.
 - **Hash trigger** (`trigger: "hash"`, `hash: "offer"`): a link to `#offer`, or a page loaded with it, opens the modal; closing removes the hash. In a loop the item's id is added, so link to `#offer-{post_id}`.
 - **A form inside**: `formDone` acts on Bricks' `bricks/form/success` for a form inside this dialog, a Bricks **Form** or BFB Advanced Forms (`bfbe-form`); in a loop the item's form is matched by its loop id. `formDoneModal: ".modal-thanks"` hands over to another modal.
-- **A modal only others open**: set `trigger: "hash"` (as the fixture's `.modal-thanks`) or `"selector"`, so no Open button renders. A handover closes the first, and focus later returns to the first one's opener.
+- **A modal only others open**: set `trigger: "hash"` (as the fixture's `.modal-thanks`) or `"selector"`, so no Open button renders. A handover closes the first, and focus later returns to the first one's opener. Prefer `trigger: "selector"` with a class on the opener when one or a few known elements open it; put `data-bfbe-modal-open` on openers when they are many, inside loops or inside other modals. Either way the modal itself takes `trigger: "selector"` (its `selector` naming an opener's class) or `"hash"`, so no Open button renders.
 - **Scripts**: the root dispatches `bfbe/modal/open`, `bfbe/modal/close`, `bfbe/modal/view` (`detail.view`) and `bfbe/modal/built`, all bubbling, and carries `bfbeModalOpen(view)`, `bfbeModalClose()` and `bfbeModalShow(which)`. It initialises again on Bricks' AJAX events (pagination, load page, query results, popup loaded), so modals in AJAX-loaded loops need nothing added.
 
 ## Verified patterns
 
-**Steps, a form, then thanks** (fixture page `fixture-modal-flows`, `.modal-views`). `views` makes the three Blocks take turns; the Next button's `_attributes` and the link's `data-bfbe-modal-show="prev"` switch, and `formDone: "view"` with `formDoneView: 3` shows the thanks when the form sends. The Next button is a Bricks Button with `tag: "button"`, so a keyboard reaches it. The fixture's probe-only classes and placeholders are left out.
+**Steps, a form, then thanks** (fixture page `fixture-modal-flows`, `.modal-views`). The Bricks `form` inside carries `actions: ["email"]`, which on the site sends Bricks' Email action for real (to the admin address unless `emailTo` and `emailAddress` say otherwise); keep it or set the actions the site needs. `views` makes the three Blocks take turns; the Next button's `_attributes` and the link's `data-bfbe-modal-show="prev"` switch, and `formDone: "view"` with `formDoneView: 3` shows the thanks when the form sends. The Next button is a Bricks Button with `tag: "button"`, so a keyboard reaches it. The fixture's probe-only classes and placeholders are left out.
 
 ```json
 {
@@ -193,7 +193,7 @@ Styling only, every key in the schema file: `buttonTypography`, `buttonBackgroun
 ```json
 {
   "name": "block",
-  "settings": { "hasLoop": true, "query": { "post_type": [ "post" ], "posts_per_page": 3, "orderby": "title", "order": "ASC" } },
+  "settings": { "hasLoop": true, "query": { "objectType": "post", "post_type": [ "post" ], "posts_per_page": 3, "orderby": "title", "order": "ASC" } },
   "children": [
     { "name": "bfbe-modal", "settings": { "_cssClasses": "modal-loop-later", "buttonLabel": "Details", "closeButton": true, "later": true, "formDone": "close", "formDoneDelay": 300 }, "children": [
       { "name": "heading", "settings": { "text": "{post_title}", "tag": "h2" } },

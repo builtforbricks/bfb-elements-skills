@@ -323,7 +323,7 @@ An activity calendar counting posts per publish day. From the fixture `fixture-c
 {"name": "bfbe-charts", "settings": {
   "type": "calendar", "source": "loop", "calEnd": "last", "calStart": "mon",
   "hasLoop": true,
-  "query": {"post_type": ["post"], "posts_per_page": -1, "orderby": "date", "order": "ASC"}
+  "query": {"objectType": "post", "post_type": ["post"], "posts_per_page": -1, "orderby": "date", "order": "ASC"}
 }}
 ```
 

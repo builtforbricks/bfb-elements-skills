@@ -216,7 +216,8 @@ On the page the three elements write real table markup, one part per element:
 
 - Root modifiers: `bfbe-table--scroll` or `bfbe-table--stack` with `bfbe-table--stack-480|640|768|992`; `bfbe-table--spaced` when `columnGap` or `rowGap` has a value; `bfbe-table--sticky`; `bfbe-table--bar-styled` or `bfbe-table--bar-hidden` (none for Browser default). The root is a size container named `bfbe-table`.
 - No `<thead>` or `<tbody>` is written. The browser wraps every row in one implied `<tbody>`, so select rows by `.bfbe-table__row`, never `table > tr`.
-- `captionMode: "hidden"` adds `bfbe-sr` to the caption, off screen and still announced. With no caption the wrapper carries `aria-label="Table"` instead.
+- `captionMode: "hidden"` adds `bfbe-sr` to the caption, off screen and still announced. With no caption the wrapper carries `aria-label="Table"` instead, and `captionMode` does nothing: it is offered only with a `caption`.
+- A looped row prints Bricks' own `div.brx-query-trail` after its last `<tr>`, inside the `<table>` in the served HTML; the browser moves it out above the table. It is Bricks' marker, not the element's.
 - The script reads no `data-bfbe-*` attribute and changes two things: it removes `tabindex` and `role` from the wrapper while nothing overflows, and on a stacking table it puts a `.bfbe-table__label` span first in each body cell, shown below the breakpoint.
 - Where controls write: `tableBorder` and `tableBackground` to `.bfbe-table__scroll`; the Header row group to `.bfbe-table__row--header .bfbe-table__cell`; the Cells group to `.bfbe-table__cell`, and `labelTypography` to `.bfbe-table__label`. `stripe`, `minWidth`, `maxHeight`, the gaps, the bar values and the row line are custom properties on the root (`--bfbe-table-stripe`, `--bfbe-table-min`, `--bfbe-table-height`, and so on).
 - A Table Row's and a Table Cell's own controls write to the cell; **Column width** `colWidth` is `--bfbe-col-w` on it.

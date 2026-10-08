@@ -244,7 +244,7 @@ A query loop with a static intro and promo slides placed among its items, from `
   "arrows": true, "prevLabel": "Previous", "nextLabel": "Next", "navPosition": "below", "barAlign": "flex-end", "counter": true
 }, "children": [
   {"name": "bfbe-snap-slide", "settings": {}, "children": [{"name": "heading", "settings": {"text": "Intro, stays first", "tag": "h3"}}]},
-  {"name": "bfbe-snap-slide", "settings": {"hasLoop": true, "query": {"post_type": ["page"], "posts_per_page": 7, "orderby": "title", "order": "ASC"}}, "children": [
+  {"name": "bfbe-snap-slide", "settings": {"hasLoop": true, "query": {"objectType": "post", "post_type": ["page"], "posts_per_page": 7, "orderby": "title", "order": "ASC"}}, "children": [
     {"name": "heading", "settings": {"text": "{post_title}", "tag": "h4"}}
   ]},
   {"name": "bfbe-snap-slide", "settings": {"place": "after", "after": 2, "width": "360px"}, "children": [{"name": "heading", "settings": {"text": "After item 2", "tag": "h3"}}]},

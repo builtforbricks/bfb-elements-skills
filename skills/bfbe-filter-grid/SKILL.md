@@ -284,7 +284,7 @@ Posts from a query loop, each tagged with its categories, several chips at once.
 {"name": "bfbe-filter-grid", "settings": {"multi": true, "columns": 4, "allLabel": "Everything"},
  "children": [
   {"name": "bfbe-filter-item",
-   "settings": {"tags": "{post_terms_category}", "hasLoop": true, "query": {"post_type": ["post"], "posts_per_page": 8}},
+   "settings": {"tags": "{post_terms_category}", "hasLoop": true, "query": {"objectType": "post", "post_type": ["post"], "posts_per_page": 8}},
    "children": [{"name": "block", "settings": {}, "children": [{"name": "heading", "settings": {"text": "{post_title}", "tag": "h4"}}]}]}
  ]}
 ```

@@ -73,7 +73,11 @@ adds. Every per-element skill (`bfbe-modal`, `bfbe-table`, `bfbe-form`, ...) ass
 1. Confirm the element is on the site (`bricks/list-element-types`, category `bfb-elements`), and which pack it needs.
 2. Load the element's skill; read the schema file for the controls you will set.
 3. Build the tree from the skill's structure section; set switches and their values together; write defaults you rely on.
-4. Write it (`bricks/add-element` or the page-level abilities), then read it back and verify on the frontend.
+4. Write it (`bricks/add-element` or the page-level abilities): a query loop needs `objectType` (`"post"`, `"term"` or
+   `"user"`) in its `query`, or the write is refused. Then read it back with `bricks/get-page-elements` and verify on the
+   frontend: fetch the published page's HTML or open it in a browser. `bricks/render-elements` in its summary form lists
+   landmarks and headings only, and its detailed form puts a placeholder where nestable children go, so neither shows an
+   element's root class or its parts.
 5. Where the skill names a gotcha, check it in the rendered page before you report done.
 
 ## Never do

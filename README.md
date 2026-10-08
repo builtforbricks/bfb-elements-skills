@@ -5,8 +5,8 @@ Built for Bricks: one skill per element and feature, the control schemas the plu
 examples the release checks against the plugin before they are published.
 
 **Status: complete, awaiting its first release.** Every skill is written in full and checked against the plugins; the
-first release goes out with BFB Elements 1.0.0-beta.3, and until then the schemas describe 1.0.0-beta.2 (the
-`verifiedUpTo` in `references/index.json`).
+first release goes out with BFB Elements 1.0.0-beta.3, which the schemas describe (the `verifiedUpTo` in
+`skills/bfbe-schemas/references/index.json`).
 
 ## What a skill is
 
@@ -59,7 +59,7 @@ Then start a new chat and ask: *List the loaded skills whose names start with `b
 | Skill | Covers |
 |---|---|
 | `bfbe-start-here` | Load first: names and discovery, the rules of the engine (a hidden setting is dropped; defaults are the panel's; an element missing from the registry is turned off, not absent), workflow, never do |
-| `bfbe-schemas` | Every element's controls as the plugin registers them, `references/elements/<name>.json`, with the version check against the site |
+| `bfbe-schemas` | Every element's controls as the plugin registers them, `skills/bfbe-schemas/references/elements/<name>.json`, with the version check against the site |
 | `bfbe-update` | Compares the pack with the plugin on the site; updates on request |
 | `bfbe-<element>` | One per element: what it is and is not for, cost, structure and typed children, the settings that decide a build, wiring, verified patterns, gotchas, never do, the accessibility it guarantees. Child elements (table rows and cells, slides, timeline moments, showcase steps and cards, filter items, player controls, the form's fields) ride in their parent's skill |
 | `bfbe-form` | BFB Advanced Forms with its twelve parts, steps, rules, formulas, uploads, signatures, the total, payments |
@@ -68,7 +68,7 @@ Then start a new chat and ask: *List the loaded skills whose names start with `b
 ## How it is made, and why that matters
 
 - The schema files and the generated block of every skill are written by the plugin's release from the plugins as
-  built (`dev/skills-export.php` in the plugin repository). `verifiedUpTo` in `references/index.json` is the plugin
+  built (`dev/skills-export.php` in the plugin repository). `verifiedUpTo` in `skills/bfbe-schemas/references/index.json` is the plugin
   version they came from, never typed.
 - Before a release, a check holds the pack against the plugin: every schema equals the registered controls, every
   example tree names registered elements and known keys, sets nothing the panel would hide, and renders with

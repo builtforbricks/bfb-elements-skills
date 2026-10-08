@@ -273,7 +273,7 @@ The card wires inward alone. Its controls are elements inside its own faces carr
 ```json
 {
   "name": "bfbe-flip-box",
-  "settings": { "trigger": "click", "effect": "flip", "direction": "right", "equalHeights": true, "hasLoop": true, "query": { "post_type": [ "page" ], "posts_per_page": 3, "orderby": "title" } },
+  "settings": { "trigger": "click", "effect": "flip", "direction": "right", "equalHeights": true, "hasLoop": true, "query": { "objectType": "post", "post_type": [ "page" ], "posts_per_page": 3, "orderby": "title" } },
   "children": [
     { "name": "block", "settings": {}, "children": [
       { "name": "heading", "settings": { "text": "{post_title}", "tag": "h3" } },
