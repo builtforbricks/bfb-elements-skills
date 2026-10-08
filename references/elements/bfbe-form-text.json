@@ -11,7 +11,27 @@
     "cost": {
         "css": "none",
         "js": "none",
-        "dependencies": "none"
+        "dependencies": "none",
+        "also": [
+            {
+                "what": "BFB Advanced Forms, masks and the character count",
+                "css": "0.11 KB",
+                "js": "0.69 KB",
+                "dependencies": "none"
+            },
+            {
+                "what": "BFB Advanced Forms, the phone country code",
+                "css": "0.15 KB",
+                "js": "2.23 KB",
+                "dependencies": "none"
+            },
+            {
+                "what": "BFB Advanced Forms, formatted text sent whole",
+                "css": "none",
+                "js": "0.29 KB",
+                "dependencies": "none"
+            }
+        ]
     },
     "controlGroups": {
         "_attributes": {

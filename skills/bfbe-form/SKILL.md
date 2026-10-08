@@ -1,6 +1,6 @@
 ---
 name: bfbe-form
-description: "Use when placing, wiring or styling BFB Advanced Forms (`bfbe-form`): a nestable form you build from field elements and step elements, with uploads and signatures, sent by Bricks' own script and actions. Read before writing its settings."
+description: "Use when building a multi-step form, a quote or price calculator, a form with conditional fields, uploads or a signature, or one that pays through Stripe or fills a WooCommerce cart, with BFB Advanced Forms (`bfbe-form`) and its twelve part elements. Read before writing its settings."
 ---
 
 # BFB Advanced Forms (`bfbe-form`)
@@ -16,7 +16,7 @@ A nestable form you build from field elements and step elements, with uploads an
 
 **Not for:** Not for taking card details on your own page: payment happens on Stripe's own Checkout page. Uploads, signatures, steps, totals and other repeaters cannot sit inside a Repeater's rows, which suit rows of simple fields.
 
-**Costs a page:** CSS 2.57 KB, JS 3.06 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 2.57 KB, JS 3.06 KB (gzipped), no dependencies, loaded only on pages that use it. Only where used, the steps engine: JS 3.00 KB. Only where used, the checks and their words: CSS 0.34 KB, JS 2.63 KB. Only where used, the formula: JS 1.00 KB. Only where used, a warning before leaving: JS 0.39 KB. Only where used, values from rules and the address: JS 0.94 KB. Only where used, the pricing: JS 2.59 KB. Only where used, the pricing rules: JS 1.37 KB. Only where used, floating labels: CSS 0.81 KB, JS 1.33 KB.
 
 **Nestable:** yes · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 
@@ -114,8 +114,8 @@ Styling, in the schema file: `fieldGap`.
 
 ### Email (`email`)
 The whole group shows only when `actions` is `email`.
-- `emailSubject` (text) **Subject**: default `Contact form request`. Set the email's subject. Unless set, it reads Finish your form on, then your site's name.
-- `emailTo` (select) **Send to email address**: options: `admin_email` Admin email (dev-email@wpengine.local) (default), `custom` Custom email address
+- `emailSubject` (text) **Subject**: default `Contact form request`
+- `emailTo` (select) **Send to email address**: options: `admin_email` Admin email (admin@example.com) (default), `custom` Custom email address
 - `emailToCustom` (text) **Send to custom email address**: only when `emailTo` is `custom`. Accepts multiple addresses separated by comma.
 - `emailRoutes` (repeater) **Send to, by answer**: placeholder Recipients. Add rows that send the email to more addresses when an answer holds. Each row has Field key, Test, Value and Send to, and every row that holds adds its addresses.
 - `emailRoutesKeep` (checkbox) **Keep the usual recipients too**: only when `emailRoutes` is set. Off by default, so a row that holds replaces the usual recipients. Tick it to send to both.
@@ -124,7 +124,7 @@ The whole group shows only when `actions` is `email`.
 - `fromName` (text) **From name**: default `bfb-elements`. Default: Site title.
 - `replyToEmail` (text) **Reply to email address**: placeholder Name. Comma-separated list of name and email address or email addresses only. Default: Email address in submitted form.
 - `emailContent` (textarea) **Email content**. Use field IDs to personalize your message. Type {{all_fields}} to output all the field labels and values of the submitted form. Learn more (https://academy.bricksbuilder.io/article/form-element/#email).
-- `emailErrorMessage` (text) **Error message**: default `Submission failed. Please reload the page and try to submit the form again.`. Type the words for an answer that fails a check. Left blank, the browser says what is wrong.
+- `emailErrorMessage` (text) **Error message**: default `Submission failed. Please reload the page and try to submit the form again.`
 - `htmlEmail` (checkbox) **HTML email**: default `true`
 
 ### Webhook (`webhook`)
@@ -134,11 +134,11 @@ The whole group shows only when `actions` is `webhook`.
 - `webhookRateLimit` (checkbox) **Rate limiting**. Limit the number of webhook requests that can be sent per hour.
 - `webhookRateLimitRequests` (number) **Max requests per hour**: placeholder 60; only when `webhookRateLimit` is `1`. Maximum number of webhook requests allowed per hour. (Default: 60).
 - `webhookErrorIgnore` (checkbox) **Continue on error**. If enabled, form submission will succeed even if the webhook fails. Errors will be logged to the server error log.
-- `webhookErrorMessage` (text) **Error message**: only when `webhookErrorIgnore` is not set. Type the words for an answer that fails a check. Left blank, the browser says what is wrong.
+- `webhookErrorMessage` (text) **Error message**: only when `webhookErrorIgnore` is not set
 
 ### Confirmation email (`confirmation`)
 The whole group shows only when `actions` is `email`.
-- `confirmationEmailSubject` (text) **Subject**. Set the email's subject. Unless set, it reads Finish your form on, then your site's name.
+- `confirmationEmailSubject` (text) **Subject**
 - `confirmationEmailTo` (text) **Send to email address**. Default: Email address in submitted form.
 - `confirmationFromEmail` (text) **From email address**. Default: Admin email.
 - `confirmationFromName` (text) **From name**. Default: Site title.
@@ -148,8 +148,8 @@ The whole group shows only when `actions` is `email`.
 
 ### Redirect (`redirect`)
 The whole group shows only when `actions` is `redirect`.
-- `redirectAdminUrl` (checkbox) **Redirect to admin area**: placeholder https://bfb-elements.local/wp-admin/
-- `redirect` (text) **Custom redirect URL**: placeholder https://bfb-elements.local
+- `redirectAdminUrl` (checkbox) **Redirect to admin area**: placeholder https://example.com/wp-admin/
+- `redirect` (text) **Custom redirect URL**: placeholder https://example.com
 - `redirectTimeout` (number) **Redirect after (ms)**
 
 ### Mailchimp (`mailchimp`)
@@ -161,7 +161,7 @@ The whole group shows only when `actions` is `mailchimp`.
 - `mailchimpFirstName` (select) **First name**: options: ; only when `apiKeyMailchimp` is set
 - `mailchimpLastName` (select) **Last name**: options: ; only when `apiKeyMailchimp` is set
 - `mailchimpPendingMessage` (text) **Pending message**: default `Please check your email to confirm your subscription.`; only when `apiKeyMailchimp` is set
-- `mailchimpErrorMessage` (text) **Error message**: default `Sorry, but we could not subscribe you.`; only when `apiKeyMailchimp` is set. Type the words for an answer that fails a check. Left blank, the browser says what is wrong.
+- `mailchimpErrorMessage` (text) **Error message**: default `Sorry, but we could not subscribe you.`; only when `apiKeyMailchimp` is set
 
 ### Sendgrid (`sendgrid`)
 The whole group shows only when `actions` is `sendgrid`.
@@ -169,14 +169,14 @@ The whole group shows only when `actions` is `sendgrid`.
 - `sendgridEmail` (select) **Field: Email**: options: ; only when `apiKeySendgrid` is set
 - `sendgridFirstName` (select) **Field: First name**: options: ; only when `apiKeySendgrid` is set
 - `sendgridLastName` (select) **Field: Last name**: options: ; only when `apiKeySendgrid` is set
-- `sendgridErrorMessage` (text) **Error message**: default `Sorry, but we could not subscribe you.`; only when `apiKeySendgrid` is set. Type the words for an answer that fails a check. Left blank, the browser says what is wrong.
+- `sendgridErrorMessage` (text) **Error message**: default `Sorry, but we could not subscribe you.`; only when `apiKeySendgrid` is set
 
 ### User Login (`login`)
 The whole group shows only when `actions` is `login`.
 - `loginName` (select) **Field: Login**: options: 
 - `loginPassword` (select) **Field: Password**: options: 
 - `loginRemember` (select) **Field: Remember me**: options: 
-- `loginErrorMessage` (text) **Error message**. Type the words for an answer that fails a check. Left blank, the browser says what is wrong.
+- `loginErrorMessage` (text) **Error message**. Enter a generic error message. Otherwise the reason why the login failed is displayed.
 
 ### User Registration (`registration`)
 The whole group shows only when `actions` is `registration`.
@@ -201,7 +201,7 @@ The whole group shows only when `actions` is `reset-password`.
 ### Create post (`createPost`)
 The whole group shows only when `actions` is `create-post`.
 - `createPostType` (select) **Post type**: options: . For Posts of a type, type the post type, post unless set.
-- `createPostErrorMessage` (text) **Error message**: only when `createPostType` is set and `createPostDisableCapabilityCheck` is not set. Type the words for an answer that fails a check. Left blank, the browser says what is wrong.
+- `createPostErrorMessage` (text) **Error message**: only when `createPostType` is set and `createPostDisableCapabilityCheck` is not set
 - `createPostDisableCapabilityCheck` (checkbox) **Disable capability checks**: only when `createPostType` is set
 - `createPostTitle` (select) **Post title**: options: ; only when `createPostType` is set
 - `createPostContent` (select) **Post content**: options: ; only when `createPostType` is set
@@ -214,7 +214,7 @@ The whole group shows only when `actions` is `create-post`.
 ### Update post (`updatePost`)
 The whole group shows only when `actions` is `update-post`.
 - `updatePostId` (select) **Post to update**: placeholder Select post/page
-- `updatePostErrorMessage` (text) **Error message**. Type the words for an answer that fails a check. Left blank, the browser says what is wrong.
+- `updatePostErrorMessage` (text) **Error message**
 - `updatePostDisableCapabilityCheck` (checkbox) **Disable capability checks**
 - `updatePostTitle` (select) **Post title**: options: 
 - `updatePostContent` (select) **Post content**: options: 
@@ -236,17 +236,17 @@ The whole group shows only when `actions` is `update-post`.
 
 ### Save submission (`save-submission`)
 The whole group shows only when `actions` is `save-submission`.
-- `submissionFormName` (text) **Form name**: placeholder Contact form. Descriptive name for viewing submissions on the "Form Submissions" page (https://bfb-elements.local/wp-admin/admin.php?page=bricks-form-submissions).
+- `submissionFormName` (text) **Form name**: placeholder Contact form. Descriptive name for viewing submissions on the "Form Submissions" page.
 - `submissionSaveIp` (checkbox) **Save IP address**
 - `submissionMaxEntries` (number) **Max. entries**. Set maximum number of form submissions that you want to store in the database.
-- `submissionMaxEntriesErrorMessage` (text) **Error message**: placeholder Maximum number of entries reached.. Type the words for an answer that fails a check. Left blank, the browser says what is wrong.
+- `submissionMaxEntriesErrorMessage` (text) **Error message**: placeholder Maximum number of entries reached.
 - `submissionDupEntries` (repeater) **Compare with (Field ID)**
-- `submissionDupEntriesErrorMessage` (text) **Error message**: placeholder Duplicate entries not allowed.. Type the words for an answer that fails a check. Left blank, the browser says what is wrong.
+- `submissionDupEntriesErrorMessage` (text) **Error message**: placeholder Duplicate entries not allowed.
 
 ### Unlock password protection (`unlock-password-protection`)
 The whole group shows only when `actions` is `unlock-password-protection`.
 - `passwordProtectionPassword` (select) **Field: Password**: options: . If no form field is selected, the first password field in the form is used.
-- `passwordProtectionErrorMessage` (text) **Error message**. Type the words for an answer that fails a check. Left blank, the browser says what is wrong.
+- `passwordProtectionErrorMessage` (text) **Error message**
 
 ### Update the user (`bfbeUser`)
 The whole group shows only when `actions` is `bfbe-user`.
@@ -258,17 +258,17 @@ The whole group shows only when `actions` is `bfbe-meta`.
 - `metaPost` (select) **Which post**: options: `current` The page it is on (default), `field` The post an answer names, `url` The post the address names. Pick The page it is on (the default), The post an answer names, or The post the address names. For the last two, Its key names the answer or the address parameter that holds the post's ID.
 - `metaPostKey` (text) **Its key**: placeholder post_id; only when `metaPost` is `field` or `url`. The answer or the address parameter that holds its ID.
 - `metaWho` (select) **Who may**: options: `editors` Who can edit the post (default), `anyone` Anyone, to count. Who can edit the post (the default), or Anyone, to count, which lets any visitor add or take away a fixed amount on a post the public can see, and nothing more.
-- `metaRows` (repeater) **Fields to change**. Add one row per field of the logged-in visitor's profile. Each has Change (First name, Last name, Nickname, Name shown, Website, About or A custom field), Field name, How, From the answer, By and Kept by. It never changes a role, a password or an email address.
+- `metaRows` (repeater) **Fields to change**. Add one row per custom field, with Field name, How, From the answer, By and Kept by. How sets it to the answer, adds to it or takes from it, adds the answer to a list or takes it out, or saves a repeater's rows.
 - `metaRefused` (text) **When not allowed**: placeholder You cannot change this.. Type the words shown when the change is refused, You cannot change this. unless set.
 
 ### Delete the post (`bfbeDelete`)
 The whole group shows only when `actions` is `bfbe-delete`.
-- `deletePost` (select) **Which post**: options: `current` The page it is on (default), `field` The post an answer names, `url` The post the address names. Pick The page it is on (the default), The post an answer names, or The post the address names. For the last two, Its key names the answer or the address parameter that holds the post's ID.
+- `deletePost` (select) **Which post**: options: `current` The page it is on (default), `field` The post an answer names, `url` The post the address names. Pick The page it is on (the default), The post an answer names, or The post the address names, whose ID Its key holds.
 - `deletePostKey` (text) **Its key**: placeholder post_id; only when `deletePost` is `field` or `url`. The answer or the address parameter that holds its ID.
-- `deleteWho` (select) **Who may**: options: `author` Its author (default), `deleters` Anyone who may delete it. Who can edit the post (the default), or Anyone, to count, which lets any visitor add or take away a fixed amount on a post the public can see, and nothing more.
+- `deleteWho` (select) **Who may**: options: `author` Its author (default), `deleters` Anyone who may delete it. Its author (the default) or Anyone who may delete it. Either way the visitor must be logged in and allowed by WordPress.
 - `deleteHow` (select) **How**: options: `trash` Into the bin (default), `delete` For good. Move the post Into the bin (the default) or delete it For good.
 - `deleteTypes` (text) **Only these post types**: placeholder post, listing. List post types, with commas between them, to limit which posts the form may delete.
-- `deleteRefused` (text) **When not allowed**: placeholder You cannot delete this.. Type the words shown when the change is refused, You cannot change this. unless set.
+- `deleteRefused` (text) **When not allowed**: placeholder You cannot delete this.. Type the words shown when the delete is refused, You cannot delete this. unless set.
 
 ### Quote PDF (`bfbePdf`)
 The whole group shows only when `actions` is `bfbe-pdf`.
@@ -375,7 +375,7 @@ Styling only, every key in the schema file: `listTitleTypography`, `listSpace`, 
 
 ### Errors (`bfbeErrors`)
 - `errorsOff` (checkbox) **Go to the first error instead**. No list: focus goes to the first field that fails.
-- `errorsTitle` (text) **Title**: placeholder Please check these answers:; only when `errorsOff` is not set. Set the PDF's title, Your quote unless set.
+- `errorsTitle` (text) **Title**: placeholder Please check these answers:; only when `errorsOff` is not set. Type the heading over that list, Please check these answers: unless set.
 Styling, in the schema file: `errorTypography`, `errorSpace`, `errorBorder`, `errorsTypography`.
 
 ### In the builder (`bfbeBuilder`)
@@ -393,18 +393,302 @@ Styling, in the schema file: `errorTypography`, `errorSpace`, `errorBorder`, `er
 - Under reduced motion steps change without sliding, the page scrolls to the form without gliding, and the total's count-up cuts to the final amount.
 <!-- bfbe:generated:end -->
 
+## Rendered DOM
+
+A sending form is a real `<form method="post">` wearing Bricks' own `brxe-form` class and `data-element-id`, so Bricks'
+script sends it and Bricks' handler runs the actions. With **Nothing is sent** `quiet: true` the root is a `<div>` with
+`bfbe-form--quiet`: Send is hidden and the Total's hidden input is not drawn. Pattern 1 below, trimmed:
+
+```html
+<form id="brxe-abc123" class="brxe-bfbe-form bfbe-form bfbe-pc brxe-form bfbe-pc--steps bfbe-pc--total-right" method="post"
+      data-element-id="abc123" data-bfbe-steps="4" data-bfbe-motion="slide" data-bfbe-form="{…}" data-bfbe-pc="{…}"
+      data-bfbe-side-stack="768" style="--bfbe-pc-rows:3;--bfbe-pc-side:320px">
+  <div class="brxe-bfbe-form-progress bfbe-pc__progress bfbe-pc--marks-titles" data-bfbe-progress="1">
+    <p class="bfbe-pc__count" aria-live="polite"></p>
+    <div class="bfbe-pc__rail"><ol class="bfbe-pc__marks"><li class="bfbe-pc__mark is-current"><button type="button" class="bfbe-pc__mark-btn" aria-current="step">…</button></li>…</ol>
+      <div class="bfbe-pc__bar" role="progressbar" aria-valuenow="1" aria-valuemax="4"><span class="bfbe-pc__bar-fill"></span></div></div>
+  </div>
+  <div class="brxe-bfbe-form-step bfbe-pc__panel" data-bfbe-panel="0" data-bfbe-step="Plan" aria-label="Plan">
+    <div class="brxe-bfbe-form-choice form-group bfbe-pc__field bfbe-pc__field--radio bfbe-pc__field--segments" data-bfbe-key="plan">
+      <div class="form-group-error-message"></div><div class="label bfbe-pc__label">Plan</div>
+      <span class="bfbe-pc__opts bfbe-pc__opts--segments" role="radiogroup"><label class="bfbe-pc__opt"><input type="radio"
+        class="bfbe-pc__value bfbe-pc__box" name="form-field-plan[]" value="Starter" data-bfbe-amount="9">…</label>…</span>
+    </div>
+  </div>
+  <div class="brxe-bfbe-form-step bfbe-pc__panel" data-bfbe-panel="1" hidden>…</div>
+  <div class="brxe-bfbe-form-total bfbe-pc__total" data-bfbe-total-box="total" data-bfbe-rule="{…}">
+    <div class="bfbe-pc__total-head"><span class="bfbe-pc__total-label">Your plan</span><span class="bfbe-pc__figure"><output
+      class="bfbe-pc__amount" aria-live="polite">$0</output><span class="bfbe-pc__suffix"></span></span></div>
+    <dl class="bfbe-pc__lines"></dl><input type="hidden" name="form-field-total" data-bfbe-total="total">
+  </div>
+  <div class="brxe-bfbe-form-button form-group bfbe-pc__nav bfbe-pc__nav--nav submit-button-wrapper">
+    <button type="button" class="bfbe-pc__back" hidden>…</button><button type="button" class="bfbe-pc__next">…</button>
+    <button type="submit" class="bricks-button bfbe-pc__send">…</button></div>
+  <div class="bfbe-pc__errors" hidden></div>
+</form>
+```
+
+- **Fields.** Each is `.form-group.bfbe-pc__field.bfbe-pc__field--<type>` with `data-bfbe-key`: an empty
+  `.form-group-error-message` first (Bricks writes the error into it), the label (`label.bfbe-pc__label`, or
+  `div.label.bfbe-pc__label` over a set), the control, then `span.bfbe-pc__note`. Boxes are `.bfbe-pc__input`, ticks and
+  radios `.bfbe-pc__box`. Inputs are named `form-field-<key>` (`[]` for a set; `form-field-<repeater>[<row>][<key>]` in a
+  repeater row).
+- **Rules.** An element with a rule carries `data-bfbe-rule` (`{"a":"show","m":"all","r":[["plan","is","Business"]]}`).
+  Hidden by it: `data-bfbe-off`, `.bfbe-pc__off`, inline `display: none`, its inputs disabled. Required by it:
+  `data-bfbe-required`. Held by a Block rule: `data-bfbe-block` and a `p.bfbe-pc__block` with the rule's words.
+- **Steps.** One `.bfbe-pc__panel` shows; the others get `hidden` and inline `display: none`. Marks take `is-current` and
+  `is-done`, the Progress root `--bfbe-pc-progress` (the share reached, up to 1). The form toggles `bfbe-fs--first`, `bfbe-fs--last` and, after
+  a successful send, `bfbe-fs--done`; a step coming in gets `bfbe-fs__in` and `data-bfbe-dir="next"` or `"back"`.
+- **Summary and Total.** `div.bfbe-sum` stays empty until its step shows, then holds `.bfbe-sum__step` blocks of
+  `.bfbe-sum__row` (`dt`, `dd`) and a `button.bfbe-sum__change`. The Total's amount and `.bfbe-pc__line` rows are written
+  by script, in `.bfbe-pc__total-head`, `.bfbe-pc__lines`, `.bfbe-pc__total-details` and `.bfbe-pc__total-foot`.
+- **Events** on the form element: `bfbe/pc` (detail: the price state, also at `form.bfbePcState`), `bfbe/step` (detail
+  `{at, of, focus}`) and `bfbe/rules`. Bricks' own `bricks/form/success` and `bricks/form/error` fire on `document`.
+- **Where styling writes.** The form's field groups (Label and note, Input, Slider, Choices styling, Tick box, Switch,
+  Dropdown, Stepper, Number arrows, Calendar, the three upload groups, Errors) are defaults for every field inside; the
+  same key set on one field wins there. `fieldGap` is `--bfbe-pc-gap` on the root, a flex column; `innerGap` is
+  `--bfbe-pc-field-gap`, `errorBorder` `--bfbe-pc-error`, `accent` `--bfbe-pc-accent`.
+- **Fetched HTML is not the page.** The server draws every field and the first step; rules, steps, prices and the Summary
+  act once the scripts run. Read their states in a browser.
+
 ## Wiring to other elements
 
-_Not written yet._
+The form and its parts find each other by **key** and by their place in the tree, never by element id. To target one form
+in CSS or a script, give it a class in `_cssClasses`, never `_cssId`: component instances share ids.
+
+**The tree.**
+- `bfbe-form` holds the seven fields, the five parts and any Bricks element between them. Fields count at any depth, so a
+  `block`, `div` or `container` (in the form or in a Step) lays them out.
+- A stepped form: `bfbe-form-progress`, then two or more `bfbe-form-step` holding the fields, the `bfbe-form-summary` in the
+  last Step, then `bfbe-form-total` and one `bfbe-form-button` with `kind: "nav"` directly in the form. A Button inside a
+  Step hides with it. With `stepsHash` the address takes `#<element id>-<n>`.
+
+**Keys.**
+- A field's **Key** `key` names its answer in rules, formulas, `{{key}}` in Bricks' email subject and content, the saved
+  entry, the webhook payload and `{bfbe_answer:key}`. Lowercase letters, digits and underscores.
+- The Total's own `key` is `total` unless set; **Send the choices too** `sendChoices` adds `total_choices`, the choices
+  in words. Both are keys like a field's.
+- Bricks' field dropdowns (`createPostTitle`, `mailchimpEmail`, `loginName`, `registrationEmail` and the rest) take a
+  key as their value. The save writes the form's `fields` list, which those dropdowns and the entries screen read.
+
+**Rules: Shown when.**
+- Keys: `ruleAction`, `ruleMatch` (`all` unless `any`) and `rules`, rows of `{"field", "op", "value"}`. Text, Choice, Number
+  and Date offer `show`, `hide`, `require`, `disable`, `set` (with `ruleValue`); Upload and Signature the first four; Step
+  and Button `show`, `hide`, `block` (with `ruleMessage`); Progress, Summary, Total and Repeater `show` and `hide`.
+- Bricks' own `container`, `block`, `div`, `heading`, `text-basic`, `text`, `image`, `icon`, `icon-box`, `divider`,
+  `button`, `list` and `video` take `ruleAction` (`show`, `hide`) and `rules` too, and act only inside a BFB form.
+- `field` is a key, `total` (the running total), `step` (the step shown, counted from 1), `url:ref` (the address's
+  `?ref=`) or `saved:name` (a value the site keeps in the browser's localStorage).
+- `op`: `is`, `not`, `in` (`"a, b"`), `contains`, `starts`, `ends`, `gt`, `gte`, `lt`, `lte`, `between` (`"10, 20"`),
+  `filled`, `empty`, `ticked`, `unticked`, `matches` (a pattern on the whole value), `before` and `after` (`2026-12-25`,
+  the site's date format, or `today`), `same` (`value` names another key). Words compare without case, numbers as numbers.
+- `set` gives `ruleValue` while the conditions match (`"a, b"` ticks two) and takes it back after, unless the visitor
+  changed it. `block` stops Next, Enter, a later mark and Send with `ruleMessage`, and the server refuses with the same words.
+- A field's **Fill from the address** `fromUrl` fills it from that parameter: `plan` reads `?plan=`.
+
+**Pricing and the Formula.**
+- With **Formula** `formula` empty, the total is **Starting amount** `base` plus every field's own price: a choice's
+  `amount`, a number times its **Adds** `price`, a ticked box's `price`, a `fixed` number's `price`, each times **Multiply
+  by** `times` (another key) and banded by **Rates by quantity** `tiers`. With a formula, it is the formula plus `base`.
+- In a formula a number or slider is its number, `fixed` its `price`, a dropdown or `radio` the chosen `amount`, `multi` the
+  ticked amounts added, a tick box or consent box 1 or 0, a `period` its multiplier. Text, dates, uploads, signatures, the
+  repeater, a range, a rating and anything a rule hides are 0.
+- Grammar: numbers and keys, `+ - * / %`, brackets, `< > <= >= == !=` (1 or 0), `test ? this : that`, `min(a, b)`,
+  `max(a, b)`, `pow(a, b)`, `round`, `ceil`, `floor`, `abs` and `sqrt` of one value, and `sum(extra_*)`, every key that
+  starts `extra_` added. `;` separates statements, `name = expression` keeps a result for the ones after, and the last is
+  the total: `stay = nights * 90; stay + sum(extra_*) * 10`. An unknown key is 0; dividing by zero gives 0.
+- Then, in order: a promo code's discount, times the billing period, **Never below** `least`, **Tax (%)** `taxRate`
+  (`taxIn: "added"` or `"included"`), **Round to** `roundTo`, and **Above this amount** `over`, which shows **Say
+  instead** `overText` and charges nothing. `currency`, `currencyAt`, `decimals`, `thousands` and `decimalMark` only write
+  the prices. Formula guide: https://builtforbricks.com/bfb-elements/docs/form/#formula
+
+**The parts and the settings a build depends on.** Each schema is `../bfbe-schemas/references/elements/<name>.json`.
+- `bfbe-form-text`: `type` `text` (default), `email`, `tel`, `url`, `password`, `textarea`, `richtext`, `color`, `hidden`
+  (its **Starts with** `value`), `promo` (`codes` rows `{code, off, percent, note}`, checked on the server) or `section` (a
+  heading, no key). Checks: `required`, `minLength`, `maxLength`, `pattern`, `sameAs` (another key), `telCountry`, and
+  `mask` (`card`, `date`, `time`, `phone`, or `custom` with **Its shape** `maskPattern`: `9` a digit, `a` a letter, `*` either).
+- Words per check: `msgRequired`, `msgFormat`, `msgLength`, `msgPattern`, `msgMatch` (and `msgRange` on a number), else
+  **Error message** `errorMessage`. A missed pattern or mask says `msgPattern`, else `errorMessage`, else "Not in the
+  expected form.", on the page and from the server alike. <!-- src: plugins/bfb-elements-pro/elements/form-text.php:247-255 -->
+- `bfbe-form-choice`: `type` `select` (default), `radio`, `multi`, `checkbox`, `consent`, `period`, `rememberme` or
+  `rating`. Choices are `options` rows `{label, value, amount, note, badge, was, icon, width, group, image, swatch}` or come
+  from `source` (`json`, `dynamic`, `posts`, `terms`, `countries`, `acf`); a billing period's are `periods` rows, `amount`
+  multiplying the total and `note` following it (`"/month"`). `show` (`plain`, `segments`, `cards`, `pills`, `swatches`,
+  `images`, `content`) suits `radio`, `multi` and `period`; `content` takes one child element per choice, in order.
+- More Choice keys: a single tick box prices with `price`; **Go on when chosen** `advance` (`radio`, `rating`) moves to
+  the next step; `noPreselect` leaves a `radio` empty; `ddSearch` and `ddMulti` shape a dropdown.
+- `bfbe-form-number`: `type` `number` (default), `slider`, `range` (two handles, both ends in one answer) or `fixed` (adds
+  `price`, not shown). `min`, `max`, `step`, `start`, `startEmpty`, `unit`; `price` per unit, `times`, `was`, and `tiers`
+  rows `{upTo, rate}` with `tiersMode` `stepped` or `graduated`.
+- `bfbe-form-date`: `type` `date`, `time`, `datetime` or `daterange`; `minDate` (`today` or `2027-01-31`), `maxDate`,
+  `closedDates` (a date or `2026-12-31 to 2027-01-02` a line), `weekends: "closed"`, `minFrom` (another date's key) with
+  `minFromDays`, `minTime`, `maxTime`. `calendar: "browser"` cannot grey out shut days (sending still refuses them); a span
+  is always the styled calendar. Answers arrive in the site's date format. <!-- src: plugins/bfb-elements-pro/elements/form-date.php:60-63 -->
+- `bfbe-form-upload`: `type` `file` (default), `image` or `gallery`; `fileUploadLimit` (count), `fileUploadSize` (MB each,
+  2 unless set, 50 at most), `fileUploadAllowedTypes` (`"pdf, jpg"`), `fileUploadStorage` (`attachment` or `directory`),
+  `urlUpload` (a web address too), `previews`.
+- `bfbe-form-signature`: `label`, `key`, `required`, `toolsPlace` (`under`, `footer`). A drawing is sent as a link to a PNG
+  under `uploads/bfbe-signatures/`, a typed name marked "(typed)".
+- `bfbe-form-repeater`: its children are one row of Text, Choice, Number or Date fields, keyed within the row. `rowTitle`
+  (`%d` the row number), `rowsLeast` (1), `rowsMost` (10), `rowsStart`; `rowsFrom`, `rowsFromName` and `rowsOf` start it
+  from saved rows. `_flexDirection: "row"` on the repeater puts a row's fields side by side.
+- `bfbe-form-step`: `title`, `text`, `heading` (`title` or `both`, drawn above its fields). `bfbe-form-progress`:
+  `stepsMarks` `full`, `titles` (with descriptions), `numbers`, `bar` or `none`; `markClick` `behind`, `any`, `none`; `countShow`.
+- `bfbe-form-summary`: `byStep: "flat"` for one list, `skipEmpty`, `empty`, `change`, `sumLines`. A password reads as dots,
+  a drawn signature as "Signed", a lone tick box as "Yes".
+- `bfbe-form-total`: `totalLabel`, `breakdown`, `countUp`, `countLine` (`%d` the ticked boxes), `equivalents`, `terms` (a
+  tick box its buttons wait for), `ctaText` with `ctaLink` and `ctaCarry` (`bfbe_total` and `bfbe_choices` in the link);
+  `position` `flow`, `sticky`, `right`, `left` or `bar`, with `sideWidth`, `sideGap`, `sideStack`, `stickyTop`.
+- `bfbe-form-button`: `kind` `nav` (Back, Next and Send; default), `send`, `next`, `back` or `save`; `navPlace` or `place`;
+  `sayMissing` lists the required fields still empty under Send; `nextText`, `sendText`, `backText`, `backStyle: "text"`.
+
+**Sending.**
+- `actions` is an array of Bricks' own (`email`, `webhook`, `redirect`, `save-submission`, `create-post`, `login` and the
+  rest, each with Bricks' own keys) and the pack's `bfbe-user`, `bfbe-meta`, `bfbe-delete`, `bfbe-pdf` and `bfbe-pay`.
+  `save-submission`, which Bricks offers once its setting Save form submissions in database is on, always runs first.
+  <!-- src: plugins/bfb-elements-pro/includes/class-form-engine.php:1714-1717 -->
+- Email: `emailTo: "custom"` with `emailToCustom`, and `{{key}}` or `{{all_fields}}` in `emailSubject` and `emailContent`.
+  **Send to, by answer** `emailRoutes` rows `{field, op, value, to}` use the rules' tests; every row that holds adds its
+  addresses, which replace the usual recipients unless `emailRoutesKeep`.
+- Webhook: each `webhooks` row is Bricks' (`name`, `url`, `contentType`, `dataTemplate`, `headers`) plus `method` (`POST`
+  unless set), `secret`, `loggedIn` and `debug` (the reply shown to administrators); a row with another method, a secret or
+  `debug` refuses addresses inside the site's own network. With `secret`, `X-BFB-Signature: sha256=<hex>` is the HMAC-SHA256 of
+  `X-BFB-Timestamp`, a dot and the raw body (`GET`: the query): https://builtforbricks.com/bfb-elements/docs/form/#signed-webhooks
+- `bfbe-pdf` (Quote PDF): the answers and the server's sum, linked under the message (`pdfLink`) and kept `pdfDays` (7, up
+  to 90). `pdfAttach` attaches it only when `email` is in `actions` too.
+- `bfbe-pay` (Pay with Stripe): Checkout for the server's total in `payCurrency`, after every other action; the visitor
+  returns with `?bfbe_paid=1` unless `paySuccess`. Keys: BFB Elements, Settings, Stripe payments, or `BFBE_STRIPE_SECRET_KEY` and
+  `BFBE_STRIPE_WEBHOOK_SECRET` in `wp-config.php` (https://builtforbricks.com/bfb-elements/docs/form/#stripe). Stripe's
+  webhook turns the Payment answer "Waiting, REF" into "Paid, …" only on an entry Save submission kept. <!-- src: plugins/bfb-elements-pro/includes/class-form-pay.php:188, :383-399 -->
+- WooCommerce cart: on the Total, `wooOn` and `wooProduct` (a product id), offered only where WooCommerce is active. The
+  line is priced on the server from the choices, in the store's currency, and refused above `over` or below zero.
+- `bfbe-user`, `bfbe-meta` and `bfbe-delete` change the visitor's profile (`userRows`), a post's fields (`metaRows`) or
+  delete a post (`deletePost`, `deleteHow`). **Save for later** is a Button with `kind: "save"`, emailing a link back (`saveDays`, 30).
+- A form on a draft or private page refuses to send unless the visitor may edit that page.
+  <!-- src: plugins/bfb-elements-pro/includes/class-form-engine.php:133-136 -->
+
+**What the server never trusts.** It runs the rules again and drops what they hide, checks every choice against the saved
+options, prices the answers itself and writes its own total, and takes labels, required fields, Set values, Block rules,
+ranges, repeater rows, signatures, phone codes, shut dates and upload counts and sizes from the saved form. A dynamic tag
+typed into an answer is made inert before Bricks renders the email.
+
+**Outside the form.** `{bfbe_answer:key}` shows an answer live anywhere on the page, `{bfbe_answer:total}` the total, and
+`{bfbe_answer:key:<form element id>}` picks the form when a page has two; `@fallback:'friend'` shows until there is an
+answer. For steps or styled fields on Bricks' own `form` element, see the skills `bfbe-form-steps` and `bfbe-form-fields`.
 
 ## Verified patterns
 
-_Not written yet._
+**A priced form in four steps.** From the fixture page `fixture-form` ("PRO: BFB Form", its Plan form), with the saved
+`fields` copy left out. Progress on top, the Summary on the last step, the Total beside the fields, one `nav` Button after
+the steps. SSO seats show for Business, the Add-ons step hides for Starter, and `times: "seats"` prices the plan per seat.
+
+```json
+{"name": "bfbe-form", "settings": {"actions": ["save-submission"], "successMessage": "Sent, thank you.", "currency": "$", "decimals": 2, "stepsHash": true}, "children": [
+  {"name": "bfbe-form-progress", "settings": {"stepsMarks": "titles", "marksJustify": "space-between", "countShow": true}},
+  {"name": "bfbe-form-step", "settings": {"title": "Plan", "text": "Pick the one that fits the team today.", "heading": "both"}, "children": [
+    {"name": "bfbe-form-choice", "settings": {"label": "Plan", "key": "plan", "type": "radio", "show": "segments", "times": "seats", "priceOn": true, "options": [
+      {"label": "Starter", "amount": "9", "note": "For one team"}, {"label": "Team", "amount": "19", "note": "Shared boards", "badge": "Most picked"},
+      {"label": "Business", "amount": "39", "note": "SSO and audit log"}]}},
+    {"name": "bfbe-form-number", "settings": {"label": "Seats for SSO", "key": "sso_seats", "type": "number", "min": 0, "max": 500, "start": 0, "price": 2,
+      "ruleAction": "show", "rules": [{"field": "plan", "op": "is", "value": "Business"}]}}]},
+  {"name": "bfbe-form-step", "settings": {"title": "Team", "text": "Seats and how you pay."}, "children": [
+    {"name": "bfbe-form-number", "settings": {"label": "Seats", "key": "seats", "type": "slider", "min": 1, "max": 200, "step": 1, "start": 12, "ticks": 3, "bubble": true, "box": true}},
+    {"name": "bfbe-form-choice", "settings": {"label": "Billing", "key": "cycle", "type": "period", "show": "segments", "periods": [
+      {"label": "Monthly", "amount": "1", "note": "/month"}, {"label": "Yearly", "amount": "10", "note": "/year", "badge": "Two months free"}]}},
+    {"name": "bfbe-form-choice", "settings": {"label": "Priority support", "key": "support", "type": "checkbox", "showBox": "row", "price": 49, "priceOn": true, "pricePrefix": "+", "on": true}}]},
+  {"name": "bfbe-form-step", "settings": {"title": "Add-ons", "ruleAction": "hide", "rules": [{"field": "plan", "op": "is", "value": "Starter"}]}, "children": [
+    {"name": "bfbe-form-choice", "settings": {"label": "Extras", "key": "extras", "type": "multi", "show": "cards", "priceOn": true, "options": [
+      {"label": "Extra storage", "amount": "8", "note": "1 TB more", "icon": "ti-cloud"},
+      {"label": "Onboarding call", "amount": "120", "note": "One hour", "badge": "New", "was": "150", "icon": "ti-headphone"}]}},
+    {"name": "bfbe-form-text", "settings": {"label": "Promo code", "key": "promo", "type": "promo", "codes": [
+      {"code": "WELCOME", "off": "10", "percent": true, "note": "10% off"}, {"code": "CLUB50", "off": "50", "note": "50 off"}]}}]},
+  {"name": "bfbe-form-step", "settings": {"title": "Send it"}, "children": [
+    {"name": "bfbe-form-text", "settings": {"label": "Your name", "key": "name", "type": "text", "required": true}},
+    {"name": "bfbe-form-text", "settings": {"label": "Email", "key": "email", "type": "email", "required": true}},
+    {"name": "bfbe-form-summary", "settings": {"sumLines": true}}]},
+  {"name": "bfbe-form-total", "settings": {"totalLabel": "Your plan", "breakdown": true, "position": "right", "sideWidth": "320px", "sideGap": "48px",
+    "sendChoices": true, "countLine": "%d extras selected", "ruleAction": "hide", "rules": [{"field": "plan", "op": "empty", "value": ""}]}},
+  {"name": "bfbe-form-button", "settings": {"kind": "nav", "nextText": "Continue", "backStyle": "text"}}
+]}
+```
+
+**A contact form that emails by answer.** From `fixture-form-actions` ("PRO: BFB Form, phase 3", its Routing form), the
+test subject left out. Sales and Support go to their own addresses, a budget of 5000 or more adds a third, and anything no
+row matches goes to `emailToCustom`. Put `{{name}}` in `emailSubject` or `emailContent` to quote an answer.
+
+```json
+{"name": "bfbe-form", "settings": {"actions": ["email"], "emailTo": "custom", "emailToCustom": "office@example.com", "successMessage": "Sent, thank you.", "emailRoutes": [
+    {"field": "topic", "op": "is", "value": "Sales", "to": "sales@example.com"},
+    {"field": "topic", "op": "is", "value": "Support", "to": "help@example.com, desk@example.com"},
+    {"field": "budget", "op": "gte", "value": "5000", "to": "boss@example.com"}]}, "children": [
+  {"name": "bfbe-form-text", "settings": {"label": "Name", "key": "name", "type": "text", "required": true}},
+  {"name": "bfbe-form-choice", "settings": {"label": "Topic", "key": "topic", "type": "radio", "options": [{"label": "Sales"}, {"label": "Support"}, {"label": "Billing"}]}},
+  {"name": "bfbe-form-number", "settings": {"label": "Budget", "key": "budget", "type": "number", "min": 0, "max": 100000, "start": 0}},
+  {"name": "bfbe-form-button", "settings": {"kind": "send"}}
+]}
+```
+
+**A form that pays.** From `fixture-form-actions` (its Pay with Stripe form). Save submission keeps the entry whose
+Payment answer Stripe's webhook updates; the Total shows what Stripe will charge, worked out again on the server. It needs
+the Stripe keys on the site: without them the send answers that payment is not available.
+
+```json
+{"name": "bfbe-form", "settings": {"actions": ["save-submission", "bfbe-pay"], "currency": "€", "successMessage": "Taking you to the payment page.", "payName": "Ridgeline plan", "payCurrency": "EUR"}, "children": [
+  {"name": "bfbe-form-text", "settings": {"label": "Name", "key": "name", "type": "text"}},
+  {"name": "bfbe-form-text", "settings": {"label": "Email", "key": "email", "type": "email"}},
+  {"name": "bfbe-form-choice", "settings": {"label": "Plan", "key": "plan", "type": "radio", "options": [{"label": "Starter", "amount": "9"}, {"label": "Team", "amount": "19"}, {"label": "Business", "amount": "39"}]}},
+  {"name": "bfbe-form-choice", "settings": {"label": "Extras", "key": "extras", "type": "multi", "options": [{"label": "Priority support", "amount": "5"}, {"label": "Training", "amount": "12"}]}},
+  {"name": "bfbe-form-total", "settings": {"totalLabel": "To pay"}},
+  {"name": "bfbe-form-button", "settings": {"kind": "send"}}
+]}
+```
 
 ## Gotchas
 
-_Not written yet._
+- **Keys decide everything, so set them.** The save makes a missing key from the label, gives a repeated key `_2`, and
+  never lets a field take `total` or `step` (a field keyed `total` becomes `total_2`). A formula is case-sensitive: `Rooms`
+  is not `rooms` and counts 0. <!-- src: plugins/bfb-elements-pro/includes/class-form-engine.php:1788-1805, docs/elements/form.md "Formulas" -->
+- **To a rule, a tick box answers `on` and a choice its value.** Test a single tick box with `ticked` or `unticked`, never
+  `is`. A choice compares its `value`, else its `label`, without case, so renaming a label with no `value` breaks its rules.
+  <!-- src: src/elements/form/form.js:117-124, plugins/bfb-elements-pro/includes/class-form-engine.php:659, :734-736 -->
+- **A Formula replaces the fields' own prices.** Once `formula` is set, Adds, `times` and `tiers` count only through the
+  keys it names: a number's key is its number, not number times Adds. `sum()` takes one starred prefix; `sum(a, b)` gives `b`.
+  <!-- src: plugins/bfb-elements-pro/includes/class-price-calculator-pricing.php:327-335, :527-538, :582-583 -->
+- **Hidden by a rule is gone.** Its inputs are disabled, so they neither post nor count as required, the formula reads 0,
+  and the server drops the answer even when one is sent. A hidden Step is skipped and its mark goes with it.
+  <!-- src: src/elements/form/form.js:177-183, plugins/bfb-elements-pro/includes/class-form-engine.php:169-182 -->
+- **Steps work from two up.** With one Step or none every field shows, Next and Back hide, and Summary stays empty; with two
+  or more, Send shows on the last step only. The Summary fills when its step shows and lists the other steps' answers.
+  <!-- src: src/elements/form-wizard/form-wizard.js:119-122, :216-230, src/elements/form-summary/form-summary.js:53 -->
+- **The Total stands beside the fields only as a direct child.** `position: "right"` or `"left"` makes the form a grid of
+  its direct children, read from the first Total alone, and stacks below `sideStack` (768 unless set) of the window width.
+  <!-- src: src/elements/form-total/form-total.css:65-85, plugins/bfb-elements-pro/elements/form.php:1197-1204 -->
+- **Nothing is sent means nothing.** `quiet: true` hides Send, runs no action and draws no hidden total, so
+  `{bfbe_answer:total}` keeps its fallback; the Total element itself still counts.
+  <!-- src: plugins/bfb-elements-pro/elements/form.php:1129-1131, plugins/bfb-elements-pro/elements/form-total.php:340, src/elements/form-live/form-live.js:24 -->
+- **A Number Field is 0 to 10 unless set.** `min` 0, `max` 10 and `step` 1 stand when unset, and the server refuses a
+  number outside them or off the step. The box starts at `start`, else `min`, so Required holds until the visitor clears
+  it; `startEmpty` starts it blank. <!-- src: plugins/bfb-elements-pro/includes/class-form-engine.php:1393-1408, plugins/bfb-elements-pro/elements/form-number.php:244-273, docs/elements/form.md "Round 446" -->
+- **A Repeater row holds four kinds of field.** Text, Choice, Number and Date fields only; an upload, signature, step,
+  total or repeater inside it is left out. Rows carry no rules or prices of their own and arrive as one answer, a line a row.
+  <!-- src: plugins/bfb-elements-pro/includes/class-form-engine.php:514-538, plugins/bfb-elements-pro/elements/form-repeater.php:14-15 -->
+- **Uploads go up when chosen.** A file waits 12 hours for its form, and with **Keep the file** `fileUploadStorage` unset
+  it serves the send only. `type: "image"` or `"gallery"` draws nothing for a visitor who may not upload files.
+  <!-- src: plugins/bfb-elements-pro/includes/class-form-uploads.php:17, plugins/bfb-elements-pro/elements/form-upload.php:73, :280-289 -->
+- **A setting the panel hides does nothing.** The page and the server drop it alike, and a changed `type` keeps the old
+  type's keys: a `telCountry` left from a phone hides `mask`, so the mask never runs.
+  <!-- src: plugins/bfb-elements-pro/includes/class-form-engine.php:986-987, docs/elements/form.md "Known limits" -->
+- **The builder canvas is not the page.** **Show it** `builderView` is `free` unless set: one step at a time, any step
+  reachable, and Next never checks. `open` shows every step and runs no rule; only `live` works as the page does.
+  <!-- src: src/elements/form/form.js:145-147, src/elements/form-wizard/form-wizard.js:52-53, plugins/bfb-elements-pro/elements/form-step.php:143-148 -->
 
 ## Never do
 
-_Not written yet._
+- Do not write the form's `fields` setting (the save writes it), or key a field `total` or `step`.
+- Do not test a single tick box with `is`; use `ticked` or `unticked`.
+- Do not count on a field's Adds, `times` or `tiers` once `formula` is set; write them into the formula.
+- Do not leave `max` unset on a Number Field whose answer may pass 10.
+- Do not put a `bfbe-form-summary` or `bfbe-form-progress` in a form with fewer than two Steps, or a Button inside a Step.
+- Do not wrap the Total in a block when `position` is `right` or `left`.
+- Do not put an upload, signature, step, total or repeater inside a `bfbe-form-repeater`.
+- Do not change a field's `type` without removing the keys only the old type offered.

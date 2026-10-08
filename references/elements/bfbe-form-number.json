@@ -11,7 +11,21 @@
     "cost": {
         "css": "none",
         "js": "none",
-        "dependencies": "none"
+        "dependencies": "none",
+        "also": [
+            {
+                "what": "BFB Advanced Forms, the number box's own arrows",
+                "css": "0.74 KB",
+                "js": "0.75 KB",
+                "dependencies": "none"
+            },
+            {
+                "what": "BFB Advanced Forms, the slider",
+                "css": "1.14 KB",
+                "js": "1.19 KB",
+                "dependencies": "none"
+            }
+        ]
     },
     "controlGroups": {
         "_attributes": {

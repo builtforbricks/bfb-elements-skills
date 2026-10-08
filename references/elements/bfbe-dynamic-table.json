@@ -11,7 +11,15 @@
     "cost": {
         "css": "2.79 KB",
         "js": "2.60 KB",
-        "dependencies": "none"
+        "dependencies": "none",
+        "also": [
+            {
+                "what": "Dynamic Table, the dropdowns (the sort field and the filters' selects)",
+                "css": "none",
+                "js": "1.05 KB",
+                "dependencies": "none"
+            }
+        ]
     },
     "controlGroups": {
         "_attributes": {

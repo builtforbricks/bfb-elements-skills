@@ -444,7 +444,7 @@
             "label": "BFB Showcase Card",
             "pack": "pro",
             "nestable": true,
-            "parent": "bfbe-showcase",
+            "parent": "bfbe-showcase-step",
             "skill": "bfbe-showcase",
             "schemaPath": "./elements/bfbe-showcase-card.json",
             "docs": "https://builtforbricks.com/bfb-elements/docs/showcase/#parts"

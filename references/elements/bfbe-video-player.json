@@ -14,7 +14,51 @@
     "cost": {
         "css": "2.75 KB",
         "js": "2.99 KB",
-        "dependencies": "none"
+        "dependencies": "none",
+        "also": [
+            {
+                "what": "Video Player, the provider façade",
+                "css": "none",
+                "js": "0.77 KB",
+                "dependencies": "none"
+            },
+            {
+                "what": "Video Player, the menus",
+                "css": "0.99 KB",
+                "js": "1.77 KB",
+                "dependencies": "none"
+            },
+            {
+                "what": "Video Player, the Minimal and Studio skins",
+                "css": "0.65 KB",
+                "js": "none",
+                "dependencies": "none"
+            },
+            {
+                "what": "Video Player, the extras",
+                "css": "0.66 KB",
+                "js": "2.08 KB",
+                "dependencies": "none"
+            },
+            {
+                "what": "Video Player, the playlist",
+                "css": "1.81 KB",
+                "js": "2.83 KB",
+                "dependencies": "none"
+            },
+            {
+                "what": "Video Player, our controls on YouTube",
+                "css": "none",
+                "js": "1.53 KB",
+                "dependencies": "none"
+            },
+            {
+                "what": "Video Player, HLS streams",
+                "css": "none",
+                "js": "0.81 KB",
+                "dependencies": "hls.js 1.7 (light build)"
+            }
+        ]
     },
     "controlGroups": {
         "_attributes": {

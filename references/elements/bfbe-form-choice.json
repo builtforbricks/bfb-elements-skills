@@ -11,7 +11,51 @@
     "cost": {
         "css": "none",
         "js": "none",
-        "dependencies": "none"
+        "dependencies": "none",
+        "also": [
+            {
+                "what": "BFB Advanced Forms, the rating",
+                "css": "0.35 KB",
+                "js": "none",
+                "dependencies": "none"
+            },
+            {
+                "what": "BFB Advanced Forms, colour swatches",
+                "css": "0.34 KB",
+                "js": "none",
+                "dependencies": "none"
+            },
+            {
+                "what": "BFB Advanced Forms, picture cards and cards of your own",
+                "css": "0.25 KB",
+                "js": "none",
+                "dependencies": "none"
+            },
+            {
+                "what": "BFB Advanced Forms, a choice that goes on",
+                "css": "none",
+                "js": "0.32 KB",
+                "dependencies": "none"
+            },
+            {
+                "what": "BFB Advanced Forms, the styled dropdown",
+                "css": "1.07 KB",
+                "js": "1.73 KB",
+                "dependencies": "none"
+            },
+            {
+                "what": "BFB Advanced Forms, the switch row",
+                "css": "0.59 KB",
+                "js": "none",
+                "dependencies": "none"
+            },
+            {
+                "what": "BFB Advanced Forms, where a badge sits",
+                "css": "0.23 KB",
+                "js": "none",
+                "dependencies": "none"
+            }
+        ]
     },
     "controlGroups": {
         "_attributes": {

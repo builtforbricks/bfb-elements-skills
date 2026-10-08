@@ -5,7 +5,9 @@
     "skill": "bfbe-showcase",
     "docs": "https://builtforbricks.com/bfb-elements/docs/showcase/#parts",
     "nestable": true,
-    "children": [],
+    "children": [
+        "bfbe-showcase-card"
+    ],
     "childrenDefault": [],
     "parent": "bfbe-showcase",
     "cost": null,

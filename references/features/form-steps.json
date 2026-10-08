@@ -2620,5 +2620,79 @@
             "placeholder": "One step at a time, click any step",
             "description": "Working checks the fields as the site does."
         }
+    },
+    "fieldControls": {
+        "bfbeStep": {
+            "label": "Starts a new step",
+            "type": "checkbox"
+        },
+        "bfbeStepTitle": {
+            "label": "Step title",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Optional",
+            "required": [
+                "bfbeStep",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeStepText": {
+            "label": "Step description",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Optional",
+            "required": [
+                "bfbeStep",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeStepHeading": {
+            "label": "Above the fields",
+            "type": "select",
+            "options": {
+                "none": "Nothing",
+                "title": "The title",
+                "both": "The title and the description"
+            },
+            "inline": true,
+            "placeholder": "As Step titles says",
+            "required": [
+                "bfbeStep",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeStepWhen": {
+            "label": "Show this step only when field",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Its ID",
+            "required": [
+                "bfbeStep",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeStepValue": {
+            "label": "Has the value",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Any value",
+            "description": "Several: a, b. Not this one: !a.",
+            "required": [
+                [
+                    "bfbeStep",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeStepWhen",
+                    "!=",
+                    ""
+                ]
+            ]
+        }
     }
 }

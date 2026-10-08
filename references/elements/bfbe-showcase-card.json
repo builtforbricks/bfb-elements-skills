@@ -15,7 +15,7 @@
             }
         }
     ],
-    "parent": "bfbe-showcase",
+    "parent": "bfbe-showcase-step",
     "cost": null,
     "controlGroups": {
         "_attributes": {

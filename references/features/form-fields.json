@@ -9,6 +9,14 @@
         "bfbeFields": {
             "title": "Cards and pills",
             "tab": "content"
+        },
+        "bfbeFloat": {
+            "title": "Floating labels",
+            "tab": "content"
+        },
+        "bfbeBuilder": {
+            "title": "In the builder",
+            "tab": "content"
         }
     },
     "controls": {
@@ -407,6 +415,269 @@
                     "property": "typography",
                     "selector": ".bfbe-ff__text"
                 }
+            ]
+        },
+        "labelsAt": {
+            "tab": "content",
+            "group": "bfbeFloat",
+            "label": "Labels",
+            "type": "select",
+            "options": {
+                "above": "Above the field",
+                "border": "Floating, on the border"
+            },
+            "inline": true,
+            "placeholder": "Above the field",
+            "required": [
+                [
+                    "showLabels",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "floatHeight": {
+            "tab": "content",
+            "group": "bfbeFloat",
+            "label": "Height on the border",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "0px",
+            "description": "Nought centres it on the line; less is higher.",
+            "css": [
+                {
+                    "property": "--bfbe-fl-height",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "labelsAt",
+                    "=",
+                    "border"
+                ],
+                [
+                    "showLabels",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "floatInset": {
+            "tab": "content",
+            "group": "bfbeFloat",
+            "label": "Inset",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "12px",
+            "description": "From the field edge to where the border opens.",
+            "css": [
+                {
+                    "property": "--bfbe-fl-inset",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "labelsAt",
+                    "=",
+                    "border"
+                ],
+                [
+                    "showLabels",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "floatGap": {
+            "tab": "content",
+            "group": "bfbeFloat",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "4px",
+            "description": "The opening either side of the label.",
+            "css": [
+                {
+                    "property": "--bfbe-fl-gap",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "labelsAt",
+                    "=",
+                    "border"
+                ],
+                [
+                    "showLabels",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "floatRestColor": {
+            "tab": "content",
+            "group": "bfbeFloat",
+            "label": "Resting colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": "&.bfbe-pc--float:not([data-bfbe-fl-preview]) .bfbe-pc__field[data-bfbe-float]:not(:focus-within):has(.bfbe-pc__input:placeholder-shown) > .bfbe-pc__label"
+                },
+                {
+                    "property": "color",
+                    "selector": "&.bfbe-pc--float:not([data-bfbe-fl-preview]) [data-bfbe-float]:not(:focus-within):has(.bfbe-fl__input:placeholder-shown) > .bfbe-fl__label"
+                }
+            ],
+            "required": [
+                [
+                    "labelsAt",
+                    "=",
+                    "border"
+                ],
+                [
+                    "showLabels",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "floatFocusColor": {
+            "tab": "content",
+            "group": "bfbeFloat",
+            "label": "Colour while typing",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": "&.bfbe-pc--float .bfbe-pc__field[data-bfbe-float]:focus-within > .bfbe-pc__label"
+                },
+                {
+                    "property": "color",
+                    "selector": "&.bfbe-pc--float [data-bfbe-float]:focus-within > .bfbe-fl__label"
+                }
+            ],
+            "required": [
+                [
+                    "labelsAt",
+                    "=",
+                    "border"
+                ],
+                [
+                    "showLabels",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "floatPreview": {
+            "tab": "content",
+            "group": "bfbeBuilder",
+            "label": "Floating labels",
+            "type": "select",
+            "options": {
+                "page": "As the page shows them",
+                "up": "Risen, so you can style them"
+            },
+            "inline": true,
+            "placeholder": "As the page shows them",
+            "required": [
+                [
+                    "labelsAt",
+                    "=",
+                    "border"
+                ],
+                [
+                    "showLabels",
+                    "!=",
+                    ""
+                ]
+            ]
+        }
+    },
+    "fieldControls": {
+        "bfbeChoice": {
+            "label": "Show the options as",
+            "type": "select",
+            "options": {
+                "list": "A list",
+                "cards": "Cards",
+                "pills": "Pills"
+            },
+            "inline": true,
+            "placeholder": "A list",
+            "required": [
+                "type",
+                "=",
+                [
+                    "radio",
+                    "checkbox"
+                ]
+            ]
+        },
+        "bfbeChoiceText": {
+            "label": "Option descriptions",
+            "type": "textarea",
+            "placeholder": "One line per option, in order",
+            "required": [
+                "bfbeChoice",
+                "=",
+                "cards"
+            ]
+        },
+        "bfbeChoiceMedia": {
+            "label": "Icons and pictures",
+            "type": "repeater",
+            "placeholder": "Option",
+            "description": "One row per option, in order. Empty rows skip.",
+            "fields": {
+                "icon": {
+                    "label": "Icon",
+                    "type": "icon"
+                },
+                "image": {
+                    "label": "Picture",
+                    "type": "image",
+                    "description": "Shown instead of the icon."
+                }
+            },
+            "required": [
+                "bfbeChoice",
+                "=",
+                "cards"
+            ]
+        },
+        "bfbeChoiceSide": {
+            "label": "Question beside the options",
+            "type": "checkbox",
+            "required": [
+                "bfbeChoice",
+                "=",
+                "pills"
+            ]
+        },
+        "bfbeShowWhen": {
+            "label": "Show only when field",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Its ID"
+        },
+        "bfbeShowValue": {
+            "label": "Has the value",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Any value",
+            "description": "Several: a, b. Not this one: !a.",
+            "required": [
+                "bfbeShowWhen",
+                "!=",
+                ""
             ]
         }
     }

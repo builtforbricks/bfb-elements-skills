@@ -11,7 +11,15 @@
     "cost": {
         "css": "0.88 KB",
         "js": "none",
-        "dependencies": "none"
+        "dependencies": "none",
+        "also": [
+            {
+                "what": "Business Hours, the live status and special dates",
+                "css": "none",
+                "js": "1.48 KB",
+                "dependencies": "none"
+            }
+        ]
     },
     "controlGroups": {
         "_attributes": {

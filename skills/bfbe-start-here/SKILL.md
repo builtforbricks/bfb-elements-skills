@@ -47,9 +47,11 @@ adds. Every per-element skill (`bfbe-modal`, `bfbe-table`, `bfbe-form`, ...) ass
    Table Cells; a Snap Slider takes Snap Slides; a form takes its own fields and steps. Pass children in one
    `bricks/add-element` call in the `{name, settings, children}` shape; the per-element skill shows the tree the
    builder itself inserts. Element ids are six characters; omit them and Bricks makes them.
-5. **Target other elements by class, never by id.** Where an element points at another (a Slider Controls element
-   at its slider, a Player Control at its player, `data-bfbe-modal-open` at a modal), use a class you set through
-   `_cssClasses`, because component instances share ids.
+5. **Target other elements by class where a selector is asked for, never by `_cssId`.** Where an element takes a
+   selector (the Cursor's targets, `data-bfbe-modal-open` at a modal, Copy to Clipboard's source), use a class you set
+   through `_cssClasses`, because component instances share ids. Where an element finds its partner by position (a
+   Slider Controls element takes the nearest Bricks slider, a Player Control the nearest player, a Form Total its own
+   form), leave the id field empty and place it next to its partner; the element's skill says which it is.
 6. **Accessibility and motion are built in; leave them alone.** Every element keeps keyboard access, names its
    controls, and honours `prefers-reduced-motion`. Do not add `tabindex`, `role` or `aria-*` to an element's own
    parts, do not hide a close button, do not add a script that animates against the user's preference. The

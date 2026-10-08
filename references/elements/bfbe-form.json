@@ -63,7 +63,57 @@
     "cost": {
         "css": "2.57 KB",
         "js": "3.06 KB",
-        "dependencies": "none"
+        "dependencies": "none",
+        "also": [
+            {
+                "what": "BFB Advanced Forms, the steps engine",
+                "css": "none",
+                "js": "3.00 KB",
+                "dependencies": "none"
+            },
+            {
+                "what": "BFB Advanced Forms, the checks and their words",
+                "css": "0.34 KB",
+                "js": "2.63 KB",
+                "dependencies": "none"
+            },
+            {
+                "what": "BFB Advanced Forms, the formula",
+                "css": "none",
+                "js": "1.00 KB",
+                "dependencies": "none"
+            },
+            {
+                "what": "BFB Advanced Forms, a warning before leaving",
+                "css": "none",
+                "js": "0.39 KB",
+                "dependencies": "none"
+            },
+            {
+                "what": "BFB Advanced Forms, values from rules and the address",
+                "css": "none",
+                "js": "0.94 KB",
+                "dependencies": "none"
+            },
+            {
+                "what": "BFB Advanced Forms, the pricing",
+                "css": "none",
+                "js": "2.59 KB",
+                "dependencies": "none"
+            },
+            {
+                "what": "BFB Advanced Forms, the pricing rules",
+                "css": "none",
+                "js": "1.37 KB",
+                "dependencies": "none"
+            },
+            {
+                "what": "BFB Advanced Forms, floating labels",
+                "css": "0.81 KB",
+                "js": "1.33 KB",
+                "dependencies": "none"
+            }
+        ]
     },
     "controlGroups": {
         "_attributes": {
@@ -483,7 +533,7 @@
             "label": "Send to email address",
             "type": "select",
             "options": {
-                "admin_email": "Admin email (dev-email@wpengine.local)",
+                "admin_email": "Admin email (admin@example.com)",
                 "custom": "Custom email address"
             },
             "default": "admin_email",
@@ -835,7 +885,7 @@
             "group": "redirect",
             "label": "Redirect to admin area",
             "type": "checkbox",
-            "placeholder": "https://bfb-elements.local/wp-admin/",
+            "placeholder": "https://example.com/wp-admin/",
             "bfbeNative": true
         },
         "redirect": {
@@ -843,7 +893,7 @@
             "group": "redirect",
             "label": "Custom redirect URL",
             "type": "text",
-            "placeholder": "https://bfb-elements.local",
+            "placeholder": "https://example.com",
             "bfbeNative": true
         },
         "redirectTimeout": {
@@ -856,7 +906,7 @@
         "mailchimpInfo": {
             "tab": "content",
             "group": "mailchimp",
-            "content": "Mailchimp API key required! Add key in dashboard under: <a href=\"https://bfb-elements.local/wp-admin/admin.php?page=bricks-settings#tab-api-keys\" target=\"_blank\">Bricks > Settings > API keys</a>",
+            "content": "Mailchimp API key required! Add key in dashboard under: <a href=\"https://example.com/wp-admin/admin.php?page=bricks-settings#tab-api-keys\" target=\"_blank\">Bricks > Settings > API keys</a>",
             "type": "info",
             "required": [
                 "apiKeyMailchimp",
@@ -996,7 +1046,7 @@
         "sendgridInfo": {
             "tab": "content",
             "group": "sendgrid",
-            "content": "Sendgrid API key required! Add key in dashboard under: <a href=\"https://bfb-elements.local/wp-admin/admin.php?page=bricks-settings#tab-api-keys\" target=\"_blank\">Bricks > Settings > API keys</a>",
+            "content": "Sendgrid API key required! Add key in dashboard under: <a href=\"https://example.com/wp-admin/admin.php?page=bricks-settings#tab-api-keys\" target=\"_blank\">Bricks > Settings > API keys</a>",
             "type": "info",
             "required": [
                 "apiKeySendgrid",
@@ -1624,7 +1674,7 @@
         "recaptchaInfo": {
             "tab": "content",
             "group": "spam",
-            "content": "Google reCAPTCHA API key required! Add key in dashboard under: <a href=\"https://bfb-elements.local/wp-admin/admin.php?page=bricks-settings#tab-api-keys\" target=\"_blank\">Bricks > Settings > API keys</a>",
+            "content": "Google reCAPTCHA API key required! Add key in dashboard under: <a href=\"https://example.com/wp-admin/admin.php?page=bricks-settings#tab-api-keys\" target=\"_blank\">Bricks > Settings > API keys</a>",
             "type": "info",
             "required": [
                 "apiKeyGoogleRecaptcha",
@@ -1650,7 +1700,7 @@
         "turnstileInfo": {
             "tab": "content",
             "group": "spam",
-            "content": "Cloudflare Turnstile API key required! Add key in dashboard under: <a href=\"https://bfb-elements.local/wp-admin/admin.php?page=bricks-settings#tab-api-keys\" target=\"_blank\">Bricks > Settings > </a>",
+            "content": "Cloudflare Turnstile API key required! Add key in dashboard under: <a href=\"https://example.com/wp-admin/admin.php?page=bricks-settings#tab-api-keys\" target=\"_blank\">Bricks > Settings > </a>",
             "type": "info",
             "required": [
                 "apiKeyTurnstile",
@@ -1726,7 +1776,7 @@
         "hCaptchaInfo": {
             "tab": "content",
             "group": "spam",
-            "content": "hCaptcha key required! Add key in dashboard under: <a href=\"https://bfb-elements.local/wp-admin/admin.php?page=bricks-settings#tab-api-keys\" target=\"_blank\">Bricks > Settings > API keys</a>",
+            "content": "hCaptcha key required! Add key in dashboard under: <a href=\"https://example.com/wp-admin/admin.php?page=bricks-settings#tab-api-keys\" target=\"_blank\">Bricks > Settings > API keys</a>",
             "type": "info",
             "required": [
                 "apiKeyHCaptcha",
@@ -1837,7 +1887,7 @@
             "label": "Form name",
             "type": "text",
             "placeholder": "Contact form",
-            "description": "Descriptive name for viewing submissions on the &quot;<a href=\"https://bfb-elements.local/wp-admin/admin.php?page=bricks-form-submissions\" target=\"_blank\">Form Submissions</a>&quot; page.",
+            "description": "Descriptive name for viewing submissions on the &quot;<a href=\"https://example.com/wp-admin/admin.php?page=bricks-form-submissions\" target=\"_blank\">Form Submissions</a>&quot; page.",
             "hasDynamicData": false,
             "bfbeNative": true
         },

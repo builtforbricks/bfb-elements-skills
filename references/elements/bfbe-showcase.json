@@ -6,8 +6,7 @@
     "docs": "https://builtforbricks.com/bfb-elements/docs/showcase/",
     "nestable": true,
     "children": [
-        "bfbe-showcase-step",
-        "bfbe-showcase-card"
+        "bfbe-showcase-step"
     ],
     "childrenDefault": [
         {

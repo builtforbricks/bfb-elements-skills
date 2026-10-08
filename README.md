@@ -4,9 +4,9 @@ Agent skills for [BFB Elements](https://builtforbricks.com/bfb-elements/), the B
 Built for Bricks: one skill per element and feature, the control schemas the plugin's release exports, and
 examples the release checks against the plugin before they are published.
 
-**Status: in progress.** The first release goes out with BFB Elements 1.0.0-beta.3. Until then `main` holds the
-generated half of every skill and three written ones (`bfbe-start-here`, `bfbe-schemas`, `bfbe-update`); the
-written sections of the element skills say `Not written yet` where they are owed.
+**Status: complete, awaiting its first release.** Every skill is written in full and checked against the plugins; the
+first release goes out with BFB Elements 1.0.0-beta.3, and until then the schemas describe 1.0.0-beta.2 (the
+`verifiedUpTo` in `references/index.json`).
 
 ## What a skill is
 

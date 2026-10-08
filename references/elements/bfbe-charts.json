@@ -11,7 +11,63 @@
     "cost": {
         "css": "1.74 KB",
         "js": "5.15 KB",
-        "dependencies": "Chart.js 4 (UMD)"
+        "dependencies": "Chart.js 4 (UMD)",
+        "also": [
+            {
+                "what": "Dynamic Charts, the average line, tracks, gradients and their direction, glow, ranges, the breakdown hover and Fill the card",
+                "css": "none",
+                "js": "1.97 KB",
+                "dependencies": "none"
+            },
+            {
+                "what": "Dynamic Charts, the donut and the gauge",
+                "css": "none",
+                "js": "1.36 KB",
+                "dependencies": "none"
+            },
+            {
+                "what": "Dynamic Charts, the lollipop, diverging bars and the radar",
+                "css": "none",
+                "js": "1.75 KB",
+                "dependencies": "none"
+            },
+            {
+                "what": "Dynamic Charts, highlight, projections and patterns",
+                "css": "none",
+                "js": "2.55 KB",
+                "dependencies": "none"
+            },
+            {
+                "what": "Dynamic Charts, names at the line ends, the guide line and bands",
+                "css": "none",
+                "js": "2.19 KB",
+                "dependencies": "none"
+            },
+            {
+                "what": "Dynamic Charts, progress rows",
+                "css": "0.56 KB",
+                "js": "none",
+                "dependencies": "none"
+            },
+            {
+                "what": "Dynamic Charts, the treemap",
+                "css": "0.65 KB",
+                "js": "none",
+                "dependencies": "none"
+            },
+            {
+                "what": "Dynamic Charts, the dot calendar",
+                "css": "0.69 KB",
+                "js": "none",
+                "dependencies": "none"
+            },
+            {
+                "what": "Dynamic Charts, the versus bar",
+                "css": "0.46 KB",
+                "js": "none",
+                "dependencies": "none"
+            }
+        ]
     },
     "controlGroups": {
         "_attributes": {
