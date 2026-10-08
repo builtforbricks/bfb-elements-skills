@@ -1,0 +1,4181 @@
+{
+    "name": "bfbe-video-player",
+    "label": "BFB Video Player",
+    "pack": "pro",
+    "skill": "bfbe-video-player",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/video-player/",
+    "nestable": true,
+    "children": [
+        "bfbe-video-control",
+        "bfbe-playlist-item"
+    ],
+    "childrenDefault": [],
+    "parent": null,
+    "cost": {
+        "css": "2.75 KB",
+        "js": "2.99 KB",
+        "dependencies": "none"
+    },
+    "controlGroups": {
+        "_attributes": {
+            "title": "Attributes",
+            "tab": "style",
+            "icon": "html"
+        },
+        "bfbeVideo": {
+            "title": "Video",
+            "tab": "content"
+        },
+        "bfbePlay": {
+            "title": "Playback",
+            "tab": "content"
+        },
+        "bfbeChapters": {
+            "title": "Chapters",
+            "tab": "content",
+            "required": [
+                "source",
+                "=",
+                [
+                    "",
+                    "self"
+                ]
+            ]
+        },
+        "bfbeControls": {
+            "title": "Controls",
+            "tab": "content"
+        },
+        "bfbeOver": {
+            "title": "Over the video",
+            "tab": "content"
+        },
+        "bfbePlaylist": {
+            "title": "Playlist",
+            "tab": "content",
+            "required": [
+                "source",
+                "=",
+                [
+                    "rows",
+                    "loop",
+                    "list"
+                ]
+            ]
+        },
+        "bfbeLook": {
+            "title": "Look",
+            "tab": "content"
+        },
+        "bfbeButtons": {
+            "title": "Buttons",
+            "tab": "content",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ]
+            ]
+        },
+        "bfbeIcons": {
+            "title": "Icons",
+            "tab": "content",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ]
+            ]
+        },
+        "bfbeBridgeButtons": {
+            "title": "Buttons",
+            "tab": "content",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "youtube"
+                ],
+                [
+                    "bridge",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "bfbeMotion": {
+            "title": "Motion",
+            "tab": "content"
+        },
+        "bfbeHover": {
+            "title": "Hover effect",
+            "tab": "style"
+        },
+        "bfbeOnScroll": {
+            "title": "When the page scrolls",
+            "tab": "style"
+        }
+    },
+    "controls": {
+        "infoAttributes": {
+            "tab": "style",
+            "group": "_attributes",
+            "content": "<a href=\"https://academy.bricksbuilder.io/article/custom-attributes\" target=\"_blank\" rel=\"noopener\">Custom attributes</a> will be added to the most relevant HTML node.",
+            "type": "info"
+        },
+        "bfbeDocs": {
+            "tab": "content",
+            "type": "info",
+            "content": "<a href=\"https://builtforbricks.com/bfb-elements/docs/video-player/\" target=\"_blank\" rel=\"noopener\">Documentation &#8599;</a>"
+        },
+        "source": {
+            "tab": "content",
+            "group": "bfbeVideo",
+            "label": "Source",
+            "type": "select",
+            "options": {
+                "self": "A file on this site",
+                "youtube": "YouTube",
+                "vimeo": "Vimeo",
+                "embed": "Another host",
+                "rows": "A playlist you write",
+                "loop": "A playlist from a query loop",
+                "list": "Playlist Items you place on the page"
+            },
+            "inline": true,
+            "placeholder": "A file on this site"
+        },
+        "file": {
+            "tab": "content",
+            "group": "bfbeVideo",
+            "label": "Video file",
+            "type": "file",
+            "required": [
+                "source",
+                "=",
+                [
+                    "",
+                    "self"
+                ]
+            ]
+        },
+        "providerUrl": {
+            "tab": "content",
+            "group": "bfbeVideo",
+            "label": "Video URL",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "https://www.youtube.com/watch?v=...",
+            "required": [
+                "source",
+                "=",
+                [
+                    "youtube",
+                    "vimeo",
+                    "embed"
+                ]
+            ]
+        },
+        "privacy": {
+            "tab": "content",
+            "group": "bfbeVideo",
+            "label": "Privacy",
+            "type": "checkbox",
+            "description": "Nothing from YouTube or Vimeo before play. Set a Poster.",
+            "required": [
+                "source",
+                "=",
+                [
+                    "youtube",
+                    "vimeo",
+                    "rows",
+                    "loop",
+                    "list"
+                ]
+            ]
+        },
+        "bridge": {
+            "tab": "content",
+            "group": "bfbeVideo",
+            "label": "Use our bar",
+            "type": "checkbox",
+            "description": "Our bar sits under their player, as their terms require.",
+            "required": [
+                "source",
+                "=",
+                "youtube"
+            ]
+        },
+        "startAt": {
+            "tab": "content",
+            "group": "bfbeVideo",
+            "label": "Start at (seconds)",
+            "type": "number",
+            "min": 0,
+            "inline": true,
+            "placeholder": 0,
+            "required": [
+                "source",
+                "=",
+                [
+                    "youtube",
+                    "vimeo"
+                ]
+            ]
+        },
+        "url": {
+            "tab": "content",
+            "group": "bfbeVideo",
+            "label": "Or a video URL",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "https://example.com/film.mp4",
+            "required": [
+                "source",
+                "=",
+                [
+                    "",
+                    "self"
+                ]
+            ]
+        },
+        "fileAlt": {
+            "tab": "content",
+            "group": "bfbeVideo",
+            "label": "Second format",
+            "type": "file",
+            "description": "The other of WebM and MP4, if you have it.",
+            "required": [
+                "source",
+                "=",
+                [
+                    "",
+                    "self"
+                ]
+            ]
+        },
+        "urlAlt": {
+            "tab": "content",
+            "group": "bfbeVideo",
+            "label": "Or its URL",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "https://example.com/film.webm",
+            "required": [
+                "source",
+                "=",
+                [
+                    "",
+                    "self"
+                ]
+            ]
+        },
+        "sepPoster": {
+            "tab": "content",
+            "group": "bfbeVideo",
+            "label": "Poster",
+            "type": "separator"
+        },
+        "poster": {
+            "tab": "content",
+            "group": "bfbeVideo",
+            "label": "Poster",
+            "type": "image"
+        },
+        "posterAt": {
+            "tab": "content",
+            "group": "bfbeVideo",
+            "label": "Poster frame (s)",
+            "type": "number",
+            "min": 0,
+            "step": 0.5,
+            "inline": true,
+            "placeholder": 0,
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self"
+                    ]
+                ],
+                [
+                    "poster",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "sepSubtitles": {
+            "tab": "content",
+            "group": "bfbeVideo",
+            "label": "Subtitles",
+            "type": "separator",
+            "required": [
+                "source",
+                "=",
+                [
+                    "",
+                    "self"
+                ]
+            ]
+        },
+        "subtitles": {
+            "tab": "content",
+            "group": "bfbeVideo",
+            "label": "File (.vtt)",
+            "type": "file",
+            "required": [
+                "source",
+                "=",
+                [
+                    "",
+                    "self"
+                ]
+            ]
+        },
+        "subtitlesLang": {
+            "tab": "content",
+            "group": "bfbeVideo",
+            "label": "Language",
+            "type": "text",
+            "inline": true,
+            "placeholder": "en",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self"
+                    ]
+                ],
+                [
+                    "subtitles",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "subtitlesOn": {
+            "tab": "content",
+            "group": "bfbeVideo",
+            "label": "On from the start",
+            "type": "checkbox",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self"
+                    ]
+                ],
+                [
+                    "subtitles",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "sepAbout": {
+            "tab": "content",
+            "group": "bfbeVideo",
+            "label": "About the video",
+            "type": "separator"
+        },
+        "title": {
+            "tab": "content",
+            "group": "bfbeVideo",
+            "label": "Title",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true
+        },
+        "schema": {
+            "tab": "content",
+            "group": "bfbeVideo",
+            "label": "Structured data",
+            "description": "VideoObject markup for search engines.",
+            "type": "checkbox",
+            "required": [
+                "source",
+                "!=",
+                "list"
+            ]
+        },
+        "description": {
+            "tab": "content",
+            "group": "bfbeVideo",
+            "label": "Description",
+            "type": "textarea",
+            "hasDynamicData": "text",
+            "required": [
+                [
+                    "schema",
+                    "!=",
+                    ""
+                ],
+                [
+                    "source",
+                    "!=",
+                    "list"
+                ]
+            ]
+        },
+        "autoplay": {
+            "tab": "content",
+            "group": "bfbePlay",
+            "label": "Autoplay, muted",
+            "type": "checkbox",
+            "required": [
+                "source",
+                "=",
+                [
+                    "",
+                    "self",
+                    "youtube",
+                    "vimeo",
+                    "rows",
+                    "loop",
+                    "list"
+                ]
+            ]
+        },
+        "muted": {
+            "tab": "content",
+            "group": "bfbePlay",
+            "label": "Start muted",
+            "type": "checkbox",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "youtube",
+                        "vimeo",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "autoplay",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "loop": {
+            "tab": "content",
+            "group": "bfbePlay",
+            "label": "Loop",
+            "type": "checkbox",
+            "required": [
+                "source",
+                "=",
+                [
+                    "",
+                    "self",
+                    "youtube",
+                    "vimeo",
+                    "rows",
+                    "loop",
+                    "list"
+                ]
+            ]
+        },
+        "preload": {
+            "tab": "content",
+            "group": "bfbePlay",
+            "label": "Load ahead",
+            "type": "select",
+            "options": {
+                "metadata": "The first frame and the length",
+                "none": "Nothing until played",
+                "auto": "As much as the browser likes"
+            },
+            "inline": true,
+            "placeholder": "The first frame and the length",
+            "required": [
+                "source",
+                "=",
+                [
+                    "",
+                    "self",
+                    "rows",
+                    "loop",
+                    "list"
+                ]
+            ]
+        },
+        "pauseAway": {
+            "tab": "content",
+            "group": "bfbePlay",
+            "label": "Pause off-screen",
+            "type": "checkbox",
+            "required": [
+                "source",
+                "=",
+                [
+                    "",
+                    "self",
+                    "rows",
+                    "loop",
+                    "list"
+                ]
+            ]
+        },
+        "chapters": {
+            "tab": "content",
+            "group": "bfbeChapters",
+            "label": "Chapters",
+            "titleProperty": "label",
+            "placeholder": "Chapter",
+            "required": [
+                "source",
+                "=",
+                [
+                    "",
+                    "self"
+                ]
+            ],
+            "fields": {
+                "label": {
+                    "label": "Title",
+                    "type": "text",
+                    "hasDynamicData": "text"
+                },
+                "at": {
+                    "label": "Starts at",
+                    "type": "text",
+                    "placeholder": "1:30"
+                }
+            },
+            "type": "repeater",
+            "selector": ".bfbe-vp__chapter"
+        },
+        "chapterMarks": {
+            "tab": "content",
+            "group": "bfbeChapters",
+            "label": "Marks on the line",
+            "type": "checkbox",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self"
+                    ]
+                ],
+                [
+                    "chapters",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "chapterList": {
+            "tab": "content",
+            "group": "bfbeChapters",
+            "label": "List under the video",
+            "type": "checkbox",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self"
+                    ]
+                ],
+                [
+                    "chapters",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "chapterMenu": {
+            "tab": "content",
+            "group": "bfbeChapters",
+            "label": "Menu in the bar",
+            "type": "checkbox",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self"
+                    ]
+                ],
+                [
+                    "chapters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ]
+            ]
+        },
+        "chapterColor": {
+            "tab": "content",
+            "group": "bfbeChapters",
+            "label": "Mark colour",
+            "type": "color",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self"
+                    ]
+                ],
+                [
+                    "chapters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "chapterMarks",
+                    "!=",
+                    ""
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-chapter",
+                    "selector": ""
+                }
+            ]
+        },
+        "bar": {
+            "tab": "content",
+            "group": "bfbeControls",
+            "label": "Buttons",
+            "type": "select",
+            "options": {
+                "full": "Play, progress, time, sound, fullscreen",
+                "essential": "Play, progress, fullscreen",
+                "bare": "Play and progress"
+            },
+            "inline": true,
+            "placeholder": "Play, progress, time, sound, fullscreen",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ]
+            ]
+        },
+        "volumeDir": {
+            "tab": "content",
+            "group": "bfbeControls",
+            "label": "Volume slider",
+            "type": "select",
+            "options": {
+                "across": "Across, from the sound button",
+                "up": "Upward, above the sound button",
+                "none": "None, the button only mutes"
+            },
+            "inline": true,
+            "placeholder": "Across, from the sound button",
+            "description": "Across, it borrows width from the progress line.",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ],
+                [
+                    "bar",
+                    "=",
+                    [
+                        "",
+                        "full"
+                    ]
+                ]
+            ]
+        },
+        "noBig": {
+            "tab": "content",
+            "group": "bfbeControls",
+            "label": "No large play button",
+            "type": "checkbox"
+        },
+        "sepMoreButtons": {
+            "tab": "content",
+            "group": "bfbeControls",
+            "label": "More buttons",
+            "type": "separator",
+            "required": [
+                "source",
+                "=",
+                [
+                    "",
+                    "self",
+                    "rows",
+                    "loop",
+                    "list"
+                ]
+            ]
+        },
+        "skip": {
+            "tab": "content",
+            "group": "bfbeControls",
+            "label": "Skip",
+            "type": "checkbox",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ]
+            ]
+        },
+        "skipBy": {
+            "tab": "content",
+            "group": "bfbeControls",
+            "label": "Skip by (seconds)",
+            "type": "number",
+            "min": 1,
+            "max": 120,
+            "inline": true,
+            "placeholder": 10,
+            "required": [
+                "source",
+                "=",
+                [
+                    "",
+                    "self",
+                    "rows",
+                    "loop",
+                    "list"
+                ]
+            ]
+        },
+        "playlistSkip": {
+            "tab": "content",
+            "group": "bfbeControls",
+            "label": "Previous and next",
+            "type": "checkbox",
+            "required": [
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ],
+                [
+                    "source",
+                    "=",
+                    [
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ]
+            ]
+        },
+        "speed": {
+            "tab": "content",
+            "group": "bfbeControls",
+            "label": "Speed",
+            "type": "checkbox",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ]
+            ]
+        },
+        "menu": {
+            "tab": "content",
+            "group": "bfbeControls",
+            "label": "Settings menu",
+            "type": "checkbox",
+            "description": "Speed, subtitles, and a stream&#039;s quality and sound.",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ]
+            ]
+        },
+        "pip": {
+            "tab": "content",
+            "group": "bfbeControls",
+            "label": "Picture in picture",
+            "type": "checkbox",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ]
+            ]
+        },
+        "abLoop": {
+            "tab": "content",
+            "group": "bfbeControls",
+            "label": "A-B loop",
+            "type": "checkbox",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ]
+            ]
+        },
+        "share": {
+            "tab": "content",
+            "group": "bfbeControls",
+            "label": "Copy link",
+            "description": "The link starts at the moment playing.",
+            "type": "checkbox",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ]
+            ]
+        },
+        "sepSkipNote": {
+            "tab": "content",
+            "group": "bfbeControls",
+            "label": "Skip note",
+            "type": "separator",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ],
+                [
+                    "skip",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "noteTypography": {
+            "tab": "content",
+            "group": "bfbeControls",
+            "label": "Typography",
+            "type": "typography",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ],
+                [
+                    "skip",
+                    "!=",
+                    ""
+                ]
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-vp__bar[data-bfbe-skips] .bfbe-vp__note"
+                }
+            ]
+        },
+        "noteBackground": {
+            "tab": "content",
+            "group": "bfbeControls",
+            "label": "Background",
+            "type": "color",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ],
+                [
+                    "skip",
+                    "!=",
+                    ""
+                ]
+            ],
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-vp__bar[data-bfbe-skips] .bfbe-vp__note"
+                }
+            ]
+        },
+        "noteBorder": {
+            "tab": "content",
+            "group": "bfbeControls",
+            "label": "Border",
+            "type": "border",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ],
+                [
+                    "skip",
+                    "!=",
+                    ""
+                ]
+            ],
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-vp__bar[data-bfbe-skips] .bfbe-vp__note"
+                }
+            ]
+        },
+        "sepWhilePlaying": {
+            "tab": "content",
+            "group": "bfbeControls",
+            "label": "While it plays",
+            "type": "separator",
+            "required": [
+                "source",
+                "=",
+                [
+                    "",
+                    "self",
+                    "rows",
+                    "loop",
+                    "list"
+                ]
+            ]
+        },
+        "preview": {
+            "tab": "content",
+            "group": "bfbeControls",
+            "label": "Frame preview",
+            "type": "checkbox",
+            "description": "Drawn from the video, no extra files.",
+            "required": [
+                "source",
+                "=",
+                [
+                    "",
+                    "self",
+                    "rows",
+                    "loop",
+                    "list"
+                ]
+            ]
+        },
+        "idle": {
+            "tab": "content",
+            "group": "bfbeControls",
+            "label": "Auto-hide (ms)",
+            "type": "number",
+            "min": 500,
+            "max": 10000,
+            "step": 250,
+            "inline": true,
+            "placeholder": 2000,
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "studio"
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ]
+            ]
+        },
+        "resume": {
+            "tab": "content",
+            "group": "bfbePlay",
+            "label": "Remember position",
+            "type": "checkbox",
+            "required": [
+                "source",
+                "=",
+                [
+                    "",
+                    "self",
+                    "rows",
+                    "loop"
+                ]
+            ]
+        },
+        "overWhen": {
+            "tab": "content",
+            "group": "bfbeOver",
+            "label": "Visibility",
+            "type": "select",
+            "options": {
+                "always": "Always",
+                "idle": "Only on hover, once it plays",
+                "paused": "While it is not playing",
+                "start": "Until it first plays",
+                "after": "A set time after it starts playing"
+            },
+            "inline": true,
+            "placeholder": "While it is not playing"
+        },
+        "overAfter": {
+            "tab": "content",
+            "group": "bfbeOver",
+            "label": "After (s)",
+            "type": "number",
+            "inline": true,
+            "placeholder": "3",
+            "required": [
+                "overWhen",
+                "=",
+                "after"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-over-after",
+                    "selector": "",
+                    "value": "%ss"
+                }
+            ]
+        },
+        "overDir": {
+            "tab": "content",
+            "group": "bfbeOver",
+            "label": "Direction",
+            "type": "select",
+            "options": {
+                "column": "Down the video",
+                "row": "Across the video"
+            },
+            "inline": true,
+            "placeholder": "Down the video",
+            "breakpoints": true,
+            "css": [
+                {
+                    "property": "--bfbe-vp-over-dir",
+                    "selector": ""
+                }
+            ]
+        },
+        "overJustify": {
+            "tab": "content",
+            "group": "bfbeOver",
+            "label": "Justify content",
+            "type": "select",
+            "options": {
+                "flex-start": "Start",
+                "center": "Middle",
+                "flex-end": "End",
+                "space-between": "Pushed apart",
+                "space-around": "Spaced evenly"
+            },
+            "inline": true,
+            "placeholder": "Middle",
+            "breakpoints": true,
+            "css": [
+                {
+                    "property": "--bfbe-vp-over-justify",
+                    "selector": ""
+                }
+            ]
+        },
+        "overAlign": {
+            "tab": "content",
+            "group": "bfbeOver",
+            "label": "Align items",
+            "type": "select",
+            "options": {
+                "flex-start": "Start",
+                "center": "Middle",
+                "flex-end": "End",
+                "stretch": "Stretched to fill"
+            },
+            "inline": true,
+            "placeholder": "Middle",
+            "breakpoints": true,
+            "css": [
+                {
+                    "property": "--bfbe-vp-over-align",
+                    "selector": ""
+                }
+            ]
+        },
+        "overPadding": {
+            "tab": "content",
+            "group": "bfbeOver",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-vp__over"
+                }
+            ]
+        },
+        "overScrim": {
+            "tab": "content",
+            "group": "bfbeOver",
+            "label": "Shade behind it",
+            "type": "color",
+            "description": "So text stays readable on any frame.",
+            "css": [
+                {
+                    "property": "--bfbe-vp-scrim",
+                    "selector": ""
+                }
+            ]
+        },
+        "playlistRows": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Videos",
+            "type": "repeater",
+            "titleProperty": "title",
+            "placeholder": "Video",
+            "required": [
+                "source",
+                "=",
+                "rows"
+            ],
+            "fields": {
+                "title": {
+                    "label": "Title",
+                    "type": "text",
+                    "hasDynamicData": "text"
+                },
+                "url": {
+                    "label": "Video URL",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "placeholder": "https://www.youtube.com/watch?v=..."
+                },
+                "file": {
+                    "label": "Or a video file",
+                    "type": "file"
+                },
+                "poster": {
+                    "label": "Poster",
+                    "type": "image"
+                },
+                "note": {
+                    "label": "Note",
+                    "type": "text",
+                    "hasDynamicData": "text"
+                }
+            },
+            "selector": ".bfbe-vp__item"
+        },
+        "hasLoop": {
+            "tab": "content",
+            "label": "Query loop",
+            "type": "checkbox",
+            "group": "bfbePlaylist",
+            "required": [
+                "source",
+                "=",
+                "loop"
+            ]
+        },
+        "query": {
+            "tab": "content",
+            "label": "Query",
+            "type": "query",
+            "popup": true,
+            "inline": true,
+            "required": [
+                [
+                    "hasLoop",
+                    "!=",
+                    ""
+                ],
+                [
+                    "source",
+                    "=",
+                    "loop"
+                ]
+            ],
+            "group": "bfbePlaylist"
+        },
+        "sepPlaylistEach": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "For each result",
+            "type": "separator",
+            "required": [
+                "source",
+                "=",
+                "loop"
+            ]
+        },
+        "loopUrl": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Video URL",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "required": [
+                "source",
+                "=",
+                "loop"
+            ]
+        },
+        "loopTitle": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Title",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "required": [
+                "source",
+                "=",
+                "loop"
+            ]
+        },
+        "loopPoster": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Poster",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "required": [
+                "source",
+                "=",
+                "loop"
+            ]
+        },
+        "loopNote": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Note",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "required": [
+                "source",
+                "=",
+                "loop"
+            ]
+        },
+        "sepPlaylistEnds": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "When one ends",
+            "type": "separator"
+        },
+        "playlistNext": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Play the next one",
+            "type": "checkbox",
+            "required": [
+                "source",
+                "=",
+                [
+                    "rows",
+                    "loop",
+                    "list"
+                ]
+            ]
+        },
+        "playlistRepeat": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Repeat the list",
+            "type": "checkbox",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "playlistNext",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "playlistCountdown": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Countdown (s)",
+            "type": "number",
+            "min": 0,
+            "max": 30,
+            "inline": true,
+            "placeholder": 5,
+            "description": "Zero plays it straight away.",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "playlistNext",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "sepPlaylistLayout": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Layout",
+            "type": "separator",
+            "required": [
+                "source",
+                "=",
+                [
+                    "rows",
+                    "loop",
+                    "list"
+                ]
+            ]
+        },
+        "playlistLayout": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Position",
+            "type": "select",
+            "options": {
+                "right": "Beside the video, on the right",
+                "left": "Beside the video, on the left",
+                "top": "Above the video, as cards",
+                "below": "Under the video, as cards",
+                "strip": "Under the video, as a strip"
+            },
+            "inline": true,
+            "placeholder": "Beside the video, on the right",
+            "required": [
+                "source",
+                "=",
+                [
+                    "rows",
+                    "loop"
+                ]
+            ]
+        },
+        "playlistWidth": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "320px",
+            "breakpoints": true,
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "rows",
+                        "loop"
+                    ]
+                ],
+                [
+                    "playlistLayout",
+                    "=",
+                    [
+                        "",
+                        "right",
+                        "left"
+                    ]
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-list-w",
+                    "selector": ""
+                }
+            ]
+        },
+        "playlistAround": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Gap to the video",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "12px",
+            "breakpoints": true,
+            "required": [
+                "source",
+                "=",
+                [
+                    "rows",
+                    "loop",
+                    "list"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-around",
+                    "selector": ""
+                }
+            ]
+        },
+        "playlistThumbWidth": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Thumbnail width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "96px",
+            "breakpoints": true,
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "rows",
+                        "loop"
+                    ]
+                ],
+                [
+                    "playlistLayout",
+                    "=",
+                    [
+                        "",
+                        "right",
+                        "left"
+                    ]
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-thumb-w",
+                    "selector": ""
+                }
+            ]
+        },
+        "sepPlaylistScroll": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Scrolling",
+            "type": "separator",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "rows",
+                        "loop"
+                    ]
+                ],
+                [
+                    "playlistLayout",
+                    "=",
+                    [
+                        "",
+                        "right",
+                        "left"
+                    ]
+                ]
+            ]
+        },
+        "playlistScroll": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Overflow",
+            "type": "select",
+            "options": {
+                "bar": "A scrollbar",
+                "fade": "A gradient edge",
+                "both": "Both",
+                "none": "Neither"
+            },
+            "inline": true,
+            "placeholder": "A scrollbar",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "rows",
+                        "loop"
+                    ]
+                ],
+                [
+                    "playlistLayout",
+                    "=",
+                    [
+                        "",
+                        "right",
+                        "left"
+                    ]
+                ]
+            ]
+        },
+        "playlistScrollGap": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Scrollbar gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "8px",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "rows",
+                        "loop"
+                    ]
+                ],
+                [
+                    "playlistLayout",
+                    "=",
+                    [
+                        "",
+                        "right",
+                        "left"
+                    ]
+                ],
+                [
+                    "playlistScroll",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "both"
+                    ]
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-sb-gap",
+                    "selector": "&.bfbe-vp--scroll-bar"
+                }
+            ]
+        },
+        "playlistBarWidth": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Scrollbar thickness",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "8px",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "rows",
+                        "loop"
+                    ]
+                ],
+                [
+                    "playlistLayout",
+                    "=",
+                    [
+                        "",
+                        "right",
+                        "left"
+                    ]
+                ],
+                [
+                    "playlistScroll",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "both"
+                    ]
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-sb-w",
+                    "selector": "&.bfbe-vp--scroll-bar"
+                }
+            ]
+        },
+        "playlistBarRadius": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Scrollbar radius",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "999px",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "rows",
+                        "loop"
+                    ]
+                ],
+                [
+                    "playlistLayout",
+                    "=",
+                    [
+                        "",
+                        "right",
+                        "left"
+                    ]
+                ],
+                [
+                    "playlistScroll",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "both"
+                    ]
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-sb-radius",
+                    "selector": "&.bfbe-vp--scroll-bar"
+                }
+            ]
+        },
+        "playlistBarTrack": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Scrollbar track",
+            "type": "color",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "rows",
+                        "loop"
+                    ]
+                ],
+                [
+                    "playlistLayout",
+                    "=",
+                    [
+                        "",
+                        "right",
+                        "left"
+                    ]
+                ],
+                [
+                    "playlistScroll",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "both"
+                    ]
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-sb-track",
+                    "selector": "&.bfbe-vp--scroll-bar"
+                }
+            ]
+        },
+        "playlistBarThumb": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Scrollbar handle",
+            "type": "color",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "rows",
+                        "loop"
+                    ]
+                ],
+                [
+                    "playlistLayout",
+                    "=",
+                    [
+                        "",
+                        "right",
+                        "left"
+                    ]
+                ],
+                [
+                    "playlistScroll",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "both"
+                    ]
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-sb-thumb",
+                    "selector": "&.bfbe-vp--scroll-bar"
+                }
+            ]
+        },
+        "playlistFade": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Fade depth",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "40px",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "rows",
+                        "loop"
+                    ]
+                ],
+                [
+                    "playlistLayout",
+                    "=",
+                    [
+                        "",
+                        "right",
+                        "left"
+                    ]
+                ],
+                [
+                    "playlistScroll",
+                    "=",
+                    [
+                        "fade",
+                        "both"
+                    ]
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-fade",
+                    "selector": "&.bfbe-vp--scroll-fade"
+                }
+            ]
+        },
+        "sepPlaylistCards": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Cards",
+            "type": "separator",
+            "required": [
+                "source",
+                "=",
+                [
+                    "rows",
+                    "loop"
+                ]
+            ]
+        },
+        "playlistGap": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "12px",
+            "breakpoints": true,
+            "required": [
+                "source",
+                "=",
+                [
+                    "rows",
+                    "loop"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-list-gap",
+                    "selector": ""
+                }
+            ]
+        },
+        "playlistItemGap": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Inner gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "8px",
+            "required": [
+                "source",
+                "=",
+                [
+                    "rows",
+                    "loop"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-item-gap",
+                    "selector": ""
+                }
+            ]
+        },
+        "playlistItemPadding": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Padding",
+            "type": "dimensions",
+            "required": [
+                "source",
+                "=",
+                [
+                    "rows",
+                    "loop"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-vp__item-btn"
+                }
+            ]
+        },
+        "playlistItemBorder": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Border",
+            "type": "border",
+            "required": [
+                "source",
+                "=",
+                [
+                    "rows",
+                    "loop"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-vp__item-btn"
+                }
+            ]
+        },
+        "playlistItemShadow": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Shadow",
+            "type": "box-shadow",
+            "required": [
+                "source",
+                "=",
+                [
+                    "rows",
+                    "loop"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": ".bfbe-vp__item-btn"
+                }
+            ]
+        },
+        "playlistItemBackground": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Background",
+            "type": "color",
+            "required": [
+                "source",
+                "=",
+                [
+                    "rows",
+                    "loop"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-item-bg",
+                    "selector": ""
+                }
+            ]
+        },
+        "playlistActiveBackground": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Background, playing",
+            "type": "color",
+            "required": [
+                "source",
+                "=",
+                [
+                    "rows",
+                    "loop"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-item-on",
+                    "selector": ""
+                }
+            ]
+        },
+        "playlistTitleTypography": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Title typography",
+            "type": "typography",
+            "required": [
+                "source",
+                "=",
+                [
+                    "rows",
+                    "loop"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-vp__item-title"
+                }
+            ]
+        },
+        "playlistNoteTypography": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Note typography",
+            "type": "typography",
+            "required": [
+                "source",
+                "=",
+                [
+                    "rows",
+                    "loop"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-vp__item-note"
+                }
+            ]
+        },
+        "sepPlaylistNext": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Up next",
+            "type": "separator",
+            "required": [
+                "playlistNext",
+                "!=",
+                ""
+            ]
+        },
+        "nextBackground": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Background",
+            "type": "color",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "playlistNext",
+                    "!=",
+                    ""
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-next-bg",
+                    "selector": ""
+                }
+            ]
+        },
+        "nextLabelTypography": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Label typography",
+            "type": "typography",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "playlistNext",
+                    "!=",
+                    ""
+                ]
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-vp__next-label"
+                }
+            ]
+        },
+        "nextTitleTypography": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Title typography",
+            "type": "typography",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "playlistNext",
+                    "!=",
+                    ""
+                ]
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-vp__next-title"
+                }
+            ]
+        },
+        "nextBtnColor": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Button text",
+            "type": "color",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "playlistNext",
+                    "!=",
+                    ""
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-next-btn-fg",
+                    "selector": ""
+                }
+            ]
+        },
+        "nextBtnBackground": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Button background",
+            "type": "color",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "playlistNext",
+                    "!=",
+                    ""
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-next-btn-bg",
+                    "selector": ""
+                }
+            ]
+        },
+        "nextBtnHoverBackground": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Button hover background",
+            "type": "color",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "playlistNext",
+                    "!=",
+                    ""
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-next-btn-on",
+                    "selector": ""
+                }
+            ]
+        },
+        "nextBtnBorder": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Button border",
+            "type": "border",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "playlistNext",
+                    "!=",
+                    ""
+                ]
+            ],
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-vp__next-btn"
+                }
+            ]
+        },
+        "nextBtnPadding": {
+            "tab": "content",
+            "group": "bfbePlaylist",
+            "label": "Button padding",
+            "type": "dimensions",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "playlistNext",
+                    "!=",
+                    ""
+                ]
+            ],
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-vp__next-btn"
+                }
+            ]
+        },
+        "skin": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Skin",
+            "type": "select",
+            "options": {
+                "cinema": "Cinema: the bar over the picture",
+                "minimal": "Minimal: a line and a pill",
+                "studio": "Studio: the bar under the picture",
+                "custom": "Custom: you build the bar"
+            },
+            "inline": true,
+            "placeholder": "Cinema: the bar over the picture",
+            "required": [
+                "source",
+                "=",
+                [
+                    "",
+                    "self",
+                    "rows",
+                    "loop",
+                    "list"
+                ]
+            ]
+        },
+        "ratio": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Frame",
+            "type": "select",
+            "options": {
+                "16-9": "16 : 9",
+                "4-3": "4 : 3",
+                "1-1": "Square",
+                "9-16": "9 : 16, portrait",
+                "21-9": "21 : 9",
+                "auto": "The video&#039;s own"
+            },
+            "inline": true,
+            "placeholder": "16 : 9"
+        },
+        "fit": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Fit",
+            "type": "select",
+            "options": {
+                "cover": "Fill the frame, cropping",
+                "contain": "Fit inside the frame"
+            },
+            "inline": true,
+            "placeholder": "Fill the frame, cropping",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "ratio",
+                    "!=",
+                    "auto"
+                ]
+            ]
+        },
+        "stageBackground": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Frame background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": ".bfbe-vp__stage"
+                }
+            ]
+        },
+        "frameBorder": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Frame border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-vp--studio"
+                },
+                {
+                    "property": "border",
+                    "selector": "&:not(.bfbe-vp--studio) .bfbe-vp__stage"
+                }
+            ]
+        },
+        "shadow": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": ".bfbe-vp__stage"
+                }
+            ]
+        },
+        "sepColours": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Colours",
+            "type": "separator"
+        },
+        "fg": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Controls colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-vp-fg",
+                    "selector": ""
+                }
+            ]
+        },
+        "accent": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Progress colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-vp-accent",
+                    "selector": ""
+                }
+            ]
+        },
+        "sepLine": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "The line",
+            "type": "separator",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ]
+            ]
+        },
+        "lineTrack": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Colour",
+            "type": "color",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-line-track",
+                    "selector": ".bfbe-vp__bar:not(.bfbe-vp__bar--bridge)"
+                }
+            ]
+        },
+        "lineLoaded": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Loaded colour",
+            "type": "color",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-line-loaded",
+                    "selector": ".bfbe-vp__bar:not(.bfbe-vp__bar--bridge)"
+                }
+            ]
+        },
+        "lineHeight": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Thickness",
+            "type": "number",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-line-h",
+                    "selector": ".bfbe-vp__bar:not(.bfbe-vp__bar--bridge)"
+                }
+            ],
+            "units": true,
+            "inline": true,
+            "placeholder": "4px"
+        },
+        "lineHoverHeight": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Thickness on hover",
+            "type": "number",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-line-h-on",
+                    "selector": ".bfbe-vp__bar:not(.bfbe-vp__bar--bridge)"
+                }
+            ],
+            "units": true,
+            "inline": true,
+            "placeholder": "8px"
+        },
+        "lineRadius": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Corner radius",
+            "type": "number",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-line-r",
+                    "selector": ".bfbe-vp__bar:not(.bfbe-vp__bar--bridge)"
+                }
+            ],
+            "units": true,
+            "inline": true,
+            "placeholder": "999px"
+        },
+        "lineThumb": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Handle colour",
+            "type": "color",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-thumb",
+                    "selector": ".bfbe-vp__bar:not(.bfbe-vp__bar--bridge)"
+                }
+            ]
+        },
+        "lineThumbSize": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Handle size",
+            "type": "number",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-thumb-size",
+                    "selector": ".bfbe-vp__bar:not(.bfbe-vp__bar--bridge)"
+                }
+            ],
+            "units": true,
+            "inline": true,
+            "placeholder": "14px"
+        },
+        "sepBar": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "The bar",
+            "type": "separator"
+        },
+        "barBackground": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-vp-bar-bg",
+                    "selector": ""
+                }
+            ]
+        },
+        "barShade": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Shade",
+            "type": "color",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "=",
+                    [
+                        "",
+                        "cinema"
+                    ]
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-shade",
+                    "selector": ""
+                }
+            ]
+        },
+        "barPadding": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Padding",
+            "type": "dimensions",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-vp__bar:not(.bfbe-vp__bar--bridge)"
+                }
+            ]
+        },
+        "bridgeBarPadding": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Padding",
+            "type": "dimensions",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "youtube"
+                ],
+                [
+                    "bridge",
+                    "!=",
+                    ""
+                ]
+            ],
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-vp__bar--bridge"
+                }
+            ]
+        },
+        "iconSize": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Icon size",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "22px",
+            "css": [
+                {
+                    "property": "--bfbe-vp-icon",
+                    "selector": ""
+                }
+            ]
+        },
+        "timeTypography": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Time typography",
+            "type": "typography",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self",
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "bar",
+                    "=",
+                    [
+                        "",
+                        "full"
+                    ]
+                ],
+                [
+                    "skin",
+                    "!=",
+                    "custom"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-vp__bar--full .bfbe-vp__time"
+                }
+            ]
+        },
+        "bridgeTimeTypography": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Time typography",
+            "type": "typography",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "youtube"
+                ],
+                [
+                    "bridge",
+                    "!=",
+                    ""
+                ]
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-vp__bar--bridge .bfbe-vp__time"
+                }
+            ]
+        },
+        "sepBigPlay": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Large play button",
+            "type": "separator",
+            "required": [
+                "noBig",
+                "=",
+                ""
+            ]
+        },
+        "bigSize": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Size",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "72px",
+            "required": [
+                "noBig",
+                "=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-vp-big",
+                    "selector": "&.bfbe-vp--big"
+                }
+            ]
+        },
+        "iconBig": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Icon",
+            "type": "icon",
+            "required": [
+                "noBig",
+                "=",
+                ""
+            ]
+        },
+        "iconColor": {
+            "tab": "content",
+            "group": "bfbeButtons",
+            "label": "Icon colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".bfbe-vp__bar:not(.bfbe-vp__bar--bridge) .bfbe-vp__btn"
+                }
+            ]
+        },
+        "iconHoverColor": {
+            "tab": "content",
+            "group": "bfbeButtons",
+            "label": "Icon colour on hover",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".bfbe-vp__bar:not(.bfbe-vp__bar--bridge) .bfbe-vp__btn:hover"
+                },
+                {
+                    "property": "color",
+                    "selector": ".bfbe-vp__bar:not(.bfbe-vp__bar--bridge) .bfbe-vp__btn:focus-visible"
+                }
+            ]
+        },
+        "btnBackground": {
+            "tab": "content",
+            "group": "bfbeButtons",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-vp__bar:not(.bfbe-vp__bar--bridge) .bfbe-vp__btn"
+                }
+            ]
+        },
+        "btnHoverBackground": {
+            "tab": "content",
+            "group": "bfbeButtons",
+            "label": "Background on hover",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-vp__bar:not(.bfbe-vp__bar--bridge) .bfbe-vp__btn::before"
+                }
+            ]
+        },
+        "btnSize": {
+            "tab": "content",
+            "group": "bfbeButtons",
+            "label": "Button size",
+            "type": "number",
+            "css": [
+                {
+                    "property": "inline-size",
+                    "selector": ".bfbe-vp__bar:not(.bfbe-vp__bar--bridge) .bfbe-vp__btn"
+                },
+                {
+                    "property": "block-size",
+                    "selector": ".bfbe-vp__bar:not(.bfbe-vp__bar--bridge) .bfbe-vp__btn"
+                }
+            ],
+            "units": true,
+            "inline": true,
+            "placeholder": "38px"
+        },
+        "btnBorder": {
+            "tab": "content",
+            "group": "bfbeButtons",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-vp__bar:not(.bfbe-vp__bar--bridge) .bfbe-vp__btn"
+                }
+            ]
+        },
+        "btnShadow": {
+            "tab": "content",
+            "group": "bfbeButtons",
+            "label": "Shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": ".bfbe-vp__bar:not(.bfbe-vp__bar--bridge) .bfbe-vp__btn"
+                }
+            ]
+        },
+        "sepButtonGroups": {
+            "tab": "content",
+            "group": "bfbeButtons",
+            "label": "Button groups",
+            "type": "separator"
+        },
+        "groupBackground": {
+            "tab": "content",
+            "group": "bfbeButtons",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-vp-group-bg",
+                    "selector": ".bfbe-vp__bar:not(.bfbe-vp__bar--bridge)"
+                }
+            ]
+        },
+        "groupBorder": {
+            "tab": "content",
+            "group": "bfbeButtons",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-vp__bar:not(.bfbe-vp__bar--bridge) .bfbe-vp__group"
+                }
+            ]
+        },
+        "groupShadow": {
+            "tab": "content",
+            "group": "bfbeButtons",
+            "label": "Shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": ".bfbe-vp__bar:not(.bfbe-vp__bar--bridge) .bfbe-vp__group"
+                }
+            ]
+        },
+        "iconPlay": {
+            "tab": "content",
+            "group": "bfbeIcons",
+            "label": "Play",
+            "type": "icon"
+        },
+        "iconPause": {
+            "tab": "content",
+            "group": "bfbeIcons",
+            "label": "Pause",
+            "type": "icon"
+        },
+        "iconCc": {
+            "tab": "content",
+            "group": "bfbeIcons",
+            "label": "Subtitles",
+            "type": "icon",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self"
+                    ]
+                ],
+                [
+                    "subtitles",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "iconChapters": {
+            "tab": "content",
+            "group": "bfbeIcons",
+            "label": "Chapter menu",
+            "type": "icon",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "",
+                        "self"
+                    ]
+                ],
+                [
+                    "chapters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "chapterMenu",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "iconSettings": {
+            "tab": "content",
+            "group": "bfbeIcons",
+            "label": "Settings menu",
+            "type": "icon",
+            "required": [
+                [
+                    "menu",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "iconLoop": {
+            "tab": "content",
+            "group": "bfbeIcons",
+            "label": "A-B loop",
+            "type": "icon",
+            "required": [
+                [
+                    "abLoop",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "iconShare": {
+            "tab": "content",
+            "group": "bfbeIcons",
+            "label": "Copy link",
+            "type": "icon",
+            "required": [
+                [
+                    "share",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "iconPip": {
+            "tab": "content",
+            "group": "bfbeIcons",
+            "label": "Picture in picture",
+            "type": "icon",
+            "required": [
+                [
+                    "pip",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "sepIconsSkip": {
+            "tab": "content",
+            "group": "bfbeIcons",
+            "label": "Skip buttons",
+            "type": "separator",
+            "required": [
+                "skip",
+                "!=",
+                ""
+            ]
+        },
+        "iconBack": {
+            "tab": "content",
+            "group": "bfbeIcons",
+            "label": "Back",
+            "type": "icon",
+            "required": [
+                [
+                    "skip",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "iconForward": {
+            "tab": "content",
+            "group": "bfbeIcons",
+            "label": "Forward",
+            "type": "icon",
+            "required": [
+                [
+                    "skip",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "sepIconsTracks": {
+            "tab": "content",
+            "group": "bfbeIcons",
+            "label": "Previous and next",
+            "type": "separator",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "playlistSkip",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "iconPrev": {
+            "tab": "content",
+            "group": "bfbeIcons",
+            "label": "Previous",
+            "type": "icon",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "playlistSkip",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "iconNext": {
+            "tab": "content",
+            "group": "bfbeIcons",
+            "label": "Next",
+            "type": "icon",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    [
+                        "rows",
+                        "loop",
+                        "list"
+                    ]
+                ],
+                [
+                    "playlistSkip",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "sepIconsSound": {
+            "tab": "content",
+            "group": "bfbeIcons",
+            "label": "Sound",
+            "type": "separator",
+            "required": [
+                "bar",
+                "=",
+                [
+                    "",
+                    "full"
+                ]
+            ]
+        },
+        "iconSound": {
+            "tab": "content",
+            "group": "bfbeIcons",
+            "label": "On",
+            "type": "icon",
+            "required": [
+                [
+                    "bar",
+                    "=",
+                    [
+                        "",
+                        "full"
+                    ]
+                ]
+            ]
+        },
+        "iconMuted": {
+            "tab": "content",
+            "group": "bfbeIcons",
+            "label": "Off",
+            "type": "icon",
+            "required": [
+                [
+                    "bar",
+                    "=",
+                    [
+                        "",
+                        "full"
+                    ]
+                ]
+            ]
+        },
+        "sepIconsFull": {
+            "tab": "content",
+            "group": "bfbeIcons",
+            "label": "Fullscreen",
+            "type": "separator",
+            "required": [
+                "bar",
+                "!=",
+                "bare"
+            ]
+        },
+        "iconFull": {
+            "tab": "content",
+            "group": "bfbeIcons",
+            "label": "Enter",
+            "type": "icon",
+            "required": [
+                [
+                    "bar",
+                    "!=",
+                    "bare"
+                ]
+            ]
+        },
+        "iconExit": {
+            "tab": "content",
+            "group": "bfbeIcons",
+            "label": "Exit",
+            "type": "icon",
+            "required": [
+                [
+                    "bar",
+                    "!=",
+                    "bare"
+                ]
+            ]
+        },
+        "bridgeIconColor": {
+            "tab": "content",
+            "group": "bfbeBridgeButtons",
+            "label": "Icon colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".bfbe-vp__bar--bridge .bfbe-vp__btn"
+                }
+            ]
+        },
+        "bridgeIconHoverColor": {
+            "tab": "content",
+            "group": "bfbeBridgeButtons",
+            "label": "Icon colour on hover",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".bfbe-vp__bar--bridge .bfbe-vp__btn:hover"
+                },
+                {
+                    "property": "color",
+                    "selector": ".bfbe-vp__bar--bridge .bfbe-vp__btn:focus-visible"
+                }
+            ]
+        },
+        "bridgeBtnBackground": {
+            "tab": "content",
+            "group": "bfbeBridgeButtons",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-vp__bar--bridge .bfbe-vp__btn"
+                }
+            ]
+        },
+        "bridgeBtnHoverBackground": {
+            "tab": "content",
+            "group": "bfbeBridgeButtons",
+            "label": "Background on hover",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-vp__bar--bridge .bfbe-vp__btn::before"
+                }
+            ]
+        },
+        "bridgeBtnSize": {
+            "tab": "content",
+            "group": "bfbeBridgeButtons",
+            "label": "Button size",
+            "type": "number",
+            "css": [
+                {
+                    "property": "inline-size",
+                    "selector": ".bfbe-vp__bar--bridge .bfbe-vp__btn"
+                },
+                {
+                    "property": "block-size",
+                    "selector": ".bfbe-vp__bar--bridge .bfbe-vp__btn"
+                }
+            ],
+            "units": true,
+            "inline": true,
+            "placeholder": "38px"
+        },
+        "bridgeBtnBorder": {
+            "tab": "content",
+            "group": "bfbeBridgeButtons",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-vp__bar--bridge .bfbe-vp__btn"
+                }
+            ]
+        },
+        "bridgeBtnShadow": {
+            "tab": "content",
+            "group": "bfbeBridgeButtons",
+            "label": "Shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": ".bfbe-vp__bar--bridge .bfbe-vp__btn"
+                }
+            ]
+        },
+        "sepBridgeIcons": {
+            "tab": "content",
+            "group": "bfbeBridgeButtons",
+            "label": "Icons",
+            "type": "separator"
+        },
+        "bridgeIconPlay": {
+            "tab": "content",
+            "group": "bfbeBridgeButtons",
+            "label": "Play",
+            "type": "icon"
+        },
+        "bridgeIconPause": {
+            "tab": "content",
+            "group": "bfbeBridgeButtons",
+            "label": "Pause",
+            "type": "icon"
+        },
+        "bridgeIconSound": {
+            "tab": "content",
+            "group": "bfbeBridgeButtons",
+            "label": "Sound on",
+            "type": "icon"
+        },
+        "bridgeIconMuted": {
+            "tab": "content",
+            "group": "bfbeBridgeButtons",
+            "label": "Sound off",
+            "type": "icon"
+        },
+        "bridgeIconFull": {
+            "tab": "content",
+            "group": "bfbeBridgeButtons",
+            "label": "Fullscreen",
+            "type": "icon"
+        },
+        "bridgeIconExit": {
+            "tab": "content",
+            "group": "bfbeBridgeButtons",
+            "label": "Exit fullscreen",
+            "type": "icon"
+        },
+        "duration": {
+            "tab": "content",
+            "group": "bfbeMotion",
+            "label": "Duration (ms)",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 25,
+            "inline": true,
+            "placeholder": 200,
+            "css": [
+                {
+                    "property": "--bfbe-duration",
+                    "selector": "",
+                    "value": "%sms"
+                }
+            ]
+        },
+        "easing": {
+            "tab": "content",
+            "group": "bfbeMotion",
+            "label": "Easing",
+            "type": "select",
+            "options": {
+                "cubic-bezier(0.45, 0.05, 0.55, 0.95)": "Soft",
+                "cubic-bezier(0.65, 0, 0.35, 1)": "Medium",
+                "cubic-bezier(0.16, 1, 0.3, 1)": "Snappy",
+                "ease-in": "Ease in",
+                "ease-out": "Ease out",
+                "ease-in-out": "Ease in and out",
+                "linear": "Linear",
+                "cubic-bezier(0.34, 1.56, 0.64, 1)": "Overshoot",
+                "linear(0, .38 8%, .78 17%, 1.02 25%, 1.08 30%, 1.03 40%, .99 50%, 1)": "Soft spring",
+                "var(--bfbe-ease-custom, ease)": "Custom"
+            },
+            "inline": true,
+            "placeholder": "Snappy",
+            "css": [
+                {
+                    "property": "--bfbe-ease",
+                    "selector": ""
+                }
+            ]
+        },
+        "easingCustom": {
+            "tab": "content",
+            "group": "bfbeMotion",
+            "label": "Custom curve",
+            "type": "text",
+            "inline": true,
+            "placeholder": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "required": [
+                "easing",
+                "=",
+                "var(--bfbe-ease-custom, ease)"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-ease-custom",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHoverEffect": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Effect",
+            "type": "select",
+            "options": {
+                "lift": "Lift",
+                "zoom": "Zoom the picture",
+                "shine": "Shine",
+                "border": "Gradient border",
+                "tilt": "Tilt",
+                "follow": "Follow the pointer",
+                "fade": "Fade in",
+                "slide": "Slide in",
+                "grow": "Grow"
+            },
+            "inline": true,
+            "placeholder": "None"
+        },
+        "bfbeHoverOn": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Responds to",
+            "type": "select",
+            "options": {
+                "parent": "A hovered parent"
+            },
+            "inline": true,
+            "placeholder": "This element",
+            "description": "The parent needs Children respond to hover.",
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverFrom": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Comes from",
+            "type": "select",
+            "options": {
+                "up": "Above",
+                "left": "The left",
+                "right": "The right"
+            },
+            "inline": true,
+            "placeholder": "Below",
+            "required": [
+                "bfbeHoverEffect",
+                "=",
+                "slide"
+            ]
+        },
+        "bfbeHoverStrength": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Strength",
+            "type": "number",
+            "min": 0.1,
+            "max": 3,
+            "step": 0.1,
+            "inline": true,
+            "placeholder": "1",
+            "breakpoints": true,
+            "css": [
+                {
+                    "property": "--bfbe-hv-k",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverSpeed": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Speed",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "300",
+            "description": "Milliseconds.",
+            "css": [
+                {
+                    "property": "--bfbe-hv-t",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverDelay": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Milliseconds, so parts arrive in sequence.",
+            "css": [
+                {
+                    "property": "--bfbe-hv-d",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "bfbeHoverEffect",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeHoverEffect",
+                    "!=",
+                    [
+                        "tilt",
+                        "follow"
+                    ]
+                ]
+            ]
+        },
+        "bfbeHoverColor": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Colour",
+            "type": "color",
+            "inline": true,
+            "css": [
+                {
+                    "property": "--bfbe-hv-c",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "=",
+                [
+                    "shine",
+                    "border"
+                ]
+            ]
+        },
+        "bfbeHoverOff": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Off below",
+            "type": "select",
+            "options": {
+                "480": "480 px",
+                "640": "640 px",
+                "768": "768 px",
+                "992": "992 px"
+            },
+            "inline": true,
+            "placeholder": "Never",
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverScope": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Children respond to hover",
+            "type": "checkbox",
+            "description": "Parts inside set to A hovered parent move."
+        },
+        "bfbeHsWhen": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "When scrolled",
+            "type": "select",
+            "options": {
+                "hide": "Hides",
+                "fade": "Fades out, keeps its space",
+                "show": "Appears only then"
+            },
+            "inline": true,
+            "placeholder": "Stays as it is"
+        },
+        "bfbeHsCollapse": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Collapses",
+            "type": "select",
+            "options": {
+                "across": "Sideways"
+            },
+            "inline": true,
+            "placeholder": "Downward",
+            "required": [
+                "bfbeHsWhen",
+                "=",
+                [
+                    "hide",
+                    "show"
+                ]
+            ]
+        },
+        "bfbeHsOver": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Over the first section",
+            "type": "select",
+            "options": {
+                "hide": "Hides",
+                "show": "Appears only then"
+            },
+            "inline": true,
+            "placeholder": "Stays as it is",
+            "description": "Only with the header over the first section."
+        },
+        "bfbeHsStyleSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Scrolled: styling"
+        },
+        "bfbeHsPadding": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsMargin": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Margin",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "margin",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsWidth": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "rerender": true,
+            "css": [
+                {
+                    "property": "width",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ]
+        },
+        "bfbeHsHeight": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Height",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "rerender": true,
+            "css": [
+                {
+                    "property": "height",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ]
+        },
+        "bfbeHsBackground": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsBlur": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Blur behind",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "0",
+            "rerender": true,
+            "css": [
+                {
+                    "property": "--bfbe-hs-blur",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsBorder": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsShadow": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Box shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsTypography": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOpacity": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Opacity",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "opacity",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsScale": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Scale",
+            "type": "number",
+            "min": 0.1,
+            "max": 3,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "scale",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsGap": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Over the first section: styling"
+        },
+        "bfbeHsOverBackground": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverTypography": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverBorder": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverShadow": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Box shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverOpacity": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Opacity",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "opacity",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsMotionSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Motion"
+        },
+        "bfbeHsElDuration": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Duration",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "Follows the header",
+            "description": "Milliseconds.",
+            "css": [
+                {
+                    "property": "--bfbe-hs-dur",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsElEasing": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Easing",
+            "type": "select",
+            "options": {
+                "cubic-bezier(0.16, 1, 0.3, 1)": "Snappy"
+            },
+            "inline": true,
+            "placeholder": "Follows the header",
+            "css": [
+                {
+                    "property": "--bfbe-hs-ease",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsDelay": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Milliseconds, scrolling down only, so parts arrive in sequence.",
+            "css": [
+                {
+                    "property": "--bfbe-hs-delay",
+                    "selector": ""
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,2624 @@
+{
+    "name": "form-steps",
+    "label": "BFB Form Steps",
+    "pack": "pro",
+    "feature": true,
+    "on": "Bricks' own form element (`form`)",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/form-steps/",
+    "controlGroups": {
+        "bfbeSteps": {
+            "title": "Steps",
+            "tab": "content"
+        },
+        "bfbeStepsPanel": {
+            "title": "Steps panel",
+            "tab": "content"
+        },
+        "bfbeFormPanel": {
+            "title": "Form panel",
+            "tab": "content"
+        },
+        "bfbeMarks": {
+            "title": "Step marks",
+            "tab": "content"
+        },
+        "bfbeMarkNumber": {
+            "title": "Mark number",
+            "tab": "content",
+            "required": [
+                "stepsMarks",
+                "!=",
+                [
+                    "bar",
+                    "none"
+                ]
+            ]
+        },
+        "bfbeMarkBox": {
+            "title": "Mark box",
+            "tab": "content",
+            "required": [
+                "stepsMarks",
+                "!=",
+                [
+                    "bar",
+                    "none"
+                ]
+            ]
+        },
+        "bfbeStepLine": {
+            "title": "Step line",
+            "tab": "content",
+            "required": [
+                "stepsMarks",
+                "!=",
+                "none"
+            ]
+        },
+        "bfbeCount": {
+            "title": "Count",
+            "tab": "content"
+        },
+        "bfbeLead": {
+            "title": "Step heading",
+            "tab": "content",
+            "required": [
+                "stepsHeading",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeNextButton": {
+            "title": "Next button",
+            "tab": "content"
+        },
+        "bfbeBackButton": {
+            "title": "Back button",
+            "tab": "content"
+        },
+        "bfbeSummary": {
+            "title": "Summary",
+            "tab": "content",
+            "required": [
+                "stepsSummary",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeSumSteps": {
+            "title": "Summary steps",
+            "tab": "content",
+            "required": [
+                [
+                    "stepsSummary",
+                    "!=",
+                    ""
+                ],
+                [
+                    "stepsByStep",
+                    "!=",
+                    "flat"
+                ]
+            ]
+        },
+        "bfbeSumRows": {
+            "title": "Summary rows",
+            "tab": "content",
+            "required": [
+                "stepsSummary",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeSumChange": {
+            "title": "Summary Change button",
+            "tab": "content",
+            "required": [
+                [
+                    "stepsSummary",
+                    "!=",
+                    ""
+                ],
+                [
+                    "stepsByStep",
+                    "!=",
+                    "flat"
+                ]
+            ]
+        },
+        "bfbeMotion": {
+            "title": "Motion",
+            "tab": "content"
+        },
+        "bfbeBuilder": {
+            "title": "In the builder",
+            "tab": "content"
+        }
+    },
+    "controls": {
+        "stepsHeading": {
+            "tab": "content",
+            "group": "bfbeSteps",
+            "label": "Step titles",
+            "type": "checkbox"
+        },
+        "stepsSummary": {
+            "tab": "content",
+            "group": "bfbeSteps",
+            "label": "End with a summary",
+            "type": "checkbox",
+            "description": "Every answer, with a Change link per step."
+        },
+        "stepsClear": {
+            "tab": "content",
+            "group": "bfbeSteps",
+            "label": "Clear the form on success",
+            "type": "checkbox",
+            "description": "The message alone, every step done."
+        },
+        "stepsStill": {
+            "tab": "content",
+            "group": "bfbeSteps",
+            "label": "Keep the page still",
+            "type": "checkbox",
+            "description": "Otherwise a step change scrolls to the form."
+        },
+        "stepsPosition": {
+            "tab": "content",
+            "group": "bfbeStepsPanel",
+            "label": "Steps position",
+            "type": "select",
+            "options": {
+                "1": "Left of the fields",
+                "2": "Right of the fields",
+                "3": "Above the fields"
+            },
+            "inline": true,
+            "placeholder": "Left of the fields",
+            "css": [
+                {
+                    "property": "--bfbe-fs-pos",
+                    "selector": ""
+                }
+            ]
+        },
+        "stepsPanelWidth": {
+            "tab": "content",
+            "group": "bfbeStepsPanel",
+            "label": "Width, beside the fields",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "260px",
+            "css": [
+                {
+                    "property": "--bfbe-fs-rail",
+                    "selector": ""
+                }
+            ]
+        },
+        "stepsPanelSpace": {
+            "tab": "content",
+            "group": "bfbeStepsPanel",
+            "label": "Space between the panels",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "24px",
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": ""
+                }
+            ]
+        },
+        "stepsPanelPadding": {
+            "tab": "content",
+            "group": "bfbeStepsPanel",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-fs__head"
+                }
+            ]
+        },
+        "stepsPanelBackground": {
+            "tab": "content",
+            "group": "bfbeStepsPanel",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-fs__head"
+                }
+            ]
+        },
+        "stepsPanelBorder": {
+            "tab": "content",
+            "group": "bfbeStepsPanel",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-fs__head"
+                }
+            ]
+        },
+        "stepsPanelShadow": {
+            "tab": "content",
+            "group": "bfbeStepsPanel",
+            "label": "Shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": ".bfbe-fs__head"
+                }
+            ]
+        },
+        "stepsFieldsWidth": {
+            "tab": "content",
+            "group": "bfbeFormPanel",
+            "label": "Width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "The rest",
+            "css": [
+                {
+                    "property": "max-inline-size",
+                    "selector": ".bfbe-fs__fields"
+                }
+            ]
+        },
+        "stepsFieldsPadding": {
+            "tab": "content",
+            "group": "bfbeFormPanel",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-fs__fields"
+                }
+            ]
+        },
+        "stepsFieldsBackground": {
+            "tab": "content",
+            "group": "bfbeFormPanel",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-fs__fields"
+                }
+            ]
+        },
+        "stepsFieldsBorder": {
+            "tab": "content",
+            "group": "bfbeFormPanel",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-fs__fields"
+                }
+            ]
+        },
+        "stepsFieldsShadow": {
+            "tab": "content",
+            "group": "bfbeFormPanel",
+            "label": "Shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": ".bfbe-fs__fields"
+                }
+            ]
+        },
+        "stepsFieldsGap": {
+            "tab": "content",
+            "group": "bfbeFormPanel",
+            "label": "Column gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "0px",
+            "css": [
+                {
+                    "property": "column-gap",
+                    "selector": ".bfbe-fs__rows"
+                }
+            ]
+        },
+        "sepStepsNav": {
+            "tab": "content",
+            "group": "bfbeFormPanel",
+            "label": "The buttons",
+            "type": "separator"
+        },
+        "stepsNav": {
+            "tab": "content",
+            "group": "bfbeFormPanel",
+            "label": "Placement",
+            "type": "select",
+            "options": {
+                "space-between": "Back at the start, the rest at the end",
+                "flex-end": "Start",
+                "center": "Centre",
+                "flex-start": "End",
+                "stretch": "Stretch"
+            },
+            "inline": true,
+            "placeholder": "Back at the start, the rest at the end",
+            "css": [
+                {
+                    "property": "--bfbe-fs-place",
+                    "selector": ".bfbe-fs__nav",
+                    "value": "1",
+                    "required": "flex-end"
+                },
+                {
+                    "property": "--bfbe-fs-place",
+                    "selector": ".bfbe-fs__nav",
+                    "value": "2",
+                    "required": "center"
+                },
+                {
+                    "property": "--bfbe-fs-place",
+                    "selector": ".bfbe-fs__nav",
+                    "value": "3",
+                    "required": "flex-start"
+                },
+                {
+                    "property": "--bfbe-fs-place",
+                    "selector": ".bfbe-fs__nav",
+                    "value": "4",
+                    "required": "space-between"
+                },
+                {
+                    "property": "--bfbe-fs-place",
+                    "selector": ".bfbe-fs__nav",
+                    "value": "5",
+                    "required": "stretch"
+                }
+            ]
+        },
+        "stepsNavPin": {
+            "tab": "content",
+            "group": "bfbeFormPanel",
+            "label": "Position",
+            "type": "select",
+            "options": {
+                "0px": "Under the fields",
+                "auto": "At the foot of the panel"
+            },
+            "inline": true,
+            "placeholder": "Under the fields",
+            "css": [
+                {
+                    "property": "margin-block-start",
+                    "selector": ".bfbe-fs__nav"
+                }
+            ]
+        },
+        "stepsNavGap": {
+            "tab": "content",
+            "group": "bfbeFormPanel",
+            "label": "Space between them",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "8px",
+            "css": [
+                {
+                    "property": "--bfbe-fs-nav-gap",
+                    "selector": ""
+                }
+            ]
+        },
+        "stepsNavSpace": {
+            "tab": "content",
+            "group": "bfbeFormPanel",
+            "label": "Space above them",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "8px",
+            "css": [
+                {
+                    "property": "--bfbe-fs-nav-space",
+                    "selector": ""
+                }
+            ]
+        },
+        "stepsSayMissing": {
+            "tab": "content",
+            "group": "bfbeFormPanel",
+            "label": "Say what is still missing",
+            "type": "checkbox",
+            "description": "Lists the required fields still empty."
+        },
+        "stepsMissingText": {
+            "tab": "content",
+            "group": "bfbeFormPanel",
+            "label": "The words",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Still needed: %s",
+            "description": "%s is the list of fields.",
+            "required": [
+                "stepsSayMissing",
+                "!=",
+                ""
+            ]
+        },
+        "stepsMissingTypography": {
+            "tab": "content",
+            "group": "bfbeFormPanel",
+            "label": "Missing list typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-fs__missing"
+                }
+            ],
+            "required": [
+                "stepsSayMissing",
+                "!=",
+                ""
+            ]
+        },
+        "stepsAccent": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Done colour",
+            "type": "color",
+            "description": "Done marks, the line&#039;s fill and Change links.",
+            "css": [
+                {
+                    "property": "--bfbe-fs-accent",
+                    "selector": ""
+                },
+                {
+                    "property": "--bfbe-pc-mark-done",
+                    "selector": ".bfbe-pc__progress"
+                },
+                {
+                    "property": "--bfbe-pc-bar-fill",
+                    "selector": ".bfbe-pc__progress"
+                }
+            ]
+        },
+        "stepsMarks": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Show",
+            "type": "select",
+            "options": {
+                "full": "Numbers and titles",
+                "titles": "Numbers, titles and descriptions",
+                "numbers": "Numbers",
+                "bar": "The bar only",
+                "none": "Nothing"
+            },
+            "inline": true,
+            "placeholder": "Numbers"
+        },
+        "stepsMarkClick": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Clicking a mark",
+            "type": "select",
+            "options": {
+                "behind": "Goes back to a step behind",
+                "any": "Goes to any step",
+                "none": "Does nothing"
+            },
+            "inline": true,
+            "placeholder": "Goes back to a step behind",
+            "required": [
+                "stepsMarks",
+                "!=",
+                [
+                    "bar",
+                    "none"
+                ]
+            ]
+        },
+        "stepsMarkFade": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Upcoming opacity",
+            "type": "number",
+            "step": "any",
+            "min": 0,
+            "max": 1,
+            "inline": true,
+            "placeholder": "0.6",
+            "required": [
+                "stepsMarks",
+                "!=",
+                [
+                    "bar",
+                    "none"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pc-mark-fade",
+                    "selector": ".bfbe-pc__progress"
+                }
+            ]
+        },
+        "sepStepsMarksLayout": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Layout",
+            "type": "separator",
+            "required": [
+                "stepsMarks",
+                "!=",
+                [
+                    "bar",
+                    "none"
+                ]
+            ]
+        },
+        "stepsMarksDirection": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Direction",
+            "type": "direction",
+            "inline": true,
+            "rerender": true,
+            "required": [
+                "stepsMarks",
+                "!=",
+                [
+                    "bar",
+                    "none"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "flex-direction",
+                    "selector": ".bfbe-pc__marks"
+                },
+                {
+                    "property": "--bfbe-pc-stacked",
+                    "selector": ".bfbe-pc__rail",
+                    "value": "0",
+                    "required": "row"
+                },
+                {
+                    "property": "--bfbe-pc-stacked",
+                    "selector": ".bfbe-pc__rail",
+                    "value": "0",
+                    "required": "row-reverse"
+                },
+                {
+                    "property": "--bfbe-pc-stacked",
+                    "selector": ".bfbe-pc__rail",
+                    "value": "1",
+                    "required": "column"
+                },
+                {
+                    "property": "--bfbe-pc-stacked",
+                    "selector": ".bfbe-pc__rail",
+                    "value": "1",
+                    "required": "column-reverse"
+                }
+            ]
+        },
+        "stepsMarksWrap": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Wrap",
+            "type": "select",
+            "options": {
+                "wrap": "Wrap",
+                "nowrap": "No wrap",
+                "wrap-reverse": "Wrap reverse"
+            },
+            "inline": true,
+            "placeholder": "Wrap",
+            "required": [
+                "stepsMarks",
+                "!=",
+                [
+                    "bar",
+                    "none"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "flex-wrap",
+                    "selector": ".bfbe-pc__marks"
+                }
+            ]
+        },
+        "stepsMarksJustify": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Align main axis",
+            "type": "justify-content",
+            "inline": true,
+            "required": [
+                "stepsMarks",
+                "!=",
+                [
+                    "bar",
+                    "none"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "justify-content",
+                    "selector": ".bfbe-pc__marks"
+                }
+            ]
+        },
+        "stepsMarksAlign": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Align cross axis",
+            "type": "align-items",
+            "inline": true,
+            "required": [
+                "stepsMarks",
+                "!=",
+                [
+                    "bar",
+                    "none"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "align-items",
+                    "selector": ".bfbe-pc__marks"
+                }
+            ]
+        },
+        "stepsMarkGap": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Column gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "16px",
+            "required": [
+                "stepsMarks",
+                "!=",
+                [
+                    "bar",
+                    "none"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pc-marks-cgap",
+                    "selector": ".bfbe-pc__progress"
+                }
+            ]
+        },
+        "stepsMarkRowGap": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Row gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "The column gap",
+            "required": [
+                "stepsMarks",
+                "!=",
+                [
+                    "bar",
+                    "none"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pc-marks-rgap",
+                    "selector": ".bfbe-pc__progress"
+                }
+            ]
+        },
+        "sepStepsMarkEach": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Each mark",
+            "type": "separator",
+            "required": [
+                "stepsMarks",
+                "!=",
+                [
+                    "bar",
+                    "none"
+                ]
+            ]
+        },
+        "stepsMarkGrow": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Flex grow",
+            "type": "number",
+            "min": 0,
+            "inline": true,
+            "placeholder": "1",
+            "description": "1, and Flex basis 0: equal widths.",
+            "required": [
+                "stepsMarks",
+                "!=",
+                [
+                    "bar",
+                    "none"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "flex-grow",
+                    "selector": ".bfbe-pc__mark"
+                }
+            ]
+        },
+        "stepsMarkShrink": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Flex shrink",
+            "type": "number",
+            "min": 0,
+            "inline": true,
+            "placeholder": "1",
+            "required": [
+                "stepsMarks",
+                "!=",
+                [
+                    "bar",
+                    "none"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "flex-shrink",
+                    "selector": ".bfbe-pc__mark"
+                }
+            ]
+        },
+        "stepsMarkBasis": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Flex basis",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "Full when stacked, else 0",
+            "required": [
+                "stepsMarks",
+                "!=",
+                [
+                    "bar",
+                    "none"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "flex-basis",
+                    "selector": ".bfbe-pc__mark"
+                }
+            ]
+        },
+        "sepStepsMarkInside": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Inside a mark",
+            "type": "separator",
+            "required": [
+                "stepsMarks",
+                "!=",
+                [
+                    "bar",
+                    "none"
+                ]
+            ]
+        },
+        "stepsMarkInDirection": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Direction",
+            "type": "direction",
+            "inline": true,
+            "required": [
+                "stepsMarks",
+                "!=",
+                [
+                    "bar",
+                    "none"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "flex-direction",
+                    "selector": ".bfbe-pc__mark-btn"
+                }
+            ]
+        },
+        "stepsMarkInJustify": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Align main axis",
+            "type": "justify-content",
+            "inline": true,
+            "required": [
+                "stepsMarks",
+                "!=",
+                [
+                    "bar",
+                    "none"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "justify-content",
+                    "selector": ".bfbe-pc__mark-btn"
+                }
+            ]
+        },
+        "stepsMarkInAlign": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Align cross axis",
+            "type": "align-items",
+            "inline": true,
+            "required": [
+                "stepsMarks",
+                "!=",
+                [
+                    "bar",
+                    "none"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "align-items",
+                    "selector": ".bfbe-pc__mark-btn"
+                }
+            ]
+        },
+        "stepsNumGap": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "0.5em",
+            "required": [
+                "stepsMarks",
+                "!=",
+                [
+                    "bar",
+                    "none"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": ".bfbe-pc__mark-btn"
+                }
+            ]
+        },
+        "sepStepsTitles": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Words",
+            "type": "separator",
+            "required": [
+                "stepsMarks",
+                "!=",
+                [
+                    "bar",
+                    "none"
+                ]
+            ]
+        },
+        "stepsTitleTypography": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Title typography",
+            "type": "typography",
+            "required": [
+                "stepsMarks",
+                "!=",
+                [
+                    "bar",
+                    "none"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__mark-t"
+                }
+            ]
+        },
+        "stepsCurrentTitleTypography": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Current title typography",
+            "type": "typography",
+            "required": [
+                "stepsMarks",
+                "!=",
+                [
+                    "bar",
+                    "none"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__mark.is-current .bfbe-pc__mark-t"
+                }
+            ]
+        },
+        "stepsTextTypography": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Description typography",
+            "type": "typography",
+            "required": [
+                "stepsMarks",
+                "=",
+                "titles"
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__mark-d"
+                }
+            ]
+        },
+        "stepsMarkNumber": {
+            "tab": "content",
+            "group": "bfbeMarkNumber",
+            "label": "Show it as",
+            "type": "select",
+            "options": {
+                "plain": "1",
+                "pad": "01",
+                "word": "Step 1",
+                "none": "No number"
+            },
+            "inline": true,
+            "placeholder": "1"
+        },
+        "stepsMarkTypography": {
+            "tab": "content",
+            "group": "bfbeMarkNumber",
+            "label": "Typography",
+            "type": "typography",
+            "required": [
+                "stepsMarkNumber",
+                "!=",
+                "none"
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__mark-n"
+                }
+            ]
+        },
+        "sepStepsMarkChip": {
+            "tab": "content",
+            "group": "bfbeMarkNumber",
+            "label": "The chip",
+            "type": "separator",
+            "required": [
+                "stepsMarkNumber",
+                "!=",
+                "none"
+            ]
+        },
+        "stepsMarkPlain": {
+            "tab": "content",
+            "group": "bfbeMarkNumber",
+            "label": "Just the figure",
+            "type": "checkbox",
+            "description": "No chip behind the number.",
+            "required": [
+                "stepsMarkNumber",
+                "!=",
+                "none"
+            ]
+        },
+        "stepsMarkSize": {
+            "tab": "content",
+            "group": "bfbeMarkNumber",
+            "label": "Size",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "2em",
+            "required": [
+                [
+                    "stepsMarkNumber",
+                    "!=",
+                    "none"
+                ],
+                [
+                    "stepsMarkPlain",
+                    "=",
+                    ""
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pc-mark-size",
+                    "selector": ".bfbe-pc__progress"
+                }
+            ]
+        },
+        "stepsMarkPadding": {
+            "tab": "content",
+            "group": "bfbeMarkNumber",
+            "label": "Padding",
+            "type": "dimensions",
+            "required": [
+                "stepsMarkNumber",
+                "!=",
+                "none"
+            ],
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-pc__mark-n"
+                }
+            ]
+        },
+        "stepsMarkBorder": {
+            "tab": "content",
+            "group": "bfbeMarkNumber",
+            "label": "Border",
+            "type": "border",
+            "required": [
+                "stepsMarkNumber",
+                "!=",
+                "none"
+            ],
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__mark-n"
+                }
+            ]
+        },
+        "sepStepsMarkColours": {
+            "tab": "content",
+            "group": "bfbeMarkNumber",
+            "label": "Colours",
+            "type": "separator",
+            "required": [
+                "stepsMarkNumber",
+                "!=",
+                "none"
+            ]
+        },
+        "stepsMarkBackground": {
+            "tab": "content",
+            "group": "bfbeMarkNumber",
+            "label": "Background",
+            "type": "color",
+            "required": [
+                "stepsMarkNumber",
+                "!=",
+                "none"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pc-mark",
+                    "selector": ".bfbe-pc__progress"
+                }
+            ]
+        },
+        "stepsMarkColor": {
+            "tab": "content",
+            "group": "bfbeMarkNumber",
+            "label": "Number colour",
+            "type": "color",
+            "required": [
+                "stepsMarkNumber",
+                "!=",
+                "none"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pc-mark-text",
+                    "selector": ".bfbe-pc__progress"
+                }
+            ]
+        },
+        "stepsMarkOnBackground": {
+            "tab": "content",
+            "group": "bfbeMarkNumber",
+            "label": "Reached background",
+            "type": "color",
+            "required": [
+                "stepsMarkNumber",
+                "!=",
+                "none"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pc-mark-on",
+                    "selector": ".bfbe-pc__progress"
+                }
+            ]
+        },
+        "stepsCurrent": {
+            "tab": "content",
+            "group": "bfbeMarkNumber",
+            "label": "Reached number colour",
+            "type": "color",
+            "required": [
+                "stepsMarkNumber",
+                "!=",
+                "none"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pc-mark-on-color",
+                    "selector": ".bfbe-pc__progress"
+                }
+            ]
+        },
+        "stepsMarkDoneBackground": {
+            "tab": "content",
+            "group": "bfbeMarkNumber",
+            "label": "Done background",
+            "type": "color",
+            "required": [
+                "stepsMarkNumber",
+                "!=",
+                "none"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pc-mark-done",
+                    "selector": ".bfbe-pc__progress"
+                }
+            ]
+        },
+        "stepsTick": {
+            "tab": "content",
+            "group": "bfbeMarkNumber",
+            "label": "Done number colour",
+            "type": "color",
+            "required": [
+                "stepsMarkNumber",
+                "!=",
+                "none"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pc-mark-done-color",
+                    "selector": ".bfbe-pc__progress"
+                }
+            ]
+        },
+        "stepsMarkTick": {
+            "tab": "content",
+            "group": "bfbeMarkNumber",
+            "label": "Done shows a tick",
+            "type": "checkbox",
+            "required": [
+                "stepsMarkNumber",
+                "!=",
+                "none"
+            ]
+        },
+        "stepsBoxPadding": {
+            "tab": "content",
+            "group": "bfbeMarkBox",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-pc__mark-btn"
+                }
+            ]
+        },
+        "stepsBoxBorder": {
+            "tab": "content",
+            "group": "bfbeMarkBox",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__mark-btn"
+                }
+            ]
+        },
+        "sepStepsBoxBefore": {
+            "tab": "content",
+            "group": "bfbeMarkBox",
+            "label": "Upcoming",
+            "type": "separator"
+        },
+        "stepsBoxBackground": {
+            "tab": "content",
+            "group": "bfbeMarkBox",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-pc__mark-btn"
+                }
+            ]
+        },
+        "stepsBoxColor": {
+            "tab": "content",
+            "group": "bfbeMarkBox",
+            "label": "Text",
+            "type": "color",
+            "description": "Titles and descriptions too, over their typography colour.",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".bfbe-pc__mark-btn"
+                },
+                {
+                    "property": "color",
+                    "selector": ".bfbe-pc__mark-btn .bfbe-pc__mark-t"
+                },
+                {
+                    "property": "color",
+                    "selector": ".bfbe-pc__mark-btn .bfbe-pc__mark-d"
+                }
+            ]
+        },
+        "stepsBoxBorderColor": {
+            "tab": "content",
+            "group": "bfbeMarkBox",
+            "label": "Border",
+            "type": "color",
+            "css": [
+                {
+                    "property": "border-color",
+                    "selector": ".bfbe-pc__mark-btn"
+                }
+            ]
+        },
+        "sepStepsBoxNow": {
+            "tab": "content",
+            "group": "bfbeMarkBox",
+            "label": "Current",
+            "type": "separator"
+        },
+        "stepsBoxNowBackground": {
+            "tab": "content",
+            "group": "bfbeMarkBox",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-pc__mark.is-current .bfbe-pc__mark-btn"
+                }
+            ]
+        },
+        "stepsBoxNowColor": {
+            "tab": "content",
+            "group": "bfbeMarkBox",
+            "label": "Text",
+            "type": "color",
+            "description": "Titles and descriptions too, over their typography colour.",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".bfbe-pc__mark.is-current .bfbe-pc__mark-btn"
+                },
+                {
+                    "property": "color",
+                    "selector": ".bfbe-pc__mark.is-current .bfbe-pc__mark-btn .bfbe-pc__mark-t"
+                },
+                {
+                    "property": "color",
+                    "selector": ".bfbe-pc__mark.is-current .bfbe-pc__mark-btn .bfbe-pc__mark-d"
+                }
+            ]
+        },
+        "stepsBoxNowBorder": {
+            "tab": "content",
+            "group": "bfbeMarkBox",
+            "label": "Border",
+            "type": "color",
+            "css": [
+                {
+                    "property": "border-color",
+                    "selector": ".bfbe-pc__mark.is-current .bfbe-pc__mark-btn"
+                }
+            ]
+        },
+        "sepStepsBoxDone": {
+            "tab": "content",
+            "group": "bfbeMarkBox",
+            "label": "Done",
+            "type": "separator"
+        },
+        "stepsBoxDoneBackground": {
+            "tab": "content",
+            "group": "bfbeMarkBox",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-pc__mark.is-done .bfbe-pc__mark-btn"
+                }
+            ]
+        },
+        "stepsBoxDoneColor": {
+            "tab": "content",
+            "group": "bfbeMarkBox",
+            "label": "Text",
+            "type": "color",
+            "description": "Titles and descriptions too, over their typography colour.",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".bfbe-pc__mark.is-done .bfbe-pc__mark-btn"
+                },
+                {
+                    "property": "color",
+                    "selector": ".bfbe-pc__mark.is-done .bfbe-pc__mark-btn .bfbe-pc__mark-t"
+                },
+                {
+                    "property": "color",
+                    "selector": ".bfbe-pc__mark.is-done .bfbe-pc__mark-btn .bfbe-pc__mark-d"
+                }
+            ]
+        },
+        "stepsBoxDoneBorder": {
+            "tab": "content",
+            "group": "bfbeMarkBox",
+            "label": "Border",
+            "type": "color",
+            "css": [
+                {
+                    "property": "border-color",
+                    "selector": ".bfbe-pc__mark.is-done .bfbe-pc__mark-btn"
+                }
+            ]
+        },
+        "stepsBarStyle": {
+            "tab": "content",
+            "group": "bfbeStepLine",
+            "label": "The line",
+            "type": "select",
+            "options": {
+                "fill": "A bar that fills",
+                "rule": "A rule under the marks",
+                "none": "None"
+            },
+            "inline": true,
+            "placeholder": "A bar that fills"
+        },
+        "stepsLineAt": {
+            "tab": "content",
+            "group": "bfbeStepLine",
+            "label": "Line position",
+            "type": "select",
+            "options": {
+                "under": "Under the marks",
+                "left": "On the left",
+                "right": "On the right"
+            },
+            "inline": true,
+            "placeholder": "On the left",
+            "required": [
+                [
+                    "stepsBarStyle",
+                    "=",
+                    [
+                        "",
+                        "fill"
+                    ]
+                ],
+                [
+                    "stepsMarks",
+                    "!=",
+                    [
+                        "bar",
+                        "none"
+                    ]
+                ],
+                [
+                    "stepsPosition",
+                    "!=",
+                    "3"
+                ],
+                [
+                    "stepsMarksDirection",
+                    "!=",
+                    [
+                        "row",
+                        "row-reverse"
+                    ]
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pc-line-at",
+                    "selector": ".bfbe-pc__rail > .bfbe-pc__bar",
+                    "value": "0",
+                    "required": "under"
+                },
+                {
+                    "property": "--bfbe-pc-line-at",
+                    "selector": ".bfbe-pc__rail > .bfbe-pc__bar",
+                    "value": "1",
+                    "required": "left"
+                },
+                {
+                    "property": "--bfbe-pc-line-at",
+                    "selector": ".bfbe-pc__rail > .bfbe-pc__bar",
+                    "value": "2",
+                    "required": "right"
+                }
+            ]
+        },
+        "stepsMarksSpace": {
+            "tab": "content",
+            "group": "bfbeStepLine",
+            "label": "Space between marks and line",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "10px",
+            "required": [
+                [
+                    "stepsBarStyle",
+                    "!=",
+                    "none"
+                ],
+                [
+                    "stepsMarks",
+                    "!=",
+                    [
+                        "bar",
+                        "none"
+                    ]
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pc-marks-gap",
+                    "selector": ".bfbe-pc__progress"
+                }
+            ]
+        },
+        "stepsLine": {
+            "tab": "content",
+            "group": "bfbeStepLine",
+            "label": "Bar colour",
+            "type": "color",
+            "required": [
+                "stepsBarStyle",
+                "!=",
+                "none"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pc-bar",
+                    "selector": ".bfbe-pc__progress"
+                }
+            ]
+        },
+        "stepsBarFill": {
+            "tab": "content",
+            "group": "bfbeStepLine",
+            "label": "Bar fill colour",
+            "type": "color",
+            "required": [
+                "stepsBarStyle",
+                "!=",
+                "none"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pc-bar-fill",
+                    "selector": ".bfbe-pc__progress"
+                }
+            ]
+        },
+        "stepsBarHeight": {
+            "tab": "content",
+            "group": "bfbeStepLine",
+            "label": "Bar thickness",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "4px",
+            "required": [
+                "stepsBarStyle",
+                "!=",
+                "none"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pc-bar-h",
+                    "selector": ".bfbe-pc__progress"
+                }
+            ]
+        },
+        "stepsBarBorder": {
+            "tab": "content",
+            "group": "bfbeStepLine",
+            "label": "Bar border",
+            "type": "border",
+            "required": [
+                "stepsBarStyle",
+                "=",
+                [
+                    "",
+                    "fill"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__bar"
+                }
+            ]
+        },
+        "stepsCount": {
+            "tab": "content",
+            "group": "bfbeCount",
+            "label": "Show the count",
+            "type": "checkbox"
+        },
+        "stepsCountTypography": {
+            "tab": "content",
+            "group": "bfbeCount",
+            "label": "Typography",
+            "type": "typography",
+            "required": [
+                "stepsCount",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__count"
+                }
+            ]
+        },
+        "stepsCountGap": {
+            "tab": "content",
+            "group": "bfbeCount",
+            "label": "Space below",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "8px",
+            "required": [
+                "stepsCount",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "margin-block-end",
+                    "selector": ".bfbe-pc__count"
+                }
+            ]
+        },
+        "stepsWords": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Titles and descriptions",
+            "type": "select",
+            "options": {
+                "flex": "Shown",
+                "none": "Hidden"
+            },
+            "inline": true,
+            "placeholder": "Shown",
+            "required": [
+                "stepsMarks",
+                "=",
+                [
+                    "full",
+                    "titles"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "display",
+                    "selector": ".bfbe-pc__progress:not(.bfbe-pc--marks-numbers) .bfbe-pc__mark-body"
+                }
+            ]
+        },
+        "stepsTextGap": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Text gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "2px",
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": ".bfbe-pc__mark-body"
+                }
+            ],
+            "required": [
+                "stepsMarks",
+                "=",
+                "titles"
+            ]
+        },
+        "stepsLeadTitleTypography": {
+            "tab": "content",
+            "group": "bfbeLead",
+            "label": "Title typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-fs__lead-title"
+                }
+            ]
+        },
+        "stepsLeadTextTypography": {
+            "tab": "content",
+            "group": "bfbeLead",
+            "label": "Description typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-fs__lead-text"
+                }
+            ]
+        },
+        "stepsLeadAlign": {
+            "tab": "content",
+            "group": "bfbeLead",
+            "label": "Alignment",
+            "type": "text-align",
+            "inline": true,
+            "css": [
+                {
+                    "property": "text-align",
+                    "selector": ".bfbe-fs__lead"
+                }
+            ]
+        },
+        "stepsLeadGap": {
+            "tab": "content",
+            "group": "bfbeLead",
+            "label": "Space below",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "16px",
+            "css": [
+                {
+                    "property": "--bfbe-fs-lead-gap",
+                    "selector": ""
+                }
+            ]
+        },
+        "stepsNext": {
+            "tab": "content",
+            "group": "bfbeNextButton",
+            "label": "Label",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Next",
+            "hasDynamicData": "text"
+        },
+        "stepsNextIcon": {
+            "tab": "content",
+            "group": "bfbeNextButton",
+            "label": "Icon",
+            "type": "icon"
+        },
+        "stepsNextIconPosition": {
+            "tab": "content",
+            "group": "bfbeNextButton",
+            "label": "Icon position",
+            "type": "select",
+            "options": {
+                "right": "After the words",
+                "left": "Before the words"
+            },
+            "inline": true,
+            "placeholder": "After the words",
+            "required": [
+                "stepsNextIcon",
+                "!=",
+                ""
+            ]
+        },
+        "sepStepsNextLook": {
+            "tab": "content",
+            "group": "bfbeNextButton",
+            "label": "Look",
+            "type": "separator"
+        },
+        "stepsNextTypography": {
+            "tab": "content",
+            "group": "bfbeNextButton",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-fs__nav .bfbe-fs__next.bricks-button"
+                }
+            ]
+        },
+        "stepsNextPadding": {
+            "tab": "content",
+            "group": "bfbeNextButton",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-fs__nav .bfbe-fs__next.bricks-button"
+                }
+            ]
+        },
+        "stepsNextBackground": {
+            "tab": "content",
+            "group": "bfbeNextButton",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-fs__nav .bfbe-fs__next.bricks-button"
+                }
+            ]
+        },
+        "stepsNextBorder": {
+            "tab": "content",
+            "group": "bfbeNextButton",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-fs__nav .bfbe-fs__next.bricks-button"
+                }
+            ]
+        },
+        "stepsNextShadow": {
+            "tab": "content",
+            "group": "bfbeNextButton",
+            "label": "Shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": ".bfbe-fs__nav .bfbe-fs__next.bricks-button"
+                }
+            ]
+        },
+        "stepsNextHoverBackground": {
+            "tab": "content",
+            "group": "bfbeNextButton",
+            "label": "Background on hover",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-fs__nav .bfbe-fs__next.bricks-button:hover"
+                },
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-fs__nav .bfbe-fs__next.bricks-button:focus-visible"
+                }
+            ]
+        },
+        "stepsNextHoverColor": {
+            "tab": "content",
+            "group": "bfbeNextButton",
+            "label": "Text on hover",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".bfbe-fs__nav .bfbe-fs__next.bricks-button:hover"
+                },
+                {
+                    "property": "color",
+                    "selector": ".bfbe-fs__nav .bfbe-fs__next.bricks-button:focus-visible"
+                }
+            ]
+        },
+        "stepsNextHoverBorder": {
+            "tab": "content",
+            "group": "bfbeNextButton",
+            "label": "Border on hover",
+            "type": "color",
+            "css": [
+                {
+                    "property": "border-color",
+                    "selector": ".bfbe-fs__nav .bfbe-fs__next.bricks-button:hover"
+                },
+                {
+                    "property": "border-color",
+                    "selector": ".bfbe-fs__nav .bfbe-fs__next.bricks-button:focus-visible"
+                }
+            ]
+        },
+        "stepsBack": {
+            "tab": "content",
+            "group": "bfbeBackButton",
+            "label": "Label",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Back",
+            "hasDynamicData": "text"
+        },
+        "stepsBackIcon": {
+            "tab": "content",
+            "group": "bfbeBackButton",
+            "label": "Icon",
+            "type": "icon"
+        },
+        "stepsBackIconPosition": {
+            "tab": "content",
+            "group": "bfbeBackButton",
+            "label": "Icon position",
+            "type": "select",
+            "options": {
+                "right": "After the words",
+                "left": "Before the words"
+            },
+            "inline": true,
+            "placeholder": "Before the words",
+            "required": [
+                "stepsBackIcon",
+                "!=",
+                ""
+            ]
+        },
+        "stepsBackStyle": {
+            "tab": "content",
+            "group": "bfbeBackButton",
+            "label": "Looks",
+            "type": "select",
+            "options": {
+                "outline": "A button",
+                "text": "A link"
+            },
+            "inline": true,
+            "placeholder": "A button"
+        },
+        "sepStepsBackLook": {
+            "tab": "content",
+            "group": "bfbeBackButton",
+            "label": "Look",
+            "type": "separator"
+        },
+        "stepsBackBtnTypography": {
+            "tab": "content",
+            "group": "bfbeBackButton",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-fs__nav .bfbe-fs__back.bricks-button"
+                }
+            ]
+        },
+        "stepsBackBtnPadding": {
+            "tab": "content",
+            "group": "bfbeBackButton",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-fs__nav .bfbe-fs__back.bricks-button"
+                }
+            ]
+        },
+        "stepsBackBtnBackground": {
+            "tab": "content",
+            "group": "bfbeBackButton",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-fs__nav .bfbe-fs__back.bricks-button"
+                }
+            ]
+        },
+        "stepsBackBtnBorder": {
+            "tab": "content",
+            "group": "bfbeBackButton",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-fs__nav .bfbe-fs__back.bricks-button"
+                }
+            ]
+        },
+        "stepsBackBtnShadow": {
+            "tab": "content",
+            "group": "bfbeBackButton",
+            "label": "Shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": ".bfbe-fs__nav .bfbe-fs__back.bricks-button"
+                }
+            ]
+        },
+        "stepsBackBtnHoverBackground": {
+            "tab": "content",
+            "group": "bfbeBackButton",
+            "label": "Background on hover",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-fs__nav .bfbe-fs__back.bricks-button:hover"
+                },
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-fs__nav .bfbe-fs__back.bricks-button:focus-visible"
+                }
+            ]
+        },
+        "stepsBackBtnHoverColor": {
+            "tab": "content",
+            "group": "bfbeBackButton",
+            "label": "Text on hover",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".bfbe-fs__nav .bfbe-fs__back.bricks-button:hover"
+                },
+                {
+                    "property": "color",
+                    "selector": ".bfbe-fs__nav .bfbe-fs__back.bricks-button:focus-visible"
+                }
+            ]
+        },
+        "stepsBackBtnHoverBorder": {
+            "tab": "content",
+            "group": "bfbeBackButton",
+            "label": "Border on hover",
+            "type": "color",
+            "css": [
+                {
+                    "property": "border-color",
+                    "selector": ".bfbe-fs__nav .bfbe-fs__back.bricks-button:hover"
+                },
+                {
+                    "property": "border-color",
+                    "selector": ".bfbe-fs__nav .bfbe-fs__back.bricks-button:focus-visible"
+                }
+            ]
+        },
+        "stepsSummaryTitle": {
+            "tab": "content",
+            "group": "bfbeSummary",
+            "label": "Summary title",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Summary"
+        },
+        "stepsEmpty": {
+            "tab": "content",
+            "group": "bfbeSummary",
+            "label": "An empty answer reads",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Not given"
+        },
+        "stepsSkipEmpty": {
+            "tab": "content",
+            "group": "bfbeSummary",
+            "label": "Leave empty answers out",
+            "type": "checkbox"
+        },
+        "stepsByStep": {
+            "tab": "content",
+            "group": "bfbeSummary",
+            "label": "Grouped",
+            "type": "select",
+            "options": {
+                "steps": "By step, with a Change link each",
+                "flat": "One list"
+            },
+            "inline": true,
+            "placeholder": "By step, with a Change link each"
+        },
+        "stepsSepSumBetween": {
+            "tab": "content",
+            "group": "bfbeSumSteps",
+            "label": "Between the steps",
+            "type": "separator"
+        },
+        "stepsSumGap": {
+            "tab": "content",
+            "group": "bfbeSumSteps",
+            "label": "Space",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "16px",
+            "css": [
+                {
+                    "property": "--bfbe-sum-gap",
+                    "selector": ".bfbe-sum"
+                }
+            ]
+        },
+        "stepsSumLines": {
+            "tab": "content",
+            "group": "bfbeSumSteps",
+            "label": "A line between them",
+            "type": "checkbox"
+        },
+        "stepsSepSumStep": {
+            "tab": "content",
+            "group": "bfbeSumSteps",
+            "label": "Each step",
+            "type": "separator"
+        },
+        "stepsSumStepBackground": {
+            "tab": "content",
+            "group": "bfbeSumSteps",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-sum__step"
+                }
+            ]
+        },
+        "stepsSumStepBorder": {
+            "tab": "content",
+            "group": "bfbeSumSteps",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-sum__step"
+                }
+            ]
+        },
+        "stepsSumStepShadow": {
+            "tab": "content",
+            "group": "bfbeSumSteps",
+            "label": "Shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": ".bfbe-sum__step"
+                }
+            ]
+        },
+        "stepsSumStepPadding": {
+            "tab": "content",
+            "group": "bfbeSumSteps",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-sum__step"
+                }
+            ]
+        },
+        "stepsSumStepGap": {
+            "tab": "content",
+            "group": "bfbeSumSteps",
+            "label": "Space under the title",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "8px",
+            "css": [
+                {
+                    "property": "row-gap",
+                    "selector": ".bfbe-sum__step"
+                }
+            ],
+            "description": "And above the button under the answers."
+        },
+        "stepsSumTitleTypography": {
+            "tab": "content",
+            "group": "bfbeSumSteps",
+            "label": "Title typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-sum__title"
+                }
+            ]
+        },
+        "stepsSepSumLayout": {
+            "tab": "content",
+            "group": "bfbeSumRows",
+            "label": "Layout",
+            "type": "separator"
+        },
+        "stepsSumStack": {
+            "tab": "content",
+            "group": "bfbeSumRows",
+            "label": "Label and answer",
+            "type": "select",
+            "options": {
+                "beside": "Side by side",
+                "under": "Answer under the label"
+            },
+            "inline": true,
+            "placeholder": "Side by side",
+            "css": [
+                {
+                    "property": "--bfbe-sum-cols",
+                    "selector": ".bfbe-sum__row",
+                    "value": "minmax(0, 1fr)",
+                    "required": "under"
+                },
+                {
+                    "property": "--bfbe-sum-cols",
+                    "selector": ".bfbe-sum__row",
+                    "value": "subgrid",
+                    "required": "beside"
+                }
+            ]
+        },
+        "stepsSumColumns": {
+            "tab": "content",
+            "group": "bfbeSumRows",
+            "label": "Label column width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "A third",
+            "css": [
+                {
+                    "property": "--bfbe-sum-label",
+                    "selector": ".bfbe-sum__list"
+                }
+            ]
+        },
+        "stepsSumAnswerColumn": {
+            "tab": "content",
+            "group": "bfbeSumRows",
+            "label": "Answer column width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "The rest",
+            "css": [
+                {
+                    "property": "--bfbe-sum-answer",
+                    "selector": ".bfbe-sum__list"
+                }
+            ]
+        },
+        "stepsSumRowGap": {
+            "tab": "content",
+            "group": "bfbeSumRows",
+            "label": "Space between rows",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "4px",
+            "css": [
+                {
+                    "property": "row-gap",
+                    "selector": ".bfbe-sum__list"
+                }
+            ]
+        },
+        "stepsSumPairGap": {
+            "tab": "content",
+            "group": "bfbeSumRows",
+            "label": "Space between label and answer",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "16px beside, 2px under",
+            "css": [
+                {
+                    "property": "column-gap",
+                    "selector": ".bfbe-sum__list"
+                },
+                {
+                    "property": "row-gap",
+                    "selector": ".bfbe-sum__row"
+                }
+            ]
+        },
+        "stepsSepSumRow": {
+            "tab": "content",
+            "group": "bfbeSumRows",
+            "label": "Each row",
+            "type": "separator"
+        },
+        "stepsSumRowBackground": {
+            "tab": "content",
+            "group": "bfbeSumRows",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-sum__row"
+                }
+            ]
+        },
+        "stepsSumRowBorder": {
+            "tab": "content",
+            "group": "bfbeSumRows",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-sum__row"
+                }
+            ]
+        },
+        "stepsSumRowShadow": {
+            "tab": "content",
+            "group": "bfbeSumRows",
+            "label": "Shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": ".bfbe-sum__row"
+                }
+            ]
+        },
+        "stepsSumRowPadding": {
+            "tab": "content",
+            "group": "bfbeSumRows",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-sum__row"
+                }
+            ]
+        },
+        "stepsSepSumWords": {
+            "tab": "content",
+            "group": "bfbeSumRows",
+            "label": "Words",
+            "type": "separator"
+        },
+        "stepsSumLabelTypography": {
+            "tab": "content",
+            "group": "bfbeSumRows",
+            "label": "Label typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-sum__row > dt"
+                }
+            ]
+        },
+        "stepsSumValueTypography": {
+            "tab": "content",
+            "group": "bfbeSumRows",
+            "label": "Answer typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-sum__row > dd"
+                }
+            ]
+        },
+        "stepsChange": {
+            "tab": "content",
+            "group": "bfbeSumChange",
+            "label": "Label",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "Change"
+        },
+        "stepsSepChangePlace": {
+            "tab": "content",
+            "group": "bfbeSumChange",
+            "label": "Where it sits",
+            "type": "separator"
+        },
+        "stepsChangePlace": {
+            "tab": "content",
+            "group": "bfbeSumChange",
+            "label": "Place",
+            "type": "select",
+            "options": {
+                "title": "In the title line",
+                "below": "Under the answers"
+            },
+            "inline": true,
+            "placeholder": "In the title line",
+            "css": [
+                {
+                    "property": "order",
+                    "selector": ".bfbe-sum__change",
+                    "value": "1",
+                    "required": "below"
+                },
+                {
+                    "property": "order",
+                    "selector": ".bfbe-sum__change",
+                    "value": "0",
+                    "required": "title"
+                }
+            ]
+        },
+        "stepsChangeAlign": {
+            "tab": "content",
+            "group": "bfbeSumChange",
+            "label": "Align",
+            "type": "select",
+            "options": {
+                "start": "Start",
+                "center": "Centre",
+                "end": "End"
+            },
+            "inline": true,
+            "placeholder": "End",
+            "css": [
+                {
+                    "property": "--bfbe-sum-change-m",
+                    "selector": ".bfbe-sum__change",
+                    "value": "0 auto",
+                    "required": "start"
+                },
+                {
+                    "property": "--bfbe-sum-change-m",
+                    "selector": ".bfbe-sum__change",
+                    "value": "auto",
+                    "required": "center"
+                },
+                {
+                    "property": "--bfbe-sum-change-m",
+                    "selector": ".bfbe-sum__change",
+                    "value": "auto 0",
+                    "required": "end"
+                }
+            ]
+        },
+        "stepsSepChangeLook": {
+            "tab": "content",
+            "group": "bfbeSumChange",
+            "label": "Look",
+            "type": "separator"
+        },
+        "stepsChangeTypography": {
+            "tab": "content",
+            "group": "bfbeSumChange",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-sum__change"
+                }
+            ]
+        },
+        "stepsChangeBackground": {
+            "tab": "content",
+            "group": "bfbeSumChange",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-sum__change"
+                }
+            ]
+        },
+        "stepsChangeBorder": {
+            "tab": "content",
+            "group": "bfbeSumChange",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-sum__change"
+                }
+            ]
+        },
+        "stepsChangePadding": {
+            "tab": "content",
+            "group": "bfbeSumChange",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-sum__change"
+                }
+            ]
+        },
+        "stepsSepChangeHover": {
+            "tab": "content",
+            "group": "bfbeSumChange",
+            "label": "Hover",
+            "type": "separator"
+        },
+        "stepsChangeHoverBackground": {
+            "tab": "content",
+            "group": "bfbeSumChange",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-sum__change:hover"
+                },
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-sum__change:focus-visible"
+                }
+            ]
+        },
+        "stepsChangeHoverColor": {
+            "tab": "content",
+            "group": "bfbeSumChange",
+            "label": "Text",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".bfbe-sum__change:hover"
+                },
+                {
+                    "property": "color",
+                    "selector": ".bfbe-sum__change:focus-visible"
+                }
+            ]
+        },
+        "stepsMotion": {
+            "tab": "content",
+            "group": "bfbeMotion",
+            "label": "Transition",
+            "type": "select",
+            "options": {
+                "slide": "Sliding",
+                "fade": "Fading",
+                "none": "At once"
+            },
+            "inline": true,
+            "placeholder": "Sliding"
+        },
+        "stepsDuration": {
+            "tab": "content",
+            "group": "bfbeMotion",
+            "label": "Duration (ms)",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 25,
+            "inline": true,
+            "placeholder": 300,
+            "required": [
+                "stepsMotion",
+                "!=",
+                "none"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-fs-duration",
+                    "selector": "",
+                    "value": "%sms"
+                }
+            ]
+        },
+        "stepsEasing": {
+            "tab": "content",
+            "group": "bfbeMotion",
+            "label": "Easing",
+            "type": "select",
+            "options": {
+                "cubic-bezier(0.45, 0.05, 0.55, 0.95)": "Soft",
+                "cubic-bezier(0.65, 0, 0.35, 1)": "Medium",
+                "cubic-bezier(0.16, 1, 0.3, 1)": "Snappy",
+                "ease-in": "Ease in",
+                "ease-out": "Ease out",
+                "ease-in-out": "Ease in and out",
+                "linear": "Linear",
+                "cubic-bezier(0.34, 1.56, 0.64, 1)": "Overshoot",
+                "linear(0, .38 8%, .78 17%, 1.02 25%, 1.08 30%, 1.03 40%, .99 50%, 1)": "Soft spring",
+                "var(--bfbe-ease-custom, ease)": "Custom"
+            },
+            "inline": true,
+            "placeholder": "Snappy",
+            "required": [
+                "stepsMotion",
+                "!=",
+                "none"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-fs-ease",
+                    "selector": ""
+                }
+            ]
+        },
+        "stepsEasingCustom": {
+            "tab": "content",
+            "group": "bfbeMotion",
+            "label": "Custom curve",
+            "type": "text",
+            "inline": true,
+            "placeholder": "cubic-bezier(0.2, 0, 0, 1)",
+            "required": [
+                "stepsEasing",
+                "=",
+                "var(--bfbe-ease-custom, ease)"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-ease-custom",
+                    "selector": ""
+                }
+            ]
+        },
+        "builderView": {
+            "tab": "content",
+            "group": "bfbeBuilder",
+            "label": "Show it",
+            "type": "select",
+            "options": {
+                "free": "One step at a time, click any step",
+                "open": "Every step and field open, so you can style them",
+                "live": "Working, as on the site"
+            },
+            "inline": true,
+            "placeholder": "One step at a time, click any step",
+            "description": "Working checks the fields as the site does."
+        }
+    }
+}

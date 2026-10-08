@@ -1,0 +1,1136 @@
+{
+    "name": "bfbe-price-list",
+    "label": "BFB Price List",
+    "pack": "free",
+    "skill": "bfbe-price-list",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/price-list/",
+    "nestable": false,
+    "children": [],
+    "childrenDefault": [],
+    "parent": null,
+    "cost": {
+        "css": "0.64 KB",
+        "js": "none",
+        "dependencies": "none"
+    },
+    "controlGroups": {
+        "_attributes": {
+            "title": "Attributes",
+            "tab": "style",
+            "icon": "html"
+        },
+        "bfbeItems": {
+            "title": "Items",
+            "tab": "content"
+        },
+        "bfbeLayout": {
+            "title": "Item layout",
+            "tab": "content"
+        },
+        "bfbeTitle": {
+            "title": "Title",
+            "tab": "content"
+        },
+        "bfbeDesc": {
+            "title": "Description",
+            "tab": "content"
+        },
+        "bfbePrice": {
+            "title": "Price",
+            "tab": "content"
+        },
+        "bfbeImage": {
+            "title": "Image",
+            "tab": "content"
+        },
+        "bfbeHighlight": {
+            "title": "Highlighted items",
+            "tab": "content"
+        },
+        "bfbeHover": {
+            "title": "Hover effect",
+            "tab": "style"
+        },
+        "bfbeOnScroll": {
+            "title": "When the page scrolls",
+            "tab": "style"
+        }
+    },
+    "controls": {
+        "infoAttributes": {
+            "tab": "style",
+            "group": "_attributes",
+            "content": "<a href=\"https://academy.bricksbuilder.io/article/custom-attributes\" target=\"_blank\" rel=\"noopener\">Custom attributes</a> will be added to the most relevant HTML node.",
+            "type": "info"
+        },
+        "bfbeDocs": {
+            "tab": "content",
+            "type": "info",
+            "content": "<a href=\"https://builtforbricks.com/bfb-elements/docs/price-list/\" target=\"_blank\" rel=\"noopener\">Documentation &#8599;</a>"
+        },
+        "items": {
+            "tab": "content",
+            "group": "bfbeItems",
+            "label": "Items",
+            "titleProperty": "title",
+            "fields": {
+                "title": {
+                    "label": "Title",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true
+                },
+                "description": {
+                    "label": "Description",
+                    "type": "textarea",
+                    "hasDynamicData": "text"
+                },
+                "price": {
+                    "label": "Price",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true
+                },
+                "originalPrice": {
+                    "label": "Original price",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true
+                },
+                "image": {
+                    "label": "Image",
+                    "type": "image"
+                },
+                "link": {
+                    "label": "Link",
+                    "type": "link"
+                },
+                "highlight": {
+                    "label": "Highlight this item",
+                    "type": "checkbox"
+                }
+            },
+            "type": "repeater",
+            "selector": ".bfbe-price-list__item"
+        },
+        "leader": {
+            "tab": "content",
+            "group": "bfbeItems",
+            "label": "Leader line",
+            "type": "select",
+            "options": {
+                "dots": "Dotted",
+                "line": "Solid",
+                "none": "None"
+            },
+            "inline": true,
+            "placeholder": "Dotted"
+        },
+        "leaderColor": {
+            "tab": "content",
+            "group": "bfbeItems",
+            "label": "Line colour",
+            "type": "color",
+            "required": [
+                "leader",
+                "!=",
+                "none"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pl-leader",
+                    "selector": "&:not(.bfbe-price-list--leader-none)"
+                }
+            ]
+        },
+        "leaderWidth": {
+            "tab": "content",
+            "group": "bfbeItems",
+            "label": "Line thickness",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "2px, solid 1px",
+            "required": [
+                "leader",
+                "!=",
+                "none"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pl-leader-width",
+                    "selector": "&:not(.bfbe-price-list--leader-none)"
+                }
+            ]
+        },
+        "leaderOffset": {
+            "tab": "content",
+            "group": "bfbeItems",
+            "label": "Leader offset",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "25%",
+            "required": [
+                "leader",
+                "!=",
+                "none"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pl-leader-y",
+                    "selector": "&:not(.bfbe-price-list--leader-none)"
+                }
+            ]
+        },
+        "itemGap": {
+            "tab": "content",
+            "group": "bfbeLayout",
+            "label": "Space between items",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "16px",
+            "css": [
+                {
+                    "property": "--bfbe-pl-gap",
+                    "selector": ""
+                }
+            ]
+        },
+        "divided": {
+            "tab": "content",
+            "group": "bfbeLayout",
+            "label": "Line between items",
+            "type": "checkbox"
+        },
+        "dividerColor": {
+            "tab": "content",
+            "group": "bfbeLayout",
+            "label": "Divider colour",
+            "type": "color",
+            "required": [
+                "divided",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pl-divider",
+                    "selector": ""
+                }
+            ]
+        },
+        "dividerWidth": {
+            "tab": "content",
+            "group": "bfbeLayout",
+            "label": "Divider thickness",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "1px",
+            "required": [
+                "divided",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pl-divider-width",
+                    "selector": ""
+                }
+            ]
+        },
+        "itemPadding": {
+            "tab": "content",
+            "group": "bfbeLayout",
+            "label": "Item padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-price-list__item"
+                }
+            ]
+        },
+        "itemBackground": {
+            "tab": "content",
+            "group": "bfbeLayout",
+            "label": "Item background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": ".bfbe-price-list__item"
+                }
+            ]
+        },
+        "itemBorder": {
+            "tab": "content",
+            "group": "bfbeLayout",
+            "label": "Item border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-price-list__item"
+                }
+            ]
+        },
+        "titleTypography": {
+            "tab": "content",
+            "group": "bfbeTitle",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-price-list__title"
+                }
+            ]
+        },
+        "titleHoverColor": {
+            "tab": "content",
+            "group": "bfbeTitle",
+            "label": "Link hover colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": "a.bfbe-price-list__title:hover"
+                },
+                {
+                    "property": "color",
+                    "selector": "a.bfbe-price-list__title:focus-visible"
+                }
+            ]
+        },
+        "descTypography": {
+            "tab": "content",
+            "group": "bfbeDesc",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-price-list__desc"
+                }
+            ]
+        },
+        "descGap": {
+            "tab": "content",
+            "group": "bfbeDesc",
+            "label": "Space above",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": ".25em",
+            "css": [
+                {
+                    "property": "margin-block-start",
+                    "selector": ".bfbe-price-list__desc"
+                }
+            ]
+        },
+        "priceTypography": {
+            "tab": "content",
+            "group": "bfbePrice",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-price-list__price"
+                }
+            ]
+        },
+        "originalTypography": {
+            "tab": "content",
+            "group": "bfbePrice",
+            "label": "Original price typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-price-list__original"
+                }
+            ]
+        },
+        "priceBackground": {
+            "tab": "content",
+            "group": "bfbePrice",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": ".bfbe-price-list__amount"
+                }
+            ]
+        },
+        "pricePadding": {
+            "tab": "content",
+            "group": "bfbePrice",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-price-list__amount"
+                }
+            ]
+        },
+        "priceBorder": {
+            "tab": "content",
+            "group": "bfbePrice",
+            "label": "Price border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-price-list__amount"
+                }
+            ]
+        },
+        "imageSize": {
+            "tab": "content",
+            "group": "bfbeImage",
+            "label": "Size",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "72px",
+            "css": [
+                {
+                    "property": "--bfbe-pl-img",
+                    "selector": ""
+                }
+            ]
+        },
+        "imageBorder": {
+            "tab": "content",
+            "group": "bfbeImage",
+            "label": "Image border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-price-list__img"
+                }
+            ]
+        },
+        "imageGap": {
+            "tab": "content",
+            "group": "bfbeImage",
+            "label": "Gap to text",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "16px",
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": ".bfbe-price-list__item"
+                }
+            ]
+        },
+        "highlightBackground": {
+            "tab": "content",
+            "group": "bfbeHighlight",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-price-list__item--highlight"
+                }
+            ]
+        },
+        "highlightBorder": {
+            "tab": "content",
+            "group": "bfbeHighlight",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-price-list__item--highlight"
+                }
+            ]
+        },
+        "highlightPadding": {
+            "tab": "content",
+            "group": "bfbeHighlight",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-price-list__item--highlight"
+                }
+            ]
+        },
+        "highlightShadow": {
+            "tab": "content",
+            "group": "bfbeHighlight",
+            "label": "Shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": ".bfbe-price-list__item--highlight"
+                }
+            ]
+        },
+        "highlightTitleTypography": {
+            "tab": "content",
+            "group": "bfbeHighlight",
+            "label": "Title typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-price-list__item--highlight .bfbe-price-list__title"
+                }
+            ]
+        },
+        "highlightDescTypography": {
+            "tab": "content",
+            "group": "bfbeHighlight",
+            "label": "Description typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-price-list__item--highlight .bfbe-price-list__desc"
+                }
+            ]
+        },
+        "highlightPriceTypography": {
+            "tab": "content",
+            "group": "bfbeHighlight",
+            "label": "Price typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-price-list__item--highlight .bfbe-price-list__price"
+                }
+            ]
+        },
+        "highlightOriginalColor": {
+            "tab": "content",
+            "group": "bfbeHighlight",
+            "label": "Original price colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".bfbe-price-list__item--highlight .bfbe-price-list__original"
+                }
+            ]
+        },
+        "highlightLeaderColor": {
+            "tab": "content",
+            "group": "bfbeHighlight",
+            "label": "Line colour",
+            "type": "color",
+            "required": [
+                "leader",
+                "!=",
+                "none"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pl-leader",
+                    "selector": "&:not(.bfbe-price-list--leader-none) .bfbe-price-list__item--highlight"
+                }
+            ]
+        },
+        "highlightImageSize": {
+            "tab": "content",
+            "group": "bfbeHighlight",
+            "label": "Image size",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "As the others",
+            "css": [
+                {
+                    "property": "--bfbe-pl-img",
+                    "selector": ".bfbe-price-list__item--highlight"
+                }
+            ]
+        },
+        "highlightImageBorder": {
+            "tab": "content",
+            "group": "bfbeHighlight",
+            "label": "Image border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-price-list__item--highlight .bfbe-price-list__img"
+                }
+            ]
+        },
+        "hasLoop": {
+            "tab": "content",
+            "label": "Query loop",
+            "type": "checkbox"
+        },
+        "query": {
+            "tab": "content",
+            "label": "Query",
+            "type": "query",
+            "popup": true,
+            "inline": true,
+            "required": [
+                "hasLoop",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverEffect": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Effect",
+            "type": "select",
+            "options": {
+                "lift": "Lift",
+                "zoom": "Zoom the picture",
+                "shine": "Shine",
+                "border": "Gradient border",
+                "tilt": "Tilt",
+                "follow": "Follow the pointer",
+                "fade": "Fade in",
+                "slide": "Slide in",
+                "grow": "Grow"
+            },
+            "inline": true,
+            "placeholder": "None"
+        },
+        "bfbeHoverOn": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Responds to",
+            "type": "select",
+            "options": {
+                "parent": "A hovered parent"
+            },
+            "inline": true,
+            "placeholder": "This element",
+            "description": "The parent needs Children respond to hover.",
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverFrom": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Comes from",
+            "type": "select",
+            "options": {
+                "up": "Above",
+                "left": "The left",
+                "right": "The right"
+            },
+            "inline": true,
+            "placeholder": "Below",
+            "required": [
+                "bfbeHoverEffect",
+                "=",
+                "slide"
+            ]
+        },
+        "bfbeHoverStrength": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Strength",
+            "type": "number",
+            "min": 0.1,
+            "max": 3,
+            "step": 0.1,
+            "inline": true,
+            "placeholder": "1",
+            "breakpoints": true,
+            "css": [
+                {
+                    "property": "--bfbe-hv-k",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverSpeed": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Speed",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "300",
+            "description": "Milliseconds.",
+            "css": [
+                {
+                    "property": "--bfbe-hv-t",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverDelay": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Milliseconds, so parts arrive in sequence.",
+            "css": [
+                {
+                    "property": "--bfbe-hv-d",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "bfbeHoverEffect",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeHoverEffect",
+                    "!=",
+                    [
+                        "tilt",
+                        "follow"
+                    ]
+                ]
+            ]
+        },
+        "bfbeHoverColor": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Colour",
+            "type": "color",
+            "inline": true,
+            "css": [
+                {
+                    "property": "--bfbe-hv-c",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "=",
+                [
+                    "shine",
+                    "border"
+                ]
+            ]
+        },
+        "bfbeHoverOff": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Off below",
+            "type": "select",
+            "options": {
+                "480": "480 px",
+                "640": "640 px",
+                "768": "768 px",
+                "992": "992 px"
+            },
+            "inline": true,
+            "placeholder": "Never",
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverScope": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Children respond to hover",
+            "type": "checkbox",
+            "description": "Parts inside set to A hovered parent move."
+        },
+        "bfbeHsWhen": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "When scrolled",
+            "type": "select",
+            "options": {
+                "hide": "Hides",
+                "fade": "Fades out, keeps its space",
+                "show": "Appears only then"
+            },
+            "inline": true,
+            "placeholder": "Stays as it is"
+        },
+        "bfbeHsCollapse": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Collapses",
+            "type": "select",
+            "options": {
+                "across": "Sideways"
+            },
+            "inline": true,
+            "placeholder": "Downward",
+            "required": [
+                "bfbeHsWhen",
+                "=",
+                [
+                    "hide",
+                    "show"
+                ]
+            ]
+        },
+        "bfbeHsOver": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Over the first section",
+            "type": "select",
+            "options": {
+                "hide": "Hides",
+                "show": "Appears only then"
+            },
+            "inline": true,
+            "placeholder": "Stays as it is",
+            "description": "Only with the header over the first section."
+        },
+        "bfbeHsStyleSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Scrolled: styling"
+        },
+        "bfbeHsPadding": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsMargin": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Margin",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "margin",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsWidth": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "rerender": true,
+            "css": [
+                {
+                    "property": "width",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ]
+        },
+        "bfbeHsHeight": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Height",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "rerender": true,
+            "css": [
+                {
+                    "property": "height",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ]
+        },
+        "bfbeHsBackground": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsBlur": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Blur behind",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "0",
+            "rerender": true,
+            "css": [
+                {
+                    "property": "--bfbe-hs-blur",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsBorder": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsShadow": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Box shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsTypography": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOpacity": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Opacity",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "opacity",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsScale": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Scale",
+            "type": "number",
+            "min": 0.1,
+            "max": 3,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "scale",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsGap": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Over the first section: styling"
+        },
+        "bfbeHsOverBackground": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverTypography": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverBorder": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverShadow": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Box shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverOpacity": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Opacity",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "opacity",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsMotionSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Motion"
+        },
+        "bfbeHsElDuration": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Duration",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "Follows the header",
+            "description": "Milliseconds.",
+            "css": [
+                {
+                    "property": "--bfbe-hs-dur",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsElEasing": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Easing",
+            "type": "select",
+            "options": {
+                "cubic-bezier(0.16, 1, 0.3, 1)": "Snappy"
+            },
+            "inline": true,
+            "placeholder": "Follows the header",
+            "css": [
+                {
+                    "property": "--bfbe-hs-ease",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsDelay": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Milliseconds, scrolling down only, so parts arrive in sequence.",
+            "css": [
+                {
+                    "property": "--bfbe-hs-delay",
+                    "selector": ""
+                }
+            ]
+        }
+    }
+}

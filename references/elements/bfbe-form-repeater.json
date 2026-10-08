@@ -1,0 +1,1244 @@
+{
+    "name": "bfbe-form-repeater",
+    "label": "BFB Repeater",
+    "pack": "pro",
+    "skill": "bfbe-form",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/form/repeater/",
+    "nestable": true,
+    "children": [
+        "bfbe-form-text"
+    ],
+    "childrenDefault": [
+        {
+            "name": "bfbe-form-text",
+            "label": "Name",
+            "settings": {
+                "label": "Name",
+                "key": "name",
+                "type": "text",
+                "required": true
+            }
+        },
+        {
+            "name": "bfbe-form-text",
+            "label": "Email",
+            "settings": {
+                "label": "Email",
+                "key": "email",
+                "type": "email"
+            }
+        }
+    ],
+    "parent": "bfbe-form",
+    "cost": {
+        "css": "0.40 KB",
+        "js": "1.05 KB",
+        "dependencies": "none"
+    },
+    "controlGroups": {
+        "_attributes": {
+            "title": "Attributes",
+            "tab": "style",
+            "icon": "html"
+        },
+        "bfbeField": {
+            "title": "Rows",
+            "tab": "content"
+        },
+        "bfbeRowUi": {
+            "title": "Row look",
+            "tab": "content"
+        },
+        "bfbeRepButtons": {
+            "title": "Buttons",
+            "tab": "content"
+        },
+        "bfbeRule": {
+            "title": "Shown when",
+            "tab": "content"
+        },
+        "bfbeText": {
+            "title": "Label and note",
+            "tab": "content"
+        },
+        "bfbeHover": {
+            "title": "Hover effect",
+            "tab": "style"
+        },
+        "bfbeOnScroll": {
+            "title": "When the page scrolls",
+            "tab": "style"
+        }
+    },
+    "controls": {
+        "infoAttributes": {
+            "tab": "style",
+            "group": "_attributes",
+            "content": "<a href=\"https://academy.bricksbuilder.io/article/custom-attributes\" target=\"_blank\" rel=\"noopener\">Custom attributes</a> will be added to the most relevant HTML node.",
+            "type": "info"
+        },
+        "bfbeDocs": {
+            "tab": "content",
+            "type": "info",
+            "content": "<a href=\"https://builtforbricks.com/bfb-elements/docs/form/repeater/\" target=\"_blank\" rel=\"noopener\">Documentation &#8599;</a>"
+        },
+        "label": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Label",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true
+        },
+        "key": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Key",
+            "type": "text",
+            "inline": true,
+            "placeholder": "From the label",
+            "description": "Its name in emails and entries."
+        },
+        "rowTitle": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Row title",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Row %d",
+            "description": "%d is the row number."
+        },
+        "note": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Note under it",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true
+        },
+        "hideLabel": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Hide the label",
+            "type": "checkbox",
+            "description": "It stays for assistive technology."
+        },
+        "sepRowsCount": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "How many",
+            "type": "separator"
+        },
+        "rowsLeast": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "At least",
+            "type": "number",
+            "min": 0,
+            "max": 50,
+            "inline": true,
+            "placeholder": "1"
+        },
+        "rowsMost": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "At most",
+            "type": "number",
+            "min": 1,
+            "max": 50,
+            "inline": true,
+            "placeholder": "10"
+        },
+        "rowsStart": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Rows at first",
+            "type": "number",
+            "min": 0,
+            "max": 50,
+            "inline": true,
+            "placeholder": "At least"
+        },
+        "sepRowsSaved": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Saved rows",
+            "type": "separator"
+        },
+        "rowsFrom": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Start from",
+            "type": "select",
+            "options": {
+                "meta": "A plain list",
+                "acf": "An ACF repeater",
+                "jetengine": "A JetEngine repeater"
+            },
+            "inline": true,
+            "placeholder": "Nothing saved"
+        },
+        "rowsFromName": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Its field name",
+            "type": "text",
+            "inline": true,
+            "placeholder": "guests",
+            "required": [
+                "rowsFrom",
+                "!=",
+                ""
+            ]
+        },
+        "rowsOf": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Of",
+            "type": "select",
+            "options": {
+                "post": "The page it is on",
+                "user": "The logged-in visitor"
+            },
+            "inline": true,
+            "placeholder": "The page it is on",
+            "required": [
+                "rowsFrom",
+                "!=",
+                ""
+            ]
+        },
+        "rowGap": {
+            "tab": "content",
+            "group": "bfbeRowUi",
+            "label": "Between rows",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "16px",
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": ".bfbe-pc__rep-rows"
+                }
+            ]
+        },
+        "rowPadding": {
+            "tab": "content",
+            "group": "bfbeRowUi",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-pc__rep-row"
+                }
+            ]
+        },
+        "rowBorder": {
+            "tab": "content",
+            "group": "bfbeRowUi",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__rep-row"
+                }
+            ]
+        },
+        "rowBackground": {
+            "tab": "content",
+            "group": "bfbeRowUi",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-pc__rep-row"
+                }
+            ]
+        },
+        "titleTypography": {
+            "tab": "content",
+            "group": "bfbeRowUi",
+            "label": "Row title typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__rep-title"
+                }
+            ]
+        },
+        "fieldsGap": {
+            "tab": "content",
+            "group": "bfbeRowUi",
+            "label": "Between fields",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "16px",
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": ".bfbe-pc__rep-fields"
+                }
+            ]
+        },
+        "sepRepWords": {
+            "tab": "content",
+            "group": "bfbeRepButtons",
+            "label": "Words",
+            "type": "separator"
+        },
+        "addText": {
+            "tab": "content",
+            "group": "bfbeRepButtons",
+            "label": "Add another words",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Add another"
+        },
+        "removeText": {
+            "tab": "content",
+            "group": "bfbeRepButtons",
+            "label": "Remove words",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Remove"
+        },
+        "sepRepAdd": {
+            "tab": "content",
+            "group": "bfbeRepButtons",
+            "label": "Add another",
+            "type": "separator"
+        },
+        "addAlign": {
+            "tab": "content",
+            "group": "bfbeRepButtons",
+            "label": "Alignment",
+            "type": "align-items",
+            "inline": true,
+            "css": [
+                {
+                    "property": "align-self",
+                    "selector": ".bfbe-pc__rep-add"
+                }
+            ]
+        },
+        "addSpace": {
+            "tab": "content",
+            "group": "bfbeRepButtons",
+            "label": "Space above",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "8px",
+            "css": [
+                {
+                    "property": "margin-top",
+                    "selector": ".bfbe-pc__rep-add"
+                }
+            ]
+        },
+        "addTypography": {
+            "tab": "content",
+            "group": "bfbeRepButtons",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__rep-add"
+                }
+            ]
+        },
+        "addBackground": {
+            "tab": "content",
+            "group": "bfbeRepButtons",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-pc__rep-add"
+                }
+            ]
+        },
+        "addBorder": {
+            "tab": "content",
+            "group": "bfbeRepButtons",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__rep-add"
+                }
+            ]
+        },
+        "addPadding": {
+            "tab": "content",
+            "group": "bfbeRepButtons",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-pc__rep-add"
+                }
+            ]
+        },
+        "addShadow": {
+            "tab": "content",
+            "group": "bfbeRepButtons",
+            "label": "Shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": ".bfbe-pc__rep-add"
+                }
+            ]
+        },
+        "addHoverColor": {
+            "tab": "content",
+            "group": "bfbeRepButtons",
+            "label": "Hover colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".bfbe-pc__rep-add:hover"
+                },
+                {
+                    "property": "color",
+                    "selector": ".bfbe-pc__rep-add:focus-visible"
+                }
+            ]
+        },
+        "addHoverBackground": {
+            "tab": "content",
+            "group": "bfbeRepButtons",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-pc__rep-add:hover"
+                },
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-pc__rep-add:focus-visible"
+                }
+            ]
+        },
+        "addHoverLine": {
+            "tab": "content",
+            "group": "bfbeRepButtons",
+            "label": "Hover border colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "border-color",
+                    "selector": ".bfbe-pc__rep-add:hover"
+                },
+                {
+                    "property": "border-color",
+                    "selector": ".bfbe-pc__rep-add:focus-visible"
+                }
+            ]
+        },
+        "sepRepRemove": {
+            "tab": "content",
+            "group": "bfbeRepButtons",
+            "label": "Remove",
+            "type": "separator"
+        },
+        "removeAlign": {
+            "tab": "content",
+            "group": "bfbeRepButtons",
+            "label": "Alignment",
+            "type": "align-items",
+            "inline": true,
+            "css": [
+                {
+                    "property": "align-self",
+                    "selector": ".bfbe-pc__rep-remove"
+                }
+            ]
+        },
+        "removeTypography": {
+            "tab": "content",
+            "group": "bfbeRepButtons",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__rep-remove"
+                }
+            ]
+        },
+        "removeBackground": {
+            "tab": "content",
+            "group": "bfbeRepButtons",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-pc__rep-remove"
+                }
+            ]
+        },
+        "removeBorder": {
+            "tab": "content",
+            "group": "bfbeRepButtons",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__rep-remove"
+                }
+            ]
+        },
+        "removePadding": {
+            "tab": "content",
+            "group": "bfbeRepButtons",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-pc__rep-remove"
+                }
+            ]
+        },
+        "removeShadow": {
+            "tab": "content",
+            "group": "bfbeRepButtons",
+            "label": "Shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": ".bfbe-pc__rep-remove"
+                }
+            ]
+        },
+        "removeHoverColor": {
+            "tab": "content",
+            "group": "bfbeRepButtons",
+            "label": "Hover colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".bfbe-pc__rep-remove:hover"
+                },
+                {
+                    "property": "color",
+                    "selector": ".bfbe-pc__rep-remove:focus-visible"
+                }
+            ]
+        },
+        "removeHoverBackground": {
+            "tab": "content",
+            "group": "bfbeRepButtons",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-pc__rep-remove:hover"
+                },
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-pc__rep-remove:focus-visible"
+                }
+            ]
+        },
+        "removeHoverLine": {
+            "tab": "content",
+            "group": "bfbeRepButtons",
+            "label": "Hover border colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "border-color",
+                    "selector": ".bfbe-pc__rep-remove:hover"
+                },
+                {
+                    "property": "border-color",
+                    "selector": ".bfbe-pc__rep-remove:focus-visible"
+                }
+            ]
+        },
+        "ruleAction": {
+            "tab": "content",
+            "group": "bfbeRule",
+            "label": "When the conditions match",
+            "type": "select",
+            "options": {
+                "show": "Show it",
+                "hide": "Hide it"
+            },
+            "inline": true,
+            "placeholder": "No rule"
+        },
+        "ruleMatch": {
+            "tab": "content",
+            "group": "bfbeRule",
+            "label": "They match when",
+            "type": "select",
+            "options": {
+                "all": "All of them hold",
+                "any": "Any one holds"
+            },
+            "inline": true,
+            "placeholder": "All of them hold",
+            "required": [
+                "ruleAction",
+                "!=",
+                ""
+            ]
+        },
+        "rules": {
+            "tab": "content",
+            "group": "bfbeRule",
+            "label": "Conditions",
+            "type": "repeater",
+            "titleProperty": "field",
+            "selector": ".bfbe-pc__field",
+            "required": [
+                "ruleAction",
+                "!=",
+                ""
+            ],
+            "fields": {
+                "field": {
+                    "label": "Field key",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "plan, total, step, url:ref"
+                },
+                "op": {
+                    "label": "Test",
+                    "type": "select",
+                    "inline": true,
+                    "options": {
+                        "is": "Is",
+                        "not": "Is not",
+                        "in": "Is one of",
+                        "contains": "Contains",
+                        "starts": "Starts with",
+                        "ends": "Ends with",
+                        "gt": "Is more than",
+                        "gte": "Is at least",
+                        "lt": "Is less than",
+                        "lte": "Is at most",
+                        "between": "Is between",
+                        "filled": "Has any value",
+                        "empty": "Is empty",
+                        "ticked": "Is ticked",
+                        "unticked": "Is not ticked",
+                        "matches": "Matches the pattern",
+                        "before": "Is a date before",
+                        "after": "Is a date after",
+                        "same": "Equals the field"
+                    },
+                    "placeholder": "Is"
+                },
+                "value": {
+                    "label": "Value",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Pro; or 10, 20 for between",
+                    "required": [
+                        "op",
+                        "!=",
+                        [
+                            "filled",
+                            "empty",
+                            "ticked",
+                            "unticked"
+                        ]
+                    ]
+                }
+            }
+        },
+        "labelTypography": {
+            "group": "bfbeText",
+            "label": "Label typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__label.bfbe-pc__label"
+                }
+            ],
+            "tab": "content"
+        },
+        "noteTypography": {
+            "group": "bfbeText",
+            "label": "Note typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__note.bfbe-pc__note"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "note",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverEffect": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Effect",
+            "type": "select",
+            "options": {
+                "lift": "Lift",
+                "zoom": "Zoom the picture",
+                "shine": "Shine",
+                "border": "Gradient border",
+                "tilt": "Tilt",
+                "follow": "Follow the pointer",
+                "fade": "Fade in",
+                "slide": "Slide in",
+                "grow": "Grow"
+            },
+            "inline": true,
+            "placeholder": "None"
+        },
+        "bfbeHoverOn": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Responds to",
+            "type": "select",
+            "options": {
+                "parent": "A hovered parent"
+            },
+            "inline": true,
+            "placeholder": "This element",
+            "description": "The parent needs Children respond to hover.",
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverFrom": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Comes from",
+            "type": "select",
+            "options": {
+                "up": "Above",
+                "left": "The left",
+                "right": "The right"
+            },
+            "inline": true,
+            "placeholder": "Below",
+            "required": [
+                "bfbeHoverEffect",
+                "=",
+                "slide"
+            ]
+        },
+        "bfbeHoverStrength": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Strength",
+            "type": "number",
+            "min": 0.1,
+            "max": 3,
+            "step": 0.1,
+            "inline": true,
+            "placeholder": "1",
+            "breakpoints": true,
+            "css": [
+                {
+                    "property": "--bfbe-hv-k",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverSpeed": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Speed",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "300",
+            "description": "Milliseconds.",
+            "css": [
+                {
+                    "property": "--bfbe-hv-t",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverDelay": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Milliseconds, so parts arrive in sequence.",
+            "css": [
+                {
+                    "property": "--bfbe-hv-d",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "bfbeHoverEffect",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeHoverEffect",
+                    "!=",
+                    [
+                        "tilt",
+                        "follow"
+                    ]
+                ]
+            ]
+        },
+        "bfbeHoverColor": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Colour",
+            "type": "color",
+            "inline": true,
+            "css": [
+                {
+                    "property": "--bfbe-hv-c",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "=",
+                [
+                    "shine",
+                    "border"
+                ]
+            ]
+        },
+        "bfbeHoverOff": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Off below",
+            "type": "select",
+            "options": {
+                "480": "480 px",
+                "640": "640 px",
+                "768": "768 px",
+                "992": "992 px"
+            },
+            "inline": true,
+            "placeholder": "Never",
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverScope": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Children respond to hover",
+            "type": "checkbox",
+            "description": "Parts inside set to A hovered parent move."
+        },
+        "bfbeHsWhen": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "When scrolled",
+            "type": "select",
+            "options": {
+                "hide": "Hides",
+                "fade": "Fades out, keeps its space",
+                "show": "Appears only then"
+            },
+            "inline": true,
+            "placeholder": "Stays as it is"
+        },
+        "bfbeHsCollapse": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Collapses",
+            "type": "select",
+            "options": {
+                "across": "Sideways"
+            },
+            "inline": true,
+            "placeholder": "Downward",
+            "required": [
+                "bfbeHsWhen",
+                "=",
+                [
+                    "hide",
+                    "show"
+                ]
+            ]
+        },
+        "bfbeHsOver": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Over the first section",
+            "type": "select",
+            "options": {
+                "hide": "Hides",
+                "show": "Appears only then"
+            },
+            "inline": true,
+            "placeholder": "Stays as it is",
+            "description": "Only with the header over the first section."
+        },
+        "bfbeHsStyleSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Scrolled: styling"
+        },
+        "bfbeHsPadding": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsMargin": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Margin",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "margin",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsWidth": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "rerender": true,
+            "css": [
+                {
+                    "property": "width",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ]
+        },
+        "bfbeHsHeight": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Height",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "rerender": true,
+            "css": [
+                {
+                    "property": "height",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ]
+        },
+        "bfbeHsBackground": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsBlur": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Blur behind",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "0",
+            "rerender": true,
+            "css": [
+                {
+                    "property": "--bfbe-hs-blur",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsBorder": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsShadow": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Box shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsTypography": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOpacity": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Opacity",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "opacity",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsScale": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Scale",
+            "type": "number",
+            "min": 0.1,
+            "max": 3,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "scale",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsGap": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Over the first section: styling"
+        },
+        "bfbeHsOverBackground": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverTypography": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverBorder": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverShadow": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Box shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverOpacity": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Opacity",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "opacity",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsMotionSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Motion"
+        },
+        "bfbeHsElDuration": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Duration",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "Follows the header",
+            "description": "Milliseconds.",
+            "css": [
+                {
+                    "property": "--bfbe-hs-dur",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsElEasing": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Easing",
+            "type": "select",
+            "options": {
+                "cubic-bezier(0.16, 1, 0.3, 1)": "Snappy"
+            },
+            "inline": true,
+            "placeholder": "Follows the header",
+            "css": [
+                {
+                    "property": "--bfbe-hs-ease",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsDelay": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Milliseconds, scrolling down only, so parts arrive in sequence.",
+            "css": [
+                {
+                    "property": "--bfbe-hs-delay",
+                    "selector": ""
+                }
+            ]
+        }
+    }
+}

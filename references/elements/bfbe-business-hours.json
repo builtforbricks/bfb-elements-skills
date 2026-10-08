@@ -1,0 +1,1633 @@
+{
+    "name": "bfbe-business-hours",
+    "label": "BFB Business Hours",
+    "pack": "free",
+    "skill": "bfbe-business-hours",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/business-hours/",
+    "nestable": false,
+    "children": [],
+    "childrenDefault": [],
+    "parent": null,
+    "cost": {
+        "css": "0.88 KB",
+        "js": "none",
+        "dependencies": "none"
+    },
+    "controlGroups": {
+        "_attributes": {
+            "title": "Attributes",
+            "tab": "style",
+            "icon": "html"
+        },
+        "bfbeDays": {
+            "title": "Days",
+            "tab": "content"
+        },
+        "bfbeLayout": {
+            "title": "Layout",
+            "tab": "content"
+        },
+        "bfbeStatus": {
+            "title": "Status",
+            "tab": "content",
+            "required": [
+                "show",
+                "=",
+                [
+                    "status",
+                    "both"
+                ]
+            ]
+        },
+        "bfbeSpecial": {
+            "title": "Special dates",
+            "tab": "content"
+        },
+        "bfbeRows": {
+            "title": "Rows",
+            "tab": "content",
+            "required": [
+                "show",
+                "!=",
+                "status"
+            ]
+        },
+        "bfbeDay": {
+            "title": "Day name",
+            "tab": "content",
+            "required": [
+                "show",
+                "!=",
+                "status"
+            ]
+        },
+        "bfbeTime": {
+            "title": "Hours",
+            "tab": "content",
+            "required": [
+                "show",
+                "!=",
+                "status"
+            ]
+        },
+        "bfbeToday": {
+            "title": "Today",
+            "tab": "content",
+            "required": [
+                [
+                    "highlightToday",
+                    "!=",
+                    ""
+                ],
+                [
+                    "show",
+                    "!=",
+                    "status"
+                ]
+            ]
+        },
+        "bfbeHover": {
+            "title": "Hover effect",
+            "tab": "style"
+        },
+        "bfbeOnScroll": {
+            "title": "When the page scrolls",
+            "tab": "style"
+        }
+    },
+    "controls": {
+        "infoAttributes": {
+            "tab": "style",
+            "group": "_attributes",
+            "content": "<a href=\"https://academy.bricksbuilder.io/article/custom-attributes\" target=\"_blank\" rel=\"noopener\">Custom attributes</a> will be added to the most relevant HTML node.",
+            "type": "info"
+        },
+        "bfbeDocs": {
+            "tab": "content",
+            "type": "info",
+            "content": "<a href=\"https://builtforbricks.com/bfb-elements/docs/business-hours/\" target=\"_blank\" rel=\"noopener\">Documentation &#8599;</a>"
+        },
+        "days": {
+            "tab": "content",
+            "group": "bfbeDays",
+            "label": "Days",
+            "titleProperty": "day",
+            "fields": {
+                "day": {
+                    "label": "Day",
+                    "type": "select",
+                    "options": {
+                        "mon": "Monday",
+                        "tue": "Tuesday",
+                        "wed": "Wednesday",
+                        "thu": "Thursday",
+                        "fri": "Friday",
+                        "sat": "Saturday",
+                        "sun": "Sunday"
+                    },
+                    "inline": true,
+                    "placeholder": "Monday"
+                },
+                "label": {
+                    "label": "Label",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true
+                },
+                "closed": {
+                    "label": "Closed",
+                    "type": "checkbox"
+                },
+                "closedText": {
+                    "label": "Closed text",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true,
+                    "placeholder": "Closed",
+                    "required": [
+                        "closed",
+                        "!=",
+                        ""
+                    ]
+                },
+                "open": {
+                    "label": "Opens",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true,
+                    "placeholder": "09:00",
+                    "required": [
+                        "closed",
+                        "=",
+                        ""
+                    ]
+                },
+                "close": {
+                    "label": "Closes",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true,
+                    "placeholder": "17:00",
+                    "required": [
+                        "closed",
+                        "=",
+                        ""
+                    ]
+                },
+                "open2": {
+                    "label": "Opens again",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true,
+                    "placeholder": "None",
+                    "required": [
+                        "closed",
+                        "=",
+                        ""
+                    ]
+                },
+                "close2": {
+                    "label": "Closes again",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true,
+                    "placeholder": "None",
+                    "required": [
+                        "closed",
+                        "=",
+                        ""
+                    ]
+                }
+            },
+            "type": "repeater",
+            "selector": ".bfbe-hours__row"
+        },
+        "closedText": {
+            "tab": "content",
+            "group": "bfbeDays",
+            "label": "Closed text",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "Closed",
+            "required": [
+                "show",
+                "!=",
+                "status"
+            ]
+        },
+        "separator": {
+            "tab": "content",
+            "group": "bfbeDays",
+            "label": "Between the times",
+            "type": "text",
+            "inline": true,
+            "placeholder": "-",
+            "required": [
+                "show",
+                "!=",
+                "status"
+            ]
+        },
+        "breakSeparator": {
+            "tab": "content",
+            "group": "bfbeDays",
+            "label": "Between the openings",
+            "type": "text",
+            "inline": true,
+            "placeholder": ",",
+            "required": [
+                "show",
+                "!=",
+                "status"
+            ]
+        },
+        "highlightToday": {
+            "tab": "content",
+            "group": "bfbeDays",
+            "label": "Highlight today",
+            "type": "checkbox",
+            "required": [
+                "show",
+                "!=",
+                "status"
+            ]
+        },
+        "show": {
+            "tab": "content",
+            "group": "bfbeLayout",
+            "label": "Show",
+            "type": "select",
+            "options": {
+                "week": "The week",
+                "status": "The status",
+                "both": "The status and the week"
+            },
+            "inline": true,
+            "placeholder": "The week"
+        },
+        "statusPlace": {
+            "tab": "content",
+            "group": "bfbeLayout",
+            "label": "The status sits",
+            "type": "select",
+            "options": {
+                "above": "Above the week",
+                "below": "Below the week"
+            },
+            "inline": true,
+            "placeholder": "Above the week",
+            "required": [
+                "show",
+                "=",
+                "both"
+            ]
+        },
+        "layout": {
+            "tab": "content",
+            "group": "bfbeLayout",
+            "label": "Layout",
+            "type": "select",
+            "options": {
+                "side": "Side by side",
+                "stacked": "Day above the hours",
+                "across": "The week across"
+            },
+            "inline": true,
+            "placeholder": "Side by side",
+            "required": [
+                "show",
+                "!=",
+                "status"
+            ]
+        },
+        "align": {
+            "tab": "content",
+            "group": "bfbeLayout",
+            "label": "Align",
+            "type": "select",
+            "options": {
+                "start": "Start",
+                "center": "Centre",
+                "end": "End"
+            },
+            "inline": true,
+            "placeholder": "Start",
+            "required": [
+                [
+                    "layout",
+                    "=",
+                    [
+                        "stacked",
+                        "across"
+                    ]
+                ],
+                [
+                    "show",
+                    "!=",
+                    "status"
+                ]
+            ]
+        },
+        "acrossWidth": {
+            "tab": "content",
+            "group": "bfbeLayout",
+            "label": "Smallest column",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "110px",
+            "required": [
+                [
+                    "layout",
+                    "=",
+                    "across"
+                ],
+                [
+                    "show",
+                    "!=",
+                    "status"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-hours-col",
+                    "selector": ""
+                }
+            ]
+        },
+        "partsGap": {
+            "tab": "content",
+            "group": "bfbeLayout",
+            "label": "Space between the parts",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "16px",
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": ""
+                }
+            ]
+        },
+        "builderPreview": {
+            "tab": "content",
+            "group": "bfbeStatus",
+            "label": "Preview in the builder",
+            "type": "select",
+            "options": {
+                "live": "Live",
+                "open": "Open",
+                "soon": "Closes soon",
+                "closed": "Closed"
+            },
+            "inline": true,
+            "placeholder": "Live"
+        },
+        "soonMinutes": {
+            "tab": "content",
+            "group": "bfbeStatus",
+            "label": "Closes soon within",
+            "description": "Minutes before closing. 0 never says it.",
+            "type": "number",
+            "min": 0,
+            "max": 240,
+            "inline": true,
+            "placeholder": "30"
+        },
+        "statusOnly": {
+            "tab": "content",
+            "group": "bfbeStatus",
+            "label": "Just the state",
+            "type": "checkbox"
+        },
+        "sepStatusWords": {
+            "tab": "content",
+            "group": "bfbeStatus",
+            "label": "Words",
+            "type": "separator"
+        },
+        "openText": {
+            "tab": "content",
+            "group": "bfbeStatus",
+            "label": "Open",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "Open now"
+        },
+        "soonText": {
+            "tab": "content",
+            "group": "bfbeStatus",
+            "label": "Closing soon",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "Closes soon"
+        },
+        "closedNowText": {
+            "tab": "content",
+            "group": "bfbeStatus",
+            "label": "Closed",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "Closed now"
+        },
+        "untilText": {
+            "tab": "content",
+            "group": "bfbeStatus",
+            "label": "Until it closes",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "until {time}",
+            "required": [
+                "statusOnly",
+                "=",
+                ""
+            ]
+        },
+        "opensAtText": {
+            "tab": "content",
+            "group": "bfbeStatus",
+            "label": "Opens later today",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "opens at {time}",
+            "required": [
+                "statusOnly",
+                "=",
+                ""
+            ]
+        },
+        "opensTomorrowText": {
+            "tab": "content",
+            "group": "bfbeStatus",
+            "label": "Opens tomorrow",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "opens tomorrow at {time}",
+            "required": [
+                "statusOnly",
+                "=",
+                ""
+            ]
+        },
+        "opensOnText": {
+            "tab": "content",
+            "group": "bfbeStatus",
+            "label": "Opens another day",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "opens {day} at {time}",
+            "required": [
+                "statusOnly",
+                "=",
+                ""
+            ]
+        },
+        "statusSep": {
+            "tab": "content",
+            "group": "bfbeStatus",
+            "label": "Between the two",
+            "type": "text",
+            "inline": true,
+            "placeholder": "·",
+            "required": [
+                "statusOnly",
+                "=",
+                ""
+            ]
+        },
+        "sepStatusDot": {
+            "tab": "content",
+            "group": "bfbeStatus",
+            "label": "The dot",
+            "type": "separator"
+        },
+        "dot": {
+            "tab": "content",
+            "group": "bfbeStatus",
+            "label": "Dot",
+            "type": "select",
+            "options": {
+                "none": "None",
+                "still": "Still",
+                "pulse": "Pulsing"
+            },
+            "inline": true,
+            "placeholder": "Still"
+        },
+        "dotOpen": {
+            "tab": "content",
+            "group": "bfbeStatus",
+            "label": "When open",
+            "type": "color",
+            "required": [
+                "dot",
+                "!=",
+                "none"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-hours-dot-open",
+                    "selector": ".bfbe-hours__dot"
+                }
+            ]
+        },
+        "dotSoon": {
+            "tab": "content",
+            "group": "bfbeStatus",
+            "label": "When closing soon",
+            "type": "color",
+            "required": [
+                "dot",
+                "!=",
+                "none"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-hours-dot-soon",
+                    "selector": ".bfbe-hours__dot"
+                }
+            ]
+        },
+        "dotClosed": {
+            "tab": "content",
+            "group": "bfbeStatus",
+            "label": "When closed",
+            "type": "color",
+            "required": [
+                "dot",
+                "!=",
+                "none"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-hours-dot-closed",
+                    "selector": ".bfbe-hours__dot"
+                }
+            ]
+        },
+        "dotSize": {
+            "tab": "content",
+            "group": "bfbeStatus",
+            "label": "Size",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "8px",
+            "required": [
+                "dot",
+                "!=",
+                "none"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-hours-dot",
+                    "selector": ".bfbe-hours__dot"
+                }
+            ]
+        },
+        "sepStatusBox": {
+            "tab": "content",
+            "group": "bfbeStatus",
+            "label": "The box",
+            "type": "separator"
+        },
+        "statusTypography": {
+            "tab": "content",
+            "group": "bfbeStatus",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-hours__status"
+                }
+            ]
+        },
+        "statusBackground": {
+            "tab": "content",
+            "group": "bfbeStatus",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": ".bfbe-hours__status"
+                }
+            ]
+        },
+        "statusPadding": {
+            "tab": "content",
+            "group": "bfbeStatus",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-hours__status"
+                }
+            ]
+        },
+        "statusBorder": {
+            "tab": "content",
+            "group": "bfbeStatus",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-hours__status"
+                }
+            ]
+        },
+        "specials": {
+            "tab": "content",
+            "group": "bfbeSpecial",
+            "label": "Special dates",
+            "titleProperty": "date",
+            "fields": {
+                "date": {
+                    "label": "Date",
+                    "type": "datepicker",
+                    "enableTime": false
+                },
+                "label": {
+                    "label": "Label",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true,
+                    "placeholder": "None"
+                },
+                "closed": {
+                    "label": "Closed",
+                    "type": "checkbox"
+                },
+                "closedText": {
+                    "label": "Closed text",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true,
+                    "placeholder": "Closed",
+                    "required": [
+                        "closed",
+                        "!=",
+                        ""
+                    ]
+                },
+                "open": {
+                    "label": "Opens",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true,
+                    "placeholder": "09:00",
+                    "required": [
+                        "closed",
+                        "=",
+                        ""
+                    ]
+                },
+                "close": {
+                    "label": "Closes",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true,
+                    "placeholder": "17:00",
+                    "required": [
+                        "closed",
+                        "=",
+                        ""
+                    ]
+                },
+                "open2": {
+                    "label": "Opens again",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true,
+                    "placeholder": "None",
+                    "required": [
+                        "closed",
+                        "=",
+                        ""
+                    ]
+                },
+                "close2": {
+                    "label": "Closes again",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true,
+                    "placeholder": "None",
+                    "required": [
+                        "closed",
+                        "=",
+                        ""
+                    ]
+                }
+            },
+            "type": "repeater",
+            "selector": ".bfbe-hours__row--special"
+        },
+        "specialsShow": {
+            "tab": "content",
+            "group": "bfbeSpecial",
+            "label": "Show them",
+            "type": "select",
+            "options": {
+                "none": "Hide them",
+                "7": "The next 7 days",
+                "14": "The next 14 days",
+                "30": "The next 30 days",
+                "all": "Every one to come"
+            },
+            "inline": true,
+            "placeholder": "The next 14 days",
+            "required": [
+                "show",
+                "!=",
+                "status"
+            ]
+        },
+        "specialsTitle": {
+            "tab": "content",
+            "group": "bfbeSpecial",
+            "label": "Title",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "None",
+            "required": [
+                [
+                    "specialsShow",
+                    "!=",
+                    "none"
+                ],
+                [
+                    "show",
+                    "!=",
+                    "status"
+                ]
+            ]
+        },
+        "dateFormat": {
+            "tab": "content",
+            "group": "bfbeSpecial",
+            "label": "Date format",
+            "type": "select",
+            "options": {
+                "short": "Fri 25 Dec",
+                "long": "Friday 25 December",
+                "day": "25 December",
+                "site": "The site&#039;s date format"
+            },
+            "inline": true,
+            "placeholder": "Fri 25 Dec",
+            "required": [
+                [
+                    "specialsShow",
+                    "!=",
+                    "none"
+                ],
+                [
+                    "show",
+                    "!=",
+                    "status"
+                ]
+            ]
+        },
+        "specialsTitleTypography": {
+            "tab": "content",
+            "group": "bfbeSpecial",
+            "label": "Title typography",
+            "type": "typography",
+            "required": [
+                [
+                    "specialsShow",
+                    "!=",
+                    "none"
+                ],
+                [
+                    "specialsTitle",
+                    "!=",
+                    ""
+                ],
+                [
+                    "show",
+                    "!=",
+                    "status"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-hours__specials-title"
+                }
+            ]
+        },
+        "rowPadding": {
+            "tab": "content",
+            "group": "bfbeRows",
+            "label": "Padding",
+            "type": "dimensions",
+            "placeholder": {
+                "top": ".6em",
+                "right": ".75em",
+                "bottom": ".6em",
+                "left": ".75em"
+            },
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-hours__row"
+                }
+            ]
+        },
+        "rowGap": {
+            "tab": "content",
+            "group": "bfbeRows",
+            "label": "Space between rows",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "0",
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": ".bfbe-hours__week"
+                }
+            ]
+        },
+        "divided": {
+            "tab": "content",
+            "group": "bfbeRows",
+            "label": "Line between rows",
+            "type": "checkbox",
+            "required": [
+                "layout",
+                "!=",
+                "across"
+            ]
+        },
+        "dividerColor": {
+            "tab": "content",
+            "group": "bfbeRows",
+            "label": "Divider colour",
+            "type": "color",
+            "required": [
+                [
+                    "divided",
+                    "!=",
+                    ""
+                ],
+                [
+                    "layout",
+                    "!=",
+                    "across"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-hours-divider",
+                    "selector": ""
+                }
+            ]
+        },
+        "dividerWidth": {
+            "tab": "content",
+            "group": "bfbeRows",
+            "label": "Divider thickness",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "1px",
+            "required": [
+                [
+                    "divided",
+                    "!=",
+                    ""
+                ],
+                [
+                    "layout",
+                    "!=",
+                    "across"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-hours-divider-width",
+                    "selector": ""
+                }
+            ]
+        },
+        "dayWidth": {
+            "tab": "content",
+            "group": "bfbeRows",
+            "label": "Day column width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "Auto",
+            "required": [
+                "layout",
+                "!=",
+                [
+                    "stacked",
+                    "across"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "flex-basis",
+                    "selector": "&.bfbe-hours--side .bfbe-hours__day"
+                }
+            ]
+        },
+        "rowBackground": {
+            "tab": "content",
+            "group": "bfbeRows",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": ".bfbe-hours__row"
+                }
+            ]
+        },
+        "rowBorder": {
+            "tab": "content",
+            "group": "bfbeRows",
+            "label": "Row border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-hours__row"
+                }
+            ]
+        },
+        "dayTypography": {
+            "tab": "content",
+            "group": "bfbeDay",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-hours__day"
+                }
+            ]
+        },
+        "timeTypography": {
+            "tab": "content",
+            "group": "bfbeTime",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-hours__time"
+                }
+            ]
+        },
+        "closedTypography": {
+            "tab": "content",
+            "group": "bfbeTime",
+            "label": "Closed typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-hours__time--closed"
+                }
+            ]
+        },
+        "todayTypography": {
+            "tab": "content",
+            "group": "bfbeToday",
+            "label": "Typography",
+            "type": "typography",
+            "required": [
+                "highlightToday",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-hours__row--today"
+                }
+            ]
+        },
+        "todayBackground": {
+            "tab": "content",
+            "group": "bfbeToday",
+            "label": "Background",
+            "type": "background",
+            "required": [
+                "highlightToday",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "background",
+                    "selector": ".bfbe-hours__row--today"
+                }
+            ]
+        },
+        "todayBorder": {
+            "tab": "content",
+            "group": "bfbeToday",
+            "label": "Border",
+            "type": "border",
+            "required": [
+                "highlightToday",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-hours__row--today"
+                }
+            ]
+        },
+        "hasLoop": {
+            "tab": "content",
+            "label": "Query loop",
+            "type": "checkbox"
+        },
+        "query": {
+            "tab": "content",
+            "label": "Query",
+            "type": "query",
+            "popup": true,
+            "inline": true,
+            "required": [
+                "hasLoop",
+                "!=",
+                ""
+            ]
+        },
+        "sepColor": {
+            "tab": "content",
+            "group": "bfbeTime",
+            "label": "Separator colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".bfbe-hours__sep"
+                }
+            ]
+        },
+        "bfbeHoverEffect": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Effect",
+            "type": "select",
+            "options": {
+                "lift": "Lift",
+                "zoom": "Zoom the picture",
+                "shine": "Shine",
+                "border": "Gradient border",
+                "tilt": "Tilt",
+                "follow": "Follow the pointer",
+                "fade": "Fade in",
+                "slide": "Slide in",
+                "grow": "Grow"
+            },
+            "inline": true,
+            "placeholder": "None"
+        },
+        "bfbeHoverOn": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Responds to",
+            "type": "select",
+            "options": {
+                "parent": "A hovered parent"
+            },
+            "inline": true,
+            "placeholder": "This element",
+            "description": "The parent needs Children respond to hover.",
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverFrom": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Comes from",
+            "type": "select",
+            "options": {
+                "up": "Above",
+                "left": "The left",
+                "right": "The right"
+            },
+            "inline": true,
+            "placeholder": "Below",
+            "required": [
+                "bfbeHoverEffect",
+                "=",
+                "slide"
+            ]
+        },
+        "bfbeHoverStrength": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Strength",
+            "type": "number",
+            "min": 0.1,
+            "max": 3,
+            "step": 0.1,
+            "inline": true,
+            "placeholder": "1",
+            "breakpoints": true,
+            "css": [
+                {
+                    "property": "--bfbe-hv-k",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverSpeed": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Speed",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "300",
+            "description": "Milliseconds.",
+            "css": [
+                {
+                    "property": "--bfbe-hv-t",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverDelay": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Milliseconds, so parts arrive in sequence.",
+            "css": [
+                {
+                    "property": "--bfbe-hv-d",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "bfbeHoverEffect",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeHoverEffect",
+                    "!=",
+                    [
+                        "tilt",
+                        "follow"
+                    ]
+                ]
+            ]
+        },
+        "bfbeHoverColor": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Colour",
+            "type": "color",
+            "inline": true,
+            "css": [
+                {
+                    "property": "--bfbe-hv-c",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "=",
+                [
+                    "shine",
+                    "border"
+                ]
+            ]
+        },
+        "bfbeHoverOff": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Off below",
+            "type": "select",
+            "options": {
+                "480": "480 px",
+                "640": "640 px",
+                "768": "768 px",
+                "992": "992 px"
+            },
+            "inline": true,
+            "placeholder": "Never",
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverScope": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Children respond to hover",
+            "type": "checkbox",
+            "description": "Parts inside set to A hovered parent move."
+        },
+        "bfbeHsWhen": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "When scrolled",
+            "type": "select",
+            "options": {
+                "hide": "Hides",
+                "fade": "Fades out, keeps its space",
+                "show": "Appears only then"
+            },
+            "inline": true,
+            "placeholder": "Stays as it is"
+        },
+        "bfbeHsCollapse": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Collapses",
+            "type": "select",
+            "options": {
+                "across": "Sideways"
+            },
+            "inline": true,
+            "placeholder": "Downward",
+            "required": [
+                "bfbeHsWhen",
+                "=",
+                [
+                    "hide",
+                    "show"
+                ]
+            ]
+        },
+        "bfbeHsOver": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Over the first section",
+            "type": "select",
+            "options": {
+                "hide": "Hides",
+                "show": "Appears only then"
+            },
+            "inline": true,
+            "placeholder": "Stays as it is",
+            "description": "Only with the header over the first section."
+        },
+        "bfbeHsStyleSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Scrolled: styling"
+        },
+        "bfbeHsPadding": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsMargin": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Margin",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "margin",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsWidth": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "rerender": true,
+            "css": [
+                {
+                    "property": "width",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ]
+        },
+        "bfbeHsHeight": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Height",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "rerender": true,
+            "css": [
+                {
+                    "property": "height",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ]
+        },
+        "bfbeHsBackground": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsBlur": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Blur behind",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "0",
+            "rerender": true,
+            "css": [
+                {
+                    "property": "--bfbe-hs-blur",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsBorder": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsShadow": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Box shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsTypography": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOpacity": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Opacity",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "opacity",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsScale": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Scale",
+            "type": "number",
+            "min": 0.1,
+            "max": 3,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "scale",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsGap": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Over the first section: styling"
+        },
+        "bfbeHsOverBackground": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverTypography": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverBorder": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverShadow": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Box shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverOpacity": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Opacity",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "opacity",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsMotionSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Motion"
+        },
+        "bfbeHsElDuration": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Duration",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "Follows the header",
+            "description": "Milliseconds.",
+            "css": [
+                {
+                    "property": "--bfbe-hs-dur",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsElEasing": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Easing",
+            "type": "select",
+            "options": {
+                "cubic-bezier(0.16, 1, 0.3, 1)": "Snappy"
+            },
+            "inline": true,
+            "placeholder": "Follows the header",
+            "css": [
+                {
+                    "property": "--bfbe-hs-ease",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsDelay": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Milliseconds, scrolling down only, so parts arrive in sequence.",
+            "css": [
+                {
+                    "property": "--bfbe-hs-delay",
+                    "selector": ""
+                }
+            ]
+        }
+    }
+}

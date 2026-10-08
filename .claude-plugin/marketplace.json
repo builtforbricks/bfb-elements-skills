@@ -1,0 +1,65 @@
+{
+    "name": "bfb-elements-skills",
+    "owner": {
+        "name": "Built for Bricks",
+        "url": "https://builtforbricks.com"
+    },
+    "metadata": {
+        "description": "Agent skills for BFB Elements, the Bricks Builder element pack: one skill per element, the schemas the release exports, examples the release checks.",
+        "version": "0.1.0"
+    },
+    "plugins": [
+        {
+            "name": "bfb-elements",
+            "description": "BFB Elements skills for Bricks MCP clients: every element and feature, start-here, bundled schemas, the update check.",
+            "source": "./",
+            "strict": false,
+            "skills": [
+                "./skills/bfbe-start-here",
+                "./skills/bfbe-schemas",
+                "./skills/bfbe-update",
+                "./skills/bfbe-add-to-calendar",
+                "./skills/bfbe-advanced-header-scroll",
+                "./skills/bfbe-age-gate",
+                "./skills/bfbe-audio-player",
+                "./skills/bfbe-before-after",
+                "./skills/bfbe-business-hours",
+                "./skills/bfbe-charts",
+                "./skills/bfbe-comparison-table",
+                "./skills/bfbe-contact-button",
+                "./skills/bfbe-content-switcher",
+                "./skills/bfbe-copy",
+                "./skills/bfbe-cursor",
+                "./skills/bfbe-dark-mode",
+                "./skills/bfbe-devices",
+                "./skills/bfbe-dynamic-table",
+                "./skills/bfbe-filter-grid",
+                "./skills/bfbe-flip-box",
+                "./skills/bfbe-form",
+                "./skills/bfbe-form-fields",
+                "./skills/bfbe-form-steps",
+                "./skills/bfbe-hotspots",
+                "./skills/bfbe-hover-effects",
+                "./skills/bfbe-image-accordion",
+                "./skills/bfbe-lottie",
+                "./skills/bfbe-marquee",
+                "./skills/bfbe-modal",
+                "./skills/bfbe-notification-bar",
+                "./skills/bfbe-popover",
+                "./skills/bfbe-price-list",
+                "./skills/bfbe-read-more",
+                "./skills/bfbe-scroll-indicator",
+                "./skills/bfbe-scroll-video",
+                "./skills/bfbe-showcase",
+                "./skills/bfbe-slider-controls",
+                "./skills/bfbe-snap-slider",
+                "./skills/bfbe-social-share",
+                "./skills/bfbe-table",
+                "./skills/bfbe-text-reveal",
+                "./skills/bfbe-text-rotator",
+                "./skills/bfbe-timeline",
+                "./skills/bfbe-video-player"
+            ]
+        }
+    ]
+}

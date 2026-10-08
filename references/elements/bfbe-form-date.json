@@ -1,0 +1,2529 @@
+{
+    "name": "bfbe-form-date",
+    "label": "BFB Date Field",
+    "pack": "pro",
+    "skill": "bfbe-form",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/form/date-field/",
+    "nestable": false,
+    "children": [],
+    "childrenDefault": [],
+    "parent": "bfbe-form",
+    "cost": {
+        "css": "2.25 KB",
+        "js": "1.53 KB",
+        "dependencies": "none"
+    },
+    "controlGroups": {
+        "_attributes": {
+            "title": "Attributes",
+            "tab": "style",
+            "icon": "html"
+        },
+        "bfbeField": {
+            "title": "Field",
+            "tab": "content"
+        },
+        "bfbeRange": {
+            "title": "Limits",
+            "tab": "content"
+        },
+        "bfbeRule": {
+            "title": "Shown when",
+            "tab": "content"
+        },
+        "bfbeText": {
+            "title": "Label and note",
+            "tab": "content"
+        },
+        "bfbeInput": {
+            "title": "Input",
+            "tab": "content"
+        },
+        "bfbeCal": {
+            "title": "Calendar",
+            "tab": "content",
+            "required": [
+                [
+                    "calendar",
+                    "!=",
+                    "browser"
+                ]
+            ]
+        },
+        "bfbeCalDays": {
+            "title": "Calendar days",
+            "tab": "content",
+            "required": [
+                [
+                    "calendar",
+                    "!=",
+                    "browser"
+                ],
+                [
+                    "type",
+                    "!=",
+                    "time"
+                ]
+            ]
+        },
+        "bfbeHover": {
+            "title": "Hover effect",
+            "tab": "style"
+        },
+        "bfbeOnScroll": {
+            "title": "When the page scrolls",
+            "tab": "style"
+        }
+    },
+    "controls": {
+        "infoAttributes": {
+            "tab": "style",
+            "group": "_attributes",
+            "content": "<a href=\"https://academy.bricksbuilder.io/article/custom-attributes\" target=\"_blank\" rel=\"noopener\">Custom attributes</a> will be added to the most relevant HTML node.",
+            "type": "info"
+        },
+        "bfbeDocs": {
+            "tab": "content",
+            "type": "info",
+            "content": "<a href=\"https://builtforbricks.com/bfb-elements/docs/form/date-field/\" target=\"_blank\" rel=\"noopener\">Documentation &#8599;</a>"
+        },
+        "label": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Label",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "Date"
+        },
+        "type": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Type",
+            "type": "select",
+            "options": {
+                "date": "A date",
+                "time": "A time",
+                "datetime": "A date and a time",
+                "daterange": "From one date to another"
+            },
+            "inline": true,
+            "placeholder": "A date"
+        },
+        "key": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Key",
+            "type": "text",
+            "inline": true,
+            "placeholder": "From the label",
+            "description": "Its name in emails, formulas and rules.",
+            "required": [
+                "type",
+                "!=",
+                "section"
+            ]
+        },
+        "calendar": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Calendar",
+            "type": "select",
+            "options": {
+                "ours": "Ours, styled",
+                "browser": "The browser&#039;s"
+            },
+            "inline": true,
+            "placeholder": "Ours, styled",
+            "description": "Shut days stay pickable; sending refuses them. Spans: always ours."
+        },
+        "calOpen": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Calendar opens",
+            "type": "select",
+            "options": {
+                "click": "From the box",
+                "open": "Always, under the box",
+                "alone": "Always, no box"
+            },
+            "inline": true,
+            "placeholder": "From the box",
+            "required": [
+                "calendar",
+                "!=",
+                "browser"
+            ]
+        },
+        "placeholder": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Placeholder",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "required": [
+                [
+                    "calendar",
+                    "!=",
+                    "browser"
+                ],
+                [
+                    "calOpen",
+                    "!=",
+                    "alone"
+                ]
+            ]
+        },
+        "fromUrl": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Fill from the address",
+            "type": "text",
+            "inline": true,
+            "placeholder": "A parameter, like plan",
+            "description": "A link with ?plan=pro fills it."
+        },
+        "calBuilder": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "In the builder",
+            "type": "select",
+            "options": {
+                "closed": "Closed",
+                "open": "Calendar open"
+            },
+            "inline": true,
+            "placeholder": "Closed",
+            "required": [
+                [
+                    "calOpen",
+                    "=",
+                    [
+                        "",
+                        "click"
+                    ]
+                ],
+                [
+                    "calendar",
+                    "!=",
+                    "browser"
+                ]
+            ]
+        },
+        "l10n": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Language",
+            "type": "text",
+            "inline": true,
+            "placeholder": "en",
+            "required": [
+                "calendar",
+                "!=",
+                "browser"
+            ],
+            "description": "A flatpickr locale code: de, fr, ro."
+        },
+        "sepFieldChecks": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Required, note and error",
+            "type": "separator"
+        },
+        "required": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Required",
+            "type": "checkbox"
+        },
+        "note": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Note under it",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "required": [
+                "type",
+                "!=",
+                [
+                    "fixed",
+                    "hidden"
+                ]
+            ]
+        },
+        "hideLabel": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Hide the label",
+            "type": "checkbox",
+            "description": "It stays for assistive technology.",
+            "required": [
+                "type",
+                "!=",
+                [
+                    "fixed",
+                    "hidden",
+                    "section"
+                ]
+            ]
+        },
+        "errorMessage": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Error message",
+            "type": "text",
+            "inline": true,
+            "placeholder": "The browser says what is wrong",
+            "required": [
+                "type",
+                "!=",
+                [
+                    "fixed",
+                    "hidden",
+                    "section",
+                    "promo"
+                ]
+            ]
+        },
+        "msgRequired": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "When it is left empty",
+            "type": "text",
+            "inline": true,
+            "placeholder": "The error message",
+            "required": [
+                [
+                    "required",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "minDate": {
+            "tab": "content",
+            "group": "bfbeRange",
+            "label": "Not before",
+            "type": "text",
+            "inline": true,
+            "placeholder": "today, or 2027-01-31",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "maxDate": {
+            "tab": "content",
+            "group": "bfbeRange",
+            "label": "Not after",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Any date",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "minTime": {
+            "tab": "content",
+            "group": "bfbeRange",
+            "label": "Earliest time",
+            "type": "text",
+            "inline": true,
+            "placeholder": "09:00",
+            "required": [
+                "type",
+                "!=",
+                "date"
+            ]
+        },
+        "maxTime": {
+            "tab": "content",
+            "group": "bfbeRange",
+            "label": "Latest time",
+            "type": "text",
+            "inline": true,
+            "placeholder": "18:00",
+            "required": [
+                "type",
+                "!=",
+                "date"
+            ]
+        },
+        "closedDates": {
+            "tab": "content",
+            "group": "bfbeRange",
+            "label": "Shut on",
+            "type": "textarea",
+            "placeholder": "2026-12-25\n2026-12-31 to 2027-01-02",
+            "description": "A date, or a span, on each line.",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "minFrom": {
+            "tab": "content",
+            "group": "bfbeRange",
+            "label": "Not before the field",
+            "type": "text",
+            "inline": true,
+            "placeholder": "check_in",
+            "description": "The key of another date field.",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "date",
+                    "datetime"
+                ]
+            ]
+        },
+        "minFromDays": {
+            "tab": "content",
+            "group": "bfbeRange",
+            "label": "Days after it",
+            "type": "number",
+            "min": 0,
+            "max": 365,
+            "inline": true,
+            "placeholder": "0",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "date",
+                        "datetime"
+                    ]
+                ],
+                [
+                    "minFrom",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "weekends": {
+            "tab": "content",
+            "group": "bfbeRange",
+            "label": "Weekends",
+            "type": "select",
+            "options": {
+                "open": "Can be picked",
+                "closed": "Cannot be picked"
+            },
+            "inline": true,
+            "placeholder": "Can be picked",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "ruleAction": {
+            "tab": "content",
+            "group": "bfbeRule",
+            "label": "When the conditions match",
+            "type": "select",
+            "options": {
+                "show": "Show it",
+                "hide": "Hide it",
+                "require": "Require it",
+                "disable": "Disable it",
+                "set": "Give it a value"
+            },
+            "inline": true,
+            "placeholder": "No rule"
+        },
+        "ruleMatch": {
+            "tab": "content",
+            "group": "bfbeRule",
+            "label": "They match when",
+            "type": "select",
+            "options": {
+                "all": "All of them hold",
+                "any": "Any one holds"
+            },
+            "inline": true,
+            "placeholder": "All of them hold",
+            "required": [
+                "ruleAction",
+                "!=",
+                ""
+            ]
+        },
+        "rules": {
+            "tab": "content",
+            "group": "bfbeRule",
+            "label": "Conditions",
+            "type": "repeater",
+            "titleProperty": "field",
+            "selector": ".bfbe-pc__field",
+            "required": [
+                "ruleAction",
+                "!=",
+                ""
+            ],
+            "fields": {
+                "field": {
+                    "label": "Field key",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "plan, total, step, url:ref"
+                },
+                "op": {
+                    "label": "Test",
+                    "type": "select",
+                    "inline": true,
+                    "options": {
+                        "is": "Is",
+                        "not": "Is not",
+                        "in": "Is one of",
+                        "contains": "Contains",
+                        "starts": "Starts with",
+                        "ends": "Ends with",
+                        "gt": "Is more than",
+                        "gte": "Is at least",
+                        "lt": "Is less than",
+                        "lte": "Is at most",
+                        "between": "Is between",
+                        "filled": "Has any value",
+                        "empty": "Is empty",
+                        "ticked": "Is ticked",
+                        "unticked": "Is not ticked",
+                        "matches": "Matches the pattern",
+                        "before": "Is a date before",
+                        "after": "Is a date after",
+                        "same": "Equals the field"
+                    },
+                    "placeholder": "Is"
+                },
+                "value": {
+                    "label": "Value",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Pro; or 10, 20 for between",
+                    "required": [
+                        "op",
+                        "!=",
+                        [
+                            "filled",
+                            "empty",
+                            "ticked",
+                            "unticked"
+                        ]
+                    ]
+                }
+            }
+        },
+        "ruleValue": {
+            "tab": "content",
+            "group": "bfbeRule",
+            "label": "The value",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Gold; a, b ticks two",
+            "description": "Back to how it started when they stop matching.",
+            "required": [
+                "ruleAction",
+                "=",
+                "set"
+            ]
+        },
+        "labelTypography": {
+            "group": "bfbeText",
+            "label": "Label typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__label.bfbe-pc__label"
+                }
+            ],
+            "tab": "content"
+        },
+        "noteTypography": {
+            "group": "bfbeText",
+            "label": "Note typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__note.bfbe-pc__note"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "note",
+                "!=",
+                ""
+            ]
+        },
+        "inputBackground": {
+            "group": "bfbeInput",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-pc-field-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "inputBorder": {
+            "group": "bfbeInput",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__input.bfbe-pc__input"
+                }
+            ],
+            "tab": "content"
+        },
+        "inputPadding": {
+            "group": "bfbeInput",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-pc__input.bfbe-pc__input"
+                }
+            ],
+            "placeholder": {
+                "top": "10px",
+                "right": "12px",
+                "bottom": "10px",
+                "left": "12px"
+            },
+            "tab": "content"
+        },
+        "inputTypography": {
+            "group": "bfbeInput",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__input.bfbe-pc__input"
+                }
+            ],
+            "tab": "content"
+        },
+        "inputPlaceholder": {
+            "group": "bfbeInput",
+            "label": "Placeholder colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-pc-placeholder",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "inputFocus": {
+            "group": "bfbeInput",
+            "label": "Focus outline",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-focus-color",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "sepCalPanel": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "Panel",
+            "type": "separator"
+        },
+        "calWidth": {
+            "group": "bfbeCal",
+            "label": "Width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "Fits its days",
+            "css": [
+                {
+                    "property": "inline-size",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar"
+                }
+            ],
+            "description": "The days grow to fill it.",
+            "tab": "content"
+        },
+        "calBackground": {
+            "group": "bfbeCal",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "calBorder": {
+            "group": "bfbeCal",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar"
+                }
+            ],
+            "tab": "content"
+        },
+        "calShadow": {
+            "group": "bfbeCal",
+            "label": "Shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar"
+                }
+            ],
+            "tab": "content"
+        },
+        "calPadding": {
+            "group": "bfbeCal",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar"
+                }
+            ],
+            "placeholder": {
+                "top": "12px",
+                "right": "12px",
+                "bottom": "12px",
+                "left": "12px"
+            },
+            "tab": "content"
+        },
+        "calOffset": {
+            "group": "bfbeCal",
+            "label": "Distance from the field",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "6px",
+            "css": [
+                {
+                    "property": "--bfbe-cal-offset",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "sepCalSpacing": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "Spacing",
+            "type": "separator",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "calHeadSpace": {
+            "group": "bfbeCal",
+            "label": "Between header and weekdays",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "6px",
+            "css": [
+                {
+                    "property": "--bfbe-cal-head-space",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "calWeekSpace": {
+            "group": "bfbeCal",
+            "label": "Between weekdays and days",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "4px",
+            "css": [
+                {
+                    "property": "--bfbe-cal-week-space",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "calDayGap": {
+            "group": "bfbeCal",
+            "label": "Between days",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "0px",
+            "css": [
+                {
+                    "property": "--bfbe-cal-gap",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "sepCalLines": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "Dividers",
+            "type": "separator",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "calHeadLine": {
+            "group": "bfbeCal",
+            "label": "Header divider",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "None",
+            "css": [
+                {
+                    "property": "--bfbe-cal-head-line",
+                    "selector": ""
+                }
+            ],
+            "description": "Its thickness; full width, through the padding.",
+            "tab": "content",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "calHeadLineColor": {
+            "group": "bfbeCal",
+            "label": "Header divider colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-head-line-color",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "calWeekLine": {
+            "group": "bfbeCal",
+            "label": "Weekdays divider",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "None",
+            "css": [
+                {
+                    "property": "--bfbe-cal-week-line",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "calWeekLineColor": {
+            "group": "bfbeCal",
+            "label": "Weekdays divider colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-week-line-color",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "sepCalHead": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "Month and year",
+            "type": "separator",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "calMonthTypography": {
+            "group": "bfbeCal",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-current-month"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "calMonthPadding": {
+            "group": "bfbeCal",
+            "label": "Month padding",
+            "type": "dimensions",
+            "placeholder": {
+                "top": "6px",
+                "right": "6px",
+                "bottom": "6px",
+                "left": "6px"
+            },
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".flatpickr-current-month.flatpickr-current-month .flatpickr-monthDropdown-months"
+                },
+                {
+                    "property": "padding",
+                    "selector": ".flatpickr-current-month.flatpickr-current-month span.cur-month"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "calYearPadding": {
+            "group": "bfbeCal",
+            "label": "Year padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".flatpickr-current-month.flatpickr-current-month .numInputWrapper"
+                }
+            ],
+            "placeholder": {
+                "top": "6px",
+                "right": "6px",
+                "bottom": "6px",
+                "left": "6px"
+            },
+            "tab": "content",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "calHeadHoverBg": {
+            "group": "bfbeCal",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-head-hover-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "calYearArrow": {
+            "group": "bfbeCal",
+            "label": "Year arrows",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-year-arrow",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "calYearArrowHover": {
+            "group": "bfbeCal",
+            "label": "Year arrows hover",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-year-arrow-hover",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "sepCalArrows": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "Arrows",
+            "type": "separator",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "calPrevIcon": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "Previous icon",
+            "type": "icon",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "calNextIcon": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "Next icon",
+            "type": "icon",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "calArrowSize": {
+            "group": "bfbeCal",
+            "label": "Icon size",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "12px",
+            "css": [
+                {
+                    "property": "--bfbe-cal-arrow-size",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "calArrowPadding": {
+            "group": "bfbeCal",
+            "label": "Padding",
+            "type": "dimensions",
+            "placeholder": {
+                "top": "8px",
+                "right": "8px",
+                "bottom": "8px",
+                "left": "8px"
+            },
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".flatpickr-months.flatpickr-months .flatpickr-prev-month"
+                },
+                {
+                    "property": "padding",
+                    "selector": ".flatpickr-months.flatpickr-months .flatpickr-next-month"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "calArrowColor": {
+            "group": "bfbeCal",
+            "label": "Colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-arrow",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "calArrowHover": {
+            "group": "bfbeCal",
+            "label": "Hover colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-arrow-hover",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "calArrowBg": {
+            "group": "bfbeCal",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-arrow-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "calArrowHoverBg": {
+            "group": "bfbeCal",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-arrow-hover-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "calArrowBorder": {
+            "group": "bfbeCal",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-months.flatpickr-months .flatpickr-prev-month"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-months.flatpickr-months .flatpickr-next-month"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "calArrowHoverBorder": {
+            "group": "bfbeCal",
+            "label": "Hover border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-months.flatpickr-months .flatpickr-prev-month:hover"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-months.flatpickr-months .flatpickr-next-month:hover"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-months.flatpickr-months .flatpickr-prev-month:focus-visible"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-months.flatpickr-months .flatpickr-next-month:focus-visible"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "sepCalWeek": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "Weekday names",
+            "type": "separator",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "calWeekdayTypography": {
+            "group": "bfbeCal",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar span.flatpickr-weekday"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "!=",
+                "time"
+            ]
+        },
+        "sepCalTime": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "Time",
+            "type": "separator",
+            "required": [
+                "type",
+                "=",
+                [
+                    "time",
+                    "datetime"
+                ]
+            ]
+        },
+        "calTimeTypography": {
+            "group": "bfbeCal",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-time input"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                [
+                    "time",
+                    "datetime"
+                ]
+            ]
+        },
+        "calTimeBackground": {
+            "group": "bfbeCal",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-clock-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                [
+                    "time",
+                    "datetime"
+                ]
+            ]
+        },
+        "calTimeBorder": {
+            "group": "bfbeCal",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-time"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                [
+                    "time",
+                    "datetime"
+                ]
+            ]
+        },
+        "calClockLine": {
+            "group": "bfbeCal",
+            "label": "Divider",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "1px",
+            "css": [
+                {
+                    "property": "--bfbe-cal-clock-line",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                "datetime"
+            ]
+        },
+        "calClockLineColor": {
+            "group": "bfbeCal",
+            "label": "Divider colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-clock-line-color",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                "datetime"
+            ]
+        },
+        "sepCalDays": {
+            "tab": "content",
+            "group": "bfbeCalDays",
+            "label": "Every day",
+            "type": "separator"
+        },
+        "calDayTypography": {
+            "group": "bfbeCalDays",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-day"
+                }
+            ],
+            "exclude": [
+                "color",
+                "text-align"
+            ],
+            "tab": "content"
+        },
+        "calDaySize": {
+            "group": "bfbeCalDays",
+            "label": "Day size",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "Fits its padding",
+            "css": [
+                {
+                    "property": "--bfbe-cal-cell",
+                    "selector": ""
+                }
+            ],
+            "description": "At least this; padding can make days bigger.",
+            "tab": "content"
+        },
+        "calDayPadding": {
+            "group": "bfbeCalDays",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-day"
+                }
+            ],
+            "placeholder": {
+                "top": "10px",
+                "right": "10px",
+                "bottom": "10px",
+                "left": "10px"
+            },
+            "tab": "content"
+        },
+        "calDayBg": {
+            "group": "bfbeCalDays",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-day-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "calDayColor": {
+            "group": "bfbeCalDays",
+            "label": "Colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-day",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "calDayBorder": {
+            "group": "bfbeCalDays",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-day"
+                }
+            ],
+            "tab": "content"
+        },
+        "calDayHoverBg": {
+            "group": "bfbeCalDays",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-hover-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "calDayHoverColor": {
+            "group": "bfbeCalDays",
+            "label": "Hover colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-hover",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "calDayHoverBorder": {
+            "group": "bfbeCalDays",
+            "label": "Hover border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-day:hover"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-day:focus-visible"
+                }
+            ],
+            "tab": "content"
+        },
+        "sepCalToday": {
+            "tab": "content",
+            "group": "bfbeCalDays",
+            "label": "Today",
+            "type": "separator"
+        },
+        "calTodayBg": {
+            "group": "bfbeCalDays",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-today-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "calTodayColor": {
+            "group": "bfbeCalDays",
+            "label": "Colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-today-color",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "calTodayBorder": {
+            "group": "bfbeCalDays",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .dayContainer .flatpickr-day.today"
+                }
+            ],
+            "tab": "content"
+        },
+        "calTodayHoverBg": {
+            "group": "bfbeCalDays",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-today-hover-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "calTodayHoverColor": {
+            "group": "bfbeCalDays",
+            "label": "Hover colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-today-hover",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "calTodayHoverBorder": {
+            "group": "bfbeCalDays",
+            "label": "Hover border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .dayContainer .flatpickr-day.today:hover"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .dayContainer .flatpickr-day.today:focus-visible"
+                }
+            ],
+            "tab": "content"
+        },
+        "sepCalChosen": {
+            "tab": "content",
+            "group": "bfbeCalDays",
+            "label": "Chosen days",
+            "type": "separator"
+        },
+        "calSelected": {
+            "group": "bfbeCalDays",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-sel-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "calSelectedColor": {
+            "group": "bfbeCalDays",
+            "label": "Colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-sel",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "calSelectedBorder": {
+            "group": "bfbeCalDays",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.selected"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.startRange"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.endRange"
+                }
+            ],
+            "tab": "content"
+        },
+        "calSelectedHoverBg": {
+            "group": "bfbeCalDays",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-sel-hover-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "calSelectedHoverColor": {
+            "group": "bfbeCalDays",
+            "label": "Hover colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-sel-hover",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "calSelectedHoverBorder": {
+            "group": "bfbeCalDays",
+            "label": "Hover border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.selected:hover"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.startRange:hover"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.endRange:hover"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.selected:focus-visible"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.startRange:focus-visible"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.endRange:focus-visible"
+                }
+            ],
+            "tab": "content"
+        },
+        "sepCalRange": {
+            "tab": "content",
+            "group": "bfbeCalDays",
+            "label": "Between the ends",
+            "type": "separator",
+            "required": [
+                "type",
+                "=",
+                "daterange"
+            ]
+        },
+        "calRange": {
+            "group": "bfbeCalDays",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-range",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                "daterange"
+            ]
+        },
+        "calRangeColor": {
+            "group": "bfbeCalDays",
+            "label": "Colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-range-color",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                "daterange"
+            ]
+        },
+        "calRangeBorder": {
+            "group": "bfbeCalDays",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-days .dayContainer .flatpickr-day.inRange"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                "daterange"
+            ]
+        },
+        "calRangeHoverBg": {
+            "group": "bfbeCalDays",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-range-hover-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                "daterange"
+            ]
+        },
+        "calRangeHoverColor": {
+            "group": "bfbeCalDays",
+            "label": "Hover colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-range-hover",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                "daterange"
+            ]
+        },
+        "calRangeHoverBorder": {
+            "group": "bfbeCalDays",
+            "label": "Hover border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-days .dayContainer .flatpickr-day.inRange:hover"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-days .dayContainer .flatpickr-day.inRange:focus-visible"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                "daterange"
+            ]
+        },
+        "sepCalShut": {
+            "tab": "content",
+            "group": "bfbeCalDays",
+            "label": "Shut days",
+            "type": "separator"
+        },
+        "calShutBg": {
+            "group": "bfbeCalDays",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-shut-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "calShut": {
+            "group": "bfbeCalDays",
+            "label": "Colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-shut",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "calShutBorder": {
+            "group": "bfbeCalDays",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-innerContainer .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.flatpickr-disabled"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-innerContainer .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.notAllowed"
+                }
+            ],
+            "tab": "content"
+        },
+        "calShutHoverBg": {
+            "group": "bfbeCalDays",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-shut-hover-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "calShutHoverColor": {
+            "group": "bfbeCalDays",
+            "label": "Hover colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-shut-hover",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "calShutHoverBorder": {
+            "group": "bfbeCalDays",
+            "label": "Hover border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-innerContainer .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.flatpickr-disabled:hover"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-innerContainer .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.notAllowed:hover"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-innerContainer .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.flatpickr-disabled:focus-visible"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-innerContainer .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.notAllowed:focus-visible"
+                }
+            ],
+            "tab": "content"
+        },
+        "sepCalOther": {
+            "tab": "content",
+            "group": "bfbeCalDays",
+            "label": "Other months&#039; days",
+            "type": "separator"
+        },
+        "calOtherBg": {
+            "group": "bfbeCalDays",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-other-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "calOther": {
+            "group": "bfbeCalDays",
+            "label": "Colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-other",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "calOtherBorder": {
+            "group": "bfbeCalDays",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-day.prevMonthDay"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-day.nextMonthDay"
+                }
+            ],
+            "tab": "content"
+        },
+        "calOtherHoverBg": {
+            "group": "bfbeCalDays",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-other-hover-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "calOtherHoverColor": {
+            "group": "bfbeCalDays",
+            "label": "Hover colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-other-hover",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "calOtherHoverBorder": {
+            "group": "bfbeCalDays",
+            "label": "Hover border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-day.prevMonthDay:hover"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-day.nextMonthDay:hover"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-day.prevMonthDay:focus-visible"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-day.nextMonthDay:focus-visible"
+                }
+            ],
+            "tab": "content"
+        },
+        "bfbeHoverEffect": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Effect",
+            "type": "select",
+            "options": {
+                "lift": "Lift",
+                "zoom": "Zoom the picture",
+                "shine": "Shine",
+                "border": "Gradient border",
+                "tilt": "Tilt",
+                "follow": "Follow the pointer",
+                "fade": "Fade in",
+                "slide": "Slide in",
+                "grow": "Grow"
+            },
+            "inline": true,
+            "placeholder": "None"
+        },
+        "bfbeHoverOn": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Responds to",
+            "type": "select",
+            "options": {
+                "parent": "A hovered parent"
+            },
+            "inline": true,
+            "placeholder": "This element",
+            "description": "The parent needs Children respond to hover.",
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverFrom": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Comes from",
+            "type": "select",
+            "options": {
+                "up": "Above",
+                "left": "The left",
+                "right": "The right"
+            },
+            "inline": true,
+            "placeholder": "Below",
+            "required": [
+                "bfbeHoverEffect",
+                "=",
+                "slide"
+            ]
+        },
+        "bfbeHoverStrength": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Strength",
+            "type": "number",
+            "min": 0.1,
+            "max": 3,
+            "step": 0.1,
+            "inline": true,
+            "placeholder": "1",
+            "breakpoints": true,
+            "css": [
+                {
+                    "property": "--bfbe-hv-k",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverSpeed": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Speed",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "300",
+            "description": "Milliseconds.",
+            "css": [
+                {
+                    "property": "--bfbe-hv-t",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverDelay": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Milliseconds, so parts arrive in sequence.",
+            "css": [
+                {
+                    "property": "--bfbe-hv-d",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "bfbeHoverEffect",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeHoverEffect",
+                    "!=",
+                    [
+                        "tilt",
+                        "follow"
+                    ]
+                ]
+            ]
+        },
+        "bfbeHoverColor": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Colour",
+            "type": "color",
+            "inline": true,
+            "css": [
+                {
+                    "property": "--bfbe-hv-c",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "=",
+                [
+                    "shine",
+                    "border"
+                ]
+            ]
+        },
+        "bfbeHoverOff": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Off below",
+            "type": "select",
+            "options": {
+                "480": "480 px",
+                "640": "640 px",
+                "768": "768 px",
+                "992": "992 px"
+            },
+            "inline": true,
+            "placeholder": "Never",
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverScope": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Children respond to hover",
+            "type": "checkbox",
+            "description": "Parts inside set to A hovered parent move."
+        },
+        "bfbeHsWhen": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "When scrolled",
+            "type": "select",
+            "options": {
+                "hide": "Hides",
+                "fade": "Fades out, keeps its space",
+                "show": "Appears only then"
+            },
+            "inline": true,
+            "placeholder": "Stays as it is"
+        },
+        "bfbeHsCollapse": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Collapses",
+            "type": "select",
+            "options": {
+                "across": "Sideways"
+            },
+            "inline": true,
+            "placeholder": "Downward",
+            "required": [
+                "bfbeHsWhen",
+                "=",
+                [
+                    "hide",
+                    "show"
+                ]
+            ]
+        },
+        "bfbeHsOver": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Over the first section",
+            "type": "select",
+            "options": {
+                "hide": "Hides",
+                "show": "Appears only then"
+            },
+            "inline": true,
+            "placeholder": "Stays as it is",
+            "description": "Only with the header over the first section."
+        },
+        "bfbeHsStyleSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Scrolled: styling"
+        },
+        "bfbeHsPadding": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsMargin": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Margin",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "margin",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsWidth": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "rerender": true,
+            "css": [
+                {
+                    "property": "width",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ]
+        },
+        "bfbeHsHeight": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Height",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "rerender": true,
+            "css": [
+                {
+                    "property": "height",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ]
+        },
+        "bfbeHsBackground": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsBlur": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Blur behind",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "0",
+            "rerender": true,
+            "css": [
+                {
+                    "property": "--bfbe-hs-blur",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsBorder": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsShadow": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Box shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsTypography": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOpacity": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Opacity",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "opacity",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsScale": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Scale",
+            "type": "number",
+            "min": 0.1,
+            "max": 3,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "scale",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsGap": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Over the first section: styling"
+        },
+        "bfbeHsOverBackground": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverTypography": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverBorder": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverShadow": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Box shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverOpacity": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Opacity",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "opacity",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsMotionSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Motion"
+        },
+        "bfbeHsElDuration": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Duration",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "Follows the header",
+            "description": "Milliseconds.",
+            "css": [
+                {
+                    "property": "--bfbe-hs-dur",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsElEasing": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Easing",
+            "type": "select",
+            "options": {
+                "cubic-bezier(0.16, 1, 0.3, 1)": "Snappy"
+            },
+            "inline": true,
+            "placeholder": "Follows the header",
+            "css": [
+                {
+                    "property": "--bfbe-hs-ease",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsDelay": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Milliseconds, scrolling down only, so parts arrive in sequence.",
+            "css": [
+                {
+                    "property": "--bfbe-hs-delay",
+                    "selector": ""
+                }
+            ]
+        }
+    }
+}

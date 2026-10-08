@@ -1,0 +1,6245 @@
+{
+    "name": "bfbe-charts",
+    "label": "BFB Dynamic Charts",
+    "pack": "pro",
+    "skill": "bfbe-charts",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/charts/",
+    "nestable": false,
+    "children": [],
+    "childrenDefault": [],
+    "parent": null,
+    "cost": {
+        "css": "1.74 KB",
+        "js": "5.15 KB",
+        "dependencies": "Chart.js 4 (UMD)"
+    },
+    "controlGroups": {
+        "_attributes": {
+            "title": "Attributes",
+            "tab": "style",
+            "icon": "html"
+        },
+        "bfbeChart": {
+            "title": "Chart",
+            "tab": "content"
+        },
+        "bfbeData": {
+            "title": "Data",
+            "tab": "content"
+        },
+        "bfbeProgress": {
+            "title": "Progress rows",
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                "progress"
+            ]
+        },
+        "bfbeVersus": {
+            "title": "Versus bar",
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                "versus"
+            ]
+        },
+        "bfbeTree": {
+            "title": "Treemap",
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                "treemap"
+            ]
+        },
+        "bfbeCal": {
+            "title": "Dot calendar",
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                "calendar"
+            ]
+        },
+        "bfbeHead": {
+            "title": "Headline",
+            "tab": "content",
+            "required": [
+                "type",
+                "!=",
+                "gauge"
+            ]
+        },
+        "bfbeRanges": {
+            "title": "Ranges",
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "lollipop",
+                    "diverging",
+                    "line",
+                    "area",
+                    "spark"
+                ]
+            ]
+        },
+        "bfbeAxes": {
+            "title": "Axes and legend",
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "lollipop",
+                    "diverging",
+                    "line",
+                    "area",
+                    "radar",
+                    "donut",
+                    "spark"
+                ]
+            ]
+        },
+        "bfbeColors": {
+            "title": "Colours",
+            "tab": "content"
+        },
+        "bfbeMarks": {
+            "title": "Highlight and marks",
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "lollipop",
+                    "diverging",
+                    "line",
+                    "area",
+                    "spark"
+                ]
+            ]
+        },
+        "bfbeDonut": {
+            "title": "Donut and gauge",
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                [
+                    "donut",
+                    "gauge"
+                ]
+            ]
+        },
+        "bfbeTip": {
+            "title": "Tooltip",
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "lollipop",
+                    "diverging",
+                    "line",
+                    "area",
+                    "radar",
+                    "donut",
+                    "spark"
+                ]
+            ]
+        },
+        "bfbeTable": {
+            "title": "Data table",
+            "tab": "content"
+        },
+        "bfbeMotion": {
+            "title": "Motion",
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "lollipop",
+                    "diverging",
+                    "line",
+                    "area",
+                    "radar",
+                    "donut",
+                    "spark",
+                    "gauge"
+                ]
+            ]
+        },
+        "bfbeHover": {
+            "title": "Hover effect",
+            "tab": "style"
+        },
+        "bfbeOnScroll": {
+            "title": "When the page scrolls",
+            "tab": "style"
+        }
+    },
+    "controls": {
+        "infoAttributes": {
+            "tab": "style",
+            "group": "_attributes",
+            "content": "<a href=\"https://academy.bricksbuilder.io/article/custom-attributes\" target=\"_blank\" rel=\"noopener\">Custom attributes</a> will be added to the most relevant HTML node.",
+            "type": "info"
+        },
+        "bfbeDocs": {
+            "tab": "content",
+            "type": "info",
+            "content": "<a href=\"https://builtforbricks.com/bfb-elements/docs/charts/\" target=\"_blank\" rel=\"noopener\">Documentation &#8599;</a>"
+        },
+        "type": {
+            "tab": "content",
+            "group": "bfbeChart",
+            "label": "Type",
+            "type": "select",
+            "options": {
+                "bar": "Bars",
+                "hbar": "Horizontal bars",
+                "lollipop": "Lollipop",
+                "diverging": "Diverging bars",
+                "line": "Line",
+                "area": "Area",
+                "radar": "Radar",
+                "donut": "Donut",
+                "spark": "Sparkline",
+                "gauge": "Gauge",
+                "progress": "Progress rows",
+                "versus": "Versus bar",
+                "treemap": "Treemap",
+                "calendar": "Dot calendar"
+            },
+            "inline": true,
+            "placeholder": "Bars"
+        },
+        "look": {
+            "tab": "content",
+            "group": "bfbeChart",
+            "label": "Look",
+            "type": "select",
+            "options": {
+                "standard": "Standard",
+                "minimal": "Minimal"
+            },
+            "inline": true,
+            "placeholder": "Standard",
+            "description": "Sets empty axis, corner, bar and point settings.",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "lollipop",
+                    "diverging",
+                    "line",
+                    "area",
+                    "radar"
+                ]
+            ]
+        },
+        "height": {
+            "tab": "content",
+            "group": "bfbeChart",
+            "label": "Height",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "320px",
+            "required": [
+                "type",
+                "!=",
+                [
+                    "progress",
+                    "versus",
+                    "calendar"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-chart-h",
+                    "selector": ""
+                }
+            ]
+        },
+        "chartAlign": {
+            "tab": "content",
+            "group": "bfbeChart",
+            "label": "Chart sits",
+            "type": "align-items",
+            "inline": true,
+            "exclude": [
+                "stretch",
+                "auto"
+            ],
+            "required": [
+                "type",
+                "=",
+                [
+                    "donut",
+                    "gauge",
+                    "calendar"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-chart-align",
+                    "selector": ""
+                }
+            ],
+            "rerender": true
+        },
+        "sepTitle": {
+            "tab": "content",
+            "group": "bfbeChart",
+            "label": "Title",
+            "type": "separator"
+        },
+        "title": {
+            "tab": "content",
+            "group": "bfbeChart",
+            "label": "Text",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true
+        },
+        "titleTypography": {
+            "tab": "content",
+            "group": "bfbeChart",
+            "label": "Typography",
+            "type": "typography",
+            "required": [
+                "title",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-chart__title"
+                }
+            ]
+        },
+        "titleAlign": {
+            "tab": "content",
+            "group": "bfbeChart",
+            "label": "Title sits",
+            "type": "text-align",
+            "inline": true,
+            "exclude": [
+                "justify"
+            ],
+            "required": [
+                "title",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "text-align",
+                    "selector": ".bfbe-chart__title"
+                }
+            ]
+        },
+        "sepStage": {
+            "tab": "content",
+            "group": "bfbeChart",
+            "label": "The chart area",
+            "type": "separator"
+        },
+        "fillCard": {
+            "tab": "content",
+            "group": "bfbeChart",
+            "label": "Fill the card",
+            "type": "checkbox",
+            "description": "Reaches the element&#039;s edges, past its padding.",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "lollipop",
+                    "diverging",
+                    "line",
+                    "area",
+                    "spark"
+                ]
+            ]
+        },
+        "stageBackground": {
+            "tab": "content",
+            "group": "bfbeChart",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": ".bfbe-chart__stage"
+                }
+            ]
+        },
+        "stagePadding": {
+            "tab": "content",
+            "group": "bfbeChart",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-chart__stage"
+                }
+            ]
+        },
+        "stageBorder": {
+            "tab": "content",
+            "group": "bfbeChart",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-chart__stage"
+                }
+            ]
+        },
+        "sepDataRows": {
+            "tab": "content",
+            "group": "bfbeData",
+            "label": "The rows",
+            "type": "separator"
+        },
+        "source": {
+            "tab": "content",
+            "group": "bfbeData",
+            "label": "Data comes from",
+            "type": "select",
+            "options": {
+                "manual": "Text typed here",
+                "csv": "A CSV file",
+                "acf": "An ACF repeater",
+                "loop": "A query loop"
+            },
+            "inline": true,
+            "placeholder": "Text typed here"
+        },
+        "rows": {
+            "tab": "content",
+            "group": "bfbeData",
+            "label": "Rows",
+            "type": "textarea",
+            "hasDynamicData": "text",
+            "description": "First row: series names. Then label, values.",
+            "required": [
+                "source",
+                "!=",
+                [
+                    "csv",
+                    "acf",
+                    "loop"
+                ]
+            ]
+        },
+        "file": {
+            "tab": "content",
+            "group": "bfbeData",
+            "label": "CSV file",
+            "type": "file",
+            "required": [
+                "source",
+                "=",
+                "csv"
+            ]
+        },
+        "csvUrl": {
+            "tab": "content",
+            "group": "bfbeData",
+            "label": "CSV address",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "/wp-content/uploads/figures.csv",
+            "description": "A file in this site, or a dynamic tag.",
+            "required": [
+                "source",
+                "=",
+                "csv"
+            ]
+        },
+        "acfField": {
+            "tab": "content",
+            "group": "bfbeData",
+            "label": "Repeater field name",
+            "type": "text",
+            "inline": true,
+            "placeholder": "monthly_figures",
+            "required": [
+                "source",
+                "=",
+                "acf"
+            ]
+        },
+        "acfLabel": {
+            "tab": "content",
+            "group": "bfbeData",
+            "label": "Label sub field",
+            "type": "text",
+            "inline": true,
+            "placeholder": "month",
+            "required": [
+                "source",
+                "=",
+                "acf"
+            ]
+        },
+        "acfValues": {
+            "tab": "content",
+            "group": "bfbeData",
+            "label": "Value sub fields",
+            "type": "text",
+            "inline": true,
+            "placeholder": "visits, sales",
+            "required": [
+                "source",
+                "=",
+                "acf"
+            ]
+        },
+        "loopDate": {
+            "tab": "content",
+            "group": "bfbeData",
+            "label": "Date from",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "description": "Blank: the publish date. Terms and users need one.",
+            "required": [
+                "source",
+                "=",
+                "loop"
+            ]
+        },
+        "loopValue": {
+            "tab": "content",
+            "group": "bfbeData",
+            "label": "Value from",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "description": "Blank: each result counts one.",
+            "required": [
+                "source",
+                "=",
+                "loop"
+            ]
+        },
+        "sepDataValues": {
+            "tab": "content",
+            "group": "bfbeData",
+            "label": "Each value",
+            "type": "separator"
+        },
+        "prefix": {
+            "tab": "content",
+            "group": "bfbeData",
+            "label": "Before each value",
+            "type": "text",
+            "inline": true,
+            "placeholder": "£"
+        },
+        "suffix": {
+            "tab": "content",
+            "group": "bfbeData",
+            "label": "After each value",
+            "type": "text",
+            "inline": true,
+            "placeholder": "%"
+        },
+        "progressOf": {
+            "tab": "content",
+            "group": "bfbeProgress",
+            "label": "Out of",
+            "type": "select",
+            "options": {
+                "number": "A number",
+                "max": "The largest value",
+                "column": "The next column"
+            },
+            "inline": true,
+            "placeholder": "A number"
+        },
+        "progressMax": {
+            "tab": "content",
+            "group": "bfbeProgress",
+            "label": "Full at",
+            "type": "number",
+            "inline": true,
+            "placeholder": 100,
+            "required": [
+                "progressOf",
+                "=",
+                [
+                    "",
+                    "number"
+                ]
+            ]
+        },
+        "progressFigure": {
+            "tab": "content",
+            "group": "bfbeProgress",
+            "label": "Figure",
+            "type": "select",
+            "options": {
+                "percent": "Percentage",
+                "value": "Value",
+                "both": "Both"
+            },
+            "inline": true,
+            "placeholder": "Percentage"
+        },
+        "progressSub": {
+            "tab": "content",
+            "group": "bfbeProgress",
+            "label": "Sub-label column",
+            "type": "text",
+            "inline": true,
+            "description": "A column heading or number."
+        },
+        "progressIcon": {
+            "tab": "content",
+            "group": "bfbeProgress",
+            "label": "Icon column",
+            "type": "text",
+            "inline": true,
+            "description": "A column heading or number."
+        },
+        "sepProgressRows": {
+            "tab": "content",
+            "group": "bfbeProgress",
+            "label": "The rows",
+            "type": "separator"
+        },
+        "progressGap": {
+            "tab": "content",
+            "group": "bfbeProgress",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "14px",
+            "css": [
+                {
+                    "property": "row-gap",
+                    "selector": ".bfbe-chart__progress"
+                }
+            ]
+        },
+        "progressNameTypography": {
+            "tab": "content",
+            "group": "bfbeProgress",
+            "label": "Name typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-chart__item-name"
+                }
+            ]
+        },
+        "progressSubTypography": {
+            "tab": "content",
+            "group": "bfbeProgress",
+            "label": "Sub-label typography",
+            "type": "typography",
+            "required": [
+                "progressSub",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-chart__item-sub"
+                }
+            ]
+        },
+        "progressFigureTypography": {
+            "tab": "content",
+            "group": "bfbeProgress",
+            "label": "Figure typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-chart__item-value"
+                }
+            ]
+        },
+        "progressRowPadding": {
+            "tab": "content",
+            "group": "bfbeProgress",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-chart__item"
+                }
+            ]
+        },
+        "progressRowBorder": {
+            "tab": "content",
+            "group": "bfbeProgress",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-chart__item"
+                }
+            ]
+        },
+        "sepProgressBar": {
+            "tab": "content",
+            "group": "bfbeProgress",
+            "label": "The bar",
+            "type": "separator"
+        },
+        "progressHeight": {
+            "tab": "content",
+            "group": "bfbeProgress",
+            "label": "Height",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "6px",
+            "css": [
+                {
+                    "property": "block-size",
+                    "selector": ".bfbe-chart__item-track"
+                }
+            ]
+        },
+        "progressTrackBackground": {
+            "tab": "content",
+            "group": "bfbeProgress",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": ".bfbe-chart__item-track"
+                }
+            ]
+        },
+        "progressTrackBorder": {
+            "tab": "content",
+            "group": "bfbeProgress",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-chart__item-track"
+                }
+            ]
+        },
+        "sepProgressIcon": {
+            "tab": "content",
+            "group": "bfbeProgress",
+            "label": "The icon",
+            "type": "separator",
+            "required": [
+                "progressIcon",
+                "!=",
+                ""
+            ]
+        },
+        "progressIconSize": {
+            "tab": "content",
+            "group": "bfbeProgress",
+            "label": "Size",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "30px",
+            "required": [
+                "progressIcon",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-chart-badge",
+                    "selector": ".bfbe-chart__item-icon"
+                }
+            ]
+        },
+        "progressIconTypography": {
+            "tab": "content",
+            "group": "bfbeProgress",
+            "label": "Typography",
+            "type": "typography",
+            "required": [
+                "progressIcon",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-chart__item-icon"
+                }
+            ]
+        },
+        "progressIconBackground": {
+            "tab": "content",
+            "group": "bfbeProgress",
+            "label": "Background",
+            "type": "background",
+            "required": [
+                "progressIcon",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "background",
+                    "selector": ".bfbe-chart__item-icon"
+                }
+            ]
+        },
+        "progressIconBorder": {
+            "tab": "content",
+            "group": "bfbeProgress",
+            "label": "Border",
+            "type": "border",
+            "required": [
+                "progressIcon",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-chart__item-icon"
+                }
+            ]
+        },
+        "versusFigure": {
+            "tab": "content",
+            "group": "bfbeVersus",
+            "label": "Figure",
+            "type": "select",
+            "options": {
+                "percent": "Percentage",
+                "value": "Value",
+                "both": "Both"
+            },
+            "inline": true,
+            "placeholder": "Both"
+        },
+        "versusWord": {
+            "tab": "content",
+            "group": "bfbeVersus",
+            "label": "Middle word",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "description": "Between two parts, such as VS."
+        },
+        "sepVersusFigures": {
+            "tab": "content",
+            "group": "bfbeVersus",
+            "label": "The figures",
+            "type": "separator"
+        },
+        "versusNameTypography": {
+            "tab": "content",
+            "group": "bfbeVersus",
+            "label": "Name typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-chart__vs-name"
+                }
+            ]
+        },
+        "versusShareTypography": {
+            "tab": "content",
+            "group": "bfbeVersus",
+            "label": "Percentage typography",
+            "type": "typography",
+            "required": [
+                "versusFigure",
+                "!=",
+                "value"
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-chart__vs-share"
+                }
+            ]
+        },
+        "versusValueTypography": {
+            "tab": "content",
+            "group": "bfbeVersus",
+            "label": "Value typography",
+            "type": "typography",
+            "required": [
+                "versusFigure",
+                "!=",
+                "percent"
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-chart__vs-value"
+                }
+            ]
+        },
+        "versusWordTypography": {
+            "tab": "content",
+            "group": "bfbeVersus",
+            "label": "Word typography",
+            "type": "typography",
+            "required": [
+                "versusWord",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-chart__vs-word"
+                }
+            ]
+        },
+        "versusWordBorder": {
+            "tab": "content",
+            "group": "bfbeVersus",
+            "label": "Word border",
+            "type": "border",
+            "required": [
+                "versusWord",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-chart__vs-word"
+                }
+            ]
+        },
+        "sepVersusBar": {
+            "tab": "content",
+            "group": "bfbeVersus",
+            "label": "The bar",
+            "type": "separator"
+        },
+        "versusHeight": {
+            "tab": "content",
+            "group": "bfbeVersus",
+            "label": "Height",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "10px",
+            "css": [
+                {
+                    "property": "block-size",
+                    "selector": ".bfbe-chart__vs-bar"
+                }
+            ]
+        },
+        "versusGap": {
+            "tab": "content",
+            "group": "bfbeVersus",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "4px",
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": ".bfbe-chart__vs-bar"
+                }
+            ]
+        },
+        "versusBorder": {
+            "tab": "content",
+            "group": "bfbeVersus",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-chart__vs-seg"
+                }
+            ]
+        },
+        "treeFigure": {
+            "tab": "content",
+            "group": "bfbeTree",
+            "label": "Figure",
+            "type": "select",
+            "options": {
+                "percent": "Percentage",
+                "value": "Value",
+                "both": "Both"
+            },
+            "inline": true,
+            "placeholder": "Percentage"
+        },
+        "treeChange": {
+            "tab": "content",
+            "group": "bfbeTree",
+            "label": "Change column",
+            "type": "text",
+            "inline": true,
+            "description": "A column heading or number."
+        },
+        "treeOrder": {
+            "tab": "content",
+            "group": "bfbeTree",
+            "label": "Colours",
+            "type": "select",
+            "options": {
+                "rank": "By rank",
+                "row": "Per row"
+            },
+            "inline": true,
+            "placeholder": "By rank"
+        },
+        "sepTreeTiles": {
+            "tab": "content",
+            "group": "bfbeTree",
+            "label": "The tiles",
+            "type": "separator"
+        },
+        "treeGap": {
+            "tab": "content",
+            "group": "bfbeTree",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "6px",
+            "css": [
+                {
+                    "property": "--bfbe-chart-gap",
+                    "selector": ".bfbe-chart__tiles"
+                }
+            ]
+        },
+        "treePadding": {
+            "tab": "content",
+            "group": "bfbeTree",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-chart__tile-box"
+                }
+            ]
+        },
+        "treeBorder": {
+            "tab": "content",
+            "group": "bfbeTree",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-chart__tile-box"
+                }
+            ]
+        },
+        "treeNameTypography": {
+            "tab": "content",
+            "group": "bfbeTree",
+            "label": "Name typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-chart__tile-name"
+                }
+            ]
+        },
+        "treeFigureTypography": {
+            "tab": "content",
+            "group": "bfbeTree",
+            "label": "Figure typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-chart__tile-value"
+                }
+            ]
+        },
+        "treeChangeTypography": {
+            "tab": "content",
+            "group": "bfbeTree",
+            "label": "Change typography",
+            "type": "typography",
+            "required": [
+                "treeChange",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-chart__tile-change"
+                }
+            ]
+        },
+        "treeChangeBackground": {
+            "tab": "content",
+            "group": "bfbeTree",
+            "label": "Change background",
+            "type": "color",
+            "required": [
+                "treeChange",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-chart__tile-change"
+                }
+            ]
+        },
+        "calWeeks": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "Weeks shown",
+            "type": "number",
+            "min": 1,
+            "max": 53,
+            "inline": true,
+            "placeholder": 18
+        },
+        "calEnd": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "Ends with",
+            "type": "select",
+            "options": {
+                "today": "This week",
+                "last": "The latest row"
+            },
+            "inline": true,
+            "placeholder": "This week"
+        },
+        "calStart": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "Week starts on",
+            "type": "select",
+            "options": {
+                "site": "As the site",
+                "mon": "Monday",
+                "sun": "Sunday",
+                "sat": "Saturday"
+            },
+            "inline": true,
+            "placeholder": "As the site"
+        },
+        "calLevels": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "Levels",
+            "type": "number",
+            "min": 2,
+            "max": 6,
+            "inline": true,
+            "placeholder": 4
+        },
+        "sepCalText": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "Text",
+            "type": "separator"
+        },
+        "calNames": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "Names",
+            "type": "select",
+            "options": {
+                "days": "Days",
+                "months": "Days and months",
+                "none": "None"
+            },
+            "inline": true,
+            "placeholder": "Days"
+        },
+        "calNamesTypography": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "Name typography",
+            "type": "typography",
+            "required": [
+                "calNames",
+                "!=",
+                "none"
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-chart__cal-name"
+                }
+            ]
+        },
+        "calKey": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "Key",
+            "type": "checkbox"
+        },
+        "calKeyTypography": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "Key typography",
+            "type": "typography",
+            "required": [
+                "calKey",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-chart__key"
+                }
+            ]
+        },
+        "sepCalDots": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "The dots",
+            "type": "separator"
+        },
+        "calSize": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "Size",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "24px",
+            "css": [
+                {
+                    "property": "--bfbe-chart-dot-size",
+                    "selector": ".bfbe-chart__calendar"
+                }
+            ]
+        },
+        "calGap": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "4px",
+            "css": [
+                {
+                    "property": "--bfbe-chart-dot-gap",
+                    "selector": ".bfbe-chart__calendar"
+                }
+            ]
+        },
+        "calBorder": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-chart__dot"
+                }
+            ]
+        },
+        "calNone": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "Days with none",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-chart-dot-none",
+                    "selector": ".bfbe-chart__calendar"
+                }
+            ]
+        },
+        "calPlan": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "Planned days",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-chart-plan",
+                    "selector": ".bfbe-chart__calendar"
+                }
+            ]
+        },
+        "calToday": {
+            "tab": "content",
+            "group": "bfbeCal",
+            "label": "Today",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-chart-today",
+                    "selector": ".bfbe-chart__calendar"
+                }
+            ]
+        },
+        "sepHeadWords": {
+            "tab": "content",
+            "group": "bfbeHead",
+            "label": "What it says",
+            "type": "separator"
+        },
+        "headline": {
+            "tab": "content",
+            "group": "bfbeHead",
+            "label": "Headline",
+            "type": "select",
+            "options": {
+                "none": "None",
+                "last": "Last value",
+                "sum": "Total",
+                "avg": "Average"
+            },
+            "inline": true,
+            "placeholder": "None"
+        },
+        "headAlign": {
+            "tab": "content",
+            "group": "bfbeHead",
+            "label": "Headline sits",
+            "type": "justify-content",
+            "direction": "row",
+            "inline": true,
+            "required": [
+                "headline",
+                "!=",
+                [
+                    "",
+                    "none"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "justify-content",
+                    "selector": ".bfbe-chart__head"
+                }
+            ]
+        },
+        "headlineSeries": {
+            "tab": "content",
+            "group": "bfbeHead",
+            "label": "Series",
+            "type": "number",
+            "min": 1,
+            "inline": true,
+            "placeholder": 1,
+            "required": [
+                [
+                    "headline",
+                    "!=",
+                    [
+                        "",
+                        "none"
+                    ]
+                ],
+                [
+                    "type",
+                    "!=",
+                    [
+                        "progress",
+                        "versus",
+                        "treemap",
+                        "calendar"
+                    ]
+                ]
+            ]
+        },
+        "headlineLabel": {
+            "tab": "content",
+            "group": "bfbeHead",
+            "label": "Label",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "required": [
+                "headline",
+                "!=",
+                [
+                    "",
+                    "none"
+                ]
+            ]
+        },
+        "delta": {
+            "tab": "content",
+            "group": "bfbeHead",
+            "label": "Show the change",
+            "type": "checkbox",
+            "description": "The last row against the one before.",
+            "required": [
+                [
+                    "headline",
+                    "!=",
+                    [
+                        "",
+                        "none"
+                    ]
+                ],
+                [
+                    "type",
+                    "!=",
+                    [
+                        "progress",
+                        "versus",
+                        "treemap"
+                    ]
+                ]
+            ]
+        },
+        "deltaLabel": {
+            "tab": "content",
+            "group": "bfbeHead",
+            "label": "Change label",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "vs last month",
+            "required": [
+                [
+                    "delta",
+                    "!=",
+                    ""
+                ],
+                [
+                    "headline",
+                    "!=",
+                    [
+                        "",
+                        "none"
+                    ]
+                ],
+                [
+                    "type",
+                    "!=",
+                    [
+                        "progress",
+                        "versus",
+                        "treemap"
+                    ]
+                ]
+            ]
+        },
+        "sepHeadType": {
+            "tab": "content",
+            "group": "bfbeHead",
+            "label": "Typography",
+            "type": "separator",
+            "required": [
+                "headline",
+                "!=",
+                [
+                    "",
+                    "none"
+                ]
+            ]
+        },
+        "headlineTypography": {
+            "tab": "content",
+            "group": "bfbeHead",
+            "label": "Number",
+            "type": "typography",
+            "required": [
+                "headline",
+                "!=",
+                [
+                    "",
+                    "none"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-chart__value"
+                }
+            ]
+        },
+        "headlineLabelTypography": {
+            "tab": "content",
+            "group": "bfbeHead",
+            "label": "Label",
+            "type": "typography",
+            "required": [
+                "headline",
+                "!=",
+                [
+                    "",
+                    "none"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-chart__label"
+                }
+            ]
+        },
+        "deltaTypography": {
+            "tab": "content",
+            "group": "bfbeHead",
+            "label": "Change",
+            "type": "typography",
+            "required": [
+                [
+                    "delta",
+                    "!=",
+                    ""
+                ],
+                [
+                    "headline",
+                    "!=",
+                    [
+                        "",
+                        "none"
+                    ]
+                ],
+                [
+                    "type",
+                    "!=",
+                    [
+                        "progress",
+                        "versus",
+                        "treemap"
+                    ]
+                ]
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-chart__delta"
+                }
+            ]
+        },
+        "sepHeadColours": {
+            "tab": "content",
+            "group": "bfbeHead",
+            "label": "Change colours",
+            "type": "separator",
+            "required": [
+                [
+                    "delta",
+                    "!=",
+                    ""
+                ],
+                [
+                    "headline",
+                    "!=",
+                    [
+                        "",
+                        "none"
+                    ]
+                ],
+                [
+                    "type",
+                    "!=",
+                    [
+                        "progress",
+                        "versus",
+                        "treemap"
+                    ]
+                ]
+            ]
+        },
+        "deltaUp": {
+            "tab": "content",
+            "group": "bfbeHead",
+            "label": "Up",
+            "type": "color",
+            "required": [
+                [
+                    "delta",
+                    "!=",
+                    ""
+                ],
+                [
+                    "headline",
+                    "!=",
+                    [
+                        "",
+                        "none"
+                    ]
+                ],
+                [
+                    "type",
+                    "!=",
+                    [
+                        "progress",
+                        "versus",
+                        "treemap"
+                    ]
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-chart-up",
+                    "selector": ""
+                }
+            ]
+        },
+        "deltaDown": {
+            "tab": "content",
+            "group": "bfbeHead",
+            "label": "Down",
+            "type": "color",
+            "required": [
+                [
+                    "delta",
+                    "!=",
+                    ""
+                ],
+                [
+                    "headline",
+                    "!=",
+                    [
+                        "",
+                        "none"
+                    ]
+                ],
+                [
+                    "type",
+                    "!=",
+                    [
+                        "progress",
+                        "versus",
+                        "treemap"
+                    ]
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-chart-down",
+                    "selector": ""
+                }
+            ]
+        },
+        "ranges": {
+            "tab": "content",
+            "group": "bfbeRanges",
+            "label": "Ranges",
+            "type": "repeater",
+            "titleProperty": "label",
+            "selector": ".bfbe-chart__range",
+            "fields": {
+                "label": {
+                    "label": "Label",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true
+                },
+                "rows": {
+                    "label": "Rows to show",
+                    "type": "number",
+                    "min": 0,
+                    "inline": true,
+                    "placeholder": "All of them"
+                }
+            }
+        },
+        "rangeStart": {
+            "tab": "content",
+            "group": "bfbeRanges",
+            "label": "Range shown first",
+            "type": "number",
+            "min": 1,
+            "inline": true,
+            "placeholder": 1,
+            "required": [
+                "ranges",
+                "!=",
+                ""
+            ]
+        },
+        "rangesAlign": {
+            "tab": "content",
+            "group": "bfbeRanges",
+            "label": "Ranges sit",
+            "type": "justify-content",
+            "direction": "row",
+            "inline": true,
+            "required": [
+                "ranges",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "justify-content",
+                    "selector": ".bfbe-chart__ranges"
+                }
+            ]
+        },
+        "sepRangeEach": {
+            "tab": "content",
+            "group": "bfbeRanges",
+            "label": "Each range",
+            "type": "separator",
+            "required": [
+                "ranges",
+                "!=",
+                ""
+            ]
+        },
+        "rangeTypography": {
+            "tab": "content",
+            "group": "bfbeRanges",
+            "label": "Typography",
+            "type": "typography",
+            "required": [
+                "ranges",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-chart__range"
+                }
+            ]
+        },
+        "rangeBackground": {
+            "tab": "content",
+            "group": "bfbeRanges",
+            "label": "Background",
+            "type": "background",
+            "required": [
+                "ranges",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "background",
+                    "selector": ".bfbe-chart__range"
+                }
+            ]
+        },
+        "rangeHoverBackground": {
+            "tab": "content",
+            "group": "bfbeRanges",
+            "label": "Hover background",
+            "type": "background",
+            "required": [
+                "ranges",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "background",
+                    "selector": ".bfbe-chart__range:hover"
+                },
+                {
+                    "property": "background",
+                    "selector": ".bfbe-chart__range:focus-visible"
+                }
+            ]
+        },
+        "rangeActiveColor": {
+            "tab": "content",
+            "group": "bfbeRanges",
+            "label": "Chosen colour",
+            "type": "color",
+            "required": [
+                "ranges",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".bfbe-chart__range[aria-pressed=\"true\"]"
+                }
+            ]
+        },
+        "rangeActiveBackground": {
+            "tab": "content",
+            "group": "bfbeRanges",
+            "label": "Chosen background",
+            "type": "background",
+            "required": [
+                "ranges",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "background",
+                    "selector": ".bfbe-chart__range[aria-pressed=\"true\"]"
+                }
+            ]
+        },
+        "rangeBorder": {
+            "tab": "content",
+            "group": "bfbeRanges",
+            "label": "Border",
+            "type": "border",
+            "required": [
+                "ranges",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-chart__range"
+                }
+            ]
+        },
+        "rangePadding": {
+            "tab": "content",
+            "group": "bfbeRanges",
+            "label": "Padding",
+            "type": "dimensions",
+            "required": [
+                "ranges",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-chart__range"
+                }
+            ]
+        },
+        "sepRangeStrip": {
+            "tab": "content",
+            "group": "bfbeRanges",
+            "label": "The strip",
+            "type": "separator",
+            "required": [
+                "ranges",
+                "!=",
+                ""
+            ]
+        },
+        "rangeGap": {
+            "tab": "content",
+            "group": "bfbeRanges",
+            "label": "Space between ranges",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "4px",
+            "required": [
+                "ranges",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": ".bfbe-chart__ranges"
+                }
+            ]
+        },
+        "rangesBackground": {
+            "tab": "content",
+            "group": "bfbeRanges",
+            "label": "Background",
+            "type": "background",
+            "required": [
+                "ranges",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "background",
+                    "selector": ".bfbe-chart__ranges"
+                }
+            ]
+        },
+        "rangesPadding": {
+            "tab": "content",
+            "group": "bfbeRanges",
+            "label": "Padding",
+            "type": "dimensions",
+            "required": [
+                "ranges",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-chart__ranges"
+                }
+            ]
+        },
+        "rangesBorder": {
+            "tab": "content",
+            "group": "bfbeRanges",
+            "label": "Border",
+            "type": "border",
+            "required": [
+                "ranges",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-chart__ranges"
+                }
+            ]
+        },
+        "sepLegend": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Legend",
+            "type": "separator",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "lollipop",
+                    "diverging",
+                    "line",
+                    "area",
+                    "radar",
+                    "donut"
+                ]
+            ]
+        },
+        "legend": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Legend",
+            "type": "select",
+            "options": {
+                "top": "Top",
+                "bottom": "Bottom",
+                "left": "Left",
+                "right": "Right",
+                "list": "A breakdown list",
+                "end": "At the line ends",
+                "none": "None"
+            },
+            "inline": true,
+            "placeholder": "Top",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "lollipop",
+                    "diverging",
+                    "line",
+                    "area",
+                    "radar",
+                    "donut"
+                ]
+            ]
+        },
+        "legendAlign": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Legend sits",
+            "type": "justify-content",
+            "direction": "row",
+            "inline": true,
+            "exclude": "space",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "=",
+                    [
+                        "",
+                        "top",
+                        "bottom"
+                    ]
+                ]
+            ]
+        },
+        "legendAlignSide": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Legend sits",
+            "type": "justify-content",
+            "direction": "column",
+            "inline": true,
+            "exclude": "space",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "=",
+                    [
+                        "left",
+                        "right"
+                    ]
+                ]
+            ]
+        },
+        "endMarker": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "End marker",
+            "type": "select",
+            "options": {
+                "ring": "A ring",
+                "dot": "A dot",
+                "none": "None"
+            },
+            "inline": true,
+            "placeholder": "A ring",
+            "required": [
+                [
+                    "legend",
+                    "=",
+                    "end"
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "line",
+                        "area"
+                    ]
+                ]
+            ]
+        },
+        "legendColor": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Colour",
+            "type": "color",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "!=",
+                    [
+                        "none",
+                        "list",
+                        "end"
+                    ]
+                ]
+            ]
+        },
+        "legendSize": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Text size (px)",
+            "type": "number",
+            "min": 8,
+            "inline": true,
+            "placeholder": 12,
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "!=",
+                    [
+                        "none",
+                        "list",
+                        "end"
+                    ]
+                ]
+            ]
+        },
+        "legendGap": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Gap (px)",
+            "type": "number",
+            "min": 0,
+            "inline": true,
+            "placeholder": 10,
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "!=",
+                    [
+                        "none",
+                        "list",
+                        "end"
+                    ]
+                ]
+            ]
+        },
+        "legendSwatch": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Swatch size (px)",
+            "type": "number",
+            "min": 0,
+            "inline": true,
+            "placeholder": 8,
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "!=",
+                    [
+                        "none",
+                        "list",
+                        "end"
+                    ]
+                ]
+            ]
+        },
+        "legendSwatchGap": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Label swatch spacing",
+            "type": "number",
+            "min": 0,
+            "inline": true,
+            "placeholder": 6,
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "!=",
+                    [
+                        "none",
+                        "list",
+                        "end"
+                    ]
+                ]
+            ]
+        },
+        "legendDim": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Off opacity (%)",
+            "type": "number",
+            "min": 0,
+            "max": 100,
+            "inline": true,
+            "placeholder": 35,
+            "description": "Clicking a label switches its series off.",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "!=",
+                    [
+                        "none",
+                        "list",
+                        "end"
+                    ]
+                ]
+            ]
+        },
+        "legendPillBackground": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Behind each label",
+            "type": "color",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "!=",
+                    [
+                        "none",
+                        "list",
+                        "end"
+                    ]
+                ]
+            ]
+        },
+        "legendPillBorder": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Label border",
+            "type": "border",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "!=",
+                    [
+                        "none",
+                        "list",
+                        "end"
+                    ]
+                ]
+            ],
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-chart__edge--pill"
+                }
+            ]
+        },
+        "legendPillPadX": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Label padding X (px)",
+            "type": "number",
+            "min": 0,
+            "inline": true,
+            "placeholder": 6,
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "!=",
+                    [
+                        "none",
+                        "list",
+                        "end"
+                    ]
+                ]
+            ]
+        },
+        "legendPillPadY": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Label padding Y (px)",
+            "type": "number",
+            "min": 0,
+            "inline": true,
+            "placeholder": 3,
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "!=",
+                    [
+                        "none",
+                        "list",
+                        "end"
+                    ]
+                ]
+            ]
+        },
+        "legendCardBackground": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Legend background",
+            "type": "color",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "!=",
+                    [
+                        "none",
+                        "list",
+                        "end"
+                    ]
+                ]
+            ]
+        },
+        "legendCardBorder": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Legend border",
+            "type": "border",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "!=",
+                    [
+                        "none",
+                        "list",
+                        "end"
+                    ]
+                ]
+            ],
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-chart__edge--card"
+                }
+            ]
+        },
+        "legendCardPad": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Legend padding (px)",
+            "type": "number",
+            "min": 0,
+            "inline": true,
+            "placeholder": 6,
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "!=",
+                    [
+                        "none",
+                        "list",
+                        "end"
+                    ]
+                ]
+            ]
+        },
+        "sepBreakdown": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Breakdown",
+            "type": "separator",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "=",
+                    "list"
+                ]
+            ]
+        },
+        "breakdownPosition": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Position",
+            "type": "select",
+            "options": {
+                "below": "Below",
+                "beside": "Beside"
+            },
+            "inline": true,
+            "placeholder": "Below",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "=",
+                    "list"
+                ]
+            ]
+        },
+        "breakdownAlign": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "List sits",
+            "type": "align-items",
+            "inline": true,
+            "exclude": [
+                "auto"
+            ],
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "=",
+                    "list"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-chart-list-align",
+                    "selector": ""
+                }
+            ]
+        },
+        "besideAbove": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Beside above",
+            "type": "select",
+            "options": {
+                "480": "480 px",
+                "640": "640 px",
+                "768": "768 px",
+                "992": "992 px"
+            },
+            "inline": true,
+            "placeholder": "640 px",
+            "required": [
+                [
+                    "breakdownPosition",
+                    "=",
+                    "beside"
+                ],
+                [
+                    "legend",
+                    "=",
+                    "list"
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ]
+            ]
+        },
+        "breakdownTypography": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Typography",
+            "type": "typography",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "=",
+                    "list"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-chart__breakdown"
+                }
+            ]
+        },
+        "breakdownPadding": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Row padding",
+            "type": "dimensions",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "=",
+                    "list"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-chart__part"
+                }
+            ]
+        },
+        "swatchSize": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Swatch size",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "10px",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "=",
+                    "list"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "inline-size",
+                    "selector": ".bfbe-chart__swatch"
+                },
+                {
+                    "property": "block-size",
+                    "selector": ".bfbe-chart__swatch"
+                }
+            ]
+        },
+        "breakdownWidth": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Breakdown width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "Half, beside the donut",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "=",
+                    "list"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-chart-breakdown-w",
+                    "selector": ""
+                }
+            ]
+        },
+        "breakdownGap": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Gap within a row",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": ".8em",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "=",
+                    "list"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": ".bfbe-chart__part"
+                }
+            ]
+        },
+        "breakdownRowGap": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Space between rows",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "0",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "=",
+                    "list"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": ".bfbe-chart__breakdown"
+                }
+            ]
+        },
+        "breakdownBackground": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Breakdown background",
+            "type": "background",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "=",
+                    "list"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "background",
+                    "selector": ".bfbe-chart__breakdown"
+                }
+            ]
+        },
+        "breakdownBoxPadding": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Breakdown padding",
+            "type": "dimensions",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "=",
+                    "list"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-chart__breakdown"
+                }
+            ]
+        },
+        "breakdownBorder": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Breakdown border",
+            "type": "border",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "=",
+                    "list"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-chart__breakdown"
+                }
+            ]
+        },
+        "partBackground": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Row background",
+            "type": "background",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "=",
+                    "list"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "background",
+                    "selector": ".bfbe-chart__part"
+                }
+            ]
+        },
+        "partBorder": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Row border",
+            "type": "border",
+            "description": "A line under each row until you set this.",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar",
+                        "donut"
+                    ]
+                ],
+                [
+                    "legend",
+                    "=",
+                    "list"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-chart__part"
+                }
+            ]
+        },
+        "sepAxes": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Grid",
+            "type": "separator",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "lollipop",
+                    "diverging",
+                    "line",
+                    "area",
+                    "radar"
+                ]
+            ]
+        },
+        "grid": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Grid lines",
+            "type": "checkbox",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "lollipop",
+                    "diverging",
+                    "line",
+                    "area",
+                    "radar"
+                ]
+            ]
+        },
+        "rings": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Rings",
+            "type": "select",
+            "options": {
+                "round": "Round",
+                "polygon": "Polygon"
+            },
+            "inline": true,
+            "placeholder": "Round",
+            "required": [
+                [
+                    "grid",
+                    "!=",
+                    ""
+                ],
+                [
+                    "type",
+                    "=",
+                    "radar"
+                ],
+                [
+                    "gridAxes",
+                    "!=",
+                    "label"
+                ]
+            ]
+        },
+        "gridAxes": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Drawn along",
+            "type": "select",
+            "options": {
+                "value": "The value axis",
+                "label": "The label axis",
+                "both": "Both"
+            },
+            "inline": true,
+            "placeholder": "The value axis",
+            "required": [
+                [
+                    "grid",
+                    "!=",
+                    ""
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar"
+                    ]
+                ]
+            ]
+        },
+        "gridWidth": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Line width (px)",
+            "type": "number",
+            "min": 0,
+            "max": 8,
+            "inline": true,
+            "placeholder": 1,
+            "required": [
+                [
+                    "grid",
+                    "!=",
+                    ""
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar"
+                    ]
+                ]
+            ]
+        },
+        "gridDash": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Line style",
+            "type": "select",
+            "options": {
+                "solid": "Solid",
+                "dashed": "Dashed",
+                "dotted": "Dotted"
+            },
+            "inline": true,
+            "placeholder": "Solid",
+            "required": [
+                [
+                    "grid",
+                    "!=",
+                    ""
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar"
+                    ]
+                ]
+            ]
+        },
+        "gridColor": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Grid line colour",
+            "type": "color",
+            "required": [
+                [
+                    "grid",
+                    "!=",
+                    ""
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "radar"
+                    ]
+                ]
+            ]
+        },
+        "sepDrawing": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Drawing",
+            "type": "separator",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "diverging",
+                    "line",
+                    "area",
+                    "radar",
+                    "spark"
+                ]
+            ]
+        },
+        "zero": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Start at zero",
+            "type": "checkbox",
+            "required": [
+                "type",
+                "=",
+                [
+                    "line",
+                    "area",
+                    "spark"
+                ]
+            ]
+        },
+        "stacked": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Stacked",
+            "type": "checkbox",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "line",
+                    "area"
+                ]
+            ]
+        },
+        "smooth": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Smooth lines",
+            "type": "checkbox",
+            "required": [
+                "type",
+                "=",
+                [
+                    "line",
+                    "area",
+                    "spark",
+                    "radar"
+                ]
+            ]
+        },
+        "belowSeries": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Below the line",
+            "type": "number",
+            "min": 1,
+            "inline": true,
+            "placeholder": 2,
+            "description": "The series drawn under the middle line.",
+            "required": [
+                "type",
+                "=",
+                "diverging"
+            ]
+        },
+        "sepAxisStyle": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Axes",
+            "type": "separator",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "lollipop",
+                    "diverging",
+                    "line",
+                    "area",
+                    "radar"
+                ]
+            ]
+        },
+        "axisColor": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Axis label colour",
+            "type": "color",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "lollipop",
+                    "diverging",
+                    "line",
+                    "area",
+                    "radar"
+                ]
+            ]
+        },
+        "axisSize": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Axis text size (px)",
+            "type": "number",
+            "min": 8,
+            "inline": true,
+            "placeholder": 12,
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "lollipop",
+                    "diverging",
+                    "line",
+                    "area",
+                    "radar"
+                ]
+            ]
+        },
+        "axes": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Axes shown",
+            "type": "select",
+            "options": {
+                "both": "Both",
+                "value": "The value axis only",
+                "label": "The label axis only",
+                "none": "Neither"
+            },
+            "inline": true,
+            "placeholder": "Both, the label axis in Minimal",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "lollipop",
+                    "diverging",
+                    "line",
+                    "area",
+                    "radar"
+                ]
+            ]
+        },
+        "axisLineColor": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Axis line colour",
+            "type": "color",
+            "description": "The line the labels sit against.",
+            "required": [
+                [
+                    "axes",
+                    "!=",
+                    "none"
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area"
+                    ]
+                ]
+            ]
+        },
+        "axisLineWidth": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Axis line width (px)",
+            "type": "number",
+            "min": 0,
+            "max": 8,
+            "inline": true,
+            "placeholder": 1,
+            "required": [
+                [
+                    "axes",
+                    "!=",
+                    "none"
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area"
+                    ]
+                ]
+            ]
+        },
+        "axisPad": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Label offset (px)",
+            "type": "number",
+            "min": 0,
+            "inline": true,
+            "placeholder": 3,
+            "required": [
+                [
+                    "axes",
+                    "!=",
+                    "none"
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area"
+                    ]
+                ]
+            ]
+        },
+        "rimPad": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Label offset (px)",
+            "type": "number",
+            "min": 0,
+            "inline": true,
+            "placeholder": 3,
+            "required": [
+                [
+                    "type",
+                    "=",
+                    "radar"
+                ],
+                [
+                    "axes",
+                    "=",
+                    [
+                        "",
+                        "both",
+                        "label"
+                    ]
+                ]
+            ]
+        },
+        "sepAverage": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Average line",
+            "type": "separator",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "lollipop",
+                    "line",
+                    "area"
+                ]
+            ]
+        },
+        "average": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Show it",
+            "type": "checkbox",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "lollipop",
+                    "line",
+                    "area"
+                ]
+            ]
+        },
+        "averageLabel": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Label",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "Avg",
+            "required": [
+                [
+                    "average",
+                    "!=",
+                    ""
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "line",
+                        "area"
+                    ]
+                ]
+            ]
+        },
+        "averageColor": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Colour",
+            "type": "color",
+            "required": [
+                [
+                    "average",
+                    "!=",
+                    ""
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "line",
+                        "area"
+                    ]
+                ]
+            ]
+        },
+        "averageWidth": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Line width (px)",
+            "type": "number",
+            "min": 0,
+            "max": 8,
+            "inline": true,
+            "placeholder": 1,
+            "required": [
+                [
+                    "average",
+                    "!=",
+                    ""
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "line",
+                        "area"
+                    ]
+                ]
+            ]
+        },
+        "averageDash": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Line style",
+            "type": "select",
+            "options": {
+                "dashed": "Dashed",
+                "solid": "Solid",
+                "dotted": "Dotted"
+            },
+            "inline": true,
+            "placeholder": "Dashed",
+            "required": [
+                [
+                    "average",
+                    "!=",
+                    ""
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "line",
+                        "area"
+                    ]
+                ]
+            ]
+        },
+        "averageLabelSize": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Label size (px)",
+            "type": "number",
+            "min": 8,
+            "inline": true,
+            "placeholder": 12,
+            "required": [
+                [
+                    "average",
+                    "!=",
+                    ""
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "line",
+                        "area"
+                    ]
+                ]
+            ]
+        },
+        "averageLabelWeight": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Label weight",
+            "type": "select",
+            "options": {
+                "400": "Normal",
+                "500": "Medium",
+                "600": "Semi-bold",
+                "700": "Bold"
+            },
+            "inline": true,
+            "placeholder": "Semi-bold",
+            "required": [
+                [
+                    "average",
+                    "!=",
+                    ""
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "line",
+                        "area"
+                    ]
+                ]
+            ]
+        },
+        "averageLabelColor": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Label colour",
+            "type": "color",
+            "description": "The line colour, until you set this.",
+            "required": [
+                [
+                    "average",
+                    "!=",
+                    ""
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "line",
+                        "area"
+                    ]
+                ]
+            ]
+        },
+        "averageLabelBackground": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Label background",
+            "type": "color",
+            "required": [
+                [
+                    "average",
+                    "!=",
+                    ""
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "line",
+                        "area"
+                    ]
+                ]
+            ]
+        },
+        "averageLabelBorder": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Label border",
+            "type": "border",
+            "required": [
+                [
+                    "average",
+                    "!=",
+                    ""
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "line",
+                        "area"
+                    ]
+                ]
+            ],
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-chart__edge--avg"
+                }
+            ]
+        },
+        "averageLabelPad": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Label padding (px)",
+            "type": "number",
+            "min": 0,
+            "inline": true,
+            "placeholder": 6,
+            "required": [
+                [
+                    "average",
+                    "!=",
+                    ""
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "line",
+                        "area"
+                    ]
+                ]
+            ]
+        },
+        "sepAxesHover": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Hover",
+            "type": "separator",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "lollipop",
+                    "diverging",
+                    "donut"
+                ]
+            ]
+        },
+        "focus": {
+            "tab": "content",
+            "group": "bfbeAxes",
+            "label": "Dim the others on hover",
+            "type": "checkbox",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "lollipop",
+                    "diverging",
+                    "donut"
+                ]
+            ]
+        },
+        "colors": {
+            "tab": "content",
+            "group": "bfbeColors",
+            "label": "Series colours",
+            "titleProperty": "color",
+            "fields": {
+                "color": {
+                    "label": "Colour",
+                    "type": "color"
+                },
+                "color2": {
+                    "label": "Fades to",
+                    "type": "color",
+                    "required": [
+                        [
+                            "type",
+                            "=",
+                            [
+                                "",
+                                "bar",
+                                "hbar",
+                                "lollipop",
+                                "line",
+                                "area",
+                                "spark",
+                                "gauge"
+                            ]
+                        ],
+                        [
+                            "gradient",
+                            "=",
+                            "second"
+                        ]
+                    ]
+                },
+                "fill": {
+                    "label": "Fill",
+                    "type": "select",
+                    "options": {
+                        "solid": "Solid",
+                        "hatched": "Hatched",
+                        "dotted": "Dotted"
+                    },
+                    "inline": true,
+                    "placeholder": "Solid",
+                    "required": [
+                        "type",
+                        "=",
+                        [
+                            "",
+                            "bar",
+                            "hbar",
+                            "diverging",
+                            "area",
+                            "radar",
+                            "donut"
+                        ]
+                    ]
+                }
+            },
+            "type": "repeater",
+            "selector": ".bfbe-chart__swatch"
+        },
+        "gradient": {
+            "tab": "content",
+            "group": "bfbeColors",
+            "label": "Gradient",
+            "type": "select",
+            "options": {
+                "none": "None",
+                "fade": "To transparent",
+                "second": "To the second colour"
+            },
+            "inline": true,
+            "placeholder": "None",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "lollipop",
+                    "line",
+                    "area",
+                    "spark",
+                    "gauge"
+                ]
+            ]
+        },
+        "gradientRuns": {
+            "tab": "content",
+            "group": "bfbeColors",
+            "label": "Gradient runs",
+            "type": "select",
+            "options": {
+                "values": "With the values",
+                "labels": "Along the labels"
+            },
+            "inline": true,
+            "placeholder": "With the values",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "line",
+                        "area",
+                        "spark"
+                    ]
+                ],
+                [
+                    "gradient",
+                    "!=",
+                    [
+                        "",
+                        "none"
+                    ]
+                ]
+            ]
+        },
+        "glow": {
+            "tab": "content",
+            "group": "bfbeColors",
+            "label": "Glow",
+            "type": "checkbox",
+            "required": [
+                "type",
+                "=",
+                [
+                    "line",
+                    "area",
+                    "spark"
+                ]
+            ]
+        },
+        "compare": {
+            "tab": "content",
+            "group": "bfbeColors",
+            "label": "Comparison series",
+            "type": "number",
+            "min": 0,
+            "inline": true,
+            "placeholder": 0,
+            "description": "Dashed and lighter. 0 is none.",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "lollipop",
+                    "line",
+                    "area",
+                    "spark",
+                    "radar"
+                ]
+            ]
+        },
+        "radius": {
+            "tab": "content",
+            "group": "bfbeColors",
+            "label": "Corner radius (px)",
+            "type": "number",
+            "min": 0,
+            "inline": true,
+            "placeholder": "Auto",
+            "description": "6, or round in Minimal and on an arc.",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "diverging",
+                    "donut",
+                    "gauge"
+                ]
+            ]
+        },
+        "sepBars": {
+            "tab": "content",
+            "group": "bfbeColors",
+            "label": "Bars",
+            "type": "separator",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "diverging",
+                    "lollipop"
+                ]
+            ]
+        },
+        "barWidth": {
+            "tab": "content",
+            "group": "bfbeColors",
+            "label": "Width (px)",
+            "type": "number",
+            "unit": "px",
+            "min": 1,
+            "max": 120,
+            "inline": true,
+            "placeholder": "Auto, 8 in Minimal",
+            "description": "At most; bars narrow when they would touch.",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "diverging"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "width",
+                    "selector": "&:not(.bfbe-chart--lollipop) .bfbe-chart__edge--bar"
+                }
+            ]
+        },
+        "stemWidth": {
+            "tab": "content",
+            "group": "bfbeColors",
+            "label": "Stem width (px)",
+            "type": "number",
+            "unit": "px",
+            "min": 1,
+            "max": 20,
+            "inline": true,
+            "placeholder": 2,
+            "required": [
+                "type",
+                "=",
+                "lollipop"
+            ],
+            "css": [
+                {
+                    "property": "width",
+                    "selector": "&.bfbe-chart--lollipop .bfbe-chart__edge--bar"
+                }
+            ]
+        },
+        "dotSize": {
+            "tab": "content",
+            "group": "bfbeColors",
+            "label": "Dot size (px)",
+            "type": "number",
+            "unit": "px",
+            "min": 2,
+            "max": 40,
+            "inline": true,
+            "placeholder": 10,
+            "required": [
+                "type",
+                "=",
+                "lollipop"
+            ],
+            "css": [
+                {
+                    "property": "height",
+                    "selector": "&.bfbe-chart--lollipop .bfbe-chart__edge--bar"
+                }
+            ]
+        },
+        "tracks": {
+            "tab": "content",
+            "group": "bfbeColors",
+            "label": "Tracks",
+            "type": "checkbox",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar"
+                ]
+            ]
+        },
+        "trackColor": {
+            "tab": "content",
+            "group": "bfbeColors",
+            "label": "Track colour",
+            "type": "color",
+            "required": [
+                [
+                    "tracks",
+                    "!=",
+                    ""
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar"
+                    ]
+                ]
+            ]
+        },
+        "highlight": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Highlight",
+            "type": "select",
+            "options": {
+                "none": "None",
+                "last": "The last",
+                "max": "The highest",
+                "min": "The lowest",
+                "label": "A label"
+            },
+            "inline": true,
+            "placeholder": "None",
+            "description": "Of the first series drawn, or the stacked totals.",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "lollipop",
+                    "diverging",
+                    "line",
+                    "area"
+                ]
+            ]
+        },
+        "highlightLabel": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Highlight label",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area"
+                    ]
+                ],
+                [
+                    "highlight",
+                    "=",
+                    "label"
+                ]
+            ]
+        },
+        "quietColor": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Quiet colour",
+            "type": "color",
+            "description": "The other bars; the text colour at 60% until set.",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging"
+                    ]
+                ],
+                [
+                    "highlight",
+                    "!=",
+                    [
+                        "",
+                        "none"
+                    ]
+                ]
+            ]
+        },
+        "sepMarkValue": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "The value",
+            "type": "separator",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area"
+                    ]
+                ],
+                [
+                    "highlight",
+                    "!=",
+                    [
+                        "",
+                        "none"
+                    ]
+                ]
+            ]
+        },
+        "markSize": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Size (px)",
+            "type": "number",
+            "min": 8,
+            "inline": true,
+            "placeholder": 12,
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area"
+                    ]
+                ],
+                [
+                    "highlight",
+                    "!=",
+                    [
+                        "",
+                        "none"
+                    ]
+                ]
+            ]
+        },
+        "markWeight": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Weight",
+            "type": "select",
+            "options": {
+                "400": "Normal",
+                "500": "Medium",
+                "600": "Semi-bold",
+                "700": "Bold"
+            },
+            "inline": true,
+            "placeholder": "Semi-bold",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area"
+                    ]
+                ],
+                [
+                    "highlight",
+                    "!=",
+                    [
+                        "",
+                        "none"
+                    ]
+                ]
+            ]
+        },
+        "markColor": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Colour",
+            "type": "color",
+            "description": "The text colour, until you set this.",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area"
+                    ]
+                ],
+                [
+                    "highlight",
+                    "!=",
+                    [
+                        "",
+                        "none"
+                    ]
+                ]
+            ]
+        },
+        "markBackground": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Background",
+            "type": "color",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area"
+                    ]
+                ],
+                [
+                    "highlight",
+                    "!=",
+                    [
+                        "",
+                        "none"
+                    ]
+                ]
+            ]
+        },
+        "markBorder": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Border",
+            "type": "border",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area"
+                    ]
+                ],
+                [
+                    "highlight",
+                    "!=",
+                    [
+                        "",
+                        "none"
+                    ]
+                ]
+            ],
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-chart__edge--mark"
+                }
+            ]
+        },
+        "markPad": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Padding (px)",
+            "type": "number",
+            "min": 0,
+            "inline": true,
+            "placeholder": 6,
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area"
+                    ]
+                ],
+                [
+                    "highlight",
+                    "!=",
+                    [
+                        "",
+                        "none"
+                    ]
+                ]
+            ]
+        },
+        "sepProjected": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Projected",
+            "type": "separator",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "lollipop",
+                    "diverging",
+                    "line",
+                    "area",
+                    "spark"
+                ]
+            ]
+        },
+        "projectedFrom": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "From",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "description": "A label; it and every row after it.",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "hbar",
+                    "lollipop",
+                    "diverging",
+                    "line",
+                    "area",
+                    "spark"
+                ]
+            ]
+        },
+        "projectedLook": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Drawn as",
+            "type": "select",
+            "options": {
+                "hatched": "Hatched",
+                "dashed": "Dashed",
+                "faded": "Faded"
+            },
+            "inline": true,
+            "placeholder": "Hatched",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "hbar",
+                        "diverging",
+                        "area"
+                    ]
+                ],
+                [
+                    "projectedFrom",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "sepBands": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Bands",
+            "type": "separator",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "lollipop",
+                    "diverging",
+                    "line",
+                    "area"
+                ]
+            ]
+        },
+        "bands": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Spans",
+            "type": "repeater",
+            "titleProperty": "label",
+            "selector": ".bfbe-chart__note",
+            "fields": {
+                "from": {
+                    "label": "From",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true
+                },
+                "to": {
+                    "label": "To",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true
+                },
+                "label": {
+                    "label": "Label",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true
+                }
+            },
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "bar",
+                    "lollipop",
+                    "diverging",
+                    "line",
+                    "area"
+                ]
+            ]
+        },
+        "bandFill": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Fill",
+            "type": "select",
+            "options": {
+                "dotted": "Dotted",
+                "hatched": "Hatched",
+                "tinted": "Tinted"
+            },
+            "inline": true,
+            "placeholder": "Dotted",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area"
+                    ]
+                ],
+                [
+                    "bands",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "bandColor": {
+            "tab": "content",
+            "group": "bfbeMarks",
+            "label": "Colour",
+            "type": "color",
+            "description": "The text colour at 35%, until you set this.",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area"
+                    ]
+                ],
+                [
+                    "bands",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "sepMiddle": {
+            "tab": "content",
+            "group": "bfbeDonut",
+            "label": "In the middle",
+            "type": "separator",
+            "required": [
+                "type",
+                "=",
+                [
+                    "donut",
+                    "gauge"
+                ]
+            ]
+        },
+        "centre": {
+            "tab": "content",
+            "group": "bfbeDonut",
+            "label": "In the middle",
+            "type": "select",
+            "options": {
+                "none": "Nothing",
+                "total": "The total",
+                "custom": "Own text"
+            },
+            "inline": true,
+            "placeholder": "Nothing",
+            "required": [
+                "type",
+                "=",
+                [
+                    "donut",
+                    "gauge"
+                ]
+            ]
+        },
+        "centreText": {
+            "tab": "content",
+            "group": "bfbeDonut",
+            "label": "Text",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "required": [
+                "centre",
+                "=",
+                "custom"
+            ]
+        },
+        "centreLabel": {
+            "tab": "content",
+            "group": "bfbeDonut",
+            "label": "Small label",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "Total",
+            "required": [
+                "centre",
+                "!=",
+                [
+                    "",
+                    "none"
+                ]
+            ]
+        },
+        "centreSize": {
+            "tab": "content",
+            "group": "bfbeDonut",
+            "label": "Text size (px)",
+            "type": "number",
+            "min": 8,
+            "inline": true,
+            "placeholder": 28,
+            "required": [
+                "centre",
+                "!=",
+                [
+                    "",
+                    "none"
+                ]
+            ]
+        },
+        "centreColor": {
+            "tab": "content",
+            "group": "bfbeDonut",
+            "label": "Text colour",
+            "type": "color",
+            "required": [
+                "centre",
+                "!=",
+                [
+                    "",
+                    "none"
+                ]
+            ]
+        },
+        "sepGauge": {
+            "tab": "content",
+            "group": "bfbeDonut",
+            "label": "Gauge",
+            "type": "separator",
+            "required": [
+                "type",
+                "=",
+                "gauge"
+            ]
+        },
+        "gaugeStyle": {
+            "tab": "content",
+            "group": "bfbeDonut",
+            "label": "Style",
+            "type": "select",
+            "options": {
+                "arc": "Arc",
+                "needle": "Needle"
+            },
+            "inline": true,
+            "placeholder": "Arc",
+            "required": [
+                "type",
+                "=",
+                "gauge"
+            ]
+        },
+        "gaugeOf": {
+            "tab": "content",
+            "group": "bfbeDonut",
+            "label": "Out of",
+            "type": "select",
+            "options": {
+                "number": "A number",
+                "column": "The next column"
+            },
+            "inline": true,
+            "placeholder": "A number",
+            "required": [
+                "type",
+                "=",
+                "gauge"
+            ]
+        },
+        "gaugeMax": {
+            "tab": "content",
+            "group": "bfbeDonut",
+            "label": "Maximum",
+            "type": "number",
+            "inline": true,
+            "placeholder": 100,
+            "required": [
+                [
+                    "type",
+                    "=",
+                    "gauge"
+                ],
+                [
+                    "gaugeOf",
+                    "=",
+                    [
+                        "",
+                        "number"
+                    ]
+                ]
+            ]
+        },
+        "arcWidth": {
+            "tab": "content",
+            "group": "bfbeDonut",
+            "label": "Arc width (%)",
+            "type": "number",
+            "min": 2,
+            "max": 50,
+            "inline": true,
+            "placeholder": 14,
+            "description": "Of the radius, from the outside.",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    "gauge"
+                ],
+                [
+                    "gaugeStyle",
+                    "!=",
+                    "needle"
+                ]
+            ]
+        },
+        "gaugeTrack": {
+            "tab": "content",
+            "group": "bfbeDonut",
+            "label": "Track colour",
+            "type": "color",
+            "required": [
+                "type",
+                "=",
+                "gauge"
+            ]
+        },
+        "gaugeTicks": {
+            "tab": "content",
+            "group": "bfbeDonut",
+            "label": "Tick marks",
+            "type": "checkbox",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    "gauge"
+                ],
+                [
+                    "gaugeStyle",
+                    "=",
+                    "needle"
+                ]
+            ]
+        },
+        "sepDonutHover": {
+            "tab": "content",
+            "group": "bfbeDonut",
+            "label": "Hover",
+            "type": "separator",
+            "required": [
+                "type",
+                "=",
+                "donut"
+            ]
+        },
+        "pullOut": {
+            "tab": "content",
+            "group": "bfbeDonut",
+            "label": "Pull out on hover",
+            "type": "checkbox",
+            "required": [
+                "type",
+                "=",
+                "donut"
+            ]
+        },
+        "tooltip": {
+            "tab": "content",
+            "group": "bfbeTip",
+            "label": "Tooltip",
+            "type": "select",
+            "options": {
+                "point": "One value",
+                "index": "Every series at that point",
+                "guide": "A guide line and the values",
+                "guideLine": "A guide line only",
+                "none": "None"
+            },
+            "inline": true,
+            "placeholder": "One value"
+        },
+        "tooltipTotal": {
+            "tab": "content",
+            "group": "bfbeTip",
+            "label": "Total row",
+            "type": "checkbox",
+            "required": [
+                [
+                    "tooltip",
+                    "=",
+                    [
+                        "index",
+                        "guide"
+                    ]
+                ],
+                [
+                    "type",
+                    "!=",
+                    "donut"
+                ]
+            ]
+        },
+        "guideRest": {
+            "tab": "content",
+            "group": "bfbeTip",
+            "label": "Rests on",
+            "type": "select",
+            "options": {
+                "last": "The last point",
+                "label": "A label",
+                "none": "Nowhere"
+            },
+            "inline": true,
+            "placeholder": "The last point",
+            "required": [
+                [
+                    "tooltip",
+                    "=",
+                    [
+                        "guide",
+                        "guideLine"
+                    ]
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "spark"
+                    ]
+                ]
+            ]
+        },
+        "guideRestLabel": {
+            "tab": "content",
+            "group": "bfbeTip",
+            "label": "Label",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "required": [
+                [
+                    "tooltip",
+                    "=",
+                    [
+                        "guide",
+                        "guideLine"
+                    ]
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "spark"
+                    ]
+                ],
+                [
+                    "guideRest",
+                    "=",
+                    "label"
+                ]
+            ]
+        },
+        "sepGuideLine": {
+            "tab": "content",
+            "group": "bfbeTip",
+            "label": "Guide line",
+            "type": "separator",
+            "required": [
+                [
+                    "tooltip",
+                    "=",
+                    [
+                        "guide",
+                        "guideLine"
+                    ]
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "spark"
+                    ]
+                ]
+            ]
+        },
+        "guideColor": {
+            "tab": "content",
+            "group": "bfbeTip",
+            "label": "Colour",
+            "type": "color",
+            "description": "The axis labels&#039; colour, until you set this.",
+            "required": [
+                [
+                    "tooltip",
+                    "=",
+                    [
+                        "guide",
+                        "guideLine"
+                    ]
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "spark"
+                    ]
+                ]
+            ]
+        },
+        "guideWidth": {
+            "tab": "content",
+            "group": "bfbeTip",
+            "label": "Line width (px)",
+            "type": "number",
+            "min": 0,
+            "max": 8,
+            "inline": true,
+            "placeholder": 1,
+            "required": [
+                [
+                    "tooltip",
+                    "=",
+                    [
+                        "guide",
+                        "guideLine"
+                    ]
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "spark"
+                    ]
+                ]
+            ]
+        },
+        "guideDash": {
+            "tab": "content",
+            "group": "bfbeTip",
+            "label": "Line style",
+            "type": "select",
+            "options": {
+                "dashed": "Dashed",
+                "solid": "Solid",
+                "dotted": "Dotted"
+            },
+            "inline": true,
+            "placeholder": "Dashed",
+            "required": [
+                [
+                    "tooltip",
+                    "=",
+                    [
+                        "guide",
+                        "guideLine"
+                    ]
+                ],
+                [
+                    "type",
+                    "=",
+                    [
+                        "",
+                        "bar",
+                        "lollipop",
+                        "diverging",
+                        "line",
+                        "area",
+                        "spark"
+                    ]
+                ]
+            ]
+        },
+        "sepTipCard": {
+            "tab": "content",
+            "group": "bfbeTip",
+            "label": "The card",
+            "type": "separator",
+            "required": [
+                "tooltip",
+                "!=",
+                [
+                    "none",
+                    "guideLine"
+                ]
+            ]
+        },
+        "tooltipBackground": {
+            "tab": "content",
+            "group": "bfbeTip",
+            "label": "Background",
+            "type": "color",
+            "required": [
+                "tooltip",
+                "!=",
+                [
+                    "none",
+                    "guideLine"
+                ]
+            ]
+        },
+        "tooltipBorder": {
+            "tab": "content",
+            "group": "bfbeTip",
+            "label": "Border",
+            "type": "border",
+            "required": [
+                "tooltip",
+                "!=",
+                [
+                    "none",
+                    "guideLine"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-chart__edge--tip"
+                }
+            ]
+        },
+        "tooltipColor": {
+            "tab": "content",
+            "group": "bfbeTip",
+            "label": "Text colour",
+            "type": "color",
+            "required": [
+                "tooltip",
+                "!=",
+                [
+                    "none",
+                    "guideLine"
+                ]
+            ]
+        },
+        "tooltipSize": {
+            "tab": "content",
+            "group": "bfbeTip",
+            "label": "Text size (px)",
+            "type": "number",
+            "min": 8,
+            "inline": true,
+            "placeholder": 12,
+            "required": [
+                "tooltip",
+                "!=",
+                [
+                    "none",
+                    "guideLine"
+                ]
+            ]
+        },
+        "tooltipPadding": {
+            "tab": "content",
+            "group": "bfbeTip",
+            "label": "Padding (px)",
+            "type": "number",
+            "min": 0,
+            "inline": true,
+            "placeholder": 8,
+            "required": [
+                "tooltip",
+                "!=",
+                [
+                    "none",
+                    "guideLine"
+                ]
+            ]
+        },
+        "showTable": {
+            "tab": "content",
+            "group": "bfbeTable",
+            "label": "Show below the chart",
+            "type": "checkbox"
+        },
+        "sepTableButton": {
+            "tab": "content",
+            "group": "bfbeTable",
+            "label": "The button",
+            "type": "separator",
+            "required": [
+                "showTable",
+                "=",
+                ""
+            ]
+        },
+        "tableLabel": {
+            "tab": "content",
+            "group": "bfbeTable",
+            "label": "Label",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Show data",
+            "required": [
+                "showTable",
+                "=",
+                ""
+            ]
+        },
+        "toggleAlign": {
+            "tab": "content",
+            "group": "bfbeTable",
+            "label": "Button sits",
+            "type": "align-items",
+            "inline": true,
+            "exclude": [
+                "auto"
+            ],
+            "required": [
+                "showTable",
+                "=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "align-self",
+                    "selector": ".bfbe-chart__toggle"
+                }
+            ]
+        },
+        "toggleTypography": {
+            "tab": "content",
+            "group": "bfbeTable",
+            "label": "Typography",
+            "type": "typography",
+            "required": [
+                "showTable",
+                "=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-chart__toggle"
+                }
+            ]
+        },
+        "toggleBackground": {
+            "tab": "content",
+            "group": "bfbeTable",
+            "label": "Background",
+            "type": "background",
+            "required": [
+                "showTable",
+                "=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "background",
+                    "selector": ".bfbe-chart__toggle"
+                }
+            ]
+        },
+        "toggleBorder": {
+            "tab": "content",
+            "group": "bfbeTable",
+            "label": "Border",
+            "type": "border",
+            "required": [
+                "showTable",
+                "=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-chart__toggle"
+                }
+            ]
+        },
+        "sepTableBox": {
+            "tab": "content",
+            "group": "bfbeTable",
+            "label": "The table",
+            "type": "separator"
+        },
+        "tableTypography": {
+            "tab": "content",
+            "group": "bfbeTable",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-chart__table"
+                }
+            ]
+        },
+        "tableLine": {
+            "tab": "content",
+            "group": "bfbeTable",
+            "label": "Line colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-chart-line",
+                    "selector": ""
+                }
+            ]
+        },
+        "tableCellPadding": {
+            "tab": "content",
+            "group": "bfbeTable",
+            "label": "Cell padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-chart__table th"
+                },
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-chart__table td"
+                },
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-chart__cell"
+                }
+            ]
+        },
+        "tableCaptionTypography": {
+            "tab": "content",
+            "group": "bfbeTable",
+            "label": "Caption typography",
+            "type": "typography",
+            "required": [
+                "title",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-chart__table caption"
+                },
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-chart__caption"
+                }
+            ]
+        },
+        "tableBackground": {
+            "tab": "content",
+            "group": "bfbeTable",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": ".bfbe-chart__table-wrap"
+                }
+            ]
+        },
+        "tablePadding": {
+            "tab": "content",
+            "group": "bfbeTable",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-chart__table-wrap"
+                }
+            ]
+        },
+        "tableBorder": {
+            "tab": "content",
+            "group": "bfbeTable",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-chart__table-wrap"
+                }
+            ]
+        },
+        "sepTableRows": {
+            "tab": "content",
+            "group": "bfbeTable",
+            "label": "Rows",
+            "type": "separator"
+        },
+        "tableRowBackground": {
+            "tab": "content",
+            "group": "bfbeTable",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": ".bfbe-chart__tr"
+                }
+            ]
+        },
+        "tableAltBackground": {
+            "tab": "content",
+            "group": "bfbeTable",
+            "label": "Every other row",
+            "type": "background",
+            "description": "Counted from the first row of figures.",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": ".bfbe-chart__tr--alt"
+                }
+            ]
+        },
+        "tableHeadBackground": {
+            "tab": "content",
+            "group": "bfbeTable",
+            "label": "Header cell background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": ".bfbe-chart__table th"
+                },
+                {
+                    "property": "background",
+                    "selector": ".bfbe-chart__cell--head"
+                }
+            ]
+        },
+        "tableRowBorder": {
+            "tab": "content",
+            "group": "bfbeTable",
+            "label": "Border",
+            "type": "border",
+            "description": "A line in the table line colour until set.",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-chart__tr"
+                }
+            ]
+        },
+        "hasLoop": {
+            "tab": "content",
+            "label": "Query loop",
+            "type": "checkbox"
+        },
+        "query": {
+            "tab": "content",
+            "label": "Query",
+            "type": "query",
+            "popup": true,
+            "inline": true,
+            "required": [
+                "hasLoop",
+                "!=",
+                ""
+            ]
+        },
+        "animate": {
+            "tab": "content",
+            "group": "bfbeMotion",
+            "label": "Draw animation",
+            "type": "checkbox"
+        },
+        "animDuration": {
+            "tab": "content",
+            "group": "bfbeMotion",
+            "label": "Duration (ms)",
+            "type": "number",
+            "min": 0,
+            "max": 5000,
+            "step": 50,
+            "inline": true,
+            "placeholder": 1000,
+            "required": [
+                "animate",
+                "!=",
+                ""
+            ]
+        },
+        "animEasing": {
+            "tab": "content",
+            "group": "bfbeMotion",
+            "label": "Easing",
+            "type": "select",
+            "options": {
+                "easeInOutSine": "Soft",
+                "easeInOutCubic": "Medium",
+                "easeOutExpo": "Snappy",
+                "easeInQuad": "Ease in",
+                "easeOutQuad": "Ease out",
+                "easeInOutQuad": "Ease in and out",
+                "linear": "Linear",
+                "easeOutBack": "Overshoot",
+                "easeOutElastic": "Soft spring"
+            },
+            "inline": true,
+            "placeholder": "Snappy",
+            "required": [
+                "animate",
+                "!=",
+                ""
+            ]
+        },
+        "sepHeadBox": {
+            "tab": "content",
+            "group": "bfbeHead",
+            "label": "The box",
+            "type": "separator",
+            "required": [
+                "headline",
+                "!=",
+                [
+                    "",
+                    "none"
+                ]
+            ]
+        },
+        "headBackground": {
+            "tab": "content",
+            "group": "bfbeHead",
+            "label": "Headline background",
+            "type": "background",
+            "required": [
+                "headline",
+                "!=",
+                [
+                    "",
+                    "none"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "background",
+                    "selector": ".bfbe-chart__head"
+                }
+            ]
+        },
+        "headPadding": {
+            "tab": "content",
+            "group": "bfbeHead",
+            "label": "Headline padding",
+            "type": "dimensions",
+            "required": [
+                "headline",
+                "!=",
+                [
+                    "",
+                    "none"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-chart__head"
+                }
+            ]
+        },
+        "headBorder": {
+            "tab": "content",
+            "group": "bfbeHead",
+            "label": "Headline border",
+            "type": "border",
+            "required": [
+                "headline",
+                "!=",
+                [
+                    "",
+                    "none"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-chart__head"
+                }
+            ]
+        },
+        "bfbeHoverEffect": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Effect",
+            "type": "select",
+            "options": {
+                "lift": "Lift",
+                "zoom": "Zoom the picture",
+                "shine": "Shine",
+                "border": "Gradient border",
+                "tilt": "Tilt",
+                "follow": "Follow the pointer",
+                "fade": "Fade in",
+                "slide": "Slide in",
+                "grow": "Grow"
+            },
+            "inline": true,
+            "placeholder": "None"
+        },
+        "bfbeHoverOn": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Responds to",
+            "type": "select",
+            "options": {
+                "parent": "A hovered parent"
+            },
+            "inline": true,
+            "placeholder": "This element",
+            "description": "The parent needs Children respond to hover.",
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverFrom": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Comes from",
+            "type": "select",
+            "options": {
+                "up": "Above",
+                "left": "The left",
+                "right": "The right"
+            },
+            "inline": true,
+            "placeholder": "Below",
+            "required": [
+                "bfbeHoverEffect",
+                "=",
+                "slide"
+            ]
+        },
+        "bfbeHoverStrength": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Strength",
+            "type": "number",
+            "min": 0.1,
+            "max": 3,
+            "step": 0.1,
+            "inline": true,
+            "placeholder": "1",
+            "breakpoints": true,
+            "css": [
+                {
+                    "property": "--bfbe-hv-k",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverSpeed": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Speed",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "300",
+            "description": "Milliseconds.",
+            "css": [
+                {
+                    "property": "--bfbe-hv-t",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverDelay": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Milliseconds, so parts arrive in sequence.",
+            "css": [
+                {
+                    "property": "--bfbe-hv-d",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "bfbeHoverEffect",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeHoverEffect",
+                    "!=",
+                    [
+                        "tilt",
+                        "follow"
+                    ]
+                ]
+            ]
+        },
+        "bfbeHoverColor": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Colour",
+            "type": "color",
+            "inline": true,
+            "css": [
+                {
+                    "property": "--bfbe-hv-c",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "=",
+                [
+                    "shine",
+                    "border"
+                ]
+            ]
+        },
+        "bfbeHoverOff": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Off below",
+            "type": "select",
+            "options": {
+                "480": "480 px",
+                "640": "640 px",
+                "768": "768 px",
+                "992": "992 px"
+            },
+            "inline": true,
+            "placeholder": "Never",
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverScope": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Children respond to hover",
+            "type": "checkbox",
+            "description": "Parts inside set to A hovered parent move."
+        },
+        "bfbeHsWhen": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "When scrolled",
+            "type": "select",
+            "options": {
+                "hide": "Hides",
+                "fade": "Fades out, keeps its space",
+                "show": "Appears only then"
+            },
+            "inline": true,
+            "placeholder": "Stays as it is"
+        },
+        "bfbeHsCollapse": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Collapses",
+            "type": "select",
+            "options": {
+                "across": "Sideways"
+            },
+            "inline": true,
+            "placeholder": "Downward",
+            "required": [
+                "bfbeHsWhen",
+                "=",
+                [
+                    "hide",
+                    "show"
+                ]
+            ]
+        },
+        "bfbeHsOver": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Over the first section",
+            "type": "select",
+            "options": {
+                "hide": "Hides",
+                "show": "Appears only then"
+            },
+            "inline": true,
+            "placeholder": "Stays as it is",
+            "description": "Only with the header over the first section."
+        },
+        "bfbeHsStyleSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Scrolled: styling"
+        },
+        "bfbeHsPadding": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsMargin": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Margin",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "margin",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsWidth": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "rerender": true,
+            "css": [
+                {
+                    "property": "width",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ]
+        },
+        "bfbeHsHeight": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Height",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "rerender": true,
+            "css": [
+                {
+                    "property": "height",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ]
+        },
+        "bfbeHsBackground": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsBlur": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Blur behind",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "0",
+            "rerender": true,
+            "css": [
+                {
+                    "property": "--bfbe-hs-blur",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsBorder": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsShadow": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Box shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsTypography": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOpacity": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Opacity",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "opacity",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsScale": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Scale",
+            "type": "number",
+            "min": 0.1,
+            "max": 3,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "scale",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsGap": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Over the first section: styling"
+        },
+        "bfbeHsOverBackground": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverTypography": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverBorder": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverShadow": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Box shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverOpacity": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Opacity",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "opacity",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsMotionSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Motion"
+        },
+        "bfbeHsElDuration": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Duration",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "Follows the header",
+            "description": "Milliseconds.",
+            "css": [
+                {
+                    "property": "--bfbe-hs-dur",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsElEasing": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Easing",
+            "type": "select",
+            "options": {
+                "cubic-bezier(0.16, 1, 0.3, 1)": "Snappy"
+            },
+            "inline": true,
+            "placeholder": "Follows the header",
+            "css": [
+                {
+                    "property": "--bfbe-hs-ease",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsDelay": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Milliseconds, scrolling down only, so parts arrive in sequence.",
+            "css": [
+                {
+                    "property": "--bfbe-hs-delay",
+                    "selector": ""
+                }
+            ]
+        }
+    }
+}

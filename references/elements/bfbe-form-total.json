@@ -1,0 +1,1760 @@
+{
+    "name": "bfbe-form-total",
+    "label": "BFB Form Total",
+    "pack": "pro",
+    "skill": "bfbe-form",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/form/total/",
+    "nestable": false,
+    "children": [],
+    "childrenDefault": [],
+    "parent": "bfbe-form",
+    "cost": {
+        "css": "1.60 KB",
+        "js": "1.14 KB",
+        "dependencies": "none"
+    },
+    "controlGroups": {
+        "_attributes": {
+            "title": "Attributes",
+            "tab": "style",
+            "icon": "html"
+        },
+        "bfbeTotal": {
+            "title": "Total",
+            "tab": "content"
+        },
+        "bfbeWhere": {
+            "title": "Where it sits",
+            "tab": "content"
+        },
+        "bfbeCta": {
+            "title": "Button",
+            "tab": "content"
+        },
+        "bfbeCart": {
+            "title": "WooCommerce cart",
+            "tab": "content"
+        },
+        "bfbeAmount": {
+            "title": "Total styling",
+            "tab": "content"
+        },
+        "bfbeParts": {
+            "title": "Sections",
+            "tab": "content"
+        },
+        "bfbeRule": {
+            "title": "Shown when",
+            "tab": "content"
+        },
+        "bfbeHover": {
+            "title": "Hover effect",
+            "tab": "style"
+        },
+        "bfbeOnScroll": {
+            "title": "When the page scrolls",
+            "tab": "style"
+        }
+    },
+    "controls": {
+        "infoAttributes": {
+            "tab": "style",
+            "group": "_attributes",
+            "content": "<a href=\"https://academy.bricksbuilder.io/article/custom-attributes\" target=\"_blank\" rel=\"noopener\">Custom attributes</a> will be added to the most relevant HTML node.",
+            "type": "info"
+        },
+        "bfbeDocs": {
+            "tab": "content",
+            "type": "info",
+            "content": "<a href=\"https://builtforbricks.com/bfb-elements/docs/form/total/\" target=\"_blank\" rel=\"noopener\">Documentation &#8599;</a>"
+        },
+        "totalLabel": {
+            "tab": "content",
+            "group": "bfbeTotal",
+            "label": "Label",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "Your estimate"
+        },
+        "totalNote": {
+            "tab": "content",
+            "group": "bfbeTotal",
+            "label": "Note",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "None"
+        },
+        "countUp": {
+            "tab": "content",
+            "group": "bfbeTotal",
+            "label": "Count up",
+            "type": "checkbox",
+            "description": "A short roll; reduced motion cuts."
+        },
+        "breakdown": {
+            "tab": "content",
+            "group": "bfbeTotal",
+            "label": "Breakdown",
+            "type": "checkbox",
+            "description": "Each field with what it adds."
+        },
+        "countLine": {
+            "tab": "content",
+            "group": "bfbeTotal",
+            "label": "Count line",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "%d extras selected",
+            "description": "Counts the ticked boxes; %d is the number."
+        },
+        "equivalents": {
+            "tab": "content",
+            "group": "bfbeTotal",
+            "label": "In other units",
+            "type": "repeater",
+            "titleProperty": "label",
+            "selector": ".bfbe-pc__equiv",
+            "fields": {
+                "label": {
+                    "label": "Label",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true
+                },
+                "per": {
+                    "label": "Divided by",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "A number, or a field key"
+                },
+                "suffix": {
+                    "label": "After it say",
+                    "type": "text",
+                    "inline": true
+                },
+                "decimals": {
+                    "label": "Decimals",
+                    "type": "number",
+                    "inline": true
+                }
+            }
+        },
+        "terms": {
+            "tab": "content",
+            "group": "bfbeTotal",
+            "label": "Terms checkbox",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "None",
+            "description": "The buttons wait for it."
+        },
+        "sepTotalSend": {
+            "tab": "content",
+            "group": "bfbeTotal",
+            "label": "In the send",
+            "type": "separator"
+        },
+        "key": {
+            "tab": "content",
+            "group": "bfbeTotal",
+            "label": "Key",
+            "type": "text",
+            "inline": true,
+            "placeholder": "total",
+            "description": "Its name in emails and rules."
+        },
+        "sendChoices": {
+            "tab": "content",
+            "group": "bfbeTotal",
+            "label": "Send the choices too",
+            "type": "checkbox",
+            "description": "Every choice in words, under a second key."
+        },
+        "choicesLabel": {
+            "tab": "content",
+            "group": "bfbeTotal",
+            "label": "Choices label",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Choices",
+            "required": [
+                "sendChoices",
+                "!=",
+                ""
+            ]
+        },
+        "position": {
+            "tab": "content",
+            "group": "bfbeWhere",
+            "label": "Position",
+            "type": "select",
+            "options": {
+                "flow": "Where it is placed",
+                "sticky": "Where it is placed, sticking to the bottom",
+                "right": "Beside the fields, on the right",
+                "left": "Beside the fields, on the left",
+                "bar": "A bar along the bottom of the screen"
+            },
+            "inline": true,
+            "placeholder": "Where it is placed"
+        },
+        "sideWidth": {
+            "tab": "content",
+            "group": "bfbeWhere",
+            "label": "Width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "340px",
+            "required": [
+                "position",
+                "=",
+                [
+                    "right",
+                    "left"
+                ]
+            ]
+        },
+        "sideGap": {
+            "tab": "content",
+            "group": "bfbeWhere",
+            "label": "Space beside it",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "The gap between fields",
+            "required": [
+                "position",
+                "=",
+                [
+                    "right",
+                    "left"
+                ]
+            ]
+        },
+        "sideStack": {
+            "tab": "content",
+            "group": "bfbeWhere",
+            "label": "Stack below",
+            "type": "select",
+            "options": {
+                "480": "480 px",
+                "640": "640 px",
+                "768": "768 px",
+                "992": "992 px"
+            },
+            "inline": true,
+            "placeholder": "768 px",
+            "required": [
+                "position",
+                "=",
+                [
+                    "right",
+                    "left"
+                ]
+            ]
+        },
+        "stickyTop": {
+            "tab": "content",
+            "group": "bfbeWhere",
+            "label": "Sticky offset",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "16px",
+            "required": [
+                "position",
+                "=",
+                [
+                    "right",
+                    "left",
+                    "sticky",
+                    "bar"
+                ]
+            ]
+        },
+        "ctaText": {
+            "tab": "content",
+            "group": "bfbeCta",
+            "label": "Label",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "None"
+        },
+        "ctaLink": {
+            "tab": "content",
+            "group": "bfbeCta",
+            "label": "Link",
+            "type": "link",
+            "required": [
+                "ctaText",
+                "!=",
+                ""
+            ]
+        },
+        "ctaCarry": {
+            "tab": "content",
+            "group": "bfbeCta",
+            "label": "Choices in the link",
+            "type": "checkbox",
+            "description": "As bfbe_total and bfbe_choices.",
+            "required": [
+                "ctaText",
+                "!=",
+                ""
+            ]
+        },
+        "wooOn": {
+            "tab": "content",
+            "group": "bfbeCart",
+            "label": "WooCommerce cart",
+            "type": "checkbox",
+            "description": "A button adds it, priced on the server."
+        },
+        "wooProduct": {
+            "tab": "content",
+            "group": "bfbeCart",
+            "required": [
+                "wooOn",
+                "!=",
+                ""
+            ],
+            "label": "Product",
+            "type": "select",
+            "optionsAjax": {
+                "action": "bricks_get_posts",
+                "postType": "product"
+            },
+            "searchable": true,
+            "placeholder": "Pick a product",
+            "description": "<a href=\"https://builtforbricks.com/bfb-elements/docs/form/#woocommerce\" target=\"_blank\" rel=\"noopener\">How the cart is priced</a>"
+        },
+        "wooText": {
+            "tab": "content",
+            "group": "bfbeCart",
+            "label": "Button",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Add to cart",
+            "required": [
+                [
+                    "wooOn",
+                    "!=",
+                    ""
+                ],
+                [
+                    "wooProduct",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "wooDone": {
+            "tab": "content",
+            "group": "bfbeCart",
+            "label": "Once added",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Added",
+            "required": [
+                [
+                    "wooOn",
+                    "!=",
+                    ""
+                ],
+                [
+                    "wooProduct",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "wooLine": {
+            "tab": "content",
+            "group": "bfbeCart",
+            "label": "Choices line",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Your choices",
+            "description": "Under the line in the cart and on the order.",
+            "required": [
+                [
+                    "wooOn",
+                    "!=",
+                    ""
+                ],
+                [
+                    "wooProduct",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "wooGo": {
+            "tab": "content",
+            "group": "bfbeCart",
+            "label": "Go to the cart after",
+            "type": "checkbox",
+            "required": [
+                [
+                    "wooOn",
+                    "!=",
+                    ""
+                ],
+                [
+                    "wooProduct",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "wooBackground": {
+            "tab": "content",
+            "group": "bfbeCart",
+            "label": "Button background",
+            "type": "color",
+            "required": [
+                [
+                    "wooOn",
+                    "!=",
+                    ""
+                ],
+                [
+                    "wooProduct",
+                    "!=",
+                    ""
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pc-cta-bg",
+                    "selector": ".bfbe-pc__woo"
+                }
+            ]
+        },
+        "wooColor": {
+            "tab": "content",
+            "group": "bfbeCart",
+            "label": "Button text",
+            "type": "color",
+            "required": [
+                [
+                    "wooOn",
+                    "!=",
+                    ""
+                ],
+                [
+                    "wooProduct",
+                    "!=",
+                    ""
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pc-cta-color",
+                    "selector": ".bfbe-pc__woo"
+                }
+            ]
+        },
+        "equivTypography": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Other units typography",
+            "type": "typography",
+            "required": [
+                "equivalents",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__equiv"
+                }
+            ]
+        },
+        "countTypography": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Count line typography",
+            "type": "typography",
+            "required": [
+                "countLine",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__count-line"
+                }
+            ]
+        },
+        "termsTypography": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Tick box typography",
+            "type": "typography",
+            "required": [
+                "terms",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__terms"
+                }
+            ]
+        },
+        "sepAmountWords": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Amount and label",
+            "type": "separator"
+        },
+        "amountTypography": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Amount typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__figure"
+                }
+            ]
+        },
+        "suffixTypography": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Suffix typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__suffix"
+                }
+            ]
+        },
+        "totalLabelTypography": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Label typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__total-label"
+                }
+            ]
+        },
+        "totalNoteTypography": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Note typography",
+            "type": "typography",
+            "required": [
+                "totalNote",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__total-note"
+                }
+            ]
+        },
+        "sepCtaStyle": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Button",
+            "type": "separator"
+        },
+        "ctaBackground": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-pc-cta-bg",
+                    "selector": ""
+                }
+            ]
+        },
+        "ctaColor": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Text",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-pc-cta-color",
+                    "selector": ""
+                }
+            ]
+        },
+        "ctaTypography": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__cta > span"
+                }
+            ]
+        },
+        "ctaPadding": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Padding",
+            "type": "dimensions",
+            "placeholder": {
+                "top": "12px",
+                "right": "20px",
+                "bottom": "12px",
+                "left": "20px"
+            },
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-pc__cta"
+                }
+            ]
+        },
+        "ctaBorder": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__cta"
+                }
+            ]
+        },
+        "sepLines": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Breakdown",
+            "type": "separator",
+            "required": [
+                "breakdown",
+                "!=",
+                ""
+            ]
+        },
+        "breakdownTypography": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Breakdown typography",
+            "type": "typography",
+            "required": [
+                "breakdown",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__lines"
+                }
+            ]
+        },
+        "breakdownAmountTypography": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Breakdown amounts typography",
+            "type": "typography",
+            "required": [
+                "breakdown",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__lines dd"
+                }
+            ]
+        },
+        "subTypography": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Breakdown detail typography",
+            "type": "typography",
+            "required": [
+                "breakdown",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__sub"
+                }
+            ]
+        },
+        "savingsTypography": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Savings line typography",
+            "type": "typography",
+            "required": [
+                "breakdown",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__line--saving"
+                }
+            ]
+        },
+        "sepRows": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Between the rows",
+            "type": "separator",
+            "required": [
+                "breakdown",
+                "!=",
+                ""
+            ]
+        },
+        "rowGap": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Space between rows",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "2px",
+            "required": [
+                "breakdown",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pc-row-gap",
+                    "selector": ""
+                }
+            ]
+        },
+        "rowLine": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Divider",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "None",
+            "required": [
+                "breakdown",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pc-row-line",
+                    "selector": ""
+                }
+            ]
+        },
+        "rowLineStyle": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Style",
+            "type": "select",
+            "options": {
+                "solid": "Solid",
+                "dashed": "Dashed",
+                "dotted": "Dotted"
+            },
+            "inline": true,
+            "placeholder": "Solid",
+            "required": [
+                [
+                    "breakdown",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rowLine",
+                    "!=",
+                    ""
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pc-row-line-style",
+                    "selector": ""
+                }
+            ]
+        },
+        "rowLineColor": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Colour",
+            "type": "color",
+            "required": [
+                [
+                    "breakdown",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rowLine",
+                    "!=",
+                    ""
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pc-row-line-color",
+                    "selector": ""
+                }
+            ]
+        },
+        "rowLinePad": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Space under the divider",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "0",
+            "required": [
+                [
+                    "breakdown",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rowLine",
+                    "!=",
+                    ""
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-pc-row-line-pad",
+                    "selector": ""
+                }
+            ]
+        },
+        "sepRowBox": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Each row",
+            "type": "separator",
+            "required": [
+                "breakdown",
+                "!=",
+                ""
+            ]
+        },
+        "rowBackground": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Background",
+            "type": "color",
+            "required": [
+                "breakdown",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-pc__line"
+                }
+            ]
+        },
+        "rowBorder": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Border",
+            "type": "border",
+            "required": [
+                "breakdown",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__line"
+                }
+            ]
+        },
+        "rowPadding": {
+            "tab": "content",
+            "group": "bfbeAmount",
+            "label": "Padding",
+            "type": "dimensions",
+            "required": [
+                "breakdown",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-pc__line"
+                }
+            ]
+        },
+        "sectionGap": {
+            "tab": "content",
+            "group": "bfbeParts",
+            "label": "Space between sections",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "12px",
+            "css": [
+                {
+                    "property": "--bfbe-pc-sec-gap",
+                    "selector": ""
+                }
+            ]
+        },
+        "sepPartHead": {
+            "tab": "content",
+            "group": "bfbeParts",
+            "label": "Amount and label",
+            "type": "separator"
+        },
+        "headBackground": {
+            "tab": "content",
+            "group": "bfbeParts",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-pc__total-head"
+                }
+            ]
+        },
+        "headBorder": {
+            "tab": "content",
+            "group": "bfbeParts",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__total-head"
+                }
+            ]
+        },
+        "headPadding": {
+            "tab": "content",
+            "group": "bfbeParts",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-pc__total-head"
+                }
+            ]
+        },
+        "sepPartLines": {
+            "tab": "content",
+            "group": "bfbeParts",
+            "label": "Breakdown",
+            "type": "separator",
+            "required": [
+                "breakdown",
+                "!=",
+                ""
+            ]
+        },
+        "linesBackground": {
+            "tab": "content",
+            "group": "bfbeParts",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-pc__lines"
+                }
+            ],
+            "required": [
+                "breakdown",
+                "!=",
+                ""
+            ]
+        },
+        "linesBorder": {
+            "tab": "content",
+            "group": "bfbeParts",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__lines"
+                }
+            ],
+            "required": [
+                "breakdown",
+                "!=",
+                ""
+            ]
+        },
+        "linesPadding": {
+            "tab": "content",
+            "group": "bfbeParts",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-pc__lines"
+                }
+            ],
+            "required": [
+                "breakdown",
+                "!=",
+                ""
+            ]
+        },
+        "sepPartDetails": {
+            "tab": "content",
+            "group": "bfbeParts",
+            "label": "Details",
+            "type": "separator",
+            "description": "Other units, the count line and the note."
+        },
+        "detailsBackground": {
+            "tab": "content",
+            "group": "bfbeParts",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-pc__total-details"
+                }
+            ]
+        },
+        "detailsBorder": {
+            "tab": "content",
+            "group": "bfbeParts",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__total-details"
+                }
+            ]
+        },
+        "detailsPadding": {
+            "tab": "content",
+            "group": "bfbeParts",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-pc__total-details"
+                }
+            ]
+        },
+        "sepPartFoot": {
+            "tab": "content",
+            "group": "bfbeParts",
+            "label": "Footer",
+            "type": "separator",
+            "description": "The tick box and the buttons."
+        },
+        "footBackground": {
+            "tab": "content",
+            "group": "bfbeParts",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-pc__total-foot"
+                }
+            ]
+        },
+        "footBorder": {
+            "tab": "content",
+            "group": "bfbeParts",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__total-foot"
+                }
+            ]
+        },
+        "footPadding": {
+            "tab": "content",
+            "group": "bfbeParts",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-pc__total-foot"
+                }
+            ]
+        },
+        "ruleAction": {
+            "tab": "content",
+            "group": "bfbeRule",
+            "label": "When the conditions match",
+            "type": "select",
+            "options": {
+                "show": "Show it",
+                "hide": "Hide it"
+            },
+            "inline": true,
+            "placeholder": "No rule"
+        },
+        "ruleMatch": {
+            "tab": "content",
+            "group": "bfbeRule",
+            "label": "They match when",
+            "type": "select",
+            "options": {
+                "all": "All of them hold",
+                "any": "Any one holds"
+            },
+            "inline": true,
+            "placeholder": "All of them hold",
+            "required": [
+                "ruleAction",
+                "!=",
+                ""
+            ]
+        },
+        "rules": {
+            "tab": "content",
+            "group": "bfbeRule",
+            "label": "Conditions",
+            "type": "repeater",
+            "titleProperty": "field",
+            "selector": ".bfbe-pc__field",
+            "required": [
+                "ruleAction",
+                "!=",
+                ""
+            ],
+            "fields": {
+                "field": {
+                    "label": "Field key",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "plan, total, step, url:ref"
+                },
+                "op": {
+                    "label": "Test",
+                    "type": "select",
+                    "inline": true,
+                    "options": {
+                        "is": "Is",
+                        "not": "Is not",
+                        "in": "Is one of",
+                        "contains": "Contains",
+                        "starts": "Starts with",
+                        "ends": "Ends with",
+                        "gt": "Is more than",
+                        "gte": "Is at least",
+                        "lt": "Is less than",
+                        "lte": "Is at most",
+                        "between": "Is between",
+                        "filled": "Has any value",
+                        "empty": "Is empty",
+                        "ticked": "Is ticked",
+                        "unticked": "Is not ticked",
+                        "matches": "Matches the pattern",
+                        "before": "Is a date before",
+                        "after": "Is a date after",
+                        "same": "Equals the field"
+                    },
+                    "placeholder": "Is"
+                },
+                "value": {
+                    "label": "Value",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Pro; or 10, 20 for between",
+                    "required": [
+                        "op",
+                        "!=",
+                        [
+                            "filled",
+                            "empty",
+                            "ticked",
+                            "unticked"
+                        ]
+                    ]
+                }
+            }
+        },
+        "bfbeHoverEffect": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Effect",
+            "type": "select",
+            "options": {
+                "lift": "Lift",
+                "zoom": "Zoom the picture",
+                "shine": "Shine",
+                "border": "Gradient border",
+                "tilt": "Tilt",
+                "follow": "Follow the pointer",
+                "fade": "Fade in",
+                "slide": "Slide in",
+                "grow": "Grow"
+            },
+            "inline": true,
+            "placeholder": "None"
+        },
+        "bfbeHoverOn": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Responds to",
+            "type": "select",
+            "options": {
+                "parent": "A hovered parent"
+            },
+            "inline": true,
+            "placeholder": "This element",
+            "description": "The parent needs Children respond to hover.",
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverFrom": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Comes from",
+            "type": "select",
+            "options": {
+                "up": "Above",
+                "left": "The left",
+                "right": "The right"
+            },
+            "inline": true,
+            "placeholder": "Below",
+            "required": [
+                "bfbeHoverEffect",
+                "=",
+                "slide"
+            ]
+        },
+        "bfbeHoverStrength": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Strength",
+            "type": "number",
+            "min": 0.1,
+            "max": 3,
+            "step": 0.1,
+            "inline": true,
+            "placeholder": "1",
+            "breakpoints": true,
+            "css": [
+                {
+                    "property": "--bfbe-hv-k",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverSpeed": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Speed",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "300",
+            "description": "Milliseconds.",
+            "css": [
+                {
+                    "property": "--bfbe-hv-t",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverDelay": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Milliseconds, so parts arrive in sequence.",
+            "css": [
+                {
+                    "property": "--bfbe-hv-d",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "bfbeHoverEffect",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeHoverEffect",
+                    "!=",
+                    [
+                        "tilt",
+                        "follow"
+                    ]
+                ]
+            ]
+        },
+        "bfbeHoverColor": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Colour",
+            "type": "color",
+            "inline": true,
+            "css": [
+                {
+                    "property": "--bfbe-hv-c",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "=",
+                [
+                    "shine",
+                    "border"
+                ]
+            ]
+        },
+        "bfbeHoverOff": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Off below",
+            "type": "select",
+            "options": {
+                "480": "480 px",
+                "640": "640 px",
+                "768": "768 px",
+                "992": "992 px"
+            },
+            "inline": true,
+            "placeholder": "Never",
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverScope": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Children respond to hover",
+            "type": "checkbox",
+            "description": "Parts inside set to A hovered parent move."
+        },
+        "bfbeHsWhen": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "When scrolled",
+            "type": "select",
+            "options": {
+                "hide": "Hides",
+                "fade": "Fades out, keeps its space",
+                "show": "Appears only then"
+            },
+            "inline": true,
+            "placeholder": "Stays as it is"
+        },
+        "bfbeHsCollapse": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Collapses",
+            "type": "select",
+            "options": {
+                "across": "Sideways"
+            },
+            "inline": true,
+            "placeholder": "Downward",
+            "required": [
+                "bfbeHsWhen",
+                "=",
+                [
+                    "hide",
+                    "show"
+                ]
+            ]
+        },
+        "bfbeHsOver": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Over the first section",
+            "type": "select",
+            "options": {
+                "hide": "Hides",
+                "show": "Appears only then"
+            },
+            "inline": true,
+            "placeholder": "Stays as it is",
+            "description": "Only with the header over the first section."
+        },
+        "bfbeHsStyleSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Scrolled: styling"
+        },
+        "bfbeHsPadding": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsMargin": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Margin",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "margin",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsWidth": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "rerender": true,
+            "css": [
+                {
+                    "property": "width",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ]
+        },
+        "bfbeHsHeight": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Height",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "rerender": true,
+            "css": [
+                {
+                    "property": "height",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ]
+        },
+        "bfbeHsBackground": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsBlur": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Blur behind",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "0",
+            "rerender": true,
+            "css": [
+                {
+                    "property": "--bfbe-hs-blur",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsBorder": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsShadow": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Box shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsTypography": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOpacity": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Opacity",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "opacity",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsScale": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Scale",
+            "type": "number",
+            "min": 0.1,
+            "max": 3,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "scale",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsGap": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Over the first section: styling"
+        },
+        "bfbeHsOverBackground": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverTypography": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverBorder": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverShadow": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Box shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverOpacity": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Opacity",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "opacity",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsMotionSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Motion"
+        },
+        "bfbeHsElDuration": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Duration",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "Follows the header",
+            "description": "Milliseconds.",
+            "css": [
+                {
+                    "property": "--bfbe-hs-dur",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsElEasing": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Easing",
+            "type": "select",
+            "options": {
+                "cubic-bezier(0.16, 1, 0.3, 1)": "Snappy"
+            },
+            "inline": true,
+            "placeholder": "Follows the header",
+            "css": [
+                {
+                    "property": "--bfbe-hs-ease",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsDelay": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Milliseconds, scrolling down only, so parts arrive in sequence.",
+            "css": [
+                {
+                    "property": "--bfbe-hs-delay",
+                    "selector": ""
+                }
+            ]
+        }
+    }
+}

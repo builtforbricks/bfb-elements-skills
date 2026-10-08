@@ -1,0 +1,2393 @@
+{
+    "name": "bfbe-form-upload",
+    "label": "BFB Upload Field",
+    "pack": "pro",
+    "skill": "bfbe-form",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/form/upload-field/",
+    "nestable": false,
+    "children": [],
+    "childrenDefault": [],
+    "parent": "bfbe-form",
+    "cost": {
+        "css": "1.96 KB",
+        "js": "2.56 KB",
+        "dependencies": "none"
+    },
+    "controlGroups": {
+        "_attributes": {
+            "title": "Attributes",
+            "tab": "style",
+            "icon": "html"
+        },
+        "bfbeField": {
+            "title": "Field",
+            "tab": "content"
+        },
+        "bfbeFiles": {
+            "title": "Files",
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "file"
+                ]
+            ]
+        },
+        "bfbeDrop": {
+            "title": "Drop area",
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "file"
+                ]
+            ]
+        },
+        "bfbeUrl": {
+            "title": "From a web address",
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "file"
+                ]
+            ]
+        },
+        "bfbeList": {
+            "title": "Uploaded files",
+            "tab": "content",
+            "required": [
+                "type",
+                "=",
+                [
+                    "",
+                    "file"
+                ]
+            ]
+        },
+        "bfbeRule": {
+            "title": "Shown when",
+            "tab": "content"
+        },
+        "bfbeText": {
+            "title": "Label and note",
+            "tab": "content"
+        },
+        "bfbeFileUi": {
+            "title": "Button",
+            "tab": "content"
+        },
+        "bfbeHover": {
+            "title": "Hover effect",
+            "tab": "style"
+        },
+        "bfbeOnScroll": {
+            "title": "When the page scrolls",
+            "tab": "style"
+        }
+    },
+    "controls": {
+        "infoAttributes": {
+            "tab": "style",
+            "group": "_attributes",
+            "content": "<a href=\"https://academy.bricksbuilder.io/article/custom-attributes\" target=\"_blank\" rel=\"noopener\">Custom attributes</a> will be added to the most relevant HTML node.",
+            "type": "info"
+        },
+        "bfbeDocs": {
+            "tab": "content",
+            "type": "info",
+            "content": "<a href=\"https://builtforbricks.com/bfb-elements/docs/form/upload-field/\" target=\"_blank\" rel=\"noopener\">Documentation &#8599;</a>"
+        },
+        "label": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Label",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true
+        },
+        "type": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Type",
+            "type": "select",
+            "options": {
+                "file": "Files",
+                "image": "An image from the media library",
+                "gallery": "Images from the media library"
+            },
+            "inline": true,
+            "placeholder": "Files"
+        },
+        "key": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Key",
+            "type": "text",
+            "inline": true,
+            "placeholder": "From the label",
+            "description": "Its name in emails, formulas and rules.",
+            "required": [
+                "type",
+                "!=",
+                "section"
+            ]
+        },
+        "buttonText": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Button",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "Select files"
+        },
+        "required": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Required",
+            "type": "checkbox"
+        },
+        "note": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Note under it",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "required": [
+                "type",
+                "!=",
+                [
+                    "fixed",
+                    "hidden"
+                ]
+            ]
+        },
+        "hideLabel": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Hide the label",
+            "type": "checkbox",
+            "description": "It stays for assistive technology.",
+            "required": [
+                "type",
+                "!=",
+                [
+                    "fixed",
+                    "hidden",
+                    "section"
+                ]
+            ]
+        },
+        "errorMessage": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Error message",
+            "type": "text",
+            "inline": true,
+            "placeholder": "The browser says what is wrong",
+            "required": [
+                "type",
+                "!=",
+                [
+                    "fixed",
+                    "hidden",
+                    "section",
+                    "promo"
+                ]
+            ]
+        },
+        "msgRequired": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "When it is left empty",
+            "type": "text",
+            "inline": true,
+            "placeholder": "The error message",
+            "required": [
+                [
+                    "required",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "fileUploadLimit": {
+            "tab": "content",
+            "group": "bfbeFiles",
+            "label": "At most",
+            "type": "number",
+            "min": 1,
+            "max": 50,
+            "inline": true,
+            "placeholder": "1",
+            "description": "Files; checked here and on the server."
+        },
+        "fileUploadSize": {
+            "tab": "content",
+            "group": "bfbeFiles",
+            "label": "Each at most (MB)",
+            "type": "number",
+            "min": 1,
+            "max": 50,
+            "inline": true,
+            "placeholder": "2"
+        },
+        "fileUploadAllowedTypes": {
+            "tab": "content",
+            "group": "bfbeFiles",
+            "label": "Allowed types",
+            "type": "text",
+            "inline": true,
+            "placeholder": "pdf,jpg,png",
+            "description": "Checked on the server, content and all."
+        },
+        "fileUploadStorage": {
+            "tab": "content",
+            "group": "bfbeFiles",
+            "label": "Keep the file",
+            "type": "select",
+            "options": {
+                "attachment": "In the media library",
+                "directory": "In a folder of its own"
+            },
+            "inline": true,
+            "placeholder": "No, only for the send"
+        },
+        "fileUploadStorageDirectory": {
+            "tab": "content",
+            "group": "bfbeFiles",
+            "label": "Folder name",
+            "type": "text",
+            "inline": true,
+            "placeholder": "form-files",
+            "required": [
+                "fileUploadStorage",
+                "=",
+                "directory"
+            ]
+        },
+        "dropArea": {
+            "tab": "content",
+            "group": "bfbeDrop",
+            "label": "Show",
+            "type": "select",
+            "options": {
+                "drop": "A drop area",
+                "button": "The button alone"
+            },
+            "inline": true,
+            "placeholder": "A drop area"
+        },
+        "dropIcon": {
+            "tab": "content",
+            "group": "bfbeDrop",
+            "label": "Icon",
+            "type": "icon",
+            "description": "A page of ours unless set.",
+            "required": [
+                [
+                    "dropArea",
+                    "!=",
+                    "button"
+                ],
+                [
+                    "dropNoIcon",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "dropNoIcon": {
+            "tab": "content",
+            "group": "bfbeDrop",
+            "label": "No icon",
+            "type": "checkbox",
+            "required": [
+                "dropArea",
+                "!=",
+                "button"
+            ]
+        },
+        "dropTitle": {
+            "tab": "content",
+            "group": "bfbeDrop",
+            "label": "Words",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "Drag and drop your files",
+            "required": [
+                "dropArea",
+                "!=",
+                "button"
+            ]
+        },
+        "dropShowSize": {
+            "tab": "content",
+            "group": "bfbeDrop",
+            "label": "Show the size limit",
+            "type": "checkbox"
+        },
+        "sizeText": {
+            "tab": "content",
+            "group": "bfbeDrop",
+            "label": "Size words",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Max. file size: %s",
+            "description": "%s is the size.",
+            "required": [
+                "dropShowSize",
+                "!=",
+                ""
+            ]
+        },
+        "dropShowCount": {
+            "tab": "content",
+            "group": "bfbeDrop",
+            "label": "Show the count limit",
+            "type": "checkbox"
+        },
+        "countText": {
+            "tab": "content",
+            "group": "bfbeDrop",
+            "label": "Count words",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Max. files: %s",
+            "description": "%s is the count.",
+            "required": [
+                "dropShowCount",
+                "!=",
+                ""
+            ]
+        },
+        "sepUpArea": {
+            "tab": "content",
+            "group": "bfbeDrop",
+            "label": "Area",
+            "type": "separator",
+            "required": [
+                "dropArea",
+                "!=",
+                "button"
+            ]
+        },
+        "dropBackground": {
+            "group": "bfbeDrop",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-up-area-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "dropArea",
+                "!=",
+                "button"
+            ]
+        },
+        "dropOver": {
+            "group": "bfbeDrop",
+            "label": "While a file is over it",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-pc-drop-over",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "dropArea",
+                "!=",
+                "button"
+            ]
+        },
+        "dropOverLine": {
+            "group": "bfbeDrop",
+            "label": "Its border then",
+            "type": "color",
+            "css": [
+                {
+                    "property": "border-color",
+                    "selector": ".bfbe-pc__drop.bfbe-pc__drop.is-over"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "dropArea",
+                "!=",
+                "button"
+            ]
+        },
+        "dropBorder": {
+            "group": "bfbeDrop",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__drop.bfbe-pc__drop"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "dropArea",
+                "!=",
+                "button"
+            ]
+        },
+        "dropPadding": {
+            "group": "bfbeDrop",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-pc__drop.bfbe-pc__drop"
+                }
+            ],
+            "placeholder": {
+                "top": "24px",
+                "right": "24px",
+                "bottom": "24px",
+                "left": "24px"
+            },
+            "tab": "content",
+            "required": [
+                "dropArea",
+                "!=",
+                "button"
+            ]
+        },
+        "dropShadow": {
+            "group": "bfbeDrop",
+            "label": "Shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": ".bfbe-pc__drop.bfbe-pc__drop"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "dropArea",
+                "!=",
+                "button"
+            ]
+        },
+        "sepUpLayout": {
+            "tab": "content",
+            "group": "bfbeDrop",
+            "label": "Layout",
+            "type": "separator",
+            "required": [
+                "dropArea",
+                "!=",
+                "button"
+            ]
+        },
+        "dropDirection": {
+            "group": "bfbeDrop",
+            "label": "Direction",
+            "type": "direction",
+            "inline": true,
+            "css": [
+                {
+                    "property": "flex-direction",
+                    "selector": ".bfbe-pc__drop.bfbe-pc__drop"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "dropArea",
+                "!=",
+                "button"
+            ]
+        },
+        "dropAlign": {
+            "group": "bfbeDrop",
+            "label": "Align items",
+            "type": "align-items",
+            "inline": true,
+            "css": [
+                {
+                    "property": "align-items",
+                    "selector": ".bfbe-pc__drop.bfbe-pc__drop"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "dropArea",
+                "!=",
+                "button"
+            ]
+        },
+        "dropJustify": {
+            "group": "bfbeDrop",
+            "label": "Justify content",
+            "type": "justify-content",
+            "inline": true,
+            "css": [
+                {
+                    "property": "justify-content",
+                    "selector": ".bfbe-pc__drop.bfbe-pc__drop"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "dropArea",
+                "!=",
+                "button"
+            ]
+        },
+        "dropTextAlign": {
+            "group": "bfbeDrop",
+            "label": "Text align",
+            "type": "text-align",
+            "inline": true,
+            "css": [
+                {
+                    "property": "text-align",
+                    "selector": ".bfbe-pc__drop.bfbe-pc__drop"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "dropArea",
+                "!=",
+                "button"
+            ]
+        },
+        "dropGap": {
+            "group": "bfbeDrop",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "12px",
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": ".bfbe-pc__drop.bfbe-pc__drop"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "dropArea",
+                "!=",
+                "button"
+            ]
+        },
+        "sepUpIcon": {
+            "tab": "content",
+            "group": "bfbeDrop",
+            "label": "Icon",
+            "type": "separator",
+            "required": [
+                "dropArea",
+                "!=",
+                "button"
+            ]
+        },
+        "dropIconSize": {
+            "group": "bfbeDrop",
+            "label": "Size",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "48px",
+            "css": [
+                {
+                    "property": "--bfbe-up-icon",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "dropArea",
+                "!=",
+                "button"
+            ]
+        },
+        "dropIconColor": {
+            "group": "bfbeDrop",
+            "label": "Colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-up-icon-color",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "dropArea",
+                "!=",
+                "button"
+            ]
+        },
+        "sepUpWords": {
+            "tab": "content",
+            "group": "bfbeDrop",
+            "label": "Words",
+            "type": "separator"
+        },
+        "dropTitleTypography": {
+            "group": "bfbeDrop",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__drop-title.bfbe-pc__drop-title"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "dropArea",
+                "!=",
+                "button"
+            ]
+        },
+        "dropSizeTypography": {
+            "group": "bfbeDrop",
+            "label": "Size line typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__drop-size.bfbe-pc__drop-size"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "dropShowSize",
+                "!=",
+                ""
+            ]
+        },
+        "dropCountTypography": {
+            "group": "bfbeDrop",
+            "label": "Count line typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__drop-count.bfbe-pc__drop-count"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "dropShowCount",
+                "!=",
+                ""
+            ]
+        },
+        "dropLines": {
+            "group": "bfbeDrop",
+            "label": "Between the lines",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "2px",
+            "css": [
+                {
+                    "property": "--bfbe-up-lines",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "urlUpload": {
+            "tab": "content",
+            "group": "bfbeUrl",
+            "label": "Upload from a web address",
+            "type": "checkbox",
+            "description": "The site fetches it; private addresses are refused."
+        },
+        "urlLabel": {
+            "tab": "content",
+            "group": "bfbeUrl",
+            "label": "Label",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Or upload from URL",
+            "required": [
+                "urlUpload",
+                "!=",
+                ""
+            ]
+        },
+        "urlPlaceholder": {
+            "tab": "content",
+            "group": "bfbeUrl",
+            "label": "Placeholder",
+            "type": "text",
+            "inline": true,
+            "placeholder": "https://",
+            "required": [
+                "urlUpload",
+                "!=",
+                ""
+            ]
+        },
+        "urlButton": {
+            "tab": "content",
+            "group": "bfbeUrl",
+            "label": "Button",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Upload",
+            "required": [
+                "urlUpload",
+                "!=",
+                ""
+            ]
+        },
+        "sepUpUrlLabel": {
+            "tab": "content",
+            "group": "bfbeUrl",
+            "label": "Label",
+            "type": "separator",
+            "required": [
+                "urlUpload",
+                "!=",
+                ""
+            ]
+        },
+        "urlLabelTypography": {
+            "group": "bfbeUrl",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__url-label.bfbe-pc__url-label"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "urlUpload",
+                "!=",
+                ""
+            ]
+        },
+        "urlSpace": {
+            "group": "bfbeUrl",
+            "label": "Space above",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "20px",
+            "css": [
+                {
+                    "property": "--bfbe-up-url-space",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "urlUpload",
+                "!=",
+                ""
+            ]
+        },
+        "sepUpUrlBox": {
+            "tab": "content",
+            "group": "bfbeUrl",
+            "label": "Box",
+            "type": "separator",
+            "required": [
+                "urlUpload",
+                "!=",
+                ""
+            ]
+        },
+        "urlBackground": {
+            "group": "bfbeUrl",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-up-url-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "urlUpload",
+                "!=",
+                ""
+            ]
+        },
+        "urlBorder": {
+            "group": "bfbeUrl",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__url-box.bfbe-pc__url-box"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "urlUpload",
+                "!=",
+                ""
+            ]
+        },
+        "urlFocusLine": {
+            "group": "bfbeUrl",
+            "label": "Border when typing",
+            "type": "color",
+            "css": [
+                {
+                    "property": "border-color",
+                    "selector": ".bfbe-pc__url-box.bfbe-pc__url-box:focus-within"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "urlUpload",
+                "!=",
+                ""
+            ]
+        },
+        "urlPadding": {
+            "group": "bfbeUrl",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-pc__url-box.bfbe-pc__url-box"
+                }
+            ],
+            "placeholder": {
+                "top": "6px",
+                "right": "6px",
+                "bottom": "6px",
+                "left": "6px"
+            },
+            "tab": "content",
+            "required": [
+                "urlUpload",
+                "!=",
+                ""
+            ]
+        },
+        "urlTypography": {
+            "group": "bfbeUrl",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__url-input.bfbe-pc__url-input"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "urlUpload",
+                "!=",
+                ""
+            ]
+        },
+        "urlPlaceholderColor": {
+            "group": "bfbeUrl",
+            "label": "Placeholder colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-up-url-hint",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "urlUpload",
+                "!=",
+                ""
+            ]
+        },
+        "sepUpUrlButton": {
+            "tab": "content",
+            "group": "bfbeUrl",
+            "label": "Its button",
+            "type": "separator",
+            "required": [
+                "urlUpload",
+                "!=",
+                ""
+            ]
+        },
+        "urlButtonTypography": {
+            "group": "bfbeUrl",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__url-go.bfbe-pc__url-go"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "urlUpload",
+                "!=",
+                ""
+            ]
+        },
+        "urlButtonBackground": {
+            "group": "bfbeUrl",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-up-go-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "urlUpload",
+                "!=",
+                ""
+            ]
+        },
+        "urlButtonBorder": {
+            "group": "bfbeUrl",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__url-go.bfbe-pc__url-go"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "urlUpload",
+                "!=",
+                ""
+            ]
+        },
+        "urlButtonPadding": {
+            "group": "bfbeUrl",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-pc__url-go.bfbe-pc__url-go"
+                }
+            ],
+            "placeholder": {
+                "top": "10px",
+                "right": "20px",
+                "bottom": "10px",
+                "left": "20px"
+            },
+            "tab": "content",
+            "required": [
+                "urlUpload",
+                "!=",
+                ""
+            ]
+        },
+        "urlButtonHoverBackground": {
+            "group": "bfbeUrl",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-up-go-hover-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "urlUpload",
+                "!=",
+                ""
+            ]
+        },
+        "urlButtonHoverColor": {
+            "group": "bfbeUrl",
+            "label": "Hover colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-up-go-hover",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "urlUpload",
+                "!=",
+                ""
+            ]
+        },
+        "sepUpListWords": {
+            "tab": "content",
+            "group": "bfbeList",
+            "label": "Words and icons",
+            "type": "separator"
+        },
+        "listTitle": {
+            "tab": "content",
+            "group": "bfbeList",
+            "label": "Heading",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Uploaded files",
+            "required": [
+                "listNoTitle",
+                "=",
+                ""
+            ]
+        },
+        "listNoTitle": {
+            "tab": "content",
+            "group": "bfbeList",
+            "label": "No heading",
+            "type": "checkbox"
+        },
+        "previews": {
+            "tab": "content",
+            "group": "bfbeList",
+            "label": "Pictures of chosen images",
+            "type": "checkbox",
+            "description": "In place of the icon."
+        },
+        "removeIcon": {
+            "tab": "content",
+            "group": "bfbeList",
+            "label": "Remove icon",
+            "type": "icon",
+            "description": "A bin unless set.",
+            "required": [
+                "removeNoIcon",
+                "=",
+                ""
+            ]
+        },
+        "removeNoIcon": {
+            "tab": "content",
+            "group": "bfbeList",
+            "label": "Remove without an icon",
+            "type": "checkbox"
+        },
+        "removeText": {
+            "tab": "content",
+            "group": "bfbeList",
+            "label": "Remove words",
+            "type": "text",
+            "inline": true,
+            "placeholder": "None",
+            "description": "Beside the icon; alone without one (&quot;Remove&quot;)."
+        },
+        "retryIcon": {
+            "tab": "content",
+            "group": "bfbeList",
+            "label": "Try again icon",
+            "type": "icon",
+            "description": "Shown on a failed file."
+        },
+        "doneText": {
+            "tab": "content",
+            "group": "bfbeList",
+            "label": "Done words",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Upload successful"
+        },
+        "doneHideBar": {
+            "tab": "content",
+            "group": "bfbeList",
+            "label": "Hide the bar when done",
+            "type": "checkbox"
+        },
+        "doneHidePercent": {
+            "tab": "content",
+            "group": "bfbeList",
+            "label": "Hide the percentage when done",
+            "type": "checkbox"
+        },
+        "failText": {
+            "tab": "content",
+            "group": "bfbeList",
+            "label": "Failed words",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Upload failed"
+        },
+        "listBuilder": {
+            "tab": "content",
+            "group": "bfbeList",
+            "label": "In the builder",
+            "type": "select",
+            "options": {
+                "samples": "Sample files",
+                "none": "None"
+            },
+            "inline": true,
+            "placeholder": "Sample files"
+        },
+        "sepUpList": {
+            "tab": "content",
+            "group": "bfbeList",
+            "label": "List",
+            "type": "separator"
+        },
+        "listTitleTypography": {
+            "group": "bfbeList",
+            "label": "Heading typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__files-title.bfbe-pc__files-title"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "listNoTitle",
+                "=",
+                ""
+            ]
+        },
+        "listSpace": {
+            "group": "bfbeList",
+            "label": "Space above",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "24px",
+            "css": [
+                {
+                    "property": "--bfbe-up-list-space",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "listGap": {
+            "group": "bfbeList",
+            "label": "Between the cards",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "12px",
+            "css": [
+                {
+                    "property": "--bfbe-up-cards-gap",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "sepUpCard": {
+            "tab": "content",
+            "group": "bfbeList",
+            "label": "Card",
+            "type": "separator"
+        },
+        "cardBackground": {
+            "group": "bfbeList",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-up-card-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "cardBorder": {
+            "group": "bfbeList",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__file.bfbe-pc__file"
+                }
+            ],
+            "tab": "content"
+        },
+        "cardPadding": {
+            "group": "bfbeList",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-pc__file.bfbe-pc__file"
+                }
+            ],
+            "placeholder": {
+                "top": "16px",
+                "right": "16px",
+                "bottom": "16px",
+                "left": "16px"
+            },
+            "tab": "content"
+        },
+        "cardShadow": {
+            "group": "bfbeList",
+            "label": "Shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": ".bfbe-pc__file.bfbe-pc__file"
+                }
+            ],
+            "tab": "content"
+        },
+        "cardGap": {
+            "group": "bfbeList",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "14px",
+            "css": [
+                {
+                    "property": "--bfbe-up-card-gap",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "sepUpFileIcon": {
+            "tab": "content",
+            "group": "bfbeList",
+            "label": "File icon",
+            "type": "separator"
+        },
+        "fileIconSize": {
+            "group": "bfbeList",
+            "label": "Size",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "32px",
+            "css": [
+                {
+                    "property": "--bfbe-up-file-icon",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "fileIconColor": {
+            "group": "bfbeList",
+            "label": "Colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-up-file-ink",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "fileIconBackground": {
+            "group": "bfbeList",
+            "label": "Page colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-up-file-page",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "sepUpName": {
+            "tab": "content",
+            "group": "bfbeList",
+            "label": "Name and details",
+            "type": "separator"
+        },
+        "fileNameTypography": {
+            "group": "bfbeList",
+            "label": "Name typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__file-name.bfbe-pc__file-name"
+                }
+            ],
+            "tab": "content"
+        },
+        "fileMetaTypography": {
+            "group": "bfbeList",
+            "label": "Details typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__file-meta.bfbe-pc__file-meta"
+                }
+            ],
+            "tab": "content"
+        },
+        "fileNameSpace": {
+            "group": "bfbeList",
+            "label": "Space between",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "2px",
+            "css": [
+                {
+                    "property": "--bfbe-up-name-gap",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "fileDoneColor": {
+            "group": "bfbeList",
+            "label": "Done words colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-up-done",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "fileFailColor": {
+            "group": "bfbeList",
+            "label": "Failed words colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-up-fail",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "sepUpBar": {
+            "tab": "content",
+            "group": "bfbeList",
+            "label": "Progress",
+            "type": "separator"
+        },
+        "barHeight": {
+            "group": "bfbeList",
+            "label": "Height",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "4px",
+            "css": [
+                {
+                    "property": "--bfbe-up-bar",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "barTrack": {
+            "group": "bfbeList",
+            "label": "Track",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-up-track",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "barFill": {
+            "group": "bfbeList",
+            "label": "Fill",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-up-fill",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "barDone": {
+            "group": "bfbeList",
+            "label": "Fill when done",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-up-fill-done",
+                    "selector": ""
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "doneHideBar",
+                "=",
+                ""
+            ]
+        },
+        "barSpace": {
+            "group": "bfbeList",
+            "label": "Space above",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "12px",
+            "css": [
+                {
+                    "property": "--bfbe-up-bar-space",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "sepUpActs": {
+            "tab": "content",
+            "group": "bfbeList",
+            "label": "Remove and try again",
+            "type": "separator"
+        },
+        "actIconSize": {
+            "group": "bfbeList",
+            "label": "Icon size",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "20px",
+            "css": [
+                {
+                    "property": "--bfbe-up-act-icon",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "actColor": {
+            "group": "bfbeList",
+            "label": "Colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-up-act",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "actHoverColor": {
+            "group": "bfbeList",
+            "label": "Hover colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-up-act-hover",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "actBackground": {
+            "group": "bfbeList",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-up-act-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "actHoverBackground": {
+            "group": "bfbeList",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-up-act-hover-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "actBorder": {
+            "group": "bfbeList",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__file-act.bfbe-pc__file-act"
+                }
+            ],
+            "tab": "content"
+        },
+        "actPadding": {
+            "group": "bfbeList",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-pc__file-act.bfbe-pc__file-act"
+                }
+            ],
+            "placeholder": {
+                "top": "6px",
+                "right": "6px",
+                "bottom": "6px",
+                "left": "6px"
+            },
+            "tab": "content"
+        },
+        "actTypography": {
+            "group": "bfbeList",
+            "label": "Words typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__file-act.bfbe-pc__file-act"
+                }
+            ],
+            "tab": "content"
+        },
+        "sepUpFailed": {
+            "tab": "content",
+            "group": "bfbeList",
+            "label": "A failed file",
+            "type": "separator"
+        },
+        "failBackground": {
+            "group": "bfbeList",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-up-fail-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "failBorder": {
+            "group": "bfbeList",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__file.bfbe-pc__file.is-failed"
+                }
+            ],
+            "tab": "content"
+        },
+        "ruleAction": {
+            "tab": "content",
+            "group": "bfbeRule",
+            "label": "When the conditions match",
+            "type": "select",
+            "options": {
+                "show": "Show it",
+                "hide": "Hide it",
+                "require": "Require it",
+                "disable": "Disable it"
+            },
+            "inline": true,
+            "placeholder": "No rule"
+        },
+        "ruleMatch": {
+            "tab": "content",
+            "group": "bfbeRule",
+            "label": "They match when",
+            "type": "select",
+            "options": {
+                "all": "All of them hold",
+                "any": "Any one holds"
+            },
+            "inline": true,
+            "placeholder": "All of them hold",
+            "required": [
+                "ruleAction",
+                "!=",
+                ""
+            ]
+        },
+        "rules": {
+            "tab": "content",
+            "group": "bfbeRule",
+            "label": "Conditions",
+            "type": "repeater",
+            "titleProperty": "field",
+            "selector": ".bfbe-pc__field",
+            "required": [
+                "ruleAction",
+                "!=",
+                ""
+            ],
+            "fields": {
+                "field": {
+                    "label": "Field key",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "plan, total, step, url:ref"
+                },
+                "op": {
+                    "label": "Test",
+                    "type": "select",
+                    "inline": true,
+                    "options": {
+                        "is": "Is",
+                        "not": "Is not",
+                        "in": "Is one of",
+                        "contains": "Contains",
+                        "starts": "Starts with",
+                        "ends": "Ends with",
+                        "gt": "Is more than",
+                        "gte": "Is at least",
+                        "lt": "Is less than",
+                        "lte": "Is at most",
+                        "between": "Is between",
+                        "filled": "Has any value",
+                        "empty": "Is empty",
+                        "ticked": "Is ticked",
+                        "unticked": "Is not ticked",
+                        "matches": "Matches the pattern",
+                        "before": "Is a date before",
+                        "after": "Is a date after",
+                        "same": "Equals the field"
+                    },
+                    "placeholder": "Is"
+                },
+                "value": {
+                    "label": "Value",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Pro; or 10, 20 for between",
+                    "required": [
+                        "op",
+                        "!=",
+                        [
+                            "filled",
+                            "empty",
+                            "ticked",
+                            "unticked"
+                        ]
+                    ]
+                }
+            }
+        },
+        "labelTypography": {
+            "group": "bfbeText",
+            "label": "Label typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__label.bfbe-pc__label"
+                }
+            ],
+            "tab": "content"
+        },
+        "noteTypography": {
+            "group": "bfbeText",
+            "label": "Note typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__note.bfbe-pc__note"
+                }
+            ],
+            "tab": "content",
+            "required": [
+                "note",
+                "!=",
+                ""
+            ]
+        },
+        "fileButtonTypography": {
+            "group": "bfbeFileUi",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".choose-files.choose-files"
+                }
+            ],
+            "tab": "content"
+        },
+        "fileButtonBackground": {
+            "group": "bfbeFileUi",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".choose-files.choose-files"
+                }
+            ],
+            "tab": "content"
+        },
+        "fileButtonBorder": {
+            "group": "bfbeFileUi",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".choose-files.choose-files"
+                }
+            ],
+            "tab": "content"
+        },
+        "fileButtonPadding": {
+            "group": "bfbeFileUi",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".choose-files.choose-files"
+                }
+            ],
+            "placeholder": {
+                "top": "10px",
+                "right": "20px",
+                "bottom": "10px",
+                "left": "20px"
+            },
+            "tab": "content"
+        },
+        "fileButtonShadow": {
+            "group": "bfbeFileUi",
+            "label": "Shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": ".choose-files.choose-files"
+                }
+            ],
+            "tab": "content"
+        },
+        "fileButtonHoverBackground": {
+            "group": "bfbeFileUi",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".choose-files.choose-files:hover"
+                },
+                {
+                    "property": "background-color",
+                    "selector": ".choose-files.choose-files:focus-visible"
+                }
+            ],
+            "tab": "content"
+        },
+        "fileButtonHoverColor": {
+            "group": "bfbeFileUi",
+            "label": "Hover colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".choose-files.choose-files:hover"
+                },
+                {
+                    "property": "color",
+                    "selector": ".choose-files.choose-files:focus-visible"
+                }
+            ],
+            "tab": "content"
+        },
+        "fileButtonHoverLine": {
+            "group": "bfbeFileUi",
+            "label": "Hover border colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "border-color",
+                    "selector": ".choose-files.choose-files:hover"
+                },
+                {
+                    "property": "border-color",
+                    "selector": ".choose-files.choose-files:focus-visible"
+                }
+            ],
+            "tab": "content"
+        },
+        "bfbeHoverEffect": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Effect",
+            "type": "select",
+            "options": {
+                "lift": "Lift",
+                "zoom": "Zoom the picture",
+                "shine": "Shine",
+                "border": "Gradient border",
+                "tilt": "Tilt",
+                "follow": "Follow the pointer",
+                "fade": "Fade in",
+                "slide": "Slide in",
+                "grow": "Grow"
+            },
+            "inline": true,
+            "placeholder": "None"
+        },
+        "bfbeHoverOn": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Responds to",
+            "type": "select",
+            "options": {
+                "parent": "A hovered parent"
+            },
+            "inline": true,
+            "placeholder": "This element",
+            "description": "The parent needs Children respond to hover.",
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverFrom": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Comes from",
+            "type": "select",
+            "options": {
+                "up": "Above",
+                "left": "The left",
+                "right": "The right"
+            },
+            "inline": true,
+            "placeholder": "Below",
+            "required": [
+                "bfbeHoverEffect",
+                "=",
+                "slide"
+            ]
+        },
+        "bfbeHoverStrength": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Strength",
+            "type": "number",
+            "min": 0.1,
+            "max": 3,
+            "step": 0.1,
+            "inline": true,
+            "placeholder": "1",
+            "breakpoints": true,
+            "css": [
+                {
+                    "property": "--bfbe-hv-k",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverSpeed": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Speed",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "300",
+            "description": "Milliseconds.",
+            "css": [
+                {
+                    "property": "--bfbe-hv-t",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverDelay": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Milliseconds, so parts arrive in sequence.",
+            "css": [
+                {
+                    "property": "--bfbe-hv-d",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "bfbeHoverEffect",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeHoverEffect",
+                    "!=",
+                    [
+                        "tilt",
+                        "follow"
+                    ]
+                ]
+            ]
+        },
+        "bfbeHoverColor": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Colour",
+            "type": "color",
+            "inline": true,
+            "css": [
+                {
+                    "property": "--bfbe-hv-c",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "=",
+                [
+                    "shine",
+                    "border"
+                ]
+            ]
+        },
+        "bfbeHoverOff": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Off below",
+            "type": "select",
+            "options": {
+                "480": "480 px",
+                "640": "640 px",
+                "768": "768 px",
+                "992": "992 px"
+            },
+            "inline": true,
+            "placeholder": "Never",
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverScope": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Children respond to hover",
+            "type": "checkbox",
+            "description": "Parts inside set to A hovered parent move."
+        },
+        "bfbeHsWhen": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "When scrolled",
+            "type": "select",
+            "options": {
+                "hide": "Hides",
+                "fade": "Fades out, keeps its space",
+                "show": "Appears only then"
+            },
+            "inline": true,
+            "placeholder": "Stays as it is"
+        },
+        "bfbeHsCollapse": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Collapses",
+            "type": "select",
+            "options": {
+                "across": "Sideways"
+            },
+            "inline": true,
+            "placeholder": "Downward",
+            "required": [
+                "bfbeHsWhen",
+                "=",
+                [
+                    "hide",
+                    "show"
+                ]
+            ]
+        },
+        "bfbeHsOver": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Over the first section",
+            "type": "select",
+            "options": {
+                "hide": "Hides",
+                "show": "Appears only then"
+            },
+            "inline": true,
+            "placeholder": "Stays as it is",
+            "description": "Only with the header over the first section."
+        },
+        "bfbeHsStyleSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Scrolled: styling"
+        },
+        "bfbeHsPadding": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsMargin": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Margin",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "margin",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsWidth": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "rerender": true,
+            "css": [
+                {
+                    "property": "width",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ]
+        },
+        "bfbeHsHeight": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Height",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "rerender": true,
+            "css": [
+                {
+                    "property": "height",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ]
+        },
+        "bfbeHsBackground": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsBlur": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Blur behind",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "0",
+            "rerender": true,
+            "css": [
+                {
+                    "property": "--bfbe-hs-blur",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsBorder": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsShadow": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Box shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsTypography": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOpacity": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Opacity",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "opacity",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsScale": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Scale",
+            "type": "number",
+            "min": 0.1,
+            "max": 3,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "scale",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsGap": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Over the first section: styling"
+        },
+        "bfbeHsOverBackground": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverTypography": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverBorder": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverShadow": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Box shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverOpacity": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Opacity",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "opacity",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsMotionSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Motion"
+        },
+        "bfbeHsElDuration": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Duration",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "Follows the header",
+            "description": "Milliseconds.",
+            "css": [
+                {
+                    "property": "--bfbe-hs-dur",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsElEasing": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Easing",
+            "type": "select",
+            "options": {
+                "cubic-bezier(0.16, 1, 0.3, 1)": "Snappy"
+            },
+            "inline": true,
+            "placeholder": "Follows the header",
+            "css": [
+                {
+                    "property": "--bfbe-hs-ease",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsDelay": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Milliseconds, scrolling down only, so parts arrive in sequence.",
+            "css": [
+                {
+                    "property": "--bfbe-hs-delay",
+                    "selector": ""
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,1026 @@
+{
+    "name": "bfbe-dark-mode",
+    "label": "BFB Dark Mode Toggle",
+    "pack": "pro",
+    "skill": "bfbe-dark-mode",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/dark-mode/",
+    "nestable": false,
+    "children": [],
+    "childrenDefault": [],
+    "parent": null,
+    "cost": {
+        "css": "1.04 KB",
+        "js": "1.56 KB",
+        "dependencies": "none"
+    },
+    "controlGroups": {
+        "_attributes": {
+            "title": "Attributes",
+            "tab": "style",
+            "icon": "html"
+        },
+        "bfbeToggle": {
+            "title": "Toggle",
+            "tab": "content"
+        },
+        "bfbeIcons": {
+            "title": "Icons",
+            "tab": "content"
+        },
+        "bfbeLook": {
+            "title": "Button",
+            "tab": "content"
+        },
+        "bfbePage": {
+            "title": "Dark page",
+            "tab": "content"
+        },
+        "bfbeMotion": {
+            "title": "Motion",
+            "tab": "content"
+        },
+        "bfbeHover": {
+            "title": "Hover effect",
+            "tab": "style"
+        },
+        "bfbeOnScroll": {
+            "title": "When the page scrolls",
+            "tab": "style"
+        }
+    },
+    "controls": {
+        "infoAttributes": {
+            "tab": "style",
+            "group": "_attributes",
+            "content": "<a href=\"https://academy.bricksbuilder.io/article/custom-attributes\" target=\"_blank\" rel=\"noopener\">Custom attributes</a> will be added to the most relevant HTML node.",
+            "type": "info"
+        },
+        "bfbeDocs": {
+            "tab": "content",
+            "type": "info",
+            "content": "<a href=\"https://builtforbricks.com/bfb-elements/docs/dark-mode/\" target=\"_blank\" rel=\"noopener\">Documentation &#8599;</a>"
+        },
+        "mode": {
+            "tab": "content",
+            "group": "bfbeToggle",
+            "label": "Choices",
+            "type": "select",
+            "options": {
+                "two": "Light and dark",
+                "three": "Light, dark and system"
+            },
+            "inline": true,
+            "placeholder": "Light and dark"
+        },
+        "shape": {
+            "tab": "content",
+            "group": "bfbeToggle",
+            "label": "Shape",
+            "type": "select",
+            "options": {
+                "round": "Round",
+                "pill": "Pill with label",
+                "switch": "Switch"
+            },
+            "inline": true,
+            "placeholder": "Round"
+        },
+        "labelLight": {
+            "tab": "content",
+            "group": "bfbeToggle",
+            "label": "Light label",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "Light"
+        },
+        "labelDark": {
+            "tab": "content",
+            "group": "bfbeToggle",
+            "label": "Dark label",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "Dark"
+        },
+        "labelSystem": {
+            "tab": "content",
+            "group": "bfbeToggle",
+            "label": "System label",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "System",
+            "required": [
+                "mode",
+                "=",
+                "three"
+            ]
+        },
+        "iconLight": {
+            "tab": "content",
+            "group": "bfbeIcons",
+            "label": "Light",
+            "type": "icon"
+        },
+        "iconDark": {
+            "tab": "content",
+            "group": "bfbeIcons",
+            "label": "Dark",
+            "type": "icon"
+        },
+        "iconSystem": {
+            "tab": "content",
+            "group": "bfbeIcons",
+            "label": "System",
+            "type": "icon",
+            "required": [
+                "mode",
+                "=",
+                "three"
+            ]
+        },
+        "size": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Size",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "40px",
+            "css": [
+                {
+                    "property": "--bfbe-theme-size",
+                    "selector": ""
+                }
+            ]
+        },
+        "iconSize": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Icon size",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "1.1em",
+            "css": [
+                {
+                    "property": "--bfbe-theme-icon",
+                    "selector": ""
+                }
+            ]
+        },
+        "backgroundHover": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Background on hover",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": "&:hover"
+                },
+                {
+                    "property": "background",
+                    "selector": "&:focus-visible"
+                }
+            ]
+        },
+        "colorHover": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Colour on hover",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": "&:hover"
+                },
+                {
+                    "property": "color",
+                    "selector": "&:focus-visible"
+                }
+            ]
+        },
+        "knobColor": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Knob colour",
+            "type": "color",
+            "required": [
+                "shape",
+                "=",
+                "switch"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-theme-knob",
+                    "selector": ""
+                }
+            ]
+        },
+        "knobInk": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Knob icon colour",
+            "type": "color",
+            "required": [
+                "shape",
+                "=",
+                "switch"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-theme-knob-ink",
+                    "selector": ""
+                }
+            ]
+        },
+        "labelTypography": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Label typography",
+            "type": "typography",
+            "required": [
+                "shape",
+                "=",
+                "pill"
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": "&.bfbe-theme--pill .bfbe-theme__label"
+                }
+            ]
+        },
+        "pageColors": {
+            "tab": "content",
+            "group": "bfbePage",
+            "label": "Colour the page",
+            "type": "checkbox",
+            "description": "Blocks with the class bfbe-keep keep their colours."
+        },
+        "pageDepth": {
+            "tab": "content",
+            "group": "bfbePage",
+            "label": "How much",
+            "type": "select",
+            "options": {
+                "all": "Everything on the page",
+                "page": "The page background and text"
+            },
+            "inline": true,
+            "placeholder": "Everything on the page",
+            "required": [
+                "pageColors",
+                "!=",
+                ""
+            ]
+        },
+        "pageSkip": {
+            "tab": "content",
+            "group": "bfbePage",
+            "label": "Leave these alone",
+            "type": "textarea",
+            "placeholder": ".logo-bar\n#brxe-abc123",
+            "description": "One selector a line. Sections that keep their colours.",
+            "required": [
+                "pageDepth",
+                "!=",
+                "page"
+            ]
+        },
+        "pageBackground": {
+            "tab": "content",
+            "group": "bfbePage",
+            "label": "Background",
+            "type": "color",
+            "required": [
+                "pageColors",
+                "!=",
+                ""
+            ]
+        },
+        "pageText": {
+            "tab": "content",
+            "group": "bfbePage",
+            "label": "Text colour",
+            "type": "color",
+            "required": [
+                "pageColors",
+                "!=",
+                ""
+            ]
+        },
+        "pageHeadings": {
+            "tab": "content",
+            "group": "bfbePage",
+            "label": "Headings colour",
+            "type": "color",
+            "required": [
+                "pageColors",
+                "!=",
+                ""
+            ]
+        },
+        "pageLinks": {
+            "tab": "content",
+            "group": "bfbePage",
+            "label": "Links colour",
+            "type": "color",
+            "required": [
+                "pageColors",
+                "!=",
+                ""
+            ]
+        },
+        "pageOutline": {
+            "tab": "content",
+            "group": "bfbePage",
+            "label": "Outline buttons colour",
+            "type": "color",
+            "required": [
+                "pageColors",
+                "!=",
+                ""
+            ]
+        },
+        "pageButtonText": {
+            "tab": "content",
+            "group": "bfbePage",
+            "label": "Button text colour",
+            "type": "color",
+            "required": [
+                "pageColors",
+                "!=",
+                ""
+            ]
+        },
+        "keepInk": {
+            "tab": "content",
+            "group": "bfbePage",
+            "label": "Kept blocks text colour",
+            "type": "color",
+            "required": [
+                "pageColors",
+                "!=",
+                ""
+            ]
+        },
+        "duration": {
+            "tab": "content",
+            "group": "bfbeMotion",
+            "label": "Duration (ms)",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 25,
+            "inline": true,
+            "placeholder": 200,
+            "css": [
+                {
+                    "property": "--bfbe-duration",
+                    "selector": "",
+                    "value": "%sms"
+                }
+            ]
+        },
+        "easing": {
+            "tab": "content",
+            "group": "bfbeMotion",
+            "label": "Easing",
+            "type": "select",
+            "options": {
+                "cubic-bezier(0.45, 0.05, 0.55, 0.95)": "Soft",
+                "cubic-bezier(0.65, 0, 0.35, 1)": "Medium",
+                "cubic-bezier(0.16, 1, 0.3, 1)": "Snappy",
+                "ease-in": "Ease in",
+                "ease-out": "Ease out",
+                "ease-in-out": "Ease in and out",
+                "linear": "Linear",
+                "cubic-bezier(0.34, 1.56, 0.64, 1)": "Overshoot",
+                "linear(0, .38 8%, .78 17%, 1.02 25%, 1.08 30%, 1.03 40%, .99 50%, 1)": "Soft spring",
+                "var(--bfbe-ease-custom, ease)": "Custom"
+            },
+            "inline": true,
+            "placeholder": "Snappy",
+            "css": [
+                {
+                    "property": "--bfbe-ease",
+                    "selector": ""
+                }
+            ]
+        },
+        "easingCustom": {
+            "tab": "content",
+            "group": "bfbeMotion",
+            "label": "Custom curve",
+            "type": "text",
+            "inline": true,
+            "placeholder": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "required": [
+                "easing",
+                "=",
+                "var(--bfbe-ease-custom, ease)"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-ease-custom",
+                    "selector": ""
+                }
+            ]
+        },
+        "pageFx": {
+            "tab": "content",
+            "group": "bfbeMotion",
+            "label": "Page transition",
+            "type": "select",
+            "options": {
+                "crossfade": "Crossfade",
+                "reveal": "Reveal from the button",
+                "fade": "Colours fade",
+                "none": "None"
+            },
+            "inline": true,
+            "placeholder": "Crossfade"
+        },
+        "pageFxDuration": {
+            "tab": "content",
+            "group": "bfbeMotion",
+            "label": "Transition duration",
+            "type": "number",
+            "unit": "ms",
+            "inline": true,
+            "placeholder": 500,
+            "required": [
+                "pageFx",
+                "!=",
+                "none"
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-theme-page-dur",
+                    "selector": ""
+                }
+            ]
+        },
+        "knobShadow": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Knob shadow",
+            "type": "box-shadow",
+            "required": [
+                "shape",
+                "=",
+                "switch"
+            ],
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": "&.bfbe-theme--switch .bfbe-theme__knob"
+                }
+            ]
+        },
+        "bfbeHoverEffect": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Effect",
+            "type": "select",
+            "options": {
+                "lift": "Lift",
+                "zoom": "Zoom the picture",
+                "shine": "Shine",
+                "border": "Gradient border",
+                "tilt": "Tilt",
+                "follow": "Follow the pointer",
+                "fade": "Fade in",
+                "slide": "Slide in",
+                "grow": "Grow"
+            },
+            "inline": true,
+            "placeholder": "None"
+        },
+        "bfbeHoverOn": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Responds to",
+            "type": "select",
+            "options": {
+                "parent": "A hovered parent"
+            },
+            "inline": true,
+            "placeholder": "This element",
+            "description": "The parent needs Children respond to hover.",
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverFrom": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Comes from",
+            "type": "select",
+            "options": {
+                "up": "Above",
+                "left": "The left",
+                "right": "The right"
+            },
+            "inline": true,
+            "placeholder": "Below",
+            "required": [
+                "bfbeHoverEffect",
+                "=",
+                "slide"
+            ]
+        },
+        "bfbeHoverStrength": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Strength",
+            "type": "number",
+            "min": 0.1,
+            "max": 3,
+            "step": 0.1,
+            "inline": true,
+            "placeholder": "1",
+            "breakpoints": true,
+            "css": [
+                {
+                    "property": "--bfbe-hv-k",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverSpeed": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Speed",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "300",
+            "description": "Milliseconds.",
+            "css": [
+                {
+                    "property": "--bfbe-hv-t",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverDelay": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Milliseconds, so parts arrive in sequence.",
+            "css": [
+                {
+                    "property": "--bfbe-hv-d",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "bfbeHoverEffect",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeHoverEffect",
+                    "!=",
+                    [
+                        "tilt",
+                        "follow"
+                    ]
+                ]
+            ]
+        },
+        "bfbeHoverColor": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Colour",
+            "type": "color",
+            "inline": true,
+            "css": [
+                {
+                    "property": "--bfbe-hv-c",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "=",
+                [
+                    "shine",
+                    "border"
+                ]
+            ]
+        },
+        "bfbeHoverOff": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Off below",
+            "type": "select",
+            "options": {
+                "480": "480 px",
+                "640": "640 px",
+                "768": "768 px",
+                "992": "992 px"
+            },
+            "inline": true,
+            "placeholder": "Never",
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverScope": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Children respond to hover",
+            "type": "checkbox",
+            "description": "Parts inside set to A hovered parent move."
+        },
+        "bfbeHsWhen": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "When scrolled",
+            "type": "select",
+            "options": {
+                "hide": "Hides",
+                "fade": "Fades out, keeps its space",
+                "show": "Appears only then"
+            },
+            "inline": true,
+            "placeholder": "Stays as it is"
+        },
+        "bfbeHsCollapse": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Collapses",
+            "type": "select",
+            "options": {
+                "across": "Sideways"
+            },
+            "inline": true,
+            "placeholder": "Downward",
+            "required": [
+                "bfbeHsWhen",
+                "=",
+                [
+                    "hide",
+                    "show"
+                ]
+            ]
+        },
+        "bfbeHsOver": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Over the first section",
+            "type": "select",
+            "options": {
+                "hide": "Hides",
+                "show": "Appears only then"
+            },
+            "inline": true,
+            "placeholder": "Stays as it is",
+            "description": "Only with the header over the first section."
+        },
+        "bfbeHsStyleSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Scrolled: styling"
+        },
+        "bfbeHsPadding": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsMargin": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Margin",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "margin",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsWidth": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "rerender": true,
+            "css": [
+                {
+                    "property": "width",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ]
+        },
+        "bfbeHsHeight": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Height",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "rerender": true,
+            "css": [
+                {
+                    "property": "height",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ]
+        },
+        "bfbeHsBackground": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsBlur": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Blur behind",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "0",
+            "rerender": true,
+            "css": [
+                {
+                    "property": "--bfbe-hs-blur",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsBorder": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsShadow": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Box shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsTypography": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOpacity": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Opacity",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "opacity",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsScale": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Scale",
+            "type": "number",
+            "min": 0.1,
+            "max": 3,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "scale",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsGap": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Over the first section: styling"
+        },
+        "bfbeHsOverBackground": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverTypography": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverBorder": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverShadow": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Box shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverOpacity": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Opacity",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "opacity",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsMotionSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Motion"
+        },
+        "bfbeHsElDuration": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Duration",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "Follows the header",
+            "description": "Milliseconds.",
+            "css": [
+                {
+                    "property": "--bfbe-hs-dur",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsElEasing": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Easing",
+            "type": "select",
+            "options": {
+                "cubic-bezier(0.16, 1, 0.3, 1)": "Snappy"
+            },
+            "inline": true,
+            "placeholder": "Follows the header",
+            "css": [
+                {
+                    "property": "--bfbe-hs-ease",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsDelay": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Milliseconds, scrolling down only, so parts arrive in sequence.",
+            "css": [
+                {
+                    "property": "--bfbe-hs-delay",
+                    "selector": ""
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,413 @@
+{
+    "name": "form-fields",
+    "label": "BFB Form Fields",
+    "pack": "pro",
+    "feature": true,
+    "on": "Bricks' own form element (`form`)",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/form-fields/",
+    "controlGroups": {
+        "bfbeFields": {
+            "title": "Cards and pills",
+            "tab": "content"
+        }
+    },
+    "controls": {
+        "sepChoiceCards": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Cards",
+            "type": "separator"
+        },
+        "choiceMin": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Width, at least",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "160px",
+            "css": [
+                {
+                    "property": "--bfbe-ff-min",
+                    "selector": ""
+                }
+            ]
+        },
+        "choiceColumns": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Per row",
+            "type": "number",
+            "min": 1,
+            "max": 8,
+            "step": 1,
+            "inline": true,
+            "placeholder": "Fits the width",
+            "css": [
+                {
+                    "property": "--bfbe-ff-cols",
+                    "selector": "",
+                    "value": "repeat(%s, minmax(0, 1fr))"
+                }
+            ]
+        },
+        "choiceGap": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Space between",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "12px",
+            "css": [
+                {
+                    "property": "--bfbe-ff-gap",
+                    "selector": ""
+                }
+            ]
+        },
+        "choicePadding": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Padding",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "16px",
+            "css": [
+                {
+                    "property": "--bfbe-ff-pad",
+                    "selector": ""
+                }
+            ]
+        },
+        "choiceBorder": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-ff__card"
+                }
+            ]
+        },
+        "choiceBackground": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-ff__card"
+                }
+            ]
+        },
+        "choiceShadow": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": ".bfbe-ff__card"
+                }
+            ]
+        },
+        "choiceHover": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Hover border",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-ff-hover",
+                    "selector": ""
+                }
+            ]
+        },
+        "sepChoiceChosen": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Chosen",
+            "type": "separator"
+        },
+        "choiceAccent": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-ff-accent",
+                    "selector": ""
+                }
+            ]
+        },
+        "choiceChosenBackground": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-ff-accent-bg",
+                    "selector": ""
+                }
+            ]
+        },
+        "choiceChosenText": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Text",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-ff-accent-text",
+                    "selector": ""
+                }
+            ]
+        },
+        "sepChoiceInside": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Inside a card",
+            "type": "separator"
+        },
+        "choiceDirection": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Direction",
+            "type": "direction",
+            "inline": true,
+            "css": [
+                {
+                    "property": "flex-direction",
+                    "selector": "[data-bfbe-choice=\"cards\"] .bfbe-ff__card"
+                },
+                {
+                    "property": "--bfbe-ff-row",
+                    "selector": "[data-bfbe-choice=\"cards\"] .bfbe-ff__card",
+                    "value": "1",
+                    "required": "row"
+                },
+                {
+                    "property": "--bfbe-ff-row",
+                    "selector": "[data-bfbe-choice=\"cards\"] .bfbe-ff__card",
+                    "value": "1",
+                    "required": "row-reverse"
+                },
+                {
+                    "property": "--bfbe-ff-row",
+                    "selector": "[data-bfbe-choice=\"cards\"] .bfbe-ff__card",
+                    "value": "0",
+                    "required": "column"
+                },
+                {
+                    "property": "--bfbe-ff-row",
+                    "selector": "[data-bfbe-choice=\"cards\"] .bfbe-ff__card",
+                    "value": "0",
+                    "required": "column-reverse"
+                }
+            ]
+        },
+        "choiceJustify": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Align main axis",
+            "type": "justify-content",
+            "inline": true,
+            "css": [
+                {
+                    "property": "justify-content",
+                    "selector": "[data-bfbe-choice=\"cards\"] .bfbe-ff__card"
+                }
+            ]
+        },
+        "choiceAlignItems": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Align cross axis",
+            "type": "align-items",
+            "inline": true,
+            "css": [
+                {
+                    "property": "align-items",
+                    "selector": "[data-bfbe-choice=\"cards\"] .bfbe-ff__card"
+                }
+            ]
+        },
+        "choiceInGap": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "8px",
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": "[data-bfbe-choice=\"cards\"] .bfbe-ff__card"
+                }
+            ]
+        },
+        "sepChoiceIcon": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Icon",
+            "type": "separator"
+        },
+        "choiceIcon": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Size",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "24px",
+            "css": [
+                {
+                    "property": "--bfbe-ff-icon",
+                    "selector": ""
+                }
+            ]
+        },
+        "choiceIconColor": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-ff-icon-color",
+                    "selector": ""
+                }
+            ]
+        },
+        "sepChoicePicture": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Picture",
+            "type": "separator"
+        },
+        "choicePicWidth": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "Auto",
+            "description": "Auto: full in a column, 72px in a row.",
+            "css": [
+                {
+                    "property": "--bfbe-ff-pic-w",
+                    "selector": ""
+                }
+            ]
+        },
+        "choicePicRatio": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Proportions",
+            "type": "select",
+            "options": {
+                "1 / 1": "Square",
+                "4 / 3": "4:3",
+                "3 / 2": "3:2",
+                "16 / 9": "16:9",
+                "3 / 4": "Upright 3:4"
+            },
+            "inline": true,
+            "placeholder": "Its own",
+            "css": [
+                {
+                    "property": "aspect-ratio",
+                    "selector": ".bfbe-ff__pic"
+                }
+            ]
+        },
+        "choicePicFit": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Fit",
+            "type": "select",
+            "options": {
+                "cover": "Fill, trimmed",
+                "contain": "Whole, with space"
+            },
+            "inline": true,
+            "placeholder": "Fill, trimmed",
+            "required": [
+                "choicePicRatio",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "object-fit",
+                    "selector": ".bfbe-ff__pic"
+                }
+            ]
+        },
+        "choicePicBorder": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-ff__pic"
+                }
+            ]
+        },
+        "sepChoiceWords": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Words",
+            "type": "separator"
+        },
+        "choiceTextAlign": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Text align",
+            "type": "text-align",
+            "inline": true,
+            "css": [
+                {
+                    "property": "text-align",
+                    "selector": "[data-bfbe-choice=\"cards\"] .bfbe-ff__body"
+                }
+            ]
+        },
+        "choiceTitleTypography": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-ff__title"
+                }
+            ]
+        },
+        "choiceTextTypography": {
+            "tab": "content",
+            "group": "bfbeFields",
+            "label": "Description typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-ff__text"
+                }
+            ]
+        }
+    }
+}
