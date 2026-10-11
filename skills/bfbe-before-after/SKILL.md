@@ -7,7 +7,7 @@ description: "Use when building a before and after image comparison slider with 
 
 <!-- bfbe:generated:start -->
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
-**Requires** BFB Elements 1.0.0-beta.3 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
+**Requires** BFB Elements 1.0.0-beta.4 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/elements/bfbe-before-after.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/before-after/
 
@@ -164,7 +164,7 @@ A larger handle with one icon: the right side is the left icon mirrored. From th
 - **One arrow icon serves both sides.** Set only `handleIconLeft` and the right is that icon mirrored; set both and they are used as given. A vertical comparison turns the row 90 degrees, so pick left and right arrows there too. <!-- src: plugins/bfb-elements/elements/before-after.php:681-691, src/elements/before-after/before-after.css:158-165 -->
 - **Divider Colour also fills the handle.** `dividerColor` paints the line and the handle disc, while the arrows stay `#111` until **Colour** (`handleIconColor`) is set. A dark divider hides them. <!-- src: src/elements/before-after/before-after.css:113-117, measured -->
 - **The root is the frame.** Bricks' own Border, radius and Background write to the visible box, which has a 12px radius by default; there is no separate frame box to style. <!-- src: docs/elements/before-after.md "The root is the frame now", docs/elements/before-after.md "Frame border and Frame background are gone" -->
-- **On touch, a top and bottom comparison keeps every swipe.** A left and right one passes vertical swipes to the page; a vertical one does not, so a phone cannot scroll from a swipe that starts on it. Keep it well under a phone screen's height. <!-- src: src/elements/before-after/before-after.css:48-52, measured: root pan-y and range pan-x on a vertical comparison -->
+- **On touch, a comparison keeps the drags along its axis.** A left and right one passes vertical swipes to the page; a top and bottom one passes sideways swipes, and keeps vertical ones for its handle, so a phone cannot scroll down from a swipe that starts on it. Keep a vertical one well under a phone screen's height. <!-- src: src/elements/before-after/before-after.css (1.0.0-beta.4: the vertical frame rule matches the merged root); measured with dev/before-after-touch-probe.mjs: frame and range pan-x on a vertical comparison -->
 - **Both images load eagerly at the stored size.** Each image is `loading="eager"` at its `size`, `full` when none is stored. In a query loop or a long page of comparisons, store `size: "large"`. <!-- src: plugins/bfb-elements/elements/before-after.php:482-490,555-568 -->
 
 ## Never do

@@ -110,6 +110,10 @@
                 {
                     "property": "background-color",
                     "selector": ".bfbe-ff__card"
+                },
+                {
+                    "property": "--bfbe-ff-base-bg",
+                    "selector": ""
                 }
             ]
         },

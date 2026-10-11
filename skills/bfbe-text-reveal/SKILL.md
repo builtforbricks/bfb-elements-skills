@@ -7,7 +7,7 @@ description: "Use when placing, wiring or styling BFB Advanced Text Reveal (`bfb
 
 <!-- bfbe:generated:start -->
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
-**Requires** BFB Elements Pro 1.0.0-beta.3 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
+**Requires** BFB Elements Pro 1.0.0-beta.4 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/elements/bfbe-text-reveal.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/text-reveal/
 
@@ -16,7 +16,7 @@ Text split into words, letters or lines and driven by one of five modes: reveal,
 
 **Not for:** Not for formatted copy: the Text control is plain text and mark is the one tag that survives, so links, bold and line breaks are lost. Splitting by Letters wraps every character in its own span, so long passages read better split by Words or Lines.
 
-**Costs a page:** CSS 1.29 KB, JS 1.73 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 1.29 KB, JS 1.74 KB (gzipped), no dependencies, loaded only on pages that use it.
 
 **Nestable:** no · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** no · **Reduced motion:** yes
 
@@ -198,8 +198,8 @@ the outline.
 - **A scrubbed highlight ignores the timing controls.** With **Driven by** (`highlightDrive`) on Scroll position, the
   default, **Part delay** (`stagger`), **Duration** (`duration`) and **Easing** (`easing`) are offered and do nothing;
   they time Coming into view, once. <!-- src: src/elements/text-reveal/text-reveal.css:50-51, :117; plugins/bfb-elements-pro/elements/text-reveal.php:170, :174 -->
-- **On page load needs Play once below the fold.** Without `once`, the first viewport check hides text that starts off
-  screen and it plays on arrival instead; the canvas ignores `once` altogether, so judge it on the page. <!-- src: src/elements/text-reveal/text-reveal.js:80, :135-139; measured 2026-10-08 in headless Chrome: trigger load below the fold had no is-in at load without once, is-in with once -->
+- **On page load plays at load, wherever the text is.** Without `once` it is reset only after it has been in view and
+  leaves, and plays again on return; the canvas ignores `once` altogether, so judge it on the page. <!-- src: src/elements/text-reveal/text-reveal.js watch() (1.0.0-beta.4); measured with dev/text-reveal-load-probe.mjs -->
 - **Start at must be larger than End at.** **Start at** (`begin`, 85) and **End at** (`end`, 35) place the element's
   top as a percentage down the viewport, and it travels from the larger to the smaller; reversed, Chrome jumps from
   start to finish in one step and the script's fallback runs backwards. <!-- src: plugins/bfb-elements-pro/elements/text-reveal.php:557-561; src/elements/text-reveal/text-reveal.js:104; measured 2026-10-08 in headless Chrome: begin 30, end 80 read --bfbe-p 0 with the top at 95% to 40%, 1 at 20% and 5% -->
@@ -218,5 +218,4 @@ the outline.
 - Do not combine `split: "lines"` with `mode: "scroll"` or `kinetic: "rise"`.
 - Do not set `begin` at or below `end`.
 - Do not feed `to` a number written with a dot between thousands, or a dynamic tag that can resolve empty.
-- Do not set `trigger: "load"` on text that starts below the fold without `once: true`.
 - Do not remove the `.bfbe-sr` copy or the `aria-hidden` on `.bfbe-rv__parts`.

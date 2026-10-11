@@ -9,8 +9,8 @@
     "childrenDefault": [],
     "parent": null,
     "cost": {
-        "css": "1.04 KB",
-        "js": "1.56 KB",
+        "css": "1.05 KB",
+        "js": "1.61 KB",
         "dependencies": "none"
     },
     "controlGroups": {

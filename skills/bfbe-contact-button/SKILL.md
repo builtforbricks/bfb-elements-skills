@@ -7,7 +7,7 @@ description: "Use when adding a floating WhatsApp, call, email or chat button fi
 
 <!-- bfbe:generated:start -->
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
-**Requires** BFB Elements 1.0.0-beta.3 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
+**Requires** BFB Elements 1.0.0-beta.4 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/elements/bfbe-contact-button.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/contact-button/
 
@@ -164,7 +164,7 @@ A team menu with a bubble, opening hours and tracking: the two rows marked `open
 ## Gotchas
 
 - **One action turns the button into the link.** The menu, the pill controls and **Icon** (`mainIcon`) then do nothing, and the row's **Colour** becomes the button's fill over **Background**. That link never opens a new tab, while pills with an `http` address get `target="_blank"`. <!-- src: plugins/bfb-elements/elements/contact-button.php:1037-1044, 1059 -->
-- **A row without a usable address is dropped silently.** An empty **Number, address or URL** (`value`), or a scheme WordPress refuses such as `viber:` or `skype:`, removes the row; with no row left the page gets no markup at all. <!-- src: plugins/bfb-elements/elements/contact-button.php:941-963; plugins/bfb-elements/includes/abstract-element.php:538 -->
+- **A row without a usable address is dropped silently.** An empty **Number, address or URL** (`value`), or a scheme outside the element's list, removes the row; with no row left the page gets no markup at all. The list is WordPress's schemes and the messaging apps' (`viber`, `skype`, `whatsapp`, `tg`, `facetime`, `facetime-audio`, `sgnl`, `line`, `weixin`, `msteams`, `threema`); `javascript:` and `data:` never. <!-- src: plugins/bfb-elements/elements/contact-button.php protocols() (1.0.0-beta.4); plugins/bfb-elements/includes/abstract-element.php:538; measured with dev/contact-schemes.php -->
 - **Call, Text message and WhatsApp keep only digits and `+`.** WhatsApp also drops the `+` and builds `https://wa.me/<digits>`, so type the country code. Messenger and Telegram take a bare handle (an `@` is dropped) or a full `https://` address as typed. <!-- src: plugins/bfb-elements/elements/contact-button.php:897-920 -->
 - **`mainLabel` is the button's words; a row's `label` is the pill's.** A typed **Label** shows on the button, which widens from a circle to fit it (`bfbe-fab--labelled`). Empty, the button is an icon circle named "Contact us" for screen readers, or the row's label with one action. <!-- src: plugins/bfb-elements/elements/contact-button.php:969-972, 1039-1042; src/elements/contact-button/contact-button.css:133-136 -->
 - **Listing any hours closes every day without a row.** A row ticked **Closed**, or with **Opens** or **Closes** not in `hh:mm` form, also reads as closed (`9:00` is fine). A closing time earlier than the opening time runs past midnight. <!-- src: plugins/bfb-elements/elements/contact-button.php:64-82; src/elements/contact-button/contact-button.js:71-73 -->
@@ -180,7 +180,6 @@ A team menu with a bubble, opening hours and tracking: the two rows marked `open
 ## Never do
 
 - Do not type a WhatsApp number without its country code.
-- Do not use a Link row for a scheme WordPress strips, such as `viber:` or `skype:`.
 - Do not add `hours` without `openOnly` rows, `closedText` with a `bubbleText`, or `closedHide`; alone they change nothing.
 - Do not leave out a day that should be open once `hours` has rows.
 - Do not set `actionAlign` without `sameWidth: true`, or `phoneBelow` with `showOn: "all"`.

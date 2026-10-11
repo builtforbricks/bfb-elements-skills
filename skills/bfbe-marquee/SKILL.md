@@ -7,7 +7,7 @@ description: "Use when building a scrolling logo strip, ticker or endless row of
 
 <!-- bfbe:generated:start -->
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
-**Requires** BFB Elements 1.0.0-beta.3 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
+**Requires** BFB Elements 1.0.0-beta.4 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/elements/bfbe-marquee.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/marquee/
 
@@ -97,7 +97,7 @@ The root is `div.bfbe-marquee` (Bricks adds `brxe-bfbe-marquee` and `#brxe-<id>`
   <div class="bfbe-marquee__viewport">
     <div class="bfbe-marquee__track">
       <div class="bfbe-marquee__group"><!-- the children, each one item --></div>
-      <div class="bfbe-marquee__group" aria-hidden="true" inert><!-- a copy, made by the script --></div>
+      <div class="bfbe-marquee__group" aria-hidden="true"><!-- a copy, made by the script; its links at tabindex="-1" --></div>
     </div>
   </div>
 </div>
@@ -178,7 +178,7 @@ Stands alone; nothing targets it and it targets nothing. What matters is what go
 
 - **The pause button is off until ticked.** **Show pause button** (`pauseButton`) is a checkbox and arrives unticked; `pausePosition` and the seven pause styling controls are hidden and do nothing without it. <!-- src: plugins/bfb-elements/elements/marquee.php:112-133, 202-277; docs/elements/marquee.md "Corrected, then fixed" -->
 - **Only `"keep"` stops the pointer pause.** **Under the pointer** (`pauseOnHover`) is a select; any other value, `true` and `false` included, falls back to Pauses. Keyboard focus inside the viewport pauses the strip in every case. <!-- src: plugins/bfb-elements/elements/marquee.php:96-97, 310; plugins/bfb-elements/includes/abstract-element.php:1369; src/elements/marquee/marquee.css:60-64 -->
-- **Links in the copies do not respond.** The copies are `inert` and `aria-hidden`, so their links and buttons take no click and no focus; only the first group's items act. Measured on the fixture: a click on a copy's link lands on the track. <!-- src: src/elements/marquee/marquee.js:57-72; measured headless on fixture-marquee 2026-10-08 -->
+- **Links in the copies work under the pointer.** The copies are `aria-hidden` with their links and controls at `tabindex="-1"`: a click on a copy follows its link, while Tab and screen readers meet the first group's items alone. A script's listeners on an item are not copied, only its markup. <!-- src: src/elements/marquee/marquee.js (1.0.0-beta.4: not inert); measured with dev/marquee-links-probe.mjs -->
 - **Items keep their natural width.** Every item is `flex: none`. A Bricks Block keeps its `width: 100%`, takes the whole group's width and overlaps the next, and an image with no width shows at its file's width (1024px at size large). Set `_width` on each item. <!-- src: src/elements/marquee/marquee.css:41; Bricks frontend CSS .brxe-block width:100%; measured headless on fixture-marquee 2026-10-08 -->
 - **Height and Fade size need their switches.** **Height** (`height`, 300px when empty) is offered only with `orientation: "vertical"`; a horizontal strip is as tall as its tallest item. **Fade size** (`fadeSize`) is offered only with `fade`. <!-- src: plugins/bfb-elements/elements/marquee.php:148-158, 179-189; src/elements/marquee/marquee.css:52 -->
 - **Rounded corners come from Strip border.** The viewport clips the items, so a radius from Bricks' own Border on the element leaves the items square at the corners. Set the radius in `stripBorder`. <!-- src: plugins/bfb-elements/elements/marquee.php:160-170; src/elements/marquee/marquee.css:18-24 -->

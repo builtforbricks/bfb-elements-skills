@@ -7,7 +7,7 @@ description: "Use when turning Bricks' own form (`form`) into a multi-step form 
 
 <!-- bfbe:generated:start -->
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
-**Requires** BFB Elements Pro 1.0.0-beta.3 or later. Bricks 2.4 or later connects an agent to the site (MCP).
+**Requires** BFB Elements Pro 1.0.0-beta.4 or later. Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/features/form-steps.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/form-steps/
 
@@ -248,7 +248,7 @@ The server adds attributes to the form Bricks renders; the script then holds the
 - **Placement's values read backwards.** The row is reversed, so `stepsNav: "flex-end"` is Start and `"flex-start"` is End; `space-between` (the default) puts Back at the start. <!-- src: plugins/bfb-elements-pro/includes/class-form-steps.php:364-373 --> <!-- src: src/elements/form-steps/form-steps.css:91-98 -->
 - **Back and Next wear the form's Field border.** Unset, their Border is Bricks' `fieldBorder`, written under the form's id, which the pack's stylesheet cannot outrank. Set `stepsNextBorder` and `stepsBackBtnBorder`; a width of 0 counts. <!-- src: docs/elements/form-steps.md (round 327, "Left unset, the Border on Back or Next") --> <!-- src: src/elements/form-steps/form-steps.js:108-121 -->
 - **Send has a Size but no padding.** Back and Next copy its colour and size classes, but their own Padding never reaches it. Match them with `submitButtonSize` (all six designed forms use `xl`), or leave Next and Back unpadded. <!-- src: src/elements/form-steps/form-steps.js:109 --> <!-- src: docs/elements/form-steps.md ("Two things a designer meets on the way") -->
-- **A step condition needs Form Fields switched on.** `bfbeStepWhen` reaches the page through Form Fields' script. With that feature off, the step always shows, yet the server still drops its answers when the condition fails. <!-- src: plugins/bfb-elements-pro/includes/class-form-fields.php:441-443 --> <!-- src: plugins/bfb-elements-pro/includes/class-plugin.php:152-163 --> <!-- src: plugins/bfb-elements-pro/includes/class-form-engine.php:307-325 -->
+- **Each condition follows its own feature's switch.** A step's `bfbeStepWhen` works with Form Fields switched on or off; a field's own `bfbeShowWhen` is Form Fields', and does nothing, on the page and on the server, while Form Fields is off. <!-- src: plugins/bfb-elements-pro/includes/class-form-fields.php boot_conditions(); plugins/bfb-elements-pro/includes/class-form-steps.php field_rule() (1.0.0-beta.4); measured with dev/form-step-when-probe.mjs -->
 - **Switched off, the feature is gone.** With Form Steps off on the BFB Elements admin page (`form-steps` in the `bfbe_features_off` option), the form has no step controls and no steps; saved keys wait for it to come back. <!-- src: plugins/bfb-elements-pro/includes/class-plugin.php:147-154 -->
 - **The canvas checks nothing.** `builderView` is `free` unless set: any mark or Next moves on with no field checked. `live` checks as the page does; `open` shows every step at once. <!-- src: plugins/bfb-elements-pro/includes/class-form-steps.php:672-678 --> <!-- src: src/elements/form-wizard/form-wizard.js:53 -->
 - **Nothing still keeps its panel.** With `stepsMarks: "none"` beside the fields, the steps panel keeps its width (`stepsPanelWidth`, 260px unless set) and stays empty unless the count shows. The designed restaurant form sets `stepsPosition: "3"` with it. <!-- src: src/elements/form-steps/form-steps.css:48-53 --> <!-- src: plugins/bfb-elements-pro/includes/class-form-progress-parts.php:230-248 --> <!-- src: dev/fixtures/form-steps-designed.php:596-604 -->
@@ -260,7 +260,6 @@ The server adds attributes to the form Bricks renders; the script then holds the
 - Do not leave the form's first field without `bfbeStep: true`.
 - Do not put Form Steps keys on `bfbe-form`; build its steps from Form Step elements.
 - Do not write `stepsNav: "flex-end"` for End; End is `"flex-start"`.
-- Do not set `bfbeStepWhen` on a site with Form Fields switched off.
 - Do not leave `stepsNextBorder` and `stepsBackBtnBorder` unset on a form with a `fieldBorder`.
 - Do not turn `showLabels` off on a form with `stepsSummary` or `stepsSayMissing`.
 - Do not judge the steps in the canvas; read the page, or set `builderView: "live"`.

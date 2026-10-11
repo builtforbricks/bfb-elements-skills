@@ -7,7 +7,7 @@ description: "Use when placing, wiring or styling BFB Dark Mode Toggle (`bfbe-da
 
 <!-- bfbe:generated:start -->
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
-**Requires** BFB Elements Pro 1.0.0-beta.3 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
+**Requires** BFB Elements Pro 1.0.0-beta.4 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/elements/bfbe-dark-mode.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/dark-mode/
 
@@ -16,7 +16,7 @@ A button that sets data-bfbe-theme on the html element, remembered in the visito
 
 **Not for:** Everything on the page recolors the stylesheet Bricks wrote for the page and can move color variables other stylesheets set on the root. Their other rules, inline styles, images and translucent colors stay as they are. A design that needs exact dark values in every part fits CSS custom properties or light-dark() better, with Colour the page left off.
 
-**Costs a page:** CSS 1.04 KB, JS 1.56 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 1.05 KB, JS 1.61 KB (gzipped), no dependencies, loaded only on pages that use it.
 
 **Nestable:** no · **In a query loop:** no · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 
@@ -157,7 +157,7 @@ None of these trees ticks **Colour the page**, so adding one never takes the pal
 - **Drafts, private pages and previews write nothing site-wide.** A toggle there neither sets nor clears the palette, so its Dark page settings show nowhere until the post holding it is published. <!-- src: plugins/bfb-elements-pro/elements/dark-mode.php:434-437 -->
 - **A change shows from the next page load.** The head prints the stored palette before the owner renders and stores its new settings, so load a page twice after saving. <!-- src: plugins/bfb-elements-pro/includes/class-dark-mode-head.php:11-15 -->
 - **The canvas is a shallower preview.** The recolour does not run in the builder; the toggle prints its own page rules inline, so **Everything on the page** looks like **The page background and text** there. <!-- src: plugins/bfb-elements-pro/includes/class-dark-mode-paint.php:158-162 --> <!-- src: plugins/bfb-elements-pro/elements/dark-mode.php:449 -->
-- **No owner, no dark colours.** Without a toggle that colours the page, a switch sets `data-bfbe-theme` and `color-scheme` alone; the site's own variables or `light-dark()` must do the rest. <!-- src: plugins/bfb-elements-pro/includes/class-dark-mode-head.php:149-181 --> <!-- src: docs/elements/dark-mode.md (intro, "The page background and text") -->
+- **No owner, no dark colours, and no dark system.** Without a toggle that colours the page, a switch sets `data-bfbe-theme` and, for a visitor's own choice, `color-scheme`; the site's own variables or `light-dark()` must do the rest. A dark system with nothing chosen then leaves the page light, form controls included: a site whose own design follows the system declares `color-scheme: light dark` itself. <!-- src: plugins/bfb-elements-pro/includes/class-dark-mode-head.php css(), snippet() (1.0.0-beta.4) --> <!-- src: docs/elements/dark-mode.md "Launch audit 003"; measured with dev/dark-native-probe.mjs -->
 - **Leave these alone matches selector text.** Each line is tested as a substring of Bricks' rule selectors, and an element's own colours sit under its id (`#brxe-abc123`). Children with rules of their own still darken, and with **Colour the page** off the field does nothing though the panel shows it. <!-- src: plugins/bfb-elements-pro/includes/class-dark-mode-paint.php:648-652 --> <!-- src: plugins/bfb-elements-pro/elements/dark-mode.php:249, 427-428 -->
 - **The recolour leaves some colours as set.** Stylesheets other than Bricks' generated CSS, inline `style` attributes, images, colours under 90% opacity, and declarations using `var()` or `currentColor` keep their light values. <!-- src: plugins/bfb-elements-pro/includes/class-dark-mode-paint.php:16-18, 673, 711-713 -->
 - **A light brand fill becomes a light island.** A block filled with a saturated light colour (a yellow, lime or teal card) keeps its fill, and everything inside keeps its light look. White and grey surfaces still go dark; a large light brand section stays bright by design. <!-- src: plugins/bfb-elements-pro/includes/class-dark-mode-paint.php:565-610 --> <!-- src: docs/elements/dark-mode.md "Round 394" -->

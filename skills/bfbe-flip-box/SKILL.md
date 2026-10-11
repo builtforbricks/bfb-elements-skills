@@ -7,7 +7,7 @@ description: "Use when building a flip card, a hover reveal or a front-and-back 
 
 <!-- bfbe:generated:start -->
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
-**Requires** BFB Elements 1.0.0-beta.3 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
+**Requires** BFB Elements 1.0.0-beta.4 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/elements/bfbe-flip-box.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/flip-box/
 
@@ -16,7 +16,7 @@ Two faces, front and back, built as ordinary Bricks blocks, swap on hover, on cl
 
 **Not for:** The two faces share one grid cell, so one of them is always hidden from view. Content visitors must compare side by side, or read in full before deciding, belongs in a plain layout.
 
-**Costs a page:** CSS 1.33 KB, JS 2.05 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 1.33 KB, JS 2.16 KB (gzipped), no dependencies, loaded only on pages that use it.
 
 **Nestable:** yes · **In a query loop:** yes · **Dynamic data:** no · **Keyboard:** yes · **Reduced motion:** yes
 
@@ -249,7 +249,7 @@ The card wires inward alone. Its controls are elements inside its own faces carr
 }
 ```
 
-**Click card turned by icons** (fixture page `fixture-flip-box`, "Flip up, icon triggers"). `trigger: "click"` and `direction: "up"`, with an Icon marked on each face; the script makes each icon a keyboard button. The `aria-label` in each icon's `_attributes` is added here, because an icon has no text to name it.
+**Click card turned by icons** (fixture page `fixture-flip-box`, "Flip up, icon triggers"). `trigger: "click"` and `direction: "up"`, with an Icon marked on each face; the script makes each icon a keyboard button. The `aria-label` in each icon's `_attributes` names each turn for what it shows; without it the element names both "Turn the card over".
 
 ```json
 {
@@ -295,7 +295,7 @@ The card wires inward alone. Its controls are elements inside its own faces carr
 - **The builder notice reads the base value.** "Add the class bfbe-flip-trigger to an element on each face." shows in the canvas when the base `trigger` is `none`; a breakpoint key such as `trigger:mobile_portrait` set to `none` brings no notice. A breakpoint value applies at and below that breakpoint's width. <!-- src: plugins/bfb-elements/elements/flip-box.php:508 ; docs/elements/flip-box.md "Round 402" -->
 - **A marked link stops navigating.** The script cancels a marked link's click so it turns the card instead. Mark a Button or an Icon, and leave links that must go somewhere unmarked. <!-- src: src/elements/flip-box/flip-box.js:229 -->
 - **Unmarked interactive content never turns the card by click or tap.** A click on a link, button, input, label, `summary`, media or anything with `tabindex` keeps its own job, and the check climbs past the card to its ancestors. A face, or a Block around the card, with **HTML tag** `tag: "a"` therefore stops click and tap turning it. <!-- src: src/elements/flip-box/flip-box.js:26 ; src/elements/flip-box/flip-box.js:300 -->
-- **A trigger without text has no name.** The script gives a marked non-button `role="button"` and no label, so an Icon is announced as an unnamed button. Give it `_attributes` with `aria-label`. <!-- src: src/elements/flip-box/flip-box.js:115 -->
+- **A trigger without text is named by the element.** The script gives a marked non-button `role="button"`, and one with no words, label or described image the name "Turn the card over" (in the site's language). An `aria-label` in its `_attributes` gives it words of its own and is kept. <!-- src: src/elements/flip-box/flip-box.js named(), upgrade(); plugins/bfb-elements/elements/flip-box.php data-bfbe-flip-name (1.0.0-beta.4); measured with dev/flip-trigger-name-probe.mjs -->
 - **The Style tab's border radius does not round the card.** The universal border writes to the root, while the corners a visitor sees are the faces', inherited from **Face border** `faceBorder` on `.bfbe-flip-box__inner`. A face's own `_border` radius overrides that for that face. <!-- src: plugins/bfb-elements/elements/flip-box.php:239 ; src/elements/flip-box/flip-box.css:280 -->
 - **Faces clip their content.** Every face has `overflow: hidden`, and Slide over, Push across and Zoom out clip at the inner wrapper too, so a dropdown or tooltip that leaves a face is cut. For those three, the clip copies the front's corners when they are in pixels; a percentage or elliptical corner leaves the card's radius. <!-- src: src/elements/flip-box/flip-box.css:184 ; src/elements/flip-box/flip-box.css:284 ; src/elements/flip-box/flip-box.js:150 -->
 - **The canvas holds the card still.** With **Show it** `builderView` at its default, hover does nothing, the turn is instant, both faces stay editable, the fallback never renders, and selecting anything on the back turns the card to it. Set `builderView: "live"` to watch it turn, and check focus and `inert` on the published page. <!-- src: src/elements/flip-box/flip-box.js:73 ; src/elements/flip-box/flip-box.js:313 ; src/elements/flip-box/flip-box.css:119 ; plugins/bfb-elements/elements/flip-box.php:425 -->
@@ -308,7 +308,6 @@ The card wires inward alone. Its controls are elements inside its own faces carr
 - Do not mark an element on one face alone; mark one on each face, or none.
 - Do not set the base `trigger` to `none` unless both faces carry a marked element.
 - Do not mark a link that must navigate, and do not set a face's `tag` to `a`.
-- Do not mark an Icon or other text-free element without an `aria-label` in its `_attributes`.
 - Do not round the card with the flip box's own `_border`; use `faceBorder`.
 - Do not target the card or a trigger by `_cssId`, or place a `bfbe-flip-trigger` element outside the card it should turn.
 - Do not set `direction` with `effect` `zoom-in`, `zoom-out`, `circle` or `fade`, or `perspective` with any effect but `flip` and `cube`.

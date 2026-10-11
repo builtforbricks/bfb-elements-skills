@@ -369,10 +369,15 @@
             "group": "bfbeFrame",
             "label": "Frame colour",
             "type": "color",
+            "required": [
+                "device",
+                "!=",
+                "browser"
+            ],
             "css": [
                 {
                     "property": "--bfbe-dev-frame",
-                    "selector": ""
+                    "selector": "&:not(.bfbe-dev--browser)"
                 }
             ]
         },
@@ -384,10 +389,15 @@
             "units": true,
             "inline": true,
             "placeholder": "12px",
+            "required": [
+                "device",
+                "!=",
+                "browser"
+            ],
             "css": [
                 {
                     "property": "--bfbe-dev-bezel",
-                    "selector": ""
+                    "selector": "&:not(.bfbe-dev--browser)"
                 }
             ]
         },

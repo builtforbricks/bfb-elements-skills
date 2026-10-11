@@ -7,7 +7,7 @@ description: "Use when building a multi-step form, a quote or price calculator, 
 
 <!-- bfbe:generated:start -->
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
-**Requires** BFB Elements Pro 1.0.0-beta.3 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
+**Requires** BFB Elements Pro 1.0.0-beta.4 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/elements/bfbe-form.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/form/
 
@@ -645,6 +645,11 @@ the Stripe keys on the site: without them the send answers that payment is not a
 
 ## Gotchas
 
+- **A login's `redirect_to` stays on the site.** With the User login action, the address's `?redirect_to=` is carried
+  only when WordPress's own rule allows it: this site, or a host the site adds through `allowed_redirect_hosts`. Bricks'
+  own form takes any address. <!-- src: plugins/bfb-elements-pro/elements/form.php native_inputs(); plugins/bfb-elements-pro/includes/class-form-engine.php (1.0.0-beta.4); measured with dev/login-redirect-probe.mjs -->
+- **The quote PDF draws Latin, Greek, Cyrillic and Vietnamese, left to right.** Arabic, Hebrew, the Indic scripts,
+  Chinese, Japanese and Korean come out as empty boxes; the Quote PDF group's Title says so. <!-- src: plugins/bfb-elements-pro/includes/class-form-pdf-font.php; docs/elements/form.md "Known limits" -->
 - **Keys decide everything, so set them.** The save makes a missing key from the label, gives a repeated key `_2`, and
   never lets a field take `total` or `step` (a field keyed `total` becomes `total_2`). A formula is case-sensitive: `Rooms`
   is not `rooms` and counts 0. <!-- src: plugins/bfb-elements-pro/includes/class-form-engine.php:1788-1805, docs/elements/form.md "Formulas" -->

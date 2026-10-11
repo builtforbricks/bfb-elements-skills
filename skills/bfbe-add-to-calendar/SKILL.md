@@ -7,7 +7,7 @@ description: "Use when adding an add-to-calendar or save-the-date button for an 
 
 <!-- bfbe:generated:start -->
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
-**Requires** BFB Elements Pro 1.0.0-beta.3 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
+**Requires** BFB Elements Pro 1.0.0-beta.4 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/elements/bfbe-add-to-calendar.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/add-to-calendar/
 
@@ -174,7 +174,7 @@ Repeat it through a query loop or a single template rather than by copying: each
 ## Gotchas
 
 - **A fresh insert draws nothing on the page.** No calendar is ticked by default, and without **Starts** (`start`) or a ticked calendar the page gets no markup at all; only the builder shows a notice. <!-- src: plugins/bfb-elements-pro/elements/add-to-calendar.php:578 and :635; plugins/bfb-elements/includes/abstract-element.php:538 -->
-- **Dates are read by PHP's parser, and slashes mean month first.** `01/10/2026` becomes 10 January, while `13/10/2026` and a bare Unix timestamp render nothing. Write `2026-10-01 18:00`. <!-- src: add-to-calendar.php:520 (stamp()); measured 2026-10-08 with dev/wp.sh eval-file -->
+- **A date of numbers follows the site's own date order.** `11/10/2026`, `11.10.2026` and `11-10-26` are read in the order the site's date format (Settings, General) prints: `d/m/Y` day first, `m/d/Y` or `Y-m-d` month first. A part over 12 is the day whatever the format. Where the format prints the month as a word (WordPress's default, `F j, Y`) an ambiguous date draws no button and the builder says why; a bare Unix timestamp renders nothing. `2026-10-01 18:00` reads the same on every site. <!-- src: add-to-calendar.php stamp() and date_order() (1.0.0-beta.4); measured with dev/calendar-dates.php, 21 readings -->
 - **A date tag needs a format.** A plain date tag follows the site's date format, which may use slashes; give it a format after a colon, as in `{post_date:Y-m-d H:i}`. <!-- src: add-to-calendar.php:570; measured 2026-10-08: {post_date} gave "October 6, 2026", {post_date:Y-m-d H:i} gave "2026-10-06 13:19" -->
 - **Times are in the site's time zone unless they carry their own.** A plain time is read in the WordPress time zone and sent as UTC; a value ending in `Z` or an offset such as `+01:00` keeps that zone. <!-- src: add-to-calendar.php:520 and :599; measured 2026-10-08 with timezone_string Europe/Bucharest -->
 - **A wrong end is not an error.** An empty **Ends** (`end`), or one before the start, becomes one hour after the start, or the same single day with **All day** (`allDay`). <!-- src: add-to-calendar.php:583 -->
@@ -189,7 +189,7 @@ Repeat it through a query loop or a single template rather than by copying: each
 ## Never do
 
 - Do not insert it without `start` and at least one of `calGoogle`, `calOutlook`, `calOffice`, `calYahoo`, `calIcs`.
-- Do not write `start` or `end` as `dd/mm/yyyy` or a Unix timestamp, and do not use a date tag without a `Y-m-d H:i` format.
+- Do not write `start` or `end` as a Unix timestamp, and on a site whose date format prints the month as a word, do not use a date tag without a `Y-m-d H:i` format.
 - Do not add a day to `end` for an all-day event; give the last day and let the element make it exclusive.
 - Do not style a row's chips with the Menu keys (`linkTypography`, `itemPadding`, `itemBorder`); use the Button group's Look keys.
 - Do not set `caretSize` or any Menu key other than `menuPadding` with `layout: "row"`: the panel hides them and they are dropped.

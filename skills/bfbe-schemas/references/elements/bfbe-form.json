@@ -2268,7 +2268,8 @@
             "group": "bfbePdf",
             "label": "Title",
             "type": "text",
-            "placeholder": "Your quote"
+            "placeholder": "Your quote",
+            "description": "Draws Latin, Greek, Cyrillic and Vietnamese, left to right."
         },
         "pdfIntro": {
             "tab": "content",
