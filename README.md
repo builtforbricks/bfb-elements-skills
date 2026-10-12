@@ -4,8 +4,8 @@ Agent skills for [BFB Elements](https://builtforbricks.com/bfb-elements/), the B
 Built for Bricks: one skill per element and feature, the control schemas the plugin's release exports, and
 examples the release checks against the plugin before they are published.
 
-**Status: released.** Every skill is written in full and checked against the plugins. The current release, 0.1.1, goes
-out with BFB Elements 1.0.0-beta.4, which the schemas describe (the `verifiedUpTo` in
+**Status: released.** Every skill is written in full and checked against the plugins. The current release, 0.2.0, goes
+out with BFB Elements 1.0.0, which the schemas describe (the `verifiedUpTo` in
 `skills/bfbe-schemas/references/index.json`).
 
 ## What a skill is
@@ -18,7 +18,7 @@ never to do.
 
 ## Requirements
 
-- BFB Elements 1.0.0-beta.4 or later (the free plugin), and BFB Elements Pro for the Pro elements.
+- BFB Elements 1.0.0 or later (the free plugin), and BFB Elements Pro for the Pro elements.
 - Bricks 2.4 or later with its abilities enabled, for an AI client that edits the site. Without it the skills
   still help a client that writes Bricks JSON for import.
 - A client that loads skills: Claude Code, Codex, Cursor, GitHub Copilot, or any client that reads `SKILL.md`

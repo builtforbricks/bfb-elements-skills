@@ -7,7 +7,7 @@ description: "Use when adding a floating WhatsApp, call, email or chat button fi
 
 <!-- bfbe:generated:start -->
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
-**Requires** BFB Elements 1.0.0-beta.4 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
+**Requires** BFB Elements 1.0.0 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/elements/bfbe-contact-button.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/contact-button/
 
@@ -27,7 +27,7 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
 
 ### Actions (`bfbeActions`)
-- `actions` (repeater) **Actions**. One row per way to reach you. Pick its Type: Call, WhatsApp, Email, Text message, Messenger, Telegram or Link, and fill in Number, address or URL, which accepts dynamic data.
+- `actions` (repeater) **Actions**. One row per way to reach you. Pick its Type: Call, WhatsApp, Email, Text message, Messenger, Telegram or Link, and fill in Number, address or URL, which accepts dynamic data. A Link row takes web, phone, text and email links and messaging apps' addresses: Viber, Skype, WhatsApp, Telegram, FaceTime, Signal, LINE, WeChat, Microsoft Teams and Threema. Developers can add others with the bfbe/contact_button_protocols filter.
 - `track` (checkbox) **Track clicks**. Off by default. Tick it and each click on an action sends a bfbe_contact event, with its channel and label, to window.dataLayer for Tag Manager and GA4.
 
 ### Bubble (`bfbeBubble`)

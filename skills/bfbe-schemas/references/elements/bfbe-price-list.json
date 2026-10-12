@@ -442,7 +442,7 @@
             "css": [
                 {
                     "property": "background-color",
-                    "selector": ".bfbe-price-list__item--highlight"
+                    "selector": ".bfbe-price-list__item.bfbe-price-list__item--highlight"
                 }
             ]
         },
@@ -454,7 +454,7 @@
             "css": [
                 {
                     "property": "border",
-                    "selector": ".bfbe-price-list__item--highlight"
+                    "selector": ".bfbe-price-list__item.bfbe-price-list__item--highlight"
                 }
             ]
         },
@@ -466,7 +466,7 @@
             "css": [
                 {
                     "property": "padding",
-                    "selector": ".bfbe-price-list__item--highlight"
+                    "selector": ".bfbe-price-list__item.bfbe-price-list__item--highlight"
                 }
             ]
         },
@@ -478,7 +478,7 @@
             "css": [
                 {
                     "property": "box-shadow",
-                    "selector": ".bfbe-price-list__item--highlight"
+                    "selector": ".bfbe-price-list__item.bfbe-price-list__item--highlight"
                 }
             ]
         },
@@ -558,7 +558,7 @@
             "css": [
                 {
                     "property": "--bfbe-pl-img",
-                    "selector": ".bfbe-price-list__item--highlight"
+                    "selector": ".bfbe-price-list__item.bfbe-price-list__item--highlight"
                 }
             ]
         },

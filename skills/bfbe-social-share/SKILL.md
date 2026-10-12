@@ -7,7 +7,7 @@ description: "Use when adding share buttons to a post, page or loop card with BF
 
 <!-- bfbe:generated:start -->
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
-**Requires** BFB Elements 1.0.0-beta.4 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
+**Requires** BFB Elements 1.0.0 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/elements/bfbe-social-share.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/social-share/
 
@@ -16,7 +16,7 @@ Share buttons for ten destinations: Facebook, X, LinkedIn, Pinterest, WhatsApp, 
 
 **Not for:** The element builds share links and a copy action and reads no counts from any network. Each destination opens a network's share dialog, so links to your own profiles need ordinary link elements.
 
-**Costs a page:** CSS 0.95 KB, JS 0.91 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 0.98 KB, JS 0.91 KB (gzipped), no dependencies, loaded only on pages that use it.
 
 **Nestable:** no · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 
@@ -174,7 +174,7 @@ Stands alone: no element points at it by attribute and it points at none. Three 
 - **The canvas draws divs.** In the builder the root and items are `div` elements, and `ul` and `li` exist on the front end alone. CSS written against `ul` or `li` styles the page and misses the canvas. <!-- src: plugins/bfb-elements/elements/social-share.php:554-559; plugins/bfb-elements/includes/abstract-element.php:411-421 -->
 - **The canvas always shows Share; the page may not.** The `native` row stays hidden until the script finds `navigator.share`, and the canvas forces it visible for styling. In a browser without a share sheet the row has one button fewer. <!-- src: src/elements/social-share/social-share.css:67-70; src/elements/social-share/social-share.js:57-58; plugins/bfb-elements/elements/social-share.php:538-542 -->
 - **A Background replaces the brand fill but not the brand words.** **Background** (`background`) and **Hover background** (`hoverBackground`) are written with the element's id and outrank the brand fill, while the brand rule still paints icon and label in the contrast colour. Measured: white words on a light grey Facebook button. <!-- src: src/elements/social-share/social-share.css:50-61; plugins/bfb-elements/includes/class-assets.php:89-94; docs/API-PROBE.md section 8 -->
-- **Brand colours paint the words themselves.** With `brand` on, the icon and label take the contrast colour directly, so **Hover text colour** (`hoverColor`) on the button reaches neither. A **Typography** colour adds `bfbe-share--own-word`, and the network buttons' words follow the button again. <!-- src: src/elements/social-share/social-share.css:56-64; plugins/bfb-elements/elements/social-share.php:549-552; docs/REVIEW-2026-10-04.md "Free pack B" item 10 -->
+- **Brand colours paint the words themselves.** With `brand` on, the icon and label take the contrast colour for the brand fill. **Hover text colour** (`hoverColor`) reaches the label (since BFB Elements 1.0.0), not the icon. A **Background** (`background`) with `brand: "fill"`, or a **Hover background** (`hoverBackground`) with either, adds `bfbe-share--own-fill` or `bfbe-share--own-hover-fill`, and the words follow the button there. A **Typography** colour adds `bfbe-share--own-word`, and the network buttons' words follow the button again. <!-- src: src/elements/social-share/social-share.css; plugins/bfb-elements/elements/social-share.php render(); measured 2026-10-12 with dev/social-share-probe.mjs -->
 - **Icon colour outranks the brand contrast.** **Colour** under Icons (`iconColor`) is written on `.bfbe-share__icon` with the element's id, so it stays unchanged on every brand fill (measured: green on Facebook's blue). <!-- src: plugins/bfb-elements/elements/social-share.php:339-346; src/elements/social-share/social-share.css:59-61 -->
 - **In a loop card on an archive, set the Title.** An empty **URL** (`shareUrl`) follows the loop's post, but an empty **Title** (`shareTitle`) reads the post title on a singular page alone. On an archive, a search or the blog page it sends the page's document title, so set `shareTitle: "{post_title}"`. <!-- src: plugins/bfb-elements/elements/social-share.php:504-514 -->
 - **Pinterest's image is the featured image, on singular pages.** The pin's `media` is the current post's featured image (size large) on a singular page and absent elsewhere. No control sets it, and a custom **URL** does not change it. <!-- src: plugins/bfb-elements/elements/social-share.php:471-473 -->
@@ -186,9 +186,7 @@ Stands alone: no element points at it by attribute and it points at none. Three 
 
 - Do not write a `network` value outside the ten keys, or a row without one.
 - Do not set `buttonSize` without `show: "icon"`.
-- Do not set `background` or `hoverBackground` while `brand` is `fill` or `hover`.
 - Do not set `iconColor` with `brand: "fill"`.
-- Do not rely on `hoverColor` for the words on a brand fill; set a `typography` colour.
 - Do not style the row by tag (`ul`, `li`); use `.bfbe-share`, `.bfbe-share__item` and `.bfbe-share__btn`.
 - Do not hide `.bfbe-share__label` with `display: none`: with icons alone it is each button's name.
 - Do not make Share (`native`) the row's only destination.

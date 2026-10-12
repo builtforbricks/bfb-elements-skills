@@ -9,7 +9,7 @@
     "childrenDefault": [],
     "parent": null,
     "cost": {
-        "css": "1.29 KB",
+        "css": "1.35 KB",
         "js": "1.74 KB",
         "dependencies": "none"
     },
@@ -476,6 +476,11 @@
                 {
                     "property": "--bfbe-rv-hl",
                     "selector": ""
+                },
+                {
+                    "property": "--bfbe-rv-rest",
+                    "selector": "",
+                    "value": "currentColor"
                 }
             ]
         },

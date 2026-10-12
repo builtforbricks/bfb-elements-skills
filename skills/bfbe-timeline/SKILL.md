@@ -7,7 +7,7 @@ description: "Use when building a company history, milestones, a roadmap or a ye
 
 <!-- bfbe:generated:start -->
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
-**Requires** BFB Elements Pro 1.0.0-beta.4 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
+**Requires** BFB Elements Pro 1.0.0 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/elements/bfbe-timeline.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/timeline/
 
@@ -16,7 +16,7 @@ One set of moments in five layouts: Story and Ledger draw a line that fills as t
 
 **Not for:** Moments sit in the order you place them, so it does not space them by date or zoom along a time axis. Story and Ledger follow the window's scroll, so inside a box that scrolls on its own the line will not advance.
 
-**Costs a page:** CSS 2.97 KB, JS 2.91 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 2.96 KB, JS 2.91 KB (gzipped), no dependencies, loaded only on pages that use it.
 
 **Nestable:** yes · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 
@@ -298,7 +298,7 @@ The root is a `div.bfbe-tl` (Bricks adds `brxe-bfbe-timeline` and the `brxe-` id
 - **Group by label joins neighbours only.** Moments share a button when they are consecutive and their labels are equal; the same label further on gets a second button, and empty labels never group. Order a looped query by date. <!-- src: src/elements/timeline/timeline.js:79 -->
 - **The hash is the label's slug, and only Chapters scrolls to it.** "( 2022 )" becomes `#2022` and "Step 1" `#step-1`. Years and Journey switch the moment without moving the page; Chapters scrolls to it, on load too when a hash or a remembered choice picks one. <!-- src: src/elements/timeline/timeline.js:72 and :293 -->
 - **Remember choice is stored per element id.** The key is `bfbe-tl-` plus the root's id, so instances of one component, which share ids, share the stored choice. In Chapters only a click or an arrow key stores it, never the scroll. <!-- src: src/elements/timeline/timeline.js:71 and :194 -->
-- **Narrow layout below reads the timeline's own width.** It is a container query on the root, so a timeline in a narrow column stacks on a wide screen. Setting `itemDirection: "row"` keeps moments across below it too (measured); left unset, they stack. <!-- src: src/elements/timeline/timeline.css:41 and :179 -->
+- **Narrow layout below reads the timeline's own width.** It is a container query on the root, so a timeline in a narrow column stacks on a wide screen. Below it moments stack whatever **Flows** (`itemDirection`) says (since BFB Elements 1.0.0; before it, a stored `"row"` kept them across). <!-- src: src/elements/timeline/timeline.css:41 and :179; measured 2026-10-12 with dev/timeline-probe.mjs -->
 - **A Moment's own Display defeats Years and Journey.** They hide unchosen moments with `display: none`, and Bricks writes a moment's **Display** (`_display`) on its id, which outranks that rule, so the moment always shows (measured). <!-- src: src/elements/timeline/timeline.css:128 -->
 - **Story mirrors its moments when wide.** Moments on the left align their text, and the contents of their direct `block` children, to the end; moments on the right run reversed, picture first. Build each moment as a words `block` then an `image`; a block's own **Align items** wins. <!-- src: src/elements/timeline/timeline.css:155, docs/elements/timeline.md "Round 402" -->
 - **Hide the dot leaves a stale mode.** `noDot` acts on Story and Ledger only, but while it is stored the panel hides **Dot size** and **Dot colour** in every style. Delete `noDot` before switching `style` and styling the dot. <!-- src: docs/elements/timeline.md "Round 402", plugins/bfb-elements-pro/elements/timeline.php:373 -->
@@ -310,7 +310,6 @@ The root is a `div.bfbe-tl` (Bricks adds `brxe-bfbe-timeline` and the `brxe-` id
 
 - Do not put anything but `bfbe-timeline-item` directly inside `bfbe-timeline`.
 - Do not count on `label` to show the year inside a moment; place a `text-basic` or `heading` for it.
-- Do not set `itemDirection: "row"` to get the default; leave it unset so moments stack below `narrowBelow`.
 - Do not set Bricks' **Display** (`_display`) on a Timeline Moment in Years or Journey.
 - Do not leave `noDot` stored when `style` is not `story` or `ledger`.
 - Do not set `markIconSize`, `markIconGap`, `markImageSize` or `markTypography` without the `markIcon`, `markText` or `markImage` they size.

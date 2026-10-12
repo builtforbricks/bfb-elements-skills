@@ -7,7 +7,7 @@ description: "Use when building a scrolling logo strip, ticker or endless row of
 
 <!-- bfbe:generated:start -->
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
-**Requires** BFB Elements 1.0.0-beta.4 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
+**Requires** BFB Elements 1.0.0 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/elements/bfbe-marquee.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/marquee/
 
@@ -16,7 +16,7 @@ A strip of any elements scrolled continuously, sideways or upward, at a speed yo
 
 **Not for:** Everything in the strip moves continuously, so text people must read in full, or links they need to reach quickly, belongs in a static layout. The strip is a single line of items, repeated to fill the width, so it cannot wrap into rows or a grid.
 
-**Costs a page:** CSS 0.97 KB, JS 1.10 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 0.98 KB, JS 1.10 KB (gzipped), no dependencies, loaded only on pages that use it.
 
 **Nestable:** yes · **In a query loop:** no · **Dynamic data:** no · **Keyboard:** yes · **Reduced motion:** yes
 
@@ -78,7 +78,7 @@ Styling, in the schema file: `gap`, `height`, `stripBorder`, `fadeSize`, `itemAl
 ## What it guarantees for accessibility (do not undo)
 - Scrolling pauses whenever keyboard focus is inside the strip, with nothing to configure.
 - The pause button is a real button whose hidden text switches between Pause and Play as the state changes.
-- The repeated copies that fill the strip are aria-hidden and kept out of the tab order, so each item is met once.
+- The repeated copies that fill the strip are aria-hidden and kept out of the tab order, so each item is met once; links in the copies still work when clicked.
 - With reduced motion requested, the strip stops animating, drops the copies and the pause button, and becomes a strip visitors can scroll.
 <!-- bfbe:generated:end -->
 
@@ -179,7 +179,7 @@ Stands alone; nothing targets it and it targets nothing. What matters is what go
 - **The pause button is off until ticked.** **Show pause button** (`pauseButton`) is a checkbox and arrives unticked; `pausePosition` and the seven pause styling controls are hidden and do nothing without it. <!-- src: plugins/bfb-elements/elements/marquee.php:112-133, 202-277; docs/elements/marquee.md "Corrected, then fixed" -->
 - **Only `"keep"` stops the pointer pause.** **Under the pointer** (`pauseOnHover`) is a select; any other value, `true` and `false` included, falls back to Pauses. Keyboard focus inside the viewport pauses the strip in every case. <!-- src: plugins/bfb-elements/elements/marquee.php:96-97, 310; plugins/bfb-elements/includes/abstract-element.php:1369; src/elements/marquee/marquee.css:60-64 -->
 - **Links in the copies work under the pointer.** The copies are `aria-hidden` with their links and controls at `tabindex="-1"`: a click on a copy follows its link, while Tab and screen readers meet the first group's items alone. A script's listeners on an item are not copied, only its markup. <!-- src: src/elements/marquee/marquee.js (1.0.0-beta.4: not inert); measured with dev/marquee-links-probe.mjs -->
-- **Items keep their natural width.** Every item is `flex: none`. A Bricks Block keeps its `width: 100%`, takes the whole group's width and overlaps the next, and an image with no width shows at its file's width (1024px at size large). Set `_width` on each item. <!-- src: src/elements/marquee/marquee.css:41; Bricks frontend CSS .brxe-block width:100%; measured headless on fixture-marquee 2026-10-08 -->
+- **Items are as wide as their content.** Every item is `flex: none` and `inline-size: auto` (since BFB Elements 1.0.0), so a Bricks Block is as wide as what it holds rather than taking Bricks' `width: 100%`; an item's own `_width` still wins. An image with no width still shows at its file's width (1024px at size large), so set `_width` on images. <!-- src: src/elements/marquee/marquee.css; measured 2026-10-12 with dev/marquee-probe.mjs on fixture-marquee: Blocks 64, 180 and 36px -->
 - **Height and Fade size need their switches.** **Height** (`height`, 300px when empty) is offered only with `orientation: "vertical"`; a horizontal strip is as tall as its tallest item. **Fade size** (`fadeSize`) is offered only with `fade`. <!-- src: plugins/bfb-elements/elements/marquee.php:148-158, 179-189; src/elements/marquee/marquee.css:52 -->
 - **Rounded corners come from Strip border.** The viewport clips the items, so a radius from Bricks' own Border on the element leaves the items square at the corners. Set the radius in `stripBorder`. <!-- src: plugins/bfb-elements/elements/marquee.php:160-170; src/elements/marquee/marquee.css:18-24 -->
 - **A pause background freezes the hover.** `pauseBackground` outranks the stylesheet's hover rule, so the button shows no hover or focus change unless `pauseHoverBackground` is set too. <!-- src: plugins/bfb-elements/elements/marquee.php:244-259 -->
@@ -193,7 +193,7 @@ Stands alone; nothing targets it and it targets nothing. What matters is what go
 - Do not write `pauseOnHover` as `true` or `false`; write `"pause"` or `"keep"`.
 - Do not set `pausePosition` or any pause styling key without `pauseButton: true`.
 - Do not set `height` without `orientation: "vertical"`, or `fadeSize` without `fade: true`.
-- Do not leave a Block or an image in the strip without a `_width`.
+- Do not leave an image in the strip without a `_width`.
 - Do not fill the strip with links or buttons visitors must reach; only the first copy of each responds.
 - Do not round the strip with Bricks' own Border on the element; use `stripBorder`.
 - Do not set `pauseBackground` without `pauseHoverBackground`.

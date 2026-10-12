@@ -7,7 +7,7 @@ description: "Use when adding a custom mouse cursor with BFB Interactive Cursor 
 
 <!-- bfbe:generated:start -->
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
-**Requires** BFB Elements Pro 1.0.0-beta.4 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
+**Requires** BFB Elements Pro 1.0.0 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/elements/bfbe-cursor.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/cursor/
 
@@ -16,7 +16,7 @@ A ring that follows the mouse pointer, grows over links and buttons, and can sho
 
 **Not for:** Not for guiding keyboard or touch visitors: the ring follows a mouse alone and is hidden from assistive technology, so it carries nothing a visitor must know. One Interactive Cursor runs per page, so place a single one, usually in the header template.
 
-**Costs a page:** CSS 2.05 KB, JS 2.83 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 2.10 KB, JS 2.89 KB (gzipped), no dependencies, loaded only on pages that use it.
 
 **Nestable:** no · **In a query loop:** no · **Dynamic data:** yes · **Keyboard:** no · **Reduced motion:** yes
 
@@ -72,11 +72,11 @@ Styling, in the schema file: `fxSize`, `fxColor`, `fxFade`, `fxEdge`, `trailSize
 
 ## Rendered DOM
 
-One `div` overlay with Bricks' `brxe-bfbe-cursor` class and `id="brxe-<id>"`: `position: fixed`, `inset: 0`, `z-index: 99999`, `pointer-events: none`, `contain: strict`, `aria-hidden="true"`. It is `display: none` until the first mouse move adds `is-ready`.
+One `div` overlay with Bricks' `brxe-bfbe-cursor` class and `id="brxe-<id>"`: `position: fixed`, `inset: 0`, `z-index: 99999`, `pointer-events: none`, `contain: strict`, `aria-hidden="true"`. On the site (not in the builder) the script lifts it into the browser's top layer (`popover="manual"`, shown at once), so a header that hides or blurs around it cannot shrink it; it keeps its place in the page, and its colour still comes from where it sits. It is `display: none` until the first mouse move adds `is-ready`.
 
 ```html
 <div id="brxe-c46fdf" class="brxe-bfbe-cursor bfbe-cursor bfbe-cursor--no-fill-border bfbe-cursor--off-992 is-ready is-label"
-     aria-hidden="true" data-bfbe-hover="a, button, [role=&quot;button&quot;]" data-bfbe-lag="0.15" data-bfbe-magnet="12"
+     aria-hidden="true" data-bfbe-cursor-hover="a, button, [role=&quot;button&quot;]" data-bfbe-lag="0.15" data-bfbe-magnet="12"
      data-bfbe-labels="[{&quot;s&quot;:&quot;.hl-look&quot;,&quot;t&quot;:&quot;Look&quot;}]" data-bfbe-off="992">
   <div class="bfbe-cursor__ring"></div><div class="bfbe-cursor__pulse"></div>
   <div class="bfbe-cursor__dot"></div><div class="bfbe-cursor__label">Look</div>
@@ -85,7 +85,7 @@ One `div` overlay with Bricks' `brxe-bfbe-cursor` class and `id="brxe-<id>"`: `p
 ```
 
 - **Root classes**: `bfbe-cursor--replace` or `--none` from `mode` (`ring` writes none); `--cross` from `shape`; `--difference` from `blend`; `--no-fill-border`; `--off-480|640|768|992` from `offBelow` (`never` writes none); in the builder only, `--canvas`, plus `--live` under `builderView: "live"`.
-- **Data attributes the script reads**: `data-bfbe-hover` (the Grows over selector), `-lag`, `-labels` (JSON rows `{s, t}`) and `-off`; `-magnet`, `-sticky`, `-stretch` and `-pulse` only when their switch is on; `-trail` when `trailEvery` is set; `-trail-images` and `-gallery-images` (JSON lists of URLs) when the Images controls hold pictures.
+- **Data attributes the script reads**: `data-bfbe-cursor-hover` (the Grows over selector; `data-bfbe-hover` before BFB Elements 1.0.0, which is Hover Effects' attribute), `-lag`, `-labels` (JSON rows `{s, t}`) and `-off`; `-magnet`, `-sticky`, `-stretch` and `-pulse` only when their switch is on; `-trail` when `trailEvery` is set; `-trail-images` and `-gallery-images` (JSON lists of URLs) when the Images controls hold pictures.
 - **Script states on the root**: `is-hover` (over a Grows over match), `is-label` (a word showing), `is-stuck` (hugging), `is-down` and `is-pulse` (pressed), `is-out` (pointer off the page or over the admin bar). Positions are inline variables: `--bfbe-cur-x/-y` for the pointer, `--bfbe-cur-rx/-ry` for the lagging ring.
 - **Elsewhere on the page**: `html.bfbe-cursor-none` hides the native pointer. A pulled or hugged element gets `bfbe-cursor-target` and, with Magnetic, an inline `transform`. A tagged block under the pointer gets `is-fx`, `--bfbe-fx-on` and `--bfbe-fx-x/-y`, and receives `img.bfbe-fx__trail` pictures or one `img.bfbe-fx__follow` (`is-on` while it shows).
 - **Where controls write**: `size`, `color`, `fill`, `hoverScale`, `labelBackground`, `duration` and `easing` are variables on the root. So are `fxSize`, `fxColor`, `fxFade`, `fxEdge`, `trailSize`, `trailLife` and `followSize`, which the script copies to `<html>` when it sets up. `labelTypography` goes to `.bfbe-cursor__label`, `dotSize` only on `.bfbe-cursor--replace`, `pulseColor` only on `[data-bfbe-pulse]`.
@@ -180,7 +180,7 @@ One overlay per page that targets other elements by CSS selector and by attribut
 
 ## Gotchas
 
-- **A header that moves takes the ring with it.** An ancestor with a `transform`, `translate`, `filter` or `backdrop-filter` becomes the fixed overlay's box, and `contain: strict` clips the ring to it. Bricks' sticky header sliding up, Advanced Header Scroll hiding the header, and **Blur behind** on an element around it all do this while active. <!-- src: src/elements/cursor/cursor.css:12-16; Bricks assets/css/frontend.min.css `#brx-header.brx-sticky.slide-up` (transform: translateY(-101%)); src/elements/header-scroll/header-scroll.css:54, 161; measured 2026-10-08 in headless Chrome with the shipped cursor.css and cursor.js: under each of the three the overlay shrank to the 80px header box -->
+- **A header that moves keeps the cursor whole.** On the site the script lifts the overlay into the browser's top layer, so an ancestor with a `transform`, `translate`, `filter` or `backdrop-filter` (Bricks' sticky header sliding up, Advanced Header Scroll hiding, a Blur behind) no longer becomes its box (since BFB Elements 1.0.0; before it, the overlay shrank to the header). In the builder it stays in the canvas. <!-- src: src/elements/cursor/cursor.js init(), showPopover; measured 2026-10-12 with dev/cursor-probe.mjs: the overlay 1800 x 857 inside a transformed, filtered block, 1100 x 26 before -->
 - **The root is the whole window.** Bricks' Style tab writes on the fixed overlay itself, so `_background` paints over the page at `z-index: 99999`, and a `_width`, `_height`, `_border` or `_position` shrinks or shifts the box the ring is clipped to. Style the ring with the Look controls. <!-- src: src/elements/cursor/cursor.css:2-19 -->
 - **Off at 992px and under, by default.** `offBelow` is `992` unless set: at that window width or narrower, 992 itself included, the ring and the Block effects are off. Set `"never"` or a smaller width to keep them in narrow mouse windows. <!-- src: plugins/bfb-elements-pro/elements/cursor.php:535, 584-587; src/elements/cursor/cursor.css:105; src/elements/cursor/cursor.js:99 -->
 - **The canvas is not the page.** With **Show it** (`builderView`) on Still, the default, the ring and dot sit still in a strip, and a reveal layer shows through a fixed middle circle. Working follows the pointer, but `offBelow` counts the canvas width, so a canvas under 992px shows nothing. <!-- src: src/elements/cursor/cursor.css:121, 150-152; src/elements/cursor/cursor.js:72; docs/elements/cursor.md "Round 409" -->
@@ -190,16 +190,14 @@ One overlay per page that targets other elements by CSS selector and by attribut
 - **Keep it, effects only shows nothing of the pointer.** `mode: "none"` hides the ring, the dot and the label, so Labels, `sticky` and `pulse` show nothing, and the native pointer stays even over a label. Magnetic and the Block effects still act. <!-- src: src/elements/cursor/cursor.css:93; src/elements/cursor/cursor.js:104, 238 -->
 - **A Border style without a colour draws grey.** In `ringBorder`, a width and a style with no colour draw Bricks' own `var(--bricks-border-color)`, not **Colour**. A width alone keeps the ring in **Colour**. <!-- src: docs/elements/cursor.md "Round 408"; plugins/bfb-elements-pro/elements/cursor.php:156-157 -->
 - **Magnetic owns the target's transform.** The script writes an inline `transform` on each element it pulls and clears it when the pointer leaves, overriding that element's **Transform** (`_transform`) and the Tilt hover effect meanwhile. <!-- src: src/elements/cursor/cursor.js:115, 222, 240; src/elements/hover/hover.css:45 -->
-- **An empty number is not its placeholder.** An empty string in `magnetPull`, `stickyPad` or `stretchAmount` renders as a 1px pull, a 0px hug and no stretch at all. Leave the key out for 12, 6 and 0.35. <!-- src: plugins/bfb-elements-pro/elements/cursor.php:569, 572, 575; rendered 2026-10-08: data-bfbe-magnet="1" data-bfbe-sticky="0" data-bfbe-stretch="0" -->
+- **An empty number is its default.** An empty string in `magnetPull`, `stickyPad` or `stretchAmount` gives 12, 6 and 0.35, as an unset key does (since BFB Elements 1.0.0; before it, a 1px pull, a 0px hug and no stretch). <!-- src: plugins/bfb-elements-pro/elements/cursor.php render() $num; measured 2026-10-12 with dev/cursor-probe.mjs on fixture-cursor-defaults: data-bfbe-magnet="12" data-bfbe-sticky="6" data-bfbe-stretch="0.35" -->
 - **A tagged block changes.** `data-bfbe-fx` makes a block `position: relative`, `trail` adds `overflow: hidden`, and a reveal layer ignores the pointer, so a link or button inside it cannot be clicked. <!-- src: src/elements/cursor/cursor.css:113, 117, 123 -->
 
 ## Never do
 
-- Do not place the cursor inside a header that hides on scroll, or inside an element with a transform, filter, backdrop-filter or Blur behind; put it at the top level of a template or page that stays put.
 - Do not set Bricks' Style tab background, size, border or position on the cursor.
 - Do not write a `hoverSelector` without `a, button, [role="button"]` when links and buttons should still grow the ring.
 - Do not target by id or `_cssId` in `hoverSelector` or a Labels row's `selector`; use a class from `_cssClasses`.
 - Do not set a `style` in `ringBorder` without its `color`.
-- Do not write `""` into `magnetPull`, `stickyPad` or `stretchAmount`.
 - Do not put links, buttons or fields inside a reveal layer (`data-bfbe-fx-layer`).
 - Do not carry anything a visitor must know in a label word or a Block effect: touch, keyboard and reduced-motion visitors never see them.

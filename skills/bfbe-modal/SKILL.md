@@ -7,7 +7,7 @@ description: "Use when building a popup, dialog, lightbox, side drawer or bottom
 
 <!-- bfbe:generated:start -->
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
-**Requires** BFB Elements Pro 1.0.0-beta.4 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
+**Requires** BFB Elements Pro 1.0.0 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/elements/bfbe-modal.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/modal/
 
@@ -16,7 +16,7 @@ A dialog for any Bricks content, rendered in the page inside the browser's own d
 
 **Not for:** Not for stacked dialogs or exit-intent offers: opening a modal closes any other that is open, and there is no exit-intent trigger. With Once per visit ticked, the Delay trigger opens only once while the visitor browses in the same browser tab.
 
-**Costs a page:** CSS 1.47 KB, JS 2.92 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 1.47 KB, JS 2.95 KB (gzipped), no dependencies, loaded only on pages that use it.
 
 **Nestable:** yes · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 
@@ -214,7 +214,7 @@ Styling only, every key in the schema file: `buttonTypography`, `buttonBackgroun
 - **A chosen Effect replaces the edge slide.** Unset, a drawer or sheet slides in from its edge; any chosen `animation`, `scale` included, plays wherever the dialog sits, so a drawer set to `fade` fades in place. <!-- src: plugins/bfb-elements-pro/elements/modal.php:751 ; src/elements/modal/modal.css:121 -->
 - **A sheet is as wide as Width.** Drawers and sheets take **Width** (else Size) up to the screen's width, so a 360px drawer becomes a 360px sheet unless `width:mobile_portrait` is `100%`. Breakpoint positions are applied by the script with `max-width` queries; a centred or top dialog, Full screen aside, is never wider than the screen less 32px. <!-- src: src/elements/modal/modal.css:18 ; src/elements/modal/modal.css:45 ; src/elements/modal/modal.js:103 -->
 - **Style the panel, not the element.** Bricks' universal `_background`, `_padding` and `_border` land on the root `div.bfbe-modal`, which on the page is the box around the Open button; the dialog's look is `panelBackground`, `panelColor`, `panelPadding`, `panelBorder` and `panelShadow`. The panel clips and its content scrolls within the screen's height less 32px, so a dropdown or tooltip that leaves it is cut. <!-- src: plugins/bfb-elements-pro/elements/modal.php:832 ; plugins/bfb-elements-pro/elements/modal.php:238 ; src/elements/modal/modal.css:54 ; src/elements/modal/modal.css:67 -->
-- **Click outside to close also fires on a drag.** With `overlayClose`, a press inside a form field released on the dimmed area closes the modal, as when selecting text in a field. <!-- src: src/elements/modal/modal.js:290 ; measured 2026-10-08, headless Chrome on demo-bfb-modal -->
+- **Click outside to close needs the press to start there.** With `overlayClose`, only a press that begins and ends on the dimmed area closes the modal; one that starts in the panel, as when selecting text in a field, and ends there does not (since BFB Elements 1.0.0). <!-- src: src/elements/modal/modal.js, the dialog's pointerdown and click; measured 2026-10-12 with dev/modal-probe.mjs -->
 - **Touch needs a close control.** Without `closeButton`, `overlayClose` or an element carrying `data-bfbe-modal-close`, a touch visitor can close the modal with the back gesture alone, and not at all with `back: "page"`. <!-- src: plugins/bfb-elements-pro/elements/modal.php:876 ; src/elements/modal/modal.js:276 ; src/elements/modal/modal.js:296 -->
 - **A Delay never waits its turn.** If another modal is open when the time comes, the delayed one is skipped for that page view. In a loop only the first item's opens, and **Once per visit** `once` is stored per element per tab. In Chrome, back still leaves the page after a Delay modal opens. <!-- src: src/elements/modal/modal.js:317 ; plugins/bfb-elements-pro/elements/modal.php:791 ; docs/elements/modal.md "Round 416" -->
 - **The canvas shows a layout, not the behaviour.** **Show it** `builderView` unset (Open) lays the dialog in the flow, every view at once and drawers at their Width, with the script idle. Closed shows the Open button alone (nothing for Selector, Hash or Delay); `live` lets a click open it in the canvas. The setting changes nothing on the site. <!-- src: plugins/bfb-elements-pro/elements/modal.php:765 ; src/elements/modal/modal.css:146 ; src/elements/modal/modal.js:87 -->

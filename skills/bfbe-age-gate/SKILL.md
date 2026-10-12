@@ -7,7 +7,7 @@ description: "Use when a page needs an age check or age verification before it c
 
 <!-- bfbe:generated:start -->
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
-**Requires** BFB Elements Pro 1.0.0-beta.4 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
+**Requires** BFB Elements Pro 1.0.0 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/elements/bfbe-age-gate.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/age-gate/
 
@@ -16,7 +16,7 @@ A gate shown before the page can be used: a yes or no question, or a date of bir
 
 **Not for:** It confirms what a visitor says and nothing more: the date is checked in the browser, and the page's content stays in the HTML underneath. The gate opens from script, so a visitor with scripts off sees the page, and whether you need one is a question for your lawyer.
 
-**Costs a page:** CSS 1.20 KB, JS 1.32 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 1.24 KB, JS 1.32 KB (gzipped), no dependencies, loaded only on pages that use it.
 
 **Nestable:** yes · **In a query loop:** no · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 
@@ -122,7 +122,7 @@ The root is Bricks' own box (`#brxe-...`, class `bfbe-gate`). It stays where it 
 - While it asks: `dialog[open]` and `html.bfbe-gate-lock` (page scroll off). A fail or an impossible date un-hides `.bfbe-gate__message` with the root's `data-bfbe-fail` or `data-bfbe-invalid` text.
 - A pass closes the dialog and stores `bfbe-gate-pass-<minAge>` in `localStorage` (an expiry time in ms), or `"1"` in `sessionStorage` when `remember` is 0.
 - Custom properties on the root: `width` (`--bfbe-gate-w`, 480px, never wider than the window less 32px), `overlay` and `overlayBlur` (painted on `::backdrop`), `messageColor`, `fieldAlign`, `duration`, `easing`, and all six button colours (`--bfbe-gate-btn`, `-btn-hover`, `-on-btn`, `-btn-no`, `-btn-no-hover`, `-on-btn-no`).
-- Written to parts: the panel keys to `.bfbe-gate__panel` (default `Canvas` on `CanvasText`, text centred); `buttonTypography`, `buttonPadding`, `buttonBorder` to `.bfbe-gate__btn`; `buttonsAlign`, `buttonGap` to `.bfbe-gate__actions`; `fieldGap` to `.bfbe-gate__parts`; the input keys to `.bfbe-gate__field input` and `input:focus`; `fieldTypography` to the `legend`; `partLabelTypography` to `.bfbe-gate__part > span`; `messageTypography` to `.bfbe-gate__message`.
+- Written to parts: the panel keys to `.bfbe-gate__panel` (default `Canvas` on `CanvasText`, text centred); `buttonTypography`, `buttonPadding`, `buttonBorder` to `.bfbe-gate__btn`; `buttonsAlign`, `buttonGap` to `.bfbe-gate__actions` (`buttonsAlign` also writes `--bfbe-gate-btn-grow: 0` and `--bfbe-gate-btn-w: auto` on the root); `fieldGap` to `.bfbe-gate__parts`; the input keys to `.bfbe-gate__field input` and `input:focus`; `fieldTypography` to the `legend`; `partLabelTypography` to `.bfbe-gate__part > span`; `messageTypography` to `.bfbe-gate__message`.
 
 ## Wiring to other elements
 
@@ -197,7 +197,7 @@ A styled date field, from the fixture page `fixture-age-gate-styled`: day, month
 ## Gotchas
 
 - **Background controls want an object.** `panelBackground`, `inputBackground` and `inputFocusBackground` are Background controls, so the colour goes under `color`: `{"color": {"hex": "#ffffff"}}`. A bare `{"hex": ...}` writes no CSS at all. <!-- src: docs/SESSION-HANDOFF.md:1162 "Demo data slips"; plugins/bfb-elements-pro/elements/age-gate.php:189; measured on demo-bfb-age-gate 2026-10-08, no panel background rule printed -->
-- **Buttons sit moves nothing.** Two answers grow to share the row and the Enter button takes all of it, so **Buttons sit** (`buttonsAlign`) has no free space to place them. <!-- src: src/elements/age-gate/age-gate.css:54-55; measured 2026-10-08: demo buttons 236 + 8 + 188 = 432 of 432 px, styled fixture Enter 432 of 432 px under space-between -->
+- **Buttons sit places the buttons.** Set, **Buttons sit** (`buttonsAlign`) also stops the answers growing, so they keep their own width and sit where it says; unset, the two answers share the row and Enter takes all of it (since BFB Elements 1.0.0; before it, it moved nothing). <!-- src: plugins/bfb-elements-pro/elements/age-gate.php buttonsAlign css; src/elements/age-gate/age-gate.css; measured 2026-10-12 with dev/age-gate-probe.mjs -->
 - **Button colours are custom properties.** The Yes words sit in a span with a colour of their own, so set **Text** (`yesColor`); a colour inside **Typography** (`buttonTypography`) reaches the No button and not the Yes. Custom CSS that writes `background` onto `.bfbe-gate__btn` outranks the hover rule. <!-- src: src/elements/age-gate/age-gate.css:45-52; plugins/bfb-elements-pro/elements/age-gate.php:327-331 -->
 - **An administrator always gets the gate.** Logged in with `manage_options`, the gate shows on every load whatever `skipLoggedIn` says, and no pass is stored. With `skipLoggedIn` ticked, other logged-in users get no markup at all. <!-- src: plugins/bfb-elements-pro/elements/age-gate.php:676-681; src/elements/age-gate/age-gate.js:30-53 -->
 - **A pass belongs to the age, not the gate.** The key is `bfbe-gate-pass-<minAge>` and its expiry is fixed when the visitor passes, so a later change to **Remember for** (`remember`) leaves stored passes as they are. Remove that key from the browser's storage to see the gate again. <!-- src: src/elements/age-gate/age-gate.js:26-53 -->
@@ -205,14 +205,13 @@ A styled date field, from the fixture page `fixture-age-gate-styled`: day, month
 - **An impossible date is not a fail.** 31 February, a 0 or a two-digit year shows **Invalid date message** (`invalidText`) and never redirects. Empty boxes are stopped earlier by the browser's own required check. <!-- src: src/elements/age-gate/age-gate.js:89-105 (new Date reads a year under 100 as 19xx); plugins/bfb-elements-pro/elements/age-gate.php:663 -->
 - **The canvas shows it settled.** In the builder the dialog is a `div` in the flow with a dashed outline: no overlay, no motion, no scroll lock. Check those on the page, logged out. <!-- src: plugins/bfb-elements-pro/elements/age-gate.php:701-705; src/elements/age-gate/age-gate.css:60-62 -->
 - **Keep a heading among the children.** The dialog takes its name from the heading (h1 to h6) that comes earliest in its content; with none, it is named by every word in it. With no children the page shows the buttons alone. <!-- src: src/elements/age-gate/age-gate.js:16-23; plugins/bfb-elements-pro/elements/age-gate.php:710-717 -->
-- **The panel's shadow is clipped.** The dialog is exactly the panel's size and clips its overflow, so a **Shadow** (`panelShadow`) is cut off at the panel's box, square at the corners. <!-- src: docs/SESSION-HANDOFF.md:1157 "Plugin defects found on the way"; src/elements/age-gate/age-gate.css:3; measured 2026-10-08: dialog overflow auto, dialog and panel both 480 px -->
+- **The panel's shadow shows in full.** The dialog lets what overflows it show, and the panel scrolls a gate taller than the window (since BFB Elements 1.0.0; before it, a **Shadow** (`panelShadow`) was cut off at the panel's box). <!-- src: src/elements/age-gate/age-gate.css:3, .bfbe-gate__panel; measured 2026-10-12 with dev/age-gate-probe.mjs -->
 - **The date caption sits at the start.** The panel centres its text, but the legend follows **Align** (`fieldAlign`), Start by default. With Fill the row widths, Align moves the legend alone; set `fieldAlign: "center"` to line it up with a centred heading. <!-- src: src/elements/age-gate/age-gate.css:18-28; plugins/bfb-elements-pro/elements/age-gate.php:473-476 -->
 - **Follow the site date format reads one letter.** The opening letter of the WordPress date format decides: m, n, F or M leads with the month, Y with the year, anything else with the day, so `l, F j, Y` leads with the day. Set `fieldOrder` when the order matters. <!-- src: plugins/bfb-elements-pro/elements/age-gate.php:643-649 -->
 
 ## Never do
 
 - Do not pass a bare colour to `panelBackground`, `inputBackground` or `inputFocusBackground`; put it under `color`.
-- Do not count on `buttonsAlign` to place the buttons.
 - Do not write button backgrounds onto `.bfbe-gate__btn` in custom CSS; set `yesBackground`, `noBackground` and their hover keys.
 - Do not set `noLabel`, `noBackground`, `noBackgroundHover` or `noColor` with `mode: "dob"`: that gate has no No button.
 - Do not judge the remembered pass while logged in as an administrator.

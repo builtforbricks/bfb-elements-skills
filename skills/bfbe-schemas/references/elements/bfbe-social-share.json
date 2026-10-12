@@ -9,7 +9,7 @@
     "childrenDefault": [],
     "parent": null,
     "cost": {
-        "css": "0.95 KB",
+        "css": "0.98 KB",
         "js": "0.91 KB",
         "dependencies": "none"
     },
@@ -264,6 +264,7 @@
             "group": "bfbeButtons",
             "label": "Background",
             "type": "background",
+            "rerender": true,
             "css": [
                 {
                     "property": "background",
@@ -320,6 +321,14 @@
                 {
                     "property": "color",
                     "selector": ".bfbe-share__btn:focus-visible"
+                },
+                {
+                    "property": "color",
+                    "selector": ".bfbe-share__btn:hover > .bfbe-share__label"
+                },
+                {
+                    "property": "color",
+                    "selector": ".bfbe-share__btn:focus-visible > .bfbe-share__label"
                 }
             ]
         },
@@ -328,6 +337,7 @@
             "group": "bfbeButtons",
             "label": "Hover background",
             "type": "background",
+            "rerender": true,
             "css": [
                 {
                     "property": "background",

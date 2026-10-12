@@ -713,6 +713,7 @@
             "group": "bfbePlanLook",
             "label": "Background",
             "type": "color",
+            "description": "Unset, it takes its column&#039;s text colour.",
             "css": [
                 {
                     "property": "--bfbe-cmp-btn",

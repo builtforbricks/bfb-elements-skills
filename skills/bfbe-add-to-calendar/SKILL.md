@@ -7,7 +7,7 @@ description: "Use when adding an add-to-calendar or save-the-date button for an 
 
 <!-- bfbe:generated:start -->
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
-**Requires** BFB Elements Pro 1.0.0-beta.4 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
+**Requires** BFB Elements Pro 1.0.0 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/elements/bfbe-add-to-calendar.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/add-to-calendar/
 
@@ -28,7 +28,7 @@ Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query
 
 ### Event (`bfbeEvent`)
 - `title` (text) **Title**: placeholder {post_title}; dynamic data accepted. The event name. It takes dynamic data and falls back to the current post's title when empty.
-- `start` (text) **Starts**: placeholder 2026-10-01 18:00; dynamic data accepted. Enter a date and time such as 2026-10-01 18:00. It is read in the site's time zone. Without one, the element draws nothing on the page.
+- `start` (text) **Starts**: placeholder 2026-10-01 18:00; dynamic data accepted. Write it as 2026-10-01 18:00, or give a date tag that format. It is read in the site's time zone. A date of numbers such as 11/10/2026 is read in your site's date order (Settings, General): day first for d/m/Y, month first for m/d/Y. If your date format writes the month as a word, a date that could be read either way is not used, and the builder says so. Without a start, the element draws nothing on the page. Developers can set the order with the bfbe_pro/calendar_date_order filter ('dm' or 'md').
 - `end` (text) **Ends**: placeholder 2026-10-01 20:00; dynamic data accepted. Leave it empty for a one hour event, or a one day event when All day is ticked. An end before the start counts as empty.
 - `allDay` (checkbox) **All day**. Tick it to send calendar dates instead of times. The end date is set to the day after the last day, as calendars expect.
 - `location` (text) **Location**: dynamic data accepted. Where the event takes place, sent with the event to every calendar. It takes dynamic data.

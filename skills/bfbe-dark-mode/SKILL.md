@@ -7,12 +7,12 @@ description: "Use when placing, wiring or styling BFB Dark Mode Toggle (`bfbe-da
 
 <!-- bfbe:generated:start -->
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
-**Requires** BFB Elements Pro 1.0.0-beta.4 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
+**Requires** BFB Elements Pro 1.0.0 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/elements/bfbe-dark-mode.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/dark-mode/
 
 ## What it is
-A button that sets data-bfbe-theme on the html element, remembered in the visitor's browser and following the device setting until a choice is made. A script in the head applies the stored choice before the page paints, and it prints on every page once a toggle has rendered anywhere. The Colour the page option can recolor the page for dark, and the bfbe-dark-only and bfbe-light-only classes swap content per scheme.
+A button that sets data-bfbe-theme on the html element, remembered in the visitor's browser; with Colour the page on, the page follows the device setting until a choice is made. A script in the head applies the stored choice before the page paints, and it prints on every page once a toggle has rendered anywhere. The Colour the page option can recolor the page for dark, and the bfbe-dark-only and bfbe-light-only classes swap content per scheme.
 
 **Not for:** Everything on the page recolors the stylesheet Bricks wrote for the page and can move color variables other stylesheets set on the root. Their other rules, inline styles, images and translucent colors stay as they are. A design that needs exact dark values in every part fits CSS custom properties or light-dark() better, with Colour the page left off.
 
@@ -42,7 +42,7 @@ Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `b
 Styling only, every key in the schema file: `size`, `iconSize`, `backgroundHover`, `colorHover`, `knobColor`, `knobInk`, `labelTypography`, `knobShadow`.
 
 ### Dark page (`bfbePage`)
-- `pageColors` (checkbox) **Colour the page**. Off by default. Tick it and the dark state recolors every page of the site, once a page with the toggle has loaded. The recolor leaves images, inline styles and see-through colors as they are.
+- `pageColors` (checkbox) **Colour the page**. Off by default. Tick it and the dark state recolors every page of the site, once a page with the toggle has loaded. The recolor leaves images, inline styles and see-through colors as they are. With Colour the page on, the page follows the computer's setting until a visitor chooses. With it off, the toggle sets color-scheme for a visitor's own choice. A dark computer with nothing chosen leaves the page light, form controls included; a site whose own design follows the computer's setting declares color-scheme: light dark itself.
 - `pageDepth` (select) **How much**: options: `all` Everything on the page (default), `page` The page background and text; only when `pageColors` is set. Everything on the page, the default, recolors the CSS Bricks writes for the page: light surfaces darken, dark text lightens and brand colors stay. The page background and text sets just the colors below.
 - `pageSkip` (textarea) **Leave these alone**: placeholder .logo-bar #brxe-abc123; only when `pageDepth` is not `page`. Type one selector per line, such as .logo-bar. With Everything on the page, rules written for those selectors keep their colors. A block filled with a light brand color keeps its light look anyway.
 - `pageBackground` (color) **Background**: only when `pageColors` is set. The page background in the dark state, #121212 unless set.

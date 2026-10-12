@@ -6,7 +6,7 @@
     },
     "metadata": {
         "description": "Agent skills for BFB Elements, the Bricks Builder element pack: one skill per element, the schemas the release exports, examples the release checks.",
-        "version": "0.1.1"
+        "version": "0.2.0"
     },
     "plugins": [
         {

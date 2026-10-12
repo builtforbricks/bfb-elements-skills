@@ -7,7 +7,7 @@ description: "Use when placing, wiring or styling BFB Advanced Text Reveal (`bfb
 
 <!-- bfbe:generated:start -->
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
-**Requires** BFB Elements Pro 1.0.0-beta.4 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
+**Requires** BFB Elements Pro 1.0.0 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/elements/bfbe-text-reveal.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/text-reveal/
 
@@ -16,7 +16,7 @@ Text split into words, letters or lines and driven by one of five modes: reveal,
 
 **Not for:** Not for formatted copy: the Text control is plain text and mark is the one tag that survives, so links, bold and line breaks are lost. Splitting by Letters wraps every character in its own span, so long passages read better split by Words or Lines.
 
-**Costs a page:** CSS 1.29 KB, JS 1.74 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 1.35 KB, JS 1.74 KB (gzipped), no dependencies, loaded only on pages that use it.
 
 **Nestable:** no · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** no · **Reduced motion:** yes
 
@@ -37,7 +37,7 @@ Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query
 ### Reveal (`bfbeReveal`)
 The whole group shows only when `mode` is `` or `view` or `highlight`.
 - `effect` (select) **Effect**: options: `up` Fade up (default), `down` Fade down, `blur` Blur in, `scale` Scale in, `left` Slide from the left, `right` Slide from the right, `curtain` Curtain; only when `mode` is `` or `view`. Pick Fade up, the default, Fade down, Blur in, Scale in, Slide from the left, Slide from the right or Curtain.
-- `trigger` (select) **Play**: options: `view` When it comes into view (default), `load` On page load; only when `mode` is `` or `view`. When it comes into view, the default, or On page load.
+- `trigger` (select) **Play**: options: `view` When it comes into view (default), `load` On page load; only when `mode` is `` or `view`. When it comes into view, the default, or On page load, which plays when the page loads, wherever the text is.
 - `once` (checkbox) **Play once**: only when `mode` is `` or `view`. Tick it to play the entrance a single time. Left off, the entrance replays each time the text scrolls back into view.
 - `easing` (select) **Easing**: options: `cubic-bezier(0.45, 0.05, 0.55, 0.95)` Soft, `cubic-bezier(0.65, 0, 0.35, 1)` Medium, `cubic-bezier(0.16, 1, 0.3, 1)` Snappy (default), `ease-in` Ease in, `ease-out` Ease out, `ease-in-out` Ease in and out, `linear` Linear, `cubic-bezier(0.34, 1.56, 0.64, 1)` Overshoot, `linear(0, .38 8%, .78 17%, 1.02 25%, 1.08 30%, 1.03 40%, .99 50%, 1)` Soft spring, `var(--bfbe-ease-custom, ease)` Custom; writes CSS; only when `mode` is `` or `view` or `highlight`. The curve that movement follows, Snappy unless set.
 Styling, in the schema file: `stagger`, `duration`, `easingCustom`.
@@ -107,7 +107,8 @@ attribute, empty where it does not apply, so match on values: `data-bfbe-by`, `d
   `--bfbe-j`. Punctuation touching a word joins its part, so the full stop after `</mark>` above is marked too.
 - **Split by** (`split`) Letters puts a word's letters in a `.bfbe-rv__word` that never wraps, each space a
   `.bfbe-rv__part--space`; a Curtain wraps every part in `.bfbe-rv__mask`. Lines: the script regroups the parts into
-  `.bfbe-rv__line > .bfbe-rv__line-in` after fonts load and each resize, and sets `--bfbe-n` to the line count.
+  `.bfbe-rv__line > .bfbe-rv__line-in` after fonts load and each resize, sets `--bfbe-n` to the line count and each
+  word's `--bfbe-i` to its line's number.
 - `.is-in` on the root starts a reveal or a played highlight: added when 15% of the root is in view (at once for On
   page load), removed when it leaves unless it plays once. The canvas adds `.is-settled` to hold a played reveal.
 - The scroll modes read `--bfbe-p` (0 to 1) on the root, from a CSS `view()` timeline where the browser has one, or an
@@ -186,15 +187,10 @@ the outline.
   unmarked, and a stripped tag leaves no space, so `bold<br>next` becomes the one word "boldnext". <!-- src: plugins/bfb-elements-pro/elements/text-reveal.php:436, :444, :448, :459-465; rendered 2026-10-08: <mark class="x"> gave --bfbe-m:0, "<strong>bold</strong><br>two" gave the part "boldtwo" -->
 - **Some settings draw nothing.** An empty **Text** (`text`), or a dynamic tag that resolves empty, prints no markup on
   the page; Highlight on scroll with **Which words** on The marked ones and no `<mark>` draws no highlight. <!-- src: plugins/bfb-elements-pro/elements/text-reveal.php:533-537, :566-569; plugins/bfb-elements/includes/abstract-element.php:538-541 -->
-- **An unset highlight Colour is the text's own colour.** `--bfbe-rv-hl` falls back to `--bfbe-accent`, which is
-  `currentColor`: a Marker becomes a solid bar over the lower half of the words, and a Colour sweep paints nothing. <!-- src: src/elements/text-reveal/text-reveal.css:17; plugins/bfb-elements/includes/class-assets.php:78; measured 2026-10-08 in headless Chrome: marker gradient rgb(17,17,17) on text rgb(17,17,17), sweep words transparent at every progress -->
-- **A Colour sweep hides marked words until it reaches them.** Marked parts are `color: transparent` with the colour
-  clipped to the glyphs, so with All of them the whole text is blank before the reader scrolls. <!-- src: src/elements/text-reveal/text-reveal.css:108-115; measured 2026-10-08 on fixture-text-reveal: sweep at progress 0 computed color transparent, gradient #0d9488 50% / transparent 50% at position 100% -->
-- **Marked words Colour cancels a Colour sweep.** Bricks writes `markedColor` as `#brxe-<id> .is-marked { color }`,
-  which outranks the sweep's transparent text, so the words read in that colour and the sweep never shows. <!-- src: src/elements/text-reveal/text-reveal.css:108-115; measured 2026-10-08: Bricks' generated CSS "#brxe-trE01a .is-marked {color: #cc0000}", words solid #cc0000 at progress 0, 0.5 and 1 -->
-- **Split by Lines breaks Light up with scroll and Rise.** The script sets `--bfbe-n` to the line count while each part
-  keeps its word index, so at the end of the range the first (lines + 1) words light up and the rest stay at
-  **Dim opacity** (`dim`), or at 0.15 for Rise. <!-- src: src/elements/text-reveal/text-reveal.js:48; src/elements/text-reveal/text-reveal.css:70-72, :124; measured 2026-10-08 in headless Chrome: 35 words in 5 lines at --bfbe-p 1, words 0 to 5 at opacity 1, words 6 to 34 at 0.2 (scroll) and 0.15 (rise) -->
+- **An unset highlight Colour is the pack's accent.** `--bfbe-rv-hl` unset falls back to `--bfbe-accent` (`currentColor` unless the site sets it): a Marker draws a 30% tint of it under the words, Underline and Outline draw it solid, and a Colour sweep fills the marked words from a 25% tint of their colour to it (since BFB Elements 1.0.0; before it, a solid bar and an empty sweep). <!-- src: src/elements/text-reveal/text-reveal.css, --bfbe-rv-hl-unset; measured 2026-10-12 with dev/text-reveal-probe.mjs -->
+- **A Colour sweep keeps the words' colour.** Marked parts keep their `color` and only their fill is see-through (`-webkit-text-fill-color`), the sweep's gradient clipped to the glyphs: with a Colour set they read in their own colour until the sweep turns them to it; unset, they read as a faint tint until it reaches them (since BFB Elements 1.0.0). <!-- src: src/elements/text-reveal/text-reveal.css, [data-bfbe-hl=sweep]; measured 2026-10-12 with dev/text-reveal-probe.mjs -->
+- **Marked words Colour is where a sweep starts.** `markedColor` is the marked words' `color`, so a sweep runs from it to the Colour (since BFB Elements 1.0.0; before it, it cancelled the sweep). <!-- src: src/elements/text-reveal/text-reveal.css, [data-bfbe-hl=sweep]; measured 2026-10-12 on fixture-text-reveal: marked words rgb(204, 0, 0), Colour #0d9488, gradient rgb(13, 148, 136) 50% / rgb(204, 0, 0) 50%, fill transparent -->
+- **Split by Lines moves line by line.** With Light up with scroll and Rise each word takes its line's number, so the lines light or rise one after another and every word is there at the end of the range (since BFB Elements 1.0.0; before it, only the first few words lit). <!-- src: src/elements/text-reveal/text-reveal.js splitLines(); measured 2026-10-12 with dev/text-reveal-probe.mjs: 35 of 35 words -->
 - **A scrubbed highlight ignores the timing controls.** With **Driven by** (`highlightDrive`) on Scroll position, the
   default, **Part delay** (`stagger`), **Duration** (`duration`) and **Easing** (`easing`) are offered and do nothing;
   they time Coming into view, once. <!-- src: src/elements/text-reveal/text-reveal.css:50-51, :117; plugins/bfb-elements-pro/elements/text-reveal.php:170, :174 -->
@@ -203,8 +199,7 @@ the outline.
 - **Start at must be larger than End at.** **Start at** (`begin`, 85) and **End at** (`end`, 35) place the element's
   top as a percentage down the viewport, and it travels from the larger to the smaller; reversed, Chrome jumps from
   start to finish in one step and the script's fallback runs backwards. <!-- src: plugins/bfb-elements-pro/elements/text-reveal.php:557-561; src/elements/text-reveal/text-reveal.js:104; measured 2026-10-08 in headless Chrome: begin 30, end 80 read --bfbe-p 0 with the top at 95% to 40%, 1 at 20% and 5% -->
-- **To keeps the first number it finds.** Commas and spaces are dropped as separators and a dot is the decimal point,
-  so "1.200" counts to 1.2 and shows 1; an empty **To** (`to`) counts to 1200 and one with no digits to 0. <!-- src: plugins/bfb-elements-pro/elements/text-reveal.php:513; rendered 2026-10-08: "1.200" gave to 1.2, "" gave 1200, "abc" gave 0 -->
+- **To is read with the site's own marks.** The site's thousands mark is dropped and its decimal mark read as the point, so "1.200" counts to 1200 on a German site and to 1.2 on an English one; a To left blank counts to 1200, and one that resolves empty or holds no number shows nothing (since BFB Elements 1.0.0). <!-- src: plugins/bfb-elements-pro/elements/text-reveal.php count_to(); measured 2026-10-12 with dev/text-reveal-probe.mjs -->
 - **Count up's Duration is the whole count.** Its **Duration (ms)** (`countDuration`) is 2000 when unset, and the curve
   is the pack's `--bfbe-ease` on `:root`; the Reveal group's Duration and Easing are hidden here and do not apply. <!-- src: plugins/bfb-elements-pro/elements/text-reveal.php:395-406, :521; src/elements/text-reveal/text-reveal.js:61-62 -->
 - **A check below the fold reads the starting state.** Reveal parts sit at opacity 0 until 15% of the root is in view,
@@ -213,9 +208,6 @@ the outline.
 ## Never do
 
 - Do not put attributes on `<mark>`, or any other tag, in `text`; write bare `<mark>` pairs around plain words.
-- Do not leave `highlightColor` unset on `mode: "highlight"`.
-- Do not set `markedColor` on `highlight: "sweep"`.
-- Do not combine `split: "lines"` with `mode: "scroll"` or `kinetic: "rise"`.
 - Do not set `begin` at or below `end`.
-- Do not feed `to` a number written with a dot between thousands, or a dynamic tag that can resolve empty.
+- Do not feed `to` a number written with another locale's marks than the site's.
 - Do not remove the `.bfbe-sr` copy or the `aria-hidden` on `.bfbe-rv__parts`.

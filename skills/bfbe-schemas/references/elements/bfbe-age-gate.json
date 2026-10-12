@@ -25,7 +25,7 @@
     ],
     "parent": null,
     "cost": {
-        "css": "1.20 KB",
+        "css": "1.24 KB",
         "js": "1.32 KB",
         "dependencies": "none"
     },
@@ -368,6 +368,16 @@
                 {
                     "property": "justify-content",
                     "selector": ".bfbe-gate__actions"
+                },
+                {
+                    "property": "--bfbe-gate-btn-grow",
+                    "selector": "",
+                    "value": "0"
+                },
+                {
+                    "property": "--bfbe-gate-btn-w",
+                    "selector": "",
+                    "value": "auto"
                 }
             ]
         },

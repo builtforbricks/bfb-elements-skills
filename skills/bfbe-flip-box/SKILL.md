@@ -7,7 +7,7 @@ description: "Use when building a flip card, a hover reveal or a front-and-back 
 
 <!-- bfbe:generated:start -->
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
-**Requires** BFB Elements 1.0.0-beta.4 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
+**Requires** BFB Elements 1.0.0 or later, the element turned on (WordPress menu BFB Elements, Elements). Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/elements/bfbe-flip-box.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/flip-box/
 
@@ -16,7 +16,7 @@ Two faces, front and back, built as ordinary Bricks blocks, swap on hover, on cl
 
 **Not for:** The two faces share one grid cell, so one of them is always hidden from view. Content visitors must compare side by side, or read in full before deciding, belongs in a plain layout.
 
-**Costs a page:** CSS 1.33 KB, JS 2.16 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 1.33 KB, JS 2.22 KB (gzipped), no dependencies, loaded only on pages that use it.
 
 **Nestable:** yes · **In a query loop:** yes · **Dynamic data:** no · **Keyboard:** yes · **Reduced motion:** yes
 
@@ -178,7 +178,7 @@ Styling only, every key in the schema file: `minHeight`, `faceBorder`.
 - `builderView` (select) **Show it**: options: `open` Held still, so you can style it (default), `live` Working, as on the site. The card is held still by default, so you can style it. Pick Working, as on the site, to see it turn in the builder.
 
 ## What it guarantees for accessibility (do not undo)
-- Any element carrying the class bfbe-flip-trigger becomes a button for assistive technology, answers Enter and Space, and reports aria-expanded for the card's state.
+- Any element carrying the class bfbe-flip-trigger becomes a button for assistive technology, answers Enter and Space, and reports aria-expanded for the card's state. A trigger with no words of its own, such as an icon, is named Turn the card over.
 - When nothing on the card carries that class, the published page adds a Show more button that stays invisible until keyboard focus reaches it.
 - The face out of view is set inert and aria-hidden, so its links and buttons leave the tab order until the card turns.
 - Escape turns a flipped card back to the front and moves focus to a flip control there.
@@ -294,7 +294,7 @@ The card wires inward alone. Its controls are elements inside its own faces carr
 - **Marked elements turn the card whatever Flip on says.** **Flip on** `trigger` governs hover, click and tap on the card itself, so `none` at a breakpoint stops those and leaves the marked elements working. With `none` and nothing marked, no mouse or finger can turn the card; the page keeps the hidden keyboard fallback alone. <!-- src: src/elements/flip-box/flip-box.js:226 ; src/elements/flip-box/flip-box.js:293 ; plugins/bfb-elements/elements/flip-box.php:418 -->
 - **The builder notice reads the base value.** "Add the class bfbe-flip-trigger to an element on each face." shows in the canvas when the base `trigger` is `none`; a breakpoint key such as `trigger:mobile_portrait` set to `none` brings no notice. A breakpoint value applies at and below that breakpoint's width. <!-- src: plugins/bfb-elements/elements/flip-box.php:508 ; docs/elements/flip-box.md "Round 402" -->
 - **A marked link stops navigating.** The script cancels a marked link's click so it turns the card instead. Mark a Button or an Icon, and leave links that must go somewhere unmarked. <!-- src: src/elements/flip-box/flip-box.js:229 -->
-- **Unmarked interactive content never turns the card by click or tap.** A click on a link, button, input, label, `summary`, media or anything with `tabindex` keeps its own job, and the check climbs past the card to its ancestors. A face, or a Block around the card, with **HTML tag** `tag: "a"` therefore stops click and tap turning it. <!-- src: src/elements/flip-box/flip-box.js:26 ; src/elements/flip-box/flip-box.js:300 -->
+- **Unmarked interactive content inside the card keeps its own job.** A click on a link with an address, a button, input, label, `summary`, media or anything with `tabindex` inside the card does not turn it, and nothing outside the card counts (since BFB Elements 1.0.0; before it, the check climbed to the card's ancestors). Inside a link, such as a linked Block in a query loop, the first click turns the card and holds the navigation, and the next click follows the link. A face with `tag: "a"` and no link turns the card like any face. <!-- src: src/elements/flip-box/flip-box.js:26 and the card's click handler; measured 2026-10-12 with dev/flip-box-probe.mjs -->
 - **A trigger without text is named by the element.** The script gives a marked non-button `role="button"`, and one with no words, label or described image the name "Turn the card over" (in the site's language). An `aria-label` in its `_attributes` gives it words of its own and is kept. <!-- src: src/elements/flip-box/flip-box.js named(), upgrade(); plugins/bfb-elements/elements/flip-box.php data-bfbe-flip-name (1.0.0-beta.4); measured with dev/flip-trigger-name-probe.mjs -->
 - **The Style tab's border radius does not round the card.** The universal border writes to the root, while the corners a visitor sees are the faces', inherited from **Face border** `faceBorder` on `.bfbe-flip-box__inner`. A face's own `_border` radius overrides that for that face. <!-- src: plugins/bfb-elements/elements/flip-box.php:239 ; src/elements/flip-box/flip-box.css:280 -->
 - **Faces clip their content.** Every face has `overflow: hidden`, and Slide over, Push across and Zoom out clip at the inner wrapper too, so a dropdown or tooltip that leaves a face is cut. For those three, the clip copies the front's corners when they are in pixels; a percentage or elliptical corner leaves the card's radius. <!-- src: src/elements/flip-box/flip-box.css:184 ; src/elements/flip-box/flip-box.css:284 ; src/elements/flip-box/flip-box.js:150 -->
@@ -307,7 +307,7 @@ The card wires inward alone. Its controls are elements inside its own faces carr
 - Do not give the card more or fewer than two direct children; put extra content inside the back block.
 - Do not mark an element on one face alone; mark one on each face, or none.
 - Do not set the base `trigger` to `none` unless both faces carry a marked element.
-- Do not mark a link that must navigate, and do not set a face's `tag` to `a`.
+- Do not mark a link that must navigate, or give a face a link of its own: a click on it follows the link and never turns the card.
 - Do not round the card with the flip box's own `_border`; use `faceBorder`.
 - Do not target the card or a trigger by `_cssId`, or place a `bfbe-flip-trigger` element outside the card it should turn.
 - Do not set `direction` with `effect` `zoom-in`, `zoom-out`, `circle` or `fade`, or `perspective` with any effect but `flip` and `cube`.
