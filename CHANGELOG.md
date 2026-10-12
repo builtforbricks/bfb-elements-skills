@@ -4,7 +4,7 @@ Each release of this pack names the BFB Elements version it was exported from an
 (`verifiedUpTo` in `skills/bfbe-schemas/references/index.json`). Skills and plugins are released
 together; a pack never describes a plugin that has not shipped.
 
-## 0.2.0, release date: with BFB Elements 1.0.0
+## 0.2.0, 2026-10-12
 
 Verified up to BFB Elements 1.0.0, the first stable release. A minor version, not a patch: one attribute an agent may read
 was renamed.
