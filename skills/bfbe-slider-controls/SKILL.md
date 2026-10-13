@@ -24,7 +24,7 @@ One control for Bricks' Slider (Nestable) element, placed anywhere on the page: 
 Not nestable: nothing goes inside it.
 
 ## Settings that decide the build
-Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Slider (`bfbeTarget`)
 - `target` (text) **Slider element ID**: placeholder The nearest slider. The ID of the Bricks Slider (Nestable) to control: it drives that element, not the Slider or the Carousel. Empty, the default, takes the nearest slider, found by walking out from this element. With no slider found, it hides itself on the page.

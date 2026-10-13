@@ -24,7 +24,7 @@ A muted video whose playhead follows the scroll position, so scrolling plays it 
 Nestable: any Bricks element goes inside (blocks, headings, text, images, a form).
 
 ## Settings that decide the build
-Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Video (`bfbeVideo`)
 - `file` (file) **Video file**. The file to scrub. Encode it with a keyframe every five frames, or the playhead will freeze and jump as it seeks.

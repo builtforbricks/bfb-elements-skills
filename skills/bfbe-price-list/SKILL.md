@@ -24,7 +24,7 @@ A list of menu or service items, each with a title, description, price, optional
 Not nestable: nothing goes inside it.
 
 ## Settings that decide the build
-Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Items (`bfbeItems`)
 - `items` (repeater) **Items**. One row per item, with Title, Description, Price, Original price, Image, Link and Highlight this item. The text fields accept dynamic data. A row with nothing filled in is skipped.

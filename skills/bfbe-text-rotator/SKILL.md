@@ -24,7 +24,7 @@ One heading with text before, a rotating word and text after, which stays readab
 Not nestable: nothing goes inside it.
 
 ## Settings that decide the build
-Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Text (`bfbeText`)
 - `tag` (select) **HTML tag**: options: `h1` h1, `h2` h2 (default), `h3` h3, `h4` h4, `h5` h5, `h6` h6, `p` p, `div` div. H2 by default. Pick h1 to h6, p or div so the rotator sits at the right level in your heading outline.

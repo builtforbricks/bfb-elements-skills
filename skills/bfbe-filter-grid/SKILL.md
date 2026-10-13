@@ -165,10 +165,10 @@ What the builder inserts, as a tree `bricks/add-element` accepts (ids omitted):
 }
 ```
 
-`bfbe-filter-item` (BFB Filter Item), 35 controls, schema `../bfbe-schemas/references/elements/bfbe-filter-item.json`, nestable itself.
+`bfbe-filter-item` (BFB Filter Item), 44 controls, schema `../bfbe-schemas/references/elements/bfbe-filter-item.json`, nestable itself.
 
 ## Settings that decide the build
-Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Filters (`bfbeFilters`)
 - `allLabel` (text) **Show-everything chip**: placeholder All; dynamic data accepted. The words on the chip that shows every item, All by default. It takes dynamic data.

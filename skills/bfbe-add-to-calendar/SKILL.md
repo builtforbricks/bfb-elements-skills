@@ -24,7 +24,7 @@ One button that opens a menu, or a row of buttons, linking to Google, Outlook, O
 Not nestable: nothing goes inside it.
 
 ## Settings that decide the build
-Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Event (`bfbeEvent`)
 - `title` (text) **Title**: placeholder {post_title}; dynamic data accepted. The event name. It takes dynamic data and falls back to the current post's title when empty.

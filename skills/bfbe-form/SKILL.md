@@ -67,32 +67,32 @@ What the builder inserts, as a tree `bricks/add-element` accepts (ids omitted):
 }
 ```
 
-`bfbe-form-text` (BFB Text Field), 91 controls, schema `../bfbe-schemas/references/elements/bfbe-form-text.json`.
+`bfbe-form-text` (BFB Text Field), 100 controls, schema `../bfbe-schemas/references/elements/bfbe-form-text.json`.
 
-`bfbe-form-button` (BFB Form Button), 96 controls, schema `../bfbe-schemas/references/elements/bfbe-form-button.json`.
+`bfbe-form-button` (BFB Form Button), 105 controls, schema `../bfbe-schemas/references/elements/bfbe-form-button.json`.
 
-`bfbe-form-choice` (BFB Choice Field), 154 controls, schema `../bfbe-schemas/references/elements/bfbe-form-choice.json`, nestable itself.
+`bfbe-form-choice` (BFB Choice Field), 163 controls, schema `../bfbe-schemas/references/elements/bfbe-form-choice.json`, nestable itself.
 
-`bfbe-form-number` (BFB Number Field), 126 controls, schema `../bfbe-schemas/references/elements/bfbe-form-number.json`.
+`bfbe-form-number` (BFB Number Field), 135 controls, schema `../bfbe-schemas/references/elements/bfbe-form-number.json`.
 
-`bfbe-form-date` (BFB Date Field), 140 controls, schema `../bfbe-schemas/references/elements/bfbe-form-date.json`.
+`bfbe-form-date` (BFB Date Field), 149 controls, schema `../bfbe-schemas/references/elements/bfbe-form-date.json`.
 
-`bfbe-form-upload` (BFB Upload Field), 145 controls, schema `../bfbe-schemas/references/elements/bfbe-form-upload.json`.
+`bfbe-form-upload` (BFB Upload Field), 154 controls, schema `../bfbe-schemas/references/elements/bfbe-form-upload.json`.
 
-`bfbe-form-signature` (BFB Signature Field), 70 controls, schema `../bfbe-schemas/references/elements/bfbe-form-signature.json`.
+`bfbe-form-signature` (BFB Signature Field), 79 controls, schema `../bfbe-schemas/references/elements/bfbe-form-signature.json`.
 
-`bfbe-form-repeater` (BFB Repeater), 75 controls, schema `../bfbe-schemas/references/elements/bfbe-form-repeater.json`, nestable itself.
+`bfbe-form-repeater` (BFB Repeater), 84 controls, schema `../bfbe-schemas/references/elements/bfbe-form-repeater.json`, nestable itself.
 
-`bfbe-form-step` (BFB Form Step), 43 controls, schema `../bfbe-schemas/references/elements/bfbe-form-step.json`, nestable itself.
+`bfbe-form-step` (BFB Form Step), 52 controls, schema `../bfbe-schemas/references/elements/bfbe-form-step.json`, nestable itself.
 
-`bfbe-form-progress` (BFB Form Progress), 88 controls, schema `../bfbe-schemas/references/elements/bfbe-form-progress.json`.
+`bfbe-form-progress` (BFB Form Progress), 97 controls, schema `../bfbe-schemas/references/elements/bfbe-form-progress.json`.
 
-`bfbe-form-summary` (BFB Form Summary), 66 controls, schema `../bfbe-schemas/references/elements/bfbe-form-summary.json`.
+`bfbe-form-summary` (BFB Form Summary), 75 controls, schema `../bfbe-schemas/references/elements/bfbe-form-summary.json`.
 
-`bfbe-form-total` (BFB Form Total), 98 controls, schema `../bfbe-schemas/references/elements/bfbe-form-total.json`.
+`bfbe-form-total` (BFB Form Total), 107 controls, schema `../bfbe-schemas/references/elements/bfbe-form-total.json`.
 
 ## Settings that decide the build
-Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Ungrouped
 Styling only, every key in the schema file: `uploadButtonTypography`, `uploadButtonBackgroundColor`, `uploadButtonBorder`.

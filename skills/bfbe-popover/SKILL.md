@@ -40,7 +40,7 @@ What the builder inserts, as a tree `bricks/add-element` accepts (ids omitted):
 ```
 
 ## Settings that decide the build
-Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Mode (`bfbeMode`)
 - `mode` (select) **Mode**: options: `popover` Popover (nested content) (default), `tooltip` Tooltip (short text). Popover (nested content) is the default. Tooltip (short text) holds plain text and drops anything nested inside the element.

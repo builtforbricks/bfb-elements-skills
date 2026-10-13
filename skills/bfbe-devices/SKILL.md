@@ -47,7 +47,7 @@ What the builder inserts, as a tree `bricks/add-element` accepts (ids omitted):
 ```
 
 ## Settings that decide the build
-Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Device (`bfbeDevice`)
 - `device` (select) **Device**: options: `phone` Phone (default), `tablet` Tablet, `laptop` Laptop, `browser` Browser window. Choose Phone, the default, Tablet, Laptop or Browser window. All four are generic shapes drawn in CSS, without image files.

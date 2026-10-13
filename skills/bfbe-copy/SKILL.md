@@ -24,7 +24,7 @@ A button that copies fixed text, dynamic data, or the contents of another elemen
 Not nestable: nothing goes inside it.
 
 ## Settings that decide the build
-Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### What to copy (`bfbeSource`)
 - `source` (select) **Source**: options: `text` Text (default), `selector` An element on the page. Text is the default. An element on the page copies the value or text of whatever your selector matches when the button is clicked.

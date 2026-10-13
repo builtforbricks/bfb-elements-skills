@@ -24,7 +24,7 @@ Text split into words, letters or lines and driven by one of five modes: reveal,
 Not nestable: nothing goes inside it.
 
 ## Settings that decide the build
-Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Text (`bfbeText`)
 - `tag` (select) **HTML tag**: options: `h1` h1, `h2` h2 (default), `h3` h3, `h4` h4, `h5` h5, `h6` h6, `p` p, `div` div. Pick h1 to h6, p or div. It is h2 by default, so the animated text keeps the heading level your page needs.
@@ -63,7 +63,7 @@ Styling, in the schema file: `strength`.
 ### Count up (`bfbeCount`)
 The whole group shows only when `mode` is `count`.
 - `from` (number) **From**: only when `mode` is `count`. The number the count starts at, 0 by default.
-- `to` (text) **To**: placeholder 1200; dynamic data accepted; only when `mode` is `count`. The number to count to, 1200 by default. It accepts dynamic data and reads the number inside the field, so a field holding "1,200 visitors" counts to 1200.
+- `to` (text) **To**: placeholder 1200; dynamic data accepted; only when `mode` is `count`. The number to count to, 1200 by default. It accepts dynamic data and reads the number inside the field, so a field holding "1,200 visitors" counts to 1200. To is read with your site's own thousands and decimal marks. A To from a dynamic tag with nothing in it shows nothing; a To left blank counts to 1200.
 - `decimals` (number) **Decimals**: only when `mode` is `count`. How many decimal places the count shows, 0 by default and up to 4.
 - `separators` (checkbox) **Thousands separators**: only when `mode` is `count`. Tick it to group the digits. The separators follow the page's language. Off by default.
 - `prefix` (text) **Before the number**: dynamic data accepted; only when `mode` is `count`. Text shown before the number, such as a currency sign. It takes dynamic data.

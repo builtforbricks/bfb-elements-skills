@@ -24,7 +24,7 @@ A player for a podcast, a track or an album, built on the Video Player so it sha
 Nestable: any Bricks element goes inside (blocks, headings, text, images, a form).
 
 ## Settings that decide the build
-Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Audio (`bfbeVideo`)
 - `source` (select) **Source**: options: `self` A file on this site (default), `rows` A playlist you write, `loop` A playlist from a query loop, `list` Playlist Items you place on the page. A file on this site is the default. The other choices are A playlist you write, A playlist from a query loop and Playlist Items you place on the page. YouTube, Vimeo and Another host are not offered.

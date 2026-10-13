@@ -40,7 +40,7 @@ What the builder inserts, as a tree `bricks/add-element` accepts (ids omitted):
 ```
 
 ## Settings that decide the build
-Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Clamp (`bfbeClamp`)
 - `mode` (select) **Clamp by**: options: `lines` Lines (default), `height` Height. Lines is the default. Height clamps to a set height instead, which suits content that mixes images and text.

@@ -144,10 +144,10 @@ What the builder inserts, as a tree `bricks/add-element` accepts (ids omitted):
 }
 ```
 
-`bfbe-timeline-item` (BFB Timeline Moment), 46 controls, schema `../bfbe-schemas/references/elements/bfbe-timeline-item.json`, nestable itself.
+`bfbe-timeline-item` (BFB Timeline Moment), 55 controls, schema `../bfbe-schemas/references/elements/bfbe-timeline-item.json`, nestable itself.
 
 ## Settings that decide the build
-Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Layout (`bfbeLayout`)
 - `style` (select) **Style**: options: `story` Story: alternating across a line (default), `ledger` Ledger: one after another beside a line, `years` Years: a list beside one moment, `journey` Journey: a strip above one moment, `chapters` Chapters: a sticky list beside every moment. Story, the default, alternates moments across a line, and Ledger lists them beside a line. Years shows one moment beside a list, Journey one under a strip, and Chapters every moment beside a sticky list.

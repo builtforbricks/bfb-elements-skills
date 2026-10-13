@@ -109,10 +109,10 @@ What the builder inserts, as a tree `bricks/add-element` accepts (ids omitted):
 }
 ```
 
-`bfbe-snap-slide` (BFB Snap Slide), 40 controls, schema `../bfbe-schemas/references/elements/bfbe-snap-slide.json`, nestable itself.
+`bfbe-snap-slide` (BFB Snap Slide), 49 controls, schema `../bfbe-schemas/references/elements/bfbe-snap-slide.json`, nestable itself.
 
 ## Settings that decide the build
-Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Slides (`bfbeSlides`)
 - `label` (text) **Name**: placeholder Slides; dynamic data accepted. The label screen readers read for the scrolling list, Slides by default. It accepts dynamic data.

@@ -60,7 +60,7 @@ What the builder inserts, as a tree `bricks/add-element` accepts (ids omitted):
 ```
 
 ## Settings that decide the build
-Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Options (`bfbeOptions`)
 - `options` (repeater) **Options**. Add one row per option with a Label and a Badge, both taking dynamic data. Each row controls the nested block in the same position.

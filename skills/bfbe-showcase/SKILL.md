@@ -90,10 +90,10 @@ What the builder inserts, as a tree `bricks/add-element` accepts (ids omitted):
 }
 ```
 
-`bfbe-showcase-step` (BFB Showcase Step), 36 controls, schema `../bfbe-schemas/references/elements/bfbe-showcase-step.json`, nestable itself.
+`bfbe-showcase-step` (BFB Showcase Step), 45 controls, schema `../bfbe-schemas/references/elements/bfbe-showcase-step.json`, nestable itself.
 
 ## Settings that decide the build
-Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Layout (`bfbeLayout`)
 - `snap` (select) **Scrolling**: options: `free` Free (default), `snap` Snaps when close, `always` Snaps to every step. Free is the default. Snaps when close settles on a step when the visitor is near it, and Snaps to every step makes each scroll land on a step while the showcase is in view.

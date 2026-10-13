@@ -23,12 +23,12 @@ Plays a file from your site, YouTube, Vimeo or another host, with a control bar 
 ## Structure
 Nestable. Its own children: `bfbe-video-control`, `bfbe-playlist-item`.
 
-`bfbe-video-control` (BFB Player Control), 71 controls, schema `../bfbe-schemas/references/elements/bfbe-video-control.json`.
+`bfbe-video-control` (BFB Player Control), 80 controls, schema `../bfbe-schemas/references/elements/bfbe-video-control.json`.
 
-`bfbe-playlist-item` (BFB Playlist Item), 45 controls, schema `../bfbe-schemas/references/elements/bfbe-playlist-item.json`, nestable itself.
+`bfbe-playlist-item` (BFB Playlist Item), 54 controls, schema `../bfbe-schemas/references/elements/bfbe-playlist-item.json`, nestable itself.
 
 ## Settings that decide the build
-Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Video (`bfbeVideo`)
 - `source` (select) **Source**: options: `self` A file on this site (default), `youtube` YouTube, `vimeo` Vimeo, `embed` Another host, `rows` A playlist you write, `loop` A playlist from a query loop, `list` Playlist Items you place on the page. A file on this site is the default. You can also pick YouTube, Vimeo or Another host, or a playlist: A playlist you write, A playlist from a query loop or Playlist Items you place on the page.

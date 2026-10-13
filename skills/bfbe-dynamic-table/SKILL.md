@@ -24,7 +24,7 @@ A real table built on the server from typed rows, a CSV file, an ACF repeater or
 Not nestable: nothing goes inside it.
 
 ## Settings that decide the build
-Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Source (`bfbeSource`)
 - `source` (select) **Rows come from**: options: `manual` Text typed here (default), `csv` A CSV file, `acf` An ACF repeater, `loop` A query loop. Choose Text typed here (the default), A CSV file, An ACF repeater or A query loop. A query loop brings Bricks' Query loop switch and Query, and takes a dynamic tag in each column.

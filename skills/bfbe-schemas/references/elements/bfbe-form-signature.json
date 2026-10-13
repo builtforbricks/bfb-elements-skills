@@ -46,6 +46,10 @@
         "bfbeOnScroll": {
             "title": "When the page scrolls",
             "tab": "style"
+        },
+        "bfbeTooltip": {
+            "title": "Tooltip",
+            "tab": "style"
         }
     },
     "controls": {
@@ -1183,6 +1187,150 @@
                     "property": "--bfbe-hs-delay",
                     "selector": ""
                 }
+            ]
+        },
+        "bfbeTooltip": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Text",
+            "type": "textarea",
+            "hasDynamicData": "text",
+            "description": "Shown on hover and focus."
+        },
+        "bfbeTooltipPlace": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Place",
+            "type": "select",
+            "options": {
+                "top": "Above",
+                "right": "Right",
+                "bottom": "Below",
+                "left": "Left"
+            },
+            "inline": true,
+            "placeholder": "Above",
+            "description": "It flips when there is no room.",
+            "required": [
+                "bfbeTooltip",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeTooltipDelay": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 50,
+            "inline": true,
+            "placeholder": "150",
+            "description": "Milliseconds before it shows on hover.",
+            "required": [
+                "bfbeTooltip",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeTooltipWidth": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Max width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "240px",
+            "css": [
+                {
+                    "property": "--bfbe-tip-w",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeTooltip",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeTooltipBackground": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-tip-bg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeTooltip",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeTooltipColor": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Text colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-tip-fg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeTooltip",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeTooltipTypography": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-tip"
+                }
+            ],
+            "required": [
+                "bfbeTooltip",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeTooltipBorder": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-tip"
+                }
+            ],
+            "required": [
+                "bfbeTooltip",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeTooltipNoArrow": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Hide the arrow",
+            "type": "checkbox",
+            "required": [
+                "bfbeTooltip",
+                "!=",
+                ""
             ]
         }
     }

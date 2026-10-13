@@ -24,7 +24,7 @@ Shows how far a visitor has scrolled, as a bar or a ring, fixed to the top or bo
 Not nestable: nothing goes inside it.
 
 ## Settings that decide the build
-Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Indicator (`bfbeShape`)
 - `shape` (select) **Shape**: options: `bar` Bar (default), `ring` Ring. Bar is the default. Ring draws a circular indicator with an optional percentage or a scroll-to-top icon in the middle.

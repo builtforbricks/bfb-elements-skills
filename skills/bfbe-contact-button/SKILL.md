@@ -24,7 +24,7 @@ A button fixed in a corner that opens into seven kinds of action: Call, WhatsApp
 Not nestable: nothing goes inside it.
 
 ## Settings that decide the build
-Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Actions (`bfbeActions`)
 - `actions` (repeater) **Actions**. One row per way to reach you. Pick its Type: Call, WhatsApp, Email, Text message, Messenger, Telegram or Link, and fill in Number, address or URL, which accepts dynamic data. A Link row takes web, phone, text and email links and messaging apps' addresses: Viber, Skype, WhatsApp, Telegram, FaceTime, Signal, LINE, WeChat, Microsoft Teams and Threema. Developers can add others with the bfbe/contact_button_protocols filter.

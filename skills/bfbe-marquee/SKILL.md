@@ -58,7 +58,7 @@ What the builder inserts, as a tree `bricks/add-element` accepts (ids omitted):
 ```
 
 ## Settings that decide the build
-Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Motion (`bfbeMotion`)
 - `orientation` (select) **Direction**: options: `horizontal` Horizontal (default), `vertical` Vertical. Horizontal is the default. Vertical scrolls the items upward inside a fixed height, which you set under Strip.

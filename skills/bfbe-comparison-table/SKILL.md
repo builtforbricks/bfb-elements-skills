@@ -24,10 +24,10 @@ Plans across the top and features down the side, with ticks, crosses or text in 
 Not nestable: nothing goes inside it.
 
 ## Settings that decide the build
-Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Plans (`bfbePlans`)
-- `plans` (repeater) **Plans**. Add one row per plan. Each row sets its Name, Price, Badge, Highlight, Button label and Link. Name, Price, Badge and Button label take dynamic data.
+- `plans` (repeater) **Plans**. Add one row per plan. Each row sets its Name, Price, Badge, Highlight, Button label and Link. Name, Price, Badge and Button label take dynamic data. A Badge, Price or Note from a dynamic tag with nothing in it is not drawn.
 
 ### Features (`bfbeFeatures`)
 - `features` (repeater) **Features**. Add one row per feature. Each row has a Feature name, Per plan values, a Note and Use as a group heading. Feature, Per plan and Note take dynamic data.

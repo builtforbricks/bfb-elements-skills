@@ -24,7 +24,7 @@ Opening hours as a definition list of days and times, with an optional live stat
 Not nestable: nothing goes inside it.
 
 ## Settings that decide the build
-Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Days (`bfbeDays`)
 - `days` (repeater) **Days**. One row per day, with Day, Label, Closed, Closed text, Opens, Closes, Opens again and Closes again. Label replaces the day's name. Text fields accept dynamic data.

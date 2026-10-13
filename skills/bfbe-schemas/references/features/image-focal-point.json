@@ -1,0 +1,10 @@
+{
+    "name": "image-focal-point",
+    "label": "BFB Image focal point",
+    "pack": "free",
+    "feature": true,
+    "on": "images in the media library: Bricks' Image element, featured images in query loops, background images",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/image-focal-point/",
+    "controlGroups": [],
+    "controls": []
+}

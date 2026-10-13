@@ -24,7 +24,7 @@ A ring that follows the mouse pointer, grows over links and buttons, and can sho
 Not nestable: nothing goes inside it.
 
 ## Settings that decide the build
-Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Cursor (`bfbeCursor`)
 - `mode` (select) **Native cursor**: options: `ring` Keep it, add the ring (default), `replace` Hide it, `none` Keep it, effects only. What happens to the browser's own pointer. Keep it, add the ring is the default. Hide it swaps the pointer for the ring and a dot. Keep it, effects only draws no ring.

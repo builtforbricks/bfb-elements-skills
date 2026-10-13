@@ -4,6 +4,18 @@ Each release of this pack names the BFB Elements version it was exported from an
 (`verifiedUpTo` in `skills/bfbe-schemas/references/index.json`). Skills and plugins are released
 together; a pack never describes a plugin that has not shipped.
 
+## 0.3.0, 2026-10-13
+
+Verified up to BFB Elements 1.1.1 and BFB Elements Pro 1.1.1. A minor version: four new skills.
+
+- New skills: `bfbe-blockquote` (free element), `bfbe-toast` (Pro element), `bfbe-tooltips` (Pro feature, on every element)
+  and `bfbe-image-focal-point` (the free plugin's feature, set in the media library).
+- Every element's schema and skill now lists the Tooltip group (`bfbeTooltip*`), which Pro 1.1 adds to every element,
+  beside Hover Effects and Advanced Header Scroll.
+- Each skill's **Requires** line names the version its element or feature first needs: 1.0.0 for everything 1.0 shipped,
+  1.1.0 for Blockquote and Image focal point, Pro 1.1.1 for Toast and Tooltips (their keyboard and timing guarantees came
+  with 1.1.1's fixes).
+
 ## 0.2.0, 2026-10-12
 
 Verified up to BFB Elements 1.0.0, the first stable release. A minor version, not a patch: one attribute an agent may read

@@ -24,7 +24,7 @@ Plays a Lottie animation from the media library, or from a URL or dynamic data f
 Not nestable: nothing goes inside it.
 
 ## Settings that decide the build
-Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Animation (`bfbeSource`)
 - `source` (select) **Animation from**: options: `file` The media library (default), `url` A URL or a field. The media library is the default, or A URL or a field. Uploading .json files needs Allow Lottie files in BFB Elements Settings, on by default. Each file is checked: a JSON file that is not a Lottie animation is refused.

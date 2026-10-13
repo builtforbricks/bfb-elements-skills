@@ -47,7 +47,7 @@ What the builder inserts, as a tree `bricks/add-element` accepts (ids omitted):
 ```
 
 ## Settings that decide the build
-Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Trigger (`bfbeTrigger`)
 - `trigger` (select) **Opens on**: options: `button` Its own button (default), `selector` A click on any element, `hash` A link with a hash, `delay` A delay. Its own button, the default, draws a button reading Open. A click on any element, A link with a hash and A delay are for triggers that live elsewhere on the page.

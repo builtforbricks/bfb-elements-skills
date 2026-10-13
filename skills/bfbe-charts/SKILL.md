@@ -24,7 +24,7 @@ Fourteen chart types, from bars, lines and donuts to a gauge, progress rows, a t
 Not nestable: nothing goes inside it.
 
 ## Settings that decide the build
-Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Chart (`bfbeChart`)
 - `type` (select) **Type**: options: `bar` Bars (default), `hbar` Horizontal bars, `lollipop` Lollipop, `diverging` Diverging bars, `line` Line, `area` Area, `radar` Radar, `donut` Donut, `spark` Sparkline, `gauge` Gauge, `progress` Progress rows, `versus` Versus bar, `treemap` Treemap, `calendar` Dot calendar. Pick Bars (the default), Horizontal bars, Lollipop, Diverging bars, Line, Area, Radar, Donut, Sparkline, Gauge, Progress rows, Versus bar, Treemap or Dot calendar. The last four are plain HTML, with no Chart.js.

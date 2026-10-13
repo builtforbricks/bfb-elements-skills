@@ -161,10 +161,10 @@ What the builder inserts, as a tree `bricks/add-element` accepts (ids omitted):
 }
 ```
 
-`bfbe-table-row` (BFB Table Row), 37 controls, schema `../bfbe-schemas/references/elements/bfbe-table-row.json`, nestable itself.
+`bfbe-table-row` (BFB Table Row), 46 controls, schema `../bfbe-schemas/references/elements/bfbe-table-row.json`, nestable itself.
 
 ## Settings that decide the build
-Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Table (`bfbeTable`)
 - `caption` (text) **Caption**: dynamic data accepted. A title that names the table for screen readers. It accepts dynamic data. Show it is Visible by default and can hide the caption from sight.

@@ -24,7 +24,7 @@ A button that sets data-bfbe-theme on the html element, remembered in the visito
 Not nestable: nothing goes inside it.
 
 ## Settings that decide the build
-Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Toggle (`bfbeToggle`)
 - `mode` (select) **Choices**: options: `two` Light and dark (default), `three` Light, dark and system. Choose Light and dark, the default, or Light, dark and system. The second adds a third press that hands the choice back to the device setting.

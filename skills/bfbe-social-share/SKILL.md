@@ -24,7 +24,7 @@ Share buttons for ten destinations: Facebook, X, LinkedIn, Pinterest, WhatsApp, 
 Not nestable: nothing goes inside it.
 
 ## Settings that decide the build
-Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`).
+Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Destinations (`bfbeNetworks`)
 - `networks` (repeater) **Destinations**. One row per button. Its Destination is Facebook, X, LinkedIn, Pinterest, WhatsApp, Telegram, Reddit, Email, Copy link or Share. Optional Label, with dynamic data, and Icon replace its own name and icon.
