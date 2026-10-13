@@ -4,6 +4,22 @@ Each release of this pack names the BFB Elements version it was exported from an
 (`verifiedUpTo` in `skills/bfbe-schemas/references/index.json`). Skills and plugins are released
 together; a pack never describes a plugin that has not shipped.
 
+## 0.3.1, 2026-10-13
+
+Verified up to BFB Elements 1.1.2 and BFB Elements Pro 1.1.2. A patch: the Gotchas that described 1.1.1's faults now
+describe 1.1.2, and the rules that guarded them are gone.
+
+- `bfbe-toast`: a Display set on the toast no longer leaves the closed card in the way; a toast shown over an open modal
+  dialog is lifted into it and can be closed there; BFB Dark Mode leaves it a light card; closing it from the keyboard
+  sends the focus back. Its size is 0.97 KB CSS and 2.19 KB JS. Two rules removed (`_display`, a text colour under Dark
+  Mode).
+- `bfbe-tooltips`: a tooltip on an element inside a link or a button (a linked Icon) is reached through the link, with one
+  tab stop; when it closes is said as it is (the pointer leaving unless the focus is on it, or the focus leaving). The
+  rule against a linked Icon is removed.
+- `bfbe-image-focal-point`: any element's own position for its pictures wins over the point (BFB Devices' Media position
+  included), and the dot has a slider's values and says both directions.
+- `bfbe-devices` and `bfbe-dark-mode`: a line each on the focal point and on the toast.
+
 ## 0.3.0, 2026-10-13
 
 Verified up to BFB Elements 1.1.1 and BFB Elements Pro 1.1.1. A minor version: four new skills.

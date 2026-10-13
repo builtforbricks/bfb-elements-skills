@@ -17,8 +17,8 @@
     ],
     "parent": null,
     "cost": {
-        "css": "0.94 KB",
-        "js": "1.80 KB",
+        "css": "0.97 KB",
+        "js": "2.19 KB",
         "dependencies": "none"
     },
     "controlGroups": {
