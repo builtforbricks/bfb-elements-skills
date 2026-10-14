@@ -1,0 +1,71 @@
+{
+    "name": "footer-reveal",
+    "label": "BFB Footer reveal",
+    "pack": "pro",
+    "feature": true,
+    "on": "the footer template's settings (`bfbeFr*`), with `bfbeFrOff` in the settings of a page or a content template",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/footer-reveal/",
+    "controlGroups": {
+        "bfbeFooterReveal": {
+            "title": "Footer reveal"
+        }
+    },
+    "controls": {
+        "bfbeFrOn": {
+            "group": "bfbeFooterReveal",
+            "label": "Reveal the footer",
+            "type": "checkbox",
+            "description": "The page lifts away at the end to uncover it."
+        },
+        "bfbeFrFrom": {
+            "group": "bfbeFooterReveal",
+            "label": "From this width",
+            "type": "select",
+            "options": {
+                "992": "992px and wider (above Tablet portrait)",
+                "768": "768px and wider (above Mobile landscape)",
+                "479": "479px and wider (above Mobile portrait)"
+            },
+            "inline": true,
+            "placeholder": "Always",
+            "required": [
+                "bfbeFrOn",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeFrShadow": {
+            "group": "bfbeFooterReveal",
+            "label": "Shadow on the page&#039;s edge",
+            "type": "select",
+            "options": {
+                "strong": "Strong",
+                "none": "None"
+            },
+            "inline": true,
+            "placeholder": "Soft",
+            "required": [
+                "bfbeFrOn",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeFrPage": {
+            "group": "bfbeFooterReveal",
+            "label": "Page colour",
+            "type": "color",
+            "description": "Unset: the page&#039;s own background. It must be opaque.",
+            "required": [
+                "bfbeFrOn",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeFrOff": {
+            "group": "bfbeFooterReveal",
+            "label": "Off on this page",
+            "type": "checkbox",
+            "description": "An ordinary footer here, whatever the footer template says."
+        }
+    }
+}

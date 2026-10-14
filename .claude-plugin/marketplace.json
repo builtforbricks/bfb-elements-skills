@@ -6,7 +6,7 @@
     },
     "metadata": {
         "description": "Agent skills for BFB Elements, the Bricks Builder element pack: one skill per element, the schemas the release exports, examples the release checks.",
-        "version": "0.3.0"
+        "version": "0.4.0"
     },
     "plugins": [
         {
@@ -22,6 +22,7 @@
                 "./skills/bfbe-advanced-header-scroll",
                 "./skills/bfbe-age-gate",
                 "./skills/bfbe-audio-player",
+                "./skills/bfbe-background-masks-and-patterns",
                 "./skills/bfbe-before-after",
                 "./skills/bfbe-blockquote",
                 "./skills/bfbe-business-hours",
@@ -36,6 +37,7 @@
                 "./skills/bfbe-dynamic-table",
                 "./skills/bfbe-filter-grid",
                 "./skills/bfbe-flip-box",
+                "./skills/bfbe-footer-reveal",
                 "./skills/bfbe-form",
                 "./skills/bfbe-form-fields",
                 "./skills/bfbe-form-steps",

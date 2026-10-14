@@ -4,6 +4,15 @@ Each release of this pack names the BFB Elements version it was exported from an
 (`verifiedUpTo` in `skills/bfbe-schemas/references/index.json`). Skills and plugins are released
 together; a pack never describes a plugin that has not shipped.
 
+## 0.4.0, 2026-10-14
+
+Verified up to BFB Elements 1.2.0 and BFB Elements Pro 1.2.0. A minor version: two new skills.
+
+- New skills: `bfbe-background-masks-and-patterns` (Pro feature: a shape and a pattern over the background of Bricks'
+  Section, Container, Block and Div) and `bfbe-footer-reveal` (Pro feature: the footer template's reveal, with the
+  page's own switch).
+- `bfbe-start-here` names all eight features; the README lists the seven Pro ones.
+
 ## 0.3.1, 2026-10-13
 
 Verified up to BFB Elements 1.1.2 and BFB Elements Pro 1.1.2. A patch: the Gotchas that described 1.1.1's faults now

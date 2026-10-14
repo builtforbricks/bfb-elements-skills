@@ -4,8 +4,8 @@ Agent skills for [BFB Elements](https://builtforbricks.com/bfb-elements/), the B
 Built for Bricks: one skill per element and feature, the control schemas the plugin's release exports, and
 examples the release checks against the plugin before they are published.
 
-**Status: released.** Every skill is written in full and checked against the plugins. The current release, 0.2.0, goes
-out with BFB Elements 1.0.0, which the schemas describe (the `verifiedUpTo` in
+**Status: released.** Every skill is written in full and checked against the plugins. The current release, 0.4.0, goes
+out with BFB Elements 1.2.0, which the schemas describe (the `verifiedUpTo` in
 `skills/bfbe-schemas/references/index.json`).
 
 ## What a skill is
@@ -63,7 +63,7 @@ Then start a new chat and ask: *List the loaded skills whose names start with `b
 | `bfbe-update` | Compares the pack with the plugin on the site; updates on request |
 | `bfbe-<element>` | One per element: what it is and is not for, cost, structure and typed children, the settings that decide a build, wiring, verified patterns, gotchas, never do, the accessibility it guarantees. Child elements (table rows and cells, slides, timeline moments, showcase steps and cards, filter items, player controls, the form's fields) ride in their parent's skill |
 | `bfbe-form` | BFB Advanced Forms with its twelve parts, steps, rules, formulas, uploads, signatures, the total, payments |
-| `bfbe-hover-effects`, `bfbe-advanced-header-scroll`, `bfbe-form-steps`, `bfbe-form-fields`, `bfbe-tooltips` | The five Pro features, which add controls to other elements rather than being elements |
+| `bfbe-hover-effects`, `bfbe-advanced-header-scroll`, `bfbe-form-steps`, `bfbe-form-fields`, `bfbe-tooltips`, `bfbe-background-masks-and-patterns`, `bfbe-footer-reveal` | The seven Pro features, which add controls to other elements or templates rather than being elements |
 | `bfbe-image-focal-point` | The free plugin's feature: the point of an image, set in the media library, kept wherever Bricks crops the image |
 
 ## How it is made, and why that matters

@@ -1,0 +1,601 @@
+{
+    "name": "background-masks-and-patterns",
+    "label": "BFB Background masks and patterns",
+    "pack": "pro",
+    "feature": true,
+    "on": "the Style tab of Bricks' Section, Container, Block and Div (`section`, `container`, `block`, `div`)",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/background-masks-and-patterns/",
+    "controlGroups": {
+        "bfbeBackdrop": {
+            "title": "Mask and pattern",
+            "tab": "style"
+        }
+    },
+    "controls": {
+        "bfbeMaskSep": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Mask",
+            "type": "separator"
+        },
+        "bfbeMask": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Shape",
+            "type": "select",
+            "options": {
+                "arch": "Arch",
+                "blob": "Corner blob",
+                "diagonal": "Diagonal",
+                "wave": "Wave",
+                "circle": "Circle",
+                "ellipse": "Ellipse",
+                "half": "Curved half",
+                "corner": "Corner triangle",
+                "pill": "Pill",
+                "steps": "Steps",
+                "hills": "Hills",
+                "zigzag": "Zigzag edge",
+                "bars": "Bars",
+                "sun": "Rising sun",
+                "rings": "Rings",
+                "frame": "Frame",
+                "dots": "Scattered dots",
+                "one-circle": "Single circle",
+                "one-ring": "Single ring",
+                "one-square": "Single soft square",
+                "one-triangle": "Single triangle",
+                "one-blob": "Single blob",
+                "one-half": "Single half circle"
+            },
+            "inline": true,
+            "placeholder": "None",
+            "description": "Drawn over the background, behind the content.",
+            "rerender": true
+        },
+        "bfbeMaskColor": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Colour",
+            "type": "color",
+            "description": "Unset: the text colour, faint.",
+            "css": [
+                {
+                    "property": "--bfbe-mask-c",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeMask",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeMaskOpacity": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Opacity (%)",
+            "type": "number",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "inline": true,
+            "placeholder": "100",
+            "css": [
+                {
+                    "property": "--bfbe-mask-op",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeMask",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeMaskFit": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Size",
+            "type": "select",
+            "options": {
+                "cover": "Keep its shape, fill",
+                "contain": "Keep its shape, inside",
+                "custom": "Width and height"
+            },
+            "inline": true,
+            "placeholder": "Stretch to fit",
+            "description": "A single shape keeps its shape unless set.",
+            "css": [
+                {
+                    "property": "--bfbe-mask-fit",
+                    "selector": "",
+                    "required": "cover",
+                    "value": "cover"
+                },
+                {
+                    "property": "--bfbe-mask-fit",
+                    "selector": "",
+                    "required": "contain",
+                    "value": "contain"
+                },
+                {
+                    "property": "--bfbe-mask-fit",
+                    "selector": "",
+                    "required": "custom",
+                    "value": "var(--bfbe-mask-w, auto) var(--bfbe-mask-h, auto)"
+                },
+                {
+                    "property": "--bfbe-mask-o2",
+                    "selector": "",
+                    "value": "auto"
+                }
+            ],
+            "required": [
+                "bfbeMask",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeMaskWidth": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "Follows the shape",
+            "description": "Leave Width or Height empty to keep the shape.",
+            "css": [
+                {
+                    "property": "--bfbe-mask-w",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeMaskFit",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeMaskHeight": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Height",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "Follows the shape",
+            "css": [
+                {
+                    "property": "--bfbe-mask-h",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeMaskFit",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeMaskRepeat": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Repeat",
+            "type": "select",
+            "options": {
+                "x": "Across",
+                "y": "Down",
+                "xy": "Across and down"
+            },
+            "inline": true,
+            "placeholder": "None",
+            "description": "As many whole copies as fit, spread evenly.",
+            "required": [
+                "bfbeMask",
+                "!=",
+                ""
+            ],
+            "rerender": true
+        },
+        "bfbeMaskCopies": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Copies",
+            "type": "number",
+            "min": 1,
+            "max": 24,
+            "inline": true,
+            "placeholder": "As fit",
+            "description": "Exactly this many across, or down.",
+            "css": [
+                {
+                    "property": "--bfbe-mask-n",
+                    "selector": ""
+                },
+                {
+                    "property": "--bfbe-mask-rep",
+                    "selector": "",
+                    "value": "repeat"
+                }
+            ],
+            "required": [
+                "bfbeMaskRepeat",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeMaskSpacing": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Spacing (%)",
+            "type": "number",
+            "min": 0,
+            "max": 100,
+            "step": 10,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Room between copies; 100 is the most the count allows.",
+            "css": [
+                {
+                    "property": "--bfbe-mask-gap",
+                    "selector": ""
+                },
+                {
+                    "property": "--bfbe-mask-sp",
+                    "selector": "",
+                    "value": "space"
+                },
+                {
+                    "property": "--bfbe-mask-slack",
+                    "selector": "",
+                    "value": "1px"
+                }
+            ],
+            "required": [
+                "bfbeMaskCopies",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeMaskAcross": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Position across",
+            "type": "select",
+            "options": {
+                "left": "Left",
+                "right": "Right"
+            },
+            "inline": true,
+            "placeholder": "Centre",
+            "css": [
+                {
+                    "property": "--bfbe-mask-ax",
+                    "selector": "",
+                    "required": "left",
+                    "value": "0%"
+                },
+                {
+                    "property": "--bfbe-mask-ax",
+                    "selector": "",
+                    "required": "right",
+                    "value": "100%"
+                }
+            ],
+            "required": [
+                "bfbeMask",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeMaskMoveX": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Move across",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Negative moves it left, or up.",
+            "css": [
+                {
+                    "property": "--bfbe-mask-mx",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeMask",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeMaskDown": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Position down",
+            "type": "select",
+            "options": {
+                "top": "Top",
+                "bottom": "Bottom"
+            },
+            "inline": true,
+            "placeholder": "Middle",
+            "css": [
+                {
+                    "property": "--bfbe-mask-ay",
+                    "selector": "",
+                    "required": "top",
+                    "value": "0%"
+                },
+                {
+                    "property": "--bfbe-mask-ay",
+                    "selector": "",
+                    "required": "bottom",
+                    "value": "100%"
+                }
+            ],
+            "required": [
+                "bfbeMask",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeMaskMoveY": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Move down",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "0",
+            "css": [
+                {
+                    "property": "--bfbe-mask-my",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeMask",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeMaskFlip": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Flip",
+            "type": "select",
+            "options": {
+                "x": "Across",
+                "y": "Upside down",
+                "xy": "Both"
+            },
+            "inline": true,
+            "placeholder": "None",
+            "required": [
+                "bfbeMask",
+                "!=",
+                ""
+            ],
+            "rerender": true
+        },
+        "bfbeMaskInvert": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Invert",
+            "type": "checkbox",
+            "description": "The colour everywhere but the shape.",
+            "required": [
+                "bfbeMask",
+                "!=",
+                ""
+            ],
+            "rerender": true
+        },
+        "bfbeMaskBlend": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Blend",
+            "type": "select",
+            "options": {
+                "multiply": "Multiply",
+                "screen": "Screen",
+                "overlay": "Overlay",
+                "soft-light": "Soft light"
+            },
+            "inline": true,
+            "placeholder": "Normal",
+            "css": [
+                {
+                    "property": "--bfbe-mask-blend",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeMask",
+                "!=",
+                ""
+            ]
+        },
+        "bfbePatternSep": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Pattern",
+            "type": "separator"
+        },
+        "bfbePattern": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Pattern",
+            "type": "select",
+            "options": {
+                "dots": "Dots",
+                "grid": "Grid",
+                "stripes": "Stripes",
+                "checks": "Checks",
+                "waves": "Waves",
+                "zigzag": "Zigzag",
+                "triangles": "Triangles",
+                "plus": "Plus signs",
+                "diamonds": "Diamonds",
+                "rings": "Rings",
+                "crosshatch": "Crosshatch",
+                "scales": "Scales"
+            },
+            "inline": true,
+            "placeholder": "None",
+            "description": "Repeated over the background, behind the content.",
+            "rerender": true
+        },
+        "bfbePatternColor": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Colour",
+            "type": "color",
+            "description": "Unset: the text colour, faint.",
+            "css": [
+                {
+                    "property": "--bfbe-pat-c",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbePattern",
+                "!=",
+                ""
+            ]
+        },
+        "bfbePatternOpacity": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Opacity (%)",
+            "type": "number",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "inline": true,
+            "placeholder": "100",
+            "css": [
+                {
+                    "property": "--bfbe-pat-op",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbePattern",
+                "!=",
+                ""
+            ]
+        },
+        "bfbePatternSize": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Size",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "24px",
+            "description": "One tile of the pattern.",
+            "css": [
+                {
+                    "property": "--bfbe-pat-s",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbePattern",
+                "!=",
+                ""
+            ]
+        },
+        "bfbePatternMoveX": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Move across",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Shifts where the tiles start.",
+            "css": [
+                {
+                    "property": "--bfbe-pat-mx",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbePattern",
+                "!=",
+                ""
+            ]
+        },
+        "bfbePatternMoveY": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Move down",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "0",
+            "css": [
+                {
+                    "property": "--bfbe-pat-my",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbePattern",
+                "!=",
+                ""
+            ]
+        },
+        "bfbePatternFade": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Fade",
+            "type": "select",
+            "options": {
+                "top": "Out at the top",
+                "bottom": "Out at the bottom",
+                "left": "Out to the left",
+                "right": "Out to the right",
+                "edges": "Out at the edges",
+                "centre": "Clear in the middle"
+            },
+            "inline": true,
+            "placeholder": "None",
+            "required": [
+                "bfbePattern",
+                "!=",
+                ""
+            ],
+            "rerender": true
+        },
+        "bfbePatternBlend": {
+            "tab": "style",
+            "group": "bfbeBackdrop",
+            "label": "Blend",
+            "type": "select",
+            "options": {
+                "multiply": "Multiply",
+                "screen": "Screen",
+                "overlay": "Overlay",
+                "soft-light": "Soft light"
+            },
+            "inline": true,
+            "placeholder": "Normal",
+            "css": [
+                {
+                    "property": "--bfbe-pat-blend",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbePattern",
+                "!=",
+                ""
+            ]
+        }
+    }
+}
