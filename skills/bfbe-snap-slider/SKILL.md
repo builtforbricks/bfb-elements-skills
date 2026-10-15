@@ -16,7 +16,7 @@ A row of Snap Slide children in a native scroll container with scroll snapping, 
 
 **Not for:** Not for a continuous loop or a crossfade: it is a scroll container that snaps, so it has a start and an end. A looping carousel belongs in Bricks' own Slider element.
 
-**Costs a page:** CSS 2.00 KB, JS 2.30 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 2.14 KB, JS 2.48 KB (gzipped), no dependencies, loaded only on pages that use it.
 
 **Nestable:** yes · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 
@@ -116,10 +116,11 @@ Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `b
 
 ### Slides (`bfbeSlides`)
 - `label` (text) **Name**: placeholder Slides; dynamic data accepted. The label screen readers read for the scrolling list, Slides by default. It accepts dynamic data.
+- `direction` (select) **Direction**: options: `x` Across (default), `y` Down; writes CSS. Down fills the width. Widths, bleed and inset: across only.
 - `align` (select) **Snap slides to**: options: `start` Their start edge (default), `center` Their centre; writes CSS. Where a slide lines up when the row snaps, Their start edge by default, or Their centre.
 - `snap` (select) **Snapping**: options: `x mandatory` Always land on a slide (default), `x proximity` Only when close to one, `none` Off, free scrolling; writes CSS. Choose Always land on a slide, the default, Only when close to one, or Off, free scrolling for a looser feel.
 - `stop` (select) **Fast swipe**: options: `normal` Can pass several slides (default), `always` Stops at the next slide; writes CSS. Can pass several slides, the default, lets a quick swipe run past slides. Stops at the next slide halts it at the next one.
-Styling, in the schema file: `slideWidth`, `perView`, `gap`.
+Styling, in the schema file: `height`, `slideWidth`, `perView`, `gap`.
 
 ### Edges (`bfbeEdges`)
 - `bleed` (select) **Full bleed**: options: `none` No, stay inside the container (default), `both` Both edges, `end` The end edge only. No, stay inside the container is the default. Choose Both edges or The end edge only to let slides run off the page, while the row still starts in line with your content.

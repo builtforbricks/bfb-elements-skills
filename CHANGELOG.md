@@ -4,6 +4,19 @@ Each release of this pack names the BFB Elements version it was exported from an
 (`verifiedUpTo` in `skills/bfbe-schemas/references/index.json`). Skills and plugins are released
 together; a pack never describes a plugin that has not shipped.
 
+## Unreleased (with BFB Elements 1.3.0, not yet published)
+
+Exported from BFB Elements 1.3.0 and BFB Elements Pro 1.3.0 as built, not yet released: a pack never describes a plugin
+that has not shipped, so this goes out with 1.3.0 or not at all.
+
+- New skill: `bfbe-breakpoint-canvas` (Pro builder tool: every breakpoint side by side in the builder, its defaults in
+  the option `bfbe_breakpoint_canvas`). It came from the family's export plugin, where it was built, renamed to this
+  pack's conventions.
+- `bfbe-start-here` names nine features. The Advanced Snap Slider's and Dynamic Charts' schemas and generated blocks
+  follow 1.3 (Direction and Height; the CSV address on another site).
+- Still owed before the release: `bfbe-page-loader` (new, from the website's words), and the written sections of
+  `bfbe-snap-slider` and `bfbe-charts` for their 1.3 abilities.
+
 ## 0.4.0, 2026-10-14
 
 Verified up to BFB Elements 1.2.0 and BFB Elements Pro 1.2.0. A minor version: two new skills.

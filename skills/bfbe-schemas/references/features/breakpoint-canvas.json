@@ -1,0 +1,11 @@
+{
+    "name": "breakpoint-canvas",
+    "label": "BFB Breakpoint Canvas",
+    "pack": "pro",
+    "feature": true,
+    "on": "the Bricks builder",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/breakpoint-canvas/",
+    "controlGroups": [],
+    "controls": [],
+    "lives": "A builder tool, not an element: a button in the Bricks builder's toolbar (and Shift + B) that shows every breakpoint of the page side by side. It adds no control to any element and nothing to a page; its defaults are the WordPress option `bfbe_breakpoint_canvas`, set on its own page in the menu (BFB Elements, Breakpoint Canvas)."
+}

@@ -100,8 +100,8 @@
     ],
     "parent": null,
     "cost": {
-        "css": "2.00 KB",
-        "js": "2.30 KB",
+        "css": "2.14 KB",
+        "js": "2.48 KB",
         "dependencies": "none"
     },
     "controlGroups": {
@@ -171,6 +171,43 @@
             "hasDynamicData": "text",
             "inline": true,
             "placeholder": "Slides"
+        },
+        "direction": {
+            "tab": "content",
+            "group": "bfbeSlides",
+            "label": "Direction",
+            "type": "select",
+            "options": {
+                "x": "Across",
+                "y": "Down"
+            },
+            "inline": true,
+            "placeholder": "Across",
+            "breakpoints": true,
+            "description": "Down fills the width. Widths, bleed and inset: across only.",
+            "css": [
+                {
+                    "property": "--bfbe-ss-axis",
+                    "selector": ""
+                }
+            ],
+            "rerender": true
+        },
+        "height": {
+            "tab": "content",
+            "group": "bfbeSlides",
+            "label": "Height",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "480px",
+            "description": "The window&#039;s height, when it goes down.",
+            "css": [
+                {
+                    "property": "--bfbe-ss-h",
+                    "selector": ""
+                }
+            ]
         },
         "slideWidth": {
             "tab": "content",
@@ -253,6 +290,24 @@
                 {
                     "property": "--bfbe-ss-snap",
                     "selector": ""
+                },
+                {
+                    "property": "--bfbe-ss-snap-y",
+                    "selector": "",
+                    "required": "x mandatory",
+                    "value": "y mandatory"
+                },
+                {
+                    "property": "--bfbe-ss-snap-y",
+                    "selector": "",
+                    "required": "x proximity",
+                    "value": "y proximity"
+                },
+                {
+                    "property": "--bfbe-ss-snap-y",
+                    "selector": "",
+                    "required": "none",
+                    "value": "none"
                 }
             ]
         },

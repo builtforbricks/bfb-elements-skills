@@ -543,7 +543,7 @@
             "hasDynamicData": "text",
             "inline": true,
             "placeholder": "/wp-content/uploads/figures.csv",
-            "description": "A file in this site, or a dynamic tag.",
+            "description": "Here or on another site, or a dynamic tag.",
             "required": [
                 "source",
                 "=",
