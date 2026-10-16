@@ -14,11 +14,11 @@ description: "Use when building an image with clickable pins, such as a shop-the
 ## What it is
 An image with pins, each a real button that opens its own nested block as a tooltip or as a card grown from the pin. Each pin's expanded state is written into the HTML, opening a panel moves focus into it, and Escape returns focus to the pin. Color, size and icon can be set per pin in the same list, and a link can lie over a whole panel.
 
-**Not for:** Pins sit at fixed percentages of one picture, and each opens a block you place yourself. It does not zoom or pan, and it cannot build pins from a query loop.
+**Not for:** Pins sit at percentages of one picture, each a number or a post's own field, and each opens a block you place yourself. It does not zoom or pan, and it cannot make one pin per post of a query.
 
 **Costs a page:** CSS 1.78 KB, JS 2.40 KB (gzipped), no dependencies, loaded only on pages that use it.
 
-**Nestable:** yes · **In a query loop:** no · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
+**Nestable:** yes · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 
 ## Structure
 Nestable: any Bricks element goes inside (blocks, headings, text, images, a form).
@@ -185,20 +185,39 @@ The fixture's numbered tooltip after the script has run, trimmed (`is-ready`, th
 }
 ```
 
+**Pins placed by each post's own fields, in a query loop.** From the fixture `fixture-hotspots-loop` (1.3.0): the element sits in a Block with **Use query loop** (`hasLoop` and `query` on the Block), and each pin's `x` and `y` are dynamic tags, here two ACF number fields, so every post places its pins from its own values. A pin can mix a tag on one axis with a number on the other.
+
+```json
+{
+  "name": "bfbe-hotspots",
+  "settings": {
+    "image": {"id": 3143, "size": "large", "url": "https://example.com/wp-content/uploads/room.jpg"},
+    "builderView": "live",
+    "pins": [{"name": "{post_title}", "x": "{acf_pin_left}", "y": "{acf_pin_top}"}, {"name": "Detail", "x": 10, "y": 90}]
+  },
+  "children": [
+    {"name": "block", "children": [{"name": "text-basic", "settings": {"text": "{post_excerpt}"}}]},
+    {"name": "block", "children": [{"name": "text-basic", "settings": {"text": "A fixed second pin."}}]}
+  ]
+}
+```
+
 ## Gotchas
 
-- **No picture, no output.** With `image` empty the page renders nothing, while the canvas shows Bricks' placeholder photograph. An `id` that is not an attachment on this site also renders nothing, even beside a working `url`; an image with no `id` falls back to its `url`. <!-- src: plugins/bfb-elements-pro/elements/hotspots.php:488, :496, :503; measured 2026-10-08 through bfbe_defaults_render: id 999999 with an https url rendered 0 bytes, the url alone rendered -->
-- **Alt text comes from the media library.** The element has no alt control: with an `id` the image takes the attachment's Alternative Text, and an image given by `url` alone gets `alt=""`. <!-- src: plugins/bfb-elements-pro/elements/hotspots.php:489, :491; measured 2026-10-08: id 3143 printed its library alt -->
-- **Pins and blocks pair by position, and the insert tree has no pins.** As inserted there are two empty blocks and no `pins`, so nothing opens. A pin with no block is a `<span>` that opens nothing; a block past the last pin is never hidden and shows under the picture. The notices "Add a pin." and "One nested block per pin." stay in the canvas. <!-- src: plugins/bfb-elements-pro/elements/hotspots.php:417, :574, :577, :624, :633; src/elements/hotspots/hotspots.js:91; measured 2026-10-08 on a planted copy of the fixture: the extra block display flex, 63px tall -->
+- **No picture, no output.** With `image` empty the page renders nothing, while the canvas shows Bricks' placeholder photograph. An `id` that is not an attachment on this site also renders nothing, even beside a working `url`; an image with no `id` falls back to its `url`. <!-- src: plugins/bfb-elements-pro/elements/hotspots.php:500, :508, :515; measured 2026-10-08 through bfbe_defaults_render: id 999999 with an https url rendered 0 bytes, the url alone rendered -->
+- **Alt text comes from the media library.** The element has no alt control: with an `id` the image takes the attachment's Alternative Text, and an image given by `url` alone gets `alt=""`. <!-- src: plugins/bfb-elements-pro/elements/hotspots.php:501, :503; measured 2026-10-08: id 3143 printed its library alt -->
+- **Pins and blocks pair by position, and the insert tree has no pins.** As inserted there are two empty blocks and no `pins`, so nothing opens. A pin with no block is a `<span>` that opens nothing; a block past the last pin is never hidden and shows under the picture. The notices "Add a pin." and "One nested block per pin." stay in the canvas. <!-- src: plugins/bfb-elements-pro/elements/hotspots.php:419, :586, :589, :636, :645; src/elements/hotspots/hotspots.js:91; measured 2026-10-08 on a planted copy of the fixture: the extra block display flex, 63px tall -->
 - **The panel's look is the block's own Style tab.** The element sets **Min width** `panelMinWidth` and **Blur behind** `panelBlur`; background, padding, border, corners, shadow and width go on each block, which outranks the defaults (Canvas, `.9em 1.1em`, 8px corners). Blur behind shows through a translucent block background alone. <!-- src: docs/elements/hotspots.md "Round 412"; src/elements/hotspots/hotspots.css:71, :87 -->
 - **A panel is as narrow as its content allows.** It sizes to `min-content` and never under **Min width** (240px unset), so a paragraph wraps at 240px. Set **Width** `_width` on the block, or `panelMinWidth`, for a wider card. <!-- src: src/elements/hotspots/hotspots.css:76, :77; docs/elements/hotspots.md "Round 412"; measured 2026-10-08: 240px open, wider with a width on the block -->
 - **The picture draws at its own pixel width.** The stage is `fit-content` and the image is never stretched, so the chosen `size` sets the width, capped by the container and placed at its start. The fixture's `large` (896px) sat left in an 1100px container. <!-- src: src/elements/hotspots/hotspots.css:19, :20; measured 2026-10-08 on fixture-views-hotspots -->
 - **A light pin gets light words.** A pin's text and icon default to the page's `Canvas` colour, so a white `pinBackground` with **Text colour** `pinText` unset reads white on white. Set `pinText`, and `iconColor` for an icon, with any light fill. <!-- src: src/elements/hotspots/hotspots.css:6, :55; docs/elements/hotspots.md "Round 394" -->
-- **Grown from the pin drops the pin's text and the Panel effect.** With `panelStyle: "expand"`, **Text on the pin** `label` is not rendered and **Panel effect** `panelEffect` changes nothing; `duration` and `easing` still time the growth. The dot does not scale on hover in this style. <!-- src: plugins/bfb-elements-pro/elements/hotspots.php:599; src/elements/hotspots/hotspots.css:111, :142, :165; measured 2026-10-08: transition 0.7s under fx-none, transform none under fx-rise -->
+- **Grown from the pin drops the pin's text and the Panel effect.** With `panelStyle: "expand"`, **Text on the pin** `label` is not rendered and **Panel effect** `panelEffect` changes nothing; `duration` and `easing` still time the growth. The dot does not scale on hover in this style. <!-- src: plugins/bfb-elements-pro/elements/hotspots.php:611; src/elements/hotspots/hotspots.css:111, :142, :165; measured 2026-10-08: transition 0.7s under fx-none, transform none under fx-rise -->
 - **Where there is room means where the pin sits.** With **Grows towards** `expandFrom` on `auto`, a pin past 55% down grows up and past 55% across grows left; the viewport is not consulted. <!-- src: src/elements/hotspots/hotspots.js:102 -->
 - **A link takes the pointer from the panel's content.** With a pin's `link`, everything in the panel but links and buttons ignores clicks, so a form field there cannot be used. A link is laid for http, https, mailto, tel and relative addresses. <!-- src: src/elements/hotspots/hotspots.css:169, :170; src/elements/hotspots/hotspots.js:131 -->
 - **Closed panels are hidden inline.** The script puts `display: none` inline on each closed panel, which outranks a Display set on the block; a `display` with `!important` beats it and keeps the panel on screen after it closes. <!-- src: src/elements/hotspots/hotspots.js:110; docs/elements/hotspots.md "Every starter card showed on the site"; measured 2026-10-08: display flex, 99px tall after a close -->
-- **The canvas is not the page.** **Show it** `builderView` defaults to Open: every panel listed under the picture in the default look, grown ones outside the stage. Closed shows the picture and its pins; Working opens a panel on click, as the site does. <!-- src: plugins/bfb-elements-pro/elements/hotspots.php:547, :645; src/elements/hotspots/hotspots.css:177, :183 -->
+- **Left and Top take dynamic data (1.3.0).** `x` and `y` accept a tag (`{acf_...}`, `{cf_...}`) as well as a number. The tag is resolved per post, then read as a percentage: a decimal comma reads as a point, a value outside 0 to 100 is held to the edge, and a tag that resolves empty (the post has no value) puts the pin in the middle, at 50. Before Pro 1.3.0 a tag there read as 0. <!-- src: plugins/bfb-elements-pro/elements/hotspots.php:86, :95, :482, :606; docs/elements/hotspots.md "Pin positions from dynamic data (1.3)"; measured 2026-10-16 with dev/hotspots-loop-probe.cjs, 27 readings on Bricks 2.4.2 and 2.3.10 -->
+- **In a query loop the pins follow the post, their number does not.** Each pin's **Name** `name`, **Text on the pin** `label` and position resolve per post, but every post has the same number of pins and the same nested blocks, filled by their own tags. It cannot make one pin per post of a query. <!-- src: plugins/bfb-elements-pro/elements/hotspots.php:606-617; measured 2026-10-16 on Bricks 2.4.2: three posts, each pin's name and text its own post title, each position its own fields -->
+- **The canvas is not the page.** **Show it** `builderView` defaults to Open: every panel listed under the picture in the default look, grown ones outside the stage. Closed shows the picture and its pins; Working opens a panel on click, as the site does. <!-- src: plugins/bfb-elements-pro/elements/hotspots.php:559, :657; src/elements/hotspots/hotspots.css:177, :183 -->
 
 ## Never do
 
@@ -208,5 +227,6 @@ The fixture's numbered tooltip after the script has run, trimmed (`is-ready`, th
 - Do not style panels through `.bfbe-hotspots__panel` in custom CSS; set the look on each block's Style tab.
 - Do not give a panel block `display` with `!important`.
 - Do not put form fields in a panel whose pin has a `link`.
+- Do not write a tag into `x` or `y` for a site on Pro older than 1.3.0; there it reads as 0, the top left corner.
 - Do not find the element or a panel by `_cssId`; use a class in `_cssClasses`.
 - Do not set `popover`, `tabindex` or `aria-*` on the panel blocks or the pins; the element and its script set them.

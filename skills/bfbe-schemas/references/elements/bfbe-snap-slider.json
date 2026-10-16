@@ -100,8 +100,8 @@
     ],
     "parent": null,
     "cost": {
-        "css": "2.14 KB",
-        "js": "2.48 KB",
+        "css": "2.25 KB",
+        "js": "2.57 KB",
         "dependencies": "none"
     },
     "controlGroups": {
@@ -233,7 +233,7 @@
             "min": 0,
             "inline": true,
             "placeholder": "Off",
-            "description": "Overrides the width. 1.2 shows a peek.",
+            "description": "Overrides the size. 1.2 shows a peek.",
             "css": [
                 {
                     "property": "--bfbe-ss-per",
@@ -532,6 +532,7 @@
             "max": 100,
             "inline": true,
             "placeholder": 50,
+            "description": "Across only. Down, the buttons sit at the edges.",
             "required": [
                 [
                     "arrows",

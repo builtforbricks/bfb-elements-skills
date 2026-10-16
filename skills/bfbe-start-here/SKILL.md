@@ -20,13 +20,14 @@ adds. Every per-element skill (`bfbe-modal`, `bfbe-table`, `bfbe-form`, ...) ass
   `bfbe-form-choice`, `bfbe-form-number`, `bfbe-form-date`, `bfbe-form-upload`, `bfbe-form-signature`,
   `bfbe-form-repeater`, `bfbe-form-step`, `bfbe-form-progress`, `bfbe-form-summary`, `bfbe-form-total`,
   `bfbe-form-button`), all in `bfbe-form`.
-- Nine things are features, not elements: Hover Effects and Tooltips (controls on every element, Bricks' own
+- Ten things are features, not elements: Hover Effects and Tooltips (controls on every element, Bricks' own
   included), Advanced Header Scroll (the header template and every element in it), Footer reveal (the footer template),
   Background masks and patterns (Bricks' Section, Container, Block and Div), Form Steps and Form Fields (both on Bricks'
-  own form element), Breakpoint Canvas (a builder tool in Bricks' toolbar, nothing on a page), and the free plugin's
-  Image focal point (set in the media library). Each has a skill: `bfbe-hover-effects`, `bfbe-tooltips`,
-  `bfbe-advanced-header-scroll`, `bfbe-footer-reveal`, `bfbe-background-masks-and-patterns`, `bfbe-form-steps`,
-  `bfbe-form-fields`, `bfbe-breakpoint-canvas`, `bfbe-image-focal-point`.
+  own form element), Page Loader (a template type of its own, shown where its Conditions say), Breakpoint Canvas (a
+  builder tool in Bricks' toolbar, nothing on a page), and the free plugin's Image focal point (set in the media
+  library). Each has a skill: `bfbe-hover-effects`, `bfbe-tooltips`, `bfbe-advanced-header-scroll`,
+  `bfbe-footer-reveal`, `bfbe-background-masks-and-patterns`, `bfbe-form-steps`, `bfbe-form-fields`,
+  `bfbe-page-loader`, `bfbe-breakpoint-canvas`, `bfbe-image-focal-point`.
 - **An element missing from the list is turned off, not absent.** Every element has a switch on the pack's Elements
   page (WordPress menu BFB Elements, Elements), and an element turned off leaves Bricks' registry entirely; a Pro
   element is also missing when Pro is not installed. Say which it is and stop. Never conclude the pack lacks the

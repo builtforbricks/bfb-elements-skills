@@ -4,18 +4,23 @@ Each release of this pack names the BFB Elements version it was exported from an
 (`verifiedUpTo` in `skills/bfbe-schemas/references/index.json`). Skills and plugins are released
 together; a pack never describes a plugin that has not shipped.
 
-## Unreleased (with BFB Elements 1.3.0, not yet published)
+## 0.5.0, 2026-10-16
 
-Exported from BFB Elements 1.3.0 and BFB Elements Pro 1.3.0 as built, not yet released: a pack never describes a plugin
-that has not shipped, so this goes out with 1.3.0 or not at all.
+Verified up to BFB Elements 1.3.0 and BFB Elements Pro 1.3.0. A minor version: two new skills, and three element
+skills for their 1.3 abilities.
 
-- New skill: `bfbe-breakpoint-canvas` (Pro builder tool: every breakpoint side by side in the builder, its defaults in
-  the option `bfbe_breakpoint_canvas`). It came from the family's export plugin, where it was built, renamed to this
-  pack's conventions.
-- `bfbe-start-here` names nine features. The Advanced Snap Slider's and Dynamic Charts' schemas and generated blocks
-  follow 1.3 (Direction and Height; the CSV address on another site).
-- Still owed before the release: `bfbe-page-loader` (new, from the website's words), and the written sections of
-  `bfbe-snap-slider` and `bfbe-charts` for their 1.3 abilities.
+- New skills: `bfbe-page-loader` (Pro template type: a screen built from elements, shown over the page while it is
+  drawn, wherever its Conditions say; the template is made in Bricks, since `bricks/create-template` does not take
+  the type) and `bfbe-breakpoint-canvas` (Pro builder tool: every breakpoint side by side in the builder, its
+  defaults in the option `bfbe_breakpoint_canvas`).
+- `bfbe-snap-slider`: Direction (Across or Down) per breakpoint, the window's Height, what acts across only, a
+  slider nested in a Down slide, the keys; a pattern from the Down fixture.
+- `bfbe-charts`: a CSV address on another site, fetched by the site's server and kept an hour, the last good copy
+  for up to a week; never from the visitor's link.
+- `bfbe-hotspots`: each pin's Left and Top take dynamic data, so in a query loop every post places its own pins; a
+  pattern with ACF fields. In a query loop: yes.
+- `bfbe-start-here` names all ten features (nine Pro, one free).
+- Source references in the written sections follow the 1.3 code.
 
 ## 0.4.0, 2026-10-14
 

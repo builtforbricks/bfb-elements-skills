@@ -1,0 +1,55 @@
+{
+    "name": "page-loader",
+    "label": "BFB Page Loader",
+    "pack": "pro",
+    "feature": true,
+    "on": "the settings of a Bricks template of type BFB Page Loader (`bfbe_page_loader`), shown over the page where its Conditions say",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/page-loader/",
+    "controlGroups": {
+        "bfbePageLoader": {
+            "title": "Page loader"
+        }
+    },
+    "controls": {
+        "bfbePlShow": {
+            "group": "bfbePageLoader",
+            "label": "Show",
+            "type": "select",
+            "options": {
+                "every": "On every page",
+                "first": "On the first page of a visit"
+            },
+            "inline": true,
+            "placeholder": "On every page",
+            "description": "Where its Conditions say; nowhere without them."
+        },
+        "bfbePlLimit": {
+            "group": "bfbePageLoader",
+            "label": "At most (s)",
+            "type": "number",
+            "min": 0.5,
+            "max": 3,
+            "step": 0.5,
+            "inline": true,
+            "placeholder": 3,
+            "description": "Gone when the page is ready, or by then."
+        },
+        "bfbePlColor": {
+            "group": "bfbePageLoader",
+            "label": "Screen colour",
+            "type": "color",
+            "description": "Unset: the page&#039;s own background."
+        },
+        "bfbePlFade": {
+            "group": "bfbePageLoader",
+            "label": "Fade (ms)",
+            "type": "number",
+            "min": 0,
+            "max": 1000,
+            "step": 25,
+            "inline": true,
+            "placeholder": 200
+        }
+    },
+    "lives": "A Bricks template type of its own, not an element: a template of type BFB Page Loader (`bfbe_page_loader`), built in the builder like any template and shown as a screen over the page wherever its Conditions say (nowhere without them), gone when the page is ready or at its limit, whichever comes first. It adds no control to any element; its four settings (`bfbePlShow`, `bfbePlLimit`, `bfbePlColor`, `bfbePlFade`: Show, At most, Screen colour, Fade) sit in the template's own settings panel."
+}

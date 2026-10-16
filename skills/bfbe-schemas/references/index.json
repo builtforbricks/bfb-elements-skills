@@ -676,6 +676,14 @@
             "docs": "https://builtforbricks.com/bfb-elements/docs/breakpoint-canvas/"
         },
         {
+            "name": "page-loader",
+            "label": "BFB Page Loader",
+            "pack": "pro",
+            "skill": "bfbe-page-loader",
+            "schemaPath": "./features/page-loader.json",
+            "docs": "https://builtforbricks.com/bfb-elements/docs/page-loader/"
+        },
+        {
             "name": "advanced-header-scroll",
             "label": "BFB Advanced Header Scroll",
             "pack": "pro",

@@ -100,7 +100,8 @@
                     "min": 0,
                     "max": 100,
                     "inline": true,
-                    "placeholder": 50
+                    "placeholder": 50,
+                    "hasDynamicData": "text"
                 },
                 "y": {
                     "label": "Top (%)",
@@ -108,7 +109,8 @@
                     "min": 0,
                     "max": 100,
                     "inline": true,
-                    "placeholder": 50
+                    "placeholder": 50,
+                    "hasDynamicData": "text"
                 },
                 "label": {
                     "label": "Text on the pin",
