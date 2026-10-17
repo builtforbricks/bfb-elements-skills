@@ -17,6 +17,11 @@ latest, it holds nothing back); never as making a page fast, nor as helping perf
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/page-loader/
 
 ## What it is
+A feature with a Bricks template type of its own, BFB Page Loader, not an element: a screen you build in the builder, shown over the page while it is being drawn wherever its Conditions say, the most specific match winning as a header's does. It leaves once the page is ready, three seconds at the latest by CSS alone, holds nothing back, and never shows to a visitor who asks for less motion.
+
+**Not for:** It shows a screen while the page draws; it does not make a page load sooner. A loader with no conditions shows nowhere. A Lottie works on it but starts late, since its player loads at the end of the page: for a loader, use an animated SVG or CSS.
+
+**Nestable:** no · **In a query loop:** no · **Dynamic data:** no · **Keyboard:** no · **Reduced motion:** yes
 
 ## Where it lives
 A Bricks template type of its own, not an element: a template of type BFB Page Loader (`bfbe_page_loader`), built in the builder like any template and shown as a screen over the page wherever its Conditions say (nowhere without them), gone when the page is ready or at its limit, whichever comes first. It adds no control to any element; its four settings (`bfbePlShow`, `bfbePlLimit`, `bfbePlColor`, `bfbePlFade`: Show, At most, Screen colour, Fade) sit in the template's own settings panel.
@@ -24,10 +29,16 @@ A Bricks template type of its own, not an element: a template of type BFB Page L
 ## Settings that decide the build
 
 ### Page loader (`bfbePageLoader`)
-- `bfbePlShow` (select) **Show**: options: `every` On every page (default), `first` On the first page of a visit. Where its Conditions say; nowhere without them.
-- `bfbePlLimit` (number) **At most (s)**. Gone when the page is ready, or by then.
-- `bfbePlColor` (color) **Screen colour**. Unset: the page's own background.
-- `bfbePlFade` (number) **Fade (ms)**
+- `bfbePlShow` (select) **Show**: options: `every` On every page (default), `first` On the first page of a visit. On every page, the default, or On the first page of a visit, so later pages in the same browser tab never show it.
+- `bfbePlLimit` (number) **At most (s)**. The longest the screen stays, 3 seconds unless set lower, down to 0.5. It leaves sooner when the page is ready.
+- `bfbePlColor` (color) **Screen colour**. The colour behind the screen's contents. Unset, it is the page's own background (the body's, else the root's, else white).
+- `bfbePlFade` (number) **Fade (ms)**. How long it takes to leave, 200 unless set.
+
+## What it guarantees for accessibility (do not undo)
+- Hidden from screen readers: the screen is decoration, and its contents never take keyboard focus.
+- While it is up it takes the clicks it covers, so nothing unseen is pressed through it.
+- Visitors who ask their device for less motion never see it.
+- A page brought back by the browser's Back button never shows it.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

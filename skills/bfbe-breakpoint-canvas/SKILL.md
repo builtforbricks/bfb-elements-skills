@@ -16,11 +16,22 @@ it never builds with it.
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/breakpoint-canvas/
 
 ## What it is
+A builder tool, not an element: every breakpoint of the page side by side in the Bricks builder, on an infinite canvas you pan and zoom, or as frames under Bricks' own canvas in a row or a grid. Click an element in any frame to select it in Bricks. The frames are read-only copies of the canvas without scripts, and it adds nothing to a page.
+
+**Not for:** The frames are read-only: you edit in Bricks' panels, and nothing is typed, dragged or dropped into a frame. Scripts do not run in a frame, so sliders, animations and anything a script draws are checked on the front end. Verified on Bricks 2.3.10 and 2.4.2, measured in Chrome.
+
+**Nestable:** no · **In a query loop:** no · **Dynamic data:** no · **Keyboard:** yes · **Reduced motion:** no
 
 ## Where it lives
 A builder tool, not an element: a button in the Bricks builder's toolbar (and Shift + B) that shows every breakpoint of the page side by side. It adds no control to any element and nothing to a page; its defaults are the WordPress option `bfbe_breakpoint_canvas`, set on its own page in the menu (BFB Elements, Breakpoint Canvas).
 
 ## Settings that decide the build
+
+## What it guarantees for accessibility (do not undo)
+- Shift + B opens and closes it when the focus is not in a field.
+- With the board focused, plus and minus zoom and the arrow keys pan; Shift + 1 fits every frame, Shift + 2 shows the selected element and Shift + 0 goes to 100%.
+- Closing from the bar hands the keyboard focus back to the toolbar button.
+- It never takes Ctrl or Cmd with plus, minus or 0, the browser's own zoom.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

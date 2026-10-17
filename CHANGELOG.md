@@ -4,6 +4,16 @@ Each release of this pack names the BFB Elements version it was exported from an
 (`verifiedUpTo` in `skills/bfbe-schemas/references/index.json`). Skills and plugins are released
 together; a pack never describes a plugin that has not shipped.
 
+## 0.5.1, 2026-10-17
+
+Verified up to BFB Elements 1.3.0 and BFB Elements Pro 1.3.0. A patch: exported again from the website's words now that
+its 1.3 pages are live.
+
+- `bfbe-page-loader` and `bfbe-breakpoint-canvas`: What it is, Not for, the badges and the accessibility each guarantees,
+  from their new pages; the Page Loader's four settings described.
+- `bfbe-snap-slider`: Direction described as the site does (per breakpoint, what acts across only).
+- The schema index carries the pack's own version (it said 0.4.0 in 0.5.0).
+
 ## 0.5.0, 2026-10-16
 
 Verified up to BFB Elements 1.3.0 and BFB Elements Pro 1.3.0. A minor version: two new skills, and three element

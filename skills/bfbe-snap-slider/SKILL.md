@@ -116,7 +116,7 @@ Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `b
 
 ### Slides (`bfbeSlides`)
 - `label` (text) **Name**: placeholder Slides; dynamic data accepted. The label screen readers read for the scrolling list, Slides by default. It accepts dynamic data.
-- `direction` (select) **Direction**: options: `x` Across (default), `y` Down; writes CSS. Down fills the width. Widths, bleed and inset: across only.
+- `direction` (select) **Direction**: options: `x` Across (default), `y` Down; writes CSS. Across, the default, or Down, set per breakpoint, so a column of slides on a desktop can turn into a row on a phone. Down, the slides fill the width; Slide width, a slide's own Width, the Width pattern, Full bleed and Start inset are for across only.
 - `align` (select) **Snap slides to**: options: `start` Their start edge (default), `center` Their centre; writes CSS. Where a slide lines up when the row snaps, Their start edge by default, or Their centre.
 - `snap` (select) **Snapping**: options: `x mandatory` Always land on a slide (default), `x proximity` Only when close to one, `none` Off, free scrolling; writes CSS. Choose Always land on a slide, the default, Only when close to one, or Off, free scrolling for a looser feel.
 - `stop` (select) **Fast swipe**: options: `normal` Can pass several slides (default), `always` Stops at the next slide; writes CSS. Can pass several slides, the default, lets a quick swipe run past slides. Stops at the next slide halts it at the next one.
