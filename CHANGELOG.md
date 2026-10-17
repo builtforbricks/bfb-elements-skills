@@ -4,6 +4,18 @@ Each release of this pack names the BFB Elements version it was exported from an
 (`verifiedUpTo` in `skills/bfbe-schemas/references/index.json`). Skills and plugins are released
 together; a pack never describes a plugin that has not shipped.
 
+## 0.5.2, 2026-10-17
+
+Verified up to BFB Elements 1.3.1 and BFB Elements Pro 1.3.1, exported from the plugins and the website's live 1.3.1 words.
+
+- `bfbe-breakpoint-canvas`: a click in a frame switches Bricks to that breakpoint in every layout, and Row and Grid's
+  frames then hold every other breakpoint, the base included; media set to play by itself is muted or paused in the
+  frames; Space is left to a focused button or toggle in Bricks' panels.
+- `bfbe-charts`: one fresh fetch of a remote CSV per page view; a reply compressed anyway inflated to 1 MB at most; an
+  address holding `{url_parameter}` or `{search_term}` refused; the Memcached limit.
+- `bfbe-page-loader`: the free plugin keeps loaders out of page content when Pro is removed without deactivating it; how to
+  export a loader to a site without Pro.
+
 ## 0.5.1, 2026-10-17
 
 Verified up to BFB Elements 1.3.0 and BFB Elements Pro 1.3.0. A patch: exported again from the website's words now that

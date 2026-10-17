@@ -16,7 +16,7 @@ it never builds with it.
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/breakpoint-canvas/
 
 ## What it is
-A builder tool, not an element: every breakpoint of the page side by side in the Bricks builder, on an infinite canvas you pan and zoom, or as frames under Bricks' own canvas in a row or a grid. Click an element in any frame to select it in Bricks. The frames are read-only copies of the canvas without scripts, and it adds nothing to a page.
+A builder tool, not an element: every breakpoint of the page side by side in the Bricks builder, on an infinite canvas you pan and zoom, or as frames under Bricks' own canvas in a row or a grid. Click an element in any frame to select it in Bricks and switch to that breakpoint, in every layout. The frames are read-only copies of the canvas without scripts, and it adds nothing to a page.
 
 **Not for:** The frames are read-only: you edit in Bricks' panels, and nothing is typed, dragged or dropped into a frame. Scripts do not run in a frame, so sliders, animations and anything a script draws are checked on the front end. Verified on Bricks 2.3.10 and 2.4.2, measured in Chrome.
 
@@ -32,6 +32,7 @@ A builder tool, not an element: a button in the Bricks builder's toolbar (and Sh
 - With the board focused, plus and minus zoom and the arrow keys pan; Shift + 1 fits every frame, Shift + 2 shows the selected element and Shift + 0 goes to 100%.
 - Closing from the bar hands the keyboard focus back to the toolbar button.
 - It never takes Ctrl or Cmd with plus, minus or 0, the browser's own zoom.
+- Space is left to a button or toggle in Bricks' panels or toolbar that has the focus, even with the pointer over the board.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM
@@ -49,8 +50,8 @@ In the builder, opened:
 
 ## Wiring to other elements
 
-- **Bricks' breakpoints** decide the frames, custom ones included: one per breakpoint other than the base (Row and Grid), every one with the base (the infinite canvas). There is nothing to wire on an element.
-- **Click to select.** A click in a frame selects that element in Bricks (it highlights and scrolls to it, the panel opens it). On the infinite canvas Bricks also switches to that frame's breakpoint, by clicking Bricks' own breakpoint button, so the next change in the panel applies to that breakpoint; the frame's label shows **Editing**.
+- **Bricks' breakpoints** decide the frames, custom ones included: in Row and Grid one per breakpoint other than the one Bricks' canvas shows (the base included when Bricks is on another, since Pro 1.3.1), on the infinite canvas every one with the base. There is nothing to wire on an element.
+- **Click to select.** A click in a frame selects that element in Bricks (it highlights and scrolls to it, the panel opens it) and, in every layout (Pro 1.3.1; before, the infinite canvas only), switches Bricks to that frame's breakpoint by clicking Bricks' own breakpoint button, so the next change in the panel applies to that breakpoint. On the infinite canvas the frame's label shows **Editing**; in Row and Grid, Bricks' own canvas shows that breakpoint and the frames under it become every other one, the base included, so none shows twice. <!-- src: src/builder/breakpoint-canvas/breakpoint-canvas.js:401-430,1740-1750; dev/breakpoint-canvas/canvas.cjs section e -->
 - **The only Bricks state it writes** is what selecting needs: `messageOrigin`, `activeId`, `scrollToElementId`, `activePanel`, through one allowlist. It never saves and never writes the active breakpoint. <!-- src: src/builder/breakpoint-canvas/breakpoint-canvas.js:92-146 -->
 - **Bricks' preview mode**: the bar and the frames step aside and come back.
 - **The defaults** (everyone's starting point) are the option `bfbe_breakpoint_canvas`; the bar's choices are kept per browser (`localStorage` key `bfbe_breakpoint_canvas_ui`) and win over the defaults in that browser.
@@ -94,7 +95,7 @@ Tell the owner where it is: the **Infinite Canvas** button in the builder's tool
 - **Copies without scripts.** Sliders, interactions, animations and anything a script draws do not run in a frame; links and forms in it never navigate. Check those on the front end at each width.
 - **Not the front end.** The frames show what Bricks' canvas renders. What only the front end adds is not there: BFB Dark Mode's colours, for one, since it paints the front end and not the builder.
 - **The page's elements only.** A click on an element of the header or footer template in a frame selects nothing; edit a template in its own builder. <!-- src: docs/REVIEW-2026-10-15.md canvas-js-3 -->
-- **Autoplaying media plays in every frame.** A video or audio set to autoplay on the page starts again in each frame, sound included. <!-- src: docs/REVIEW-2026-10-15.md canvas-js-6 (held, today's behaviour) -->
+- **Media set to play by itself is quiet in the frames (Pro 1.3.1).** A video plays muted in every frame and an audio does not start there; Bricks' own canvas plays them as the page does. Earlier versions played them again in each frame, sound included. <!-- src: src/builder/breakpoint-canvas/breakpoint-canvas.js:510-540,1880; dev/breakpoint-canvas/canvas.cjs section m -->
 - **`vh` in a frame is measured against 900 px** on the infinite canvas, so a page-tall frame does not grow with its own height.
 - **The Bricks line.** Verified on Bricks 2.3.10 and 2.4.2; at least 2.3.10 to start. A later release of a verified line (2.4.3, say) opens with no note, and the canvas page in the menu says "Newer than Bricks 2.4.2, checked". On another line the bar says "Bricks <version> is not verified yet. The mirrors are read-only and should work; check them against the canvas." When Bricks no longer offers what the frames rely on, the button says "Canvas mirrors need a Bricks version we have verified." and it does not open. <!-- src: plugins/bfb-elements-pro/includes/class-breakpoint-canvas.php:37-46,114-122; plugins/bfb-elements-pro/includes/class-breakpoint-canvas-screen.php:70-76 -->
 - **Measured in Chrome only.** Safari, Firefox and touch pinch are not measured.
