@@ -4,6 +4,14 @@ Each release of this pack names the BFB Elements version it was exported from an
 (`verifiedUpTo` in `skills/bfbe-schemas/references/index.json`). Skills and plugins are released
 together; a pack never describes a plugin that has not shipped.
 
+## 0.5.3, 2026-10-18
+
+Verified up to BFB Elements 1.3.2 and BFB Elements Pro 1.3.2, exported from the plugins and the website's live 1.3.2 words.
+
+- `bfbe-table`, `bfbe-dynamic-table`, `bfbe-comparison-table`: the stacking width's **Custom** option and **Custom width**
+  (px, rem or em; a rem is the site's root font size, never assumed 16px), what happens to another unit, and the
+  root's `--stack-custom` class on the Table.
+
 ## 0.5.2, 2026-10-17
 
 Verified up to BFB Elements 1.3.1 and BFB Elements Pro 1.3.1, exported from the plugins and the website's live 1.3.1 words.

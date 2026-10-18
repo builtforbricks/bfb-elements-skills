@@ -1340,7 +1340,8 @@
                 "480": "480px",
                 "640": "640px",
                 "768": "768px",
-                "992": "992px"
+                "992": "992px",
+                "custom": "Custom"
             },
             "inline": true,
             "placeholder": "640px",
@@ -1350,6 +1351,31 @@
                 [
                     "",
                     "scroll"
+                ]
+            ]
+        },
+        "stackWidth": {
+            "tab": "content",
+            "group": "bfbeTable",
+            "label": "Custom width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "700px",
+            "description": "Stacks at this width or narrower.",
+            "required": [
+                [
+                    "responsive",
+                    "!=",
+                    [
+                        "",
+                        "scroll"
+                    ]
+                ],
+                [
+                    "stackBelow",
+                    "=",
+                    "custom"
                 ]
             ]
         },
