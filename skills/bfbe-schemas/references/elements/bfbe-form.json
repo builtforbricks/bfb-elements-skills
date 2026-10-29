@@ -300,12 +300,21 @@
             ]
         },
         "bfbePay": {
-            "title": "Pay with Stripe",
+            "title": "Take payment",
             "tab": "content",
             "required": [
                 "actions",
                 "=",
                 "bfbe-pay"
+            ]
+        },
+        "bfbeMailerPress": {
+            "title": "MailerPress",
+            "tab": "content",
+            "required": [
+                "actions",
+                "=",
+                "bfbe-mailerpress"
             ]
         },
         "bfbeSteps": {
@@ -472,7 +481,8 @@
                 "bfbe-meta": "Update post fields",
                 "bfbe-delete": "Delete the post",
                 "bfbe-pdf": "Quote PDF",
-                "bfbe-pay": "Pay with Stripe"
+                "bfbe-pay": "Take payment",
+                "bfbe-mailerpress": "Add to MailerPress"
             },
             "multiple": true,
             "description": "Select action(s) you want to perform after form has been successfully submitted.",
@@ -2358,13 +2368,41 @@
             "inline": true,
             "placeholder": "7"
         },
+        "payProvider": {
+            "tab": "content",
+            "group": "bfbePay",
+            "label": "Provider",
+            "type": "select",
+            "options": {
+                "stripe": "Stripe",
+                "paypal": "PayPal",
+                "mollie": "Mollie",
+                "answer": "The visitor chooses"
+            },
+            "inline": true,
+            "placeholder": "Stripe"
+        },
+        "payProviderKey": {
+            "tab": "content",
+            "group": "bfbePay",
+            "label": "From the answer",
+            "type": "text",
+            "inline": true,
+            "placeholder": "provider",
+            "description": "Its values: stripe, paypal or mollie.",
+            "required": [
+                "payProvider",
+                "=",
+                "answer"
+            ]
+        },
         "payName": {
             "tab": "content",
             "group": "bfbePay",
             "label": "What they pay for",
             "type": "text",
             "placeholder": "Your order",
-            "description": "Keys go in BFB Elements, Settings. <a href=\"https://builtforbricks.com/bfb-elements/docs/form/#stripe\" target=\"_blank\" rel=\"noopener\">Setting up Stripe</a>"
+            "description": "Keys go in BFB Elements, Settings. <a href=\"https://builtforbricks.com/bfb-elements/docs/form/#payments\" target=\"_blank\" rel=\"noopener\">Setting up payments</a>"
         },
         "payCurrency": {
             "tab": "content",
@@ -2373,7 +2411,7 @@
             "type": "text",
             "inline": true,
             "placeholder": "EUR",
-            "description": "Three letters, as Stripe names it."
+            "description": "Three letters, such as EUR."
         },
         "payEmail": {
             "tab": "content",
@@ -2403,6 +2441,70 @@
             "label": "When there is nothing to pay",
             "type": "text",
             "placeholder": "There is nothing to pay."
+        },
+        "mpEmail": {
+            "tab": "content",
+            "group": "bfbeMailerPress",
+            "label": "Email from the answer",
+            "type": "text",
+            "inline": true,
+            "placeholder": "The first email field"
+        },
+        "mpFirst": {
+            "tab": "content",
+            "group": "bfbeMailerPress",
+            "label": "First name from",
+            "type": "text",
+            "inline": true,
+            "placeholder": "first_name"
+        },
+        "mpLast": {
+            "tab": "content",
+            "group": "bfbeMailerPress",
+            "label": "Last name from",
+            "type": "text",
+            "inline": true,
+            "placeholder": "last_name"
+        },
+        "mpLists": {
+            "tab": "content",
+            "group": "bfbeMailerPress",
+            "label": "Lists",
+            "type": "select",
+            "options": [],
+            "multiple": true,
+            "placeholder": "The default list"
+        },
+        "mpTags": {
+            "tab": "content",
+            "group": "bfbeMailerPress",
+            "label": "Tags",
+            "type": "select",
+            "options": [],
+            "multiple": true,
+            "placeholder": "None"
+        },
+        "mpConfirm": {
+            "tab": "content",
+            "group": "bfbeMailerPress",
+            "label": "Confirmation email",
+            "type": "select",
+            "options": {
+                "site": "As MailerPress is set",
+                "always": "Always ask to confirm"
+            },
+            "inline": true,
+            "placeholder": "As MailerPress is set",
+            "description": "Always: new contacts confirm first."
+        },
+        "mpConsent": {
+            "tab": "content",
+            "group": "bfbeMailerPress",
+            "label": "Only when this is ticked",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Always",
+            "description": "A consent field: unticked, nobody is added."
         },
         "quiet": {
             "tab": "content",

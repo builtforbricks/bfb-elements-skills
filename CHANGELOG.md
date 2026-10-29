@@ -4,6 +4,20 @@ Each release of this pack names the BFB Elements version it was exported from an
 (`verifiedUpTo` in `skills/bfbe-schemas/references/index.json`). Skills and plugins are released
 together; a pack never describes a plugin that has not shipped.
 
+## 0.6.0, 2026-10-29
+
+Verified up to BFB Elements Pro 1.4.0 (BFB Elements stays 1.3.2), exported from the plugins and the website's live 1.4.0
+words. A minor version: the form's two new abilities, and the table's CSV from another site.
+
+- `bfbe-form`: **Take payment** (was Pay with Stripe) with its **Provider**: Stripe, PayPal, Mollie or the visitor's
+  choice from a Choice field; saved forms keep paying with Stripe. The keys and `wp-config.php` constants per provider,
+  when an entry turns Paid, the currencies each takes. **Add to MailerPress**: the email and name answers, lists and tags
+  from the site's own MailerPress, the confirmation email and the consent field.
+- `bfbe-dynamic-table`: **CSV address** (`csvUrl`), a file in the site or one on another site such as a Google Sheet
+  published as CSV, kept an hour and read through the same code as Dynamic Charts.
+- `bfbe-charts`: the remote CSV's kept copy and its one fetch per page view are shared with Dynamic Table.
+- The generated lists say where a select's options come from when the site fills them (MailerPress lists and tags).
+
 ## 0.5.3, 2026-10-18
 
 Verified up to BFB Elements 1.3.2 and BFB Elements Pro 1.3.2, exported from the plugins and the website's live 1.3.2 words.

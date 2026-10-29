@@ -1,6 +1,6 @@
 ---
 name: bfbe-form
-description: "Use when building a multi-step form, a quote or price calculator, a form with conditional fields, uploads or a signature, or one that pays through Stripe or fills a WooCommerce cart, with BFB Advanced Forms (`bfbe-form`) and its twelve part elements. Read before writing its settings."
+description: "Use when building a multi-step form, a quote or price calculator, a form with conditional fields, uploads or a signature, or one that takes a payment (Stripe, PayPal or Mollie), adds people to MailerPress or fills a WooCommerce cart, with BFB Advanced Forms (`bfbe-form`) and its twelve part elements. Read before writing its settings."
 ---
 
 # BFB Advanced Forms (`bfbe-form`)
@@ -105,7 +105,7 @@ Styling only, every key in the schema file: `uploadButtonTypography`, `uploadBut
 Styling, in the schema file: `fieldGap`.
 
 ### Actions (`actions`)
-- `actions` (select) **Actions after successful form submit**: options: `custom` Custom, `email` Email, `webhook` Webhook, `redirect` Redirect, `mailchimp` Mailchimp, `sendgrid` SendGrid, `login` User login, `registration` User registration, `lost-password` Lost password, `reset-password` Reset password, `create-post` Create post, `update-post` Update post, `save-submission` Save submission, `bfbe-user` Update the user, `bfbe-meta` Update post fields, `bfbe-delete` Delete the post, `bfbe-pdf` Quote PDF, `bfbe-pay` Pay with Stripe. Pick what happens after a send. Bricks' own actions are here, with five more from BFB Elements: Update the user, Update post fields, Delete the post, Quote PDF and Pay with Stripe. An action with settings opens a group of its own.
+- `actions` (select) **Actions after successful form submit**: options: `custom` Custom, `email` Email, `webhook` Webhook, `redirect` Redirect, `mailchimp` Mailchimp, `sendgrid` SendGrid, `login` User login, `registration` User registration, `lost-password` Lost password, `reset-password` Reset password, `create-post` Create post, `update-post` Update post, `save-submission` Save submission, `bfbe-user` Update the user, `bfbe-meta` Update post fields, `bfbe-delete` Delete the post, `bfbe-pdf` Quote PDF, `bfbe-pay` Take payment, `bfbe-mailerpress` Add to MailerPress. Pick what happens after a send. Bricks' own actions are here, with six more from BFB Elements: Update the user, Update post fields, Delete the post, Quote PDF, Take payment and Add to MailerPress. An action with settings opens a group of its own.
 - `successMessage` (text) **Success message**: default `Message successfully sent. We will get back to you as soon as possible.`. Bricks' own message after a successful send.
 
 ### Notices (`notices`)
@@ -155,59 +155,59 @@ The whole group shows only when `actions` is `redirect`.
 ### Mailchimp (`mailchimp`)
 The whole group shows only when `actions` is `mailchimp`.
 - `mailchimpDoubleOptIn` (checkbox) **Double opt-in**: only when `apiKeyMailchimp` is set
-- `mailchimpList` (select) **List**: options: ; only when `apiKeyMailchimp` is set
-- `mailchimpGroups` (select) **Groups**: options: ; only when `apiKeyMailchimp` is set and `mailchimpList` is set
-- `mailchimpEmail` (select) **Field: Email**: options: ; only when `apiKeyMailchimp` is set
-- `mailchimpFirstName` (select) **First name**: options: ; only when `apiKeyMailchimp` is set
-- `mailchimpLastName` (select) **Last name**: options: ; only when `apiKeyMailchimp` is set
+- `mailchimpList` (select) **List**: options: the site's own, read when the panel opens; only when `apiKeyMailchimp` is set
+- `mailchimpGroups` (select) **Groups**: options: the site's own, read when the panel opens; only when `apiKeyMailchimp` is set and `mailchimpList` is set
+- `mailchimpEmail` (select) **Field: Email**: options: the site's own, read when the panel opens; only when `apiKeyMailchimp` is set
+- `mailchimpFirstName` (select) **First name**: options: the site's own, read when the panel opens; only when `apiKeyMailchimp` is set
+- `mailchimpLastName` (select) **Last name**: options: the site's own, read when the panel opens; only when `apiKeyMailchimp` is set
 - `mailchimpPendingMessage` (text) **Pending message**: default `Please check your email to confirm your subscription.`; only when `apiKeyMailchimp` is set
 - `mailchimpErrorMessage` (text) **Error message**: default `Sorry, but we could not subscribe you.`; only when `apiKeyMailchimp` is set
 
 ### Sendgrid (`sendgrid`)
 The whole group shows only when `actions` is `sendgrid`.
-- `sendgridList` (select) **List**: options: ; only when `apiKeySendgrid` is set
-- `sendgridEmail` (select) **Field: Email**: options: ; only when `apiKeySendgrid` is set
-- `sendgridFirstName` (select) **Field: First name**: options: ; only when `apiKeySendgrid` is set
-- `sendgridLastName` (select) **Field: Last name**: options: ; only when `apiKeySendgrid` is set
+- `sendgridList` (select) **List**: options: the site's own, read when the panel opens; only when `apiKeySendgrid` is set
+- `sendgridEmail` (select) **Field: Email**: options: the site's own, read when the panel opens; only when `apiKeySendgrid` is set
+- `sendgridFirstName` (select) **Field: First name**: options: the site's own, read when the panel opens; only when `apiKeySendgrid` is set
+- `sendgridLastName` (select) **Field: Last name**: options: the site's own, read when the panel opens; only when `apiKeySendgrid` is set
 - `sendgridErrorMessage` (text) **Error message**: default `Sorry, but we could not subscribe you.`; only when `apiKeySendgrid` is set
 
 ### User Login (`login`)
 The whole group shows only when `actions` is `login`.
-- `loginName` (select) **Field: Login**: options: 
-- `loginPassword` (select) **Field: Password**: options: 
-- `loginRemember` (select) **Field: Remember me**: options: 
+- `loginName` (select) **Field: Login**: options: the site's own, read when the panel opens
+- `loginPassword` (select) **Field: Password**: options: the site's own, read when the panel opens
+- `loginRemember` (select) **Field: Remember me**: options: the site's own, read when the panel opens
 - `loginErrorMessage` (text) **Error message**. Enter a generic error message. Otherwise the reason why the login failed is displayed.
 
 ### User Registration (`registration`)
 The whole group shows only when `actions` is `registration`.
-- `registrationEmail` (select) **Field: Email**: options: 
-- `registrationPassword` (select) **Field: Password**: options: . Autogenerated if no password is required/submitted.
+- `registrationEmail` (select) **Field: Email**: options: the site's own, read when the panel opens
+- `registrationPassword` (select) **Field: Password**: options: the site's own, read when the panel opens. Autogenerated if no password is required/submitted.
 - `registrationPasswordMinLength` (number) **Password min. length**
-- `registrationUserName` (select) **Field: User name**: options: . Auto-generated if form only requires email address for registration.
-- `registrationFirstName` (select) **Field: First name**: options: 
-- `registrationLastName` (select) **Field: Last name**: options: 
+- `registrationUserName` (select) **Field: User name**: options: the site's own, read when the panel opens. Auto-generated if form only requires email address for registration.
+- `registrationFirstName` (select) **Field: First name**: options: the site's own, read when the panel opens
+- `registrationLastName` (select) **Field: Last name**: options: the site's own, read when the panel opens
 - `registrationRole` (select) **Role**: options: `editor` Editor, `author` Author, `contributor` Contributor, `subscriber` Subscriber (default), `customer` Customer, `shop_manager` Shop manager
 - `registrationAutoLogin` (checkbox) **Auto log in user**. Log in user after successful registration. Tip: Set action "Redirect" to redirect user to the account/admin area.
 - `registrationWPNotification` (checkbox) **Send WordPress notification**. Trigger "register_new_user" action to send WordPress notification. Learn more (https://academy.bricksbuilder.io/article/form-element/#login-registration).
 
 ### Lost password (`lostPassword`)
 The whole group shows only when `actions` is `lost-password`.
-- `lostPasswordEmailUsername` (select) **Field: Email or username**: options: 
+- `lostPasswordEmailUsername` (select) **Field: Email or username**: options: the site's own, read when the panel opens
 
 ### Reset password (`resetPassword`)
 The whole group shows only when `actions` is `reset-password`.
-- `resetPasswordNew` (select) **Field: Password**: options: 
+- `resetPasswordNew` (select) **Field: Password**: options: the site's own, read when the panel opens
 
 ### Create post (`createPost`)
 The whole group shows only when `actions` is `create-post`.
-- `createPostType` (select) **Post type**: options: . For Posts of a type, type the post type, post unless set.
+- `createPostType` (select) **Post type**: options: the site's own, read when the panel opens. For Posts of a type, type the post type, post unless set.
 - `createPostErrorMessage` (text) **Error message**: only when `createPostType` is set and `createPostDisableCapabilityCheck` is not set
 - `createPostDisableCapabilityCheck` (checkbox) **Disable capability checks**: only when `createPostType` is set
-- `createPostTitle` (select) **Post title**: options: ; only when `createPostType` is set
-- `createPostContent` (select) **Post content**: options: ; only when `createPostType` is set
-- `createPostExcerpt` (select) **Post excerpt**: options: ; only when `createPostType` is set
-- `createPostFeaturedImage` (select) **Featured image**: options: ; only when `createPostType` is set
-- `createPostStatus` (select) **Post status**: options: ; only when `createPostType` is set
+- `createPostTitle` (select) **Post title**: options: the site's own, read when the panel opens; only when `createPostType` is set
+- `createPostContent` (select) **Post content**: options: the site's own, read when the panel opens; only when `createPostType` is set
+- `createPostExcerpt` (select) **Post excerpt**: options: the site's own, read when the panel opens; only when `createPostType` is set
+- `createPostFeaturedImage` (select) **Featured image**: options: the site's own, read when the panel opens; only when `createPostType` is set
+- `createPostStatus` (select) **Post status**: options: the site's own, read when the panel opens; only when `createPostType` is set
 - `createPostMeta` (repeater) **Post meta**: only when `createPostType` is set
 - `createPostTaxonomies` (repeater) **Taxonomies**: only when `createPostType` is set
 
@@ -216,11 +216,11 @@ The whole group shows only when `actions` is `update-post`.
 - `updatePostId` (select) **Post to update**: placeholder Select post/page
 - `updatePostErrorMessage` (text) **Error message**
 - `updatePostDisableCapabilityCheck` (checkbox) **Disable capability checks**
-- `updatePostTitle` (select) **Post title**: options: 
-- `updatePostContent` (select) **Post content**: options: 
-- `updatePostExcerpt` (select) **Post excerpt**: options: 
-- `updatePostFeaturedImage` (select) **Featured image**: options: 
-- `updatePostStatus` (select) **Post status**: options: 
+- `updatePostTitle` (select) **Post title**: options: the site's own, read when the panel opens
+- `updatePostContent` (select) **Post content**: options: the site's own, read when the panel opens
+- `updatePostExcerpt` (select) **Post excerpt**: options: the site's own, read when the panel opens
+- `updatePostFeaturedImage` (select) **Featured image**: options: the site's own, read when the panel opens
+- `updatePostStatus` (select) **Post status**: options: the site's own, read when the panel opens
 - `updatePostMeta` (repeater) **Post meta**
 - `updatePostTaxonomies` (repeater) **Taxonomies**
 
@@ -245,7 +245,7 @@ The whole group shows only when `actions` is `save-submission`.
 
 ### Unlock password protection (`unlock-password-protection`)
 The whole group shows only when `actions` is `unlock-password-protection`.
-- `passwordProtectionPassword` (select) **Field: Password**: options: . If no form field is selected, the first password field in the form is used.
+- `passwordProtectionPassword` (select) **Field: Password**: options: the site's own, read when the panel opens. If no form field is selected, the first password field in the form is used.
 - `passwordProtectionErrorMessage` (text) **Error message**
 
 ### Update the user (`bfbeUser`)
@@ -282,14 +282,26 @@ The whole group shows only when `actions` is `bfbe-pdf`.
 - `pdfAttach` (select) **Attach it**: options: `email` To the email, `confirmation` To the confirmation email, `both` To both. Attach the PDF To the email, To the confirmation email or To both. It is not attached unless you pick one, and it rides on the Email action.
 - `pdfDays` (number) **Kept for (days)**: placeholder 7. Set how long the PDF's link works, 7 days unless set, up to 90. A PDF is deleted once its days are over.
 
-### Pay with Stripe (`bfbePay`)
+### Take payment (`bfbePay`)
 The whole group shows only when `actions` is `bfbe-pay`.
-- `payName` (text) **What they pay for**: placeholder Your order. Type the product name on Stripe's page. The default is Your order. Keys go in BFB Elements, Settings, under Stripe payments, or in wp-config.php constants, never in the page.
-- `payCurrency` (text) **Currency code**: placeholder EUR. Type three letters as Stripe names the currency, such as EUR. There is no default, so a blank code or a missing Stripe key stops the payment from starting.
-- `payEmail` (text) **Receipt to the answer**: placeholder The first email field. Name the field whose address goes to Stripe's Checkout as the customer's email. Left blank, it takes the earliest email field the visitor answered.
+- `payProvider` (select) **Provider**: options: `stripe` Stripe (default), `paypal` PayPal, `mollie` Mollie, `answer` The visitor chooses. Choose Stripe, PayPal or Mollie, or The visitor chooses and name a Choice field whose options send stripe, paypal or mollie. The visitor pays on the provider's own page. Forms you made before 1.4 keep paying with Stripe.
+- `payProviderKey` (text) **From the answer**: placeholder provider; only when `payProvider` is `answer`. Its values: stripe, paypal or mollie.
+- `payName` (text) **What they pay for**: placeholder Your order. Type the product name on the payment page. The default is Your order. Keys go in BFB Elements, Settings, on the provider's card, or in wp-config.php, never in the page.
+- `payCurrency` (text) **Currency code**: placeholder EUR. Type three letters, such as EUR. There is no default, so a blank code or a provider with no keys stops the payment from starting.
+- `payEmail` (text) **Receipt to the answer**: placeholder The first email field. Name the field whose address goes to the payment page as the customer's email. Left blank, it takes the earliest email field the visitor answered.
 - `paySuccess` (text) **After paying, go to**: placeholder This page. Set where visitors land after paying. Unless you set a page, they come back to this page with bfbe_paid added to its address.
-- `payCancel` (text) **If they stop, go to**: placeholder This page. Set where visitors land when they leave Stripe's page without paying, this page unless set.
+- `payCancel` (text) **If they stop, go to**: placeholder This page. Set where visitors land when they leave the provider's page without paying, this page unless set.
 - `payNothing` (text) **When there is nothing to pay**: placeholder There is nothing to pay.. Type the words shown when the total is zero or less, There is nothing to pay. unless set.
+
+### MailerPress (`bfbeMailerPress`)
+The whole group shows only when `actions` is `bfbe-mailerpress`.
+- `mpEmail` (text) **Email from the answer**: placeholder The first email field
+- `mpFirst` (text) **First name from**: placeholder first_name
+- `mpLast` (text) **Last name from**: placeholder last_name
+- `mpLists` (select) **Lists**: options: the site's own, read when the panel opens
+- `mpTags` (select) **Tags**: options: the site's own, read when the panel opens
+- `mpConfirm` (select) **Confirmation email**: options: `site` As MailerPress is set (default), `always` Always ask to confirm. As MailerPress is set (its double opt-in), or always ask new contacts to confirm.
+- `mpConsent` (text) **Only when this is ticked**: placeholder Always. Name a consent field, and nobody is added unless it is ticked.
 
 ### Steps (`bfbeSteps`)
 - `quiet` (checkbox) **Nothing is sent**. Tick it to make the form a calculator, with no Send button and no actions.
@@ -544,7 +556,7 @@ in CSS or a script, give it a class in `_cssClasses`, never `_cssId`: component 
 
 **Sending.**
 - `actions` is an array of Bricks' own (`email`, `webhook`, `redirect`, `save-submission`, `create-post`, `login` and the
-  rest, each with Bricks' own keys) and the pack's `bfbe-user`, `bfbe-meta`, `bfbe-delete`, `bfbe-pdf` and `bfbe-pay`.
+  rest, each with Bricks' own keys) and the pack's `bfbe-user`, `bfbe-meta`, `bfbe-delete`, `bfbe-pdf`, `bfbe-pay` and `bfbe-mailerpress`.
   `save-submission`, which Bricks offers once its setting Save form submissions in database is on, always runs first.
   <!-- src: plugins/bfb-elements-pro/includes/class-form-engine.php:1714-1717 -->
 - Email: `emailTo: "custom"` with `emailToCustom`, and `{{key}}` or `{{all_fields}}` in `emailSubject` and `emailContent`.
@@ -556,10 +568,25 @@ in CSS or a script, give it a class in `_cssClasses`, never `_cssId`: component 
   `X-BFB-Timestamp`, a dot and the raw body (`GET`: the query): https://builtforbricks.com/bfb-elements/docs/form/#signed-webhooks
 - `bfbe-pdf` (Quote PDF): the answers and the server's sum, linked under the message (`pdfLink`) and kept `pdfDays` (7, up
   to 90). `pdfAttach` attaches it only when `email` is in `actions` too.
-- `bfbe-pay` (Pay with Stripe): Checkout for the server's total in `payCurrency`, after every other action; the visitor
-  returns with `?bfbe_paid=1` unless `paySuccess`. Keys: BFB Elements, Settings, Stripe payments, or `BFBE_STRIPE_SECRET_KEY` and
-  `BFBE_STRIPE_WEBHOOK_SECRET` in `wp-config.php` (https://builtforbricks.com/bfb-elements/docs/form/#stripe). Stripe's
-  webhook turns the Payment answer "Waiting, REF" into "Paid, …" only on an entry Save submission kept. <!-- src: plugins/bfb-elements-pro/includes/class-form-pay.php:188, :383-399 -->
+- `bfbe-pay` (Take payment; Pay with Stripe before Pro 1.4.0): the server's total in `payCurrency`, after every other
+  action, on the provider's own page; the visitor returns with `?bfbe_paid=1` unless `paySuccess`. `payProvider` is
+  `stripe` (also when unset, so forms saved before 1.4 keep paying with Stripe), `paypal`, `mollie`, or `answer` with
+  `payProviderKey` naming a Choice field whose value is `stripe`, `paypal` or `mollie` (any other answer starts no
+  payment). Keys go in BFB Elements, Settings, on the provider's card, never in the page, or in `wp-config.php`:
+  `BFBE_STRIPE_SECRET_KEY` and `BFBE_STRIPE_WEBHOOK_SECRET`; `BFBE_PAYPAL_CLIENT_ID`, `BFBE_PAYPAL_SECRET`,
+  `BFBE_PAYPAL_SANDBOX` and the optional `BFBE_PAYPAL_WEBHOOK_ID`; `BFBE_MOLLIE_API_KEY` (`test_` for test payments,
+  `live_` for real ones). A provider without its keys stops the payment from starting
+  (https://builtforbricks.com/bfb-elements/docs/form/#payments). The Payment answer "Waiting, REF" becomes "Paid, …" when
+  the visitor comes back from the provider's page or the provider's webhook reaches the site, only for the amount and
+  currency asked, and only on an entry Save submission kept. PayPal takes 25 currencies (HUF, JPY and TWD in whole
+  units), Mollie 28 (ISK and JPY in whole units); Mollie offers the methods the Mollie account has switched on. <!-- src: plugins/bfb-elements-pro/includes/class-form-pay.php:78-100,188-206; plugins/bfb-elements-pro/includes/class-pay-paypal.php:31-36; plugins/bfb-elements-pro/includes/class-pay-mollie.php:26-30; dev/pay-providers-probe.mjs; a real PayPal sandbox payment 29 October 2026 -->
+- `bfbe-mailerpress` (Add to MailerPress, Pro 1.4.0): adds the sender to MailerPress lists and tags; it needs MailerPress
+  (free) active on the same site, with no keys. `mpEmail` names the email answer (the first email field unless set),
+  `mpFirst` and `mpLast` the names; `mpLists` and `mpTags` hold the site's own MailerPress ids, so read them from the
+  panel, never guess them. `mpConfirm` is `site` (MailerPress's double opt-in setting) or `always`; `mpConsent` names a
+  consent field, and nobody is added unless it is ticked. Someone already in MailerPress joins the lists and tags and
+  keeps their own details; MailerPress's limit for public forms applies; if MailerPress cannot add someone, the form
+  still sends. <!-- src: plugins/bfb-elements-pro/includes/class-form-mailerpress.php:36-46,148-240 -->
 - WooCommerce cart: on the Total, `wooOn` and `wooProduct` (a product id), offered only where WooCommerce is active. The
   line is priced on the server from the choices, in the store's currency, and refused above `over` or below zero.
 - `bfbe-user`, `bfbe-meta` and `bfbe-delete` change the visitor's profile (`userRows`), a post's fields (`metaRows`) or

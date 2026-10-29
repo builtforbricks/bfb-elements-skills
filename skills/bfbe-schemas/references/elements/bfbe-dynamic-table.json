@@ -143,6 +143,21 @@
                 "csv"
             ]
         },
+        "csvUrl": {
+            "tab": "content",
+            "group": "bfbeSource",
+            "label": "CSV address",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "/wp-content/uploads/figures.csv",
+            "description": "Here or on another site, or a dynamic tag.",
+            "required": [
+                "source",
+                "=",
+                "csv"
+            ]
+        },
         "headerRow": {
             "tab": "content",
             "group": "bfbeSource",
