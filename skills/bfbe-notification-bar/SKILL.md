@@ -16,7 +16,7 @@ A bar for promotions and notices that holds any elements you nest in it, placed 
 
 **Not for:** Dates are read when the page is built, so a full-page cache keeps showing the bar until the cache clears. A message that must switch on at an exact minute for every visitor cannot rely on these dates.
 
-**Costs a page:** CSS 0.99 KB, JS 0.95 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 1.01 KB, JS 0.95 KB (gzipped), no dependencies, loaded only on pages that use it.
 
 **Nestable:** yes · **In a query loop:** no · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 
@@ -53,6 +53,7 @@ Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `b
 - `position` (select) **Edge**: options: `top` Top (default), `bottom` Bottom. Top is the default, or pick Bottom.
 - `behaviour` (select) **Stays**: options: `flow` In place, `sticky` Sticky (default), `fixed` Fixed over the page. Sticky is the default. Choose In place to let the bar scroll with the page, or Fixed over the page to keep it on screen over your content.
 - `offBelow` (select) **Hide below**: options: `never` Never (default), `480` 480px, `640` 640px, `768` 768px, `992` 992px. Never by default. Choose 480, 640, 768 or 992px to drop the bar on narrow screens.
+- `wcNotice` (checkbox) **Use the WooCommerce store notice**. Shown while it is on in WooCommerce.
 Styling, in the schema file: `align`.
 
 ### Closing (`bfbeDismiss`)

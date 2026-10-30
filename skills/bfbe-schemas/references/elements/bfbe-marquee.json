@@ -38,7 +38,7 @@
     ],
     "parent": null,
     "cost": {
-        "css": "0.98 KB",
+        "css": "1.00 KB",
         "js": "1.10 KB",
         "dependencies": "none"
     },
@@ -378,7 +378,8 @@
                 "follow": "Follow the pointer",
                 "fade": "Fade in",
                 "slide": "Slide in",
-                "grow": "Grow"
+                "grow": "Grow",
+                "image2": "Show the product&#039;s second image"
             },
             "inline": true,
             "placeholder": "None"

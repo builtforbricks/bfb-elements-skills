@@ -9,8 +9,8 @@
     "childrenDefault": [],
     "parent": null,
     "cost": {
-        "css": "1.51 KB",
-        "js": "1.63 KB",
+        "css": "1.54 KB",
+        "js": "1.66 KB",
         "dependencies": "none"
     },
     "controlGroups": {
@@ -508,7 +508,8 @@
                 "follow": "Follow the pointer",
                 "fade": "Fade in",
                 "slide": "Slide in",
-                "grow": "Grow"
+                "grow": "Grow",
+                "image2": "Show the product&#039;s second image"
             },
             "inline": true,
             "placeholder": "None"

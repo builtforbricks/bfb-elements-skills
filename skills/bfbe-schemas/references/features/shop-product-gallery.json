@@ -1,0 +1,461 @@
+{
+    "name": "shop-product-gallery",
+    "label": "BFB Shop product gallery",
+    "pack": "free and pro",
+    "feature": true,
+    "shape": "hosts",
+    "on": "Bricks' own Product gallery (`product-gallery`)",
+    "job": "the shop's settings on Bricks' Product gallery: the gallery's layout and first image, the 3D view, and video in the gallery",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/shop-product-gallery/",
+    "since": "2.0.0",
+    "requires": [
+        "WooCommerce"
+    ],
+    "switches": [
+        "shop-product-page",
+        "shop-gallery-video"
+    ],
+    "groupInfo": {
+        "bfbeShopGallery": {
+            "title": "BFB Gallery",
+            "pack": "free",
+            "switch": [
+                "shop-product-page"
+            ],
+            "sources": [
+                "bfb-elements/includes/shop/class-product-page.php"
+            ]
+        },
+        "bfbeShop3d": {
+            "title": "BFB 3D view",
+            "pack": "pro",
+            "switch": [],
+            "sources": [
+                "bfb-elements-pro/includes/shop/class-gallery-3d.php"
+            ]
+        },
+        "bfbeShopGalleryVideo": {
+            "title": "BFB Gallery video",
+            "pack": "pro",
+            "switch": [
+                "shop-gallery-video"
+            ],
+            "sources": [
+                "bfb-elements-pro/includes/shop/class-gallery-video.php"
+            ]
+        }
+    },
+    "hosts": {
+        "product-gallery": {
+            "label": "Product gallery",
+            "registered": true,
+            "controlGroups": {
+                "bfbeShopGallery": {
+                    "title": "BFB Gallery",
+                    "tab": "content"
+                },
+                "bfbeShop3d": {
+                    "title": "BFB 3D view",
+                    "tab": "content"
+                },
+                "bfbeShopGalleryVideo": {
+                    "title": "BFB Gallery video",
+                    "tab": "content"
+                }
+            },
+            "controls": {
+                "bfbeShopFirstImage": {
+                    "label": "First image",
+                    "type": "select",
+                    "options": {
+                        "eager": "Loads at once",
+                        "auto": "As WordPress decides"
+                    },
+                    "inline": true,
+                    "placeholder": "Loads at once",
+                    "group": "bfbeShopGallery",
+                    "tab": "content"
+                },
+                "bfbeShopGallerySepPicture": {
+                    "label": "Picture",
+                    "type": "separator",
+                    "group": "bfbeShopGallery",
+                    "tab": "content"
+                },
+                "bfbeShopGalleryBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".woocommerce-product-gallery__image img"
+                        }
+                    ],
+                    "group": "bfbeShopGallery",
+                    "tab": "content"
+                },
+                "bfbeShopGallerySepThumbs": {
+                    "label": "Thumbnails",
+                    "type": "separator",
+                    "group": "bfbeShopGallery",
+                    "tab": "content"
+                },
+                "bfbeShopThumbSpace": {
+                    "label": "Space from the picture",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "description": "Added to the gap.",
+                    "css": [
+                        {
+                            "property": "margin-block-start",
+                            "selector": "&[data-pos=\"bottom\"] .flex-control-thumbs"
+                        },
+                        {
+                            "property": "margin-block-end",
+                            "selector": "&[data-pos=\"top\"] .flex-control-thumbs"
+                        },
+                        {
+                            "property": "margin-inline-end",
+                            "selector": "&[data-pos=\"left\"] .flex-control-thumbs"
+                        },
+                        {
+                            "property": "margin-inline-start",
+                            "selector": "&[data-pos=\"right\"] .flex-control-thumbs"
+                        },
+                        {
+                            "property": "margin-block-start",
+                            "selector": "&.thumbnail-slider[data-pos=\"bottom\"] .brx-product-gallery-thumbnail-slider"
+                        },
+                        {
+                            "property": "margin-block-end",
+                            "selector": "&.thumbnail-slider[data-pos=\"top\"] .brx-product-gallery-thumbnail-slider"
+                        },
+                        {
+                            "property": "margin-inline-end",
+                            "selector": "&.thumbnail-slider[data-pos=\"left\"] .brx-product-gallery-thumbnail-slider"
+                        },
+                        {
+                            "property": "margin-inline-start",
+                            "selector": "&.thumbnail-slider[data-pos=\"right\"] .brx-product-gallery-thumbnail-slider"
+                        }
+                    ],
+                    "group": "bfbeShopGallery",
+                    "tab": "content"
+                },
+                "bfbeShopThumbRatio": {
+                    "label": "Ratio",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "1 / 1",
+                    "css": [
+                        {
+                            "property": "aspect-ratio",
+                            "selector": ".flex-control-thumbs img"
+                        },
+                        {
+                            "property": "aspect-ratio",
+                            "selector": ".brx-product-gallery-thumbnail-slider .woocommerce-product-gallery__image img"
+                        },
+                        {
+                            "property": "object-fit",
+                            "selector": ".flex-control-thumbs img",
+                            "value": "cover"
+                        },
+                        {
+                            "property": "object-fit",
+                            "selector": ".brx-product-gallery-thumbnail-slider .woocommerce-product-gallery__image img",
+                            "value": "cover"
+                        }
+                    ],
+                    "group": "bfbeShopGallery",
+                    "tab": "content"
+                },
+                "bfbeShopThumbBackground": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".flex-control-thumbs img"
+                        },
+                        {
+                            "property": "background-color",
+                            "selector": ".brx-product-gallery-thumbnail-slider .woocommerce-product-gallery__image img"
+                        }
+                    ],
+                    "group": "bfbeShopGallery",
+                    "tab": "content"
+                },
+                "bfbeShopThumbShadow": {
+                    "label": "Shadow",
+                    "type": "box-shadow",
+                    "css": [
+                        {
+                            "property": "box-shadow",
+                            "selector": ".flex-control-thumbs img"
+                        },
+                        {
+                            "property": "box-shadow",
+                            "selector": ".brx-product-gallery-thumbnail-slider .woocommerce-product-gallery__image img"
+                        }
+                    ],
+                    "group": "bfbeShopGallery",
+                    "tab": "content"
+                },
+                "bfbeShopThumbActiveShadow": {
+                    "label": "Shadow (active)",
+                    "type": "box-shadow",
+                    "css": [
+                        {
+                            "property": "box-shadow",
+                            "selector": ".flex-control-thumbs img.flex-active"
+                        },
+                        {
+                            "property": "box-shadow",
+                            "selector": ".brx-product-gallery-thumbnail-slider .woocommerce-product-gallery__image.flex-active-slide img"
+                        }
+                    ],
+                    "group": "bfbeShopGallery",
+                    "tab": "content"
+                },
+                "bfbeShop3dShow": {
+                    "label": "3D view",
+                    "type": "select",
+                    "options": {
+                        "show": "Shown",
+                        "hide": "Hidden"
+                    },
+                    "inline": true,
+                    "placeholder": "Shown",
+                    "description": "A slide for a product with 360 degree frames or a GLB.",
+                    "group": "bfbeShop3d",
+                    "tab": "content"
+                },
+                "bfbeShop3dPlace": {
+                    "label": "Position",
+                    "type": "select",
+                    "options": {
+                        "first": "First slide",
+                        "last": "Last slide"
+                    },
+                    "inline": true,
+                    "placeholder": "Last slide",
+                    "required": [
+                        "bfbeShop3dShow",
+                        "!=",
+                        "hide"
+                    ],
+                    "group": "bfbeShop3d",
+                    "tab": "content"
+                },
+                "bfbeShop3dBackground": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-g3d .bfbe-3d__stage"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShop3dShow",
+                        "!=",
+                        "hide"
+                    ],
+                    "group": "bfbeShop3d",
+                    "tab": "content"
+                },
+                "bfbeShop3dMarkSize": {
+                    "label": "3D mark size",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "placeholder": "44px",
+                    "css": [
+                        {
+                            "property": "width",
+                            "selector": ".bfbe-g3d__mark"
+                        },
+                        {
+                            "property": "width",
+                            "selector": ".bfbe-g3d__nav::after"
+                        },
+                        {
+                            "property": "max-width",
+                            "selector": ".bfbe-g3d__mark"
+                        },
+                        {
+                            "property": "max-width",
+                            "selector": ".bfbe-g3d__nav::after"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShop3dShow",
+                        "!=",
+                        "hide"
+                    ],
+                    "group": "bfbeShop3d",
+                    "tab": "content"
+                },
+                "bfbeShop3dMarkBackground": {
+                    "label": "3D mark background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-g3d__mark"
+                        },
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-g3d__nav::after"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShop3dShow",
+                        "!=",
+                        "hide"
+                    ],
+                    "group": "bfbeShop3d",
+                    "tab": "content"
+                },
+                "bfbeShop3dMarkColor": {
+                    "label": "3D icon colour",
+                    "type": "color",
+                    "description": "In WooCommerce&#039;s thumbnail strip the icon stays white.",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-g3d__mark"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShop3dShow",
+                        "!=",
+                        "hide"
+                    ],
+                    "group": "bfbeShop3d",
+                    "tab": "content"
+                },
+                "bfbeShopVideoShow": {
+                    "label": "Video",
+                    "type": "select",
+                    "options": {
+                        "show": "Shown",
+                        "hide": "Hidden"
+                    },
+                    "inline": true,
+                    "placeholder": "Shown",
+                    "group": "bfbeShopGalleryVideo",
+                    "tab": "content"
+                },
+                "bfbeShopVideoPlace": {
+                    "label": "Position",
+                    "type": "select",
+                    "options": {
+                        "product": "As the product says",
+                        "first": "First slide",
+                        "last": "Last slide"
+                    },
+                    "inline": true,
+                    "placeholder": "As the product says",
+                    "required": [
+                        "bfbeShopVideoShow",
+                        "!=",
+                        "hide"
+                    ],
+                    "group": "bfbeShopGalleryVideo",
+                    "tab": "content"
+                },
+                "bfbeShopVideoMarkSize": {
+                    "label": "Play mark size",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "placeholder": "44px",
+                    "css": [
+                        {
+                            "property": "width",
+                            "selector": ".bfbe-gvideo__mark"
+                        },
+                        {
+                            "property": "width",
+                            "selector": ".bfbe-gvideo__nav::after"
+                        },
+                        {
+                            "property": "max-width",
+                            "selector": ".bfbe-gvideo__mark"
+                        },
+                        {
+                            "property": "max-width",
+                            "selector": ".bfbe-gvideo__nav::after"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopVideoShow",
+                        "!=",
+                        "hide"
+                    ],
+                    "group": "bfbeShopGalleryVideo",
+                    "tab": "content"
+                },
+                "bfbeShopVideoMarkBackground": {
+                    "label": "Play mark background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-gvideo__mark"
+                        },
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-gvideo__nav::after"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopVideoShow",
+                        "!=",
+                        "hide"
+                    ],
+                    "group": "bfbeShopGalleryVideo",
+                    "tab": "content"
+                },
+                "bfbeShopVideoMarkColor": {
+                    "label": "Play icon colour",
+                    "type": "color",
+                    "description": "In WooCommerce&#039;s thumbnail strip the icon stays white.",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-gvideo__mark"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopVideoShow",
+                        "!=",
+                        "hide"
+                    ],
+                    "group": "bfbeShopGalleryVideo",
+                    "tab": "content"
+                },
+                "bfbeShopVideoPlayed": {
+                    "label": "Progress colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-vp-accent",
+                            "selector": ".bfbe-gvideo"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopVideoShow",
+                        "!=",
+                        "hide"
+                    ],
+                    "group": "bfbeShopGalleryVideo",
+                    "tab": "content"
+                }
+            }
+        }
+    }
+}

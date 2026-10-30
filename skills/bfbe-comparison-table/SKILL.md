@@ -16,7 +16,7 @@ Plans across the top and features down the side, with ticks, crosses or text in 
 
 **Not for:** Plans and features are rows you enter in two repeaters, so it suits a short, hand-written comparison. Records from posts or a file fit a table that reads its rows from a source; this one does not sort or filter.
 
-**Costs a page:** CSS 1.57 KB, JS 0.47 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 2.00 KB, JS 0.47 KB (gzipped), no dependencies, loaded only on pages that use it.
 
 **Nestable:** no · **In a query loop:** no · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** no
 
@@ -26,11 +26,30 @@ Not nestable: nothing goes inside it.
 ## Settings that decide the build
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
+### Ungrouped
+- `source` (select) **Rows and columns from**: options: `typed` Typed in (default), `compare` Products being compared
+
+### Products being compared (`bfbeProducts`)
+The whole group shows only when `source` is `compare`.
+- `cmpShow` (select) **Each column shows**: options: `image` Image, `name` Name, `price` Price, `rating` Rating, `stock` Stock, `cart` Add to cart, `remove` Remove
+- `cmpRows` (select) **Rows**: options: `attrs` Every attribute, `attr:pa_colour` Colour, `attr:pa_material` Material, `attr:pa_size` Size, `attr:pa_warmth` Warmth, `dimensions` Dimensions, `weight` Weight, `sku` SKU
+- `cmpMeta` (text) **Custom field rows**: placeholder care, origin. Field keys, commas between.
+- `cmpHighlight` (checkbox) **Highlight**. Tick it on a plan to give its whole column the highlight fill you set under Look.
+- `cmpOnlyDiff` (checkbox) **Only differences**
+- `cmpDiffMark` (select) **Mark with**: options: `fill` A fill on the row (default), `dot` A dot by the feature; only when `cmpHighlight` is set
+- `cmpDiffKey` (checkbox) **Dot on the first heading**: only when `cmpHighlight` is set and `cmpDiffMark` is `dot`. Its words then say what a dot means.
+- `cmpCartText` (text) **Add to cart words**: placeholder Add to cart
+- `cmpRemoveText` (text) **Remove words**: placeholder Remove
+- `cmpEmpty` (text) **While there is nothing**: placeholder Nothing to compare yet.; dynamic data accepted
+Styling, in the schema file: `cmpDiffBackground`, `cmpDiffDot`, `cmpEmptyTypography`, `cmpEmptyBorder`, `cmpEmptyPadding`.
+
 ### Plans (`bfbePlans`)
-- `plans` (repeater) **Plans**. Add one row per plan. Each row sets its Name, Price, Badge, Highlight, Button label and Link. Name, Price, Badge and Button label take dynamic data. A Badge, Price or Note from a dynamic tag with nothing in it is not drawn.
+The whole group shows only when `source` is not `compare`.
+- `plans` (repeater) **Plans**: only when `source` is not `compare`. Add one row per plan. Each row sets its Name, Price, Badge, Highlight, Button label and Link. Name, Price, Badge and Button label take dynamic data. A Badge, Price or Note from a dynamic tag with nothing in it is not drawn.
 
 ### Features (`bfbeFeatures`)
-- `features` (repeater) **Features**. Add one row per feature. Each row has a Feature name, Per plan values, a Note and Use as a group heading. Feature, Per plan and Note take dynamic data.
+The whole group shows only when `source` is not `compare`.
+- `features` (repeater) **Features**: only when `source` is not `compare`. Add one row per feature. Each row has a Feature name, Per plan values, a Note and Use as a group heading. Feature, Per plan and Note take dynamic data.
 Styling, in the schema file: `hintSize`.
 
 ### Table (`bfbeTable`)
@@ -43,15 +62,18 @@ Styling, in the schema file: `hintSize`.
 Styling, in the schema file: `planMinWidth`, `tableMinWidth`.
 
 ### Look (`bfbeLook`)
-Styling only, every key in the schema file: `highlightBackground`, `highlightColor`, `featureTypography`, `valueTypography`, `groupTypography`, `firstColumnWidth`, `cellPadding`, `tableBackground`, `valueAlign`, `lineColor`, `headBackground`, `featureBackground`, `stripeBackground`, `groupBackground`, `tableBorder`, `hintBackground`, `hintColor`, `captionTypography`, `noteTypography`, `labelTypography`.
+- `featureHeadAlign` (select) **First heading alignment**: options: `top` Top, `middle` Middle (default), `bottom` Bottom; writes CSS
+- `columnLines` (checkbox) **Lines between columns**
+Styling, in the schema file: `highlightBackground`, `highlightColor`, `featureTypography`, `valueTypography`, `groupTypography`, `firstColumnWidth`, `cellPadding`, `tableBackground`, `valueAlign`, `lineColor`, `headBackground`, `featureBackground`, `stripeBackground`, `groupBackground`, `tableBorder`, `hintBackground`, `hintColor`, `captionTypography`, `captionPadding`, `noteTypography`, `labelTypography`.
 
 ### Ticks and crosses (`bfbeMarks`)
-- `tickIcon` (icon) **Tick icon**. Pick any icon from the picker to replace the drawn tick. Cross icon does the same for the cross.
-- `crossIcon` (icon) **Cross icon**
+The whole group shows only when `source` is not `compare`.
+- `tickIcon` (icon) **Tick icon**: only when `source` is not `compare`. Pick any icon from the picker to replace the drawn tick. Cross icon does the same for the cross.
+- `crossIcon` (icon) **Cross icon**: only when `source` is not `compare`
 Styling, in the schema file: `tickColor`, `crossColor`, `iconSize`, `tickBackground`, `crossBackground`, `markPadding`, `markBorder`.
 
 ### Plan header (`bfbePlanLook`)
-Styling only, every key in the schema file: `headTypography`, `priceTypography`, `badgeTypography`, `badgeBackground`, `badgePadding`, `badgeBorder`, `buttonBackground`, `buttonColor`, `buttonTypography`, `buttonPadding`, `buttonBorder`, `buttonBackgroundHover`, `buttonColorHover`.
+Styling only, every key in the schema file: `cmpImgWidth`, `cmpImgBorder`, `cmpPartGap`, `headTypography`, `priceTypography`, `cmpStarColor`, `cmpStarSize`, `cmpRatingTypography`, `cmpStockTypography`, `cmpOutColor`, `badgeTypography`, `badgeBackground`, `badgePadding`, `badgeBorder`, `buttonBackground`, `buttonColor`, `buttonTypography`, `buttonPadding`, `buttonBorder`, `buttonBackgroundHover`, `buttonColorHover`, `cmpRemoveTypography`, `cmpRemoveColor`, `cmpRemoveHover`.
 
 ## What it guarantees for accessibility (do not undo)
 - In the table layout, plan and feature headings are header cells with scope col, row or colgroup.

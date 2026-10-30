@@ -1,0 +1,1877 @@
+{
+    "name": "shop-add-to-cart",
+    "label": "BFB Shop add to cart",
+    "pack": "free and pro",
+    "feature": true,
+    "shape": "hosts",
+    "on": "Bricks' own Add to cart (`product-add-to-cart`), Products (`woocommerce-products`)",
+    "job": "the shop's settings on Bricks' Add to cart and Products: the buy form's layout, option lists and swatches, ask for a price, quantity breaks, and swatches with add to cart on product cards",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/shop-add-to-cart/",
+    "since": "2.0.0",
+    "requires": [
+        "WooCommerce"
+    ],
+    "switches": [
+        "shop-product-page",
+        "shop-buy",
+        "shop-cards",
+        "shop-quantity-breaks"
+    ],
+    "groupInfo": {
+        "bfbeShopBuyForm": {
+            "title": "BFB Buying form",
+            "pack": "free",
+            "switch": [
+                "shop-product-page"
+            ],
+            "sources": [
+                "bfb-elements/includes/shop/class-product-page.php"
+            ]
+        },
+        "bfbeShopOptsList": {
+            "title": "BFB Options list",
+            "pack": "free",
+            "switch": [
+                "shop-product-page"
+            ],
+            "sources": [
+                "bfb-elements/includes/shop/class-product-page.php"
+            ]
+        },
+        "bfbeShopAsk": {
+            "title": "BFB Ask for a price",
+            "pack": "pro",
+            "switch": [
+                "shop-buy"
+            ],
+            "sources": [
+                "bfb-elements-pro/includes/shop/class-buy-now.php"
+            ]
+        },
+        "bfbeShopCards": {
+            "title": "BFB Product cards",
+            "pack": "pro",
+            "switch": [
+                "shop-cards"
+            ],
+            "sources": [
+                "bfb-elements-pro/includes/shop/class-cards.php"
+            ]
+        },
+        "bfbeShopQb": {
+            "title": "BFB Quantity breaks",
+            "pack": "pro",
+            "switch": [
+                "shop-quantity-breaks"
+            ],
+            "sources": [
+                "bfb-elements-pro/includes/shop/class-quantity-breaks.php"
+            ]
+        }
+    },
+    "hosts": {
+        "product-add-to-cart": {
+            "label": "Add to cart",
+            "registered": true,
+            "controlGroups": {
+                "bfbeShopBuyForm": {
+                    "title": "BFB Buying form",
+                    "tab": "content"
+                },
+                "bfbeShopOptsList": {
+                    "title": "BFB Options list",
+                    "tab": "content"
+                },
+                "bfbeShopAsk": {
+                    "title": "BFB Ask for a price",
+                    "tab": "content"
+                },
+                "bfbeShopCards": {
+                    "title": "BFB Product cards",
+                    "tab": "content"
+                },
+                "bfbeShopQb": {
+                    "title": "BFB Quantity breaks",
+                    "tab": "content"
+                }
+            },
+            "controls": {
+                "bfbeShopFormSepChoices": {
+                    "label": "Choices",
+                    "type": "separator",
+                    "group": "bfbeShopBuyForm",
+                    "tab": "content"
+                },
+                "bfbeShopVarStack": {
+                    "label": "Label above the choice",
+                    "type": "checkbox",
+                    "css": [
+                        {
+                            "property": "display",
+                            "selector": "table.variations",
+                            "value": "block"
+                        },
+                        {
+                            "property": "display",
+                            "selector": "table.variations tbody",
+                            "value": "block"
+                        },
+                        {
+                            "property": "display",
+                            "selector": "table.variations tr",
+                            "value": "block"
+                        },
+                        {
+                            "property": "display",
+                            "selector": "table.variations th",
+                            "value": "block"
+                        },
+                        {
+                            "property": "width",
+                            "selector": "table.variations th",
+                            "value": "100%"
+                        },
+                        {
+                            "property": "text-align",
+                            "selector": "table.variations th",
+                            "value": "start"
+                        },
+                        {
+                            "property": "display",
+                            "selector": "table.variations td",
+                            "value": "block"
+                        },
+                        {
+                            "property": "width",
+                            "selector": "table.variations td",
+                            "value": "100%"
+                        },
+                        {
+                            "property": "text-align",
+                            "selector": "table.variations td",
+                            "value": "start"
+                        },
+                        {
+                            "property": "display",
+                            "selector": "table.variations th label",
+                            "value": "block"
+                        }
+                    ],
+                    "group": "bfbeShopBuyForm",
+                    "tab": "content"
+                },
+                "bfbeShopVarGap": {
+                    "label": "Space between choices",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "css": [
+                        {
+                            "property": "margin-block-end",
+                            "selector": "table.variations tr"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopVarStack",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopBuyForm",
+                    "tab": "content"
+                },
+                "bfbeShopVarLabelGap": {
+                    "label": "Space under the label",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "css": [
+                        {
+                            "property": "margin-block-end",
+                            "selector": "table.variations th label"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopVarStack",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopBuyForm",
+                    "tab": "content"
+                },
+                "bfbeShopVarClearTypography": {
+                    "label": "Clear link typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".reset_variations"
+                        }
+                    ],
+                    "group": "bfbeShopBuyForm",
+                    "tab": "content"
+                },
+                "bfbeShopSwatchFill": {
+                    "label": "Label swatches fill the row",
+                    "type": "checkbox",
+                    "css": [
+                        {
+                            "property": "width",
+                            "selector": ".bricks-variation-swatches.bricks-swatch-label",
+                            "value": "100%"
+                        },
+                        {
+                            "property": "flex-wrap",
+                            "selector": ".bricks-variation-swatches.bricks-swatch-label",
+                            "value": "nowrap"
+                        },
+                        {
+                            "property": "flex",
+                            "selector": ".bricks-variation-swatches.bricks-swatch-label li",
+                            "value": "1 1 0"
+                        },
+                        {
+                            "property": "min-width",
+                            "selector": ".bricks-variation-swatches.bricks-swatch-label li",
+                            "value": "0"
+                        },
+                        {
+                            "property": "display",
+                            "selector": ".bricks-variation-swatches.bricks-swatch-label li",
+                            "value": "flex"
+                        },
+                        {
+                            "property": "justify-content",
+                            "selector": ".bricks-variation-swatches.bricks-swatch-label li",
+                            "value": "center"
+                        },
+                        {
+                            "property": "width",
+                            "selector": ".bricks-variation-swatches.bricks-swatch-label .bricks-swatch-button",
+                            "value": "100%"
+                        },
+                        {
+                            "property": "text-align",
+                            "selector": ".bricks-variation-swatches.bricks-swatch-label .bricks-swatch-button",
+                            "value": "center"
+                        },
+                        {
+                            "property": "white-space",
+                            "selector": ".bricks-variation-swatches.bricks-swatch-label .bricks-swatch-button",
+                            "value": "nowrap"
+                        },
+                        {
+                            "property": "overflow",
+                            "selector": ".bricks-variation-swatches.bricks-swatch-label .bricks-swatch-button",
+                            "value": "hidden"
+                        },
+                        {
+                            "property": "text-overflow",
+                            "selector": ".bricks-variation-swatches.bricks-swatch-label .bricks-swatch-button",
+                            "value": "ellipsis"
+                        }
+                    ],
+                    "group": "bfbeShopBuyForm",
+                    "tab": "content"
+                },
+                "bfbeShopFormSepQty": {
+                    "label": "Quantity",
+                    "type": "separator",
+                    "group": "bfbeShopBuyForm",
+                    "tab": "content"
+                },
+                "bfbeShopQtyButtons": {
+                    "label": "Quantity buttons",
+                    "type": "select",
+                    "options": {
+                        "bricks": "Bricks&#039; − and +",
+                        "browser": "The browser&#039;s arrows",
+                        "none": "None"
+                    },
+                    "inline": true,
+                    "placeholder": "The − and + Bricks adds",
+                    "group": "bfbeShopBuyForm",
+                    "tab": "content"
+                },
+                "bfbeShopQtyOne": {
+                    "label": "One piece",
+                    "type": "checkbox",
+                    "description": "The number and its buttons inside one border.",
+                    "css": [
+                        {
+                            "property": "align-items",
+                            "selector": ".cart .quantity",
+                            "value": "center"
+                        },
+                        {
+                            "property": "overflow",
+                            "selector": ".cart .quantity",
+                            "value": "hidden"
+                        },
+                        {
+                            "property": "height",
+                            "selector": ".cart .quantity .qty",
+                            "value": "100%"
+                        },
+                        {
+                            "property": "padding",
+                            "selector": ".cart .quantity .qty",
+                            "value": "0"
+                        },
+                        {
+                            "property": "border",
+                            "selector": ".cart .quantity .qty",
+                            "value": "0"
+                        },
+                        {
+                            "property": "background-color",
+                            "selector": ".cart .quantity .qty",
+                            "value": "transparent"
+                        },
+                        {
+                            "property": "box-shadow",
+                            "selector": ".cart .quantity .qty",
+                            "value": "none"
+                        },
+                        {
+                            "property": "height",
+                            "selector": ".cart .quantity .action",
+                            "value": "100%"
+                        },
+                        {
+                            "property": "display",
+                            "selector": ".cart .quantity .action",
+                            "value": "grid"
+                        },
+                        {
+                            "property": "place-items",
+                            "selector": ".cart .quantity .action",
+                            "value": "center"
+                        },
+                        {
+                            "property": "border",
+                            "selector": ".cart .quantity .action",
+                            "value": "0"
+                        },
+                        {
+                            "property": "cursor",
+                            "selector": ".cart .quantity .action.disabled",
+                            "value": "default"
+                        }
+                    ],
+                    "group": "bfbeShopBuyForm",
+                    "tab": "content"
+                },
+                "bfbeShopQtyHeight": {
+                    "label": "Height",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "css": [
+                        {
+                            "property": "height",
+                            "selector": ".cart .quantity"
+                        }
+                    ],
+                    "group": "bfbeShopBuyForm",
+                    "tab": "content"
+                },
+                "bfbeShopQtyBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "description": "Around the whole quantity.",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".cart .quantity"
+                        }
+                    ],
+                    "group": "bfbeShopBuyForm",
+                    "tab": "content"
+                },
+                "bfbeShopQtyTypography": {
+                    "label": "Number typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".cart .quantity .qty"
+                        }
+                    ],
+                    "group": "bfbeShopBuyForm",
+                    "tab": "content"
+                },
+                "bfbeShopQtyButtonWidth": {
+                    "label": "Button width",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "css": [
+                        {
+                            "property": "width",
+                            "selector": ".cart .quantity .action"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopQtyButtons",
+                        "!=",
+                        [
+                            "browser",
+                            "none"
+                        ]
+                    ],
+                    "group": "bfbeShopBuyForm",
+                    "tab": "content"
+                },
+                "bfbeShopQtyButtonColor": {
+                    "label": "Button colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".cart .quantity .action"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopQtyButtons",
+                        "!=",
+                        [
+                            "browser",
+                            "none"
+                        ]
+                    ],
+                    "group": "bfbeShopBuyForm",
+                    "tab": "content"
+                },
+                "bfbeShopQtyButtonHover": {
+                    "label": "Button hover background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".cart .quantity .action:not(.disabled):hover"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopQtyButtons",
+                        "!=",
+                        [
+                            "browser",
+                            "none"
+                        ]
+                    ],
+                    "group": "bfbeShopBuyForm",
+                    "tab": "content"
+                },
+                "bfbeShopQtyDisabled": {
+                    "label": "Disabled button opacity",
+                    "type": "number",
+                    "min": 0,
+                    "max": 1,
+                    "step": 0.05,
+                    "inline": true,
+                    "placeholder": "0.75",
+                    "css": [
+                        {
+                            "property": "opacity",
+                            "selector": ".cart .quantity .action.disabled"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopQtyButtons",
+                        "!=",
+                        [
+                            "browser",
+                            "none"
+                        ]
+                    ],
+                    "group": "bfbeShopBuyForm",
+                    "tab": "content"
+                },
+                "bfbeShopFormSepRow": {
+                    "label": "Buttons",
+                    "type": "separator",
+                    "group": "bfbeShopBuyForm",
+                    "tab": "content"
+                },
+                "bfbeShopRowStack": {
+                    "label": "Quantity first, buttons below",
+                    "type": "checkbox",
+                    "css": [
+                        {
+                            "property": "display",
+                            "selector": "form.cart:not(.variations_form)",
+                            "value": "flex"
+                        },
+                        {
+                            "property": "flex-wrap",
+                            "selector": "form.cart:not(.variations_form)",
+                            "value": "wrap"
+                        },
+                        {
+                            "property": "display",
+                            "selector": "form.cart.variations_form .woocommerce-variation-add-to-cart",
+                            "value": "flex"
+                        },
+                        {
+                            "property": "flex-wrap",
+                            "selector": "form.cart.variations_form .woocommerce-variation-add-to-cart",
+                            "value": "wrap"
+                        },
+                        {
+                            "property": "content",
+                            "selector": "form.cart:not(.variations_form)::before",
+                            "value": "\"\""
+                        },
+                        {
+                            "property": "order",
+                            "selector": "form.cart:not(.variations_form)::before",
+                            "value": "2"
+                        },
+                        {
+                            "property": "flex",
+                            "selector": "form.cart:not(.variations_form)::before",
+                            "value": "0 0 100%"
+                        },
+                        {
+                            "property": "height",
+                            "selector": "form.cart:not(.variations_form)::before",
+                            "value": "0"
+                        },
+                        {
+                            "property": "content",
+                            "selector": "form.cart.variations_form .woocommerce-variation-add-to-cart::before",
+                            "value": "\"\""
+                        },
+                        {
+                            "property": "order",
+                            "selector": "form.cart.variations_form .woocommerce-variation-add-to-cart::before",
+                            "value": "2"
+                        },
+                        {
+                            "property": "flex",
+                            "selector": "form.cart.variations_form .woocommerce-variation-add-to-cart::before",
+                            "value": "0 0 100%"
+                        },
+                        {
+                            "property": "height",
+                            "selector": "form.cart.variations_form .woocommerce-variation-add-to-cart::before",
+                            "value": "0"
+                        },
+                        {
+                            "property": "order",
+                            "selector": ".cart .quantity",
+                            "value": "0"
+                        },
+                        {
+                            "property": "flex",
+                            "selector": ".cart .quantity",
+                            "value": "none"
+                        },
+                        {
+                            "property": "order",
+                            "selector": ".cart .bfbe-qb__each",
+                            "value": "1"
+                        },
+                        {
+                            "property": "flex",
+                            "selector": ".cart .bfbe-qb__each",
+                            "value": "1 1 auto"
+                        },
+                        {
+                            "property": "margin",
+                            "selector": ".cart .bfbe-qb__each",
+                            "value": "0"
+                        },
+                        {
+                            "property": "padding",
+                            "selector": ".cart .bfbe-qb__each",
+                            "value": "0"
+                        },
+                        {
+                            "property": "order",
+                            "selector": ".cart .single_add_to_cart_button",
+                            "value": "3"
+                        },
+                        {
+                            "property": "flex",
+                            "selector": ".cart .single_add_to_cart_button",
+                            "value": "1 1 0"
+                        },
+                        {
+                            "property": "min-width",
+                            "selector": ".cart .single_add_to_cart_button",
+                            "value": "0"
+                        },
+                        {
+                            "property": "justify-content",
+                            "selector": ".cart .single_add_to_cart_button",
+                            "value": "center"
+                        },
+                        {
+                            "property": "text-align",
+                            "selector": ".cart .single_add_to_cart_button",
+                            "value": "center"
+                        },
+                        {
+                            "property": "margin",
+                            "selector": ".cart .single_add_to_cart_button",
+                            "value": "0"
+                        },
+                        {
+                            "property": "order",
+                            "selector": ".cart .bfbe-buy",
+                            "value": "3"
+                        },
+                        {
+                            "property": "flex",
+                            "selector": ".cart .bfbe-buy",
+                            "value": "1 1 0"
+                        },
+                        {
+                            "property": "min-width",
+                            "selector": ".cart .bfbe-buy",
+                            "value": "0"
+                        },
+                        {
+                            "property": "justify-content",
+                            "selector": ".cart .bfbe-buy",
+                            "value": "center"
+                        },
+                        {
+                            "property": "text-align",
+                            "selector": ".cart .bfbe-buy",
+                            "value": "center"
+                        },
+                        {
+                            "property": "margin",
+                            "selector": ".cart .bfbe-buy",
+                            "value": "0"
+                        }
+                    ],
+                    "group": "bfbeShopBuyForm",
+                    "tab": "content"
+                },
+                "bfbeShopRowWide": {
+                    "label": "Each button a whole line",
+                    "type": "checkbox",
+                    "css": [
+                        {
+                            "property": "flex",
+                            "selector": ".cart .single_add_to_cart_button",
+                            "value": "1 1 100%"
+                        },
+                        {
+                            "property": "flex",
+                            "selector": ".cart .bfbe-buy",
+                            "value": "1 1 100%"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopRowStack",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopBuyForm",
+                    "tab": "content"
+                },
+                "bfbeShopRowHeight": {
+                    "label": "Button height",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "css": [
+                        {
+                            "property": "height",
+                            "selector": ".cart .single_add_to_cart_button"
+                        },
+                        {
+                            "property": "height",
+                            "selector": ".cart .bfbe-buy"
+                        }
+                    ],
+                    "group": "bfbeShopBuyForm",
+                    "tab": "content"
+                },
+                "bfbeShopOptsListLook": {
+                    "label": "Open list",
+                    "type": "select",
+                    "options": {
+                        "native": "As the browser draws it",
+                        "custom": "Styled with the controls below"
+                    },
+                    "inline": true,
+                    "placeholder": "As the browser draws it",
+                    "description": "Selects shown as Bricks&#039; swatches keep them.",
+                    "group": "bfbeShopOptsList",
+                    "tab": "content"
+                },
+                "bfbeShopOptsListSepField": {
+                    "label": "Field",
+                    "type": "separator",
+                    "group": "bfbeShopOptsList",
+                    "tab": "content"
+                },
+                "bfbeShopOptsListTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".variations select"
+                        }
+                    ],
+                    "group": "bfbeShopOptsList",
+                    "tab": "content"
+                },
+                "bfbeShopOptsListBackground": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".variations select"
+                        }
+                    ],
+                    "group": "bfbeShopOptsList",
+                    "tab": "content"
+                },
+                "bfbeShopOptsListBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".variations select"
+                        }
+                    ],
+                    "group": "bfbeShopOptsList",
+                    "tab": "content"
+                },
+                "bfbeShopOptsListPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".variations select"
+                        }
+                    ],
+                    "group": "bfbeShopOptsList",
+                    "tab": "content"
+                },
+                "bfbeShopOptsListChevron": {
+                    "label": "Arrow colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-dd-chevron",
+                            "selector": ""
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopOptsListLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopOptsList",
+                    "tab": "content"
+                },
+                "bfbeShopOptsListSepPanel": {
+                    "label": "Open list",
+                    "type": "separator",
+                    "required": [
+                        "bfbeShopOptsListLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopOptsList",
+                    "tab": "content"
+                },
+                "bfbeShopOptsListPanelBg": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-dd__panel"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopOptsListLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopOptsList",
+                    "tab": "content"
+                },
+                "bfbeShopOptsListPanelBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-dd__panel"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopOptsListLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopOptsList",
+                    "tab": "content"
+                },
+                "bfbeShopOptsListPanelShadow": {
+                    "label": "Box shadow",
+                    "type": "box-shadow",
+                    "css": [
+                        {
+                            "property": "box-shadow",
+                            "selector": ".bfbe-dd__panel"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopOptsListLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopOptsList",
+                    "tab": "content"
+                },
+                "bfbeShopOptsListPanelPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-dd__panel"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopOptsListLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopOptsList",
+                    "tab": "content"
+                },
+                "bfbeShopOptsListSepOption": {
+                    "label": "Options",
+                    "type": "separator",
+                    "required": [
+                        "bfbeShopOptsListLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopOptsList",
+                    "tab": "content"
+                },
+                "bfbeShopOptsListOptTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-dd__opt"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopOptsListLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopOptsList",
+                    "tab": "content"
+                },
+                "bfbeShopOptsListOptPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-dd__opt"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopOptsListLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopOptsList",
+                    "tab": "content"
+                },
+                "bfbeShopOptsListOptHover": {
+                    "label": "Hover background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-dd__opt.is-active"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopOptsListLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopOptsList",
+                    "tab": "content"
+                },
+                "bfbeShopOptsListHoverText": {
+                    "label": "Hover text",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-dd__opt.is-active"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopOptsListLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopOptsList",
+                    "tab": "content"
+                },
+                "bfbeShopOptsListOptOnBg": {
+                    "label": "Chosen background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-dd__opt[aria-selected=\"true\"]"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopOptsListLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopOptsList",
+                    "tab": "content"
+                },
+                "bfbeShopOptsListOptOnColor": {
+                    "label": "Chosen text",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-dd__opt[aria-selected=\"true\"]"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopOptsListLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopOptsList",
+                    "tab": "content"
+                },
+                "bfbeShopOptsListTick": {
+                    "label": "Tick colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-dd-tick",
+                            "selector": ""
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopOptsListLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopOptsList",
+                    "tab": "content"
+                },
+                "bfbeShopAskWidth": {
+                    "label": "Width",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "css": [
+                        {
+                            "property": "width",
+                            "selector": ".bfbe-ask"
+                        }
+                    ],
+                    "group": "bfbeShopAsk",
+                    "tab": "content"
+                },
+                "bfbeShopCardSwatches": {
+                    "label": "Swatches on the card",
+                    "type": "checkbox",
+                    "description": "Inside a product loop.",
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardSimple": {
+                    "label": "On simple products",
+                    "type": "select",
+                    "options": {
+                        "swatch": "Show its swatch",
+                        "none": "Nothing"
+                    },
+                    "inline": true,
+                    "placeholder": "Show its swatch",
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardSimpleAttr": {
+                    "label": "Attribute",
+                    "type": "select",
+                    "options": {
+                        "pa_colour": "Colour",
+                        "pa_material": "Material",
+                        "pa_size": "Size",
+                        "pa_warmth": "Warmth"
+                    },
+                    "inline": true,
+                    "placeholder": "The first with swatches",
+                    "required": [
+                        [
+                            "bfbeShopCardSwatches",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopCardSimple",
+                            "!=",
+                            "none"
+                        ]
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardSepSwatches": {
+                    "label": "Swatches",
+                    "type": "separator",
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardLegendTypography": {
+                    "label": "Legend typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-cardsw__legend"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardSwatchBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-cardsw__opt"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardSwatchOn": {
+                    "label": "Chosen border",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-cardsw-on",
+                            "selector": ""
+                        },
+                        {
+                            "property": "border-color",
+                            "selector": ".bfbe-cardsw__opt:has(:checked)"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardSwatchSize": {
+                    "label": "Swatch size",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "placeholder": "36px",
+                    "css": [
+                        {
+                            "property": "width",
+                            "selector": ".bricks-swatch-color > .bfbe-cardsw__opt"
+                        },
+                        {
+                            "property": "height",
+                            "selector": ".bricks-swatch-color > .bfbe-cardsw__opt"
+                        },
+                        {
+                            "property": "width",
+                            "selector": ".bricks-swatch-image .bfbe-cardsw__swatch img"
+                        },
+                        {
+                            "property": "height",
+                            "selector": ".bricks-swatch-image .bfbe-cardsw__swatch img"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardLabelPadding": {
+                    "label": "Word swatch padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bricks-swatch-label .bfbe-cardsw__swatch"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardLabelBackground": {
+                    "label": "Word swatch background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bricks-swatch-label > .bfbe-cardsw__opt"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardSwatchGap": {
+                    "label": "Gap",
+                    "type": "number",
+                    "units": true,
+                    "css": [
+                        {
+                            "property": "gap",
+                            "selector": ".bfbe-cardsw__list"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardSwatchScroll": {
+                    "label": "Label swatches scroll sideways",
+                    "type": "checkbox",
+                    "css": [
+                        {
+                            "property": "flex-wrap",
+                            "selector": ".bfbe-cardsw__list.bricks-swatch-label",
+                            "value": "nowrap"
+                        },
+                        {
+                            "property": "overflow-x",
+                            "selector": ".bfbe-cardsw__list.bricks-swatch-label",
+                            "value": "auto"
+                        },
+                        {
+                            "property": "scrollbar-width",
+                            "selector": ".bfbe-cardsw__list.bricks-swatch-label",
+                            "value": "none"
+                        },
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-cardsw__list.bricks-swatch-label",
+                            "value": "2px"
+                        },
+                        {
+                            "property": "margin",
+                            "selector": ".bfbe-cardsw__list.bricks-swatch-label",
+                            "value": "-2px"
+                        },
+                        {
+                            "property": "display",
+                            "selector": ".bfbe-cardsw__list.bricks-swatch-label::-webkit-scrollbar",
+                            "value": "none"
+                        },
+                        {
+                            "property": "flex",
+                            "selector": ".bfbe-cardsw__list.bricks-swatch-label li",
+                            "value": "0 0 auto"
+                        },
+                        {
+                            "property": "white-space",
+                            "selector": ".bfbe-cardsw__list.bricks-swatch-label li",
+                            "value": "nowrap"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardSepButton": {
+                    "label": "Button",
+                    "type": "separator",
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardAddText": {
+                    "label": "Label",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Add to cart",
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardBtnTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-cardsw__add"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardBtnBackground": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-cardsw__add"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardBtnBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-cardsw__add"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardBtnPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-cardsw__add"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardBtnWidth": {
+                    "label": "Width",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "css": [
+                        {
+                            "property": "width",
+                            "selector": ".bfbe-cardsw__add"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardBtnShadow": {
+                    "label": "Box shadow",
+                    "type": "box-shadow",
+                    "css": [
+                        {
+                            "property": "box-shadow",
+                            "selector": ".bfbe-cardsw__add"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardBtnHover": {
+                    "label": "Hover background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-cardsw__add:hover"
+                        },
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-cardsw__add:focus-visible"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardBtnHoverColor": {
+                    "label": "Hover text",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-cardsw__add:hover"
+                        },
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-cardsw__add:focus-visible"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardSepPage": {
+                    "label": "Product page",
+                    "type": "separator",
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopFirst": {
+                    "label": "Preselect first variation",
+                    "type": "checkbox",
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopSoldOut": {
+                    "label": "Sold-out options",
+                    "type": "select",
+                    "options": {
+                        "hidden": "Hidden",
+                        "crossed": "Crossed out"
+                    },
+                    "inline": true,
+                    "placeholder": "As WooCommerce",
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopQbSepEach": {
+                    "label": "Price per item",
+                    "type": "separator",
+                    "group": "bfbeShopQb",
+                    "tab": "content"
+                },
+                "bfbeShopQbEach": {
+                    "label": "Show",
+                    "type": "checkbox",
+                    "group": "bfbeShopQb",
+                    "tab": "content"
+                },
+                "bfbeShopQbEachTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-qb__each"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopQbEach",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopQb",
+                    "tab": "content"
+                }
+            }
+        },
+        "woocommerce-products": {
+            "label": "Products",
+            "registered": true,
+            "controlGroups": {
+                "bfbeShopCards": {
+                    "title": "BFB Product cards",
+                    "tab": "content"
+                }
+            },
+            "controls": {
+                "bfbeShopCardSwatches": {
+                    "label": "Swatches on the card",
+                    "type": "checkbox",
+                    "description": "Place them in a field with {bfbe_card_swatches}.",
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardSepSwatches": {
+                    "label": "Swatches",
+                    "type": "separator",
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardLegendTypography": {
+                    "label": "Legend typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-cardsw__legend"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardSwatchBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-cardsw__opt"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardSwatchOn": {
+                    "label": "Chosen border",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-cardsw-on",
+                            "selector": ""
+                        },
+                        {
+                            "property": "border-color",
+                            "selector": ".bfbe-cardsw__opt:has(:checked)"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardSwatchSize": {
+                    "label": "Swatch size",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "placeholder": "36px",
+                    "css": [
+                        {
+                            "property": "width",
+                            "selector": ".bricks-swatch-color > .bfbe-cardsw__opt"
+                        },
+                        {
+                            "property": "height",
+                            "selector": ".bricks-swatch-color > .bfbe-cardsw__opt"
+                        },
+                        {
+                            "property": "width",
+                            "selector": ".bricks-swatch-image .bfbe-cardsw__swatch img"
+                        },
+                        {
+                            "property": "height",
+                            "selector": ".bricks-swatch-image .bfbe-cardsw__swatch img"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardLabelPadding": {
+                    "label": "Word swatch padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bricks-swatch-label .bfbe-cardsw__swatch"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardLabelBackground": {
+                    "label": "Word swatch background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bricks-swatch-label > .bfbe-cardsw__opt"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardSwatchGap": {
+                    "label": "Gap",
+                    "type": "number",
+                    "units": true,
+                    "css": [
+                        {
+                            "property": "gap",
+                            "selector": ".bfbe-cardsw__list"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardSwatchScroll": {
+                    "label": "Label swatches scroll sideways",
+                    "type": "checkbox",
+                    "css": [
+                        {
+                            "property": "flex-wrap",
+                            "selector": ".bfbe-cardsw__list.bricks-swatch-label",
+                            "value": "nowrap"
+                        },
+                        {
+                            "property": "overflow-x",
+                            "selector": ".bfbe-cardsw__list.bricks-swatch-label",
+                            "value": "auto"
+                        },
+                        {
+                            "property": "scrollbar-width",
+                            "selector": ".bfbe-cardsw__list.bricks-swatch-label",
+                            "value": "none"
+                        },
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-cardsw__list.bricks-swatch-label",
+                            "value": "2px"
+                        },
+                        {
+                            "property": "margin",
+                            "selector": ".bfbe-cardsw__list.bricks-swatch-label",
+                            "value": "-2px"
+                        },
+                        {
+                            "property": "display",
+                            "selector": ".bfbe-cardsw__list.bricks-swatch-label::-webkit-scrollbar",
+                            "value": "none"
+                        },
+                        {
+                            "property": "flex",
+                            "selector": ".bfbe-cardsw__list.bricks-swatch-label li",
+                            "value": "0 0 auto"
+                        },
+                        {
+                            "property": "white-space",
+                            "selector": ".bfbe-cardsw__list.bricks-swatch-label li",
+                            "value": "nowrap"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopSoldOut": {
+                    "label": "Sold-out options",
+                    "type": "select",
+                    "options": {
+                        "hidden": "Hidden",
+                        "crossed": "Crossed out"
+                    },
+                    "inline": true,
+                    "placeholder": "Crossed out",
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardSepButton": {
+                    "label": "Button",
+                    "type": "separator",
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardBtnTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-cardsw__add"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardBtnBackground": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-cardsw__add"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardBtnBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-cardsw__add"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardBtnPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-cardsw__add"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardBtnWidth": {
+                    "label": "Width",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "css": [
+                        {
+                            "property": "width",
+                            "selector": ".bfbe-cardsw__add"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardBtnShadow": {
+                    "label": "Box shadow",
+                    "type": "box-shadow",
+                    "css": [
+                        {
+                            "property": "box-shadow",
+                            "selector": ".bfbe-cardsw__add"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardBtnHover": {
+                    "label": "Hover background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-cardsw__add:hover"
+                        },
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-cardsw__add:focus-visible"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                },
+                "bfbeShopCardBtnHoverColor": {
+                    "label": "Hover text",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-cardsw__add:hover"
+                        },
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-cardsw__add:focus-visible"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopCardSwatches",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopCards",
+                    "tab": "content"
+                }
+            }
+        }
+    }
+}

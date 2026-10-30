@@ -16,7 +16,7 @@ A button that copies fixed text, dynamic data, or the contents of another elemen
 
 **Not for:** Anything it copies must already be in the page, either typed here or inside the element your selector finds. It cannot fetch text from a server when clicked, and it never pastes into fields.
 
-**Costs a page:** CSS 0.45 KB, JS 0.84 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 0.61 KB, JS 0.90 KB (gzipped), no dependencies, loaded only on pages that use it.
 
 **Nestable:** no · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 
@@ -27,18 +27,28 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### What to copy (`bfbeSource`)
-- `source` (select) **Source**: options: `text` Text (default), `selector` An element on the page. Text is the default. An element on the page copies the value or text of whatever your selector matches when the button is clicked.
+- `source` (select) **Source**: options: `text` Text (default), `selector` An element on the page, `coupon` A WooCommerce coupon. Text is the default. An element on the page copies the value or text of whatever your selector matches when the button is clicked.
 - `text` (textarea) **Text**: dynamic data accepted; only when `source` is not `selector`. The text to copy, in a multi-line field that accepts dynamic data, such as a coupon code from a custom field.
 - `selector` (text) **CSS selector**: placeholder #coupon; only when `source` is `selector`. The element to read, such as #coupon. A form field gives its value and other elements give their text.
+- `couponPick` (select) **Coupon**: options: the site's own, read when the panel opens; only when `source` is `coupon`
+- `coupon` (text) **Or type a code**: placeholder WELCOME10; dynamic data accepted; only when `source` is `coupon`
+- `couponFacts` (checkbox) **Discount and expiry**: only when `source` is `coupon`
+- `couponApply` (checkbox) **Apply now link**: only when `source` is `coupon`
+- `couponApplyText` (text) **Apply now words**: placeholder Apply now; only when `source` is `coupon` and `couponApply` is set
+
+### Coupon look (`bfbeCoupon`)
+The whole group shows only when `source` is `coupon`.
+- `factsPlace` (select) **Discount and expiry**: options: `column` Under the code (default), `row` Beside the code; writes CSS; only when `couponFacts` is set
+Styling, in the schema file: `codeTypography`, `factsTypography`, `copyGrow`, `copyTypography`, `copyBackground`, `copyBorder`, `copyPadding`, `boxGap`, `applyTypography`, `applyBackground`, `applyBorder`, `applyPadding`, `applyHoverBackground`, `applyHoverColor`.
 
 ### Button (`bfbeButton`)
 - `label` (text) **Label**: placeholder Copy; dynamic data accepted. The words on the button, Copy by default. They also name the button for screen readers, and the field accepts dynamic data.
-- `icon` (icon) **Icon**. An optional icon beside the label.
-- `iconPosition` (select) **Icon position**: options: `left` Left (default), `right` Right. Left of the label by default, or Right.
 Styling, in the schema file: `hoverColor`, `hoverBackground`.
 
 ### Icon (`bfbeIcon`)
-Styling only, every key in the schema file: `iconSize`, `iconColor`, `iconGap`.
+- `icon` (icon) **Icon**. An optional icon beside the label.
+- `iconPosition` (select) **Icon position**: options: `left` Left (default), `right` Right. Left of the label by default, or Right.
+Styling, in the schema file: `iconSize`, `iconColor`, `iconGap`.
 
 ### After copying (`bfbeDone`)
 - `successLabel` (text) **Label after copying**: placeholder Copied; dynamic data accepted. The words shown once copied, Copied by default. Screen readers hear them too.

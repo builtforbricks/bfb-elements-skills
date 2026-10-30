@@ -9,7 +9,7 @@
     "childrenDefault": [],
     "parent": null,
     "cost": {
-        "css": "1.57 KB",
+        "css": "2.00 KB",
         "js": "0.47 KB",
         "dependencies": "none"
     },
@@ -19,13 +19,32 @@
             "tab": "style",
             "icon": "html"
         },
+        "bfbeProducts": {
+            "title": "Products being compared",
+            "tab": "content",
+            "required": [
+                "source",
+                "=",
+                "compare"
+            ]
+        },
         "bfbePlans": {
             "title": "Plans",
-            "tab": "content"
+            "tab": "content",
+            "required": [
+                "source",
+                "!=",
+                "compare"
+            ]
         },
         "bfbeFeatures": {
             "title": "Features",
-            "tab": "content"
+            "tab": "content",
+            "required": [
+                "source",
+                "!=",
+                "compare"
+            ]
         },
         "bfbeTable": {
             "title": "Table",
@@ -37,7 +56,12 @@
         },
         "bfbeMarks": {
             "title": "Ticks and crosses",
-            "tab": "content"
+            "tab": "content",
+            "required": [
+                "source",
+                "!=",
+                "compare"
+            ]
         },
         "bfbePlanLook": {
             "title": "Plan header",
@@ -67,6 +91,230 @@
             "tab": "content",
             "type": "info",
             "content": "<a href=\"https://builtforbricks.com/bfb-elements/docs/comparison-table/\" target=\"_blank\" rel=\"noopener\">Documentation &#8599;</a>"
+        },
+        "source": {
+            "tab": "content",
+            "label": "Rows and columns from",
+            "type": "select",
+            "options": {
+                "typed": "Typed in",
+                "compare": "Products being compared"
+            },
+            "inline": true,
+            "placeholder": "Typed in"
+        },
+        "cmpShow": {
+            "tab": "content",
+            "group": "bfbeProducts",
+            "label": "Each column shows",
+            "type": "select",
+            "options": {
+                "image": "Image",
+                "name": "Name",
+                "price": "Price",
+                "rating": "Rating",
+                "stock": "Stock",
+                "cart": "Add to cart",
+                "remove": "Remove"
+            },
+            "multiple": true,
+            "placeholder": "All of them"
+        },
+        "cmpRows": {
+            "tab": "content",
+            "group": "bfbeProducts",
+            "label": "Rows",
+            "type": "select",
+            "options": {
+                "attrs": "Every attribute",
+                "attr:pa_colour": "Colour",
+                "attr:pa_material": "Material",
+                "attr:pa_size": "Size",
+                "attr:pa_warmth": "Warmth",
+                "dimensions": "Dimensions",
+                "weight": "Weight",
+                "sku": "SKU"
+            },
+            "multiple": true,
+            "placeholder": "Attributes, size, weight, SKU"
+        },
+        "cmpMeta": {
+            "tab": "content",
+            "group": "bfbeProducts",
+            "label": "Custom field rows",
+            "type": "text",
+            "inline": true,
+            "placeholder": "care, origin",
+            "description": "Field keys, commas between."
+        },
+        "sepCmpDiff": {
+            "tab": "content",
+            "group": "bfbeProducts",
+            "label": "Differences",
+            "type": "separator"
+        },
+        "cmpHighlight": {
+            "tab": "content",
+            "group": "bfbeProducts",
+            "label": "Highlight",
+            "type": "checkbox"
+        },
+        "cmpOnlyDiff": {
+            "tab": "content",
+            "group": "bfbeProducts",
+            "label": "Only differences",
+            "type": "checkbox"
+        },
+        "cmpDiffMark": {
+            "tab": "content",
+            "group": "bfbeProducts",
+            "label": "Mark with",
+            "type": "select",
+            "options": {
+                "fill": "A fill on the row",
+                "dot": "A dot by the feature"
+            },
+            "inline": true,
+            "placeholder": "A fill on the row",
+            "required": [
+                "cmpHighlight",
+                "!=",
+                ""
+            ]
+        },
+        "cmpDiffBackground": {
+            "tab": "content",
+            "group": "bfbeProducts",
+            "label": "Background",
+            "type": "color",
+            "required": [
+                [
+                    "cmpHighlight",
+                    "!=",
+                    ""
+                ],
+                [
+                    "cmpDiffMark",
+                    "!=",
+                    "dot"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-cmp-diff",
+                    "selector": ""
+                }
+            ]
+        },
+        "cmpDiffDot": {
+            "tab": "content",
+            "group": "bfbeProducts",
+            "label": "Dot colour",
+            "type": "color",
+            "required": [
+                [
+                    "cmpHighlight",
+                    "!=",
+                    ""
+                ],
+                [
+                    "cmpDiffMark",
+                    "=",
+                    "dot"
+                ]
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-cmp-dot",
+                    "selector": ""
+                }
+            ]
+        },
+        "cmpDiffKey": {
+            "tab": "content",
+            "group": "bfbeProducts",
+            "label": "Dot on the first heading",
+            "type": "checkbox",
+            "description": "Its words then say what a dot means.",
+            "required": [
+                [
+                    "cmpHighlight",
+                    "!=",
+                    ""
+                ],
+                [
+                    "cmpDiffMark",
+                    "=",
+                    "dot"
+                ]
+            ]
+        },
+        "sepCmpWords": {
+            "tab": "content",
+            "group": "bfbeProducts",
+            "label": "Words",
+            "type": "separator"
+        },
+        "cmpCartText": {
+            "tab": "content",
+            "group": "bfbeProducts",
+            "label": "Add to cart words",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Add to cart"
+        },
+        "cmpRemoveText": {
+            "tab": "content",
+            "group": "bfbeProducts",
+            "label": "Remove words",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Remove"
+        },
+        "cmpEmpty": {
+            "tab": "content",
+            "group": "bfbeProducts",
+            "label": "While there is nothing",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "Nothing to compare yet."
+        },
+        "cmpEmptyTypography": {
+            "tab": "content",
+            "group": "bfbeProducts",
+            "label": "Message typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-cmp__empty"
+                }
+            ]
+        },
+        "cmpEmptyBorder": {
+            "tab": "content",
+            "group": "bfbeProducts",
+            "label": "Message border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-cmp__empty"
+                }
+            ]
+        },
+        "cmpEmptyPadding": {
+            "tab": "content",
+            "group": "bfbeProducts",
+            "label": "Message padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-cmp__empty"
+                }
+            ]
         },
         "plans": {
             "tab": "content",
@@ -107,6 +355,11 @@
                     "type": "link"
                 }
             },
+            "required": [
+                "source",
+                "!=",
+                "compare"
+            ],
             "type": "repeater",
             "selector": ".bfbe-cmp__plan"
         },
@@ -141,6 +394,11 @@
                     "type": "checkbox"
                 }
             },
+            "required": [
+                "source",
+                "!=",
+                "compare"
+            ],
             "type": "repeater",
             "selector": ".bfbe-cmp__row"
         },
@@ -225,7 +483,14 @@
             "tab": "content",
             "group": "bfbeLook",
             "label": "Highlighted plan",
-            "type": "separator"
+            "type": "separator",
+            "required": [
+                [
+                    "source",
+                    "!=",
+                    "compare"
+                ]
+            ]
         },
         "highlightBackground": {
             "tab": "content",
@@ -237,6 +502,13 @@
                     "property": "--bfbe-cmp-hl",
                     "selector": ""
                 }
+            ],
+            "required": [
+                [
+                    "source",
+                    "!=",
+                    "compare"
+                ]
             ]
         },
         "highlightColor": {
@@ -249,6 +521,13 @@
                     "property": "--bfbe-cmp-hl-color",
                     "selector": ""
                 }
+            ],
+            "required": [
+                [
+                    "source",
+                    "!=",
+                    "compare"
+                ]
             ]
         },
         "sepCells": {
@@ -270,6 +549,25 @@
                 {
                     "property": "typography",
                     "selector": ".bfbe-cmp__feature-head"
+                }
+            ]
+        },
+        "featureHeadAlign": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "First heading alignment",
+            "type": "select",
+            "options": {
+                "top": "Top",
+                "middle": "Middle",
+                "bottom": "Bottom"
+            },
+            "inline": true,
+            "placeholder": "Middle",
+            "css": [
+                {
+                    "property": "vertical-align",
+                    "selector": ".bfbe-cmp__cell.bfbe-cmp__feature-head"
                 }
             ]
         },
@@ -295,6 +593,13 @@
                     "property": "typography",
                     "selector": ".bfbe-cmp__group"
                 }
+            ],
+            "required": [
+                [
+                    "source",
+                    "!=",
+                    "compare"
+                ]
             ]
         },
         "planMinWidth": {
@@ -404,6 +709,12 @@
                 }
             ]
         },
+        "columnLines": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Lines between columns",
+            "type": "checkbox"
+        },
         "headBackground": {
             "tab": "content",
             "group": "bfbeLook",
@@ -450,6 +761,13 @@
                     "property": "background-color",
                     "selector": ".bfbe-cmp__group"
                 }
+            ],
+            "required": [
+                [
+                    "source",
+                    "!=",
+                    "compare"
+                ]
             ]
         },
         "tableBorder": {
@@ -480,6 +798,13 @@
                     "property": "--bfbe-cmp-hint",
                     "selector": ""
                 }
+            ],
+            "required": [
+                [
+                    "source",
+                    "!=",
+                    "compare"
+                ]
             ]
         },
         "hintColor": {
@@ -496,6 +821,13 @@
                     "property": "border-color",
                     "selector": ".bfbe-cmp__hint"
                 }
+            ],
+            "required": [
+                [
+                    "source",
+                    "!=",
+                    "compare"
+                ]
             ]
         },
         "captionTypography": {
@@ -510,6 +842,19 @@
                 }
             ]
         },
+        "captionPadding": {
+            "tab": "content",
+            "group": "bfbeLook",
+            "label": "Caption padding",
+            "type": "dimensions",
+            "breakpoints": true,
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-cmp__caption"
+                }
+            ]
+        },
         "noteTypography": {
             "tab": "content",
             "group": "bfbeLook",
@@ -520,6 +865,13 @@
                     "property": "typography",
                     "selector": ".bfbe-cmp__note"
                 }
+            ],
+            "required": [
+                [
+                    "source",
+                    "!=",
+                    "compare"
+                ]
             ]
         },
         "labelTypography": {
@@ -582,13 +934,27 @@
             "tab": "content",
             "group": "bfbeMarks",
             "label": "Tick icon",
-            "type": "icon"
+            "type": "icon",
+            "required": [
+                [
+                    "source",
+                    "!=",
+                    "compare"
+                ]
+            ]
         },
         "crossIcon": {
             "tab": "content",
             "group": "bfbeMarks",
             "label": "Cross icon",
-            "type": "icon"
+            "type": "icon",
+            "required": [
+                [
+                    "source",
+                    "!=",
+                    "compare"
+                ]
+            ]
         },
         "tickBackground": {
             "tab": "content",
@@ -643,6 +1009,82 @@
                     "property": "border",
                     "selector": ".bfbe-cmp__no"
                 }
+            ],
+            "required": [
+                [
+                    "source",
+                    "!=",
+                    "compare"
+                ]
+            ]
+        },
+        "sepCmpImage": {
+            "tab": "content",
+            "group": "bfbePlanLook",
+            "label": "Image",
+            "type": "separator",
+            "required": [
+                "source",
+                "=",
+                "compare"
+            ]
+        },
+        "cmpImgWidth": {
+            "tab": "content",
+            "group": "bfbePlanLook",
+            "required": [
+                "source",
+                "=",
+                "compare"
+            ],
+            "label": "Width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "160px",
+            "css": [
+                {
+                    "property": "max-inline-size",
+                    "selector": ".bfbe-cmp__img img"
+                }
+            ]
+        },
+        "cmpImgBorder": {
+            "tab": "content",
+            "group": "bfbePlanLook",
+            "required": [
+                "source",
+                "=",
+                "compare"
+            ],
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-cmp__img img"
+                }
+            ]
+        },
+        "cmpPartGap": {
+            "tab": "content",
+            "group": "bfbePlanLook",
+            "required": [
+                "source",
+                "=",
+                "compare"
+            ],
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "6px",
+            "description": "Between the picture, name, price and the rest.",
+            "css": [
+                {
+                    "property": "--bfbe-cmp-part-gap",
+                    "selector": ""
+                }
             ]
         },
         "sepPlanName": {
@@ -675,11 +1117,115 @@
                 }
             ]
         },
+        "sepCmpRating": {
+            "tab": "content",
+            "group": "bfbePlanLook",
+            "label": "Rating and stock",
+            "type": "separator",
+            "required": [
+                "source",
+                "=",
+                "compare"
+            ]
+        },
+        "cmpStarColor": {
+            "tab": "content",
+            "group": "bfbePlanLook",
+            "required": [
+                "source",
+                "=",
+                "compare"
+            ],
+            "label": "Star colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".bfbe-cmp__rating .star-rating span::before"
+                }
+            ]
+        },
+        "cmpStarSize": {
+            "tab": "content",
+            "group": "bfbePlanLook",
+            "required": [
+                "source",
+                "=",
+                "compare"
+            ],
+            "label": "Star size",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "15px",
+            "css": [
+                {
+                    "property": "font-size",
+                    "selector": ".bfbe-cmp__rating .star-rating"
+                }
+            ]
+        },
+        "cmpRatingTypography": {
+            "tab": "content",
+            "group": "bfbePlanLook",
+            "required": [
+                "source",
+                "=",
+                "compare"
+            ],
+            "label": "Rating typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-cmp__rating-words"
+                }
+            ]
+        },
+        "cmpStockTypography": {
+            "tab": "content",
+            "group": "bfbePlanLook",
+            "required": [
+                "source",
+                "=",
+                "compare"
+            ],
+            "label": "Stock typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-cmp__stock"
+                }
+            ]
+        },
+        "cmpOutColor": {
+            "tab": "content",
+            "group": "bfbePlanLook",
+            "required": [
+                "source",
+                "=",
+                "compare"
+            ],
+            "label": "Out of stock colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".bfbe-cmp__stock--out"
+                }
+            ]
+        },
         "sepPlanBadge": {
             "tab": "content",
             "group": "bfbePlanLook",
             "label": "Badge",
-            "type": "separator"
+            "type": "separator",
+            "required": [
+                "source",
+                "!=",
+                "compare"
+            ]
         },
         "badgeTypography": {
             "tab": "content",
@@ -691,6 +1237,13 @@
                     "property": "typography",
                     "selector": ".bfbe-cmp__badge"
                 }
+            ],
+            "required": [
+                [
+                    "source",
+                    "!=",
+                    "compare"
+                ]
             ]
         },
         "badgeBackground": {
@@ -703,6 +1256,13 @@
                     "property": "background-color",
                     "selector": ".bfbe-cmp__badge"
                 }
+            ],
+            "required": [
+                [
+                    "source",
+                    "!=",
+                    "compare"
+                ]
             ]
         },
         "badgePadding": {
@@ -715,6 +1275,13 @@
                     "property": "padding",
                     "selector": ".bfbe-cmp__badge"
                 }
+            ],
+            "required": [
+                [
+                    "source",
+                    "!=",
+                    "compare"
+                ]
             ]
         },
         "badgeBorder": {
@@ -727,6 +1294,13 @@
                     "property": "border",
                     "selector": ".bfbe-cmp__badge"
                 }
+            ],
+            "required": [
+                [
+                    "source",
+                    "!=",
+                    "compare"
+                ]
             ]
         },
         "sepPlanButton": {
@@ -824,6 +1398,72 @@
                 }
             ]
         },
+        "sepCmpRemove": {
+            "tab": "content",
+            "group": "bfbePlanLook",
+            "label": "Remove",
+            "type": "separator",
+            "required": [
+                "source",
+                "=",
+                "compare"
+            ]
+        },
+        "cmpRemoveTypography": {
+            "tab": "content",
+            "group": "bfbePlanLook",
+            "required": [
+                "source",
+                "=",
+                "compare"
+            ],
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-cmp__remove"
+                }
+            ]
+        },
+        "cmpRemoveColor": {
+            "tab": "content",
+            "group": "bfbePlanLook",
+            "required": [
+                "source",
+                "=",
+                "compare"
+            ],
+            "label": "Colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".bfbe-cmp__remove"
+                }
+            ]
+        },
+        "cmpRemoveHover": {
+            "tab": "content",
+            "group": "bfbePlanLook",
+            "required": [
+                "source",
+                "=",
+                "compare"
+            ],
+            "label": "Hover colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".bfbe-cmp__remove:hover"
+                },
+                {
+                    "property": "color",
+                    "selector": ".bfbe-cmp__remove:focus-visible"
+                }
+            ]
+        },
         "hintSize": {
             "tab": "content",
             "group": "bfbeFeatures",
@@ -857,7 +1497,8 @@
                 "follow": "Follow the pointer",
                 "fade": "Fade in",
                 "slide": "Slide in",
-                "grow": "Grow"
+                "grow": "Grow",
+                "image2": "Show the product&#039;s second image"
             },
             "inline": true,
             "placeholder": "None"

@@ -1,0 +1,2053 @@
+{
+    "name": "shop-catalogue",
+    "label": "BFB Shop catalogue",
+    "pack": "free and pro",
+    "feature": true,
+    "shape": "hosts",
+    "on": "Bricks' own Block (`block`), Container (`container`), Div (`div`), Filter - Checkbox (`filter-checkbox`), Filter - Radio (`filter-radio`), Breadcrumbs (WooCommerce) (`woocommerce-breadcrumbs`), Products (`woocommerce-products`), Products orderby (`woocommerce-products-orderby`)",
+    "job": "the shop's catalogue settings on Bricks' Products, Products orderby, Filter - Checkbox and Filter - Radio, Breadcrumbs and looping Containers: promo tiles in a product grid, extra sort orders and the sort dropdown's look, child terms and swatch filters, the brand in the breadcrumbs",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/shop-catalogue/",
+    "since": "2.0.0",
+    "requires": [
+        "WooCommerce"
+    ],
+    "switches": [
+        "shop-promo-tiles",
+        "shop-sorting",
+        "shop-filters",
+        "shop-swatch-filters",
+        "shop-brands"
+    ],
+    "groupInfo": {
+        "bfbeShopPromo": {
+            "title": "BFB Promo tiles",
+            "pack": "free",
+            "switch": [
+                "shop-promo-tiles"
+            ],
+            "sources": [
+                "bfb-elements/includes/shop/class-promo-tiles.php"
+            ]
+        },
+        "bfbeShopSorting": {
+            "title": "BFB Sorting",
+            "pack": "free",
+            "switch": [
+                "shop-sorting"
+            ],
+            "sources": [
+                "bfb-elements/includes/shop/class-sorting.php"
+            ]
+        },
+        "bfbeShopFilters": {
+            "title": "BFB Child terms",
+            "pack": "free",
+            "switch": [
+                "shop-filters"
+            ],
+            "sources": [
+                "bfb-elements/includes/shop/class-filters.php"
+            ]
+        },
+        "bfbeShopSwatchFilters": {
+            "title": "BFB Swatch look",
+            "pack": "pro",
+            "switch": [
+                "shop-swatch-filters"
+            ],
+            "sources": [
+                "bfb-elements-pro/includes/shop/class-swatch-filters.php"
+            ]
+        },
+        "bfbeShopBrand": {
+            "title": "BFB Brand",
+            "pack": "free",
+            "switch": [
+                "shop-brands"
+            ],
+            "sources": [
+                "bfb-elements/includes/shop/class-brands-breadcrumbs.php"
+            ]
+        },
+        "bfbeShopDropdown": {
+            "title": "BFB Dropdown",
+            "pack": "free",
+            "switch": [
+                "shop-sorting"
+            ],
+            "sources": [
+                "bfb-elements/includes/shop/class-sorting.php"
+            ]
+        }
+    },
+    "hosts": {
+        "block": {
+            "label": "Block",
+            "registered": true,
+            "controlGroups": {
+                "bfbeShopPromo": {
+                    "title": "BFB Promo tiles",
+                    "tab": "content",
+                    "required": [
+                        "hasLoop",
+                        "!=",
+                        ""
+                    ]
+                },
+                "bfbeShopSorting": {
+                    "title": "BFB Sorting",
+                    "tab": "content",
+                    "required": [
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "query.objectType",
+                            "=",
+                            "post"
+                        ]
+                    ]
+                }
+            },
+            "controls": {
+                "bfbeShopTiles": {
+                    "label": "Tiles",
+                    "type": "repeater",
+                    "titleProperty": "position",
+                    "placeholder": "Tile",
+                    "fields": {
+                        "template": {
+                            "label": "Template",
+                            "type": "select",
+                            "options": [],
+                            "searchable": true,
+                            "placeholder": "Select a template"
+                        },
+                        "position": {
+                            "label": "Card number",
+                            "type": "number",
+                            "min": 1,
+                            "max": 200,
+                            "step": 1,
+                            "placeholder": "3"
+                        },
+                        "every": {
+                            "label": "Repeat every",
+                            "type": "number",
+                            "min": 0,
+                            "max": 200,
+                            "step": 1,
+                            "placeholder": "Never"
+                        }
+                    },
+                    "tab": "content",
+                    "group": "bfbeShopPromo",
+                    "required": [
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopTilesFirst": {
+                    "label": "First page only",
+                    "type": "checkbox",
+                    "required": [
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopTiles",
+                            "!=",
+                            ""
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopPromo"
+                },
+                "bfbeShopSoldOutLast": {
+                    "tab": "content",
+                    "group": "bfbeShopSorting",
+                    "label": "Sold-out products last",
+                    "type": "checkbox",
+                    "required": [
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "query.objectType",
+                            "=",
+                            "post"
+                        ]
+                    ]
+                }
+            }
+        },
+        "container": {
+            "label": "Container",
+            "registered": true,
+            "controlGroups": {
+                "bfbeShopPromo": {
+                    "title": "BFB Promo tiles",
+                    "tab": "content",
+                    "required": [
+                        "hasLoop",
+                        "!=",
+                        ""
+                    ]
+                },
+                "bfbeShopSorting": {
+                    "title": "BFB Sorting",
+                    "tab": "content",
+                    "required": [
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "query.objectType",
+                            "=",
+                            "post"
+                        ]
+                    ]
+                }
+            },
+            "controls": {
+                "bfbeShopTiles": {
+                    "label": "Tiles",
+                    "type": "repeater",
+                    "titleProperty": "position",
+                    "placeholder": "Tile",
+                    "fields": {
+                        "template": {
+                            "label": "Template",
+                            "type": "select",
+                            "options": [],
+                            "searchable": true,
+                            "placeholder": "Select a template"
+                        },
+                        "position": {
+                            "label": "Card number",
+                            "type": "number",
+                            "min": 1,
+                            "max": 200,
+                            "step": 1,
+                            "placeholder": "3"
+                        },
+                        "every": {
+                            "label": "Repeat every",
+                            "type": "number",
+                            "min": 0,
+                            "max": 200,
+                            "step": 1,
+                            "placeholder": "Never"
+                        }
+                    },
+                    "tab": "content",
+                    "group": "bfbeShopPromo",
+                    "required": [
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopTilesFirst": {
+                    "label": "First page only",
+                    "type": "checkbox",
+                    "required": [
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopTiles",
+                            "!=",
+                            ""
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopPromo"
+                },
+                "bfbeShopSoldOutLast": {
+                    "tab": "content",
+                    "group": "bfbeShopSorting",
+                    "label": "Sold-out products last",
+                    "type": "checkbox",
+                    "required": [
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "query.objectType",
+                            "=",
+                            "post"
+                        ]
+                    ]
+                }
+            }
+        },
+        "div": {
+            "label": "Div",
+            "registered": true,
+            "controlGroups": {
+                "bfbeShopPromo": {
+                    "title": "BFB Promo tiles",
+                    "tab": "content",
+                    "required": [
+                        "hasLoop",
+                        "!=",
+                        ""
+                    ]
+                },
+                "bfbeShopSorting": {
+                    "title": "BFB Sorting",
+                    "tab": "content",
+                    "required": [
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "query.objectType",
+                            "=",
+                            "post"
+                        ]
+                    ]
+                }
+            },
+            "controls": {
+                "bfbeShopTiles": {
+                    "label": "Tiles",
+                    "type": "repeater",
+                    "titleProperty": "position",
+                    "placeholder": "Tile",
+                    "fields": {
+                        "template": {
+                            "label": "Template",
+                            "type": "select",
+                            "options": [],
+                            "searchable": true,
+                            "placeholder": "Select a template"
+                        },
+                        "position": {
+                            "label": "Card number",
+                            "type": "number",
+                            "min": 1,
+                            "max": 200,
+                            "step": 1,
+                            "placeholder": "3"
+                        },
+                        "every": {
+                            "label": "Repeat every",
+                            "type": "number",
+                            "min": 0,
+                            "max": 200,
+                            "step": 1,
+                            "placeholder": "Never"
+                        }
+                    },
+                    "tab": "content",
+                    "group": "bfbeShopPromo",
+                    "required": [
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopTilesFirst": {
+                    "label": "First page only",
+                    "type": "checkbox",
+                    "required": [
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopTiles",
+                            "!=",
+                            ""
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopPromo"
+                },
+                "bfbeShopSoldOutLast": {
+                    "tab": "content",
+                    "group": "bfbeShopSorting",
+                    "label": "Sold-out products last",
+                    "type": "checkbox",
+                    "required": [
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "query.objectType",
+                            "=",
+                            "post"
+                        ]
+                    ]
+                }
+            }
+        },
+        "filter-checkbox": {
+            "label": "Filter - Checkbox",
+            "registered": true,
+            "controlGroups": {
+                "bfbeShopFilters": {
+                    "title": "BFB Child terms",
+                    "tab": "content"
+                },
+                "bfbeShopSwatchFilters": {
+                    "title": "BFB Swatch look",
+                    "tab": "content"
+                }
+            },
+            "controls": {
+                "bfbeShopCollapse": {
+                    "label": "Collapse",
+                    "type": "checkbox",
+                    "description": "Folds each parent term&#039;s children behind a button.",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "filterHierarchical",
+                            "=",
+                            true
+                        ]
+                    ],
+                    "group": "bfbeShopFilters",
+                    "tab": "content"
+                },
+                "bfbeShopCollapseSize": {
+                    "label": "Button size",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "placeholder": "28px",
+                    "css": [
+                        {
+                            "property": "inline-size",
+                            "selector": ".bfbe-filt__toggle"
+                        },
+                        {
+                            "property": "block-size",
+                            "selector": ".bfbe-filt__toggle"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "filterHierarchical",
+                            "=",
+                            true
+                        ],
+                        [
+                            "bfbeShopCollapse",
+                            "!=",
+                            ""
+                        ]
+                    ],
+                    "group": "bfbeShopFilters",
+                    "tab": "content"
+                },
+                "bfbeShopCollapseIconSize": {
+                    "label": "Icon size",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "placeholder": "14px",
+                    "css": [
+                        {
+                            "property": "inline-size",
+                            "selector": ".bfbe-filt__toggle svg"
+                        },
+                        {
+                            "property": "block-size",
+                            "selector": ".bfbe-filt__toggle svg"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "filterHierarchical",
+                            "=",
+                            true
+                        ],
+                        [
+                            "bfbeShopCollapse",
+                            "!=",
+                            ""
+                        ]
+                    ],
+                    "group": "bfbeShopFilters",
+                    "tab": "content"
+                },
+                "bfbeShopCollapseIconColor": {
+                    "label": "Icon colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-filt__toggle"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "filterHierarchical",
+                            "=",
+                            true
+                        ],
+                        [
+                            "bfbeShopCollapse",
+                            "!=",
+                            ""
+                        ]
+                    ],
+                    "group": "bfbeShopFilters",
+                    "tab": "content"
+                },
+                "bfbeShopCollapseBackground": {
+                    "label": "Button background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-filt__toggle"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "filterHierarchical",
+                            "=",
+                            true
+                        ],
+                        [
+                            "bfbeShopCollapse",
+                            "!=",
+                            ""
+                        ]
+                    ],
+                    "group": "bfbeShopFilters",
+                    "tab": "content"
+                },
+                "bfbeShopCollapseBorder": {
+                    "label": "Button border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-filt__toggle"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "filterHierarchical",
+                            "=",
+                            true
+                        ],
+                        [
+                            "bfbeShopCollapse",
+                            "!=",
+                            ""
+                        ]
+                    ],
+                    "group": "bfbeShopFilters",
+                    "tab": "content"
+                },
+                "bfbeShopCollapseHover": {
+                    "label": "Hover background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-filt__toggle:hover"
+                        },
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-filt__toggle:focus-visible"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "filterHierarchical",
+                            "=",
+                            true
+                        ],
+                        [
+                            "bfbeShopCollapse",
+                            "!=",
+                            ""
+                        ]
+                    ],
+                    "group": "bfbeShopFilters",
+                    "tab": "content"
+                },
+                "bfbeShopSwatchLook": {
+                    "label": "Look",
+                    "type": "select",
+                    "options": {
+                        "bricks": "As Bricks draws it",
+                        "swatches": "As swatches",
+                        "pills": "As pills"
+                    },
+                    "inline": true,
+                    "placeholder": "As Bricks draws it",
+                    "description": "Swatches for an attribute, pills for any taxonomy.",
+                    "required": [
+                        "filterSource",
+                        "=",
+                        "taxonomy"
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopSwatchGap": {
+                    "label": "Gap",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            [
+                                "swatches",
+                                "pills"
+                            ]
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "--bfbe-swf-gap",
+                            "selector": ""
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopSwatchSepSwatches": {
+                    "label": "Swatches",
+                    "type": "separator",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "swatches"
+                        ]
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopSwatchSize": {
+                    "label": "Size",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "placeholder": "32px",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "swatches"
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "--bfbe-swf-size",
+                            "selector": ""
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopSwatchRing": {
+                    "label": "Chosen ring",
+                    "type": "color",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "swatches"
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "--bfbe-swf-ring",
+                            "selector": ""
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopSwatchLabelTypography": {
+                    "label": "Label typography",
+                    "type": "typography",
+                    "description": "For swatches drawn as words.",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "swatches"
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-swf__face--label::before"
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopSwatchTipBackground": {
+                    "label": "Tooltip background",
+                    "type": "color",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "swatches"
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-swf__face::after"
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopSwatchTipColor": {
+                    "label": "Tooltip text",
+                    "type": "color",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "swatches"
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-swf__face::after"
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopSwatchSepPills": {
+                    "label": "Pills",
+                    "type": "separator",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "pills"
+                        ]
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopPillTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "pills"
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-swf__pill"
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopPillBackground": {
+                    "label": "Background",
+                    "type": "color",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "pills"
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-swf__pill"
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopPillBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "pills"
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-swf__pill"
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopPillHoverBorder": {
+                    "label": "Hover border",
+                    "type": "color",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "pills"
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "border-color",
+                            "selector": "label:hover input:not(:checked) ~ .bfbe-swf__pill"
+                        },
+                        {
+                            "property": "border-color",
+                            "selector": "input:not(:checked):focus-visible ~ .bfbe-swf__pill"
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopPillPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "pills"
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-swf__pill"
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopPillOnBackground": {
+                    "label": "Chosen background",
+                    "type": "color",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "pills"
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": "input:checked ~ .bfbe-swf__pill"
+                        },
+                        {
+                            "property": "border-color",
+                            "selector": "input:checked ~ .bfbe-swf__pill"
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopPillOnColor": {
+                    "label": "Chosen text",
+                    "type": "color",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "pills"
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": "input:checked ~ .bfbe-swf__pill"
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                }
+            }
+        },
+        "filter-radio": {
+            "label": "Filter - Radio",
+            "registered": true,
+            "controlGroups": {
+                "bfbeShopFilters": {
+                    "title": "BFB Child terms",
+                    "tab": "content"
+                },
+                "bfbeShopSwatchFilters": {
+                    "title": "BFB Swatch look",
+                    "tab": "content"
+                }
+            },
+            "controls": {
+                "bfbeShopCollapse": {
+                    "label": "Collapse",
+                    "type": "checkbox",
+                    "description": "Folds each parent term&#039;s children behind a button.",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "filterHierarchical",
+                            "=",
+                            true
+                        ]
+                    ],
+                    "group": "bfbeShopFilters",
+                    "tab": "content"
+                },
+                "bfbeShopCollapseSize": {
+                    "label": "Button size",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "placeholder": "28px",
+                    "css": [
+                        {
+                            "property": "inline-size",
+                            "selector": ".bfbe-filt__toggle"
+                        },
+                        {
+                            "property": "block-size",
+                            "selector": ".bfbe-filt__toggle"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "filterHierarchical",
+                            "=",
+                            true
+                        ],
+                        [
+                            "bfbeShopCollapse",
+                            "!=",
+                            ""
+                        ]
+                    ],
+                    "group": "bfbeShopFilters",
+                    "tab": "content"
+                },
+                "bfbeShopCollapseIconSize": {
+                    "label": "Icon size",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "placeholder": "14px",
+                    "css": [
+                        {
+                            "property": "inline-size",
+                            "selector": ".bfbe-filt__toggle svg"
+                        },
+                        {
+                            "property": "block-size",
+                            "selector": ".bfbe-filt__toggle svg"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "filterHierarchical",
+                            "=",
+                            true
+                        ],
+                        [
+                            "bfbeShopCollapse",
+                            "!=",
+                            ""
+                        ]
+                    ],
+                    "group": "bfbeShopFilters",
+                    "tab": "content"
+                },
+                "bfbeShopCollapseIconColor": {
+                    "label": "Icon colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-filt__toggle"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "filterHierarchical",
+                            "=",
+                            true
+                        ],
+                        [
+                            "bfbeShopCollapse",
+                            "!=",
+                            ""
+                        ]
+                    ],
+                    "group": "bfbeShopFilters",
+                    "tab": "content"
+                },
+                "bfbeShopCollapseBackground": {
+                    "label": "Button background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-filt__toggle"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "filterHierarchical",
+                            "=",
+                            true
+                        ],
+                        [
+                            "bfbeShopCollapse",
+                            "!=",
+                            ""
+                        ]
+                    ],
+                    "group": "bfbeShopFilters",
+                    "tab": "content"
+                },
+                "bfbeShopCollapseBorder": {
+                    "label": "Button border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-filt__toggle"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "filterHierarchical",
+                            "=",
+                            true
+                        ],
+                        [
+                            "bfbeShopCollapse",
+                            "!=",
+                            ""
+                        ]
+                    ],
+                    "group": "bfbeShopFilters",
+                    "tab": "content"
+                },
+                "bfbeShopCollapseHover": {
+                    "label": "Hover background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-filt__toggle:hover"
+                        },
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-filt__toggle:focus-visible"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "filterHierarchical",
+                            "=",
+                            true
+                        ],
+                        [
+                            "bfbeShopCollapse",
+                            "!=",
+                            ""
+                        ]
+                    ],
+                    "group": "bfbeShopFilters",
+                    "tab": "content"
+                },
+                "bfbeShopSwatchLook": {
+                    "label": "Look",
+                    "type": "select",
+                    "options": {
+                        "bricks": "As Bricks draws it",
+                        "swatches": "As swatches",
+                        "pills": "As pills"
+                    },
+                    "inline": true,
+                    "placeholder": "As Bricks draws it",
+                    "description": "Swatches for an attribute, pills for any taxonomy.",
+                    "required": [
+                        "filterSource",
+                        "=",
+                        "taxonomy"
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopSwatchGap": {
+                    "label": "Gap",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            [
+                                "swatches",
+                                "pills"
+                            ]
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "--bfbe-swf-gap",
+                            "selector": ""
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopSwatchSepSwatches": {
+                    "label": "Swatches",
+                    "type": "separator",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "swatches"
+                        ]
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopSwatchSize": {
+                    "label": "Size",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "placeholder": "32px",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "swatches"
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "--bfbe-swf-size",
+                            "selector": ""
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopSwatchRing": {
+                    "label": "Chosen ring",
+                    "type": "color",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "swatches"
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "--bfbe-swf-ring",
+                            "selector": ""
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopSwatchLabelTypography": {
+                    "label": "Label typography",
+                    "type": "typography",
+                    "description": "For swatches drawn as words.",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "swatches"
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-swf__face--label::before"
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopSwatchTipBackground": {
+                    "label": "Tooltip background",
+                    "type": "color",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "swatches"
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-swf__face::after"
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopSwatchTipColor": {
+                    "label": "Tooltip text",
+                    "type": "color",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "swatches"
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-swf__face::after"
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopSwatchSepPills": {
+                    "label": "Pills",
+                    "type": "separator",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "pills"
+                        ]
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopPillTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "pills"
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-swf__pill"
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopPillBackground": {
+                    "label": "Background",
+                    "type": "color",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "pills"
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-swf__pill"
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopPillBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "pills"
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-swf__pill"
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopPillHoverBorder": {
+                    "label": "Hover border",
+                    "type": "color",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "pills"
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "border-color",
+                            "selector": "label:hover input:not(:checked) ~ .bfbe-swf__pill"
+                        },
+                        {
+                            "property": "border-color",
+                            "selector": "input:not(:checked):focus-visible ~ .bfbe-swf__pill"
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopPillPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "pills"
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-swf__pill"
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopPillOnBackground": {
+                    "label": "Chosen background",
+                    "type": "color",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "pills"
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": "input:checked ~ .bfbe-swf__pill"
+                        },
+                        {
+                            "property": "border-color",
+                            "selector": "input:checked ~ .bfbe-swf__pill"
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                },
+                "bfbeShopPillOnColor": {
+                    "label": "Chosen text",
+                    "type": "color",
+                    "required": [
+                        [
+                            "filterSource",
+                            "=",
+                            "taxonomy"
+                        ],
+                        [
+                            "bfbeShopSwatchLook",
+                            "=",
+                            "pills"
+                        ]
+                    ],
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": "input:checked ~ .bfbe-swf__pill"
+                        }
+                    ],
+                    "group": "bfbeShopSwatchFilters",
+                    "tab": "content"
+                }
+            }
+        },
+        "woocommerce-breadcrumbs": {
+            "label": "Breadcrumbs (WooCommerce)",
+            "registered": true,
+            "controlGroups": {
+                "bfbeShopBrand": {
+                    "title": "BFB Brand",
+                    "tab": "content"
+                }
+            },
+            "controls": {
+                "bfbeShopBrand": {
+                    "label": "Show the brand",
+                    "type": "checkbox",
+                    "group": "bfbeShopBrand",
+                    "tab": "content"
+                },
+                "bfbeShopBrandPlace": {
+                    "label": "Where",
+                    "type": "select",
+                    "options": {
+                        "after_shop": "After the home and shop links",
+                        "categories": "In place of the categories"
+                    },
+                    "inline": true,
+                    "placeholder": "After the home and shop links",
+                    "required": [
+                        "bfbeShopBrand",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopBrand",
+                    "tab": "content"
+                }
+            }
+        },
+        "woocommerce-products": {
+            "label": "Products",
+            "registered": true,
+            "controlGroups": {
+                "bfbeShopPromo": {
+                    "title": "BFB Promo tiles",
+                    "tab": "content"
+                },
+                "bfbeShopSorting": {
+                    "title": "BFB Sorting",
+                    "tab": "content"
+                }
+            },
+            "controls": {
+                "bfbeShopTiles": {
+                    "label": "Tiles",
+                    "type": "repeater",
+                    "titleProperty": "position",
+                    "placeholder": "Tile",
+                    "fields": {
+                        "template": {
+                            "label": "Template",
+                            "type": "select",
+                            "options": [],
+                            "searchable": true,
+                            "placeholder": "Select a template"
+                        },
+                        "position": {
+                            "label": "Card number",
+                            "type": "number",
+                            "min": 1,
+                            "max": 200,
+                            "step": 1,
+                            "placeholder": "3"
+                        },
+                        "every": {
+                            "label": "Repeat every",
+                            "type": "number",
+                            "min": 0,
+                            "max": 200,
+                            "step": 1,
+                            "placeholder": "Never"
+                        }
+                    },
+                    "group": "bfbeShopPromo",
+                    "tab": "content"
+                },
+                "bfbeShopTilesFirst": {
+                    "label": "First page only",
+                    "type": "checkbox",
+                    "required": [
+                        "bfbeShopTiles",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopPromo",
+                    "tab": "content"
+                },
+                "bfbeShopOrderMeta": {
+                    "label": "Meta key to order by",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "_my_field",
+                    "required": [
+                        "orderby",
+                        "=",
+                        "bfbe_meta"
+                    ],
+                    "group": "bfbeShopSorting",
+                    "tab": "content"
+                },
+                "bfbeShopSoldOutLast": {
+                    "label": "Sold-out products last",
+                    "type": "checkbox",
+                    "group": "bfbeShopSorting",
+                    "tab": "content"
+                }
+            }
+        },
+        "woocommerce-products-orderby": {
+            "label": "Products orderby",
+            "registered": true,
+            "controlGroups": {
+                "bfbeShopDropdown": {
+                    "title": "BFB Dropdown",
+                    "tab": "content"
+                }
+            },
+            "controls": {
+                "bfbeShopDropLook": {
+                    "label": "Open list",
+                    "type": "select",
+                    "options": {
+                        "native": "As the browser draws it",
+                        "custom": "Styled with the controls below"
+                    },
+                    "inline": true,
+                    "placeholder": "As the browser draws it",
+                    "description": "Phones keep their own picker either way.",
+                    "group": "bfbeShopDropdown",
+                    "tab": "content"
+                },
+                "bfbeShopDropSepField": {
+                    "label": "Field",
+                    "type": "separator",
+                    "group": "bfbeShopDropdown",
+                    "tab": "content"
+                },
+                "bfbeShopDropTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".woocommerce-ordering select"
+                        }
+                    ],
+                    "group": "bfbeShopDropdown",
+                    "tab": "content"
+                },
+                "bfbeShopDropBackground": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".woocommerce-ordering select"
+                        }
+                    ],
+                    "group": "bfbeShopDropdown",
+                    "tab": "content"
+                },
+                "bfbeShopDropBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".woocommerce-ordering select"
+                        }
+                    ],
+                    "group": "bfbeShopDropdown",
+                    "tab": "content"
+                },
+                "bfbeShopDropPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".woocommerce-ordering select"
+                        }
+                    ],
+                    "group": "bfbeShopDropdown",
+                    "tab": "content"
+                },
+                "bfbeShopDropChevron": {
+                    "label": "Arrow colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-dd-chevron",
+                            "selector": ""
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopDropLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopDropdown",
+                    "tab": "content"
+                },
+                "bfbeShopDropSepPanel": {
+                    "label": "Open list",
+                    "type": "separator",
+                    "required": [
+                        "bfbeShopDropLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopDropdown",
+                    "tab": "content"
+                },
+                "bfbeShopDropPanelBg": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-dd__panel"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopDropLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopDropdown",
+                    "tab": "content"
+                },
+                "bfbeShopDropPanelBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-dd__panel"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopDropLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopDropdown",
+                    "tab": "content"
+                },
+                "bfbeShopDropPanelShadow": {
+                    "label": "Box shadow",
+                    "type": "box-shadow",
+                    "css": [
+                        {
+                            "property": "box-shadow",
+                            "selector": ".bfbe-dd__panel"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopDropLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopDropdown",
+                    "tab": "content"
+                },
+                "bfbeShopDropPanelPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-dd__panel"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopDropLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopDropdown",
+                    "tab": "content"
+                },
+                "bfbeShopDropSepOption": {
+                    "label": "Options",
+                    "type": "separator",
+                    "required": [
+                        "bfbeShopDropLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopDropdown",
+                    "tab": "content"
+                },
+                "bfbeShopDropOptTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-dd__opt"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopDropLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopDropdown",
+                    "tab": "content"
+                },
+                "bfbeShopDropOptPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-dd__opt"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopDropLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopDropdown",
+                    "tab": "content"
+                },
+                "bfbeShopDropOptHover": {
+                    "label": "Hover background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-dd__opt.is-active"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopDropLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopDropdown",
+                    "tab": "content"
+                },
+                "bfbeShopDropHoverText": {
+                    "label": "Hover text",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-dd__opt.is-active"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopDropLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopDropdown",
+                    "tab": "content"
+                },
+                "bfbeShopDropOptOnBg": {
+                    "label": "Chosen background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-dd__opt[aria-selected=\"true\"]"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopDropLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopDropdown",
+                    "tab": "content"
+                },
+                "bfbeShopDropOptOnColor": {
+                    "label": "Chosen text",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-dd__opt[aria-selected=\"true\"]"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopDropLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopDropdown",
+                    "tab": "content"
+                },
+                "bfbeShopDropTick": {
+                    "label": "Tick colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-dd-tick",
+                            "selector": ""
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopDropLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopDropdown",
+                    "tab": "content"
+                }
+            }
+        }
+    }
+}

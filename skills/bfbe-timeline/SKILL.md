@@ -16,7 +16,7 @@ One set of moments in five layouts: Story and Ledger draw a line that fills as t
 
 **Not for:** Moments sit in the order you place them, so it does not space them by date or zoom along a time axis. Story and Ledger follow the window's scroll, so inside a box that scrolls on its own the line will not advance.
 
-**Costs a page:** CSS 2.96 KB, JS 2.91 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 2.96 KB, JS 2.96 KB (gzipped), no dependencies, loaded only on pages that use it.
 
 **Nestable:** yes · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 

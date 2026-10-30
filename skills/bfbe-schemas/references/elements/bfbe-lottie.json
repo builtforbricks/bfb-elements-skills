@@ -10,7 +10,7 @@
     "parent": null,
     "cost": {
         "css": "0.26 KB",
-        "js": "1.26 KB",
+        "js": "1.47 KB",
         "dependencies": "lottie-web (light, SVG renderer)"
     },
     "controlGroups": {
@@ -260,7 +260,8 @@
                 "follow": "Follow the pointer",
                 "fade": "Fade in",
                 "slide": "Slide in",
-                "grow": "Grow"
+                "grow": "Grow",
+                "image2": "Show the product&#039;s second image"
             },
             "inline": true,
             "placeholder": "None"

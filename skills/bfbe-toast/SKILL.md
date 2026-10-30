@@ -16,7 +16,7 @@ A short message that slides in at a corner of the window and closes by itself, h
 
 **Not for:** Not for a message that must be answered or must stay in view: use Modal for a dialog. A toast does not send email or store anything on the site. It is shown by its script, so a visitor with scripts off never sees it.
 
-**Costs a page:** CSS 0.97 KB, JS 2.19 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 0.97 KB, JS 2.21 KB (gzipped), no dependencies, loaded only on pages that use it. Only where used, the shop triggers: a product added to the cart, a recently viewed product on sale or back in stock: JS 1.39 KB.
 
 **Nestable:** yes · **In a query loop:** no · **Dynamic data:** no · **Keyboard:** yes · **Reduced motion:** yes
 
@@ -43,7 +43,7 @@ What the builder inserts, as a tree `bricks/add-element` accepts (ids omitted):
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### When it shows (`bfbeWhen`)
-- `trigger` (select) **Show**: options: `load` After the page loads (default), `click` When an element is clicked, `form` When a form sends, `formError` When a form fails, `manual` Only from an interaction. After the page loads is the default. Choose When an element is clicked, When a form sends, When a form fails, or Only from an interaction, which waits for a Bricks interaction to show it.
+- `trigger` (select) **Show**: options: `load` After the page loads (default), `click` When an element is clicked, `form` When a form sends, `formError` When a form fails, `manual` Only from an interaction, `cartAdd` When a product is added to the cart, `recent` A viewed product on sale or back. After the page loads is the default. Choose When an element is clicked, When a form sends, When a form fails, or Only from an interaction, which waits for a Bricks interaction to show it.
 - `delay` (number) **Delay (s)**: placeholder 2; only when `trigger` is `` or `load`. For After the page loads, how long it waits, 2 by default.
 - `clickSelector` (text) **Element (CSS selector)**: placeholder .add-to-wishlist; only when `trigger` is `click`. For When an element is clicked, type the selector of the element that shows it, such as .add-to-wishlist. Until you do, the toast is left out of the page.
 - `formSelector` (text) **Form (CSS selector)**: placeholder #brxe-abc123; only when `trigger` is `form` or `formError`. For When a form sends and When a form fails. Leave it empty to listen to any form on the page, Bricks' own form and BFB Advanced Forms alike, or type one form's selector, such as #brxe-abc123.
@@ -53,7 +53,7 @@ Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `b
 ### Toast (`bfbeToast`)
 - `corner` (select) **Corner**: options: `bottom-right` Bottom right (default), `bottom-left` Bottom left, `bottom-center` Bottom centre, `top-right` Top right, `top-left` Top left, `top-center` Top centre. Bottom right is the default. Choose Bottom left, Bottom centre, Top right, Top left or Top centre instead. Toasts in one corner stack 12px apart.
 - `easing` (select) **Easing**: options: `cubic-bezier(0.45, 0.05, 0.55, 0.95)` Soft, `cubic-bezier(0.65, 0, 0.35, 1)` Medium, `cubic-bezier(0.16, 1, 0.3, 1)` Snappy (default), `ease-in` Ease in, `ease-out` Ease out, `ease-in-out` Ease in and out, `linear` Linear, `cubic-bezier(0.34, 1.56, 0.64, 1)` Overshoot, `linear(0, .38 8%, .78 17%, 1.02 25%, 1.08 30%, 1.03 40%, .99 50%, 1)` Soft spring, `var(--bfbe-ease-custom, ease)` Custom; writes CSS. How it speeds up and slows down, Snappy by default. Pick Custom and type your own curve in Custom curve.
-Styling, in the schema file: `width`, `offset`, `duration`, `easingCustom`.
+Styling, in the schema file: `width`, `offset`, `contentDirection`, `contentAlign`, `contentGap`, `duration`, `easingCustom`.
 
 ### Closing (`bfbeClose`)
 - `closeAfter` (number) **Closes after (s)**: placeholder 6. 6 by default. Type 0 to keep it until it is closed. The time stops while the pointer or the focus is on the toast or the browser tab is hidden.

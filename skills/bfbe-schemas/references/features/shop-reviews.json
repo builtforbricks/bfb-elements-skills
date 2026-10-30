@@ -1,0 +1,2815 @@
+{
+    "name": "shop-reviews",
+    "label": "BFB Shop reviews",
+    "pack": "free and pro",
+    "feature": true,
+    "shape": "hosts",
+    "on": "Bricks' own Product reviews (`product-reviews`), Product tabs (`product-tabs`)",
+    "job": "the shop's settings on Bricks' Product reviews and Product tabs: review photos, helpful votes, sorting, the review list and form look, extra tabs from templates",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/shop-reviews/",
+    "since": "2.0.0",
+    "requires": [
+        "WooCommerce"
+    ],
+    "switches": [
+        "shop-reviews-loop",
+        "shop-reviews",
+        "shop-tabs"
+    ],
+    "groupInfo": {
+        "bfbeShopReviews": {
+            "title": "BFB Reviews",
+            "pack": "free and pro",
+            "switch": [
+                "shop-reviews-loop",
+                "shop-reviews"
+            ],
+            "sources": [
+                "bfb-elements/includes/shop/class-reviews-loop.php",
+                "bfb-elements-pro/includes/shop/class-reviews.php"
+            ],
+            "keys": {
+                "pro": [
+                    "bfbeShopReviewsSepOrder",
+                    "bfbeShopReviewsDefault",
+                    "bfbeShopReviewsSepPhotos",
+                    "bfbeShopReviewsPhotos",
+                    "bfbeShopReviewsPhotoSize",
+                    "bfbeShopReviewsPhotoWidth",
+                    "bfbeShopReviewsPhotoBorder",
+                    "bfbeShopReviewsPhotoGap",
+                    "bfbeShopReviewsSepVotes",
+                    "bfbeShopReviewsVotes",
+                    "bfbeShopReviewsVoteTypography",
+                    "bfbeShopReviewsVoteBtnBackground",
+                    "bfbeShopReviewsVoteBtnBorder",
+                    "bfbeShopReviewsVoteBtnPadding",
+                    "bfbeShopReviewsVoteBtnHover",
+                    "bfbeShopReviewsVoteBtnHoverText",
+                    "bfbeShopReviewsVoteBtnOn",
+                    "bfbeShopReviewsVoteBtnOnText"
+                ]
+            }
+        },
+        "bfbeShopReviewList": {
+            "title": "BFB Review list",
+            "pack": "pro",
+            "switch": [
+                "shop-reviews"
+            ],
+            "sources": [
+                "bfb-elements-pro/includes/shop/class-reviews.php"
+            ]
+        },
+        "bfbeShopReviewForm": {
+            "title": "BFB Review form",
+            "pack": "pro",
+            "switch": [
+                "shop-reviews"
+            ],
+            "sources": [
+                "bfb-elements-pro/includes/shop/class-reviews.php"
+            ]
+        },
+        "bfbeShopTabs": {
+            "title": "BFB Tabs",
+            "pack": "pro",
+            "switch": [
+                "shop-tabs"
+            ],
+            "sources": [
+                "bfb-elements-pro/includes/shop/class-tabs.php"
+            ]
+        }
+    },
+    "hosts": {
+        "product-reviews": {
+            "label": "Product reviews",
+            "registered": true,
+            "controlGroups": {
+                "bfbeShopReviews": {
+                    "title": "BFB Reviews",
+                    "tab": "content"
+                },
+                "bfbeShopReviewList": {
+                    "title": "BFB Review list",
+                    "tab": "content"
+                },
+                "bfbeShopReviewForm": {
+                    "title": "BFB Review form",
+                    "tab": "content"
+                }
+            },
+            "controls": {
+                "bfbeShopReviewsSepOrder": {
+                    "label": "Order",
+                    "type": "separator",
+                    "group": "bfbeShopReviews",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDefault": {
+                    "label": "Default order",
+                    "type": "select",
+                    "options": {
+                        "newest": "Newest first",
+                        "oldest": "Oldest first",
+                        "highest": "Highest rated",
+                        "lowest": "Lowest rated",
+                        "helpful": "Most helpful",
+                        "photos": "With photos"
+                    },
+                    "inline": true,
+                    "placeholder": "WooCommerce order",
+                    "group": "bfbeShopReviews",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsSepPhotos": {
+                    "label": "Photos",
+                    "type": "separator",
+                    "group": "bfbeShopReviews",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsPhotos": {
+                    "label": "Show",
+                    "type": "select",
+                    "options": {
+                        "show": "Shown",
+                        "hide": "Hidden"
+                    },
+                    "inline": true,
+                    "placeholder": "Shown",
+                    "group": "bfbeShopReviews",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsPhotoSize": {
+                    "label": "Size",
+                    "type": "select",
+                    "options": {
+                        "woocommerce_gallery_thumbnail": "Gallery thumbnail",
+                        "thumbnail": "Thumbnail",
+                        "medium": "Medium"
+                    },
+                    "inline": true,
+                    "placeholder": "Gallery thumbnail",
+                    "required": [
+                        "bfbeShopReviewsPhotos",
+                        "!=",
+                        "hide"
+                    ],
+                    "group": "bfbeShopReviews",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsPhotoWidth": {
+                    "label": "Width",
+                    "type": "number",
+                    "units": true,
+                    "css": [
+                        {
+                            "property": "width",
+                            "selector": ".bfbe-rv__photo img"
+                        },
+                        {
+                            "property": "height",
+                            "selector": ".bfbe-rv__photo img"
+                        }
+                    ],
+                    "description": "Square, cropped to fit.",
+                    "required": [
+                        "bfbeShopReviewsPhotos",
+                        "!=",
+                        "hide"
+                    ],
+                    "group": "bfbeShopReviews",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsPhotoBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-rv__photo"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsPhotos",
+                        "!=",
+                        "hide"
+                    ],
+                    "group": "bfbeShopReviews",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsPhotoGap": {
+                    "label": "Gap",
+                    "type": "number",
+                    "units": true,
+                    "placeholder": "8px",
+                    "css": [
+                        {
+                            "property": "gap",
+                            "selector": ".bfbe-rv__photos"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsPhotos",
+                        "!=",
+                        "hide"
+                    ],
+                    "group": "bfbeShopReviews",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsSepVotes": {
+                    "label": "Helpful votes",
+                    "type": "separator",
+                    "group": "bfbeShopReviews",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsVotes": {
+                    "label": "Show",
+                    "type": "select",
+                    "options": {
+                        "show": "Shown",
+                        "hide": "Hidden"
+                    },
+                    "inline": true,
+                    "placeholder": "Shown",
+                    "group": "bfbeShopReviews",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsVoteTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-rv__vote"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsVotes",
+                        "!=",
+                        "hide"
+                    ],
+                    "group": "bfbeShopReviews",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsVoteBtnBackground": {
+                    "label": "Button background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-rv__btn:not([aria-pressed=\"true\"])"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsVotes",
+                        "!=",
+                        "hide"
+                    ],
+                    "group": "bfbeShopReviews",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsVoteBtnBorder": {
+                    "label": "Button border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-rv__btn"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsVotes",
+                        "!=",
+                        "hide"
+                    ],
+                    "group": "bfbeShopReviews",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsVoteBtnPadding": {
+                    "label": "Button padding",
+                    "type": "dimensions",
+                    "placeholder": {
+                        "top": ".3em",
+                        "right": ".8em",
+                        "bottom": ".3em",
+                        "left": ".8em"
+                    },
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-rv__btn"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsVotes",
+                        "!=",
+                        "hide"
+                    ],
+                    "group": "bfbeShopReviews",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsVoteBtnHover": {
+                    "label": "Hover background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-rv__btn:not([aria-disabled=\"true\"]):hover"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsVotes",
+                        "!=",
+                        "hide"
+                    ],
+                    "group": "bfbeShopReviews",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsVoteBtnHoverText": {
+                    "label": "Hover text colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-rv__btn:not([aria-disabled=\"true\"]):hover"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsVotes",
+                        "!=",
+                        "hide"
+                    ],
+                    "group": "bfbeShopReviews",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsVoteBtnOn": {
+                    "label": "Pressed background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-rv__btn[aria-pressed=\"true\"]"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsVotes",
+                        "!=",
+                        "hide"
+                    ],
+                    "group": "bfbeShopReviews",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsVoteBtnOnText": {
+                    "label": "Pressed text colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-rv__btn[aria-pressed=\"true\"]"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsVotes",
+                        "!=",
+                        "hide"
+                    ],
+                    "group": "bfbeShopReviews",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormShow": {
+                    "label": "Review form",
+                    "type": "select",
+                    "options": {
+                        "show": "Shown",
+                        "hide": "Hidden"
+                    },
+                    "inline": true,
+                    "placeholder": "Shown",
+                    "description": "Hidden: place a BFB Review Form elsewhere.",
+                    "group": "bfbeShopReviewList",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsListTitle": {
+                    "label": "List title",
+                    "type": "select",
+                    "options": {
+                        "show": "Shown",
+                        "hide": "Hidden"
+                    },
+                    "inline": true,
+                    "placeholder": "Shown",
+                    "css": [
+                        {
+                            "property": "display",
+                            "selector": ".woocommerce-Reviews-title",
+                            "value": "none",
+                            "required": "hide"
+                        }
+                    ],
+                    "group": "bfbeShopReviewList",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsListGap": {
+                    "label": "Gap",
+                    "type": "number",
+                    "units": true,
+                    "css": [
+                        {
+                            "property": "gap",
+                            "selector": ".commentlist"
+                        },
+                        {
+                            "property": "display",
+                            "selector": ".commentlist",
+                            "value": "grid"
+                        },
+                        {
+                            "property": "margin-bottom",
+                            "selector": ".commentlist > li",
+                            "value": "0"
+                        }
+                    ],
+                    "group": "bfbeShopReviewList",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsItemBackground": {
+                    "label": "Review background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".commentlist > li"
+                        }
+                    ],
+                    "group": "bfbeShopReviewList",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsItemBorder": {
+                    "label": "Review border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".commentlist > li"
+                        }
+                    ],
+                    "group": "bfbeShopReviewList",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsItemPadding": {
+                    "label": "Review padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".commentlist > li"
+                        }
+                    ],
+                    "group": "bfbeShopReviewList",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsTextBorder": {
+                    "label": "Text border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".commentlist .description"
+                        }
+                    ],
+                    "group": "bfbeShopReviewList",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormSepArea": {
+                    "label": "Area and card",
+                    "type": "separator",
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormSpace": {
+                    "label": "Space above",
+                    "type": "number",
+                    "units": true,
+                    "css": [
+                        {
+                            "property": "margin-top",
+                            "selector": "#review_form_wrapper"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormAreaBackground": {
+                    "label": "Area background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": "#review_form_wrapper"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormAreaBorder": {
+                    "label": "Area border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": "#review_form_wrapper"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormAreaPadding": {
+                    "label": "Area padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": "#review_form_wrapper"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormBackground": {
+                    "label": "Card background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".comment-respond"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormBorder": {
+                    "label": "Card border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".comment-respond"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormPadding": {
+                    "label": "Card padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".comment-respond"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormSepTitle": {
+                    "label": "Title",
+                    "type": "separator",
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormTitleGap": {
+                    "label": "Space under the title",
+                    "type": "number",
+                    "units": true,
+                    "css": [
+                        {
+                            "property": "margin-bottom",
+                            "selector": ".comment-reply-title"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormSepLayout": {
+                    "label": "Layout",
+                    "type": "separator",
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormColumns": {
+                    "label": "Columns",
+                    "type": "number",
+                    "min": 1,
+                    "max": 4,
+                    "description": "Name and email share a row.",
+                    "css": [
+                        {
+                            "property": "grid-template-columns",
+                            "selector": ".comment-form",
+                            "value": "repeat(%s, minmax(0, 1fr))"
+                        },
+                        {
+                            "property": "display",
+                            "selector": ".comment-form",
+                            "value": "grid"
+                        },
+                        {
+                            "property": "grid-column",
+                            "selector": ".comment-form > *",
+                            "value": "1 / -1"
+                        },
+                        {
+                            "property": "margin",
+                            "selector": ".comment-form > *",
+                            "value": "0"
+                        },
+                        {
+                            "property": "grid-column",
+                            "selector": ".comment-form-author",
+                            "value": "auto"
+                        },
+                        {
+                            "property": "grid-column",
+                            "selector": ".comment-form-email",
+                            "value": "auto"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormRowGap": {
+                    "label": "Row gap",
+                    "type": "number",
+                    "units": true,
+                    "css": [
+                        {
+                            "property": "row-gap",
+                            "selector": ".comment-form"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsFormColumns",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormColumnGap": {
+                    "label": "Column gap",
+                    "type": "number",
+                    "units": true,
+                    "css": [
+                        {
+                            "property": "column-gap",
+                            "selector": ".comment-form"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsFormColumns",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormSepFields": {
+                    "label": "Fields",
+                    "type": "separator",
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormNotes": {
+                    "label": "Notes typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".comment-notes"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormLabelGap": {
+                    "label": "Space under labels",
+                    "type": "number",
+                    "units": true,
+                    "css": [
+                        {
+                            "property": "margin-bottom",
+                            "selector": ".comment-form label"
+                        },
+                        {
+                            "property": "display",
+                            "selector": ".comment-form label",
+                            "value": "block"
+                        },
+                        {
+                            "property": "margin-bottom",
+                            "selector": ".comment-form .comment-form-cookies-consent label",
+                            "value": "0"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormRequired": {
+                    "label": "Required mark",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".comment-form .required"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormConsentGap": {
+                    "label": "Checkbox gap",
+                    "type": "number",
+                    "units": true,
+                    "description": "Between the consent box and its words.",
+                    "css": [
+                        {
+                            "property": "gap",
+                            "selector": ".comment-form-cookies-consent"
+                        },
+                        {
+                            "property": "display",
+                            "selector": ".comment-form-cookies-consent",
+                            "value": "flex"
+                        },
+                        {
+                            "property": "align-items",
+                            "selector": ".comment-form-cookies-consent",
+                            "value": "flex-start"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormConsent": {
+                    "label": "Consent typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".comment-form .comment-form-cookies-consent label"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormSepText": {
+                    "label": "Review box",
+                    "type": "separator",
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormTextHeight": {
+                    "label": "Height",
+                    "type": "number",
+                    "units": true,
+                    "description": "Full width, this tall to start.",
+                    "css": [
+                        {
+                            "property": "min-height",
+                            "selector": ".comment-form-comment textarea"
+                        },
+                        {
+                            "property": "height",
+                            "selector": ".comment-form-comment textarea"
+                        },
+                        {
+                            "property": "display",
+                            "selector": ".comment-form-comment textarea",
+                            "value": "block"
+                        },
+                        {
+                            "property": "width",
+                            "selector": ".comment-form-comment textarea",
+                            "value": "100%"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormTextPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".comment-form-comment textarea"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormTextBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".comment-form-comment textarea"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormTextTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".comment-form-comment textarea"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormSepStars": {
+                    "label": "Rating stars",
+                    "type": "separator",
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormStarSize": {
+                    "label": "Size",
+                    "type": "number",
+                    "units": true,
+                    "css": [
+                        {
+                            "property": "width",
+                            "selector": ".comment-form-rating .stars a"
+                        },
+                        {
+                            "property": "height",
+                            "selector": ".comment-form-rating .stars a"
+                        },
+                        {
+                            "property": "width",
+                            "selector": ".comment-form-rating .stars a::before"
+                        },
+                        {
+                            "property": "height",
+                            "selector": ".comment-form-rating .stars a::before"
+                        },
+                        {
+                            "property": "line-height",
+                            "selector": ".comment-form-rating .stars a::before"
+                        },
+                        {
+                            "property": "font-size",
+                            "selector": ".comment-form-rating .stars a",
+                            "value": "calc(%s * .9375)"
+                        },
+                        {
+                            "property": "margin",
+                            "selector": ".comment-form-rating .stars",
+                            "value": "0"
+                        },
+                        {
+                            "property": "line-height",
+                            "selector": ".comment-form-rating .stars",
+                            "value": "1"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormStarGap": {
+                    "label": "Gap",
+                    "type": "number",
+                    "units": true,
+                    "css": [
+                        {
+                            "property": "gap",
+                            "selector": ".comment-form-rating .stars span"
+                        },
+                        {
+                            "property": "display",
+                            "selector": ".comment-form-rating .stars span",
+                            "value": "inline-flex"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormStarColor": {
+                    "label": "Color",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".comment-form-rating .stars a::before"
+                        },
+                        {
+                            "property": "color",
+                            "selector": ".comment-form-rating .stars a:hover ~ a::before"
+                        },
+                        {
+                            "property": "color",
+                            "selector": ".comment-form-rating .stars.selected:not(:hover) a.active ~ a::before"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormStarOn": {
+                    "label": "Chosen color",
+                    "type": "color",
+                    "description": "Up to the star pointed at or chosen.",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".comment-form-rating .stars:hover a::before"
+                        },
+                        {
+                            "property": "color",
+                            "selector": ".comment-form-rating .stars.selected a::before"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsSepUpload": {
+                    "label": "Upload",
+                    "type": "separator",
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsUploadLook": {
+                    "label": "Look",
+                    "type": "select",
+                    "options": {
+                        "native": "The browser&#039;s file box",
+                        "custom": "A drop area with previews"
+                    },
+                    "inline": true,
+                    "placeholder": "As the browser draws it",
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsUploadBackground": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-rv__upload:not(.bfbe-rv__upload--drop) input[type=\"file\"]"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "!=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsUploadBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-rv__upload:not(.bfbe-rv__upload--drop) input[type=\"file\"]"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "!=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsUploadButton": {
+                    "label": "Button background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-rv__upload:not(.bfbe-rv__upload--drop) input[type=\"file\"]::file-selector-button"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "!=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsUploadButtonHover": {
+                    "label": "Button hover background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-rv__upload:not(.bfbe-rv__upload--drop) input[type=\"file\"]:hover::file-selector-button"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "!=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsUploadButtonText": {
+                    "label": "Button text",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-rv__upload:not(.bfbe-rv__upload--drop) input[type=\"file\"]::file-selector-button"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "!=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropTitle": {
+                    "label": "Words",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Drag your photos here",
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropButtonWords": {
+                    "label": "Button words",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Choose photos",
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsUploadHelp": {
+                    "label": "Help typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-rv__upload-help"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsSepDrop": {
+                    "label": "Drop area",
+                    "type": "separator",
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropBackground": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-rv-drop-bg",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "placeholder": {
+                        "top": "24px",
+                        "right": "24px",
+                        "bottom": "24px",
+                        "left": "24px"
+                    },
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropGap": {
+                    "label": "Gap",
+                    "type": "number",
+                    "units": true,
+                    "placeholder": "10px",
+                    "css": [
+                        {
+                            "property": "gap",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropOver": {
+                    "label": "Background while dragging",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-rv-drop-over",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropOverLine": {
+                    "label": "Border while dragging",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-rv-drop-over-line",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropIconSize": {
+                    "label": "Icon size",
+                    "type": "number",
+                    "units": true,
+                    "placeholder": "40px",
+                    "css": [
+                        {
+                            "property": "--bfbe-rv-drop-icon",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropIconColor": {
+                    "label": "Icon colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop .bfbe-rv__drop-icon"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropTypography": {
+                    "label": "Words typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop .bfbe-rv__drop-title"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsSepDropButton": {
+                    "label": "Drop area button",
+                    "type": "separator",
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropButtonBackground": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-rv-drop-btn-bg",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropButtonColor": {
+                    "label": "Text colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-rv-drop-btn",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropButtonHover": {
+                    "label": "Hover background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-rv-drop-btn-hover-bg",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropButtonHoverColor": {
+                    "label": "Hover text colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-rv-drop-btn-hover",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropButtonBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop .bfbe-rv__drop-button"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropButtonPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "placeholder": {
+                        "top": "10px",
+                        "right": "20px",
+                        "bottom": "10px",
+                        "left": "20px"
+                    },
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop .bfbe-rv__drop-button"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropButtonTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop .bfbe-rv__drop-button"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsSepPicked": {
+                    "label": "Chosen photos",
+                    "type": "separator",
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsPickedSize": {
+                    "label": "Preview size",
+                    "type": "number",
+                    "units": true,
+                    "placeholder": "64px",
+                    "css": [
+                        {
+                            "property": "--bfbe-rv-picked",
+                            "selector": ".bfbe-rv__upload--drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsPickedBorder": {
+                    "label": "Preview border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__pick img"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsPickedRemove": {
+                    "label": "Remove button colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-rv-pick-x",
+                            "selector": ".bfbe-rv__upload--drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormSepButton": {
+                    "label": "Button",
+                    "type": "separator",
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormButtonPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".form-submit :is(#submit,[type=\"submit\"])"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormButtonTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".form-submit :is(#submit,[type=\"submit\"])"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                }
+            }
+        },
+        "product-tabs": {
+            "label": "Product tabs",
+            "registered": true,
+            "controlGroups": {
+                "bfbeShopReviewList": {
+                    "title": "BFB Review list",
+                    "tab": "content"
+                },
+                "bfbeShopReviewForm": {
+                    "title": "BFB Review form",
+                    "tab": "content"
+                },
+                "bfbeShopTabs": {
+                    "title": "BFB Tabs",
+                    "tab": "content"
+                }
+            },
+            "controls": {
+                "bfbeShopReviewsFormShow": {
+                    "label": "Review form",
+                    "type": "select",
+                    "options": {
+                        "show": "Shown",
+                        "hide": "Hidden"
+                    },
+                    "inline": true,
+                    "placeholder": "Shown",
+                    "description": "Hidden: place a BFB Review Form elsewhere.",
+                    "group": "bfbeShopReviewList",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsListTitle": {
+                    "label": "List title",
+                    "type": "select",
+                    "options": {
+                        "show": "Shown",
+                        "hide": "Hidden"
+                    },
+                    "inline": true,
+                    "placeholder": "Shown",
+                    "css": [
+                        {
+                            "property": "display",
+                            "selector": ".woocommerce-Reviews-title",
+                            "value": "none",
+                            "required": "hide"
+                        }
+                    ],
+                    "group": "bfbeShopReviewList",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsListGap": {
+                    "label": "Gap",
+                    "type": "number",
+                    "units": true,
+                    "css": [
+                        {
+                            "property": "gap",
+                            "selector": ".commentlist"
+                        },
+                        {
+                            "property": "display",
+                            "selector": ".commentlist",
+                            "value": "grid"
+                        },
+                        {
+                            "property": "margin-bottom",
+                            "selector": ".commentlist > li",
+                            "value": "0"
+                        }
+                    ],
+                    "group": "bfbeShopReviewList",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsItemBackground": {
+                    "label": "Review background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".commentlist > li"
+                        }
+                    ],
+                    "group": "bfbeShopReviewList",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsItemBorder": {
+                    "label": "Review border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".commentlist > li"
+                        }
+                    ],
+                    "group": "bfbeShopReviewList",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsItemPadding": {
+                    "label": "Review padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".commentlist > li"
+                        }
+                    ],
+                    "group": "bfbeShopReviewList",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsTextBorder": {
+                    "label": "Text border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".commentlist .description"
+                        }
+                    ],
+                    "group": "bfbeShopReviewList",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormSepArea": {
+                    "label": "Area and card",
+                    "type": "separator",
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormSpace": {
+                    "label": "Space above",
+                    "type": "number",
+                    "units": true,
+                    "css": [
+                        {
+                            "property": "margin-top",
+                            "selector": "#review_form_wrapper"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormAreaBackground": {
+                    "label": "Area background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": "#review_form_wrapper"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormAreaBorder": {
+                    "label": "Area border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": "#review_form_wrapper"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormAreaPadding": {
+                    "label": "Area padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": "#review_form_wrapper"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormBackground": {
+                    "label": "Card background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".comment-respond"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormBorder": {
+                    "label": "Card border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".comment-respond"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormPadding": {
+                    "label": "Card padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".comment-respond"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormSepTitle": {
+                    "label": "Title",
+                    "type": "separator",
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormTitleTypography": {
+                    "label": "Title typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".comment-reply-title"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormTitleGap": {
+                    "label": "Space under the title",
+                    "type": "number",
+                    "units": true,
+                    "css": [
+                        {
+                            "property": "margin-bottom",
+                            "selector": ".comment-reply-title"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormSepLayout": {
+                    "label": "Layout",
+                    "type": "separator",
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormColumns": {
+                    "label": "Columns",
+                    "type": "number",
+                    "min": 1,
+                    "max": 4,
+                    "description": "Name and email share a row.",
+                    "css": [
+                        {
+                            "property": "grid-template-columns",
+                            "selector": ".comment-form",
+                            "value": "repeat(%s, minmax(0, 1fr))"
+                        },
+                        {
+                            "property": "display",
+                            "selector": ".comment-form",
+                            "value": "grid"
+                        },
+                        {
+                            "property": "grid-column",
+                            "selector": ".comment-form > *",
+                            "value": "1 / -1"
+                        },
+                        {
+                            "property": "margin",
+                            "selector": ".comment-form > *",
+                            "value": "0"
+                        },
+                        {
+                            "property": "grid-column",
+                            "selector": ".comment-form-author",
+                            "value": "auto"
+                        },
+                        {
+                            "property": "grid-column",
+                            "selector": ".comment-form-email",
+                            "value": "auto"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormRowGap": {
+                    "label": "Row gap",
+                    "type": "number",
+                    "units": true,
+                    "css": [
+                        {
+                            "property": "row-gap",
+                            "selector": ".comment-form"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsFormColumns",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormColumnGap": {
+                    "label": "Column gap",
+                    "type": "number",
+                    "units": true,
+                    "css": [
+                        {
+                            "property": "column-gap",
+                            "selector": ".comment-form"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsFormColumns",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormSepFields": {
+                    "label": "Fields",
+                    "type": "separator",
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormNotes": {
+                    "label": "Notes typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".comment-notes"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormLabel": {
+                    "label": "Label typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".comment-form label"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormLabelGap": {
+                    "label": "Space under labels",
+                    "type": "number",
+                    "units": true,
+                    "css": [
+                        {
+                            "property": "margin-bottom",
+                            "selector": ".comment-form label"
+                        },
+                        {
+                            "property": "display",
+                            "selector": ".comment-form label",
+                            "value": "block"
+                        },
+                        {
+                            "property": "margin-bottom",
+                            "selector": ".comment-form .comment-form-cookies-consent label",
+                            "value": "0"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormRequired": {
+                    "label": "Required mark",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".comment-form .required"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormConsentGap": {
+                    "label": "Checkbox gap",
+                    "type": "number",
+                    "units": true,
+                    "description": "Between the consent box and its words.",
+                    "css": [
+                        {
+                            "property": "gap",
+                            "selector": ".comment-form-cookies-consent"
+                        },
+                        {
+                            "property": "display",
+                            "selector": ".comment-form-cookies-consent",
+                            "value": "flex"
+                        },
+                        {
+                            "property": "align-items",
+                            "selector": ".comment-form-cookies-consent",
+                            "value": "flex-start"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormConsent": {
+                    "label": "Consent typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".comment-form .comment-form-cookies-consent label"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormSepText": {
+                    "label": "Review box",
+                    "type": "separator",
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormTextHeight": {
+                    "label": "Height",
+                    "type": "number",
+                    "units": true,
+                    "description": "Full width, this tall to start.",
+                    "css": [
+                        {
+                            "property": "min-height",
+                            "selector": ".comment-form-comment textarea"
+                        },
+                        {
+                            "property": "height",
+                            "selector": ".comment-form-comment textarea"
+                        },
+                        {
+                            "property": "display",
+                            "selector": ".comment-form-comment textarea",
+                            "value": "block"
+                        },
+                        {
+                            "property": "width",
+                            "selector": ".comment-form-comment textarea",
+                            "value": "100%"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormTextPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".comment-form-comment textarea"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormTextBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".comment-form-comment textarea"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormTextTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".comment-form-comment textarea"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormTextResize": {
+                    "label": "Resize",
+                    "type": "select",
+                    "options": {
+                        "none": "None",
+                        "vertical": "Vertical",
+                        "horizontal": "Horizontal",
+                        "both": "Both"
+                    },
+                    "inline": true,
+                    "placeholder": "Both",
+                    "css": [
+                        {
+                            "property": "resize",
+                            "selector": ".comment-form-comment textarea"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormSepStars": {
+                    "label": "Rating stars",
+                    "type": "separator",
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormStarSize": {
+                    "label": "Size",
+                    "type": "number",
+                    "units": true,
+                    "css": [
+                        {
+                            "property": "width",
+                            "selector": ".comment-form-rating .stars a"
+                        },
+                        {
+                            "property": "height",
+                            "selector": ".comment-form-rating .stars a"
+                        },
+                        {
+                            "property": "width",
+                            "selector": ".comment-form-rating .stars a::before"
+                        },
+                        {
+                            "property": "height",
+                            "selector": ".comment-form-rating .stars a::before"
+                        },
+                        {
+                            "property": "line-height",
+                            "selector": ".comment-form-rating .stars a::before"
+                        },
+                        {
+                            "property": "font-size",
+                            "selector": ".comment-form-rating .stars a",
+                            "value": "calc(%s * .9375)"
+                        },
+                        {
+                            "property": "margin",
+                            "selector": ".comment-form-rating .stars",
+                            "value": "0"
+                        },
+                        {
+                            "property": "line-height",
+                            "selector": ".comment-form-rating .stars",
+                            "value": "1"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormStarGap": {
+                    "label": "Gap",
+                    "type": "number",
+                    "units": true,
+                    "css": [
+                        {
+                            "property": "gap",
+                            "selector": ".comment-form-rating .stars span"
+                        },
+                        {
+                            "property": "display",
+                            "selector": ".comment-form-rating .stars span",
+                            "value": "inline-flex"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormStarColor": {
+                    "label": "Color",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".comment-form-rating .stars a::before"
+                        },
+                        {
+                            "property": "color",
+                            "selector": ".comment-form-rating .stars a:hover ~ a::before"
+                        },
+                        {
+                            "property": "color",
+                            "selector": ".comment-form-rating .stars.selected:not(:hover) a.active ~ a::before"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormStarOn": {
+                    "label": "Chosen color",
+                    "type": "color",
+                    "description": "Up to the star pointed at or chosen.",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".comment-form-rating .stars:hover a::before"
+                        },
+                        {
+                            "property": "color",
+                            "selector": ".comment-form-rating .stars.selected a::before"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsSepUpload": {
+                    "label": "Upload",
+                    "type": "separator",
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsUploadLook": {
+                    "label": "Look",
+                    "type": "select",
+                    "options": {
+                        "native": "The browser&#039;s file box",
+                        "custom": "A drop area with previews"
+                    },
+                    "inline": true,
+                    "placeholder": "As the browser draws it",
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsUploadBackground": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-rv__upload:not(.bfbe-rv__upload--drop) input[type=\"file\"]"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "!=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsUploadBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-rv__upload:not(.bfbe-rv__upload--drop) input[type=\"file\"]"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "!=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsUploadButton": {
+                    "label": "Button background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-rv__upload:not(.bfbe-rv__upload--drop) input[type=\"file\"]::file-selector-button"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "!=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsUploadButtonHover": {
+                    "label": "Button hover background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-rv__upload:not(.bfbe-rv__upload--drop) input[type=\"file\"]:hover::file-selector-button"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "!=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsUploadButtonText": {
+                    "label": "Button text",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-rv__upload:not(.bfbe-rv__upload--drop) input[type=\"file\"]::file-selector-button"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "!=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropTitle": {
+                    "label": "Words",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Drag your photos here",
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropButtonWords": {
+                    "label": "Button words",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Choose photos",
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsUploadHelp": {
+                    "label": "Help typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-rv__upload-help"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsSepDrop": {
+                    "label": "Drop area",
+                    "type": "separator",
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropBackground": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-rv-drop-bg",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "placeholder": {
+                        "top": "24px",
+                        "right": "24px",
+                        "bottom": "24px",
+                        "left": "24px"
+                    },
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropGap": {
+                    "label": "Gap",
+                    "type": "number",
+                    "units": true,
+                    "placeholder": "10px",
+                    "css": [
+                        {
+                            "property": "gap",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropOver": {
+                    "label": "Background while dragging",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-rv-drop-over",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropOverLine": {
+                    "label": "Border while dragging",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-rv-drop-over-line",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropIconSize": {
+                    "label": "Icon size",
+                    "type": "number",
+                    "units": true,
+                    "placeholder": "40px",
+                    "css": [
+                        {
+                            "property": "--bfbe-rv-drop-icon",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropIconColor": {
+                    "label": "Icon colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop .bfbe-rv__drop-icon"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropTypography": {
+                    "label": "Words typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop .bfbe-rv__drop-title"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsSepDropButton": {
+                    "label": "Drop area button",
+                    "type": "separator",
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropButtonBackground": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-rv-drop-btn-bg",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropButtonColor": {
+                    "label": "Text colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-rv-drop-btn",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropButtonHover": {
+                    "label": "Hover background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-rv-drop-btn-hover-bg",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropButtonHoverColor": {
+                    "label": "Hover text colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-rv-drop-btn-hover",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropButtonBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop .bfbe-rv__drop-button"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropButtonPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "placeholder": {
+                        "top": "10px",
+                        "right": "20px",
+                        "bottom": "10px",
+                        "left": "20px"
+                    },
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop .bfbe-rv__drop-button"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsDropButtonTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop .bfbe-rv__drop-button"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsSepPicked": {
+                    "label": "Chosen photos",
+                    "type": "separator",
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsPickedSize": {
+                    "label": "Preview size",
+                    "type": "number",
+                    "units": true,
+                    "placeholder": "64px",
+                    "css": [
+                        {
+                            "property": "--bfbe-rv-picked",
+                            "selector": ".bfbe-rv__upload--drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsPickedBorder": {
+                    "label": "Preview border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-rv__upload--drop .bfbe-rv__pick img"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsPickedRemove": {
+                    "label": "Remove button colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-rv-pick-x",
+                            "selector": ".bfbe-rv__upload--drop"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopReviewsUploadLook",
+                        "=",
+                        "custom"
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormSepButton": {
+                    "label": "Button",
+                    "type": "separator",
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormButtonPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".form-submit :is(#submit,[type=\"submit\"])"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopReviewsFormButtonTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".form-submit :is(#submit,[type=\"submit\"])"
+                        }
+                    ],
+                    "group": "bfbeShopReviewForm",
+                    "tab": "content"
+                },
+                "bfbeShopTabsLeaveOut": {
+                    "label": "Leave out WooCommerce&#039;s tabs",
+                    "type": "select",
+                    "multiple": true,
+                    "options": {
+                        "description": "Description",
+                        "additional_information": "Additional information",
+                        "reviews": "Reviews"
+                    },
+                    "placeholder": "None",
+                    "description": "Reviews: when the page shows its own reviews.",
+                    "group": "bfbeShopTabs",
+                    "tab": "content"
+                },
+                "bfbeShopTabsSepTabs": {
+                    "label": "Tabs",
+                    "type": "separator",
+                    "group": "bfbeShopTabs",
+                    "tab": "content"
+                },
+                "bfbeShopTabsGap": {
+                    "label": "Gap",
+                    "type": "number",
+                    "units": true,
+                    "css": [
+                        {
+                            "property": "gap",
+                            "selector": ".wc-tabs"
+                        }
+                    ],
+                    "group": "bfbeShopTabs",
+                    "tab": "content"
+                },
+                "bfbeShopTabsTabBackground": {
+                    "label": "Tab background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".wc-tabs li"
+                        }
+                    ],
+                    "group": "bfbeShopTabs",
+                    "tab": "content"
+                },
+                "bfbeShopTabsTabBorder": {
+                    "label": "Tab border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".wc-tabs li"
+                        }
+                    ],
+                    "group": "bfbeShopTabs",
+                    "tab": "content"
+                },
+                "bfbeShopTabsLinkPadding": {
+                    "label": "Link padding",
+                    "type": "dimensions",
+                    "description": "Inside the link, so the whole tab is clickable.",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".wc-tabs li a"
+                        },
+                        {
+                            "property": "display",
+                            "selector": ".wc-tabs li a",
+                            "value": "block"
+                        }
+                    ],
+                    "group": "bfbeShopTabs",
+                    "tab": "content"
+                },
+                "bfbeShopTabsActiveBorder": {
+                    "label": "Active tab border",
+                    "type": "border",
+                    "description": "A bottom border alone draws an underline.",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".wc-tabs li.active"
+                        }
+                    ],
+                    "group": "bfbeShopTabs",
+                    "tab": "content"
+                },
+                "bfbeShopTabsHoverBackground": {
+                    "label": "Hover background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".wc-tabs li:not(.active):hover"
+                        },
+                        {
+                            "property": "transition",
+                            "selector": ".wc-tabs li",
+                            "value": "background-color var(--bfbe-duration, .2s) var(--bfbe-ease, ease)"
+                        }
+                    ],
+                    "group": "bfbeShopTabs",
+                    "tab": "content"
+                },
+                "bfbeShopTabsHoverColor": {
+                    "label": "Hover text colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".wc-tabs li:not(.active):hover a"
+                        }
+                    ],
+                    "group": "bfbeShopTabs",
+                    "tab": "content"
+                },
+                "bfbeShopTabsSepTable": {
+                    "label": "Attributes table",
+                    "type": "separator",
+                    "group": "bfbeShopTabs",
+                    "tab": "content"
+                },
+                "bfbeShopTabsCellPadding": {
+                    "label": "Cell padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".shop_attributes th"
+                        },
+                        {
+                            "property": "padding",
+                            "selector": ".shop_attributes td"
+                        }
+                    ],
+                    "group": "bfbeShopTabs",
+                    "tab": "content"
+                },
+                "bfbeShopTabsCellBorder": {
+                    "label": "Cell border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".shop_attributes th"
+                        },
+                        {
+                            "property": "border",
+                            "selector": ".shop_attributes td"
+                        }
+                    ],
+                    "group": "bfbeShopTabs",
+                    "tab": "content"
+                }
+            }
+        }
+    }
+}

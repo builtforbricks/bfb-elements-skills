@@ -1,0 +1,28 @@
+{
+    "name": "shop-tags-and-conditions",
+    "label": "BFB Shop tags and conditions",
+    "pack": "free and pro",
+    "feature": true,
+    "shape": "registries",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/shop-tags-and-conditions/",
+    "since": "2.0.0",
+    "requires": [
+        "WooCommerce"
+    ],
+    "on": "Bricks' own dynamic data picker (group BFB Shop), Conditions (group BFB Shop) and Interactions (triggers under BFB Shop)",
+    "job": "the {bfbe_*} dynamic tags of the group BFB Shop (product, cart, order, customer, variation facts, live after load on cached pages), the shop conditions and the shop interaction triggers",
+    "switches": [
+        "shop-data",
+        "shop-variation"
+    ],
+    "counts": {
+        "tags": 120,
+        "conditions": 12,
+        "interactions": 4
+    },
+    "references": {
+        "tags": "./shop/tags.json",
+        "conditions": "./shop/conditions.json",
+        "interactions": "./shop/interactions.json"
+    }
+}

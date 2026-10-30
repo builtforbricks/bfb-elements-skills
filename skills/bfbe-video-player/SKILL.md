@@ -16,7 +16,7 @@ Plays a file from your site, YouTube, Vimeo or another host, with a control bar 
 
 **Not for:** Not for restyling a provider's own controls: YouTube, Vimeo and other hosts play inside their own frame, which this page cannot reach. Chapters are offered for a single video file, and the A-B loop and the Settings menu for video files and streams, alone or in a playlist. For YouTube, Use our bar adds the pack's own bar under their player.
 
-**Costs a page:** CSS 2.75 KB, JS 2.99 KB (gzipped), no dependencies, loaded only on pages that use it. Only where used, the provider façade: JS 0.77 KB. Only where used, the menus: CSS 0.99 KB, JS 1.77 KB. Only where used, the Minimal and Studio skins: CSS 0.65 KB. Only where used, the extras: CSS 0.66 KB, JS 2.08 KB. Only where used, the playlist: CSS 1.81 KB, JS 2.83 KB. Only where used, our controls on YouTube: JS 1.53 KB. Only where used, hLS streams: JS 0.81 KB.
+**Costs a page:** CSS 2.75 KB, JS 2.99 KB (gzipped), no dependencies, loaded only on pages that use it. Only where used, the provider façade: JS 0.77 KB. Only where used, the menus: CSS 0.99 KB, JS 1.77 KB. Only where used, the Minimal and Studio skins: CSS 0.65 KB. Only where used, the extras: CSS 0.66 KB, JS 2.08 KB. Only where used, the playlist: CSS 1.81 KB, JS 2.83 KB. Only where used, our controls on YouTube: JS 1.53 KB. Only where used, hLS streams: JS 0.81 KB. Only where used, product moments: a card at chosen times of a Video Player's video, and the list of them: CSS 0.76 KB, JS 0.57 KB.
 
 **Nestable:** yes · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** no
 
@@ -145,6 +145,15 @@ Styling, in the schema file: `bridgeIconColor`, `bridgeIconHoverColor`, `bridgeB
 ### Motion (`bfbeMotion`)
 - `easing` (select) **Easing**: options: `cubic-bezier(0.45, 0.05, 0.55, 0.95)` Soft, `cubic-bezier(0.65, 0, 0.35, 1)` Medium, `cubic-bezier(0.16, 1, 0.3, 1)` Snappy (default), `ease-in` Ease in, `ease-out` Ease out, `ease-in-out` Ease in and out, `linear` Linear, `cubic-bezier(0.34, 1.56, 0.64, 1)` Overshoot, `linear(0, .38 8%, .78 17%, 1.02 25%, 1.08 30%, 1.03 40%, .99 50%, 1)` Soft spring, `var(--bfbe-ease-custom, ease)` Custom; writes CSS. Snappy by default. Pick another curve from the list, or Custom to type your own in Custom curve.
 Styling, in the schema file: `duration`, `easingCustom`.
+
+### Product moments (`bfbeShopMoments`)
+The whole group shows only when `source` is `` or `self`.
+- `bfbeShopMoments` (repeater) **Product moments**: placeholder Moment
+- `bfbeShopMomentsAt` (select) **Cards sit**: options: `over` Over the video (default), `beside` Beside the video, `under` Under the video; only when `bfbeShopMoments` is set
+- `bfbeShopMomentsCorner` (select) **Corner**: options: `end-end` Bottom right (default), `end-start` Bottom left, `start-end` Top right, `start-start` Top left; only when `bfbeShopMoments` is set and `bfbeShopMomentsAt` is `` or `over`
+- `bfbeShopMomentsAdd` (text) **Button words**: placeholder Add to cart; only when `bfbeShopMoments` is set
+- `bfbeShopMomentsView` (text) **Link words**: placeholder View; only when `bfbeShopMoments` is set
+Styling, in the schema file: `bfbeShopMomentsWidth`, `bfbeShopMomentsBg`, `bfbeShopMomentsBorder`, `bfbeShopMomentsPadding`, `bfbeShopMomentsShadow`, `bfbeShopMomentsWordsType`, `bfbeShopMomentsNameType`, `bfbeShopMomentsPriceType`, `bfbeShopMomentsBtnType`, `bfbeShopMomentsBtnBg`, `bfbeShopMomentsBtnBorder`, `bfbeShopMomentsBtnPad`.
 
 ## What it guarantees for accessibility (do not undo)
 - A player for a video file is a focusable group named by its Title, so its keys work while focus is on or inside it.

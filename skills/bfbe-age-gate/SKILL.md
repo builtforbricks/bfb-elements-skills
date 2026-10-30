@@ -16,7 +16,7 @@ A gate shown before the page can be used: a yes or no question, or a date of bir
 
 **Not for:** It confirms what a visitor says and nothing more: the date is checked in the browser, and the page's content stays in the HTML underneath. The gate opens from script, so a visitor with scripts off sees the page, and whether you need one is a question for your lawyer.
 
-**Costs a page:** CSS 1.24 KB, JS 1.32 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 1.25 KB, JS 1.72 KB (gzipped), no dependencies, loaded only on pages that use it.
 
 **Nestable:** yes · **In a query loop:** no · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 
@@ -54,6 +54,7 @@ Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `b
 - `minAge` (number) **Minimum age**. The age a visitor must be, 18 unless set. Empty button labels use it too.
 - `remember` (number) **Remember for (days)**. How long a pass is kept in the visitor's browser, 30 unless set. Enter 0 to keep it until the browser tab is closed.
 - `redirect` (text) **Redirect on fail**: placeholder https://example.com; dynamic data accepted. An address to send the visitor to about 1.5 seconds after a failed answer. It can come from dynamic data.
+- `onlyCategories` (text) **Only on products in these categories**: placeholder Every page. Category slugs, comma separated; a child category counts.
 - `skipLoggedIn` (checkbox) **Skip for logged-in users**. Off by default. Tick it to let logged-in users skip the gate. A logged-in administrator still sees it on every load, and a pass is never stored for them.
 
 ### Labels and messages (`bfbeText`)

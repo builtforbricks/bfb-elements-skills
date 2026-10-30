@@ -1,0 +1,410 @@
+{
+    "name": "shop-price-and-stock",
+    "label": "BFB Shop price and stock",
+    "pack": "free and pro",
+    "feature": true,
+    "shape": "hosts",
+    "on": "Bricks' own Product price (`product-price`), Product stock (`product-stock`)",
+    "job": "the shop's settings on Bricks' Product price and Product stock: the lowest price of 30 days, the unit price, tax notes, the stock bar and the sold count",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/shop-price-and-stock/",
+    "since": "2.0.0",
+    "requires": [
+        "WooCommerce"
+    ],
+    "switches": [
+        "shop-legal",
+        "shop-stock"
+    ],
+    "groupInfo": {
+        "bfbeShopPriceInfo": {
+            "title": "BFB Price information",
+            "pack": "free",
+            "switch": [
+                "shop-legal"
+            ],
+            "sources": [
+                "bfb-elements/includes/shop/class-legal.php"
+            ]
+        },
+        "bfbeShopStock": {
+            "title": "BFB Stock",
+            "pack": "pro",
+            "switch": [
+                "shop-stock"
+            ],
+            "sources": [
+                "bfb-elements-pro/includes/shop/class-stock.php"
+            ]
+        }
+    },
+    "hosts": {
+        "product-price": {
+            "label": "Product price",
+            "registered": true,
+            "controlGroups": {
+                "bfbeShopPriceInfo": {
+                    "title": "BFB Price information",
+                    "tab": "content"
+                }
+            },
+            "controls": {
+                "bfbeShopLowest": {
+                    "label": "Lowest price (30 days)",
+                    "type": "checkbox",
+                    "group": "bfbeShopPriceInfo",
+                    "tab": "content"
+                },
+                "bfbeShopLowestText": {
+                    "label": "Lowest price text",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Lowest price in the last 30 days: {price}",
+                    "required": [
+                        "bfbeShopLowest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopPriceInfo",
+                    "tab": "content"
+                },
+                "bfbeShopLowestPlace": {
+                    "label": "Lowest price position",
+                    "type": "select",
+                    "options": {
+                        "below": "Below the price",
+                        "above": "Above the price"
+                    },
+                    "inline": true,
+                    "placeholder": "Below the price",
+                    "required": [
+                        "bfbeShopLowest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopPriceInfo",
+                    "tab": "content"
+                },
+                "bfbeShopLowestTypography": {
+                    "label": "Lowest price typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-legal--lowest"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopLowest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopPriceInfo",
+                    "tab": "content"
+                },
+                "bfbeShopUnit": {
+                    "label": "Unit price",
+                    "type": "checkbox",
+                    "group": "bfbeShopPriceInfo",
+                    "tab": "content"
+                },
+                "bfbeShopUnitText": {
+                    "label": "Unit price text",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "{price} / {unit}",
+                    "required": [
+                        "bfbeShopUnit",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopPriceInfo",
+                    "tab": "content"
+                },
+                "bfbeShopUnitPlace": {
+                    "label": "Unit price position",
+                    "type": "select",
+                    "options": {
+                        "below": "Below the price",
+                        "above": "Above the price"
+                    },
+                    "inline": true,
+                    "placeholder": "Below the price",
+                    "required": [
+                        "bfbeShopUnit",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopPriceInfo",
+                    "tab": "content"
+                },
+                "bfbeShopUnitTypography": {
+                    "label": "Unit price typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-legal--unit"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopUnit",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopPriceInfo",
+                    "tab": "content"
+                }
+            }
+        },
+        "product-stock": {
+            "label": "Product stock",
+            "registered": true,
+            "controlGroups": {
+                "bfbeShopStock": {
+                    "title": "BFB Stock",
+                    "tab": "content"
+                }
+            },
+            "controls": {
+                "bfbeShopStockSepBar": {
+                    "type": "separator",
+                    "label": "Bar",
+                    "group": "bfbeShopStock",
+                    "tab": "content"
+                },
+                "bfbeShopStockBar": {
+                    "label": "Show",
+                    "type": "checkbox",
+                    "group": "bfbeShopStock",
+                    "tab": "content"
+                },
+                "bfbeShopStockBase": {
+                    "label": "Full means",
+                    "type": "select",
+                    "options": {
+                        "start": "The starting stock",
+                        "sold": "Stock plus sold"
+                    },
+                    "inline": true,
+                    "placeholder": "The starting stock",
+                    "required": [
+                        "bfbeShopStockBar",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopStock",
+                    "tab": "content"
+                },
+                "bfbeShopStockBarText": {
+                    "label": "Text",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true,
+                    "placeholder": "Only {left} left",
+                    "description": "{left}, {percent} and {start} are filled in.",
+                    "required": [
+                        "bfbeShopStockBar",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopStock",
+                    "tab": "content"
+                },
+                "bfbeShopStockBarPlace": {
+                    "label": "Position",
+                    "type": "select",
+                    "options": {
+                        "below": "Below the stock text",
+                        "above": "Above the stock text",
+                        "instead": "In place of the stock text"
+                    },
+                    "inline": true,
+                    "placeholder": "Below the stock text",
+                    "required": [
+                        "bfbeShopStockBar",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopStock",
+                    "tab": "content"
+                },
+                "bfbeShopStockBarHeight": {
+                    "label": "Height",
+                    "type": "number",
+                    "units": true,
+                    "css": [
+                        {
+                            "property": "height",
+                            "selector": ".bfbe-stock__bar"
+                        }
+                    ],
+                    "placeholder": "8px",
+                    "required": [
+                        "bfbeShopStockBar",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopStock",
+                    "tab": "content"
+                },
+                "bfbeShopStockBarColor": {
+                    "label": "Fill colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-stock__fill"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopStockBar",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopStock",
+                    "tab": "content"
+                },
+                "bfbeShopStockBarTrack": {
+                    "label": "Track colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-stock__bar"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopStockBar",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopStock",
+                    "tab": "content"
+                },
+                "bfbeShopStockBarBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-stock__bar"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopStockBar",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopStock",
+                    "tab": "content"
+                },
+                "bfbeShopStockBarTypography": {
+                    "label": "Text typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-stock__text"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopStockBar",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopStock",
+                    "tab": "content"
+                },
+                "bfbeShopStockSpace": {
+                    "label": "Space above",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "placeholder": ".5em",
+                    "css": [
+                        {
+                            "property": "margin-block-start",
+                            "selector": ".bfbe-stock"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopStockBar",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopStock",
+                    "tab": "content"
+                },
+                "bfbeShopStockSepSold": {
+                    "type": "separator",
+                    "label": "Sold recently",
+                    "group": "bfbeShopStock",
+                    "tab": "content"
+                },
+                "bfbeShopStockSold": {
+                    "label": "Show",
+                    "type": "checkbox",
+                    "group": "bfbeShopStock",
+                    "tab": "content"
+                },
+                "bfbeShopStockSoldDays": {
+                    "label": "Days",
+                    "type": "number",
+                    "min": 1,
+                    "max": 365,
+                    "inline": true,
+                    "placeholder": "7",
+                    "required": [
+                        "bfbeShopStockSold",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopStock",
+                    "tab": "content"
+                },
+                "bfbeShopStockSoldText": {
+                    "label": "Text",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true,
+                    "placeholder": "{sold} sold in the last {days} days",
+                    "required": [
+                        "bfbeShopStockSold",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopStock",
+                    "tab": "content"
+                },
+                "bfbeShopStockSoldZero": {
+                    "label": "Show when none sold",
+                    "type": "checkbox",
+                    "required": [
+                        "bfbeShopStockSold",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopStock",
+                    "tab": "content"
+                },
+                "bfbeShopStockSoldTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-stock__sold"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopStockSold",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopStock",
+                    "tab": "content"
+                }
+            }
+        }
+    }
+}

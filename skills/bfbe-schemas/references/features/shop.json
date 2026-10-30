@@ -1,0 +1,1152 @@
+{
+    "name": "shop",
+    "label": "BFB Shop",
+    "pack": "free and pro",
+    "feature": true,
+    "shape": "hub",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/shop/",
+    "since": "2.0.0",
+    "requires": [
+        "WooCommerce"
+    ],
+    "on": "Bricks' own shop elements and Bricks' Theme Styles, with WooCommerce active",
+    "job": "what Shop 2.0 is: the Shop settings page and its sub-pages, the feature switches, which shop skill covers what, building a shop from Bricks' own containers, the requirements, and the shop's theme style groups",
+    "switches": [
+        {
+            "switch": "shop-sorting",
+            "label": "Shop sorting",
+            "summary": "Order products by SKU, stock or sales, with sold-out products last.",
+            "pack": "free"
+        },
+        {
+            "switch": "shop-promo-tiles",
+            "label": "Promo tiles",
+            "summary": "A template of your own at chosen places in a product grid.",
+            "pack": "free"
+        },
+        {
+            "switch": "shop-reviews-loop",
+            "label": "Reviews loop",
+            "summary": "Product reviews as a query loop, so they can sit anywhere in any layout.",
+            "pack": "free"
+        },
+        {
+            "switch": "shop-brands",
+            "label": "Brands",
+            "summary": "The brand in the shop breadcrumbs, and brand tags for any element.",
+            "pack": "free"
+        },
+        {
+            "switch": "shop-legal",
+            "label": "EU price and product information",
+            "summary": "The lowest price of the last 30 days, the unit price, and the maker and safety details.",
+            "pack": "free"
+        },
+        {
+            "switch": "shop-product-page",
+            "label": "Product page essentials",
+            "summary": "Product data for search engines on every Bricks product template, and a first gallery image that loads at once.",
+            "pack": "free"
+        },
+        {
+            "switch": "shop-mini-cart",
+            "label": "Mini cart",
+            "summary": "A mini cart that works for keyboard and screen readers, with your own empty state.",
+            "pack": "free"
+        },
+        {
+            "switch": "shop-account",
+            "label": "Account",
+            "summary": "Your own account pages, a page after login or logout, and confirm fields on registration.",
+            "pack": "free"
+        },
+        {
+            "switch": "shop-filters",
+            "label": "Filters",
+            "summary": "Collapsible categories in product filters, and filters that understand variations.",
+            "pack": "free"
+        },
+        {
+            "switch": "shop-search-insights",
+            "label": "Search insights",
+            "summary": "What shoppers search for, and the searches that found nothing.",
+            "pack": "free"
+        },
+        {
+            "switch": "shop-variation",
+            "label": "Variation data",
+            "summary": "Price, SKU, stock and any detail that follow the variation the shopper chooses, in any element.",
+            "pack": "pro"
+        },
+        {
+            "switch": "shop-loops",
+            "label": "Shop loops",
+            "summary": "Best sellers, trending, top rated, new arrivals, recently viewed, bought before and more, as query loops.",
+            "pack": "pro"
+        },
+        {
+            "switch": "shop-data",
+            "label": "Shop data",
+            "summary": "Shop tags, conditions and interactions in Bricks' own pickers, right on cached pages.",
+            "pack": "pro"
+        },
+        {
+            "switch": "shop-cards",
+            "label": "Product cards",
+            "summary": "Swatches and add to cart on product cards, and the variation picker's behaviour.",
+            "pack": "pro"
+        },
+        {
+            "switch": "shop-tabs",
+            "label": "Product tabs",
+            "summary": "Extra product tabs with content from a Bricks template, per product, category or tag.",
+            "pack": "pro"
+        },
+        {
+            "switch": "shop-gallery-video",
+            "label": "Gallery video",
+            "summary": "Video in Bricks' product gallery, played by the Video Player.",
+            "pack": "pro"
+        },
+        {
+            "switch": "shop-stock",
+            "label": "Stock",
+            "summary": "Stock as a bar, and sold counts, following the variation.",
+            "pack": "pro"
+        },
+        {
+            "switch": "shop-reviews",
+            "label": "Reviews",
+            "summary": "Review photos, helpful votes and sorting on WooCommerce's reviews.",
+            "pack": "pro"
+        },
+        {
+            "switch": "shop-buy",
+            "label": "Buying",
+            "summary": "The BFB Buy Now straight to the checkout, and catalogue mode with ask for a price.",
+            "pack": "pro"
+        },
+        {
+            "switch": "shop-forms",
+            "label": "Product options",
+            "summary": "BFB Advanced Forms on the product page: options priced on the server and added with the product.",
+            "pack": "pro"
+        },
+        {
+            "switch": "shop-quantity-breaks",
+            "label": "Quantity breaks",
+            "summary": "A price table by quantity, the same on the page and in the cart.",
+            "pack": "pro"
+        },
+        {
+            "switch": "shop-delivery",
+            "label": "Delivery",
+            "summary": "Delivery estimates with a postcode check, and delivery dates and slots at checkout.",
+            "pack": "pro"
+        },
+        {
+            "switch": "shop-checkout-rules",
+            "label": "Checkout rules",
+            "summary": "A fee or discount by payment method, and hiding other rates when shipping is free.",
+            "pack": "pro"
+        },
+        {
+            "switch": "shop-coupons",
+            "label": "Coupons",
+            "summary": "Bricks' coupon field anywhere, coupons from a link, and coupons that apply themselves.",
+            "pack": "pro"
+        },
+        {
+            "switch": "shop-cart-lines",
+            "label": "Cart lines",
+            "summary": "Save for later, and undo after removing an item in the mini cart.",
+            "pack": "pro"
+        },
+        {
+            "switch": "shop-share-cart",
+            "label": "Share a cart",
+            "summary": "A link that rebuilds the cart on another device or for someone else.",
+            "pack": "pro"
+        },
+        {
+            "switch": "shop-checkout-fields",
+            "label": "Checkout fields",
+            "summary": "Your own checkout fields, saved to the order and shown everywhere WooCommerce shows an order.",
+            "pack": "pro"
+        },
+        {
+            "switch": "shop-lists",
+            "label": "Lists",
+            "summary": "The wishlist, compare and quote list engine, for guests and customers.",
+            "pack": "pro"
+        },
+        {
+            "switch": "shop-live-cart",
+            "label": "Live cart",
+            "summary": "Parts of the page drawn again after every cart change, popups included.",
+            "pack": "pro"
+        },
+        {
+            "switch": "shop-orders",
+            "label": "Order loops",
+            "summary": "The customer's orders and an order's items as query loops.",
+            "pack": "pro"
+        },
+        {
+            "switch": "shop-swatch-filters",
+            "label": "Swatch filters",
+            "summary": "A swatch look for Bricks' attribute filters.",
+            "pack": "pro"
+        },
+        {
+            "switch": "shop-search",
+            "label": "Search",
+            "summary": "Recent and popular searches under Bricks' live search, and synonyms.",
+            "pack": "pro"
+        },
+        {
+            "switch": "shop-alerts",
+            "label": "Alerts",
+            "summary": "Back-in-stock and price-drop alerts through BFB Advanced Forms.",
+            "pack": "pro"
+        }
+    ],
+    "adminPage": {
+        "menu": "BFB Elements, Shop",
+        "subPages": {
+            "general": "General",
+            "products": "Products",
+            "pricing": "Pricing",
+            "checkout": "Cart & checkout",
+            "delivery": "Delivery",
+            "customers": "Customers",
+            "search": "Search"
+        }
+    },
+    "themeStyles": {
+        "on": "Bricks' Theme Styles (Bricks, Theme Styles), beside Bricks' own WooCommerce groups",
+        "controlGroups": {
+            "bfbe-woo-buttons": {
+                "title": "BFB WooCommerce - Buttons",
+                "parent": "elements"
+            },
+            "bfbe-fields": {
+                "title": "BFB Form fields",
+                "parent": "elements"
+            },
+            "bfbe-woo-product": {
+                "title": "BFB WooCommerce - Price, rating, stock",
+                "parent": "elements"
+            }
+        },
+        "controls": {
+            "transition": {
+                "label": "Transition",
+                "description": "Every WooCommerce button.",
+                "type": "text",
+                "hasDynamicData": false,
+                "hasVariables": true,
+                "css": [
+                    {
+                        "property": "transition",
+                        "selector": ".woocommerce .button, body:not(.woocommerce) .product_type_variable, body:not(.woocommerce) .product_type_grouped, body:not(.woocommerce) .product_type_external, body:not(.woocommerce) .product_type_simple, body:not(.woocommerce) .brx-popup-content:not(.woocommerce) form.cart .single_add_to_cart_button, body:not(.woocommerce) .brxe-woocommerce-mini-cart .woocommerce-mini-cart__buttons .button"
+                    }
+                ],
+                "group": "bfbe-woo-buttons"
+            },
+            "mainSeparator": {
+                "label": "Main buttons",
+                "description": "Add to cart, proceed to checkout, place order.",
+                "type": "separator",
+                "group": "bfbe-woo-buttons"
+            },
+            "mainBackground": {
+                "label": "Background color",
+                "type": "color",
+                "css": [
+                    {
+                        "property": "background-color",
+                        "selector": "body .button.alt, body .button.single_add_to_cart_button"
+                    }
+                ],
+                "group": "bfbe-woo-buttons"
+            },
+            "mainBorder": {
+                "label": "Border",
+                "type": "border",
+                "css": [
+                    {
+                        "property": "border",
+                        "selector": "body .button.alt, body .button.single_add_to_cart_button"
+                    }
+                ],
+                "group": "bfbe-woo-buttons"
+            },
+            "mainTypography": {
+                "label": "Typography",
+                "type": "typography",
+                "css": [
+                    {
+                        "property": "font",
+                        "selector": "body .button.alt, body .button.single_add_to_cart_button"
+                    }
+                ],
+                "group": "bfbe-woo-buttons"
+            },
+            "fieldSeparator": {
+                "label": "Fields",
+                "description": "Text fields, selects and text areas.",
+                "type": "separator",
+                "group": "bfbe-fields"
+            },
+            "fieldTypography": {
+                "label": "Typography",
+                "type": "typography",
+                "css": [
+                    {
+                        "property": "font",
+                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *)"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "fieldBackground": {
+                "label": "Background color",
+                "type": "color",
+                "css": [
+                    {
+                        "property": "background-color",
+                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *)"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "fieldBorder": {
+                "label": "Border",
+                "type": "border",
+                "css": [
+                    {
+                        "property": "border",
+                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *)"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "fieldPadding": {
+                "label": "Padding",
+                "type": "spacing",
+                "css": [
+                    {
+                        "property": "padding",
+                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *)"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "fieldMinHeight": {
+                "label": "Min. height",
+                "type": "number",
+                "units": true,
+                "css": [
+                    {
+                        "property": "min-height",
+                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *)"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "selectArrow": {
+                "label": "Arrow on selects",
+                "type": "select",
+                "options": {
+                    "none": "None"
+                },
+                "inline": true,
+                "placeholder": "The default",
+                "css": [
+                    {
+                        "property": "background-image",
+                        "selector": "select:not(.bfbe-form *)"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "focusSeparator": {
+                "label": "Focus",
+                "type": "separator",
+                "group": "bfbe-fields"
+            },
+            "focusBorderColor": {
+                "label": "Border color",
+                "type": "color",
+                "css": [
+                    {
+                        "property": "border-color",
+                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *):focus"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "focusBoxShadow": {
+                "label": "Box shadow",
+                "type": "box-shadow",
+                "css": [
+                    {
+                        "property": "box-shadow",
+                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *):focus"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "focusOutline": {
+                "label": "Outline",
+                "type": "text",
+                "inline": true,
+                "hasDynamicData": false,
+                "placeholder": "auto",
+                "css": [
+                    {
+                        "property": "outline",
+                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *):focus"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "labelSeparator": {
+                "label": "Labels",
+                "type": "separator",
+                "group": "bfbe-fields"
+            },
+            "labelTypography": {
+                "label": "Typography",
+                "type": "typography",
+                "css": [
+                    {
+                        "property": "font",
+                        "selector": "label:not(.screen-reader-text)"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "wooListSeparator": {
+                "label": "Country and state lists",
+                "description": "WooCommerce&#039;s own searchable selects.",
+                "type": "separator",
+                "group": "bfbe-fields"
+            },
+            "wooBoxBackground": {
+                "label": "Box background",
+                "type": "color",
+                "css": [
+                    {
+                        "property": "background-color",
+                        "selector": "body .select2-container--default .select2-selection--single"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "wooBoxBorder": {
+                "label": "Box border",
+                "type": "border",
+                "css": [
+                    {
+                        "property": "border",
+                        "selector": "body .select2-container--default .select2-selection--single"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "wooBoxHeight": {
+                "label": "Box height",
+                "type": "number",
+                "units": true,
+                "css": [
+                    {
+                        "property": "height",
+                        "selector": "body .select2-container--default .select2-selection--single"
+                    },
+                    {
+                        "property": "line-height",
+                        "selector": "body .select2-container--default .select2-selection--single .select2-selection__rendered"
+                    },
+                    {
+                        "property": "height",
+                        "selector": "body .select2-container--default .select2-selection--single .select2-selection__arrow"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "wooListBackground": {
+                "label": "List background",
+                "type": "color",
+                "css": [
+                    {
+                        "property": "background-color",
+                        "selector": "body .select2-container--default .select2-dropdown"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "wooListBorder": {
+                "label": "List border",
+                "type": "border",
+                "css": [
+                    {
+                        "property": "border",
+                        "selector": "body .select2-container--default .select2-dropdown"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "wooListShadow": {
+                "label": "List shadow",
+                "type": "box-shadow",
+                "css": [
+                    {
+                        "property": "box-shadow",
+                        "selector": "body .select2-container--default .select2-dropdown"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "wooListPadding": {
+                "label": "List padding",
+                "type": "spacing",
+                "css": [
+                    {
+                        "property": "padding",
+                        "selector": "body .select2-container--default .select2-dropdown"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "wooOptionTypography": {
+                "label": "Option typography",
+                "type": "typography",
+                "css": [
+                    {
+                        "property": "font",
+                        "selector": "body .select2-container--default .select2-results__option"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "wooOptionPadding": {
+                "label": "Option padding",
+                "type": "spacing",
+                "css": [
+                    {
+                        "property": "padding",
+                        "selector": "body .select2-container--default .select2-results__option"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "wooOptionBorder": {
+                "label": "Option border",
+                "type": "border",
+                "css": [
+                    {
+                        "property": "border",
+                        "selector": "body .select2-container--default .select2-results__option"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "wooOptionHover": {
+                "label": "Hover background",
+                "type": "color",
+                "css": [
+                    {
+                        "property": "background-color",
+                        "selector": "body .select2-container--default .select2-results__option.select2-results__option--highlighted"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "wooOptionHoverText": {
+                "label": "Hover text",
+                "type": "color",
+                "css": [
+                    {
+                        "property": "color",
+                        "selector": "body .select2-container--default .select2-results__option.select2-results__option--highlighted"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "wooOptionChosen": {
+                "label": "Chosen background",
+                "type": "color",
+                "css": [
+                    {
+                        "property": "background-color",
+                        "selector": "body .select2-container--default .select2-results__option[aria-selected=\"true\"]:not(.select2-results__option--highlighted)"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "wooSearchBorder": {
+                "label": "Search box border",
+                "type": "border",
+                "css": [
+                    {
+                        "property": "border",
+                        "selector": "body .select2-container--default .select2-search--dropdown .select2-search__field"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "wooTickSeparator": {
+                "label": "Tick boxes and radios",
+                "description": "WooCommerce&#039;s own, wherever it prints them.",
+                "type": "separator",
+                "group": "bfbe-fields"
+            },
+            "wooTickLook": {
+                "label": "Look",
+                "type": "select",
+                "options": {
+                    "custom": "Styled with the controls below"
+                },
+                "inline": true,
+                "placeholder": "As the browser draws them",
+                "css": [
+                    {
+                        "property": "position",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))",
+                        "value": "relative"
+                    },
+                    {
+                        "property": "appearance",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))",
+                        "value": "none"
+                    },
+                    {
+                        "property": "-webkit-appearance",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))",
+                        "value": "none"
+                    },
+                    {
+                        "property": "display",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))",
+                        "value": "inline-block"
+                    },
+                    {
+                        "property": "flex",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))",
+                        "value": "none"
+                    },
+                    {
+                        "property": "box-sizing",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))",
+                        "value": "border-box"
+                    },
+                    {
+                        "property": "inline-size",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))",
+                        "value": "var(--bfbe-tick-size, 1.15em)"
+                    },
+                    {
+                        "property": "block-size",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))",
+                        "value": "var(--bfbe-tick-size, 1.15em)"
+                    },
+                    {
+                        "property": "min-inline-size",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))",
+                        "value": "0"
+                    },
+                    {
+                        "property": "margin-block",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))",
+                        "value": "0"
+                    },
+                    {
+                        "property": "margin-inline",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))",
+                        "value": "0 var(--bfbe-tick-gap, .5em)"
+                    },
+                    {
+                        "property": "padding",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))",
+                        "value": "0"
+                    },
+                    {
+                        "property": "vertical-align",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))",
+                        "value": "middle"
+                    },
+                    {
+                        "property": "line-height",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))",
+                        "value": "inherit"
+                    },
+                    {
+                        "property": "border",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))",
+                        "value": "1px solid var(--bfbe-tick-line, var(--bfbe-line, color-mix(in srgb, currentColor 35%, transparent)))"
+                    },
+                    {
+                        "property": "border-radius",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))",
+                        "value": "4px"
+                    },
+                    {
+                        "property": "background",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))",
+                        "value": "var(--bfbe-tick-bg, var(--bfbe-surface, Canvas))"
+                    },
+                    {
+                        "property": "cursor",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))",
+                        "value": "pointer"
+                    },
+                    {
+                        "property": "transition",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))",
+                        "value": "background-color .2s ease, border-color .2s ease"
+                    },
+                    {
+                        "property": "border-radius",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))[type=radio]",
+                        "value": "50%"
+                    },
+                    {
+                        "property": "display",
+                        "selector": "label:has(>:is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio):not(.bfbe-form *,.bfbe-tick)):not(:has(>.brx-input-indicator))",
+                        "value": "inline-flex"
+                    },
+                    {
+                        "property": "align-items",
+                        "selector": "label:has(>:is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio):not(.bfbe-form *,.bfbe-tick)):not(:has(>.brx-input-indicator))",
+                        "value": "flex-start"
+                    },
+                    {
+                        "property": "max-inline-size",
+                        "selector": "label:has(>:is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio):not(.bfbe-form *,.bfbe-tick)):not(:has(>.brx-input-indicator))",
+                        "value": "100%"
+                    },
+                    {
+                        "property": "margin-inline-end",
+                        "selector": "label:has(>:is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio):not(.bfbe-form *,.bfbe-tick)):not(:has(>.brx-input-indicator))",
+                        "value": ".75em"
+                    },
+                    {
+                        "property": "vertical-align",
+                        "selector": "label:has(>:is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio):not(.bfbe-form *,.bfbe-tick)):not(:has(>.brx-input-indicator))",
+                        "value": "middle"
+                    },
+                    {
+                        "property": "margin-block-start",
+                        "selector": "label>:is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))",
+                        "value": "max(0px, calc((1lh - var(--bfbe-tick-size, 1.15em)) / 2))"
+                    },
+                    {
+                        "property": "cursor",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator)):disabled",
+                        "value": "default"
+                    },
+                    {
+                        "property": "border-color",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator)):not(:checked,:disabled):hover",
+                        "value": "var(--bfbe-tick-hover, var(--bfbe-tick-on, var(--bfbe-accent, currentColor)))"
+                    },
+                    {
+                        "property": "background",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))[type]:checked",
+                        "value": "var(--bfbe-tick-on, var(--bfbe-accent, currentColor))"
+                    },
+                    {
+                        "property": "border-color",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))[type]:checked",
+                        "value": "var(--bfbe-tick-on-line, var(--bfbe-tick-on, var(--bfbe-accent, currentColor)))"
+                    },
+                    {
+                        "property": "outline",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator)):focus-visible",
+                        "value": "var(--bfbe-focus, 2px solid currentColor)"
+                    },
+                    {
+                        "property": "outline-offset",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator)):focus-visible",
+                        "value": "2px"
+                    },
+                    {
+                        "property": "content",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))::after",
+                        "value": "\"\""
+                    },
+                    {
+                        "property": "position",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))::after",
+                        "value": "absolute"
+                    },
+                    {
+                        "property": "inset",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))::after",
+                        "value": "0"
+                    },
+                    {
+                        "property": "margin",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))::after",
+                        "value": "auto"
+                    },
+                    {
+                        "property": "box-sizing",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))::after",
+                        "value": "border-box"
+                    },
+                    {
+                        "property": "inline-size",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))::after",
+                        "value": "calc(var(--bfbe-tick-size, 1.15em) * .3)"
+                    },
+                    {
+                        "property": "block-size",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))::after",
+                        "value": "calc(var(--bfbe-tick-size, 1.15em) * .56)"
+                    },
+                    {
+                        "property": "translate",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))::after",
+                        "value": "0 calc(var(--bfbe-tick-size, 1.15em) * -.06)"
+                    },
+                    {
+                        "property": "rotate",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))::after",
+                        "value": "45deg"
+                    },
+                    {
+                        "property": "border",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))::after",
+                        "value": "0 solid var(--bfbe-tick-mark, var(--bfbe-on-accent, Canvas))"
+                    },
+                    {
+                        "property": "border-right-width",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))::after",
+                        "value": "max(2px, calc(var(--bfbe-tick-size, 1.15em) * .12))"
+                    },
+                    {
+                        "property": "border-bottom-width",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))::after",
+                        "value": "max(2px, calc(var(--bfbe-tick-size, 1.15em) * .12))"
+                    },
+                    {
+                        "property": "opacity",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))::after",
+                        "value": "0"
+                    },
+                    {
+                        "property": "transition",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))::after",
+                        "value": "opacity .2s ease"
+                    },
+                    {
+                        "property": "inline-size",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))[type=radio]::after",
+                        "value": "0"
+                    },
+                    {
+                        "property": "block-size",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))[type=radio]::after",
+                        "value": "0"
+                    },
+                    {
+                        "property": "translate",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))[type=radio]::after",
+                        "value": "none"
+                    },
+                    {
+                        "property": "rotate",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))[type=radio]::after",
+                        "value": "none"
+                    },
+                    {
+                        "property": "border-width",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))[type=radio]::after",
+                        "value": "calc(var(--bfbe-tick-size, 1.15em) * .2)"
+                    },
+                    {
+                        "property": "border-radius",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))[type=radio]::after",
+                        "value": "50%"
+                    },
+                    {
+                        "property": "opacity",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator)):checked::after",
+                        "value": "1"
+                    }
+                ],
+                "group": "bfbe-fields"
+            },
+            "wooTickSize": {
+                "label": "Size",
+                "type": "number",
+                "css": [
+                    {
+                        "property": "--bfbe-tick-size",
+                        "selector": "body"
+                    }
+                ],
+                "required": [
+                    "wooTickLook",
+                    "=",
+                    "custom"
+                ],
+                "units": true,
+                "placeholder": "1.15em",
+                "group": "bfbe-fields"
+            },
+            "wooTickGap": {
+                "label": "Space after",
+                "type": "number",
+                "css": [
+                    {
+                        "property": "--bfbe-tick-gap",
+                        "selector": "body"
+                    }
+                ],
+                "required": [
+                    "wooTickLook",
+                    "=",
+                    "custom"
+                ],
+                "units": true,
+                "placeholder": ".5em",
+                "group": "bfbe-fields"
+            },
+            "wooTickBackground": {
+                "label": "Background",
+                "type": "color",
+                "css": [
+                    {
+                        "property": "--bfbe-tick-bg",
+                        "selector": "body"
+                    }
+                ],
+                "required": [
+                    "wooTickLook",
+                    "=",
+                    "custom"
+                ],
+                "group": "bfbe-fields"
+            },
+            "wooTickBorder": {
+                "label": "Tick box border",
+                "type": "border",
+                "css": [
+                    {
+                        "property": "border",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))[type=checkbox]"
+                    }
+                ],
+                "required": [
+                    "wooTickLook",
+                    "=",
+                    "custom"
+                ],
+                "group": "bfbe-fields"
+            },
+            "wooTickRadioBorder": {
+                "label": "Radio border",
+                "type": "border",
+                "css": [
+                    {
+                        "property": "border",
+                        "selector": ":is(input.woocommerce-form__input-checkbox,input.input-checkbox,input.input-radio,input.shipping_method[type=radio]):not(.bfbe-form *,.bfbe-tick,.woocommerce-PaymentMethods *,:has(+.brx-input-indicator))[type=radio]"
+                    }
+                ],
+                "required": [
+                    "wooTickLook",
+                    "=",
+                    "custom"
+                ],
+                "group": "bfbe-fields"
+            },
+            "wooTickHover": {
+                "label": "Edge on hover",
+                "type": "color",
+                "css": [
+                    {
+                        "property": "--bfbe-tick-hover",
+                        "selector": "body"
+                    }
+                ],
+                "required": [
+                    "wooTickLook",
+                    "=",
+                    "custom"
+                ],
+                "group": "bfbe-fields"
+            },
+            "wooTickOnSeparator": {
+                "label": "Ticked or chosen",
+                "type": "separator",
+                "required": [
+                    "wooTickLook",
+                    "=",
+                    "custom"
+                ],
+                "group": "bfbe-fields"
+            },
+            "wooTickOn": {
+                "label": "Fill",
+                "type": "color",
+                "css": [
+                    {
+                        "property": "--bfbe-tick-on",
+                        "selector": "body"
+                    }
+                ],
+                "required": [
+                    "wooTickLook",
+                    "=",
+                    "custom"
+                ],
+                "group": "bfbe-fields"
+            },
+            "wooTickOnLine": {
+                "label": "Edge",
+                "type": "color",
+                "css": [
+                    {
+                        "property": "--bfbe-tick-on-line",
+                        "selector": "body"
+                    }
+                ],
+                "required": [
+                    "wooTickLook",
+                    "=",
+                    "custom"
+                ],
+                "group": "bfbe-fields"
+            },
+            "wooTickMark": {
+                "label": "Mark colour",
+                "type": "color",
+                "css": [
+                    {
+                        "property": "--bfbe-tick-mark",
+                        "selector": "body"
+                    }
+                ],
+                "required": [
+                    "wooTickLook",
+                    "=",
+                    "custom"
+                ],
+                "group": "bfbe-fields"
+            },
+            "priceSeparator": {
+                "label": "Price",
+                "type": "separator",
+                "group": "bfbe-woo-product"
+            },
+            "priceTypography": {
+                "label": "Typography",
+                "type": "typography",
+                "css": [
+                    {
+                        "property": "font",
+                        "selector": ".price, .woocommerce-Price-amount:not(.bfbe-nbar *)"
+                    }
+                ],
+                "group": "bfbe-woo-product"
+            },
+            "oldPriceTypography": {
+                "label": "Old price",
+                "type": "typography",
+                "css": [
+                    {
+                        "property": "font",
+                        "selector": ".price del, .price del .woocommerce-Price-amount"
+                    }
+                ],
+                "group": "bfbe-woo-product"
+            },
+            "salePriceTypography": {
+                "label": "Sale price",
+                "type": "typography",
+                "css": [
+                    {
+                        "property": "font",
+                        "selector": ".price ins, .price ins .woocommerce-Price-amount, .price:has(del) > .woocommerce-Price-amount"
+                    }
+                ],
+                "group": "bfbe-woo-product"
+            },
+            "ratingSeparator": {
+                "label": "Rating",
+                "type": "separator",
+                "group": "bfbe-woo-product"
+            },
+            "starColor": {
+                "label": "Star color",
+                "type": "color",
+                "css": [
+                    {
+                        "property": "color",
+                        "selector": ".star-rating"
+                    }
+                ],
+                "group": "bfbe-woo-product"
+            },
+            "emptyStarColor": {
+                "label": "Empty star color",
+                "type": "color",
+                "css": [
+                    {
+                        "property": "color",
+                        "selector": ".star-rating::before"
+                    }
+                ],
+                "group": "bfbe-woo-product"
+            },
+            "stockSeparator": {
+                "label": "Stock",
+                "type": "separator",
+                "group": "bfbe-woo-product"
+            },
+            "inStockTypography": {
+                "label": "In stock",
+                "type": "typography",
+                "css": [
+                    {
+                        "property": "font",
+                        "selector": ".stock.in-stock"
+                    }
+                ],
+                "group": "bfbe-woo-product"
+            },
+            "lowStockTypography": {
+                "label": "Low stock and backorder",
+                "type": "typography",
+                "css": [
+                    {
+                        "property": "font",
+                        "selector": ".stock.low-stock, .stock.available-on-backorder"
+                    }
+                ],
+                "group": "bfbe-woo-product"
+            },
+            "outOfStockTypography": {
+                "label": "Out of stock",
+                "type": "typography",
+                "css": [
+                    {
+                        "property": "font",
+                        "selector": ".stock.out-of-stock"
+                    }
+                ],
+                "group": "bfbe-woo-product"
+            }
+        }
+    },
+    "references": {
+        "loops": "./shop/loops.json",
+        "tags": "./shop/tags.json",
+        "conditions": "./shop/conditions.json",
+        "interactions": "./shop/interactions.json"
+    }
+}

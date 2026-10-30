@@ -9,8 +9,8 @@
     "childrenDefault": [],
     "parent": null,
     "cost": {
-        "css": "2.79 KB",
-        "js": "2.60 KB",
+        "css": "2.80 KB",
+        "js": "2.66 KB",
         "dependencies": "none",
         "also": [
             {
@@ -18,6 +18,12 @@
                 "css": "none",
                 "js": "1.05 KB",
                 "dependencies": "none"
+            },
+            {
+                "what": "Shop, the quick order table and the shoppable list: Dynamic Table rows of products with quantities and one Add all",
+                "css": "0.36 KB",
+                "js": "0.61 KB",
+                "dependencies": "shop-live"
             }
         ]
     },
@@ -33,11 +39,48 @@
         },
         "bfbeColumns": {
             "title": "Columns",
-            "tab": "content"
+            "tab": "content",
+            "required": [
+                "source",
+                "!=",
+                "products"
+            ]
         },
         "bfbeFeatures": {
             "title": "Search and pages",
             "tab": "content"
+        },
+        "bfbeRangeArrows": {
+            "title": "Filters: number arrows",
+            "tab": "content",
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "bfbeRangeCal": {
+            "title": "Filters: date picker",
+            "tab": "content",
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
         },
         "bfbeFilter": {
             "title": "Filters",
@@ -71,9 +114,25 @@
             "title": "Page buttons",
             "tab": "content",
             "required": [
-                "pageSize",
-                "!=",
-                ""
+                [
+                    "pageSize",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "bfbeShopOrder": {
+            "title": "Add to cart",
+            "tab": "content",
+            "required": [
+                "source",
+                "=",
+                "products"
             ]
         },
         "bfbeHover": {
@@ -110,7 +169,8 @@
                 "manual": "Text typed here",
                 "csv": "A CSV file",
                 "acf": "An ACF repeater",
-                "loop": "A query loop"
+                "loop": "A query loop",
+                "products": "Products from the shop"
             },
             "inline": true,
             "placeholder": "Text typed here"
@@ -128,7 +188,8 @@
                 [
                     "csv",
                     "acf",
-                    "loop"
+                    "loop",
+                    "products"
                 ]
             ]
         },
@@ -169,7 +230,8 @@
                 "!=",
                 [
                     "acf",
-                    "loop"
+                    "loop",
+                    "products"
                 ]
             ]
         },
@@ -185,6 +247,246 @@
                 "=",
                 "acf"
             ]
+        },
+        "sepShopProducts": {
+            "label": "Products",
+            "type": "separator",
+            "required": [
+                "source",
+                "=",
+                "products"
+            ],
+            "tab": "content",
+            "group": "bfbeSource"
+        },
+        "bfbeShopList": {
+            "label": "Shoppable list",
+            "type": "checkbox",
+            "description": "A recipe or a guide: the list, with its quantities.",
+            "required": [
+                "source",
+                "=",
+                "products"
+            ],
+            "tab": "content",
+            "group": "bfbeSource"
+        },
+        "bfbeShopItems": {
+            "label": "The list",
+            "type": "textarea",
+            "hasDynamicData": "text",
+            "placeholder": "2 x Olive oil\n1 x BFBE-KIT-01",
+            "description": "One a line: a quantity, x, a product or SKU.",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "products"
+                ],
+                [
+                    "bfbeShopList",
+                    "!=",
+                    ""
+                ]
+            ],
+            "tab": "content",
+            "group": "bfbeSource"
+        },
+        "bfbeShopFrom": {
+            "label": "Products from",
+            "type": "select",
+            "options": {
+                "category": "A category",
+                "tag": "A tag",
+                "ids": "Products picked here",
+                "variations": "One product and its variations"
+            },
+            "inline": true,
+            "placeholder": "A category",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "products"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ],
+            "tab": "content",
+            "group": "bfbeSource"
+        },
+        "bfbeShopCategory": {
+            "label": "Category",
+            "type": "select",
+            "optionsAjax": {
+                "action": "bricks_get_terms_options",
+                "taxonomy": [
+                    "product_cat"
+                ]
+            },
+            "searchable": true,
+            "multiple": true,
+            "placeholder": "Pick a category",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "products"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ],
+                [
+                    "bfbeShopFrom",
+                    "=",
+                    [
+                        "",
+                        "category"
+                    ]
+                ]
+            ],
+            "tab": "content",
+            "group": "bfbeSource"
+        },
+        "bfbeShopTag": {
+            "label": "Tag",
+            "type": "select",
+            "optionsAjax": {
+                "action": "bricks_get_terms_options",
+                "taxonomy": [
+                    "product_tag"
+                ]
+            },
+            "searchable": true,
+            "multiple": true,
+            "placeholder": "Pick a tag",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "products"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ],
+                [
+                    "bfbeShopFrom",
+                    "=",
+                    "tag"
+                ]
+            ],
+            "tab": "content",
+            "group": "bfbeSource"
+        },
+        "bfbeShopIds": {
+            "label": "Products",
+            "type": "select",
+            "optionsAjax": {
+                "action": "bricks_get_posts",
+                "postType": "product"
+            },
+            "searchable": true,
+            "multiple": true,
+            "placeholder": "Pick the products",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "products"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ],
+                [
+                    "bfbeShopFrom",
+                    "=",
+                    "ids"
+                ]
+            ],
+            "tab": "content",
+            "group": "bfbeSource"
+        },
+        "bfbeShopParent": {
+            "label": "Product",
+            "type": "select",
+            "optionsAjax": {
+                "action": "bricks_get_posts",
+                "postType": "product"
+            },
+            "searchable": true,
+            "placeholder": "Pick a variable product",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "products"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ],
+                [
+                    "bfbeShopFrom",
+                    "=",
+                    "variations"
+                ]
+            ],
+            "tab": "content",
+            "group": "bfbeSource"
+        },
+        "bfbeShopMost": {
+            "label": "Rows at most",
+            "type": "number",
+            "min": 1,
+            "max": 200,
+            "inline": true,
+            "placeholder": "50",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "products"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ],
+            "tab": "content",
+            "group": "bfbeSource"
+        },
+        "bfbeShopColumns": {
+            "label": "Columns",
+            "type": "select",
+            "options": {
+                "image": "Picture",
+                "name": "Name",
+                "sku": "SKU",
+                "attributes": "Options",
+                "stock": "Stock",
+                "price": "Price"
+            },
+            "multiple": true,
+            "placeholder": "Picture, name and price",
+            "description": "The quantity always comes last.",
+            "required": [
+                "source",
+                "=",
+                "products"
+            ],
+            "tab": "content",
+            "group": "bfbeSource"
         },
         "columns": {
             "tab": "content",
@@ -256,19 +558,38 @@
                 }
             },
             "type": "repeater",
-            "selector": ".bfbe-dt__cell"
+            "selector": ".bfbe-dt__cell",
+            "required": [
+                "source",
+                "!=",
+                "products"
+            ]
         },
         "sepSearch": {
             "tab": "content",
             "group": "bfbeFeatures",
             "label": "Search",
-            "type": "separator"
+            "type": "separator",
+            "required": [
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
         },
         "search": {
             "tab": "content",
             "group": "bfbeFeatures",
             "label": "Search box",
-            "type": "checkbox"
+            "type": "checkbox",
+            "required": [
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
         },
         "searchLabel": {
             "tab": "content",
@@ -279,9 +600,16 @@
             "inline": true,
             "placeholder": "Search",
             "required": [
-                "search",
-                "!=",
-                ""
+                [
+                    "search",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ]
         },
         "searchBackground": {
@@ -290,9 +618,16 @@
             "label": "Background",
             "type": "background",
             "required": [
-                "search",
-                "!=",
-                ""
+                [
+                    "search",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ],
             "css": [
                 {
@@ -307,9 +642,16 @@
             "label": "Border",
             "type": "border",
             "required": [
-                "search",
-                "!=",
-                ""
+                [
+                    "search",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ],
             "css": [
                 {
@@ -324,9 +666,16 @@
             "label": "Typography",
             "type": "typography",
             "required": [
-                "search",
-                "!=",
-                ""
+                [
+                    "search",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ],
             "css": [
                 {
@@ -341,9 +690,16 @@
             "label": "Padding",
             "type": "dimensions",
             "required": [
-                "search",
-                "!=",
-                ""
+                [
+                    "search",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ],
             "css": [
                 {
@@ -364,9 +720,16 @@
             "inline": true,
             "placeholder": "Above the table",
             "required": [
-                "search",
-                "!=",
-                ""
+                [
+                    "search",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ]
         },
         "searchAlign": {
@@ -377,9 +740,16 @@
             "direction": "row",
             "inline": true,
             "required": [
-                "search",
-                "!=",
-                ""
+                [
+                    "search",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ]
         },
         "searchWidth": {
@@ -391,9 +761,16 @@
             "inline": true,
             "placeholder": "12em",
             "required": [
-                "search",
-                "!=",
-                ""
+                [
+                    "search",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ],
             "css": [
                 {
@@ -419,6 +796,13 @@
                     "property": "--bfbe-dt-tools-gap",
                     "selector": ".bfbe-dt__tools"
                 }
+            ],
+            "required": [
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ]
         },
         "sepSort": {
@@ -655,7 +1039,14 @@
             "tab": "content",
             "group": "bfbeFeatures",
             "label": "Pages",
-            "type": "separator"
+            "type": "separator",
+            "required": [
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
         },
         "pageSize": {
             "tab": "content",
@@ -664,7 +1055,14 @@
             "type": "number",
             "min": 0,
             "inline": true,
-            "placeholder": "All"
+            "placeholder": "All",
+            "required": [
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
         },
         "pagerLayout": {
             "tab": "content",
@@ -681,9 +1079,16 @@
             "inline": true,
             "placeholder": "Count left, arrows right",
             "required": [
-                "pageSize",
-                "!=",
-                ""
+                [
+                    "pageSize",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ]
         },
         "pagerGap": {
@@ -695,15 +1100,2574 @@
             "inline": true,
             "placeholder": "16px",
             "required": [
-                "pageSize",
-                "!=",
-                ""
+                [
+                    "pageSize",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ],
             "css": [
                 {
                     "property": "--bfbe-dt-pager-gap",
                     "selector": ""
                 }
+            ]
+        },
+        "rangeSpinArrows": {
+            "tab": "content",
+            "group": "bfbeRangeArrows",
+            "label": "Arrows",
+            "type": "select",
+            "options": {
+                "browser": "The browser&#039;s",
+                "inside": "Ours, inside the box",
+                "stepper": "A − and a + beside it",
+                "none": "None"
+            },
+            "inline": true,
+            "placeholder": "As the browser draws them",
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeSpinSepArrows": {
+            "tab": "content",
+            "group": "bfbeRangeArrows",
+            "label": "Arrows",
+            "type": "separator",
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeSpinArrows",
+                    "=",
+                    [
+                        "inside",
+                        "stepper"
+                    ]
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeSpinArrowSize": {
+            "tab": "content",
+            "group": "bfbeRangeArrows",
+            "label": "Icon size",
+            "type": "number",
+            "css": [
+                {
+                    "property": "--bfbe-spin-icon",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeSpinArrows",
+                    "=",
+                    [
+                        "inside",
+                        "stepper"
+                    ]
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ],
+            "units": true,
+            "inline": true,
+            "placeholder": "12px"
+        },
+        "rangeSpinArrowWidth": {
+            "tab": "content",
+            "group": "bfbeRangeArrows",
+            "label": "Width",
+            "type": "number",
+            "css": [
+                {
+                    "property": "--bfbe-spin-w",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeSpinArrows",
+                    "=",
+                    [
+                        "inside",
+                        "stepper"
+                    ]
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ],
+            "units": true,
+            "inline": true,
+            "placeholder": "28px"
+        },
+        "rangeSpinArrowGap": {
+            "tab": "content",
+            "group": "bfbeRangeArrows",
+            "label": "Gap",
+            "type": "number",
+            "css": [
+                {
+                    "property": "--bfbe-spin-gap",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeSpinArrows",
+                    "=",
+                    [
+                        "inside",
+                        "stepper"
+                    ]
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ],
+            "units": true,
+            "inline": true,
+            "placeholder": "4px"
+        },
+        "rangeSpinArrowColor": {
+            "tab": "content",
+            "group": "bfbeRangeArrows",
+            "label": "Colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-spin-color",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeSpinArrows",
+                    "=",
+                    [
+                        "inside",
+                        "stepper"
+                    ]
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeSpinArrowBg": {
+            "tab": "content",
+            "group": "bfbeRangeArrows",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-spin-bg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeSpinArrows",
+                    "=",
+                    [
+                        "inside",
+                        "stepper"
+                    ]
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeSpinArrowHover": {
+            "tab": "content",
+            "group": "bfbeRangeArrows",
+            "label": "Hover colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-spin-hover",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeSpinArrows",
+                    "=",
+                    [
+                        "inside",
+                        "stepper"
+                    ]
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeSpinArrowHoverBg": {
+            "tab": "content",
+            "group": "bfbeRangeArrows",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-spin-hover-bg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeSpinArrows",
+                    "=",
+                    [
+                        "inside",
+                        "stepper"
+                    ]
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeSpinArrowLine": {
+            "tab": "content",
+            "group": "bfbeRangeArrows",
+            "label": "Divider colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-spin-line",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeSpinArrows",
+                    "=",
+                    [
+                        "inside",
+                        "stepper"
+                    ]
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeSpinArrowBorder": {
+            "tab": "content",
+            "group": "bfbeRangeArrows",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-spin__btn"
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeSpinArrows",
+                    "=",
+                    [
+                        "inside",
+                        "stepper"
+                    ]
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeDatePicker": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Date picker",
+            "type": "select",
+            "options": {
+                "native": "The browser&#039;s",
+                "custom": "Styled with the controls"
+            },
+            "inline": true,
+            "placeholder": "As the browser draws it",
+            "description": "Every date range filter.",
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeSepCalPanel": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Panel",
+            "type": "separator",
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalWidth": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "Fits its days",
+            "css": [
+                {
+                    "property": "inline-size",
+                    "selector": ".flatpickr-calendar"
+                }
+            ],
+            "description": "The days grow to fill it.",
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalBackground": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-bg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalBorder": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar"
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalShadow": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": ".flatpickr-calendar"
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalPadding": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".flatpickr-calendar"
+                }
+            ],
+            "placeholder": {
+                "top": "12px",
+                "right": "12px",
+                "bottom": "12px",
+                "left": "12px"
+            },
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalOffset": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Distance from the field",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "6px",
+            "css": [
+                {
+                    "property": "--bfbe-cal-offset",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeSepCalSpacing": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Spacing",
+            "type": "separator",
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalHeadSpace": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Between header and weekdays",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "6px",
+            "css": [
+                {
+                    "property": "--bfbe-cal-head-space",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalWeekSpace": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Between weekdays and days",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "4px",
+            "css": [
+                {
+                    "property": "--bfbe-cal-week-space",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalDayGap": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Between days",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "0px",
+            "css": [
+                {
+                    "property": "--bfbe-cal-gap",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeSepCalLines": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Dividers",
+            "type": "separator",
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalHeadLine": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Header divider",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "None",
+            "css": [
+                {
+                    "property": "--bfbe-cal-head-line",
+                    "selector": ""
+                }
+            ],
+            "description": "Its thickness; full width, through the padding.",
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalHeadLineColor": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Header divider colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-head-line-color",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalWeekLine": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Weekdays divider",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "None",
+            "css": [
+                {
+                    "property": "--bfbe-cal-week-line",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalWeekLineColor": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Weekdays divider colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-week-line-color",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeSepCalHead": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Month and year",
+            "type": "separator",
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalMonthTypography": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".flatpickr-calendar .flatpickr-current-month"
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalMonthPadding": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Month padding",
+            "type": "dimensions",
+            "placeholder": {
+                "top": "6px",
+                "right": "6px",
+                "bottom": "6px",
+                "left": "6px"
+            },
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".flatpickr-current-month .flatpickr-monthDropdown-months"
+                },
+                {
+                    "property": "padding",
+                    "selector": ".flatpickr-current-month span.cur-month"
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalYearPadding": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Year padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".flatpickr-current-month .numInputWrapper"
+                }
+            ],
+            "placeholder": {
+                "top": "6px",
+                "right": "6px",
+                "bottom": "6px",
+                "left": "6px"
+            },
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalHeadHoverBg": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-head-hover-bg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalYearArrow": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Year arrows",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-year-arrow",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalYearArrowHover": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Year arrows hover",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-year-arrow-hover",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeSepCalArrows": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Arrows",
+            "type": "separator",
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalArrowSize": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Icon size",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "12px",
+            "css": [
+                {
+                    "property": "--bfbe-cal-arrow-size",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalArrowPadding": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Padding",
+            "type": "dimensions",
+            "placeholder": {
+                "top": "8px",
+                "right": "8px",
+                "bottom": "8px",
+                "left": "8px"
+            },
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".flatpickr-months .flatpickr-prev-month"
+                },
+                {
+                    "property": "padding",
+                    "selector": ".flatpickr-months .flatpickr-next-month"
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalArrowColor": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-arrow",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalArrowHover": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Hover colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-arrow-hover",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalArrowBg": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-arrow-bg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalArrowHoverBg": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-arrow-hover-bg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalArrowBorder": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-months .flatpickr-prev-month"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-months .flatpickr-next-month"
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalArrowHoverBorder": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Hover border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-months .flatpickr-prev-month:hover"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-months .flatpickr-next-month:hover"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-months .flatpickr-prev-month:focus-visible"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-months .flatpickr-next-month:focus-visible"
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeSepCalWeek": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Weekday names",
+            "type": "separator",
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalWeekdayTypography": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".flatpickr-calendar span.flatpickr-weekday"
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeSepCalDays": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Every day",
+            "type": "separator",
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalDayTypography": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".flatpickr-calendar .flatpickr-day"
+                }
+            ],
+            "exclude": [
+                "color",
+                "text-align"
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalDaySize": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Day size",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "Fits its padding",
+            "css": [
+                {
+                    "property": "--bfbe-cal-cell",
+                    "selector": ""
+                }
+            ],
+            "description": "At least this; padding can make days bigger.",
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalDayPadding": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".flatpickr-calendar .flatpickr-day"
+                }
+            ],
+            "placeholder": {
+                "top": "10px",
+                "right": "10px",
+                "bottom": "10px",
+                "left": "10px"
+            },
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalDayBg": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-day-bg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalDayColor": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-day",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalDayBorder": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .flatpickr-day"
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalDayHoverBg": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-hover-bg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalDayHoverColor": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Hover colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-hover",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalDayHoverBorder": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Hover border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .flatpickr-day:hover"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .flatpickr-day:focus-visible"
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeSepCalToday": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Today",
+            "type": "separator",
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalTodayBg": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-today-bg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalTodayColor": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-today-color",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalTodayBorder": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .dayContainer .flatpickr-day.today"
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalTodayHoverBg": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-today-hover-bg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalTodayHoverColor": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Hover colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-today-hover",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalTodayHoverBorder": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Hover border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .dayContainer .flatpickr-day.today:hover"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .dayContainer .flatpickr-day.today:focus-visible"
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeSepCalChosen": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Chosen days",
+            "type": "separator",
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalSelected": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-sel-bg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalSelectedColor": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-sel",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalSelectedBorder": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.selected"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.startRange"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.endRange"
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalSelectedHoverBg": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-sel-hover-bg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalSelectedHoverColor": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Hover colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-sel-hover",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalSelectedHoverBorder": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Hover border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.selected:hover"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.startRange:hover"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.endRange:hover"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.selected:focus-visible"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.startRange:focus-visible"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.endRange:focus-visible"
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeSepCalShut": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Shut days",
+            "type": "separator",
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalShutBg": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-shut-bg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalShut": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-shut",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalShutBorder": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .flatpickr-innerContainer .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.flatpickr-disabled"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .flatpickr-innerContainer .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.notAllowed"
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalShutHoverBg": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-shut-hover-bg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalShutHoverColor": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Hover colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-shut-hover",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalShutHoverBorder": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Hover border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .flatpickr-innerContainer .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.flatpickr-disabled:hover"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .flatpickr-innerContainer .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.notAllowed:hover"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .flatpickr-innerContainer .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.flatpickr-disabled:focus-visible"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .flatpickr-innerContainer .flatpickr-rContainer .flatpickr-days .dayContainer .flatpickr-day.notAllowed:focus-visible"
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeSepCalOther": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Other months&#039; days",
+            "type": "separator",
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalOtherBg": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-other-bg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalOther": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-other",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalOtherBorder": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .flatpickr-day.prevMonthDay"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .flatpickr-day.nextMonthDay"
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalOtherHoverBg": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-other-hover-bg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalOtherHoverColor": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Hover colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-cal-other-hover",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
+        },
+        "rangeCalOtherHoverBorder": {
+            "tab": "content",
+            "group": "bfbeRangeCal",
+            "label": "Hover border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .flatpickr-day.prevMonthDay:hover"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .flatpickr-day.nextMonthDay:hover"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .flatpickr-day.prevMonthDay:focus-visible"
+                },
+                {
+                    "property": "border",
+                    "selector": ".flatpickr-calendar .flatpickr-day.nextMonthDay:focus-visible"
+                }
+            ],
+            "required": [
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "rangeDatePicker",
+                    "=",
+                    "custom"
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ]
         },
         "filters": {
@@ -781,7 +3745,14 @@
                 }
             },
             "type": "repeater",
-            "selector": ".bfbe-dt__filter"
+            "selector": ".bfbe-dt__filter",
+            "required": [
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
+            ]
         },
         "filterUrl": {
             "tab": "content",
@@ -789,9 +3760,16 @@
             "label": "Filters in the URL",
             "type": "checkbox",
             "required": [
-                "filters",
-                "!=",
-                ""
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ]
         },
         "sepChips": {
@@ -800,9 +3778,16 @@
             "label": "Chips",
             "type": "separator",
             "required": [
-                "filters",
-                "!=",
-                ""
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ]
         },
         "filterGap": {
@@ -814,9 +3799,16 @@
             "inline": true,
             "placeholder": "6px",
             "required": [
-                "filters",
-                "!=",
-                ""
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ],
             "css": [
                 {
@@ -831,9 +3823,16 @@
             "label": "Typography",
             "type": "typography",
             "required": [
-                "filters",
-                "!=",
-                ""
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ],
             "css": [
                 {
@@ -848,9 +3847,16 @@
             "label": "Background",
             "type": "color",
             "required": [
-                "filters",
-                "!=",
-                ""
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ],
             "css": [
                 {
@@ -865,9 +3871,16 @@
             "label": "Background on hover",
             "type": "color",
             "required": [
-                "filters",
-                "!=",
-                ""
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ],
             "css": [
                 {
@@ -882,9 +3895,16 @@
             "label": "Chosen background",
             "type": "color",
             "required": [
-                "filters",
-                "!=",
-                ""
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ],
             "css": [
                 {
@@ -899,9 +3919,16 @@
             "label": "Chosen text",
             "type": "color",
             "required": [
-                "filters",
-                "!=",
-                ""
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ],
             "css": [
                 {
@@ -916,9 +3943,16 @@
             "label": "Border",
             "type": "border",
             "required": [
-                "filters",
-                "!=",
-                ""
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ],
             "css": [
                 {
@@ -933,9 +3967,16 @@
             "label": "Padding",
             "type": "dimensions",
             "required": [
-                "filters",
-                "!=",
-                ""
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ],
             "css": [
                 {
@@ -950,9 +3991,16 @@
             "label": "The row",
             "type": "separator",
             "required": [
-                "filters",
-                "!=",
-                ""
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ]
         },
         "filterRow": {
@@ -962,9 +4010,16 @@
             "type": "checkbox",
             "description": "Otherwise they share the search row.",
             "required": [
-                "filters",
-                "!=",
-                ""
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ]
         },
         "filterPlace": {
@@ -987,6 +4042,11 @@
                 [
                     "filters",
                     "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
                     ""
                 ]
             ]
@@ -1012,6 +4072,11 @@
                     "filters",
                     "!=",
                     ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
                 ]
             ]
         },
@@ -1032,6 +4097,11 @@
                     "filters",
                     "!=",
                     ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
                 ]
             ]
         },
@@ -1044,9 +4114,16 @@
             "inline": true,
             "placeholder": "8px",
             "required": [
-                "filters",
-                "!=",
-                ""
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ],
             "css": [
                 {
@@ -1065,9 +4142,16 @@
             "label": "Fill the row",
             "type": "checkbox",
             "required": [
-                "filters",
-                "!=",
-                ""
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ]
         },
         "filterWidth": {
@@ -1079,9 +4163,16 @@
             "inline": true,
             "placeholder": "As wide as it needs",
             "required": [
-                "filters",
-                "!=",
-                ""
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ],
             "css": [
                 {
@@ -1096,9 +4187,16 @@
             "label": "Labels",
             "type": "separator",
             "required": [
-                "filters",
-                "!=",
-                ""
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ]
         },
         "filterLabels": {
@@ -1107,9 +4205,16 @@
             "label": "Show each label",
             "type": "checkbox",
             "required": [
-                "filters",
-                "!=",
-                ""
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ]
         },
         "filterLabelTypography": {
@@ -1127,6 +4232,11 @@
                     "filters",
                     "!=",
                     ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
                 ]
             ],
             "css": [
@@ -1142,9 +4252,16 @@
             "label": "Ranges",
             "type": "separator",
             "required": [
-                "filters",
-                "!=",
-                ""
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ]
         },
         "rangeWidth": {
@@ -1156,9 +4273,16 @@
             "inline": true,
             "placeholder": "9.5em",
             "required": [
-                "filters",
-                "!=",
-                ""
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ],
             "css": [
                 {
@@ -1173,9 +4297,16 @@
             "label": "Background",
             "type": "color",
             "required": [
-                "filters",
-                "!=",
-                ""
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ],
             "css": [
                 {
@@ -1190,9 +4321,16 @@
             "label": "Border",
             "type": "border",
             "required": [
-                "filters",
-                "!=",
-                ""
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ],
             "css": [
                 {
@@ -1207,9 +4345,16 @@
             "label": "Typography",
             "type": "typography",
             "required": [
-                "filters",
-                "!=",
-                ""
+                [
+                    "filters",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ],
             "css": [
                 {
@@ -1871,9 +5016,16 @@
             "label": "Buttons",
             "type": "separator",
             "required": [
-                "pageSize",
-                "!=",
-                ""
+                [
+                    "pageSize",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ]
         },
         "pageBackground": {
@@ -1882,9 +5034,16 @@
             "label": "Background",
             "type": "color",
             "required": [
-                "pageSize",
-                "!=",
-                ""
+                [
+                    "pageSize",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ],
             "css": [
                 {
@@ -1899,9 +5058,16 @@
             "label": "Colour",
             "type": "color",
             "required": [
-                "pageSize",
-                "!=",
-                ""
+                [
+                    "pageSize",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopList",
+                    "=",
+                    ""
+                ]
             ],
             "css": [
                 {
@@ -2113,6 +5279,453 @@
                 }
             ]
         },
+        "bfbeShopAddAll": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Button words",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Add all to the cart"
+        },
+        "bfbeShopQtyHead": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Quantity heading",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Quantity"
+        },
+        "bfbeShopButtonAt": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Button sits",
+            "type": "select",
+            "options": {
+                "end": "At the end",
+                "start": "At the start"
+            },
+            "inline": true,
+            "placeholder": "At the end"
+        },
+        "sepShopQoQty": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Quantity box",
+            "type": "separator"
+        },
+        "bfbeShopQtyTypography": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-qo__qty"
+                }
+            ]
+        },
+        "bfbeShopQtyBackground": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-qo__qty"
+                }
+            ]
+        },
+        "bfbeShopQtyBorder": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-qo__qty"
+                }
+            ]
+        },
+        "bfbeShopQtyPadding": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-qo__qty"
+                }
+            ]
+        },
+        "bfbeShopQtyWidth": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "5.5em",
+            "css": [
+                {
+                    "property": "inline-size",
+                    "selector": ".bfbe-qo__qty"
+                }
+            ]
+        },
+        "sepShopQoAdd": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Add all button",
+            "type": "separator"
+        },
+        "bfbeShopAddTypography": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-qo__add"
+                }
+            ]
+        },
+        "bfbeShopAddBackground": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-qo__add"
+                }
+            ]
+        },
+        "bfbeShopAddBorder": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-qo__add"
+                }
+            ]
+        },
+        "bfbeShopAddPadding": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-qo__add"
+                }
+            ]
+        },
+        "bfbeShopAddShadow": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Box shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": ".bfbe-qo__add"
+                }
+            ]
+        },
+        "bfbeShopAddSpace": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Space above",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "16px",
+            "description": "Between the table and the button.",
+            "css": [
+                {
+                    "property": "margin-block-start",
+                    "selector": ".bfbe-qo"
+                }
+            ]
+        },
+        "sepShopQoWords": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Words in the table",
+            "type": "separator"
+        },
+        "bfbeShopChooseColor": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Choose options link colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".bfbe-qo__choose"
+                }
+            ]
+        },
+        "bfbeShopSaidTypography": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Status typography",
+            "type": "typography",
+            "description": "What Add all says under the button.",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-qo__said"
+                }
+            ]
+        },
+        "bfbeShopQtySpinArrows": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Arrows",
+            "type": "select",
+            "options": {
+                "browser": "The browser&#039;s",
+                "inside": "Ours, inside the box",
+                "stepper": "A − and a + beside it",
+                "none": "None"
+            },
+            "inline": true,
+            "placeholder": "As the browser draws them"
+        },
+        "bfbeShopQtySpinSepArrows": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Arrows",
+            "type": "separator",
+            "required": [
+                [
+                    "bfbeShopQtySpinArrows",
+                    "=",
+                    [
+                        "inside",
+                        "stepper"
+                    ]
+                ]
+            ]
+        },
+        "bfbeShopQtySpinArrowSize": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Icon size",
+            "type": "number",
+            "css": [
+                {
+                    "property": "--bfbe-spin-icon",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "bfbeShopQtySpinArrows",
+                    "=",
+                    [
+                        "inside",
+                        "stepper"
+                    ]
+                ]
+            ],
+            "units": true,
+            "inline": true,
+            "placeholder": "12px"
+        },
+        "bfbeShopQtySpinArrowWidth": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Width",
+            "type": "number",
+            "css": [
+                {
+                    "property": "--bfbe-spin-w",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "bfbeShopQtySpinArrows",
+                    "=",
+                    [
+                        "inside",
+                        "stepper"
+                    ]
+                ]
+            ],
+            "units": true,
+            "inline": true,
+            "placeholder": "28px"
+        },
+        "bfbeShopQtySpinArrowGap": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Gap",
+            "type": "number",
+            "css": [
+                {
+                    "property": "--bfbe-spin-gap",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "bfbeShopQtySpinArrows",
+                    "=",
+                    [
+                        "inside",
+                        "stepper"
+                    ]
+                ]
+            ],
+            "units": true,
+            "inline": true,
+            "placeholder": "4px"
+        },
+        "bfbeShopQtySpinArrowColor": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-spin-color",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "bfbeShopQtySpinArrows",
+                    "=",
+                    [
+                        "inside",
+                        "stepper"
+                    ]
+                ]
+            ]
+        },
+        "bfbeShopQtySpinArrowBg": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-spin-bg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "bfbeShopQtySpinArrows",
+                    "=",
+                    [
+                        "inside",
+                        "stepper"
+                    ]
+                ]
+            ]
+        },
+        "bfbeShopQtySpinArrowHover": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Hover colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-spin-hover",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "bfbeShopQtySpinArrows",
+                    "=",
+                    [
+                        "inside",
+                        "stepper"
+                    ]
+                ]
+            ]
+        },
+        "bfbeShopQtySpinArrowHoverBg": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-spin-hover-bg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "bfbeShopQtySpinArrows",
+                    "=",
+                    [
+                        "inside",
+                        "stepper"
+                    ]
+                ]
+            ]
+        },
+        "bfbeShopQtySpinArrowLine": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Divider colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-spin-line",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "bfbeShopQtySpinArrows",
+                    "=",
+                    [
+                        "inside",
+                        "stepper"
+                    ]
+                ]
+            ]
+        },
+        "bfbeShopQtySpinArrowBorder": {
+            "tab": "content",
+            "group": "bfbeShopOrder",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-spin__btn"
+                }
+            ],
+            "required": [
+                [
+                    "bfbeShopQtySpinArrows",
+                    "=",
+                    [
+                        "inside",
+                        "stepper"
+                    ]
+                ]
+            ]
+        },
         "bfbeHoverEffect": {
             "tab": "style",
             "group": "bfbeHover",
@@ -2127,7 +5740,8 @@
                 "follow": "Follow the pointer",
                 "fade": "Fade in",
                 "slide": "Slide in",
-                "grow": "Grow"
+                "grow": "Grow",
+                "image2": "Show the product&#039;s second image"
             },
             "inline": true,
             "placeholder": "None"

@@ -16,7 +16,7 @@ A strip of any elements scrolled continuously, sideways or upward, at a speed yo
 
 **Not for:** Everything in the strip moves continuously, so text people must read in full, or links they need to reach quickly, belongs in a static layout. The strip is a single line of items, repeated to fill the width, so it cannot wrap into rows or a grid.
 
-**Costs a page:** CSS 0.98 KB, JS 1.10 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 1.00 KB, JS 1.10 KB (gzipped), no dependencies, loaded only on pages that use it.
 
 **Nestable:** yes · **In a query loop:** no · **Dynamic data:** no · **Keyboard:** yes · **Reduced motion:** yes
 

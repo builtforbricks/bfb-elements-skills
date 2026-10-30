@@ -57,6 +57,12 @@
                 "css": "none",
                 "js": "0.81 KB",
                 "dependencies": "hls.js 1.7 (light build)"
+            },
+            {
+                "what": "Shop, product moments: a card at chosen times of a Video Player's video, and the list of them",
+                "css": "0.76 KB",
+                "js": "0.57 KB",
+                "dependencies": "none"
             }
         ]
     },
@@ -174,6 +180,18 @@
         "bfbeMotion": {
             "title": "Motion",
             "tab": "content"
+        },
+        "bfbeShopMoments": {
+            "title": "Product moments",
+            "tab": "content",
+            "required": [
+                "source",
+                "=",
+                [
+                    "",
+                    "self"
+                ]
+            ]
         },
         "bfbeHover": {
             "title": "Hover effect",
@@ -3684,6 +3702,360 @@
                 }
             ]
         },
+        "bfbeShopMoments": {
+            "tab": "content",
+            "group": "bfbeShopMoments",
+            "label": "Product moments",
+            "type": "repeater",
+            "titleProperty": "at",
+            "placeholder": "Moment",
+            "selector": ".bfbe-moments__card",
+            "fields": {
+                "at": {
+                    "label": "At",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "1:05"
+                },
+                "product": {
+                    "label": "Product",
+                    "type": "select",
+                    "optionsAjax": {
+                        "action": "bricks_get_posts",
+                        "postType": "product"
+                    },
+                    "searchable": true,
+                    "placeholder": "Pick a product"
+                },
+                "productFrom": {
+                    "label": "Or from dynamic data",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true,
+                    "placeholder": "A product id or SKU"
+                },
+                "words": {
+                    "label": "Words",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true,
+                    "placeholder": "Worn in this scene"
+                }
+            }
+        },
+        "bfbeShopMomentsSepCards": {
+            "tab": "content",
+            "group": "bfbeShopMoments",
+            "label": "Cards",
+            "type": "separator",
+            "required": [
+                "bfbeShopMoments",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeShopMomentsAt": {
+            "tab": "content",
+            "group": "bfbeShopMoments",
+            "label": "Cards sit",
+            "type": "select",
+            "options": {
+                "over": "Over the video",
+                "beside": "Beside the video",
+                "under": "Under the video"
+            },
+            "inline": true,
+            "placeholder": "Over the video",
+            "required": [
+                "bfbeShopMoments",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeShopMomentsCorner": {
+            "tab": "content",
+            "group": "bfbeShopMoments",
+            "label": "Corner",
+            "type": "select",
+            "options": {
+                "end-end": "Bottom right",
+                "end-start": "Bottom left",
+                "start-end": "Top right",
+                "start-start": "Top left"
+            },
+            "inline": true,
+            "placeholder": "Bottom right",
+            "required": [
+                [
+                    "bfbeShopMoments",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopMomentsAt",
+                    "=",
+                    [
+                        "",
+                        "over"
+                    ]
+                ]
+            ]
+        },
+        "bfbeShopMomentsSepCard": {
+            "tab": "content",
+            "group": "bfbeShopMoments",
+            "label": "Each card",
+            "type": "separator",
+            "required": [
+                "bfbeShopMoments",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeShopMomentsWidth": {
+            "tab": "content",
+            "group": "bfbeShopMoments",
+            "label": "Card width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "260px",
+            "required": [
+                "bfbeShopMoments",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "--bfbe-moment-w",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeShopMomentsBg": {
+            "tab": "content",
+            "group": "bfbeShopMoments",
+            "label": "Background",
+            "type": "color",
+            "required": [
+                "bfbeShopMoments",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-moments__card"
+                }
+            ]
+        },
+        "bfbeShopMomentsBorder": {
+            "tab": "content",
+            "group": "bfbeShopMoments",
+            "label": "Border",
+            "type": "border",
+            "required": [
+                "bfbeShopMoments",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-moments__card"
+                }
+            ]
+        },
+        "bfbeShopMomentsPadding": {
+            "tab": "content",
+            "group": "bfbeShopMoments",
+            "label": "Padding",
+            "type": "dimensions",
+            "required": [
+                "bfbeShopMoments",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-moments__card"
+                }
+            ]
+        },
+        "bfbeShopMomentsShadow": {
+            "tab": "content",
+            "group": "bfbeShopMoments",
+            "label": "Shadow",
+            "type": "box-shadow",
+            "required": [
+                "bfbeShopMoments",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": ".bfbe-moments__card"
+                }
+            ]
+        },
+        "bfbeShopMomentsWordsType": {
+            "tab": "content",
+            "group": "bfbeShopMoments",
+            "label": "Words typography",
+            "type": "typography",
+            "required": [
+                "bfbeShopMoments",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-moments__words"
+                }
+            ]
+        },
+        "bfbeShopMomentsNameType": {
+            "tab": "content",
+            "group": "bfbeShopMoments",
+            "label": "Name typography",
+            "type": "typography",
+            "required": [
+                "bfbeShopMoments",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-moments__card .bfbe-look__name"
+                }
+            ]
+        },
+        "bfbeShopMomentsPriceType": {
+            "tab": "content",
+            "group": "bfbeShopMoments",
+            "label": "Price typography",
+            "type": "typography",
+            "required": [
+                "bfbeShopMoments",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-moments__card .bfbe-look__price"
+                }
+            ]
+        },
+        "bfbeShopMomentsSepButton": {
+            "tab": "content",
+            "group": "bfbeShopMoments",
+            "label": "Button",
+            "type": "separator",
+            "required": [
+                "bfbeShopMoments",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeShopMomentsAdd": {
+            "tab": "content",
+            "group": "bfbeShopMoments",
+            "label": "Button words",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Add to cart",
+            "required": [
+                "bfbeShopMoments",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeShopMomentsView": {
+            "tab": "content",
+            "group": "bfbeShopMoments",
+            "label": "Link words",
+            "type": "text",
+            "inline": true,
+            "placeholder": "View",
+            "required": [
+                "bfbeShopMoments",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeShopMomentsBtnType": {
+            "tab": "content",
+            "group": "bfbeShopMoments",
+            "label": "Typography",
+            "type": "typography",
+            "required": [
+                "bfbeShopMoments",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-moments__card .bricks-button"
+                }
+            ]
+        },
+        "bfbeShopMomentsBtnBg": {
+            "tab": "content",
+            "group": "bfbeShopMoments",
+            "label": "Background",
+            "type": "color",
+            "required": [
+                "bfbeShopMoments",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-moments__card .bricks-button"
+                }
+            ]
+        },
+        "bfbeShopMomentsBtnBorder": {
+            "tab": "content",
+            "group": "bfbeShopMoments",
+            "label": "Border",
+            "type": "border",
+            "required": [
+                "bfbeShopMoments",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-moments__card .bricks-button"
+                }
+            ]
+        },
+        "bfbeShopMomentsBtnPad": {
+            "tab": "content",
+            "group": "bfbeShopMoments",
+            "label": "Padding",
+            "type": "dimensions",
+            "required": [
+                "bfbeShopMoments",
+                "!=",
+                ""
+            ],
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-moments__card .bricks-button"
+                }
+            ]
+        },
         "bfbeHoverEffect": {
             "tab": "style",
             "group": "bfbeHover",
@@ -3698,7 +4070,8 @@
                 "follow": "Follow the pointer",
                 "fade": "Fade in",
                 "slide": "Slide in",
-                "grow": "Grow"
+                "grow": "Grow",
+                "image2": "Show the product&#039;s second image"
             },
             "inline": true,
             "placeholder": "None"

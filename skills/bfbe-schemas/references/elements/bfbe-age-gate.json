@@ -25,8 +25,8 @@
     ],
     "parent": null,
     "cost": {
-        "css": "1.24 KB",
-        "js": "1.32 KB",
+        "css": "1.25 KB",
+        "js": "1.72 KB",
         "dependencies": "none"
     },
     "controlGroups": {
@@ -129,6 +129,15 @@
             "hasDynamicData": "text",
             "inline": true,
             "placeholder": "https://example.com"
+        },
+        "onlyCategories": {
+            "tab": "content",
+            "group": "bfbeGate",
+            "label": "Only on products in these categories",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Every page",
+            "description": "Category slugs, comma separated; a child category counts."
         },
         "skipLoggedIn": {
             "tab": "content",
@@ -953,7 +962,8 @@
                 "follow": "Follow the pointer",
                 "fade": "Fade in",
                 "slide": "Slide in",
-                "grow": "Grow"
+                "grow": "Grow",
+                "image2": "Show the product&#039;s second image"
             },
             "inline": true,
             "placeholder": "None"

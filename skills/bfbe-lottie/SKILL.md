@@ -16,7 +16,7 @@ Plays a Lottie animation from the media library, or from a URL or dynamic data f
 
 **Not for:** Lottie plays vector animations exported as JSON and draws them as SVG. Video and photographic sequences belong in Bricks' own video or image elements.
 
-**Costs a page:** CSS 0.26 KB, JS 1.26 KB (gzipped), plus lottie-web (light, SVG renderer), loaded only on pages that use it.
+**Costs a page:** CSS 0.26 KB, JS 1.47 KB (gzipped), plus lottie-web (light, SVG renderer), loaded only on pages that use it.
 
 **Nestable:** no · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 

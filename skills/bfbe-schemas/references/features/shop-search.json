@@ -1,0 +1,630 @@
+{
+    "name": "shop-search",
+    "label": "BFB Shop search",
+    "pack": "pro",
+    "feature": true,
+    "shape": "hosts",
+    "on": "Bricks' own Filter - Search (`filter-search`), Search (`search`)",
+    "job": "the shop's settings on Bricks' Search and Filter - Search: recent and popular searches, product suggestions and the search field's look",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/shop-search/",
+    "since": "2.0.0",
+    "requires": [
+        "WooCommerce"
+    ],
+    "switches": [
+        "shop-search"
+    ],
+    "groupInfo": {
+        "bfbeShopSearch": {
+            "title": "BFB Search suggestions",
+            "pack": "pro",
+            "switch": [
+                "shop-search"
+            ],
+            "sources": [
+                "bfb-elements-pro/includes/shop/class-search.php"
+            ]
+        },
+        "bfbeShopSearchLook": {
+            "title": "BFB Search field",
+            "pack": "pro",
+            "switch": [
+                "shop-search"
+            ],
+            "sources": [
+                "bfb-elements-pro/includes/shop/class-search.php"
+            ]
+        }
+    },
+    "hosts": {
+        "filter-search": {
+            "label": "Filter - Search",
+            "registered": true,
+            "controlGroups": {
+                "bfbeShopSearch": {
+                    "title": "BFB Search suggestions",
+                    "tab": "content"
+                }
+            },
+            "controls": {
+                "bfbeShopSuggest": {
+                    "label": "Recent and popular searches",
+                    "type": "checkbox",
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestSepPanel": {
+                    "label": "Panel",
+                    "type": "separator",
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestBackground": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-srch"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-srch"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestShadow": {
+                    "label": "Box shadow",
+                    "type": "box-shadow",
+                    "css": [
+                        {
+                            "property": "box-shadow",
+                            "selector": ".bfbe-srch"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-srch"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestTitleTypography": {
+                    "label": "Title typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-srch__title"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestSepItems": {
+                    "label": "Searches",
+                    "type": "separator",
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestItemTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-srch .bfbe-srch__list .bfbe-srch__item"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestItemBackground": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-srch .bfbe-srch__list .bfbe-srch__item"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestItemBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-srch .bfbe-srch__list .bfbe-srch__item"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestItemPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "placeholder": {
+                        "top": ".35em",
+                        "right": ".75em",
+                        "bottom": ".35em",
+                        "left": ".75em"
+                    },
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-srch .bfbe-srch__list .bfbe-srch__item"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestItemGap": {
+                    "label": "Gap",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "placeholder": "6px",
+                    "css": [
+                        {
+                            "property": "gap",
+                            "selector": ".bfbe-srch__list"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestItemHover": {
+                    "label": "Hover background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-srch .bfbe-srch__list .bfbe-srch__item:hover"
+                        },
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-srch .bfbe-srch__list .bfbe-srch__item:focus-visible"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestClearTypography": {
+                    "label": "Clear typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-srch .bfbe-srch__head .bfbe-srch__clear"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                }
+            }
+        },
+        "search": {
+            "label": "Search",
+            "registered": true,
+            "controlGroups": {
+                "bfbeShopSearch": {
+                    "title": "BFB Search suggestions",
+                    "tab": "content"
+                },
+                "bfbeShopSearchLook": {
+                    "title": "BFB Search field",
+                    "tab": "content"
+                }
+            },
+            "controls": {
+                "bfbeShopSuggest": {
+                    "label": "Recent and popular searches",
+                    "type": "checkbox",
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestSepPanel": {
+                    "label": "Panel",
+                    "type": "separator",
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestBackground": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-srch"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-srch"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestShadow": {
+                    "label": "Box shadow",
+                    "type": "box-shadow",
+                    "css": [
+                        {
+                            "property": "box-shadow",
+                            "selector": ".bfbe-srch"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-srch"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestTitleTypography": {
+                    "label": "Title typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-srch__title"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestSepItems": {
+                    "label": "Searches",
+                    "type": "separator",
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestItemTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-srch .bfbe-srch__list .bfbe-srch__item"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestItemBackground": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-srch .bfbe-srch__list .bfbe-srch__item"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestItemBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-srch .bfbe-srch__list .bfbe-srch__item"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestItemPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "placeholder": {
+                        "top": ".35em",
+                        "right": ".75em",
+                        "bottom": ".35em",
+                        "left": ".75em"
+                    },
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-srch .bfbe-srch__list .bfbe-srch__item"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestItemGap": {
+                    "label": "Gap",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "placeholder": "6px",
+                    "css": [
+                        {
+                            "property": "gap",
+                            "selector": ".bfbe-srch__list"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestItemHover": {
+                    "label": "Hover background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-srch .bfbe-srch__list .bfbe-srch__item:hover"
+                        },
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-srch .bfbe-srch__list .bfbe-srch__item:focus-visible"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSuggestClearTypography": {
+                    "label": "Clear typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-srch .bfbe-srch__head .bfbe-srch__clear"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSuggest",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearch",
+                    "tab": "content"
+                },
+                "bfbeShopSearchFieldPadding": {
+                    "label": "Field padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": "input[type=search]"
+                        }
+                    ],
+                    "group": "bfbeShopSearchLook",
+                    "tab": "content"
+                },
+                "bfbeShopSearchFieldMinHeight": {
+                    "label": "Field min height",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "description": "For a field shorter than the theme style&#039;s.",
+                    "css": [
+                        {
+                            "property": "min-height",
+                            "selector": "input[type=search]"
+                        }
+                    ],
+                    "group": "bfbeShopSearchLook",
+                    "tab": "content"
+                },
+                "bfbeShopSearchInside": {
+                    "label": "Button inside the field",
+                    "type": "checkbox",
+                    "description": "At the field&#039;s end, centred in its height.",
+                    "css": [
+                        {
+                            "property": "position",
+                            "selector": "button[type=submit]",
+                            "value": "absolute"
+                        },
+                        {
+                            "property": "top",
+                            "selector": "button[type=submit]",
+                            "value": "50%"
+                        },
+                        {
+                            "property": "transform",
+                            "selector": "button[type=submit]",
+                            "value": "translateY(-50%)"
+                        }
+                    ],
+                    "group": "bfbeShopSearchLook",
+                    "tab": "content"
+                },
+                "bfbeShopSearchInset": {
+                    "label": "Button inset",
+                    "type": "number",
+                    "units": true,
+                    "inline": true,
+                    "placeholder": "0",
+                    "css": [
+                        {
+                            "property": "right",
+                            "selector": "button[type=submit]"
+                        }
+                    ],
+                    "required": [
+                        "bfbeShopSearchInside",
+                        "!=",
+                        ""
+                    ],
+                    "group": "bfbeShopSearchLook",
+                    "tab": "content"
+                }
+            }
+        }
+    }
+}

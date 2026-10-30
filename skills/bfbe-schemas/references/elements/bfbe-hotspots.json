@@ -20,9 +20,17 @@
     ],
     "parent": null,
     "cost": {
-        "css": "1.78 KB",
-        "js": "2.40 KB",
-        "dependencies": "none"
+        "css": "1.82 KB",
+        "js": "2.41 KB",
+        "dependencies": "none",
+        "also": [
+            {
+                "what": "Shop, a product card in Image Hotspots and the Video Player: shop the look, and the add from a video moment",
+                "css": "0.79 KB",
+                "js": "1.08 KB",
+                "dependencies": "shop-live"
+            }
+        ]
     },
     "controlGroups": {
         "_attributes": {
@@ -88,11 +96,54 @@
             "titleProperty": "name",
             "description": "One nested block per pin.",
             "fields": {
+                "bfbeShopContent": {
+                    "label": "Shows",
+                    "type": "select",
+                    "options": {
+                        "block": "Its own block",
+                        "product": "A product"
+                    },
+                    "inline": true,
+                    "placeholder": "Its own block",
+                    "description": "A product: product elements in its block show it."
+                },
+                "bfbeShopProduct": {
+                    "label": "Product",
+                    "type": "select",
+                    "optionsAjax": {
+                        "action": "bricks_get_posts",
+                        "postType": "product"
+                    },
+                    "searchable": true,
+                    "placeholder": "Pick a product",
+                    "required": [
+                        "bfbeShopContent",
+                        "=",
+                        "product"
+                    ]
+                },
+                "bfbeShopProductFrom": {
+                    "label": "Or from dynamic data",
+                    "type": "text",
+                    "hasDynamicData": "text",
+                    "inline": true,
+                    "placeholder": "A product id or SKU",
+                    "required": [
+                        "bfbeShopContent",
+                        "=",
+                        "product"
+                    ]
+                },
                 "name": {
                     "label": "Name",
                     "type": "text",
                     "hasDynamicData": "text",
-                    "inline": true
+                    "inline": true,
+                    "required": [
+                        "bfbeShopContent",
+                        "!=",
+                        "product"
+                    ]
                 },
                 "x": {
                     "label": "Left (%)",
@@ -126,7 +177,12 @@
                 },
                 "link": {
                     "label": "Link on the whole panel",
-                    "type": "link"
+                    "type": "link",
+                    "required": [
+                        "bfbeShopContent",
+                        "!=",
+                        "product"
+                    ]
                 },
                 "pinColor": {
                     "label": "Colour",
@@ -584,7 +640,8 @@
                 "follow": "Follow the pointer",
                 "fade": "Fade in",
                 "slide": "Slide in",
-                "grow": "Grow"
+                "grow": "Grow",
+                "image2": "Show the product&#039;s second image"
             },
             "inline": true,
             "placeholder": "None"

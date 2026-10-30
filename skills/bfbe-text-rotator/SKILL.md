@@ -16,7 +16,7 @@ One heading with text before, a rotating word and text after, which stays readab
 
 **Not for:** The rotating words share one slot in a sentence, so each must read correctly with the same text around it. Anything visitors must read at their own pace belongs in static text, since the words keep changing.
 
-**Costs a page:** CSS 1.51 KB, JS 1.63 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 1.54 KB, JS 1.66 KB (gzipped), no dependencies, loaded only on pages that use it.
 
 **Nestable:** no · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** no · **Reduced motion:** yes
 

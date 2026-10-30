@@ -9,8 +9,8 @@
     "childrenDefault": [],
     "parent": null,
     "cost": {
-        "css": "0.45 KB",
-        "js": "0.84 KB",
+        "css": "0.61 KB",
+        "js": "0.90 KB",
         "dependencies": "none"
     },
     "controlGroups": {
@@ -22,6 +22,15 @@
         "bfbeSource": {
             "title": "What to copy",
             "tab": "content"
+        },
+        "bfbeCoupon": {
+            "title": "Coupon look",
+            "tab": "content",
+            "required": [
+                "source",
+                "=",
+                "coupon"
+            ]
         },
         "bfbeButton": {
             "title": "Button",
@@ -67,7 +76,8 @@
             "type": "select",
             "options": {
                 "text": "Text",
-                "selector": "An element on the page"
+                "selector": "An element on the page",
+                "coupon": "A WooCommerce coupon"
             },
             "inline": true,
             "placeholder": "Text"
@@ -97,6 +107,476 @@
                 "selector"
             ]
         },
+        "couponPick": {
+            "tab": "content",
+            "group": "bfbeSource",
+            "label": "Coupon",
+            "type": "select",
+            "options": [],
+            "searchable": true,
+            "placeholder": "Pick a coupon",
+            "required": [
+                "source",
+                "=",
+                "coupon"
+            ]
+        },
+        "coupon": {
+            "tab": "content",
+            "group": "bfbeSource",
+            "label": "Or type a code",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "WELCOME10",
+            "required": [
+                "source",
+                "=",
+                "coupon"
+            ]
+        },
+        "couponFacts": {
+            "tab": "content",
+            "group": "bfbeSource",
+            "label": "Discount and expiry",
+            "type": "checkbox",
+            "required": [
+                "source",
+                "=",
+                "coupon"
+            ]
+        },
+        "couponApply": {
+            "tab": "content",
+            "group": "bfbeSource",
+            "label": "Apply now link",
+            "type": "checkbox",
+            "required": [
+                "source",
+                "=",
+                "coupon"
+            ]
+        },
+        "couponApplyText": {
+            "tab": "content",
+            "group": "bfbeSource",
+            "label": "Apply now words",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Apply now",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "coupon"
+                ],
+                [
+                    "couponApply",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "codeTypography": {
+            "tab": "content",
+            "group": "bfbeCoupon",
+            "label": "Code typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "font",
+                    "selector": ".bfbe-copy__code"
+                }
+            ]
+        },
+        "factsTypography": {
+            "tab": "content",
+            "group": "bfbeCoupon",
+            "label": "Terms typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "font",
+                    "selector": ".bfbe-copy__facts"
+                }
+            ],
+            "required": [
+                "couponFacts",
+                "!=",
+                ""
+            ]
+        },
+        "factsPlace": {
+            "tab": "content",
+            "group": "bfbeCoupon",
+            "label": "Discount and expiry",
+            "type": "select",
+            "options": {
+                "column": "Under the code",
+                "row": "Beside the code"
+            },
+            "inline": true,
+            "placeholder": "Under the code",
+            "css": [
+                {
+                    "property": "flex-direction",
+                    "selector": ".bfbe-copy__coupon"
+                }
+            ],
+            "required": [
+                "couponFacts",
+                "!=",
+                ""
+            ]
+        },
+        "sepCouponCopy": {
+            "tab": "content",
+            "group": "bfbeCoupon",
+            "label": "Copy button",
+            "type": "separator",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "coupon"
+                ],
+                [
+                    "couponApply",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "copyGrow": {
+            "tab": "content",
+            "group": "bfbeCoupon",
+            "label": "Fill the row",
+            "type": "checkbox",
+            "description": "The code stretches; Apply now keeps its size.",
+            "css": [
+                {
+                    "property": "flex-grow",
+                    "selector": "&.bfbe-copy-coupon .bfbe-copy",
+                    "value": "1"
+                },
+                {
+                    "property": "display",
+                    "selector": "&.bfbe-copy-coupon",
+                    "value": "flex"
+                },
+                {
+                    "property": "width",
+                    "selector": "&.bfbe-copy-coupon",
+                    "value": "100%"
+                }
+            ],
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "coupon"
+                ],
+                [
+                    "couponApply",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "copyTypography": {
+            "tab": "content",
+            "group": "bfbeCoupon",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "font",
+                    "selector": "&.bfbe-copy-coupon .bfbe-copy"
+                }
+            ],
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "coupon"
+                ],
+                [
+                    "couponApply",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "copyBackground": {
+            "tab": "content",
+            "group": "bfbeCoupon",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": "&.bfbe-copy-coupon .bfbe-copy"
+                }
+            ],
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "coupon"
+                ],
+                [
+                    "couponApply",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "copyBorder": {
+            "tab": "content",
+            "group": "bfbeCoupon",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-copy-coupon .bfbe-copy"
+                }
+            ],
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "coupon"
+                ],
+                [
+                    "couponApply",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "copyPadding": {
+            "tab": "content",
+            "group": "bfbeCoupon",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": "&.bfbe-copy-coupon .bfbe-copy"
+                }
+            ],
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "coupon"
+                ],
+                [
+                    "couponApply",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "sepCouponApply": {
+            "tab": "content",
+            "group": "bfbeCoupon",
+            "label": "Apply now",
+            "type": "separator",
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "coupon"
+                ],
+                [
+                    "couponApply",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "boxGap": {
+            "tab": "content",
+            "group": "bfbeCoupon",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": ".6em",
+            "description": "Between the button and the link.",
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": "&.bfbe-copy-coupon"
+                }
+            ],
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "coupon"
+                ],
+                [
+                    "couponApply",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "applyTypography": {
+            "tab": "content",
+            "group": "bfbeCoupon",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "font",
+                    "selector": ".bfbe-copy-coupon__apply"
+                }
+            ],
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "coupon"
+                ],
+                [
+                    "couponApply",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "applyBackground": {
+            "tab": "content",
+            "group": "bfbeCoupon",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-copy-coupon__apply"
+                }
+            ],
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "coupon"
+                ],
+                [
+                    "couponApply",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "applyBorder": {
+            "tab": "content",
+            "group": "bfbeCoupon",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-copy-coupon__apply"
+                }
+            ],
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "coupon"
+                ],
+                [
+                    "couponApply",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "applyPadding": {
+            "tab": "content",
+            "group": "bfbeCoupon",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-copy-coupon__apply"
+                }
+            ],
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "coupon"
+                ],
+                [
+                    "couponApply",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "applyHoverBackground": {
+            "tab": "content",
+            "group": "bfbeCoupon",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-copy-coupon__apply:hover"
+                },
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-copy-coupon__apply:focus-visible"
+                }
+            ],
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "coupon"
+                ],
+                [
+                    "couponApply",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
+        "applyHoverColor": {
+            "tab": "content",
+            "group": "bfbeCoupon",
+            "label": "Hover text colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".bfbe-copy-coupon__apply:hover"
+                },
+                {
+                    "property": "color",
+                    "selector": ".bfbe-copy-coupon__apply:focus-visible"
+                }
+            ],
+            "required": [
+                [
+                    "source",
+                    "=",
+                    "coupon"
+                ],
+                [
+                    "couponApply",
+                    "!=",
+                    ""
+                ]
+            ]
+        },
         "label": {
             "tab": "content",
             "group": "bfbeButton",
@@ -108,13 +588,13 @@
         },
         "icon": {
             "tab": "content",
-            "group": "bfbeButton",
+            "group": "bfbeIcon",
             "label": "Icon",
             "type": "icon"
         },
         "iconPosition": {
             "tab": "content",
-            "group": "bfbeButton",
+            "group": "bfbeIcon",
             "label": "Icon position",
             "type": "select",
             "options": {
@@ -132,11 +612,19 @@
             "css": [
                 {
                     "property": "color",
-                    "selector": "&:hover"
+                    "selector": "&:not(.bfbe-copy-coupon):hover"
                 },
                 {
                     "property": "color",
-                    "selector": "&:focus-visible"
+                    "selector": "&:not(.bfbe-copy-coupon):focus-visible"
+                },
+                {
+                    "property": "color",
+                    "selector": "&.bfbe-copy-coupon .bfbe-copy:hover"
+                },
+                {
+                    "property": "color",
+                    "selector": "&.bfbe-copy-coupon .bfbe-copy:focus-visible"
                 }
             ]
         },
@@ -148,11 +636,19 @@
             "css": [
                 {
                     "property": "background",
-                    "selector": "&:hover"
+                    "selector": "&:not(.bfbe-copy-coupon):hover"
                 },
                 {
                     "property": "background",
-                    "selector": "&:focus-visible"
+                    "selector": "&:not(.bfbe-copy-coupon):focus-visible"
+                },
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-copy-coupon .bfbe-copy:hover"
+                },
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-copy-coupon .bfbe-copy:focus-visible"
                 }
             ]
         },
@@ -194,7 +690,11 @@
             "css": [
                 {
                     "property": "gap",
-                    "selector": ""
+                    "selector": "&:not(.bfbe-copy-coupon)"
+                },
+                {
+                    "property": "gap",
+                    "selector": "&.bfbe-copy-coupon .bfbe-copy"
                 }
             ]
         },
@@ -231,6 +731,10 @@
                 {
                     "property": "color",
                     "selector": "&.is-copied"
+                },
+                {
+                    "property": "color",
+                    "selector": "&.bfbe-copy-coupon .bfbe-copy.is-copied"
                 }
             ]
         },
@@ -243,6 +747,10 @@
                 {
                     "property": "background",
                     "selector": "&.is-copied"
+                },
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-copy-coupon .bfbe-copy.is-copied"
                 }
             ]
         },
@@ -255,6 +763,10 @@
                 {
                     "property": "border",
                     "selector": "&.is-copied"
+                },
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-copy-coupon .bfbe-copy.is-copied"
                 }
             ]
         },
@@ -352,7 +864,8 @@
                 "follow": "Follow the pointer",
                 "fade": "Fade in",
                 "slide": "Slide in",
-                "grow": "Grow"
+                "grow": "Grow",
+                "image2": "Show the product&#039;s second image"
             },
             "inline": true,
             "placeholder": "None"

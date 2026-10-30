@@ -64,6 +64,19 @@
             "type": "info",
             "content": "<a href=\"https://builtforbricks.com/bfb-elements/docs/add-to-calendar/\" target=\"_blank\" rel=\"noopener\">Documentation &#8599;</a>"
         },
+        "source": {
+            "tab": "content",
+            "group": "bfbeEvent",
+            "label": "Date from",
+            "type": "select",
+            "options": {
+                "event": "The fields below",
+                "shop_delivery": "The order: expected delivery date",
+                "shop_release": "The product: release date"
+            },
+            "inline": true,
+            "placeholder": "The fields below"
+        },
         "title": {
             "tab": "content",
             "group": "bfbeEvent",
@@ -80,7 +93,19 @@
             "type": "text",
             "hasDynamicData": "text",
             "inline": true,
-            "placeholder": "2026-10-01 18:00"
+            "placeholder": "2026-10-01 18:00",
+            "required": [
+                [
+                    "source",
+                    "!=",
+                    "shop_delivery"
+                ],
+                [
+                    "source",
+                    "!=",
+                    "shop_release"
+                ]
+            ]
         },
         "end": {
             "tab": "content",
@@ -90,13 +115,37 @@
             "hasDynamicData": "text",
             "inline": true,
             "placeholder": "2026-10-01 20:00",
-            "description": "Empty means one hour, or all day."
+            "description": "Empty means one hour, or all day.",
+            "required": [
+                [
+                    "source",
+                    "!=",
+                    "shop_delivery"
+                ],
+                [
+                    "source",
+                    "!=",
+                    "shop_release"
+                ]
+            ]
         },
         "allDay": {
             "tab": "content",
             "group": "bfbeEvent",
             "label": "All day",
-            "type": "checkbox"
+            "type": "checkbox",
+            "required": [
+                [
+                    "source",
+                    "!=",
+                    "shop_delivery"
+                ],
+                [
+                    "source",
+                    "!=",
+                    "shop_release"
+                ]
+            ]
         },
         "location": {
             "tab": "content",
@@ -746,7 +795,8 @@
                 "follow": "Follow the pointer",
                 "fade": "Fade in",
                 "slide": "Slide in",
-                "grow": "Grow"
+                "grow": "Grow",
+                "image2": "Show the product&#039;s second image"
             },
             "inline": true,
             "placeholder": "None"

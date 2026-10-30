@@ -18,8 +18,16 @@
     "parent": null,
     "cost": {
         "css": "0.97 KB",
-        "js": "2.19 KB",
-        "dependencies": "none"
+        "js": "2.21 KB",
+        "dependencies": "none",
+        "also": [
+            {
+                "what": "BFB Toast, the shop triggers: a product added to the cart, a recently viewed product on sale or back in stock",
+                "css": "none",
+                "js": "1.39 KB",
+                "dependencies": "none"
+            }
+        ]
     },
     "controlGroups": {
         "_attributes": {
@@ -74,7 +82,9 @@
                 "click": "When an element is clicked",
                 "form": "When a form sends",
                 "formError": "When a form fails",
-                "manual": "Only from an interaction"
+                "manual": "Only from an interaction",
+                "cartAdd": "When a product is added to the cart",
+                "recent": "A viewed product on sale or back"
             },
             "inline": true,
             "placeholder": "After the page loads"
@@ -219,6 +229,53 @@
                 {
                     "property": "--bfbe-toast-edge",
                     "selector": ""
+                }
+            ]
+        },
+        "contentSep": {
+            "tab": "content",
+            "group": "bfbeToast",
+            "label": "Content",
+            "type": "separator"
+        },
+        "contentDirection": {
+            "tab": "content",
+            "group": "bfbeToast",
+            "label": "Direction",
+            "type": "direction",
+            "inline": true,
+            "css": [
+                {
+                    "property": "flex-direction",
+                    "selector": ".bfbe-toast__body"
+                }
+            ]
+        },
+        "contentAlign": {
+            "tab": "content",
+            "group": "bfbeToast",
+            "label": "Align items",
+            "type": "align-items",
+            "inline": true,
+            "css": [
+                {
+                    "property": "align-items",
+                    "selector": ".bfbe-toast__body"
+                }
+            ]
+        },
+        "contentGap": {
+            "tab": "content",
+            "group": "bfbeToast",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "8px",
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": ".bfbe-toast__body"
                 }
             ]
         },
@@ -370,7 +427,8 @@
                 "follow": "Follow the pointer",
                 "fade": "Fade in",
                 "slide": "Slide in",
-                "grow": "Grow"
+                "grow": "Grow",
+                "image2": "Show the product&#039;s second image"
             },
             "inline": true,
             "placeholder": "None"

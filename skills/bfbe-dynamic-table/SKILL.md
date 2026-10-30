@@ -16,7 +16,7 @@ A real table built on the server from typed rows, a CSV file, an ACF repeater or
 
 **Not for:** Sorting, search, filters and paging run in the browser over rows already in the page, and nothing in it edits data. A large data set that needs paging on the server, or rows that visitors edit, needs a different approach.
 
-**Costs a page:** CSS 2.79 KB, JS 2.60 KB (gzipped), no dependencies, loaded only on pages that use it. Only where used, the dropdowns (the sort field and the filters' selects): JS 1.05 KB.
+**Costs a page:** CSS 2.80 KB, JS 2.66 KB (gzipped), no dependencies, loaded only on pages that use it. Only where used, the dropdowns (the sort field and the filters' selects): JS 1.05 KB. Only where used, the quick order table and the shoppable list: Dynamic Table rows of products with quantities and one Add all: CSS 0.36 KB, JS 0.61 KB.
 
 **Nestable:** no · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** no
 
@@ -27,36 +27,56 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query`); Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Source (`bfbeSource`)
-- `source` (select) **Rows come from**: options: `manual` Text typed here (default), `csv` A CSV file, `acf` An ACF repeater, `loop` A query loop. Choose Text typed here (the default), A CSV file, An ACF repeater or A query loop. A query loop brings Bricks' Query loop switch and Query, and takes a dynamic tag in each column.
-- `rows` (textarea) **Rows**: dynamic data accepted; only when `source` is not `csv` or `acf` or `loop`. Type one row per line, with commas between the cells. It is read as CSV, so a quoted cell can hold commas, and it takes dynamic data.
+- `source` (select) **Rows come from**: options: `manual` Text typed here (default), `csv` A CSV file, `acf` An ACF repeater, `loop` A query loop, `products` Products from the shop. Choose Text typed here (the default), A CSV file, An ACF repeater or A query loop. A query loop brings Bricks' Query loop switch and Query, and takes a dynamic tag in each column.
+- `rows` (textarea) **Rows**: dynamic data accepted; only when `source` is not `csv` or `acf` or `loop` or `products`. Type one row per line, with commas between the cells. It is read as CSV, so a quoted cell can hold commas, and it takes dynamic data.
 - `file` (file) **CSV file**: only when `source` is `csv`. Choose the CSV file to read. It is offered when Rows come from is A CSV file. A CSV address, when you set one, is read instead.
 - `csvUrl` (text) **CSV address**: placeholder /wp-content/uploads/figures.csv; dynamic data accepted; only when `source` is `csv`. Here or on another site, or a dynamic tag.
-- `headerRow` (checkbox) **Header row**: only when `source` is not `acf` or `loop`. Tick it to use the top row as headings for any column whose Heading is empty. With no columns set, it makes one column per cell.
+- `headerRow` (checkbox) **Header row**: only when `source` is not `acf` or `loop` or `products`. Tick it to use the top row as headings for any column whose Heading is empty. With no columns set, it makes one column per cell.
 - `acfField` (text) **Repeater field name**: placeholder price_list; only when `source` is `acf`. Type the name of the ACF repeater to read. Each column's Value then names a sub field.
+- `bfbeShopList` (checkbox) **Shoppable list**: only when `source` is `products`. A recipe or a guide: the list, with its quantities.
+- `bfbeShopItems` (textarea) **The list**: placeholder 2 x Olive oil 1 x BFBE-KIT-01; dynamic data accepted; only when `source` is `products` and `bfbeShopList` is set. One a line: a quantity, x, a product or SKU.
+- `bfbeShopFrom` (select) **Products from**: options: `category` A category (default), `tag` A tag, `ids` Products picked here, `variations` One product and its variations; only when `source` is `products` and `bfbeShopList` is not set
+- `bfbeShopCategory` (select) **Category**: placeholder Pick a category; only when `source` is `products` and `bfbeShopList` is not set and `bfbeShopFrom` is `` or `category`
+- `bfbeShopTag` (select) **Tag**: placeholder Pick a tag; only when `source` is `products` and `bfbeShopList` is not set and `bfbeShopFrom` is `tag`
+- `bfbeShopIds` (select) **Products**: placeholder Pick the products; only when `source` is `products` and `bfbeShopList` is not set and `bfbeShopFrom` is `ids`
+- `bfbeShopParent` (select) **Product**: placeholder Pick a variable product; only when `source` is `products` and `bfbeShopList` is not set and `bfbeShopFrom` is `variations`
+- `bfbeShopMost` (number) **Rows at most**: placeholder 50; only when `source` is `products` and `bfbeShopList` is not set
+- `bfbeShopColumns` (select) **Columns**: options: `image` Picture, `name` Name, `sku` SKU, `attributes` Options, `stock` Stock, `price` Price; only when `source` is `products`. The quantity always comes last.
 
 ### Columns (`bfbeColumns`)
-- `columns` (repeater) **Columns**. Add one row per column, in order. Each has Heading, Value, Format, Sortable, Width, and Align, which places the text at the Start (the default), Centre or End.
+The whole group shows only when `source` is not `products`.
+- `columns` (repeater) **Columns**: only when `source` is not `products`. Add one row per column, in order. Each has Heading, Value, Format, Sortable, Width, and Align, which places the text at the Start (the default), Centre or End.
 
 ### Search and pages (`bfbeFeatures`)
-- `search` (checkbox) **Search box**. Tick it to add a search field above or below the table, as Position sets. Typing hides rows that have no matching text in any cell.
-- `searchLabel` (text) **Label**: placeholder Search; dynamic data accepted; only when `search` is set. Under Search, set the hidden name and the placeholder of the search field. It reads Search unless you change it.
-- `searchPlace` (select) **Position**: options: `above` Above the table (default), `below` Below the table; only when `search` is set. Under Search, put the search box Above the table (the default) or Below the table.
-- `searchAlign` (align-items) **Aligned**: only when `search` is set
+- `search` (checkbox) **Search box**: only when `bfbeShopList` is not set. Tick it to add a search field above or below the table, as Position sets. Typing hides rows that have no matching text in any cell.
+- `searchLabel` (text) **Label**: placeholder Search; dynamic data accepted; only when `search` is set and `bfbeShopList` is not set. Under Search, set the hidden name and the placeholder of the search field. It reads Search unless you change it.
+- `searchPlace` (select) **Position**: options: `above` Above the table (default), `below` Below the table; only when `search` is set and `bfbeShopList` is not set. Under Search, put the search box Above the table (the default) or Below the table.
+- `searchAlign` (align-items) **Aligned**: only when `search` is set and `bfbeShopList` is not set
 - `sortLabel` (text) **Label**: placeholder Sort by; dynamic data accepted; only when `responsive` is not `` or `scroll`. Under Search, set the hidden name and the placeholder of the search field. It reads Search unless you change it.
 - `emptyText` (text) **Text**: placeholder No matching rows.; dynamic data accepted. Under Nothing found, type what shows when no row matches. It reads No matching rows unless you change it, and it takes dynamic data.
-- `pageSize` (number) **Rows per page**: placeholder All. Set a number to page the table, with Previous page and Next page buttons and a count such as 1 to 10 of 42. All rows show unless set.
-- `pagerLayout` (select) **Position**: options: `range-start` Count left, arrows right (default), `range-end` Arrows left, count right, `start` Both left, `center` Both centred, `end` Both right; only when `pageSize` is set. Under Search, put the search box Above the table (the default) or Below the table.
+- `pageSize` (number) **Rows per page**: placeholder All; only when `bfbeShopList` is not set. Set a number to page the table, with Previous page and Next page buttons and a count such as 1 to 10 of 42. All rows show unless set.
+- `pagerLayout` (select) **Position**: options: `range-start` Count left, arrows right (default), `range-end` Arrows left, count right, `start` Both left, `center` Both centred, `end` Both right; only when `pageSize` is set and `bfbeShopList` is not set. Under Search, put the search box Above the table (the default) or Below the table.
 Styling, in the schema file: `searchBackground`, `searchBorder`, `searchTypography`, `searchPadding`, `searchWidth`, `toolsGap`, `ddBackground`, `ddBorder`, `ddTypography`, `ddPadding`, `ddWidth`, `ddListBackground`, `ddListBorder`, `ddListShadow`, `ddListTypography`, `ddOptionPadding`, `ddOptionHover`, `ddChosenBackground`, `ddChosenColor`, `emptyTypography`, `pagerGap`.
 
+### Filters: number arrows (`bfbeRangeArrows`)
+The whole group shows only when `filters` is set and `bfbeShopList` is not set.
+- `rangeSpinArrows` (select) **Arrows**: options: `browser` The browser's, `inside` Ours, inside the box, `stepper` A − and a + beside it, `none` None; only when `filters` is set and `bfbeShopList` is not set
+Styling, in the schema file: `rangeSpinArrowSize`, `rangeSpinArrowWidth`, `rangeSpinArrowGap`, `rangeSpinArrowColor`, `rangeSpinArrowBg`, `rangeSpinArrowHover`, `rangeSpinArrowHoverBg`, `rangeSpinArrowLine`, `rangeSpinArrowBorder`.
+
+### Filters: date picker (`bfbeRangeCal`)
+The whole group shows only when `filters` is set and `bfbeShopList` is not set.
+- `rangeDatePicker` (select) **Date picker**: options: `native` The browser's, `custom` Styled with the controls; only when `filters` is set and `bfbeShopList` is not set. Every date range filter.
+Styling, in the schema file: `rangeCalWidth`, `rangeCalBackground`, `rangeCalBorder`, `rangeCalShadow`, `rangeCalPadding`, `rangeCalOffset`, `rangeCalHeadSpace`, `rangeCalWeekSpace`, `rangeCalDayGap`, `rangeCalHeadLine`, `rangeCalHeadLineColor`, `rangeCalWeekLine`, `rangeCalWeekLineColor`, `rangeCalMonthTypography`, `rangeCalMonthPadding`, `rangeCalYearPadding`, `rangeCalHeadHoverBg`, `rangeCalYearArrow`, `rangeCalYearArrowHover`, `rangeCalArrowSize`, `rangeCalArrowPadding`, `rangeCalArrowColor`, `rangeCalArrowHover`, `rangeCalArrowBg`, `rangeCalArrowHoverBg`, `rangeCalArrowBorder`, `rangeCalArrowHoverBorder`, `rangeCalWeekdayTypography`, `rangeCalDayTypography`, `rangeCalDaySize`, `rangeCalDayPadding`, `rangeCalDayBg`, `rangeCalDayColor`, `rangeCalDayBorder`, `rangeCalDayHoverBg`, `rangeCalDayHoverColor`, `rangeCalDayHoverBorder`, `rangeCalTodayBg`, `rangeCalTodayColor`, `rangeCalTodayBorder`, `rangeCalTodayHoverBg`, `rangeCalTodayHoverColor`, `rangeCalTodayHoverBorder`, `rangeCalSelected`, `rangeCalSelectedColor`, `rangeCalSelectedBorder`, `rangeCalSelectedHoverBg`, `rangeCalSelectedHoverColor`, `rangeCalSelectedHoverBorder`, `rangeCalShutBg`, `rangeCalShut`, `rangeCalShutBorder`, `rangeCalShutHoverBg`, `rangeCalShutHoverColor`, `rangeCalShutHoverBorder`, `rangeCalOtherBg`, `rangeCalOther`, `rangeCalOtherBorder`, `rangeCalOtherHoverBg`, `rangeCalOtherHoverColor`, `rangeCalOtherHoverBorder`.
+
 ### Filters (`bfbeFilter`)
-- `filters` (repeater) **Filters**. Add one row per filter. Each has a Column number, Shown as (Chips, A select, A number range or A date range), a Label, the column heading unless set, an Everything label, and Lowest label and Highest label for a range.
-- `filterUrl` (checkbox) **Filters in the URL**: only when `filters` is set. Tick it to write a choice into the address, so a reload keeps it and a link shares it.
-- `filterRow` (checkbox) **On their own row**: only when `filters` is set. Off by default, so filters share the search row. Tick it to give them a row of their own, with Row sits (Above the table, the default, or Below the table), They run (Across or Down) and Line up.
-- `filterPlace` (select) **Row sits**: options: `above` Above the table (default), `below` Below the table; only when `filterRow` is set and `filters` is set
-- `filterDirection` (select) **They run**: options: `row` Across (default), `column` Down; only when `filterRow` is set and `filters` is set
-- `filterAlign` (justify-content) **Line up**: only when `filterRow` is set and `filters` is set
-- `filterStretch` (checkbox) **Fill the row**: only when `filters` is set. Tick it to stretch the filters across their row.
-- `filterLabels` (checkbox) **Show each label**: only when `filters` is set. Tick it to show each filter's label on the page. Screen readers hear the label either way.
+- `filters` (repeater) **Filters**: only when `bfbeShopList` is not set. Add one row per filter. Each has a Column number, Shown as (Chips, A select, A number range or A date range), a Label, the column heading unless set, an Everything label, and Lowest label and Highest label for a range.
+- `filterUrl` (checkbox) **Filters in the URL**: only when `filters` is set and `bfbeShopList` is not set. Tick it to write a choice into the address, so a reload keeps it and a link shares it.
+- `filterRow` (checkbox) **On their own row**: only when `filters` is set and `bfbeShopList` is not set. Off by default, so filters share the search row. Tick it to give them a row of their own, with Row sits (Above the table, the default, or Below the table), They run (Across or Down) and Line up.
+- `filterPlace` (select) **Row sits**: options: `above` Above the table (default), `below` Below the table; only when `filterRow` is set and `filters` is set and `bfbeShopList` is not set
+- `filterDirection` (select) **They run**: options: `row` Across (default), `column` Down; only when `filterRow` is set and `filters` is set and `bfbeShopList` is not set
+- `filterAlign` (justify-content) **Line up**: only when `filterRow` is set and `filters` is set and `bfbeShopList` is not set
+- `filterStretch` (checkbox) **Fill the row**: only when `filters` is set and `bfbeShopList` is not set. Tick it to stretch the filters across their row.
+- `filterLabels` (checkbox) **Show each label**: only when `filters` is set and `bfbeShopList` is not set. Tick it to show each filter's label on the page. Screen readers hear the label either way.
 Styling, in the schema file: `filterGap`, `chipTypography`, `chipBackground`, `chipHoverBackground`, `chipOnBackground`, `chipOnColor`, `chipBorder`, `chipPadding`, `filterSpace`, `filterWidth`, `filterLabelTypography`, `rangeWidth`, `rangeBackground`, `rangeBorder`, `rangeTypography`.
 
 ### Table (`bfbeTable`)
@@ -88,8 +108,16 @@ Styling, in the schema file: `rowHoverBackground`, `rowHoverColor`, `sortedBackg
 Styling only, every key in the schema file: `badgeBackground`, `badgeColor`, `badgeTypography`, `badgePadding`, `badgeBorder`.
 
 ### Page buttons (`bfbePager`)
-The whole group shows only when `pageSize` is set.
+The whole group shows only when `pageSize` is set and `bfbeShopList` is not set.
 Styling only, every key in the schema file: `pageBackground`, `pageColor`, `pagerTypography`, `pageGap`, `pageButtonSize`, `pagePadding`, `pageIconSize`, `pageBorder`, `pageShadow`, `pageDim`, `pageHoverBackground`, `pageHoverColor`, `rangeColor`.
+
+### Add to cart (`bfbeShopOrder`)
+The whole group shows only when `source` is `products`.
+- `bfbeShopAddAll` (text) **Button words**: placeholder Add all to the cart
+- `bfbeShopQtyHead` (text) **Quantity heading**: placeholder Quantity
+- `bfbeShopButtonAt` (select) **Button sits**: options: `end` At the end (default), `start` At the start
+- `bfbeShopQtySpinArrows` (select) **Arrows**: options: `browser` The browser's, `inside` Ours, inside the box, `stepper` A − and a + beside it, `none` None
+Styling, in the schema file: `bfbeShopQtyTypography`, `bfbeShopQtyBackground`, `bfbeShopQtyBorder`, `bfbeShopQtyPadding`, `bfbeShopQtyWidth`, `bfbeShopAddTypography`, `bfbeShopAddBackground`, `bfbeShopAddBorder`, `bfbeShopAddPadding`, `bfbeShopAddShadow`, `bfbeShopAddSpace`, `bfbeShopChooseColor`, `bfbeShopSaidTypography`, `bfbeShopQtySpinArrowSize`, `bfbeShopQtySpinArrowWidth`, `bfbeShopQtySpinArrowGap`, `bfbeShopQtySpinArrowColor`, `bfbeShopQtySpinArrowBg`, `bfbeShopQtySpinArrowHover`, `bfbeShopQtySpinArrowHoverBg`, `bfbeShopQtySpinArrowLine`, `bfbeShopQtySpinArrowBorder`.
 
 ## What it guarantees for accessibility (do not undo)
 - Each sortable heading holds a real button, and its header cell carries aria-sort, which reads none, ascending or descending as the sort changes.

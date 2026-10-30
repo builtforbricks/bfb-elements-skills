@@ -16,7 +16,7 @@ A row of Snap Slide children in a native scroll container with scroll snapping, 
 
 **Not for:** Not for a continuous loop or a crossfade: it is a scroll container that snaps, so it has a start and an end. A looping carousel belongs in Bricks' own Slider element.
 
-**Costs a page:** CSS 2.25 KB, JS 2.57 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 2.26 KB, JS 2.63 KB (gzipped), no dependencies, loaded only on pages that use it.
 
 **Nestable:** yes · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 

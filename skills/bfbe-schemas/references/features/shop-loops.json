@@ -1,0 +1,5259 @@
+{
+    "name": "shop-loops",
+    "label": "BFB Shop loops",
+    "pack": "free and pro",
+    "feature": true,
+    "shape": "hosts",
+    "on": "Bricks' own Block (`block`), Container (`container`), Div (`div`)",
+    "job": "the shop's query loop types on Bricks' Container, Block and Div (best sellers, related, recently viewed, variations, images, reviews, wishlist, compare, quote, saved for later, orders, order items and totals, product finder, product moments, pin product) and their set controls, with product cards built from Bricks' own elements",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/shop-loops/",
+    "since": "2.0.0",
+    "requires": [
+        "WooCommerce"
+    ],
+    "switches": [
+        "shop-reviews-loop",
+        "shop-orders"
+    ],
+    "groupInfo": {
+        "bfbeShopQbfbeShopReviews": {
+            "title": "BFB Shop reviews",
+            "pack": "free",
+            "switch": [
+                "shop-reviews-loop"
+            ],
+            "sources": [
+                "bfb-elements/includes/shop/class-reviews-loop.php"
+            ]
+        },
+        "bfbeShopQbfbeShopFinder": {
+            "title": "BFB Product finder",
+            "pack": "pro",
+            "switch": [],
+            "sources": [
+                "bfb-elements-pro/includes/shop/class-finder-set.php"
+            ]
+        },
+        "bfbeShopQbfbeShopWishlist": {
+            "title": "BFB Wishlist",
+            "pack": "pro",
+            "switch": [],
+            "sources": [
+                "bfb-elements-pro/includes/shop/class-wishlist-set.php"
+            ]
+        },
+        "bfbeShopQbfbeShopCompare": {
+            "title": "BFB Products being compared",
+            "pack": "pro",
+            "switch": [],
+            "sources": [
+                "bfb-elements-pro/includes/shop/class-compare-set.php"
+            ]
+        },
+        "bfbeShopQbfbeShopQuote": {
+            "title": "BFB Quote list",
+            "pack": "pro",
+            "switch": [],
+            "sources": [
+                "bfb-elements-pro/includes/shop/class-quote-set.php"
+            ]
+        },
+        "bfbeShopQbfbeShopProducts": {
+            "title": "BFB Shop products",
+            "pack": "pro",
+            "switch": [],
+            "sources": [
+                "bfb-elements-pro/includes/shop/class-products-set.php"
+            ]
+        },
+        "bfbeShopQbfbeShopVariations": {
+            "title": "BFB Shop variations",
+            "pack": "pro",
+            "switch": [],
+            "sources": [
+                "bfb-elements-pro/includes/shop/class-variations-set.php"
+            ]
+        },
+        "bfbeShopQbfbeShopImages": {
+            "title": "BFB Shop images",
+            "pack": "pro",
+            "switch": [],
+            "sources": [
+                "bfb-elements-pro/includes/shop/class-images-set.php"
+            ]
+        },
+        "bfbeShopQbfbeShopOrderTotals": {
+            "title": "BFB Order totals",
+            "pack": "pro",
+            "switch": [
+                "shop-orders"
+            ],
+            "sources": [
+                "bfb-elements-pro/includes/shop/class-order-totals-set.php"
+            ]
+        },
+        "bfbeShopQbfbeShopOrders": {
+            "title": "BFB Customer orders",
+            "pack": "pro",
+            "switch": [
+                "shop-orders"
+            ],
+            "sources": [
+                "bfb-elements-pro/includes/shop/class-orders-set.php"
+            ]
+        },
+        "bfbeShopQbfbeShopMoments": {
+            "title": "BFB Product moments",
+            "pack": "pro",
+            "switch": [],
+            "sources": [
+                "bfb-elements-pro/includes/shop/class-moments-set.php"
+            ]
+        }
+    },
+    "hosts": {
+        "block": {
+            "label": "Block",
+            "registered": true,
+            "controlGroups": {
+                "bfbeShopQbfbeShopReviews": {
+                    "title": "BFB Shop reviews",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopReviews"
+                    ]
+                },
+                "bfbeShopQbfbeShopFinder": {
+                    "title": "BFB Product finder",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopFinder"
+                    ]
+                },
+                "bfbeShopQbfbeShopWishlist": {
+                    "title": "BFB Wishlist",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopWishlist"
+                    ]
+                },
+                "bfbeShopQbfbeShopCompare": {
+                    "title": "BFB Products being compared",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopCompare"
+                    ]
+                },
+                "bfbeShopQbfbeShopQuote": {
+                    "title": "BFB Quote list",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopQuote"
+                    ]
+                },
+                "bfbeShopQbfbeShopProducts": {
+                    "title": "BFB Shop products",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopProducts"
+                    ]
+                },
+                "bfbeShopQbfbeShopVariations": {
+                    "title": "BFB Shop variations",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopVariations"
+                    ]
+                },
+                "bfbeShopQbfbeShopImages": {
+                    "title": "BFB Shop images",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopImages"
+                    ]
+                },
+                "bfbeShopQbfbeShopOrderTotals": {
+                    "title": "BFB Order totals",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopOrderTotals"
+                    ]
+                },
+                "bfbeShopQbfbeShopOrders": {
+                    "title": "BFB Customer orders",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopOrders"
+                    ]
+                },
+                "bfbeShopQbfbeShopMoments": {
+                    "title": "BFB Product moments",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopMoments"
+                    ]
+                }
+            },
+            "controls": {
+                "bfbeShopReviewsProduct": {
+                    "label": "Reviews of",
+                    "type": "select",
+                    "options": {
+                        "current": "This product",
+                        "all": "All products",
+                        "chosen": "Chosen products"
+                    },
+                    "placeholder": "This product",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopReviews",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopReviews"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopReviewsIds": {
+                    "label": "Products",
+                    "type": "text",
+                    "placeholder": "12, 34, BFBE-SKU",
+                    "hasDynamicData": "text",
+                    "description": "Ids or SKUs, separated by commas.",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopReviews"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopReviewsProduct",
+                            "=",
+                            "chosen"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopReviews"
+                },
+                "bfbeShopReviewsCount": {
+                    "label": "Reviews per page",
+                    "type": "number",
+                    "min": 1,
+                    "max": 100,
+                    "placeholder": "6",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopReviews",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopReviews"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopReviewsMinRating": {
+                    "label": "Minimum rating",
+                    "type": "number",
+                    "min": 1,
+                    "max": 5,
+                    "placeholder": "1",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopReviews",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopReviews"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopReviewsVerified": {
+                    "label": "Verified buyers only",
+                    "type": "checkbox",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopReviews",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopReviews"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopReviewsOrder": {
+                    "label": "Order",
+                    "type": "select",
+                    "options": {
+                        "newest": "Newest first",
+                        "highest": "Highest rating first",
+                        "lowest": "Lowest rating first"
+                    },
+                    "placeholder": "Newest first",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopReviews",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopReviews"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopFindNone": {
+                    "label": "Nothing matches",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Nothing matches your answers.",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopFinder",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopFinder"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopFindAgain": {
+                    "label": "Start again words",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Start again",
+                    "description": "Bricks&#039; own No results content, when set, shows instead.",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopFinder",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopFinder"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopFindNoneBg": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": "& + .bfbe-find__none"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopFinder",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopFinder"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopFindNoneBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": "& + .bfbe-find__none"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopFinder",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopFinder"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopFindNonePad": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": "& + .bfbe-find__none"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopFinder",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopFinder"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopFindNoneType": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "typography",
+                            "selector": "& + .bfbe-find__none"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopFinder",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopFinder"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopFindNoneLink": {
+                    "label": "Link colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": "& + .bfbe-find__none a"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopFinder",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopFinder"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistActions": {
+                    "label": "Buttons on each row",
+                    "type": "select",
+                    "options": {
+                        "on": "On",
+                        "off": "Off"
+                    },
+                    "inline": true,
+                    "placeholder": "On",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistAfterMove": {
+                    "label": "After Move to cart",
+                    "type": "select",
+                    "options": {
+                        "remove": "Take it off the list",
+                        "keep": "Keep it on the list"
+                    },
+                    "placeholder": "Take it off the list",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveText": {
+                    "label": "Move to cart word",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Move to cart",
+                    "description": "Add to cart while the row stays on the list.",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistRemoveText": {
+                    "label": "Remove word",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Remove",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistBoughtText": {
+                    "label": "Mark as bought word",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Mark as bought",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistMoveLook": {
+                    "label": "Move to list: open list",
+                    "type": "select",
+                    "options": {
+                        "native": "As the browser draws it",
+                        "custom": "Styled with the controls below"
+                    },
+                    "inline": true,
+                    "placeholder": "As the browser draws it",
+                    "description": "Phones keep their own list either way.",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveSepField": {
+                    "label": "Field",
+                    "type": "separator",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistMoveTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": "select.bfbe-lrow__select"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistMoveBackground": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": "select.bfbe-lrow__select"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistMoveBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": "select.bfbe-lrow__select"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistMovePadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": "select.bfbe-lrow__select"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistMoveChevron": {
+                    "label": "Arrow colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-dd-chevron",
+                            "selector": ""
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveSepPanel": {
+                    "label": "Open list",
+                    "type": "separator",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMovePanelBg": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-dd__panel"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMovePanelBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-dd__panel"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMovePanelShadow": {
+                    "label": "Box shadow",
+                    "type": "box-shadow",
+                    "css": [
+                        {
+                            "property": "box-shadow",
+                            "selector": ".bfbe-dd__panel"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMovePanelPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-dd__panel"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveSepOption": {
+                    "label": "Options",
+                    "type": "separator",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveOptTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-dd__opt"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveOptPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-dd__opt"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveOptHover": {
+                    "label": "Hover background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-dd__opt.is-active"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveHoverText": {
+                    "label": "Hover text",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-dd__opt.is-active"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveOptOnBg": {
+                    "label": "Chosen background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-dd__opt[aria-selected=\"true\"]"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveOptOnColor": {
+                    "label": "Chosen text",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-dd__opt[aria-selected=\"true\"]"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveTick": {
+                    "label": "Tick colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-dd-tick",
+                            "selector": ""
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopCompareActions": {
+                    "label": "Remove on each row",
+                    "type": "select",
+                    "options": {
+                        "on": "On",
+                        "off": "Off"
+                    },
+                    "inline": true,
+                    "placeholder": "On",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopCompare",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopCompare"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopCompareRemoveText": {
+                    "label": "Remove word",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Remove",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopCompare"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopCompareActions",
+                            "!=",
+                            "off"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopCompare"
+                },
+                "bfbeShopQuoteActions": {
+                    "label": "Quantity and Remove on each row",
+                    "type": "select",
+                    "options": {
+                        "on": "On",
+                        "off": "Off"
+                    },
+                    "inline": true,
+                    "placeholder": "On",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopQuote",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopQuote"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopQuoteUpdateText": {
+                    "label": "Update word",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Update",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopQuote"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopQuoteActions",
+                            "!=",
+                            "off"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopQuote"
+                },
+                "bfbeShopQuoteRemoveText": {
+                    "label": "Remove word",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Remove",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopQuote"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopQuoteActions",
+                            "!=",
+                            "off"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopQuote"
+                },
+                "bfbeShopSet": {
+                    "label": "Set",
+                    "type": "select",
+                    "options": {
+                        "best_sellers": "Best sellers",
+                        "trending": "Trending",
+                        "top_rated": "Top rated",
+                        "new": "New arrivals",
+                        "on_sale": "On sale",
+                        "price_drops": "Price drops",
+                        "back_in_stock": "Back in stock",
+                        "bought": "Bought before",
+                        "recent": "Recently viewed",
+                        "hotspots": "Pinned on an image"
+                    },
+                    "placeholder": "Best sellers",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopProducts",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopProducts"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopCount": {
+                    "label": "Products per page",
+                    "type": "number",
+                    "min": 1,
+                    "max": 100,
+                    "placeholder": "8",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopProducts",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopProducts"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopDays": {
+                    "label": "Within the last days",
+                    "type": "number",
+                    "min": 0,
+                    "max": 365,
+                    "placeholder": "30",
+                    "inline": true,
+                    "description": "New arrivals: 0 means the newest, however old.",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopProducts"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopSet",
+                            "=",
+                            [
+                                "trending",
+                                "new",
+                                "price_drops",
+                                "back_in_stock"
+                            ]
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopProducts"
+                },
+                "bfbeShopMinReviews": {
+                    "label": "Minimum reviews",
+                    "type": "number",
+                    "min": 1,
+                    "max": 1000,
+                    "placeholder": "1",
+                    "inline": true,
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopProducts"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopSet",
+                            "=",
+                            "top_rated"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopProducts"
+                },
+                "bfbeShopHotspots": {
+                    "label": "Element id",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "abc123",
+                    "description": "Empty: the nearest BFB Image Hotspots.",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopProducts"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopSet",
+                            "=",
+                            "hotspots"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopProducts"
+                },
+                "bfbeShopRecentWhile": {
+                    "label": "While there is nothing yet",
+                    "type": "select",
+                    "options": {
+                        "": "Nothing",
+                        "best_sellers": "Best sellers",
+                        "trending": "Trending",
+                        "top_rated": "Top rated",
+                        "new": "New arrivals",
+                        "on_sale": "On sale",
+                        "price_drops": "Price drops",
+                        "back_in_stock": "Back in stock"
+                    },
+                    "placeholder": "Nothing",
+                    "inline": true,
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopProducts"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopSet",
+                            "=",
+                            "recent"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopProducts"
+                },
+                "bfbeShopSkipCurrent": {
+                    "label": "Leave out the product on this page",
+                    "type": "checkbox",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopProducts",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopProducts"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopVariationsProduct": {
+                    "label": "Product",
+                    "type": "text",
+                    "placeholder": "This product",
+                    "hasDynamicData": "text",
+                    "description": "An id or SKU; empty means this product.",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopVariations",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopVariations"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopVariationsInStock": {
+                    "label": "In stock only",
+                    "type": "checkbox",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopVariations",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopVariations"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopImagesProduct": {
+                    "label": "Product",
+                    "type": "text",
+                    "placeholder": "This product",
+                    "hasDynamicData": "text",
+                    "description": "An id or SKU; empty means this product.",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopImages",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopImages"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopImagesFollow": {
+                    "label": "Follow the chosen variation",
+                    "type": "checkbox",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopImages",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopImages"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopImagesOption": {
+                    "label": "Follow one option before the rest",
+                    "type": "select",
+                    "options": {
+                        "off": "Off",
+                        "pa_colour": "Colour",
+                        "pa_material": "Material",
+                        "pa_size": "Size",
+                        "pa_warmth": "Warmth"
+                    },
+                    "placeholder": "The first with swatches",
+                    "description": "Its images show as soon as it is chosen.",
+                    "inline": true,
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopImages"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopImagesFollow",
+                            "!=",
+                            ""
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopImages"
+                },
+                "bfbeShopImagesFeatured": {
+                    "label": "Leave out the featured image",
+                    "type": "checkbox",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopImages",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopImages"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopTotalsLeave": {
+                    "label": "Leave out",
+                    "type": "select",
+                    "multiple": true,
+                    "options": {
+                        "payment_method": "Payment method",
+                        "order_total": "Total"
+                    },
+                    "placeholder": "Nothing",
+                    "description": "Rows you show elsewhere on the page.",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopOrderTotals",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopOrderTotals"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopOrdersPer": {
+                    "label": "Orders per page",
+                    "type": "number",
+                    "min": 1,
+                    "max": 100,
+                    "placeholder": "3",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopOrders",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopOrders"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopOrdersStatus": {
+                    "label": "Statuses",
+                    "type": "select",
+                    "options": {
+                        "account": "As the account lists them",
+                        "paid": "Paid"
+                    },
+                    "placeholder": "As the account lists them",
+                    "description": "Paid means processing and completed.",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopOrders",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopOrders"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopMomentsPlayer": {
+                    "label": "Element id",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "abc123",
+                    "description": "Empty: the nearest BFB Video Player.",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopMoments",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopMoments"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistType": {
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "label": "Post type",
+                    "type": "select",
+                    "options": {
+                        "product": "Products",
+                        "post": "Posts",
+                        "page": "Pages",
+                        "bfbe_shop_review": "Shop Reviews",
+                        "bfbe_review": "Review",
+                        "bfbe_demo": "Demos",
+                        "bfbe_feature": "Feature visuals",
+                        "bfbe_fixture": "Fixtures",
+                        "bfbe_sweep": "Sweeps",
+                        "bfbe_scratch": "Scratch",
+                        "bricks_template": "My Templates"
+                    },
+                    "inline": true,
+                    "placeholder": "Products",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                }
+            }
+        },
+        "container": {
+            "label": "Container",
+            "registered": true,
+            "controlGroups": {
+                "bfbeShopQbfbeShopReviews": {
+                    "title": "BFB Shop reviews",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopReviews"
+                    ]
+                },
+                "bfbeShopQbfbeShopFinder": {
+                    "title": "BFB Product finder",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopFinder"
+                    ]
+                },
+                "bfbeShopQbfbeShopWishlist": {
+                    "title": "BFB Wishlist",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopWishlist"
+                    ]
+                },
+                "bfbeShopQbfbeShopCompare": {
+                    "title": "BFB Products being compared",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopCompare"
+                    ]
+                },
+                "bfbeShopQbfbeShopQuote": {
+                    "title": "BFB Quote list",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopQuote"
+                    ]
+                },
+                "bfbeShopQbfbeShopProducts": {
+                    "title": "BFB Shop products",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopProducts"
+                    ]
+                },
+                "bfbeShopQbfbeShopVariations": {
+                    "title": "BFB Shop variations",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopVariations"
+                    ]
+                },
+                "bfbeShopQbfbeShopImages": {
+                    "title": "BFB Shop images",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopImages"
+                    ]
+                },
+                "bfbeShopQbfbeShopOrderTotals": {
+                    "title": "BFB Order totals",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopOrderTotals"
+                    ]
+                },
+                "bfbeShopQbfbeShopOrders": {
+                    "title": "BFB Customer orders",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopOrders"
+                    ]
+                },
+                "bfbeShopQbfbeShopMoments": {
+                    "title": "BFB Product moments",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopMoments"
+                    ]
+                }
+            },
+            "controls": {
+                "bfbeShopReviewsProduct": {
+                    "label": "Reviews of",
+                    "type": "select",
+                    "options": {
+                        "current": "This product",
+                        "all": "All products",
+                        "chosen": "Chosen products"
+                    },
+                    "placeholder": "This product",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopReviews",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopReviews"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopReviewsIds": {
+                    "label": "Products",
+                    "type": "text",
+                    "placeholder": "12, 34, BFBE-SKU",
+                    "hasDynamicData": "text",
+                    "description": "Ids or SKUs, separated by commas.",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopReviews"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopReviewsProduct",
+                            "=",
+                            "chosen"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopReviews"
+                },
+                "bfbeShopReviewsCount": {
+                    "label": "Reviews per page",
+                    "type": "number",
+                    "min": 1,
+                    "max": 100,
+                    "placeholder": "6",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopReviews",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopReviews"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopReviewsMinRating": {
+                    "label": "Minimum rating",
+                    "type": "number",
+                    "min": 1,
+                    "max": 5,
+                    "placeholder": "1",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopReviews",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopReviews"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopReviewsVerified": {
+                    "label": "Verified buyers only",
+                    "type": "checkbox",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopReviews",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopReviews"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopReviewsOrder": {
+                    "label": "Order",
+                    "type": "select",
+                    "options": {
+                        "newest": "Newest first",
+                        "highest": "Highest rating first",
+                        "lowest": "Lowest rating first"
+                    },
+                    "placeholder": "Newest first",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopReviews",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopReviews"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopFindNone": {
+                    "label": "Nothing matches",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Nothing matches your answers.",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopFinder",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopFinder"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopFindAgain": {
+                    "label": "Start again words",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Start again",
+                    "description": "Bricks&#039; own No results content, when set, shows instead.",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopFinder",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopFinder"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopFindNoneBg": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": "& + .bfbe-find__none"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopFinder",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopFinder"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopFindNoneBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": "& + .bfbe-find__none"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopFinder",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopFinder"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopFindNonePad": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": "& + .bfbe-find__none"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopFinder",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopFinder"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopFindNoneType": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "typography",
+                            "selector": "& + .bfbe-find__none"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopFinder",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopFinder"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopFindNoneLink": {
+                    "label": "Link colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": "& + .bfbe-find__none a"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopFinder",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopFinder"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistActions": {
+                    "label": "Buttons on each row",
+                    "type": "select",
+                    "options": {
+                        "on": "On",
+                        "off": "Off"
+                    },
+                    "inline": true,
+                    "placeholder": "On",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistAfterMove": {
+                    "label": "After Move to cart",
+                    "type": "select",
+                    "options": {
+                        "remove": "Take it off the list",
+                        "keep": "Keep it on the list"
+                    },
+                    "placeholder": "Take it off the list",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveText": {
+                    "label": "Move to cart word",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Move to cart",
+                    "description": "Add to cart while the row stays on the list.",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistRemoveText": {
+                    "label": "Remove word",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Remove",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistBoughtText": {
+                    "label": "Mark as bought word",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Mark as bought",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistMoveLook": {
+                    "label": "Move to list: open list",
+                    "type": "select",
+                    "options": {
+                        "native": "As the browser draws it",
+                        "custom": "Styled with the controls below"
+                    },
+                    "inline": true,
+                    "placeholder": "As the browser draws it",
+                    "description": "Phones keep their own list either way.",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveSepField": {
+                    "label": "Field",
+                    "type": "separator",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistMoveTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": "select.bfbe-lrow__select"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistMoveBackground": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": "select.bfbe-lrow__select"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistMoveBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": "select.bfbe-lrow__select"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistMovePadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": "select.bfbe-lrow__select"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistMoveChevron": {
+                    "label": "Arrow colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-dd-chevron",
+                            "selector": ""
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveSepPanel": {
+                    "label": "Open list",
+                    "type": "separator",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMovePanelBg": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-dd__panel"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMovePanelBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-dd__panel"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMovePanelShadow": {
+                    "label": "Box shadow",
+                    "type": "box-shadow",
+                    "css": [
+                        {
+                            "property": "box-shadow",
+                            "selector": ".bfbe-dd__panel"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMovePanelPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-dd__panel"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveSepOption": {
+                    "label": "Options",
+                    "type": "separator",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveOptTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-dd__opt"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveOptPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-dd__opt"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveOptHover": {
+                    "label": "Hover background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-dd__opt.is-active"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveHoverText": {
+                    "label": "Hover text",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-dd__opt.is-active"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveOptOnBg": {
+                    "label": "Chosen background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-dd__opt[aria-selected=\"true\"]"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveOptOnColor": {
+                    "label": "Chosen text",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-dd__opt[aria-selected=\"true\"]"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveTick": {
+                    "label": "Tick colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-dd-tick",
+                            "selector": ""
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopCompareActions": {
+                    "label": "Remove on each row",
+                    "type": "select",
+                    "options": {
+                        "on": "On",
+                        "off": "Off"
+                    },
+                    "inline": true,
+                    "placeholder": "On",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopCompare",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopCompare"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopCompareRemoveText": {
+                    "label": "Remove word",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Remove",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopCompare"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopCompareActions",
+                            "!=",
+                            "off"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopCompare"
+                },
+                "bfbeShopQuoteActions": {
+                    "label": "Quantity and Remove on each row",
+                    "type": "select",
+                    "options": {
+                        "on": "On",
+                        "off": "Off"
+                    },
+                    "inline": true,
+                    "placeholder": "On",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopQuote",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopQuote"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopQuoteUpdateText": {
+                    "label": "Update word",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Update",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopQuote"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopQuoteActions",
+                            "!=",
+                            "off"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopQuote"
+                },
+                "bfbeShopQuoteRemoveText": {
+                    "label": "Remove word",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Remove",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopQuote"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopQuoteActions",
+                            "!=",
+                            "off"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopQuote"
+                },
+                "bfbeShopSet": {
+                    "label": "Set",
+                    "type": "select",
+                    "options": {
+                        "best_sellers": "Best sellers",
+                        "trending": "Trending",
+                        "top_rated": "Top rated",
+                        "new": "New arrivals",
+                        "on_sale": "On sale",
+                        "price_drops": "Price drops",
+                        "back_in_stock": "Back in stock",
+                        "bought": "Bought before",
+                        "recent": "Recently viewed",
+                        "hotspots": "Pinned on an image"
+                    },
+                    "placeholder": "Best sellers",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopProducts",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopProducts"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopCount": {
+                    "label": "Products per page",
+                    "type": "number",
+                    "min": 1,
+                    "max": 100,
+                    "placeholder": "8",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopProducts",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopProducts"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopDays": {
+                    "label": "Within the last days",
+                    "type": "number",
+                    "min": 0,
+                    "max": 365,
+                    "placeholder": "30",
+                    "inline": true,
+                    "description": "New arrivals: 0 means the newest, however old.",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopProducts"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopSet",
+                            "=",
+                            [
+                                "trending",
+                                "new",
+                                "price_drops",
+                                "back_in_stock"
+                            ]
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopProducts"
+                },
+                "bfbeShopMinReviews": {
+                    "label": "Minimum reviews",
+                    "type": "number",
+                    "min": 1,
+                    "max": 1000,
+                    "placeholder": "1",
+                    "inline": true,
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopProducts"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopSet",
+                            "=",
+                            "top_rated"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopProducts"
+                },
+                "bfbeShopHotspots": {
+                    "label": "Element id",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "abc123",
+                    "description": "Empty: the nearest BFB Image Hotspots.",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopProducts"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopSet",
+                            "=",
+                            "hotspots"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopProducts"
+                },
+                "bfbeShopRecentWhile": {
+                    "label": "While there is nothing yet",
+                    "type": "select",
+                    "options": {
+                        "": "Nothing",
+                        "best_sellers": "Best sellers",
+                        "trending": "Trending",
+                        "top_rated": "Top rated",
+                        "new": "New arrivals",
+                        "on_sale": "On sale",
+                        "price_drops": "Price drops",
+                        "back_in_stock": "Back in stock"
+                    },
+                    "placeholder": "Nothing",
+                    "inline": true,
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopProducts"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopSet",
+                            "=",
+                            "recent"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopProducts"
+                },
+                "bfbeShopSkipCurrent": {
+                    "label": "Leave out the product on this page",
+                    "type": "checkbox",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopProducts",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopProducts"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopVariationsProduct": {
+                    "label": "Product",
+                    "type": "text",
+                    "placeholder": "This product",
+                    "hasDynamicData": "text",
+                    "description": "An id or SKU; empty means this product.",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopVariations",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopVariations"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopVariationsInStock": {
+                    "label": "In stock only",
+                    "type": "checkbox",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopVariations",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopVariations"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopImagesProduct": {
+                    "label": "Product",
+                    "type": "text",
+                    "placeholder": "This product",
+                    "hasDynamicData": "text",
+                    "description": "An id or SKU; empty means this product.",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopImages",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopImages"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopImagesFollow": {
+                    "label": "Follow the chosen variation",
+                    "type": "checkbox",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopImages",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopImages"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopImagesOption": {
+                    "label": "Follow one option before the rest",
+                    "type": "select",
+                    "options": {
+                        "off": "Off",
+                        "pa_colour": "Colour",
+                        "pa_material": "Material",
+                        "pa_size": "Size",
+                        "pa_warmth": "Warmth"
+                    },
+                    "placeholder": "The first with swatches",
+                    "description": "Its images show as soon as it is chosen.",
+                    "inline": true,
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopImages"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopImagesFollow",
+                            "!=",
+                            ""
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopImages"
+                },
+                "bfbeShopImagesFeatured": {
+                    "label": "Leave out the featured image",
+                    "type": "checkbox",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopImages",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopImages"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopTotalsLeave": {
+                    "label": "Leave out",
+                    "type": "select",
+                    "multiple": true,
+                    "options": {
+                        "payment_method": "Payment method",
+                        "order_total": "Total"
+                    },
+                    "placeholder": "Nothing",
+                    "description": "Rows you show elsewhere on the page.",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopOrderTotals",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopOrderTotals"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopOrdersPer": {
+                    "label": "Orders per page",
+                    "type": "number",
+                    "min": 1,
+                    "max": 100,
+                    "placeholder": "3",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopOrders",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopOrders"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopOrdersStatus": {
+                    "label": "Statuses",
+                    "type": "select",
+                    "options": {
+                        "account": "As the account lists them",
+                        "paid": "Paid"
+                    },
+                    "placeholder": "As the account lists them",
+                    "description": "Paid means processing and completed.",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopOrders",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopOrders"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopMomentsPlayer": {
+                    "label": "Element id",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "abc123",
+                    "description": "Empty: the nearest BFB Video Player.",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopMoments",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopMoments"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistType": {
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "label": "Post type",
+                    "type": "select",
+                    "options": {
+                        "product": "Products",
+                        "post": "Posts",
+                        "page": "Pages",
+                        "bfbe_shop_review": "Shop Reviews",
+                        "bfbe_review": "Review",
+                        "bfbe_demo": "Demos",
+                        "bfbe_feature": "Feature visuals",
+                        "bfbe_fixture": "Fixtures",
+                        "bfbe_sweep": "Sweeps",
+                        "bfbe_scratch": "Scratch",
+                        "bricks_template": "My Templates"
+                    },
+                    "inline": true,
+                    "placeholder": "Products",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                }
+            }
+        },
+        "div": {
+            "label": "Div",
+            "registered": true,
+            "controlGroups": {
+                "bfbeShopQbfbeShopReviews": {
+                    "title": "BFB Shop reviews",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopReviews"
+                    ]
+                },
+                "bfbeShopQbfbeShopFinder": {
+                    "title": "BFB Product finder",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopFinder"
+                    ]
+                },
+                "bfbeShopQbfbeShopWishlist": {
+                    "title": "BFB Wishlist",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopWishlist"
+                    ]
+                },
+                "bfbeShopQbfbeShopCompare": {
+                    "title": "BFB Products being compared",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopCompare"
+                    ]
+                },
+                "bfbeShopQbfbeShopQuote": {
+                    "title": "BFB Quote list",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopQuote"
+                    ]
+                },
+                "bfbeShopQbfbeShopProducts": {
+                    "title": "BFB Shop products",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopProducts"
+                    ]
+                },
+                "bfbeShopQbfbeShopVariations": {
+                    "title": "BFB Shop variations",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopVariations"
+                    ]
+                },
+                "bfbeShopQbfbeShopImages": {
+                    "title": "BFB Shop images",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopImages"
+                    ]
+                },
+                "bfbeShopQbfbeShopOrderTotals": {
+                    "title": "BFB Order totals",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopOrderTotals"
+                    ]
+                },
+                "bfbeShopQbfbeShopOrders": {
+                    "title": "BFB Customer orders",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopOrders"
+                    ]
+                },
+                "bfbeShopQbfbeShopMoments": {
+                    "title": "BFB Product moments",
+                    "tab": "content",
+                    "required": [
+                        "query.objectType",
+                        "=",
+                        "bfbeShopMoments"
+                    ]
+                }
+            },
+            "controls": {
+                "bfbeShopReviewsProduct": {
+                    "label": "Reviews of",
+                    "type": "select",
+                    "options": {
+                        "current": "This product",
+                        "all": "All products",
+                        "chosen": "Chosen products"
+                    },
+                    "placeholder": "This product",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopReviews",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopReviews"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopReviewsIds": {
+                    "label": "Products",
+                    "type": "text",
+                    "placeholder": "12, 34, BFBE-SKU",
+                    "hasDynamicData": "text",
+                    "description": "Ids or SKUs, separated by commas.",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopReviews"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopReviewsProduct",
+                            "=",
+                            "chosen"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopReviews"
+                },
+                "bfbeShopReviewsCount": {
+                    "label": "Reviews per page",
+                    "type": "number",
+                    "min": 1,
+                    "max": 100,
+                    "placeholder": "6",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopReviews",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopReviews"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopReviewsMinRating": {
+                    "label": "Minimum rating",
+                    "type": "number",
+                    "min": 1,
+                    "max": 5,
+                    "placeholder": "1",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopReviews",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopReviews"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopReviewsVerified": {
+                    "label": "Verified buyers only",
+                    "type": "checkbox",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopReviews",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopReviews"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopReviewsOrder": {
+                    "label": "Order",
+                    "type": "select",
+                    "options": {
+                        "newest": "Newest first",
+                        "highest": "Highest rating first",
+                        "lowest": "Lowest rating first"
+                    },
+                    "placeholder": "Newest first",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopReviews",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopReviews"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopFindNone": {
+                    "label": "Nothing matches",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Nothing matches your answers.",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopFinder",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopFinder"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopFindAgain": {
+                    "label": "Start again words",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Start again",
+                    "description": "Bricks&#039; own No results content, when set, shows instead.",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopFinder",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopFinder"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopFindNoneBg": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": "& + .bfbe-find__none"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopFinder",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopFinder"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopFindNoneBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": "& + .bfbe-find__none"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopFinder",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopFinder"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopFindNonePad": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": "& + .bfbe-find__none"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopFinder",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopFinder"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopFindNoneType": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "typography",
+                            "selector": "& + .bfbe-find__none"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopFinder",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopFinder"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopFindNoneLink": {
+                    "label": "Link colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": "& + .bfbe-find__none a"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopFinder",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopFinder"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistActions": {
+                    "label": "Buttons on each row",
+                    "type": "select",
+                    "options": {
+                        "on": "On",
+                        "off": "Off"
+                    },
+                    "inline": true,
+                    "placeholder": "On",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistAfterMove": {
+                    "label": "After Move to cart",
+                    "type": "select",
+                    "options": {
+                        "remove": "Take it off the list",
+                        "keep": "Keep it on the list"
+                    },
+                    "placeholder": "Take it off the list",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveText": {
+                    "label": "Move to cart word",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Move to cart",
+                    "description": "Add to cart while the row stays on the list.",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistRemoveText": {
+                    "label": "Remove word",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Remove",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistBoughtText": {
+                    "label": "Mark as bought word",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Mark as bought",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistMoveLook": {
+                    "label": "Move to list: open list",
+                    "type": "select",
+                    "options": {
+                        "native": "As the browser draws it",
+                        "custom": "Styled with the controls below"
+                    },
+                    "inline": true,
+                    "placeholder": "As the browser draws it",
+                    "description": "Phones keep their own list either way.",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveSepField": {
+                    "label": "Field",
+                    "type": "separator",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistMoveTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": "select.bfbe-lrow__select"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistMoveBackground": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": "select.bfbe-lrow__select"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistMoveBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": "select.bfbe-lrow__select"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistMovePadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": "select.bfbe-lrow__select"
+                        }
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistMoveChevron": {
+                    "label": "Arrow colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-dd-chevron",
+                            "selector": ""
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveSepPanel": {
+                    "label": "Open list",
+                    "type": "separator",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMovePanelBg": {
+                    "label": "Background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-dd__panel"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMovePanelBorder": {
+                    "label": "Border",
+                    "type": "border",
+                    "css": [
+                        {
+                            "property": "border",
+                            "selector": ".bfbe-dd__panel"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMovePanelShadow": {
+                    "label": "Box shadow",
+                    "type": "box-shadow",
+                    "css": [
+                        {
+                            "property": "box-shadow",
+                            "selector": ".bfbe-dd__panel"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMovePanelPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-dd__panel"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveSepOption": {
+                    "label": "Options",
+                    "type": "separator",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveOptTypography": {
+                    "label": "Typography",
+                    "type": "typography",
+                    "css": [
+                        {
+                            "property": "font",
+                            "selector": ".bfbe-dd__opt"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveOptPadding": {
+                    "label": "Padding",
+                    "type": "dimensions",
+                    "css": [
+                        {
+                            "property": "padding",
+                            "selector": ".bfbe-dd__opt"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveOptHover": {
+                    "label": "Hover background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-dd__opt.is-active"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveHoverText": {
+                    "label": "Hover text",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-dd__opt.is-active"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveOptOnBg": {
+                    "label": "Chosen background",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "background-color",
+                            "selector": ".bfbe-dd__opt[aria-selected=\"true\"]"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveOptOnColor": {
+                    "label": "Chosen text",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "color",
+                            "selector": ".bfbe-dd__opt[aria-selected=\"true\"]"
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopWishlistMoveTick": {
+                    "label": "Tick colour",
+                    "type": "color",
+                    "css": [
+                        {
+                            "property": "--bfbe-dd-tick",
+                            "selector": ""
+                        }
+                    ],
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopWishlistActions",
+                            "!=",
+                            "off"
+                        ],
+                        [
+                            "bfbeShopWishlistMoveLook",
+                            "=",
+                            "custom"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist"
+                },
+                "bfbeShopCompareActions": {
+                    "label": "Remove on each row",
+                    "type": "select",
+                    "options": {
+                        "on": "On",
+                        "off": "Off"
+                    },
+                    "inline": true,
+                    "placeholder": "On",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopCompare",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopCompare"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopCompareRemoveText": {
+                    "label": "Remove word",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Remove",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopCompare"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopCompareActions",
+                            "!=",
+                            "off"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopCompare"
+                },
+                "bfbeShopQuoteActions": {
+                    "label": "Quantity and Remove on each row",
+                    "type": "select",
+                    "options": {
+                        "on": "On",
+                        "off": "Off"
+                    },
+                    "inline": true,
+                    "placeholder": "On",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopQuote",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopQuote"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopQuoteUpdateText": {
+                    "label": "Update word",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Update",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopQuote"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopQuoteActions",
+                            "!=",
+                            "off"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopQuote"
+                },
+                "bfbeShopQuoteRemoveText": {
+                    "label": "Remove word",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Remove",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopQuote"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopQuoteActions",
+                            "!=",
+                            "off"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopQuote"
+                },
+                "bfbeShopSet": {
+                    "label": "Set",
+                    "type": "select",
+                    "options": {
+                        "best_sellers": "Best sellers",
+                        "trending": "Trending",
+                        "top_rated": "Top rated",
+                        "new": "New arrivals",
+                        "on_sale": "On sale",
+                        "price_drops": "Price drops",
+                        "back_in_stock": "Back in stock",
+                        "bought": "Bought before",
+                        "recent": "Recently viewed",
+                        "hotspots": "Pinned on an image"
+                    },
+                    "placeholder": "Best sellers",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopProducts",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopProducts"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopCount": {
+                    "label": "Products per page",
+                    "type": "number",
+                    "min": 1,
+                    "max": 100,
+                    "placeholder": "8",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopProducts",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopProducts"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopDays": {
+                    "label": "Within the last days",
+                    "type": "number",
+                    "min": 0,
+                    "max": 365,
+                    "placeholder": "30",
+                    "inline": true,
+                    "description": "New arrivals: 0 means the newest, however old.",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopProducts"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopSet",
+                            "=",
+                            [
+                                "trending",
+                                "new",
+                                "price_drops",
+                                "back_in_stock"
+                            ]
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopProducts"
+                },
+                "bfbeShopMinReviews": {
+                    "label": "Minimum reviews",
+                    "type": "number",
+                    "min": 1,
+                    "max": 1000,
+                    "placeholder": "1",
+                    "inline": true,
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopProducts"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopSet",
+                            "=",
+                            "top_rated"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopProducts"
+                },
+                "bfbeShopHotspots": {
+                    "label": "Element id",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "abc123",
+                    "description": "Empty: the nearest BFB Image Hotspots.",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopProducts"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopSet",
+                            "=",
+                            "hotspots"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopProducts"
+                },
+                "bfbeShopRecentWhile": {
+                    "label": "While there is nothing yet",
+                    "type": "select",
+                    "options": {
+                        "": "Nothing",
+                        "best_sellers": "Best sellers",
+                        "trending": "Trending",
+                        "top_rated": "Top rated",
+                        "new": "New arrivals",
+                        "on_sale": "On sale",
+                        "price_drops": "Price drops",
+                        "back_in_stock": "Back in stock"
+                    },
+                    "placeholder": "Nothing",
+                    "inline": true,
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopProducts"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopSet",
+                            "=",
+                            "recent"
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopProducts"
+                },
+                "bfbeShopSkipCurrent": {
+                    "label": "Leave out the product on this page",
+                    "type": "checkbox",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopProducts",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopProducts"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopVariationsProduct": {
+                    "label": "Product",
+                    "type": "text",
+                    "placeholder": "This product",
+                    "hasDynamicData": "text",
+                    "description": "An id or SKU; empty means this product.",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopVariations",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopVariations"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopVariationsInStock": {
+                    "label": "In stock only",
+                    "type": "checkbox",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopVariations",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopVariations"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopImagesProduct": {
+                    "label": "Product",
+                    "type": "text",
+                    "placeholder": "This product",
+                    "hasDynamicData": "text",
+                    "description": "An id or SKU; empty means this product.",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopImages",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopImages"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopImagesFollow": {
+                    "label": "Follow the chosen variation",
+                    "type": "checkbox",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopImages",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopImages"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopImagesOption": {
+                    "label": "Follow one option before the rest",
+                    "type": "select",
+                    "options": {
+                        "off": "Off",
+                        "pa_colour": "Colour",
+                        "pa_material": "Material",
+                        "pa_size": "Size",
+                        "pa_warmth": "Warmth"
+                    },
+                    "placeholder": "The first with swatches",
+                    "description": "Its images show as soon as it is chosen.",
+                    "inline": true,
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopImages"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ],
+                        [
+                            "bfbeShopImagesFollow",
+                            "!=",
+                            ""
+                        ]
+                    ],
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopImages"
+                },
+                "bfbeShopImagesFeatured": {
+                    "label": "Leave out the featured image",
+                    "type": "checkbox",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopImages",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopImages"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopTotalsLeave": {
+                    "label": "Leave out",
+                    "type": "select",
+                    "multiple": true,
+                    "options": {
+                        "payment_method": "Payment method",
+                        "order_total": "Total"
+                    },
+                    "placeholder": "Nothing",
+                    "description": "Rows you show elsewhere on the page.",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopOrderTotals",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopOrderTotals"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopOrdersPer": {
+                    "label": "Orders per page",
+                    "type": "number",
+                    "min": 1,
+                    "max": 100,
+                    "placeholder": "3",
+                    "inline": true,
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopOrders",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopOrders"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopOrdersStatus": {
+                    "label": "Statuses",
+                    "type": "select",
+                    "options": {
+                        "account": "As the account lists them",
+                        "paid": "Paid"
+                    },
+                    "placeholder": "As the account lists them",
+                    "description": "Paid means processing and completed.",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopOrders",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopOrders"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopMomentsPlayer": {
+                    "label": "Element id",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "abc123",
+                    "description": "Empty: the nearest BFB Video Player.",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopMoments",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopMoments"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
+                "bfbeShopWishlistType": {
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "label": "Post type",
+                    "type": "select",
+                    "options": {
+                        "product": "Products",
+                        "post": "Posts",
+                        "page": "Pages",
+                        "bfbe_shop_review": "Shop Reviews",
+                        "bfbe_review": "Review",
+                        "bfbe_demo": "Demos",
+                        "bfbe_feature": "Feature visuals",
+                        "bfbe_fixture": "Fixtures",
+                        "bfbe_sweep": "Sweeps",
+                        "bfbe_scratch": "Scratch",
+                        "bricks_template": "My Templates"
+                    },
+                    "inline": true,
+                    "placeholder": "Products",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                }
+            }
+        }
+    },
+    "objectTypes": [
+        "bfbeShopCompare",
+        "bfbeShopFinder",
+        "bfbeShopImages",
+        "bfbeShopMoments",
+        "bfbeShopOrderItems",
+        "bfbeShopOrderTotals",
+        "bfbeShopOrders",
+        "bfbeShopPinProduct",
+        "bfbeShopProducts",
+        "bfbeShopQuote",
+        "bfbeShopReviews",
+        "bfbeShopSaved",
+        "bfbeShopVariations",
+        "bfbeShopWishlist"
+    ]
+}

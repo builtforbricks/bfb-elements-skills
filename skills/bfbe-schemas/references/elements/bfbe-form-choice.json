@@ -195,6 +195,10 @@
                 ]
             ]
         },
+        "bfbeShopFindField": {
+            "title": "Product finder",
+            "tab": "content"
+        },
         "bfbeHover": {
             "title": "Hover effect",
             "tab": "style"
@@ -329,6 +333,44 @@
                 ]
             ]
         },
+        "checkLook": {
+            "tab": "content",
+            "group": "bfbeField",
+            "label": "Box look",
+            "type": "select",
+            "options": {
+                "native": "The browser&#039;s",
+                "custom": "Styled with the controls"
+            },
+            "inline": true,
+            "placeholder": "As the form",
+            "required": [
+                [
+                    "type",
+                    "=",
+                    [
+                        "checkbox",
+                        "multi",
+                        "consent",
+                        "rememberme",
+                        "radio"
+                    ]
+                ],
+                [
+                    "showBox",
+                    "!=",
+                    "row"
+                ],
+                [
+                    "show",
+                    "=",
+                    [
+                        "",
+                        "plain"
+                    ]
+                ]
+            ]
+        },
         "checkMark": {
             "tab": "content",
             "group": "bfbeField",
@@ -357,6 +399,11 @@
                     "showBox",
                     "!=",
                     "row"
+                ],
+                [
+                    "checkLook",
+                    "!=",
+                    "native"
                 ]
             ]
         },
@@ -2362,6 +2409,61 @@
                 ]
             ]
         },
+        "checkPriceAt": {
+            "tab": "content",
+            "group": "bfbeOpts",
+            "label": "Label and price",
+            "type": "select",
+            "options": {
+                "column": "Stacked",
+                "row": "On one line"
+            },
+            "inline": true,
+            "placeholder": "Stacked",
+            "css": [
+                {
+                    "property": "flex-direction",
+                    "selector": ".bfbe-pc__check .bfbe-pc__body"
+                },
+                {
+                    "property": "flex-grow",
+                    "selector": ".bfbe-pc__check .bfbe-pc__body",
+                    "value": "1"
+                },
+                {
+                    "property": "justify-content",
+                    "selector": ".bfbe-pc__check .bfbe-pc__body",
+                    "value": "space-between"
+                },
+                {
+                    "property": "align-items",
+                    "selector": ".bfbe-pc__check .bfbe-pc__body",
+                    "value": "baseline"
+                },
+                {
+                    "property": "column-gap",
+                    "selector": ".bfbe-pc__check .bfbe-pc__body",
+                    "value": "12px"
+                }
+            ],
+            "required": [
+                [
+                    "priceOn",
+                    "!=",
+                    ""
+                ],
+                [
+                    "type",
+                    "=",
+                    "checkbox"
+                ],
+                [
+                    "showBox",
+                    "!=",
+                    "row"
+                ]
+            ]
+        },
         "optPriceTypography": {
             "group": "bfbeOpts",
             "label": "Price typography",
@@ -2672,6 +2774,11 @@
                     "selector": ""
                 }
             ],
+            "required": [
+                "checkLook",
+                "!=",
+                "native"
+            ],
             "tab": "content"
         },
         "checkGap": {
@@ -2699,6 +2806,11 @@
                     "selector": ""
                 }
             ],
+            "required": [
+                "checkLook",
+                "!=",
+                "native"
+            ],
             "tab": "content"
         },
         "checkLine": {
@@ -2711,6 +2823,11 @@
                     "selector": ""
                 }
             ],
+            "required": [
+                "checkLook",
+                "!=",
+                "native"
+            ],
             "tab": "content"
         },
         "checkMarkColor": {
@@ -2722,6 +2839,11 @@
                     "property": "--bfbe-pc-on-accent",
                     "selector": ""
                 }
+            ],
+            "required": [
+                "checkLook",
+                "!=",
+                "native"
             ],
             "tab": "content"
         },
@@ -3418,6 +3540,42 @@
                 ]
             ]
         },
+        "bfbeShopFindBy": {
+            "tab": "content",
+            "group": "bfbeShopFindField",
+            "label": "Finds products by",
+            "type": "select",
+            "options": {
+                "values": "Its values, as filters",
+                "category": "A category",
+                "tag": "A tag",
+                "attribute": "An attribute",
+                "price": "A price range",
+                "sale": "On sale"
+            },
+            "inline": true,
+            "placeholder": "Its values, as filters",
+            "description": "In a form that finds products from its answers."
+        },
+        "bfbeShopFindAttr": {
+            "tab": "content",
+            "group": "bfbeShopFindField",
+            "label": "Attribute",
+            "type": "select",
+            "options": {
+                "pa_colour": "Colour",
+                "pa_material": "Material",
+                "pa_size": "Size",
+                "pa_warmth": "Warmth"
+            },
+            "inline": true,
+            "placeholder": "Pick an attribute",
+            "required": [
+                "bfbeShopFindBy",
+                "=",
+                "attribute"
+            ]
+        },
         "bfbeHoverEffect": {
             "tab": "style",
             "group": "bfbeHover",
@@ -3432,7 +3590,8 @@
                 "follow": "Follow the pointer",
                 "fade": "Fade in",
                 "slide": "Slide in",
-                "grow": "Grow"
+                "grow": "Grow",
+                "image2": "Show the product&#039;s second image"
             },
             "inline": true,
             "placeholder": "None"

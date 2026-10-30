@@ -25,7 +25,7 @@
     ],
     "parent": null,
     "cost": {
-        "css": "0.99 KB",
+        "css": "1.01 KB",
         "js": "0.95 KB",
         "dependencies": "none"
     },
@@ -132,6 +132,13 @@
             },
             "inline": true,
             "placeholder": "Never"
+        },
+        "wcNotice": {
+            "tab": "content",
+            "group": "bfbeBar",
+            "label": "Use the WooCommerce store notice",
+            "type": "checkbox",
+            "description": "Shown while it is on in WooCommerce."
         },
         "dismiss": {
             "tab": "content",
@@ -550,7 +557,8 @@
                 "follow": "Follow the pointer",
                 "fade": "Fade in",
                 "slide": "Slide in",
-                "grow": "Grow"
+                "grow": "Grow",
+                "image2": "Show the product&#039;s second image"
             },
             "inline": true,
             "placeholder": "None"

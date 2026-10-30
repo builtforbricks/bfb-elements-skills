@@ -16,7 +16,7 @@ An image with pins, each a real button that opens its own nested block as a tool
 
 **Not for:** Pins sit at percentages of one picture, each a number or a post's own field, and each opens a block you place yourself. It does not zoom or pan, and it cannot make one pin per post of a query.
 
-**Costs a page:** CSS 1.78 KB, JS 2.40 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 1.82 KB, JS 2.41 KB (gzipped), no dependencies, loaded only on pages that use it. Only where used, a product card in Image Hotspots and the Video Player: shop the look, and the add from a video moment: CSS 0.79 KB, JS 1.08 KB.
 
 **Nestable:** yes · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 

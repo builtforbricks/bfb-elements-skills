@@ -1,0 +1,1767 @@
+{
+    "name": "bfbe-cart-goals",
+    "label": "BFB Cart Goals",
+    "pack": "pro",
+    "skill": "bfbe-cart-goals",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/cart-goals/",
+    "nestable": false,
+    "children": [],
+    "childrenDefault": [],
+    "parent": null,
+    "cost": {
+        "css": "0.99 KB",
+        "js": "1.77 KB",
+        "dependencies": "none"
+    },
+    "requires": [
+        "WooCommerce"
+    ],
+    "since": "2.0.0",
+    "controlGroups": {
+        "_attributes": {
+            "title": "Attributes",
+            "tab": "style",
+            "icon": "html"
+        },
+        "bfbeGoals": {
+            "title": "Goals",
+            "tab": "content"
+        },
+        "bfbeGift": {
+            "title": "Gift choice",
+            "tab": "content",
+            "required": [
+                "shows",
+                "!=",
+                [
+                    "sentence",
+                    "track"
+                ]
+            ]
+        },
+        "bfbeTrack": {
+            "title": "Track",
+            "tab": "content",
+            "required": [
+                "shows",
+                "!=",
+                "gifts"
+            ]
+        },
+        "bfbeHover": {
+            "title": "Hover effect",
+            "tab": "style"
+        },
+        "bfbeOnScroll": {
+            "title": "When the page scrolls",
+            "tab": "style"
+        },
+        "bfbeTooltip": {
+            "title": "Tooltip",
+            "tab": "style"
+        }
+    },
+    "controls": {
+        "infoAttributes": {
+            "tab": "style",
+            "group": "_attributes",
+            "content": "<a href=\"https://academy.bricksbuilder.io/article/custom-attributes\" target=\"_blank\" rel=\"noopener\">Custom attributes</a> will be added to the most relevant HTML node.",
+            "type": "info"
+        },
+        "bfbeDocs": {
+            "tab": "content",
+            "type": "info",
+            "content": "<a href=\"https://builtforbricks.com/bfb-elements/docs/cart-goals/\" target=\"_blank\" rel=\"noopener\">Documentation &#8599;</a>"
+        },
+        "shows": {
+            "tab": "content",
+            "group": "bfbeGoals",
+            "label": "Shows",
+            "type": "select",
+            "options": {
+                "all": "Sentence, track and gift choice",
+                "sentence": "Sentence only",
+                "track": "Track only",
+                "gifts": "Gift choice only"
+            },
+            "inline": true,
+            "placeholder": "Sentence, track and gift choice",
+            "description": "Place a second one to put a part elsewhere."
+        },
+        "nextOnly": {
+            "tab": "content",
+            "group": "bfbeGoals",
+            "label": "Next goal only",
+            "type": "checkbox"
+        },
+        "steps": {
+            "tab": "content",
+            "group": "bfbeGoals",
+            "label": "Steps",
+            "type": "select",
+            "options": {
+                "show": "Show",
+                "hide": "Hide"
+            },
+            "inline": true,
+            "placeholder": "Show"
+        },
+        "toGo": {
+            "tab": "content",
+            "group": "bfbeGoals",
+            "label": "Before a goal",
+            "type": "text",
+            "inline": true,
+            "placeholder": "{amount} to go for {label}"
+        },
+        "reachedText": {
+            "tab": "content",
+            "group": "bfbeGoals",
+            "label": "Goal reached",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Reached: {label}"
+        },
+        "allText": {
+            "tab": "content",
+            "group": "bfbeGoals",
+            "label": "All reached",
+            "type": "text",
+            "inline": true,
+            "placeholder": "You have every reward."
+        },
+        "gifts": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Gift choices",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Ids or SKUs, comma-separated"
+        },
+        "giftWord": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Chooser heading",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Choose your free gift",
+            "required": [
+                "gifts",
+                "!=",
+                ""
+            ]
+        },
+        "chooseWord": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Button",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Choose",
+            "required": [
+                "gifts",
+                "!=",
+                ""
+            ]
+        },
+        "sepGiftLook": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Look",
+            "type": "separator",
+            "required": [
+                "gifts",
+                "!=",
+                ""
+            ]
+        },
+        "choicesAs": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Choices as",
+            "type": "select",
+            "options": {
+                "radios": "Radios",
+                "pills": "Pills"
+            },
+            "inline": true,
+            "placeholder": "Radios",
+            "required": [
+                "gifts",
+                "!=",
+                ""
+            ]
+        },
+        "legendTypography": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Heading",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-goals__legend"
+                }
+            ],
+            "required": [
+                "gifts",
+                "!=",
+                ""
+            ]
+        },
+        "choiceTypography": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Choices",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-goals__gift-choice"
+                }
+            ],
+            "required": [
+                "gifts",
+                "!=",
+                ""
+            ]
+        },
+        "legendSpace": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Space under the heading",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "6px",
+            "css": [
+                {
+                    "property": "margin-block-end",
+                    "selector": ".bfbe-goals__legend"
+                }
+            ],
+            "required": [
+                "gifts",
+                "!=",
+                ""
+            ]
+        },
+        "choiceGap": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Gap between choices",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "4px",
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": ".bfbe-goals__set"
+                }
+            ],
+            "required": [
+                "gifts",
+                "!=",
+                ""
+            ]
+        },
+        "radioGap": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Gap beside the radio",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "8px",
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": ".bfbe-goals__gift-choice"
+                }
+            ],
+            "required": [
+                [
+                    "gifts",
+                    "!=",
+                    ""
+                ],
+                [
+                    "choicesAs",
+                    "!=",
+                    "pills"
+                ]
+            ]
+        },
+        "sepGiftBox": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Box",
+            "type": "separator",
+            "required": [
+                "gifts",
+                "!=",
+                ""
+            ]
+        },
+        "boxBackground": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-goals__gifts"
+                }
+            ],
+            "required": [
+                "gifts",
+                "!=",
+                ""
+            ]
+        },
+        "boxBorder": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-goals__gifts"
+                }
+            ],
+            "required": [
+                "gifts",
+                "!=",
+                ""
+            ]
+        },
+        "boxPadding": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-goals__gifts"
+                }
+            ],
+            "required": [
+                "gifts",
+                "!=",
+                ""
+            ]
+        },
+        "radioSepTick": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Radio",
+            "type": "separator",
+            "required": [
+                [
+                    "gifts",
+                    "!=",
+                    ""
+                ],
+                [
+                    "choicesAs",
+                    "!=",
+                    "pills"
+                ]
+            ]
+        },
+        "radioLook": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Radios",
+            "type": "select",
+            "options": {
+                "native": "As the browser draws it",
+                "custom": "Styled with the controls below"
+            },
+            "inline": true,
+            "placeholder": "As the browser draws it",
+            "required": [
+                [
+                    "gifts",
+                    "!=",
+                    ""
+                ],
+                [
+                    "choicesAs",
+                    "!=",
+                    "pills"
+                ]
+            ]
+        },
+        "radioColor": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Radio colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "accent-color",
+                    "selector": ".bfbe-goals__gift-choice input"
+                },
+                {
+                    "property": "--bfbe-tick-on",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "gifts",
+                    "!=",
+                    ""
+                ],
+                [
+                    "choicesAs",
+                    "!=",
+                    "pills"
+                ]
+            ]
+        },
+        "radioTickSize": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Size",
+            "type": "number",
+            "css": [
+                {
+                    "property": "--bfbe-tick-size",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "gifts",
+                    "!=",
+                    ""
+                ],
+                [
+                    "choicesAs",
+                    "!=",
+                    "pills"
+                ],
+                [
+                    "radioLook",
+                    "=",
+                    "custom"
+                ]
+            ],
+            "units": true,
+            "inline": true,
+            "placeholder": "1.15em"
+        },
+        "radioTickBg": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-tick-bg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "gifts",
+                    "!=",
+                    ""
+                ],
+                [
+                    "choicesAs",
+                    "!=",
+                    "pills"
+                ],
+                [
+                    "radioLook",
+                    "=",
+                    "custom"
+                ]
+            ]
+        },
+        "radioTickBorder": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-tick"
+                }
+            ],
+            "required": [
+                [
+                    "gifts",
+                    "!=",
+                    ""
+                ],
+                [
+                    "choicesAs",
+                    "!=",
+                    "pills"
+                ],
+                [
+                    "radioLook",
+                    "=",
+                    "custom"
+                ]
+            ]
+        },
+        "radioTickHover": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Edge on hover",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-tick-hover",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "gifts",
+                    "!=",
+                    ""
+                ],
+                [
+                    "choicesAs",
+                    "!=",
+                    "pills"
+                ],
+                [
+                    "radioLook",
+                    "=",
+                    "custom"
+                ]
+            ]
+        },
+        "radioSepTicked": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Chosen",
+            "type": "separator",
+            "required": [
+                [
+                    "gifts",
+                    "!=",
+                    ""
+                ],
+                [
+                    "choicesAs",
+                    "!=",
+                    "pills"
+                ],
+                [
+                    "radioLook",
+                    "=",
+                    "custom"
+                ]
+            ]
+        },
+        "radioTickOnLine": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Edge",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-tick-on-line",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "gifts",
+                    "!=",
+                    ""
+                ],
+                [
+                    "choicesAs",
+                    "!=",
+                    "pills"
+                ],
+                [
+                    "radioLook",
+                    "=",
+                    "custom"
+                ]
+            ]
+        },
+        "radioTickMarkColor": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Mark colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-tick-mark",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "gifts",
+                    "!=",
+                    ""
+                ],
+                [
+                    "choicesAs",
+                    "!=",
+                    "pills"
+                ],
+                [
+                    "radioLook",
+                    "=",
+                    "custom"
+                ]
+            ]
+        },
+        "sepGiftPills": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Pills",
+            "type": "separator",
+            "required": [
+                [
+                    "gifts",
+                    "!=",
+                    ""
+                ],
+                [
+                    "choicesAs",
+                    "=",
+                    "pills"
+                ]
+            ]
+        },
+        "pillBackground": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": "&[data-bfbe-choices=\"pills\"] .bfbe-goals__gift-choice"
+                }
+            ],
+            "required": [
+                [
+                    "gifts",
+                    "!=",
+                    ""
+                ],
+                [
+                    "choicesAs",
+                    "=",
+                    "pills"
+                ]
+            ]
+        },
+        "pillColor": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Text colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": "&[data-bfbe-choices=\"pills\"] .bfbe-goals__gift-choice"
+                }
+            ],
+            "required": [
+                [
+                    "gifts",
+                    "!=",
+                    ""
+                ],
+                [
+                    "choicesAs",
+                    "=",
+                    "pills"
+                ]
+            ]
+        },
+        "pillBorder": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&[data-bfbe-choices=\"pills\"] .bfbe-goals__gift-choice"
+                }
+            ],
+            "required": [
+                [
+                    "gifts",
+                    "!=",
+                    ""
+                ],
+                [
+                    "choicesAs",
+                    "=",
+                    "pills"
+                ]
+            ]
+        },
+        "pillPadding": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": "&[data-bfbe-choices=\"pills\"] .bfbe-goals__gift-choice"
+                }
+            ],
+            "required": [
+                [
+                    "gifts",
+                    "!=",
+                    ""
+                ],
+                [
+                    "choicesAs",
+                    "=",
+                    "pills"
+                ]
+            ]
+        },
+        "pillHoverBackground": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": "&[data-bfbe-choices=\"pills\"] .bfbe-goals__gift-choice:not(:has(input:checked)):hover"
+                }
+            ],
+            "required": [
+                [
+                    "gifts",
+                    "!=",
+                    ""
+                ],
+                [
+                    "choicesAs",
+                    "=",
+                    "pills"
+                ]
+            ]
+        },
+        "pillHoverBorder": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Hover border colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "border-color",
+                    "selector": "&[data-bfbe-choices=\"pills\"] .bfbe-goals__gift-choice:not(:has(input:checked)):hover"
+                }
+            ],
+            "required": [
+                [
+                    "gifts",
+                    "!=",
+                    ""
+                ],
+                [
+                    "choicesAs",
+                    "=",
+                    "pills"
+                ]
+            ]
+        },
+        "pillOnBackground": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Chosen background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": "&[data-bfbe-choices=\"pills\"] .bfbe-goals__gift-choice:has(input:checked)"
+                }
+            ],
+            "required": [
+                [
+                    "gifts",
+                    "!=",
+                    ""
+                ],
+                [
+                    "choicesAs",
+                    "=",
+                    "pills"
+                ]
+            ]
+        },
+        "pillOnColor": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Chosen text colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": "&[data-bfbe-choices=\"pills\"] .bfbe-goals__gift-choice:has(input:checked) .bfbe-goals__gift-name"
+                }
+            ],
+            "required": [
+                [
+                    "gifts",
+                    "!=",
+                    ""
+                ],
+                [
+                    "choicesAs",
+                    "=",
+                    "pills"
+                ]
+            ]
+        },
+        "pillOnBorder": {
+            "tab": "content",
+            "group": "bfbeGift",
+            "label": "Chosen border colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "border-color",
+                    "selector": "&[data-bfbe-choices=\"pills\"] .bfbe-goals__gift-choice:has(input:checked)"
+                }
+            ],
+            "required": [
+                [
+                    "gifts",
+                    "!=",
+                    ""
+                ],
+                [
+                    "choicesAs",
+                    "=",
+                    "pills"
+                ]
+            ]
+        },
+        "gap": {
+            "tab": "content",
+            "group": "bfbeTrack",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "10px",
+            "css": [
+                {
+                    "property": "row-gap",
+                    "selector": ""
+                },
+                {
+                    "property": "--bfbe-goals-gap",
+                    "selector": ""
+                }
+            ]
+        },
+        "sepSentence": {
+            "tab": "content",
+            "group": "bfbeTrack",
+            "label": "Sentence",
+            "type": "separator"
+        },
+        "textTypography": {
+            "tab": "content",
+            "group": "bfbeTrack",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "font",
+                    "selector": ".bfbe-goals__text"
+                }
+            ]
+        },
+        "sepTrack": {
+            "tab": "content",
+            "group": "bfbeTrack",
+            "label": "Track",
+            "type": "separator"
+        },
+        "trackHeight": {
+            "tab": "content",
+            "group": "bfbeTrack",
+            "label": "Height",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "8px",
+            "css": [
+                {
+                    "property": "--bfbe-goals-h",
+                    "selector": ""
+                }
+            ]
+        },
+        "trackColor": {
+            "tab": "content",
+            "group": "bfbeTrack",
+            "label": "Colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-goals__track"
+                }
+            ]
+        },
+        "fillColor": {
+            "tab": "content",
+            "group": "bfbeTrack",
+            "label": "Fill colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-goals__fill"
+                },
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-goals__step.is-reached .bfbe-goals__mark"
+                }
+            ]
+        },
+        "trackBorder": {
+            "tab": "content",
+            "group": "bfbeTrack",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-goals__track"
+                }
+            ]
+        },
+        "sepSteps": {
+            "tab": "content",
+            "group": "bfbeTrack",
+            "label": "Steps",
+            "type": "separator",
+            "required": [
+                "steps",
+                "!=",
+                "hide"
+            ]
+        },
+        "labelDisplay": {
+            "tab": "content",
+            "group": "bfbeTrack",
+            "label": "Goal names",
+            "type": "select",
+            "options": {
+                "block": "Show",
+                "none": "Hide"
+            },
+            "inline": true,
+            "placeholder": "Show",
+            "css": [
+                {
+                    "property": "display",
+                    "selector": ".bfbe-goals__label"
+                }
+            ],
+            "required": [
+                "steps",
+                "!=",
+                "hide"
+            ]
+        },
+        "stepTypography": {
+            "tab": "content",
+            "group": "bfbeTrack",
+            "label": "Goal name",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "font",
+                    "selector": ".bfbe-goals__step"
+                }
+            ],
+            "required": [
+                "steps",
+                "!=",
+                "hide"
+            ]
+        },
+        "thresholdTypography": {
+            "tab": "content",
+            "group": "bfbeTrack",
+            "label": "Amount",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-goals__threshold"
+                }
+            ],
+            "required": [
+                "steps",
+                "!=",
+                "hide"
+            ]
+        },
+        "reachedTypography": {
+            "tab": "content",
+            "group": "bfbeTrack",
+            "label": "Reached",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-goals__step.is-reached .bfbe-goals__label"
+                }
+            ],
+            "required": [
+                "steps",
+                "!=",
+                "hide"
+            ]
+        },
+        "markColor": {
+            "tab": "content",
+            "group": "bfbeTrack",
+            "label": "Colour",
+            "type": "color",
+            "description": "Marks not reached yet. Reached ones take the fill.",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-goals__step:not(.is-reached) .bfbe-goals__mark"
+                }
+            ],
+            "required": [
+                "steps",
+                "!=",
+                "hide"
+            ]
+        },
+        "markBorder": {
+            "tab": "content",
+            "group": "bfbeTrack",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-goals__mark"
+                }
+            ],
+            "required": [
+                "steps",
+                "!=",
+                "hide"
+            ]
+        },
+        "bfbeHoverEffect": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Effect",
+            "type": "select",
+            "options": {
+                "lift": "Lift",
+                "zoom": "Zoom the picture",
+                "shine": "Shine",
+                "border": "Gradient border",
+                "tilt": "Tilt",
+                "follow": "Follow the pointer",
+                "fade": "Fade in",
+                "slide": "Slide in",
+                "grow": "Grow",
+                "image2": "Show the product&#039;s second image"
+            },
+            "inline": true,
+            "placeholder": "None"
+        },
+        "bfbeHoverOn": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Responds to",
+            "type": "select",
+            "options": {
+                "parent": "A hovered parent"
+            },
+            "inline": true,
+            "placeholder": "This element",
+            "description": "The parent needs Children respond to hover.",
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverFrom": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Comes from",
+            "type": "select",
+            "options": {
+                "up": "Above",
+                "left": "The left",
+                "right": "The right"
+            },
+            "inline": true,
+            "placeholder": "Below",
+            "required": [
+                "bfbeHoverEffect",
+                "=",
+                "slide"
+            ]
+        },
+        "bfbeHoverStrength": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Strength",
+            "type": "number",
+            "min": 0.1,
+            "max": 3,
+            "step": 0.1,
+            "inline": true,
+            "placeholder": "1",
+            "breakpoints": true,
+            "css": [
+                {
+                    "property": "--bfbe-hv-k",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverSpeed": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Speed",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "300",
+            "description": "Milliseconds.",
+            "css": [
+                {
+                    "property": "--bfbe-hv-t",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverDelay": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Milliseconds, so parts arrive in sequence.",
+            "css": [
+                {
+                    "property": "--bfbe-hv-d",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "bfbeHoverEffect",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeHoverEffect",
+                    "!=",
+                    [
+                        "tilt",
+                        "follow"
+                    ]
+                ]
+            ]
+        },
+        "bfbeHoverColor": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Colour",
+            "type": "color",
+            "inline": true,
+            "css": [
+                {
+                    "property": "--bfbe-hv-c",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "=",
+                [
+                    "shine",
+                    "border"
+                ]
+            ]
+        },
+        "bfbeHoverOff": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Off below",
+            "type": "select",
+            "options": {
+                "480": "480 px",
+                "640": "640 px",
+                "768": "768 px",
+                "992": "992 px"
+            },
+            "inline": true,
+            "placeholder": "Never",
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverScope": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Children respond to hover",
+            "type": "checkbox",
+            "description": "Parts inside set to A hovered parent move."
+        },
+        "bfbeHsWhen": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "When scrolled",
+            "type": "select",
+            "options": {
+                "hide": "Hides",
+                "fade": "Fades out, keeps its space",
+                "show": "Appears only then"
+            },
+            "inline": true,
+            "placeholder": "Stays as it is"
+        },
+        "bfbeHsCollapse": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Collapses",
+            "type": "select",
+            "options": {
+                "across": "Sideways"
+            },
+            "inline": true,
+            "placeholder": "Downward",
+            "required": [
+                "bfbeHsWhen",
+                "=",
+                [
+                    "hide",
+                    "show"
+                ]
+            ]
+        },
+        "bfbeHsOver": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Over the first section",
+            "type": "select",
+            "options": {
+                "hide": "Hides",
+                "show": "Appears only then"
+            },
+            "inline": true,
+            "placeholder": "Stays as it is",
+            "description": "Only with the header over the first section."
+        },
+        "bfbeHsStyleSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Scrolled: styling"
+        },
+        "bfbeHsPadding": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsMargin": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Margin",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "margin",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsWidth": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "rerender": true,
+            "css": [
+                {
+                    "property": "width",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ]
+        },
+        "bfbeHsHeight": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Height",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "rerender": true,
+            "css": [
+                {
+                    "property": "height",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ]
+        },
+        "bfbeHsBackground": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsBlur": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Blur behind",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "0",
+            "rerender": true,
+            "css": [
+                {
+                    "property": "--bfbe-hs-blur",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsBorder": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsShadow": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Box shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsTypography": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOpacity": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Opacity",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "opacity",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsScale": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Scale",
+            "type": "number",
+            "min": 0.1,
+            "max": 3,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "scale",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsGap": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Over the first section: styling"
+        },
+        "bfbeHsOverBackground": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverTypography": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverBorder": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverShadow": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Box shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverOpacity": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Opacity",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "opacity",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsMotionSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Motion"
+        },
+        "bfbeHsElDuration": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Duration",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "Follows the header",
+            "description": "Milliseconds.",
+            "css": [
+                {
+                    "property": "--bfbe-hs-dur",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsElEasing": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Easing",
+            "type": "select",
+            "options": {
+                "cubic-bezier(0.16, 1, 0.3, 1)": "Snappy"
+            },
+            "inline": true,
+            "placeholder": "Follows the header",
+            "css": [
+                {
+                    "property": "--bfbe-hs-ease",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsDelay": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Milliseconds, scrolling down only, so parts arrive in sequence.",
+            "css": [
+                {
+                    "property": "--bfbe-hs-delay",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeTooltip": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Text",
+            "type": "textarea",
+            "hasDynamicData": "text",
+            "description": "Shown on hover and focus."
+        },
+        "bfbeTooltipPlace": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Place",
+            "type": "select",
+            "options": {
+                "top": "Above",
+                "right": "Right",
+                "bottom": "Below",
+                "left": "Left"
+            },
+            "inline": true,
+            "placeholder": "Above",
+            "description": "It flips when there is no room.",
+            "required": [
+                "bfbeTooltip",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeTooltipDelay": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 50,
+            "inline": true,
+            "placeholder": "150",
+            "description": "Milliseconds before it shows on hover.",
+            "required": [
+                "bfbeTooltip",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeTooltipWidth": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Max width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "240px",
+            "css": [
+                {
+                    "property": "--bfbe-tip-w",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeTooltip",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeTooltipBackground": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-tip-bg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeTooltip",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeTooltipColor": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Text colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-tip-fg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeTooltip",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeTooltipTypography": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-tip"
+                }
+            ],
+            "required": [
+                "bfbeTooltip",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeTooltipBorder": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-tip"
+                }
+            ],
+            "required": [
+                "bfbeTooltip",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeTooltipNoArrow": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Hide the arrow",
+            "type": "checkbox",
+            "required": [
+                "bfbeTooltip",
+                "!=",
+                ""
+            ]
+        }
+    }
+}

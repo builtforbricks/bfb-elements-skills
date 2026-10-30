@@ -16,7 +16,7 @@ A nestable form you build from field elements and step elements, with uploads an
 
 **Not for:** Not for taking card details on your own page: payment happens on Stripe's own Checkout page. Uploads, signatures, steps, totals and other repeaters cannot sit inside a Repeater's rows, which suit rows of simple fields.
 
-**Costs a page:** CSS 2.57 KB, JS 3.06 KB (gzipped), no dependencies, loaded only on pages that use it. Only where used, the steps engine: JS 3.00 KB. Only where used, the checks and their words: CSS 0.34 KB, JS 2.63 KB. Only where used, the formula: JS 1.00 KB. Only where used, a warning before leaving: JS 0.39 KB. Only where used, values from rules and the address: JS 0.94 KB. Only where used, the pricing: JS 2.59 KB. Only where used, the pricing rules: JS 1.37 KB. Only where used, floating labels: CSS 0.81 KB, JS 1.33 KB.
+**Costs a page:** CSS 2.69 KB, JS 3.06 KB (gzipped), no dependencies, loaded only on pages that use it. Only where used, the steps engine: JS 3.00 KB. Only where used, the checks and their words: CSS 0.34 KB, JS 2.63 KB. Only where used, the formula: JS 1.00 KB. Only where used, a warning before leaving: JS 0.39 KB. Only where used, values from rules and the address: JS 0.94 KB. Only where used, the pricing: JS 2.59 KB. Only where used, the pricing rules: JS 1.37 KB. Only where used, floating labels: CSS 0.83 KB, JS 1.34 KB. Only where used, alerts: the chosen variation in a back-in-stock or price-drop form: JS 0.25 KB. Only where used, the product finder: BFB Advanced Forms answers drawn as a Product finder loop on the result step: CSS 0.22 KB, JS 1.15 KB.
 
 **Nestable:** yes · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 
@@ -67,11 +67,11 @@ What the builder inserts, as a tree `bricks/add-element` accepts (ids omitted):
 }
 ```
 
-`bfbe-form-text` (BFB Text Field), 100 controls, schema `../bfbe-schemas/references/elements/bfbe-form-text.json`.
+`bfbe-form-text` (BFB Text Field), 150 controls, schema `../bfbe-schemas/references/elements/bfbe-form-text.json`.
 
 `bfbe-form-button` (BFB Form Button), 105 controls, schema `../bfbe-schemas/references/elements/bfbe-form-button.json`.
 
-`bfbe-form-choice` (BFB Choice Field), 163 controls, schema `../bfbe-schemas/references/elements/bfbe-form-choice.json`, nestable itself.
+`bfbe-form-choice` (BFB Choice Field), 167 controls, schema `../bfbe-schemas/references/elements/bfbe-form-choice.json`, nestable itself.
 
 `bfbe-form-number` (BFB Number Field), 135 controls, schema `../bfbe-schemas/references/elements/bfbe-form-number.json`.
 
@@ -105,7 +105,7 @@ Styling only, every key in the schema file: `uploadButtonTypography`, `uploadBut
 Styling, in the schema file: `fieldGap`.
 
 ### Actions (`actions`)
-- `actions` (select) **Actions after successful form submit**: options: `custom` Custom, `email` Email, `webhook` Webhook, `redirect` Redirect, `mailchimp` Mailchimp, `sendgrid` SendGrid, `login` User login, `registration` User registration, `lost-password` Lost password, `reset-password` Reset password, `create-post` Create post, `update-post` Update post, `save-submission` Save submission, `bfbe-user` Update the user, `bfbe-meta` Update post fields, `bfbe-delete` Delete the post, `bfbe-pdf` Quote PDF, `bfbe-pay` Take payment, `bfbe-mailerpress` Add to MailerPress. Pick what happens after a send. Bricks' own actions are here, with six more from BFB Elements: Update the user, Update post fields, Delete the post, Quote PDF, Take payment and Add to MailerPress. An action with settings opens a group of its own.
+- `actions` (select) **Actions after successful form submit**: options: `custom` Custom, `email` Email, `webhook` Webhook, `redirect` Redirect, `mailchimp` Mailchimp, `sendgrid` SendGrid, `login` User login, `registration` User registration, `lost-password` Lost password, `reset-password` Reset password, `create-post` Create post, `update-post` Update post, `save-submission` Save submission, `bfbe-user` Update the user, `bfbe-meta` Update post fields, `bfbe-delete` Delete the post, `bfbe-pdf` Quote PDF, `bfbe-pay` Take payment, `bfbe-mailerpress` Add to MailerPress, `bfbe-alert-stock` Tell me when it is back, `bfbe-alert-price` Tell me when the price drops, `bfbe-quote-order` Create a draft order from the quote list. Pick what happens after a send. Bricks' own actions are here, with six more from BFB Elements: Update the user, Update post fields, Delete the post, Quote PDF, Take payment and Add to MailerPress. An action with settings opens a group of its own.
 - `successMessage` (text) **Success message**: default `Message successfully sent. We will get back to you as soon as possible.`. Bricks' own message after a successful send.
 
 ### Notices (`notices`)
@@ -248,6 +248,13 @@ The whole group shows only when `actions` is `unlock-password-protection`.
 - `passwordProtectionPassword` (select) **Field: Password**: options: the site's own, read when the panel opens. If no form field is selected, the first password field in the form is used.
 - `passwordProtectionErrorMessage` (text) **Error message**
 
+### Stock and price alerts (`bfbeAlerts`)
+The whole group shows only when `actions` is `bfbe-alert-stock` or `bfbe-alert-price`.
+- `alertEmail` (text) **Email from the field**: placeholder The first email field
+- `alertVariation` (text) **Variation from the field**: placeholder variation. A hidden field: filled as the shopper chooses.
+- `alertProduct` (text) **Product from the field**: placeholder The product the form is on
+- `alertDone` (text) **Message after signing up**: placeholder Check your inbox to confirm.
+
 ### Update the user (`bfbeUser`)
 The whole group shows only when `actions` is `bfbe-user`.
 - `userRows` (repeater) **Fields to change**. Add one row per field of the logged-in visitor's profile. Each has Change (First name, Last name, Nickname, Name shown, Website, About or A custom field), Field name, How, From the answer, By and Kept by. It never changes a role, a password or an email address.
@@ -353,7 +360,8 @@ Styling only, every key in the schema file: `accent`, `trackHeight`, `trackColor
 Styling only, every key in the schema file: `optPadding`, `optAlign`, `optBorder`, `optBackground`, `optHover`, `optChosen`, `optChosenText`, `optChosenBorder`, `optsBackground`, `optsBorder`, `optsPadding`, `optsShadow`, `optGap`, `optMin`, `optColumns`, `optTitleTypography`, `optNoteTypography`, `optPriceTypography`, `optIconSize`, `optIconColor`, `badgeBackground`, `badgeColor`, `badgeTypography`, `badgeGap`, `badgePadding`, `badgeBorder`, `wasTypography`.
 
 ### Tick box (`bfbeCheck`)
-Styling only, every key in the schema file: `checkSize`, `checkRadius`, `checkGap`, `checkBackground`, `checkLine`, `checkMarkColor`.
+- `checkLook` (select) **Look**: options: `native` The browser's. Tick boxes and radios alike.
+Styling, in the schema file: `checkSize`, `checkRadius`, `checkGap`, `checkBackground`, `checkLine`, `checkMarkColor`.
 
 ### Switch (`bfbeSwitch`)
 Styling only, every key in the schema file: `rowPadding`, `rowBorder`, `rowBackground`, `swWidth`, `swHeight`, `swPad`, `swOff`, `swOn`, `swBorder`, `swDot`, `swDotOff`, `swDotOn`, `swDotBorder`.
@@ -372,6 +380,9 @@ Styling only, every key in the schema file: `calDayTypography`, `calDaySize`, `c
 
 ### Stepper (`bfbeStepper`)
 Styling only, every key in the schema file: `stepperBackground`, `stepperBorder`, `stepperPadding`, `stepperGap`, `stepperWidth`, `stepTypography`, `stepBackground`, `stepBorder`, `stepPadding`, `stepWidth`, `stepHeight`, `stepHoverBackground`, `stepHoverColor`, `numberTypography`, `numberBackground`, `numberBorder`, `numberPadding`, `numberWidth`.
+
+### Colour picker (`bfbeColor`)
+Styling only, every key in the schema file: `colourSwatchSize`, `colourSwatchBorder`, `colourPanelWidth`, `colourPanelBackground`, `colourPanelBorder`, `colourPanelShadow`, `colourPanelPadding`, `colourPanelGap`, `colourPanelOffset`, `colourAreaHeight`, `colourAreaBorder`, `colourHueHeight`, `colourHueBorder`, `colourPointerSize`, `colourPointerBorder`, `colourCodeBackground`, `colourCodeBorder`, `colourCodeTypography`, `colourOfferedSize`, `colourOfferedGap`, `colourOfferedBorder`.
 
 ### Code button (`bfbePromoUi`)
 Styling only, every key in the schema file: `promoButtonBackground`, `promoButtonColor`.
@@ -394,6 +405,27 @@ Styling, in the schema file: `errorTypography`, `errorSpace`, `errorBorder`, `er
 - `builderView` (select) **Show it**: options: `free` One step at a time, click any step (default), `open` Every step open, so you can style it, `live` Working, as on the site. One step at a time, click any step (the default), Every step open, so you can style it, or Working, as on the site, where steps work and rules hide fields as the site does.
 - `ddOpen` (select) **Dropdown lists**: options: `closed` Closed, as the site leaves them (default), `open` Open, so you can style them. Closed, as the site leaves them (the default), or Open, so you can style them.
 - `floatPreview` (select) **Floating labels**: options: `page` As the page shows them (default), `up` Risen, so you can style them; only when `labelsAt` is `border`. With floating labels on, show them As the page shows them (the default) or Risen, so you can style them.
+
+### Find products from the answers (`bfbeShopFind`)
+- `bfbeShopFind` (checkbox) **Find products from the answers**. The choices become filters; a Product finder loop shows matches.
+- `bfbeShopFindTo` (select) **Show the matches**: options: `here` On this page (default), `page` On another page; only when `bfbeShopFind` is set
+- `bfbeShopFindPage` (link) **The page**: only when `bfbeShopFind` is set and `bfbeShopFindTo` is `page`
+- `bfbeShopFindLoop` (text) **The loop**: placeholder Its element id; only when `bfbeShopFind` is set and `bfbeShopFindTo` is not `page`. Empty: the first Product finder loop on the page.
+
+### Draft order (`bfbeQuoteOrder`)
+The whole group shows only when `actions` is `bfbe-quote-order`.
+- `bfbeQuoteEmail` (text) **Email from the answer**: placeholder The first email field
+- `bfbeQuoteName` (text) **Name from the answer**: placeholder name
+- `bfbeQuoteEmpty` (text) **When the list is empty**: placeholder Your quote list is empty.
+
+### WooCommerce (`bfbeShopWoo`)
+- `bfbeCartExtras` (checkbox) **Extras for this cart**. Priced choices become cart fees, priced on the server.
+- `bfbeCartExtrasAs` (select) **Fees**: options: `each` One per priced choice (default), `total` One for the total; only when `bfbeCartExtras` is set
+- `bfbeCartExtrasName` (text) **Fee name**: placeholder Extras; only when `bfbeCartExtras` is set and `bfbeCartExtrasAs` is `total`
+- `bfbeCartExtrasTax` (checkbox) **Taxed**: only when `bfbeCartExtras` is set
+- `bfbeShopOptions` (checkbox) **Options for this product**. Answers go with Add to cart, priced on the server.
+- `bfbeShopOptionsLine` (text) **Options line**: placeholder Your options; only when `bfbeShopOptions` is set. Above the answers in the cart and on the order.
+- `bfbeShopOptionsTotal` (select) **The total shows**: options: `with` The product price with the options (default), `alone` The options alone; only when `bfbeShopOptions` is set
 
 ## What it guarantees for accessibility (do not undo)
 - Enter inside a text field moves to the next step by default, and Enter on the last step sends the form. Set Enter in a field to Does nothing and Enter is ignored until the last step.

@@ -1,0 +1,1784 @@
+{
+    "name": "bfbe-review-form",
+    "label": "BFB Review Form",
+    "pack": "pro",
+    "skill": "bfbe-review-form",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/review-form/",
+    "nestable": false,
+    "children": [],
+    "childrenDefault": [],
+    "parent": null,
+    "cost": null,
+    "requires": [
+        "WooCommerce"
+    ],
+    "since": "2.0.0",
+    "controlGroups": {
+        "_attributes": {
+            "title": "Attributes",
+            "tab": "style",
+            "icon": "html"
+        },
+        "bfbeRvf": {
+            "title": "Form",
+            "tab": "content"
+        },
+        "bfbeRvfArea": {
+            "title": "Area and card",
+            "tab": "content"
+        },
+        "bfbeRvfFields": {
+            "title": "Title and fields",
+            "tab": "content"
+        },
+        "bfbeRvfText": {
+            "title": "Review box and stars",
+            "tab": "content"
+        },
+        "bfbeRvfUpload": {
+            "title": "Photo upload",
+            "tab": "content"
+        },
+        "bfbeRvfButton": {
+            "title": "Button",
+            "tab": "content"
+        },
+        "bfbeHover": {
+            "title": "Hover effect",
+            "tab": "style"
+        },
+        "bfbeOnScroll": {
+            "title": "When the page scrolls",
+            "tab": "style"
+        },
+        "bfbeTooltip": {
+            "title": "Tooltip",
+            "tab": "style"
+        }
+    },
+    "controls": {
+        "infoAttributes": {
+            "tab": "style",
+            "group": "_attributes",
+            "content": "<a href=\"https://academy.bricksbuilder.io/article/custom-attributes\" target=\"_blank\" rel=\"noopener\">Custom attributes</a> will be added to the most relevant HTML node.",
+            "type": "info"
+        },
+        "bfbeDocs": {
+            "tab": "content",
+            "type": "info",
+            "content": "<a href=\"https://builtforbricks.com/bfb-elements/docs/review-form/\" target=\"_blank\" rel=\"noopener\">Documentation &#8599;</a>"
+        },
+        "title": {
+            "tab": "content",
+            "group": "bfbeRvf",
+            "label": "Title",
+            "type": "text",
+            "hasDynamicData": "text",
+            "inline": true,
+            "placeholder": "Add a review",
+            "description": "Empty: WooCommerce words it."
+        },
+        "bfbeShopReviewsFormSpace": {
+            "tab": "content",
+            "group": "bfbeRvfArea",
+            "label": "Space above",
+            "type": "number",
+            "units": true,
+            "css": [
+                {
+                    "property": "margin-top",
+                    "selector": "#review_form_wrapper"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormAreaBackground": {
+            "tab": "content",
+            "group": "bfbeRvfArea",
+            "label": "Area background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": "#review_form_wrapper"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormAreaBorder": {
+            "tab": "content",
+            "group": "bfbeRvfArea",
+            "label": "Area border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "#review_form_wrapper"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormAreaPadding": {
+            "tab": "content",
+            "group": "bfbeRvfArea",
+            "label": "Area padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": "#review_form_wrapper"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormBackground": {
+            "tab": "content",
+            "group": "bfbeRvfArea",
+            "label": "Card background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".comment-respond"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormBorder": {
+            "tab": "content",
+            "group": "bfbeRvfArea",
+            "label": "Card border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".comment-respond"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormPadding": {
+            "tab": "content",
+            "group": "bfbeRvfArea",
+            "label": "Card padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".comment-respond"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormTitleTypography": {
+            "tab": "content",
+            "group": "bfbeRvfFields",
+            "label": "Title typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "font",
+                    "selector": ".comment-reply-title"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormTitleGap": {
+            "tab": "content",
+            "group": "bfbeRvfFields",
+            "label": "Space under the title",
+            "type": "number",
+            "units": true,
+            "css": [
+                {
+                    "property": "margin-bottom",
+                    "selector": ".comment-reply-title"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormSepLayout": {
+            "tab": "content",
+            "group": "bfbeRvfFields",
+            "label": "Layout",
+            "type": "separator"
+        },
+        "bfbeShopReviewsFormColumns": {
+            "tab": "content",
+            "group": "bfbeRvfFields",
+            "label": "Columns",
+            "type": "number",
+            "min": 1,
+            "max": 4,
+            "description": "Name and email share a row.",
+            "css": [
+                {
+                    "property": "grid-template-columns",
+                    "selector": ".comment-form",
+                    "value": "repeat(%s, minmax(0, 1fr))"
+                },
+                {
+                    "property": "display",
+                    "selector": ".comment-form",
+                    "value": "grid"
+                },
+                {
+                    "property": "grid-column",
+                    "selector": ".comment-form > *",
+                    "value": "1 / -1"
+                },
+                {
+                    "property": "margin",
+                    "selector": ".comment-form > *",
+                    "value": "0"
+                },
+                {
+                    "property": "grid-column",
+                    "selector": ".comment-form-author",
+                    "value": "auto"
+                },
+                {
+                    "property": "grid-column",
+                    "selector": ".comment-form-email",
+                    "value": "auto"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormRowGap": {
+            "tab": "content",
+            "group": "bfbeRvfFields",
+            "label": "Row gap",
+            "type": "number",
+            "units": true,
+            "css": [
+                {
+                    "property": "row-gap",
+                    "selector": ".comment-form"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsFormColumns",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeShopReviewsFormColumnGap": {
+            "tab": "content",
+            "group": "bfbeRvfFields",
+            "label": "Column gap",
+            "type": "number",
+            "units": true,
+            "css": [
+                {
+                    "property": "column-gap",
+                    "selector": ".comment-form"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsFormColumns",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeShopReviewsFormSepFields": {
+            "tab": "content",
+            "group": "bfbeRvfFields",
+            "label": "Fields",
+            "type": "separator"
+        },
+        "bfbeShopReviewsFormNotes": {
+            "tab": "content",
+            "group": "bfbeRvfFields",
+            "label": "Notes typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "font",
+                    "selector": ".comment-notes"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormLabel": {
+            "tab": "content",
+            "group": "bfbeRvfFields",
+            "label": "Label typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "font",
+                    "selector": ".comment-form label"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormLabelGap": {
+            "tab": "content",
+            "group": "bfbeRvfFields",
+            "label": "Space under labels",
+            "type": "number",
+            "units": true,
+            "css": [
+                {
+                    "property": "margin-bottom",
+                    "selector": ".comment-form label"
+                },
+                {
+                    "property": "display",
+                    "selector": ".comment-form label",
+                    "value": "block"
+                },
+                {
+                    "property": "margin-bottom",
+                    "selector": ".comment-form .comment-form-cookies-consent label",
+                    "value": "0"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormRequired": {
+            "tab": "content",
+            "group": "bfbeRvfFields",
+            "label": "Required mark",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".comment-form .required"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormConsentGap": {
+            "tab": "content",
+            "group": "bfbeRvfFields",
+            "label": "Checkbox gap",
+            "type": "number",
+            "units": true,
+            "description": "Between the consent box and its words.",
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": ".comment-form-cookies-consent"
+                },
+                {
+                    "property": "display",
+                    "selector": ".comment-form-cookies-consent",
+                    "value": "flex"
+                },
+                {
+                    "property": "align-items",
+                    "selector": ".comment-form-cookies-consent",
+                    "value": "flex-start"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormConsent": {
+            "tab": "content",
+            "group": "bfbeRvfFields",
+            "label": "Consent typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "font",
+                    "selector": ".comment-form .comment-form-cookies-consent label"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormTextHeight": {
+            "tab": "content",
+            "group": "bfbeRvfText",
+            "label": "Height",
+            "type": "number",
+            "units": true,
+            "description": "Full width, this tall to start.",
+            "css": [
+                {
+                    "property": "min-height",
+                    "selector": ".comment-form-comment textarea"
+                },
+                {
+                    "property": "height",
+                    "selector": ".comment-form-comment textarea"
+                },
+                {
+                    "property": "display",
+                    "selector": ".comment-form-comment textarea",
+                    "value": "block"
+                },
+                {
+                    "property": "width",
+                    "selector": ".comment-form-comment textarea",
+                    "value": "100%"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormTextPadding": {
+            "tab": "content",
+            "group": "bfbeRvfText",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".comment-form-comment textarea"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormTextBorder": {
+            "tab": "content",
+            "group": "bfbeRvfText",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".comment-form-comment textarea"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormTextTypography": {
+            "tab": "content",
+            "group": "bfbeRvfText",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "font",
+                    "selector": ".comment-form-comment textarea"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormTextResize": {
+            "tab": "content",
+            "group": "bfbeRvfText",
+            "label": "Resize",
+            "type": "select",
+            "options": {
+                "none": "None",
+                "vertical": "Vertical",
+                "horizontal": "Horizontal",
+                "both": "Both"
+            },
+            "inline": true,
+            "placeholder": "Both",
+            "css": [
+                {
+                    "property": "resize",
+                    "selector": ".comment-form-comment textarea"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormSepStars": {
+            "tab": "content",
+            "group": "bfbeRvfText",
+            "label": "Rating stars",
+            "type": "separator"
+        },
+        "bfbeShopReviewsFormStarSize": {
+            "tab": "content",
+            "group": "bfbeRvfText",
+            "label": "Size",
+            "type": "number",
+            "units": true,
+            "css": [
+                {
+                    "property": "width",
+                    "selector": ".comment-form-rating .stars a"
+                },
+                {
+                    "property": "height",
+                    "selector": ".comment-form-rating .stars a"
+                },
+                {
+                    "property": "width",
+                    "selector": ".comment-form-rating .stars a::before"
+                },
+                {
+                    "property": "height",
+                    "selector": ".comment-form-rating .stars a::before"
+                },
+                {
+                    "property": "line-height",
+                    "selector": ".comment-form-rating .stars a::before"
+                },
+                {
+                    "property": "font-size",
+                    "selector": ".comment-form-rating .stars a",
+                    "value": "calc(%s * .9375)"
+                },
+                {
+                    "property": "margin",
+                    "selector": ".comment-form-rating .stars",
+                    "value": "0"
+                },
+                {
+                    "property": "line-height",
+                    "selector": ".comment-form-rating .stars",
+                    "value": "1"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormStarGap": {
+            "tab": "content",
+            "group": "bfbeRvfText",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": ".comment-form-rating .stars span"
+                },
+                {
+                    "property": "display",
+                    "selector": ".comment-form-rating .stars span",
+                    "value": "inline-flex"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormStarColor": {
+            "tab": "content",
+            "group": "bfbeRvfText",
+            "label": "Color",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".comment-form-rating .stars a::before"
+                },
+                {
+                    "property": "color",
+                    "selector": ".comment-form-rating .stars a:hover ~ a::before"
+                },
+                {
+                    "property": "color",
+                    "selector": ".comment-form-rating .stars.selected:not(:hover) a.active ~ a::before"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormStarOn": {
+            "tab": "content",
+            "group": "bfbeRvfText",
+            "label": "Chosen color",
+            "type": "color",
+            "description": "Up to the star pointed at or chosen.",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".comment-form-rating .stars:hover a::before"
+                },
+                {
+                    "property": "color",
+                    "selector": ".comment-form-rating .stars.selected a::before"
+                }
+            ]
+        },
+        "bfbeShopReviewsUploadLook": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Look",
+            "type": "select",
+            "options": {
+                "native": "The browser&#039;s file box",
+                "custom": "A drop area with previews"
+            },
+            "inline": true,
+            "placeholder": "As the browser draws it"
+        },
+        "bfbeShopReviewsUploadBackground": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-rv__upload:not(.bfbe-rv__upload--drop) input[type=\"file\"]"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "!=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsUploadBorder": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-rv__upload:not(.bfbe-rv__upload--drop) input[type=\"file\"]"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "!=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsUploadButton": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Button background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-rv__upload:not(.bfbe-rv__upload--drop) input[type=\"file\"]::file-selector-button"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "!=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsUploadButtonHover": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Button hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "background-color",
+                    "selector": ".bfbe-rv__upload:not(.bfbe-rv__upload--drop) input[type=\"file\"]:hover::file-selector-button"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "!=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsUploadButtonText": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Button text",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".bfbe-rv__upload:not(.bfbe-rv__upload--drop) input[type=\"file\"]::file-selector-button"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "!=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsDropTitle": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Words",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Drag your photos here",
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsDropButtonWords": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Button words",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Choose photos",
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsUploadHelp": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Help typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "font",
+                    "selector": ".bfbe-rv__upload-help"
+                }
+            ]
+        },
+        "bfbeShopReviewsSepDrop": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Drop area",
+            "type": "separator",
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsDropBackground": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-rv-drop-bg",
+                    "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsDropBorder": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsDropPadding": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Padding",
+            "type": "dimensions",
+            "placeholder": {
+                "top": "24px",
+                "right": "24px",
+                "bottom": "24px",
+                "left": "24px"
+            },
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsDropGap": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "placeholder": "10px",
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsDropOver": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Background while dragging",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-rv-drop-over",
+                    "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsDropOverLine": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Border while dragging",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-rv-drop-over-line",
+                    "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsDropIconSize": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Icon size",
+            "type": "number",
+            "units": true,
+            "placeholder": "40px",
+            "css": [
+                {
+                    "property": "--bfbe-rv-drop-icon",
+                    "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsDropIconColor": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Icon colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "color",
+                    "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop .bfbe-rv__drop-icon"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsDropTypography": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Words typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "font",
+                    "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop .bfbe-rv__drop-title"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsSepDropButton": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Drop area button",
+            "type": "separator",
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsDropButtonBackground": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-rv-drop-btn-bg",
+                    "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsDropButtonColor": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Text colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-rv-drop-btn",
+                    "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsDropButtonHover": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Hover background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-rv-drop-btn-hover-bg",
+                    "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsDropButtonHoverColor": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Hover text colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-rv-drop-btn-hover",
+                    "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsDropButtonBorder": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop .bfbe-rv__drop-button"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsDropButtonPadding": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Padding",
+            "type": "dimensions",
+            "placeholder": {
+                "top": "10px",
+                "right": "20px",
+                "bottom": "10px",
+                "left": "20px"
+            },
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop .bfbe-rv__drop-button"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsDropButtonTypography": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "font",
+                    "selector": ".bfbe-rv__upload--drop .bfbe-rv__drop .bfbe-rv__drop-button"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsSepPicked": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Chosen photos",
+            "type": "separator",
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsPickedSize": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Preview size",
+            "type": "number",
+            "units": true,
+            "placeholder": "64px",
+            "css": [
+                {
+                    "property": "--bfbe-rv-picked",
+                    "selector": ".bfbe-rv__upload--drop"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsPickedBorder": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Preview border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-rv__upload--drop .bfbe-rv__pick img"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsPickedRemove": {
+            "tab": "content",
+            "group": "bfbeRvfUpload",
+            "label": "Remove button colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-rv-pick-x",
+                    "selector": ".bfbe-rv__upload--drop"
+                }
+            ],
+            "required": [
+                "bfbeShopReviewsUploadLook",
+                "=",
+                "custom"
+            ]
+        },
+        "bfbeShopReviewsFormButtonPadding": {
+            "tab": "content",
+            "group": "bfbeRvfButton",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".form-submit :is(#submit,[type=\"submit\"])"
+                }
+            ]
+        },
+        "bfbeShopReviewsFormButtonTypography": {
+            "tab": "content",
+            "group": "bfbeRvfButton",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "font",
+                    "selector": ".form-submit :is(#submit,[type=\"submit\"])"
+                }
+            ]
+        },
+        "bfbeHoverEffect": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Effect",
+            "type": "select",
+            "options": {
+                "lift": "Lift",
+                "zoom": "Zoom the picture",
+                "shine": "Shine",
+                "border": "Gradient border",
+                "tilt": "Tilt",
+                "follow": "Follow the pointer",
+                "fade": "Fade in",
+                "slide": "Slide in",
+                "grow": "Grow",
+                "image2": "Show the product&#039;s second image"
+            },
+            "inline": true,
+            "placeholder": "None"
+        },
+        "bfbeHoverOn": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Responds to",
+            "type": "select",
+            "options": {
+                "parent": "A hovered parent"
+            },
+            "inline": true,
+            "placeholder": "This element",
+            "description": "The parent needs Children respond to hover.",
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverFrom": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Comes from",
+            "type": "select",
+            "options": {
+                "up": "Above",
+                "left": "The left",
+                "right": "The right"
+            },
+            "inline": true,
+            "placeholder": "Below",
+            "required": [
+                "bfbeHoverEffect",
+                "=",
+                "slide"
+            ]
+        },
+        "bfbeHoverStrength": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Strength",
+            "type": "number",
+            "min": 0.1,
+            "max": 3,
+            "step": 0.1,
+            "inline": true,
+            "placeholder": "1",
+            "breakpoints": true,
+            "css": [
+                {
+                    "property": "--bfbe-hv-k",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverSpeed": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Speed",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "300",
+            "description": "Milliseconds.",
+            "css": [
+                {
+                    "property": "--bfbe-hv-t",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverDelay": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Milliseconds, so parts arrive in sequence.",
+            "css": [
+                {
+                    "property": "--bfbe-hv-d",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                [
+                    "bfbeHoverEffect",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeHoverEffect",
+                    "!=",
+                    [
+                        "tilt",
+                        "follow"
+                    ]
+                ]
+            ]
+        },
+        "bfbeHoverColor": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Colour",
+            "type": "color",
+            "inline": true,
+            "css": [
+                {
+                    "property": "--bfbe-hv-c",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeHoverEffect",
+                "=",
+                [
+                    "shine",
+                    "border"
+                ]
+            ]
+        },
+        "bfbeHoverOff": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Off below",
+            "type": "select",
+            "options": {
+                "480": "480 px",
+                "640": "640 px",
+                "768": "768 px",
+                "992": "992 px"
+            },
+            "inline": true,
+            "placeholder": "Never",
+            "required": [
+                "bfbeHoverEffect",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeHoverScope": {
+            "tab": "style",
+            "group": "bfbeHover",
+            "label": "Children respond to hover",
+            "type": "checkbox",
+            "description": "Parts inside set to A hovered parent move."
+        },
+        "bfbeHsWhen": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "When scrolled",
+            "type": "select",
+            "options": {
+                "hide": "Hides",
+                "fade": "Fades out, keeps its space",
+                "show": "Appears only then"
+            },
+            "inline": true,
+            "placeholder": "Stays as it is"
+        },
+        "bfbeHsCollapse": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Collapses",
+            "type": "select",
+            "options": {
+                "across": "Sideways"
+            },
+            "inline": true,
+            "placeholder": "Downward",
+            "required": [
+                "bfbeHsWhen",
+                "=",
+                [
+                    "hide",
+                    "show"
+                ]
+            ]
+        },
+        "bfbeHsOver": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Over the first section",
+            "type": "select",
+            "options": {
+                "hide": "Hides",
+                "show": "Appears only then"
+            },
+            "inline": true,
+            "placeholder": "Stays as it is",
+            "description": "Only with the header over the first section."
+        },
+        "bfbeHsStyleSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Scrolled: styling"
+        },
+        "bfbeHsPadding": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsMargin": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Margin",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "margin",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsWidth": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "rerender": true,
+            "css": [
+                {
+                    "property": "width",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ]
+        },
+        "bfbeHsHeight": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Height",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "rerender": true,
+            "css": [
+                {
+                    "property": "height",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ]
+        },
+        "bfbeHsBackground": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsBlur": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Blur behind",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "0",
+            "rerender": true,
+            "css": [
+                {
+                    "property": "--bfbe-hs-blur",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsBorder": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsShadow": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Box shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsTypography": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOpacity": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Opacity",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "opacity",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsScale": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Scale",
+            "type": "number",
+            "min": 0.1,
+            "max": 3,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "scale",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsGap": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "css": [
+                {
+                    "property": "gap",
+                    "selector": "&.bfbe-hs--scrolled"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Over the first section: styling"
+        },
+        "bfbeHsOverBackground": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Background",
+            "type": "background",
+            "css": [
+                {
+                    "property": "background",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverTypography": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverBorder": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverShadow": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Box shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsOverOpacity": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Opacity",
+            "type": "number",
+            "min": 0,
+            "max": 1,
+            "step": 0.05,
+            "inline": true,
+            "placeholder": "1",
+            "css": [
+                {
+                    "property": "opacity",
+                    "selector": "&.bfbe-hs--over"
+                }
+            ],
+            "rerender": true
+        },
+        "bfbeHsMotionSep": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "type": "separator",
+            "label": "Motion"
+        },
+        "bfbeHsElDuration": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Duration",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "Follows the header",
+            "description": "Milliseconds.",
+            "css": [
+                {
+                    "property": "--bfbe-hs-dur",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsElEasing": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Easing",
+            "type": "select",
+            "options": {
+                "cubic-bezier(0.16, 1, 0.3, 1)": "Snappy"
+            },
+            "inline": true,
+            "placeholder": "Follows the header",
+            "css": [
+                {
+                    "property": "--bfbe-hs-ease",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeHsDelay": {
+            "tab": "style",
+            "group": "bfbeOnScroll",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 10,
+            "inline": true,
+            "placeholder": "0",
+            "description": "Milliseconds, scrolling down only, so parts arrive in sequence.",
+            "css": [
+                {
+                    "property": "--bfbe-hs-delay",
+                    "selector": ""
+                }
+            ]
+        },
+        "bfbeTooltip": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Text",
+            "type": "textarea",
+            "hasDynamicData": "text",
+            "description": "Shown on hover and focus."
+        },
+        "bfbeTooltipPlace": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Place",
+            "type": "select",
+            "options": {
+                "top": "Above",
+                "right": "Right",
+                "bottom": "Below",
+                "left": "Left"
+            },
+            "inline": true,
+            "placeholder": "Above",
+            "description": "It flips when there is no room.",
+            "required": [
+                "bfbeTooltip",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeTooltipDelay": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Delay",
+            "type": "number",
+            "min": 0,
+            "max": 3000,
+            "step": 50,
+            "inline": true,
+            "placeholder": "150",
+            "description": "Milliseconds before it shows on hover.",
+            "required": [
+                "bfbeTooltip",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeTooltipWidth": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Max width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "240px",
+            "css": [
+                {
+                    "property": "--bfbe-tip-w",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeTooltip",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeTooltipBackground": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-tip-bg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeTooltip",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeTooltipColor": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Text colour",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-tip-fg",
+                    "selector": ""
+                }
+            ],
+            "required": [
+                "bfbeTooltip",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeTooltipTypography": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-tip"
+                }
+            ],
+            "required": [
+                "bfbeTooltip",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeTooltipBorder": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-tip"
+                }
+            ],
+            "required": [
+                "bfbeTooltip",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeTooltipNoArrow": {
+            "tab": "style",
+            "group": "bfbeTooltip",
+            "label": "Hide the arrow",
+            "type": "checkbox",
+            "required": [
+                "bfbeTooltip",
+                "!=",
+                ""
+            ]
+        }
+    }
+}

@@ -61,7 +61,7 @@
     ],
     "parent": null,
     "cost": {
-        "css": "2.57 KB",
+        "css": "2.69 KB",
         "js": "3.06 KB",
         "dependencies": "none",
         "also": [
@@ -109,9 +109,21 @@
             },
             {
                 "what": "BFB Advanced Forms, floating labels",
-                "css": "0.81 KB",
-                "js": "1.33 KB",
+                "css": "0.83 KB",
+                "js": "1.34 KB",
                 "dependencies": "none"
+            },
+            {
+                "what": "Shop, alerts: the chosen variation in a back-in-stock or price-drop form",
+                "css": "none",
+                "js": "0.25 KB",
+                "dependencies": "none"
+            },
+            {
+                "what": "Shop, the product finder: BFB Advanced Forms answers drawn as a Product finder loop on the result step",
+                "css": "0.22 KB",
+                "js": "1.15 KB",
+                "dependencies": "shop-live"
             }
         ]
     },
@@ -263,6 +275,18 @@
             ],
             "tab": "content"
         },
+        "bfbeAlerts": {
+            "title": "Stock and price alerts",
+            "tab": "content",
+            "required": [
+                "actions",
+                "=",
+                [
+                    "bfbe-alert-stock",
+                    "bfbe-alert-price"
+                ]
+            ]
+        },
         "bfbeUser": {
             "title": "Update the user",
             "tab": "content",
@@ -373,6 +397,10 @@
             "title": "Stepper",
             "tab": "content"
         },
+        "bfbeColor": {
+            "title": "Colour picker",
+            "tab": "content"
+        },
         "bfbePromoUi": {
             "title": "Code button",
             "tab": "content"
@@ -395,6 +423,23 @@
         },
         "bfbeBuilder": {
             "title": "In the builder",
+            "tab": "content"
+        },
+        "bfbeShopFind": {
+            "title": "Find products from the answers",
+            "tab": "content"
+        },
+        "bfbeQuoteOrder": {
+            "title": "Draft order",
+            "tab": "content",
+            "required": [
+                "actions",
+                "=",
+                "bfbe-quote-order"
+            ]
+        },
+        "bfbeShopWoo": {
+            "title": "WooCommerce",
             "tab": "content"
         },
         "bfbeHover": {
@@ -482,7 +527,10 @@
                 "bfbe-delete": "Delete the post",
                 "bfbe-pdf": "Quote PDF",
                 "bfbe-pay": "Take payment",
-                "bfbe-mailerpress": "Add to MailerPress"
+                "bfbe-mailerpress": "Add to MailerPress",
+                "bfbe-alert-stock": "Tell me when it is back",
+                "bfbe-alert-price": "Tell me when the price drops",
+                "bfbe-quote-order": "Create a draft order from the quote list"
             },
             "multiple": true,
             "description": "Select action(s) you want to perform after form has been successfully submitted.",
@@ -1993,6 +2041,38 @@
             "label": "Error message",
             "type": "text",
             "bfbeNative": true
+        },
+        "alertEmail": {
+            "tab": "content",
+            "group": "bfbeAlerts",
+            "label": "Email from the field",
+            "type": "text",
+            "inline": true,
+            "placeholder": "The first email field"
+        },
+        "alertVariation": {
+            "tab": "content",
+            "group": "bfbeAlerts",
+            "label": "Variation from the field",
+            "type": "text",
+            "inline": true,
+            "placeholder": "variation",
+            "description": "A hidden field: filled as the shopper chooses."
+        },
+        "alertProduct": {
+            "tab": "content",
+            "group": "bfbeAlerts",
+            "label": "Product from the field",
+            "type": "text",
+            "inline": true,
+            "placeholder": "The product the form is on"
+        },
+        "alertDone": {
+            "tab": "content",
+            "group": "bfbeAlerts",
+            "label": "Message after signing up",
+            "type": "text",
+            "placeholder": "Check your inbox to confirm."
         },
         "userRows": {
             "tab": "content",
@@ -3751,6 +3831,18 @@
             ],
             "tab": "content"
         },
+        "checkLook": {
+            "group": "bfbeCheck",
+            "label": "Look",
+            "type": "select",
+            "options": {
+                "native": "The browser&#039;s"
+            },
+            "inline": true,
+            "placeholder": "Styled with the controls below",
+            "description": "Tick boxes and radios alike.",
+            "tab": "content"
+        },
         "checkSize": {
             "group": "bfbeCheck",
             "label": "Box size",
@@ -3779,6 +3871,11 @@
                     "selector": ""
                 }
             ],
+            "required": [
+                "checkLook",
+                "!=",
+                "native"
+            ],
             "tab": "content"
         },
         "checkGap": {
@@ -3806,6 +3903,11 @@
                     "selector": ""
                 }
             ],
+            "required": [
+                "checkLook",
+                "!=",
+                "native"
+            ],
             "tab": "content"
         },
         "checkLine": {
@@ -3818,6 +3920,11 @@
                     "selector": ""
                 }
             ],
+            "required": [
+                "checkLook",
+                "!=",
+                "native"
+            ],
             "tab": "content"
         },
         "checkMarkColor": {
@@ -3829,6 +3936,11 @@
                     "property": "--bfbe-pc-on-accent",
                     "selector": ""
                 }
+            ],
+            "required": [
+                "checkLook",
+                "!=",
+                "native"
             ],
             "tab": "content"
         },
@@ -5733,6 +5845,325 @@
             ],
             "tab": "content"
         },
+        "sepColourSwatch": {
+            "group": "bfbeColor",
+            "label": "The swatch",
+            "type": "separator",
+            "tab": "content"
+        },
+        "colourSwatchSize": {
+            "group": "bfbeColor",
+            "label": "Size",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "1.5em",
+            "css": [
+                {
+                    "property": "--bfbe-pc-colour-chip",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "colourSwatchBorder": {
+            "group": "bfbeColor",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__colour-chip"
+                }
+            ],
+            "tab": "content"
+        },
+        "sepColourPanel": {
+            "group": "bfbeColor",
+            "label": "Panel",
+            "type": "separator",
+            "tab": "content"
+        },
+        "colourPanelWidth": {
+            "group": "bfbeColor",
+            "label": "Width",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "232px",
+            "css": [
+                {
+                    "property": "--bfbe-pc-colour-w",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "colourPanelBackground": {
+            "group": "bfbeColor",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-pc-colour-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "colourPanelBorder": {
+            "group": "bfbeColor",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__colour-panel"
+                }
+            ],
+            "tab": "content"
+        },
+        "colourPanelShadow": {
+            "group": "bfbeColor",
+            "label": "Shadow",
+            "type": "box-shadow",
+            "css": [
+                {
+                    "property": "box-shadow",
+                    "selector": ".bfbe-pc__colour-panel"
+                }
+            ],
+            "tab": "content"
+        },
+        "colourPanelPadding": {
+            "group": "bfbeColor",
+            "label": "Padding",
+            "type": "dimensions",
+            "css": [
+                {
+                    "property": "padding",
+                    "selector": ".bfbe-pc__colour-panel"
+                }
+            ],
+            "placeholder": {
+                "top": "12px",
+                "right": "12px",
+                "bottom": "12px",
+                "left": "12px"
+            },
+            "tab": "content"
+        },
+        "colourPanelGap": {
+            "group": "bfbeColor",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "10px",
+            "css": [
+                {
+                    "property": "--bfbe-pc-colour-gap",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "colourPanelOffset": {
+            "group": "bfbeColor",
+            "label": "Distance from the field",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "6px",
+            "css": [
+                {
+                    "property": "--bfbe-pc-colour-offset",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "sepColourArea": {
+            "group": "bfbeColor",
+            "label": "Colour area and hue",
+            "type": "separator",
+            "tab": "content"
+        },
+        "colourAreaHeight": {
+            "group": "bfbeColor",
+            "label": "Area height",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "150px",
+            "css": [
+                {
+                    "property": "--bfbe-pc-colour-h",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "colourAreaBorder": {
+            "group": "bfbeColor",
+            "label": "Area border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__colour-pick::part(saturation)"
+                }
+            ],
+            "tab": "content"
+        },
+        "colourHueHeight": {
+            "group": "bfbeColor",
+            "label": "Hue bar height",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "14px",
+            "css": [
+                {
+                    "property": "--bfbe-pc-colour-hue",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "colourHueBorder": {
+            "group": "bfbeColor",
+            "label": "Hue bar border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__colour-pick::part(hue)"
+                }
+            ],
+            "tab": "content"
+        },
+        "colourPointerSize": {
+            "group": "bfbeColor",
+            "label": "Pointer size",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "20px",
+            "css": [
+                {
+                    "property": "--bfbe-pc-colour-dot",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "colourPointerBorder": {
+            "group": "bfbeColor",
+            "label": "Pointer border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__colour-pick::part(saturation-pointer)"
+                },
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__colour-pick::part(hue-pointer)"
+                }
+            ],
+            "tab": "content"
+        },
+        "sepColourCode": {
+            "group": "bfbeColor",
+            "label": "Code box",
+            "type": "separator",
+            "tab": "content"
+        },
+        "colourCodeBackground": {
+            "group": "bfbeColor",
+            "label": "Background",
+            "type": "color",
+            "css": [
+                {
+                    "property": "--bfbe-pc-colour-code-bg",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "colourCodeBorder": {
+            "group": "bfbeColor",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__colour-hex"
+                }
+            ],
+            "tab": "content"
+        },
+        "colourCodeTypography": {
+            "group": "bfbeColor",
+            "label": "Typography",
+            "type": "typography",
+            "css": [
+                {
+                    "property": "typography",
+                    "selector": ".bfbe-pc__colour-hex"
+                }
+            ],
+            "tab": "content"
+        },
+        "sepColourOffered": {
+            "group": "bfbeColor",
+            "label": "Colours offered",
+            "type": "separator",
+            "tab": "content"
+        },
+        "colourOfferedSize": {
+            "group": "bfbeColor",
+            "label": "Size",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "24px",
+            "css": [
+                {
+                    "property": "--bfbe-pc-colour-preset",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "colourOfferedGap": {
+            "group": "bfbeColor",
+            "label": "Gap",
+            "type": "number",
+            "units": true,
+            "inline": true,
+            "placeholder": "6px",
+            "css": [
+                {
+                    "property": "--bfbe-pc-colour-preset-gap",
+                    "selector": ""
+                }
+            ],
+            "tab": "content"
+        },
+        "colourOfferedBorder": {
+            "group": "bfbeColor",
+            "label": "Border",
+            "type": "border",
+            "css": [
+                {
+                    "property": "border",
+                    "selector": ".bfbe-pc__colour-preset"
+                }
+            ],
+            "tab": "content"
+        },
         "promoButtonBackground": {
             "group": "bfbePromoUi",
             "label": "Apply button background",
@@ -7052,6 +7483,186 @@
                 "border"
             ]
         },
+        "bfbeShopFind": {
+            "tab": "content",
+            "group": "bfbeShopFind",
+            "label": "Find products from the answers",
+            "type": "checkbox",
+            "description": "The choices become filters; a Product finder loop shows matches."
+        },
+        "bfbeShopFindTo": {
+            "tab": "content",
+            "group": "bfbeShopFind",
+            "label": "Show the matches",
+            "type": "select",
+            "options": {
+                "here": "On this page",
+                "page": "On another page"
+            },
+            "inline": true,
+            "placeholder": "On this page",
+            "required": [
+                "bfbeShopFind",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeShopFindPage": {
+            "tab": "content",
+            "group": "bfbeShopFind",
+            "label": "The page",
+            "type": "link",
+            "required": [
+                [
+                    "bfbeShopFind",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopFindTo",
+                    "=",
+                    "page"
+                ]
+            ]
+        },
+        "bfbeShopFindLoop": {
+            "tab": "content",
+            "group": "bfbeShopFind",
+            "label": "The loop",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Its element id",
+            "description": "Empty: the first Product finder loop on the page.",
+            "required": [
+                [
+                    "bfbeShopFind",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeShopFindTo",
+                    "!=",
+                    "page"
+                ]
+            ]
+        },
+        "bfbeQuoteEmail": {
+            "tab": "content",
+            "group": "bfbeQuoteOrder",
+            "label": "Email from the answer",
+            "type": "text",
+            "inline": true,
+            "placeholder": "The first email field"
+        },
+        "bfbeQuoteName": {
+            "tab": "content",
+            "group": "bfbeQuoteOrder",
+            "label": "Name from the answer",
+            "type": "text",
+            "inline": true,
+            "placeholder": "name"
+        },
+        "bfbeQuoteEmpty": {
+            "tab": "content",
+            "group": "bfbeQuoteOrder",
+            "label": "When the list is empty",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Your quote list is empty."
+        },
+        "bfbeCartExtras": {
+            "tab": "content",
+            "group": "bfbeShopWoo",
+            "label": "Extras for this cart",
+            "type": "checkbox",
+            "description": "Priced choices become cart fees, priced on the server."
+        },
+        "bfbeCartExtrasAs": {
+            "tab": "content",
+            "group": "bfbeShopWoo",
+            "label": "Fees",
+            "type": "select",
+            "options": {
+                "each": "One per priced choice",
+                "total": "One for the total"
+            },
+            "inline": true,
+            "placeholder": "One per priced choice",
+            "required": [
+                "bfbeCartExtras",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeCartExtrasName": {
+            "tab": "content",
+            "group": "bfbeShopWoo",
+            "label": "Fee name",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Extras",
+            "required": [
+                [
+                    "bfbeCartExtras",
+                    "!=",
+                    ""
+                ],
+                [
+                    "bfbeCartExtrasAs",
+                    "=",
+                    "total"
+                ]
+            ]
+        },
+        "bfbeCartExtrasTax": {
+            "tab": "content",
+            "group": "bfbeShopWoo",
+            "label": "Taxed",
+            "type": "checkbox",
+            "required": [
+                "bfbeCartExtras",
+                "!=",
+                ""
+            ]
+        },
+        "bfbeShopOptions": {
+            "label": "Options for this product",
+            "type": "checkbox",
+            "description": "Answers go with Add to cart, priced on the server.",
+            "group": "bfbeShopWoo",
+            "tab": "content"
+        },
+        "bfbeShopOptionsLine": {
+            "label": "Options line",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Your options",
+            "description": "Above the answers in the cart and on the order.",
+            "required": [
+                "bfbeShopOptions",
+                "!=",
+                ""
+            ],
+            "group": "bfbeShopWoo",
+            "tab": "content"
+        },
+        "bfbeShopOptionsTotal": {
+            "label": "The total shows",
+            "type": "select",
+            "options": {
+                "with": "The product price with the options",
+                "alone": "The options alone"
+            },
+            "inline": true,
+            "placeholder": "The product price with the options",
+            "required": [
+                "bfbeShopOptions",
+                "!=",
+                ""
+            ],
+            "group": "bfbeShopWoo",
+            "tab": "content"
+        },
         "bfbeHoverEffect": {
             "tab": "style",
             "group": "bfbeHover",
@@ -7066,7 +7677,8 @@
                 "follow": "Follow the pointer",
                 "fade": "Fade in",
                 "slide": "Slide in",
-                "grow": "Grow"
+                "grow": "Grow",
+                "image2": "Show the product&#039;s second image"
             },
             "inline": true,
             "placeholder": "None"
