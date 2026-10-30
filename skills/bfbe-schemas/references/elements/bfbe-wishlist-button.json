@@ -95,13 +95,8 @@
                 "product": "Products",
                 "post": "Posts",
                 "page": "Pages",
-                "bfbe_shop_review": "Shop Reviews",
                 "bfbe_review": "Review",
-                "bfbe_demo": "Demos",
                 "bfbe_feature": "Feature visuals",
-                "bfbe_fixture": "Fixtures",
-                "bfbe_sweep": "Sweeps",
-                "bfbe_scratch": "Scratch",
                 "bricks_template": "My Templates"
             },
             "inline": true,

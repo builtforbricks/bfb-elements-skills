@@ -94,6 +94,7 @@ Root `div.bfbe-atc` with `bfbe-atc--menu` or `bfbe-atc--row` (from **Show the ca
 </div>
 ```
 
+- **A date from the shop** (`source: "shop_delivery"` or `"shop_release"`, 2.0.0) changes no markup: the event is that one whole day, sent as calendar dates as with **All day**, and an empty **Title** becomes "Delivery of order #1234" or "{product}: release".
 - **Open state**: the script removes `hidden` from `.bfbe-atc__menu`, sets `aria-expanded="true"` on `.bfbe-atc__main` (the caret turns 180deg) and adds `.bfbe-atc__menu--end` when the menu would leave the window.
 - **Where the styling lands**: the Button group's Look run (`typography`, `background`, `hoverBackground`, `hoverColor`, `border`, `padding`) writes to `.bfbe-atc__btn`, so the menu's button, or every calendar chip in a row. `iconSize` writes to `.bfbe-atc__icon`, `caretSize` to `.bfbe-atc__caret`.
 - `menuBackground`, `menuBorder`, `menuShadow`, `menuWidth` (min-inline-size), `itemGap` and `menuPadding` write to `.bfbe-atc__menu`; `itemPadding`, `itemBorder` and `linkTypography` to `.bfbe-atc__link`; `linkHoverBackground` sets `--bfbe-atc-hover`, used on hover and keyboard focus.
@@ -101,7 +102,10 @@ Root `div.bfbe-atc` with `bfbe-atc--menu` or `bfbe-atc--row` (from **Show the ca
 
 ## Wiring to other elements
 
-Stands alone; nothing targets it and it targets nothing.
+Nothing targets it and it targets nothing. With WooCommerce and Pro's shop, **Date from** `source` takes the date from the shop instead of the fields:
+
+- `shop_delivery`: the order's expected delivery date (`_bfbe_delivery_date`, saved by the Delivery feature `shop-delivery`, or the day the shopper chose at checkout), read for the order in hand: the thank-you page, the account's order page, a Customer orders loop row (`bfbe-shop-tags-and-conditions`).
+- `shop_release`: the product's **Release date** (WooCommerce, Product data, General), read for the product in hand: a product page or a product loop row; a variation takes its parent's.
 
 Repeat it through a query loop or a single template rather than by copying: each rendered copy resolves its own dynamic data and gets its own menu id. Copies loaded by Bricks' AJAX pagination, load more, query filters and AJAX popups are initialised on Bricks' own events; for markup another script injects, call `window.bfbeAddToCalendar()`. Style or target it by a class in `_cssClasses`, never `_cssId`, because component instances share ids.
 
@@ -172,20 +176,48 @@ Repeat it through a query loop or a single template rather than by copying: each
 }
 ```
 
+**The delivery day on the thank-you page.** From the demo shop's thank-you template (`bfb-demo-thankyou`), where it sits under the order's facts (order tags); one such fact stands beside it here. The date and the title come from the order in hand; three calendars in the menu. Trimmed: the demo's button and menu look, and the rest of the page.
+
+```json
+{
+  "name": "block",
+  "settings": {},
+  "children": [
+    { "name": "text-basic", "settings": { "text": "Order {bfbe_order_number}" } },
+    { "name": "bfbe-add-to-calendar", "settings": { "source": "shop_delivery", "label": "Add the delivery day to my calendar", "layout": "menu", "calGoogle": true, "calIcs": true, "calOutlook": true } }
+  ]
+}
+```
+
+**A release reminder on each upcoming product.** From the fixture `fixture-shop-p8`, here in a product card of a Bricks products loop: each card's calendar reads its own product's release date, and a product without one shows no button.
+
+```json
+{
+  "name": "block",
+  "settings": { "hasLoop": true, "query": { "objectType": "post", "post_type": [ "product" ], "posts_per_page": 4 } },
+  "children": [
+    { "name": "product-title", "settings": { "tag": "h3", "linkToProduct": true } },
+    { "name": "bfbe-add-to-calendar", "settings": { "source": "shop_release", "label": "Remind me of the release", "layout": "row", "calGoogle": true, "calIcs": true, "_cssClasses": "cal-release" } }
+  ]
+}
+```
+
 ## Gotchas
 
-- **A fresh insert draws nothing on the page.** No calendar is ticked by default, and without **Starts** (`start`) or a ticked calendar the page gets no markup at all; only the builder shows a notice. <!-- src: plugins/bfb-elements-pro/elements/add-to-calendar.php:578 and :635; plugins/bfb-elements/includes/abstract-element.php:538 -->
+- **A fresh insert draws nothing on the page.** No calendar is ticked by default, and without **Starts** (`start`) or a ticked calendar the page gets no markup at all; only the builder shows a notice. A shop source needs no `start`. <!-- src: plugins/bfb-elements-pro/elements/add-to-calendar.php:713 and :770; plugins/bfb-elements/includes/abstract-element.php:538 -->
+- **A shop date that is missing hides the button.** With `source: "shop_delivery"` outside an order page or loop, or an order without a delivery date, and with `shop_release` on a product without a release date (or outside a product), nothing renders; the builder names the missing meta. Without WooCommerce, either source renders nothing. <!-- src: plugins/bfb-elements-pro/elements/add-to-calendar.php:633-662, 679-690 --> <!-- src: docs/elements/add-to-calendar.md "Shop 2.0.0: a date from the shop (row F8)" -->
+- **A shop date is always a whole day.** **Starts**, **Ends** and **All day** are not offered with a shop source and are ignored if written; the event is the one day, with no time. <!-- src: plugins/bfb-elements-pro/elements/add-to-calendar.php:158-189, 691-694 -->
 - **A date of numbers follows the site's own date order.** `11/10/2026`, `11.10.2026` and `11-10-26` are read in the order the site's date format (Settings, General) prints: `d/m/Y` day first, `m/d/Y` or `Y-m-d` month first. A part over 12 is the day whatever the format. Where the format prints the month as a word (WordPress's default, `F j, Y`) an ambiguous date draws no button and the builder says why; a bare Unix timestamp renders nothing. `2026-10-01 18:00` reads the same on every site. <!-- src: add-to-calendar.php stamp() and date_order() (1.0.0-beta.4); measured with dev/calendar-dates.php, 21 readings -->
-- **A date tag needs a format.** A plain date tag follows the site's date format, which may use slashes; give it a format after a colon, as in `{post_date:Y-m-d H:i}`. <!-- src: add-to-calendar.php:570; measured 2026-10-08: {post_date} gave "October 6, 2026", {post_date:Y-m-d H:i} gave "2026-10-06 13:19" -->
-- **Times are in the site's time zone unless they carry their own.** A plain time is read in the WordPress time zone and sent as UTC; a value ending in `Z` or an offset such as `+01:00` keeps that zone. <!-- src: add-to-calendar.php:520 and :599; measured 2026-10-08 with timezone_string Europe/Bucharest -->
-- **A wrong end is not an error.** An empty **Ends** (`end`), or one before the start, becomes one hour after the start, or the same single day with **All day** (`allDay`). <!-- src: add-to-calendar.php:583 -->
-- **An all-day end is the last day, inclusive.** The element adds the day calendars expect: start `2026-10-01` and end `2026-10-03` go out as `20261001/20261004`. <!-- src: add-to-calendar.php:601; measured 2026-10-08 -->
-- **An empty title takes the current post's title.** On a static page that is the page's own name; inside a query loop it is the loop item's. <!-- src: add-to-calendar.php:569 -->
-- **In a row, the Button styling moves onto the calendars.** With `layout: "row"` the icon and label sit in a plain `.bfbe-atc__lead` span that is not clickable, and `.bfbe-atc__btn` is on each calendar link, so the Look run styles the chips. The lead inherits the element's own typography, at weight 600. <!-- src: add-to-calendar.php:651-665; add-to-calendar.css:28 -->
-- **The Menu group is for the menu layout.** Every Menu key except **Padding** (`menuPadding`) is hidden in a row and its selector excludes the row; **Caret size** (`caretSize`) too. `menuPadding` in a row pads the row's list. <!-- src: add-to-calendar.php:330, :379; docs/elements/add-to-calendar.md "round 350" and "round 351" -->
+- **A date tag needs a format.** A plain date tag follows the site's date format, which may use slashes; give it a format after a colon, as in `{post_date:Y-m-d H:i}`. <!-- src: add-to-calendar.php:676-677; measured 2026-10-08: {post_date} gave "October 6, 2026", {post_date:Y-m-d H:i} gave "2026-10-06 13:19" -->
+- **Times are in the site's time zone unless they carry their own.** A plain time is read in the WordPress time zone and sent as UTC; a value ending in `Z` or an offset such as `+01:00` keeps that zone. <!-- src: add-to-calendar.php:563; measured 2026-10-08 with timezone_string Europe/Bucharest -->
+- **A wrong end is not an error.** An empty **Ends** (`end`), or one before the start, becomes one hour after the start, or the same single day with **All day** (`allDay`). <!-- src: add-to-calendar.php:716-717 -->
+- **An all-day end is the last day, inclusive.** The element adds the day calendars expect: start `2026-10-01` and end `2026-10-03` go out as `20261001/20261004`. <!-- src: add-to-calendar.php:734; measured 2026-10-08 -->
+- **An empty title takes the current post's title.** On a static page that is the page's own name; inside a query loop it is the loop item's. <!-- src: add-to-calendar.php:673-675 -->
+- **In a row, the Button styling moves onto the calendars.** With `layout: "row"` the icon and label sit in a plain `.bfbe-atc__lead` span that is not clickable, and `.bfbe-atc__btn` is on each calendar link, so the Look run styles the chips. The lead inherits the element's own typography, at weight 600. <!-- src: add-to-calendar.php:783-792; add-to-calendar.css:28 -->
+- **The Menu group is for the menu layout.** Every Menu key except **Padding** (`menuPadding`) is hidden in a row and its selector excludes the row; **Caret size** (`caretSize`) too. `menuPadding` in a row pads the row's list. <!-- src: add-to-calendar.php:355, :404; docs/elements/add-to-calendar.md "round 350" and "round 351" -->
 - **Gap is not the space between icon and label.** **Gap** (`gap`) spaces the lead and the chips of a row; the icon-to-label space is the chip's fixed `.45em`. In the menu layout the menu is positioned absolutely, so Gap has nothing to space. <!-- src: src/elements/add-to-calendar/add-to-calendar.css:2, :14, :33; plugins/bfb-elements/includes/class-assets.php:87 -->
 - **A clipping ancestor cuts the menu.** The menu is `position: absolute` under the button at `z-index: 30`, so a parent with `overflow: hidden` clips it. It flips to the button's end edge only when it would leave the window. <!-- src: add-to-calendar.css:14-16; add-to-calendar.js:20-23 -->
-- **The ICS file is fixed when the page renders.** It is a `data:` link built on render, and its UID comes from the title and the start, so two events sharing both are one event to a calendar app. HTML in any field is stripped; line breaks in the description survive. <!-- src: add-to-calendar.php:567-574, :624-632 -->
+- **The ICS file is fixed when the page renders.** It is a `data:` link built on render, and its UID comes from the title and the start, so two events sharing both are one event to a calendar app. HTML in any field is stripped; line breaks in the description survive. <!-- src: add-to-calendar.php:697-698, :755-760 -->
 
 ## Never do
 
@@ -197,3 +229,5 @@ Repeat it through a query loop or a single template rather than by copying: each
 - Do not use `gap` to space the icon from the label.
 - Do not place the menu layout inside an ancestor with `overflow: hidden`.
 - Do not toggle the menu's `hidden` or `aria-expanded` with a Bricks interaction; the script owns both.
+- Do not write `start`, `end` or `allDay` with `source: "shop_delivery"` or `"shop_release"`.
+- Do not place a `shop_delivery` calendar where no order is in hand, or a `shop_release` one outside a product page or loop.

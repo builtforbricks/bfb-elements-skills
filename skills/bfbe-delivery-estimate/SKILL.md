@@ -1,6 +1,6 @@
 ---
 name: bfbe-delivery-estimate
-description: "Use when placing, wiring or styling BFB Delivery Estimate (`bfbe-delivery-estimate`). Read before writing its settings."
+description: "Use when showing a delivery date, a cut-off countdown, a postcode check or pickup hours with `bfbe-delivery-estimate`, on a product, cart or any page, or with those parts placed apart as separate instances."
 ---
 
 # BFB Delivery Estimate (`bfbe-delivery-estimate`)
@@ -56,20 +56,95 @@ Styling, in the schema file: `countryListChevron`, `countryListPanelBg`, `countr
 
 ## Rendered DOM
 
-_Not written yet._
+```html
+<div id="brxe-{id}" class="brxe-bfbe-delivery-estimate bfbe-delivery bfbe-delivery--lines" data-bfbe-shop-need="delivery"
+     data-bfbe-delivery='{"s":{"none":false,"now":…,"until":…,"range":"…","fromText":"…","toText":"…","pickup":true},"w":{…}}'>
+  <p class="bfbe-delivery__estimate"><span class="bfbe-delivery__words" aria-live="off">Order within
+    <span class="bfbe-delivery__left">2 h 14 min</span> for delivery <span class="bfbe-delivery__date">Tuesday 27 to Wednesday 28 October</span></span></p>
+  <div class="bfbe-delivery__pickup" data-bfbe-dl-pickup role="group" aria-labelledby="bfbe-{uid}-dl-pickup" hidden>
+    <p class="bfbe-delivery__pickup-title" id="bfbe-{uid}-dl-pickup">Pickup hours</p>
+    <dl class="bfbe-delivery__hours"><div class="bfbe-delivery__hours-row"><dt>Monday to Friday</dt><dd>09:00 to 18:00</dd></div>…</dl>
+    <!-- or, with pickup: "words": <p class="bfbe-delivery__pickup-words"> -->
+  </div>
+  <form class="bfbe-delivery__check" id="bfbe-{uid}-dl" method="post" action="#bfbe-{uid}-dl" aria-labelledby="bfbe-{uid}-dl-title">
+    <p class="bfbe-delivery__check-title" id="bfbe-{uid}-dl-title">Delivery to your address</p>
+    <div class="bfbe-delivery__fields bfbe-delivery__fields--row">
+      <span class="bfbe-delivery__field"><label>Country</label><select name="bfbe_dl_country" autocomplete="country">…</select></span>
+      <span class="bfbe-delivery__field"><label>Postcode</label><input name="bfbe_dl_postcode" autocomplete="postal-code"></span>
+      <button type="submit" class="bfbe-delivery__button">Check</button></div>
+    <input type="hidden" name="bfbe_dl_check" value="{element id}"><input type="hidden" name="bfbe_dl_product" value="{id or 0}">
+  </form>
+  <div class="bfbe-delivery__answer" id="bfbe-{uid}-dl-answer"><!-- ul.bfbe-delivery__rates > li.bfbe-delivery__rate, or p.bfbe-delivery__none --></div>
+</div>
+```
+
+- **Show** `show` picks the parts: `both` the sentence and the check, `estimate` the sentence, `check` the form and its answer, `pickup` the pickup hours alone. The pickup block prints with any of them while **Pickup hours** `pickup` is set.
+- The root is a grid; `bfbe-delivery--lines` (**Lines between parts** `lines`) draws a line over each shown part after the first. `data-bfbe-delivery` carries the server's state and words; the script repaints the sentence from it every second and from each live answer.
+- States: `hidden` on the estimate when nothing is promised and **Without an estimate** is empty, and on the pickup block while Local pickup is not offered; `aria-busy="true"` on the answer and `disabled` on the button while checking. An answer holds `li.bfbe-delivery__rate` with `__rate-name`, `__rate-cost`, `__rate-when` (`--pickup` for Local pickup), else `p.bfbe-delivery__none` or `p.bfbe-delivery__error`.
+- Where controls write: `gap`, `lineColor` and `lineWidth` set `--bfbe-delivery-gap`, `--bfbe-delivery-line` and `--bfbe-delivery-line-width` on the root. `estimateTypography` writes to the sentence, `timeTypography` to `.bfbe-delivery__left`, `dateTypography` to `.bfbe-delivery__date`, `pickup*Typography` to the pickup title, `dt`, `dd` and words. `button*` write to `.bfbe-delivery__button`, `field*` to the select and input, `fieldsGap` to `.bfbe-delivery__fields`, `rateGap` to `.bfbe-delivery__rates`, `rate*` to the rates.
 
 ## Wiring to other elements
 
-_Not written yet._
+- **Every instance follows one live answer.** Each root carries `data-bfbe-shop-need="delivery"`; the shop's shared script asks the server once after load and every Delivery Estimate on the page paints that answer. Several instances cost no extra request.
+- **Two instances, placed apart.** Set one to `show: "estimate"` beside the add to cart button and a second to `show: "pickup"` (or `check`) in a sidebar or a Bricks container of its own. Leave `pickup` unset on every instance but the one meant to show the hours.
+- **BFB Business Hours** feeds `pickup: "hours"`: the first `bfbe-business-hours` with days in this page (its header and footer included), or in the template chosen in **Business Hours in** `pickupFrom`. Consecutive days with the same hours are joined.
+- **The settings live on the Shop page**: BFB Elements, Shop, Delivery (processing days, cut-offs, holidays, transit days per zone and method), with the `shop-delivery` feature on (skill `bfbe-shop`).
+- **The same dates as tags**: `{bfbe_delivery_date}`, `{bfbe_delivery_range}`, `{bfbe_delivery_cutoff}`, each live on cached pages, in any Bricks text (skill `bfbe-shop-tags-and-conditions`).
 
 ## Verified patterns
 
-_Not written yet._
+**The estimate and the pickup hours as two elements** (fixture page `fixture-shop-p6`, `.dl-apart`, with the page's Business Hours). The estimate-only instance has no `pickup`; the pickup-only one reads the Business Hours below it and shows only while Local pickup is offered. The hours are the fixture's own: set the shop's.
+
+```json
+{
+  "name": "block",
+  "settings": { "_rowGap": "24px" },
+  "children": [
+    { "name": "block", "settings": { "_direction": "row", "_columnGap": "24px", "_alignItems": "flex-start", "_cssClasses": "dl-apart" }, "children": [
+      { "name": "bfbe-delivery-estimate", "settings": { "show": "estimate", "_cssClasses": "dl-est-only", "_width": "50%" } },
+      { "name": "bfbe-delivery-estimate", "settings": { "show": "pickup", "pickup": "hours", "pickupTitle": "Pick it up here", "_cssClasses": "dl-pickup", "_width": "50%" } }
+    ] },
+    { "name": "bfbe-business-hours", "settings": { "days": [
+      { "day": "mon", "open": "09:00", "close": "18:00" }, { "day": "tue", "open": "09:00", "close": "18:00" },
+      { "day": "wed", "open": "09:00", "close": "18:00" }, { "day": "thu", "open": "09:00", "close": "18:00" },
+      { "day": "fri", "open": "09:00", "close": "18:00" }, { "day": "sat", "open": "10:00", "close": "14:00" },
+      { "day": "sun", "closed": true }
+    ], "_cssClasses": "dl-hours" } }
+  ]
+}
+```
+
+**The check for the whole cart, fields down** (fixture page `fixture-shop-p6-cart`, `.dl-cart`). **Check for** `checkFor: "cart"` prices the basket; **Direction** `fieldsDirection: "column"` stacks the fields over the button for a narrow cart column.
+
+```json
+{ "name": "bfbe-delivery-estimate", "settings": { "checkFor": "cart", "checkTitle": "Delivery for this cart", "fieldsDirection": "column", "fieldsGap": "20px", "_cssClasses": "dl-cart" } }
+```
+
+**Own sentences and pickup hours in words** (fixture page `fixture-shop-p6`, `.dl-words`). `withinText` and `afterText` use `{time}`, `{from}` and `{to}`; `pickup: "words"` prints `pickupWords` for a shop whose pickup hours are not its opening hours.
+
+```json
+{ "name": "bfbe-delivery-estimate", "settings": { "show": "estimate", "withinText": "Order in the next {time} and it arrives {from} at the earliest", "afterText": "It arrives between {from} and {to}", "pickup": "words", "pickupWords": "Weekdays 9:00 to 18:00 at Strada Lipscani 12", "pickupTitle": "Collect it yourself", "_cssClasses": "dl-words" } }
+```
 
 ## Gotchas
 
-_Not written yet._
+- **Pickup prints with every Show.** `pickup` set on an estimate or check instance adds the hours there too, so a split page shows them twice. <!-- src: plugins/bfb-elements-pro/elements/delivery-estimate.php:766 -->
+- **Pickup only, with no source, is an empty box.** `show: "pickup"` without `pickup` prints an empty root on the site; the canvas says to choose a source. <!-- src: plugins/bfb-elements-pro/elements/delivery-estimate.php:763 -->
+- **Pickup hides unless Local pickup is offered.** The block is `hidden` while WooCommerce offers this visitor no Local pickup, and the live answer toggles it; the canvas always shows it. <!-- src: plugins/bfb-elements-pro/elements/delivery-estimate.php:777 ; src/elements/delivery-estimate/delivery-estimate.js:52 -->
+- **No transit rule, no date.** With no rule for the visitor's zone and method, the sentence is **Without an estimate** `noneText`, or hidden when that is empty; the canvas draws a sample marked as one. <!-- src: plugins/bfb-elements-pro/elements/delivery-estimate.php:724 ; plugins/bfb-elements-pro/elements/delivery-estimate.php:758 -->
+- **The estimate is the cart's, not the page's product.** The sentence counts from the rates for the visitor's cart and address, also on a product page; only the check prices the product, with `checkFor` unset. <!-- src: docs/elements/delivery-estimate.md "Limits" ; plugins/bfb-elements-pro/elements/delivery-estimate.php:796 -->
+- **A product that ships nothing gets nothing.** On a download or a service the element prints nothing on the site. <!-- src: plugins/bfb-elements-pro/elements/delivery-estimate.php:716 -->
+- **The sentences take four words, no dynamic data.** `withinText` and `afterText` fill `{time}`, `{date}`, `{from}` and `{to}` only; `{time}` has a value before the cut-off alone. `noneText` and `pickupWords` take dynamic data. <!-- src: plugins/bfb-elements-pro/elements/delivery-estimate.php:608 ; plugins/bfb-elements-pro/elements/delivery-estimate.php:732 ; src/elements/delivery-estimate/delivery-estimate.js:60 -->
+- **The clock is the server's.** The countdown counts to the cut-off with the live answer's own time, asks again when it reaches zero (five tries at most) and says the new date once; the ticking words are `aria-live="off"`. <!-- src: src/elements/delivery-estimate/delivery-estimate.js:107 ; src/elements/delivery-estimate/delivery-estimate.js:119 ; plugins/bfb-elements-pro/elements/delivery-estimate.php:758 -->
+- **A guest's check starts from the shop's country.** A cached page carries no visitor's postcode; the script fills the visitor's own after load, never over what they typed. The country list is WooCommerce's shipping countries. <!-- src: plugins/bfb-elements-pro/elements/delivery-estimate.php:801 ; src/elements/delivery-estimate/delivery-estimate.js:96 -->
+- **Business Hours is read as saved.** `pickup: "hours"` reads the first Business Hours with days stored in the page, its header or footer, or the `pickupFrom` template; none found prints no pickup block. <!-- src: plugins/bfb-elements-pro/elements/delivery-estimate.php:617 -->
+- **Line controls need the switch.** `lineColor` and `lineWidth` are offered only with `lines` on. <!-- src: plugins/bfb-elements-pro/elements/delivery-estimate.php:231 -->
 
 ## Never do
 
-_Not written yet._
+- Do not set `pickup` on more than one instance of a page split by `show`.
+- Do not set `show: "pickup"` without `pickup`.
+- Do not put dynamic tags in `withinText` or `afterText`; use `{time}`, `{date}`, `{from}` and `{to}`.
+- Do not present the sentence as the product's delivery; it is the cart's.
+- Do not set `pickup: "hours"` on a page or template with no BFB Business Hours, unless `pickupFrom` names one.
+- Do not set `lineColor` or `lineWidth` without `lines`.

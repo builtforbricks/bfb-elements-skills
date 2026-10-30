@@ -1,6 +1,6 @@
 ---
 name: bfbe-form
-description: "Use when building a multi-step form, a quote or price calculator, a form with conditional fields, uploads or a signature, or one that takes a payment (Stripe, PayPal or Mollie), adds people to MailerPress or fills a WooCommerce cart, with BFB Advanced Forms (`bfbe-form`) and its twelve part elements. Read before writing its settings."
+description: "Use when building a multi-step form, a quote or price calculator, a form with conditional fields, uploads or a signature, or one that takes a payment (Stripe, PayPal or Mollie), adds people to MailerPress or fills a WooCommerce cart, with BFB Advanced Forms (`bfbe-form`) and its twelve part elements. In a shop: product options priced on the server, back-in-stock and price-drop alerts, a product finder, a quote request from the quote list, cart extras such as a gift wrap, and words drawn over the product picture. Read before writing its settings."
 ---
 
 # BFB Advanced Forms (`bfbe-form`)
@@ -492,6 +492,13 @@ script sends it and Bricks' handler runs the actions. With **Nothing is sent** `
   Dropdown, Stepper, Number arrows, Calendar, the three upload groups, Errors) are defaults for every field inside; the
   same key set on one field wins there. `fieldGap` is `--bfbe-pc-gap` on the root, a flex column; `innerGap` is
   `--bfbe-pc-field-gap`, `errorBorder` `--bfbe-pc-error`, `accent` `--bfbe-pc-accent`.
+- **Since 2.0.** `checkLook: "native"` puts `data-bfbe-ticks="native"` on the root, a field's Box look
+  `bfbe-pc__field--box-native` or `--box-custom`. Our colour picker: `span.bfbe-pc__colour` holding
+  `button.bfbe-pc__colour-btn` and `span.bfbe-pc__colour-panel[role=dialog]`; `is-colour-ready` hides the browser's box.
+- **Shop marks.** Options form: `.bfbe-shop-options`, every named field but a file input carrying
+  `form="bfbe-cart-<product id>"`, the id Bricks' Add to cart `form.cart` takes. Finder: `data-bfbe-finder` on the root,
+  `data-bfbe-find` on a Choice field. Extras or quote: `data-bfbe-lists-form`. A drawing field: `data-bfbe-engrave`, with
+  `span.bfbe-engrave[aria-hidden]` laid in the picture's `.bfbe-engrave__host`.
 - **Fetched HTML is not the page.** The server draws every field and the first step; rules, steps, prices and the Summary
   act once the scripts run. Read their states in a browser.
 
@@ -551,6 +558,9 @@ in CSS or a script, give it a class in `_cssClasses`, never `_cssId`: component 
   (its **Starts with** `value`), `promo` (`codes` rows `{code, off, percent, note}`, checked on the server) or `section` (a
   heading, no key). Checks: `required`, `minLength`, `maxLength`, `pattern`, `sameAs` (another key), `telCountry`, and
   `mask` (`card`, `date`, `time`, `phone`, or `custom` with **Its shape** `maskPattern`: `9` a digit, `a` a letter, `*` either).
+  Since 2.0: `colorPicker: "custom"` draws the pack's picker, **Colours to offer** `colorPresets` (hex codes, twelve at
+  most), styled by the form's **Colour picker** group or the field's own; with `telCountry`, `telList: "styled"` makes
+  the code list a styled one with a search, dressed by the field's **Country code list** group (the form's `dd*` keys).
 - Words per check: `msgRequired`, `msgFormat`, `msgLength`, `msgPattern`, `msgMatch` (and `msgRange` on a number), else
   **Error message** `errorMessage`. A missed pattern or mask says `msgPattern`, else `errorMessage`, else "Not in the
   expected form.", on the page and from the server alike. <!-- src: plugins/bfb-elements-pro/elements/form-text.php:247-255 -->
@@ -561,6 +571,8 @@ in CSS or a script, give it a class in `_cssClasses`, never `_cssId`: component 
   `images`, `content`) suits `radio`, `multi` and `period`; `content` takes one child element per choice, in order.
 - More Choice keys: a single tick box prices with `price`; **Go on when chosen** `advance` (`radio`, `rating`) moves to
   the next step; a `radio` preselects its first option, so the total starts above zero, unless `noPreselect` is set; `priceOn` only shows each option's price beside it, the total counts it either way; `ddSearch` and `ddMulti` shape a dropdown.
+  Since 2.0: **Box look** `checkLook` (`native` or `custom`) overrides the form's **Look** `checkLook: "native"`;
+  **Label and price** `checkPriceAt: "row"` puts a lone priced tick box's words and price on one line.
 - `bfbe-form-number`: `type` `number` (default), `slider`, `range` (two handles, both ends in one answer) or `fixed` (adds
   `price`, not shown). `min`, `max`, `step`, `start`, `startEmpty`, `unit`; `price` per unit, `times`, `was`, and `tiers`
   rows `{upTo, rate}` with `tiersMode` `stepped` or `graduated`.
@@ -588,7 +600,8 @@ in CSS or a script, give it a class in `_cssClasses`, never `_cssId`: component 
 
 **Sending.**
 - `actions` is an array of Bricks' own (`email`, `webhook`, `redirect`, `save-submission`, `create-post`, `login` and the
-  rest, each with Bricks' own keys) and the pack's `bfbe-user`, `bfbe-meta`, `bfbe-delete`, `bfbe-pdf`, `bfbe-pay` and `bfbe-mailerpress`.
+  rest, each with Bricks' own keys) and the pack's `bfbe-user`, `bfbe-meta`, `bfbe-delete`, `bfbe-pdf`, `bfbe-pay` and `bfbe-mailerpress`,
+  with, in a shop, `bfbe-alert-stock`, `bfbe-alert-price` and `bfbe-quote-order` (below).
   `save-submission`, which Bricks offers once its setting Save form submissions in database is on, always runs first.
   <!-- src: plugins/bfb-elements-pro/includes/class-form-engine.php:1714-1717 -->
 - Email: `emailTo: "custom"` with `emailToCustom`, and `{{key}}` or `{{all_fields}}` in `emailSubject` and `emailContent`.
@@ -625,6 +638,31 @@ in CSS or a script, give it a class in `_cssClasses`, never `_cssId`: component 
   delete a post (`deletePost`, `deleteHow`). **Save for later** is a Button with `kind: "save"`, emailing a link back (`saveDays`, 30).
 - A form on a draft or private page refuses to send unless the visitor may edit that page.
   <!-- src: plugins/bfb-elements-pro/includes/class-form-engine.php:133-136 -->
+
+**In a shop (Pro 2.0.0, WooCommerce active).** Each part needs the switch named, on BFB Elements, Elements. Hub:
+`bfbe-shop`; the loops: `bfbe-shop-loops`.
+- **Product options** (Product options): `bfbeShopOptions: true` on a form in the product template beside Bricks'
+  `product-add-to-cart`. Add to cart posts the answers; the server checks them again and prices the line as the product's
+  or variation's price (or its quantity break) plus the options. Other answers make another line, headed by
+  `bfbeShopOptionsLine` in the cart, order and emails. A `bfbe-form-total` inside shows the product price with the
+  options, following the variation, or the options alone with `bfbeShopOptionsTotal: "alone"`.
+- **Words over the picture**: `bfbeShopDraw: true` on a Text Field, over the first image of Bricks' Product gallery, or
+  `bfbeShopDrawOn: "element"` with `bfbeShopDrawEl` (a Bricks element id). `bfbeShopDrawX`, `bfbeShopDrawY`,
+  `bfbeShopDrawWidth` and `bfbeShopDrawSize` are percent of the picture's width.
+- **Alerts** (Alerts): `actions: ["bfbe-alert-stock"]` or `["bfbe-alert-price"]` on a form on the product page or in a
+  product loop row, with an email field and, on a variable product, a `type: "hidden"` Text Field keyed `variation`
+  (`alertVariation` renames it), which the script fills as the shopper chooses. Double opt-in, then one email.
+- **Product finder**: `bfbeShopFind: true` on a form that sends. Each Choice field's `bfbeShopFindBy` is unset (each
+  value a filter: `cat:kitchen`, `tag:gift`, `pa_colour:ink`, `price:0-30`, `sale:yes`), `category`, `tag`, `attribute`
+  with `bfbeShopFindAttr`, `price` (values `0-30`, `60-`) or `sale`. A value `any` filters nothing; choices of one field
+  are either, fields are all. The matches show in a `bfbeShopFinder` query loop on the page (`bfbeShopFindLoop` names
+  its element id, else the first), or on `bfbeShopFindPage` with `bfbeShopFindTo: "page"`, through `?bfbe_find=`.
+- **Quote request** (Lists): `actions` with `bfbe-quote-order` makes the quote list (skill `bfbe-quote-list-button`) a
+  WooCommerce order in Pending payment at the shop's prices, with the answers as its note and `bfbeQuoteEmail` and
+  `bfbeQuoteName` as billing email and name; the list empties and the shop gets WooCommerce's New order email.
+- **Cart extras** (Lists): `bfbeCartExtras: true` on a form on the cart page, with no action needed. Its priced choices
+  become fees, `bfbeCartExtrasAs` `each` or `total` (named `bfbeCartExtrasName`), taxed with `bfbeCartExtrasTax`; the
+  answers, a card message among them, reach the order note, emails, admin and account.
 
 **What the server never trusts.** It runs the rules again and drops what they hide, checks every choice against the saved
 options, prices the answers itself and writes its own total, and takes labels, required fields, Set values, Block rules,
@@ -702,6 +740,36 @@ the Stripe keys on the site: without them the send answers that payment is not a
 ]}
 ```
 
+**A product's options with a live total.** From the product template `bfbe-shop-product-p5b`, beside Bricks' Add to
+cart, the photo upload left out. No Button: Add to cart sends it. The fee is a `fixed` number shown while the
+engraving is filled; the Total reads the product's price plus the options.
+
+```json
+{"name": "bfbe-form", "settings": {"bfbeShopOptions": true, "bfbeShopOptionsLine": "Your options", "_cssClasses": "p5b-options"}, "children": [
+  {"name": "bfbe-form-text", "settings": {"label": "Engraving", "key": "engraving", "type": "text", "maxLength": 20, "note": "Up to 20 letters, adds 5,00 €"}},
+  {"name": "bfbe-form-number", "settings": {"label": "Engraving", "key": "engraving_fee", "type": "fixed", "price": 5, "ruleAction": "show", "rules": [{"field": "engraving", "op": "filled", "value": ""}]}},
+  {"name": "bfbe-form-choice", "settings": {"label": "Gift wrap", "key": "gift_wrap", "type": "checkbox", "price": 3, "priceOn": true}},
+  {"name": "bfbe-form-choice", "settings": {"label": "Card", "key": "card", "type": "radio", "required": true, "noPreselect": true, "options": [{"label": "Birthday", "amount": 0}, {"label": "No card", "amount": 0}]}},
+  {"name": "bfbe-form-total", "settings": {"totalLabel": "Total with options"}}
+]}
+```
+
+**A product finder.** From the fixture `fixture-shop-finder`, two of its questions kept (the budget step left out). A
+category by its name and an attribute's term, then the step that holds the Product finder loop, drawn again for the
+answers as it shows. "No preference" filters nothing.
+
+```json
+{"name": "bfbe-form", "settings": {"bfbeShopFind": true, "bfbeShopFindTo": "here", "stepsScroll": "still", "_cssClasses": "p11-finder"}, "children": [
+  {"name": "bfbe-form-step", "settings": {"title": "Room"}, "children": [{"name": "bfbe-form-choice", "settings": {"label": "Where will it live?", "key": "room", "type": "radio", "required": true,
+    "noPreselect": true, "bfbeShopFindBy": "category", "options": [{"label": "Kitchen", "amount": 0}, {"label": "Textiles", "amount": 0}]}}]},
+  {"name": "bfbe-form-step", "settings": {"title": "Material"}, "children": [{"name": "bfbe-form-choice", "settings": {"label": "Which material?", "key": "material", "type": "radio",
+    "required": true, "noPreselect": true, "bfbeShopFindBy": "attribute", "bfbeShopFindAttr": "pa_material", "options": [{"label": "Linen", "amount": 0}, {"label": "No preference", "value": "any", "amount": 0}]}}]},
+  {"name": "bfbe-form-step", "settings": {"title": "Your matches"}, "children": [{"name": "block", "settings": {"hasLoop": true, "query": {"objectType": "bfbeShopFinder", "posts_per_page": 12},
+    "bfbeShopFindNone": "Nothing matches those answers."}, "children": [{"name": "heading", "settings": {"text": "{post_title}", "tag": "h4"}}, {"name": "text-basic", "settings": {"text": "{woo_product_price}"}}]}]},
+  {"name": "bfbe-form-button", "settings": {"kind": "nav", "sendText": "Show my matches"}}
+]}
+```
+
 ## Gotchas
 
 - **A login's `redirect_to` stays on the site.** With the User login action, the address's `?redirect_to=` is carried
@@ -745,6 +813,24 @@ the Stripe keys on the site: without them the send answers that payment is not a
 - **The builder canvas is not the page.** **Show it** `builderView` is `free` unless set: one step at a time, any step
   reachable, and Next never checks. `open` shows every step and runs no rule; only `live` works as the page does.
   <!-- src: src/elements/form/form.js:145-147, src/elements/form-wizard/form-wizard.js:52-53, plugins/bfb-elements-pro/elements/form-step.php:143-148 -->
+- **An options form is a quiet form.** `bfbeShopOptions` sets `quiet`: no Send, no action, no finder. On a grouped or
+  external product its fields join nothing. <!-- src: plugins/bfb-elements-pro/includes/shop/class-product-options.php:132-135, :185-190; plugins/bfb-elements-pro/includes/shop/class-finder.php:135-137 -->
+- **Required options cannot be skipped.** An add to cart without the answers, for a product whose template holds an
+  options form with a required field, is refused, as is one whose answers fail the form's checks. <!-- src: plugins/bfb-elements-pro/includes/shop/class-product-options.php:327-372 -->
+- **The store's money wins.** Options and extras forms print WooCommerce's currency, decimals and marks, and an
+  options form ignores **Tax (%)**: WooCommerce taxes the line. <!-- src: plugins/bfb-elements-pro/includes/shop/class-product-options.php:152-165; plugins/bfb-elements-pro/includes/shop/class-cart-extras.php:61-73 -->
+- **A finder value needs its kind.** With `bfbeShopFindBy` unset, `Kitchen` filters nothing (write `cat:kitchen`); a
+  term the shop lacks is dropped, and `attribute` without `bfbeShopFindAttr` filters nothing. <!-- src: plugins/bfb-elements-pro/includes/shop/class-finder-field.php:96-131; plugins/bfb-elements-pro/includes/shop/class-finder.php:208-258 -->
+- **Back in stock refuses a product in stock**, saying "It is in stock now."; with no `variation` field the sign-up is the
+  parent's, in stock while any variation is. WooCommerce's own back-in-stock notifications, when on, take the sign-up. <!-- src: plugins/bfb-elements-pro/includes/shop/class-alerts.php:153-167, :243-268 -->
+- **A quote's order waits for the invoice.** It cannot be paid until the shop sends WooCommerce's Customer invoice; an
+  empty list refuses the send with `bfbeQuoteEmpty`, and five an hour from one address is the most. <!-- src: plugins/bfb-elements-pro/includes/class-form-actions.php:1907-1931, :1966-1980 -->
+- **Extras are one set per form.** Sending again replaces that form's fees, never adds; an empty cart counts none, and
+  emptying the cart forgets them. <!-- src: plugins/bfb-elements-pro/includes/shop/class-cart-extras.php:80-124, :181-185; dev/shop/p9-probe.mjs section 11 -->
+- **The drawing is a preview**, hidden from assistive technology, for `type` `text` or `textarea` only; the cart gets the
+  answer as typed, so a case set under **Font** is the preview's alone. <!-- src: plugins/bfb-elements-pro/includes/shop/class-engraving.php:47, :263-265; docs/elements/form.md "The personalisation preview" -->
+- **The browser's tick boxes drop the paint.** With `checkLook: "native"`, the box's corners, fill, edge, mark colour and
+  `checkMark` are hidden and do nothing. <!-- src: plugins/bfb-elements-pro/elements/form.php:571-578; plugins/bfb-elements-pro/elements/form-choice.php:119-120, :193 -->
 
 ## Never do
 
@@ -756,3 +842,7 @@ the Stripe keys on the site: without them the send answers that payment is not a
 - Do not wrap the Total in a block when `position` is `right` or `left`.
 - Do not put an upload, signature, step, total or repeater inside a `bfbe-form-repeater`.
 - Do not change a field's `type` without removing the keys only the old type offered.
+- Do not give an options form (`bfbeShopOptions`) a Send button, actions or `bfbeShopFind`; Add to cart sends it.
+- Do not set `currency`, `decimals` or `taxRate` on an options or extras form; the store's money is used.
+- Do not write a finder choice's value as a plain word with `bfbeShopFindBy` unset; write `cat:kitchen` or set the kind.
+- Do not leave the hidden `variation` field out of a variable product's alert form.

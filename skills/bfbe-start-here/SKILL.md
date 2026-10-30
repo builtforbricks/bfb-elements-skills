@@ -20,7 +20,7 @@ adds. Every per-element skill (`bfbe-modal`, `bfbe-table`, `bfbe-form`, ...) ass
   `bfbe-form-choice`, `bfbe-form-number`, `bfbe-form-date`, `bfbe-form-upload`, `bfbe-form-signature`,
   `bfbe-form-repeater`, `bfbe-form-step`, `bfbe-form-progress`, `bfbe-form-summary`, `bfbe-form-total`,
   `bfbe-form-button`), all in `bfbe-form`.
-- Ten things are features, not elements: Hover Effects and Tooltips (controls on every element, Bricks' own
+- Besides the shop's, ten things are features, not elements: Hover Effects and Tooltips (controls on every element, Bricks' own
   included), Advanced Header Scroll (the header template and every element in it), Footer reveal (the footer template),
   Background masks and patterns (Bricks' Section, Container, Block and Div), Form Steps and Form Fields (both on Bricks'
   own form element), Page Loader (a template type of its own, shown where its Conditions say), Breakpoint Canvas (a
@@ -28,6 +28,10 @@ adds. Every per-element skill (`bfbe-modal`, `bfbe-table`, `bfbe-form`, ...) ass
   library). Each has a skill: `bfbe-hover-effects`, `bfbe-tooltips`, `bfbe-advanced-header-scroll`,
   `bfbe-footer-reveal`, `bfbe-background-masks-and-patterns`, `bfbe-form-steps`, `bfbe-form-fields`,
   `bfbe-page-loader`, `bfbe-breakpoint-canvas`, `bfbe-image-focal-point`.
+- **The shop (Shop 2.0, with WooCommerce active)** adds features on Bricks' own shop elements (the `bfbe-shop-*`
+  skills), shop elements of its own (`bfbe-wishlist-button`, `bfbe-buy-now`, ...), and shop tags, conditions,
+  interaction triggers and query loop types in Bricks' own pickers. Load `bfbe-shop` first for any shop page: it says
+  what the set needs, how parts are placed with Bricks' containers, and which skill covers each job.
 - **An element missing from the list is turned off, not absent.** Every element has a switch on the pack's Elements
   page (WordPress menu BFB Elements, Elements), and an element turned off leaves Bricks' registry entirely; a Pro
   element is also missing when Pro is not installed. Say which it is and stop. Never conclude the pack lacks the
@@ -78,7 +82,8 @@ adds. Every per-element skill (`bfbe-modal`, `bfbe-table`, `bfbe-form`, ...) ass
 2. Load the element's skill; read the schema file for the controls you will set.
 3. Build the tree from the skill's structure section; set switches and their values together; write defaults you rely on.
 4. Write it (`bricks/add-element` or the page-level abilities): a query loop needs `objectType` (`"post"`, `"term"` or
-   `"user"`) in its `query`, or the write is refused. Then read it back with `bricks/get-page-elements` and verify on the
+   `"user"`, or a shop type from `bfbe-shop-loops` such as `"bfbeShopProducts"`) in its `query`, or the write is
+   refused. Then read it back with `bricks/get-page-elements` and verify on the
    frontend: fetch the published page's HTML or open it in a browser. `bricks/render-elements` in its summary form lists
    landmarks and headings only, and its detailed form puts a placeholder where nestable children go, so neither shows an
    element's root class or its parts.

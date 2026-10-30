@@ -92,20 +92,201 @@ Styling only, every key in the schema file: `priceTypography`, `oldPriceTypograp
 
 ## Rendered DOM
 
-_Not written yet._
+The shop wraps nothing round a page. Bricks' shop elements keep their own markup (`brxe-product-price`, `brxe-woocommerce-mini-cart`); a feature adds attributes, classes or a part inside them, and each shop element has its own root, named in its skill. What the whole set shares:
+
+```html
+<span class='bfbe-shop-live' data-bfbe-shop-live='cart_count' data-bfbe-shop-fb='none'>3</span>
+<span class='bfbe-shop-follow' data-bfbe-shop-follow='sku'>SHIRT-01</span>
+<div class="bfbe-shop-when" hidden data-bfbe-shop-when="412:a1b2c3:412">… the element …</div>
+<div class="bfbe-shop-when" data-bfbe-shop-when="412:d4e5f6:0" data-bfbe-shop-cart="now" style="display:contents">… the element …</div>
+```
+
+- **A live tag** (cart, lists, delivery) prints the server's value inside `span.bfbe-shop-live`, keyed by `data-bfbe-shop-live`. `data-bfbe-shop-live-html='1'` marks WooCommerce price markup; `data-bfbe-shop-fb` carries the tag's `@fallback` words.
+- **A variation tag** prints the parent's value inside `span.bfbe-shop-follow`; Pro's follower rewrites it as the shopper chooses (`bfbe-shop-tags-and-conditions`).
+- **A condition decided in the browser** wraps its element in `div.bfbe-shop-when`, marked `<page id>:<element id>:<post the conditions read>`. Without `data-bfbe-shop-cart` it starts `hidden`; the answer then removes the wrapper (shown) or the whole element.
+- **A cart condition** keeps its wrapper: `data-bfbe-shop-cart="now"` was decided on the server, `"later"` waits for the answer, and every cart change sets `display:contents` or `hidden` again.
+- After the first answer, `body` carries `bfbe-shop-live--ready`. Every announcement goes to one visually hidden live region, `#bfbe-shop-status` (polite) or `#bfbe-shop-status-alert`, made on first use.
+- **The shared script**, `shop-live.min.js`, loads only on a page that printed a live marker or a condition wrapper, or whose shop element asked for it. It sets `window.bfbeShop` (`.act(name, fields)`), `window.bfbeShopStore`, `window.bfbeShopAnnounce(text, assertive)` and `window.bfbeShopLive()`, configured by `window.bfbeShopConfig`.
+- **Its events**, on `document`: `bfbe:shop:ask` before each request, `bfbe:shop:live` with the answer, `bfbe:shop:cart` after a cart action of ours. On `document.body`: `bfbe:shop:variation` and the four interaction events.
+- **Its requests**: one `GET /?wc-ajax=bfbe_shop_live` per page and per cart change, sent `Cache-Control: no-store`; actions are `POST /?wc-ajax=bfbe_shop_act`. Without the script, every cart and list change is a real `<form method="post">` with a submit button, never a link.
 
 ## Wiring to other elements
 
-_Not written yet._
+### What Shop 2.0 is, and what it needs
+
+- The WooCommerce set of BFB Elements: features on Bricks' own shop elements, new elements only where Bricks has none, and shop data (dynamic tags, conditions, interaction triggers, query loop types) in Bricks' own pickers. Nothing replaces a Bricks shop element.
+- A feature on a Bricks element is a group titled **BFB** something on that element's Content tab, after Bricks' own groups, with keys that start `bfbeShop`. Its skill is a `bfbe-shop-*` feature skill; its schema lists every host it reaches (`hosts`).
+- Needs WooCommerce active, BFB Elements 2.0.0 (Bricks 2.3 or later, WordPress 6.5, PHP 8.1) and, for the Pro parts, BFB Elements Pro 2.0.0, which needs the free plugin at 2.0.0. Measured on Bricks 2.3.10 and 2.4.2, WooCommerce 11.1.2 and 11.2.1.
+- Bricks 2.4's experimental shop elements (its "advanced modular elements" setting) get the features too, where that setting is on. With it off, they are not registered and nothing is attached to them.
+- Shop elements are in the `bfb-elements` category like every BFB element. Each shop feature is a switch on BFB Elements, Elements, on unless turned off.
+
+### The place-anything model
+
+- **Every part is its own element**, laid out with Bricks' Block, Container and Div: BFB Buy Now beside Bricks' Add to cart, BFB Quantity Breaks under Product price, BFB Review Form beside Product reviews. No shop element has a position or arrangement control.
+- **The product in hand.** A shop element or tag reads the product of the query loop row it sits in, else the page's product. A part therefore works on a single product template and in any product loop row with nothing to point at.
+- **Lists are query loops** on a Container, Block or Div, with Bricks' own elements in each row (`bfbe-shop-loops`): product sets, reviews, images, variations, the wishlist, compare and quote lists, saved for later, orders. A product card is Bricks' Product title, Product price, Add to cart and an Image of `{featured_image}`, plus BFB parts such as Product Badges and Wishlist Button.
+- **Nestable parents hold their parts**, with Bricks' elements beside them: BFB Offer (Offer Checkbox), BFB Bought Together (Bought Together Products, Bought Together Total), BFB Bundle Builder (Bundle Title, Bundle Progress, Bundle Products), BFB Compare Tray, BFB Wishlist Bar (Wishlist Action), BFB Sticky Buy Bar.
+- **Two halves of one job are two instances**, each with **Shows** (`shows`): Wishlist Button `button` or `count`; Rating Summary `both`, `summary` or `bars`; Product Questions `both`, `list` or `form`; Size Guide `button` or `page`; Cart Goals `all`, `sentence`, `track` or `gifts`; Cart Quantity `both`, `qty` or `remove`; Order Status `both`, `form` or `answer`.
+- **Bricks' own part steps aside the same way**: Product reviews with `bfbeShopReviewsFormShow: "hide"`, and BFB Review Form placed wherever the form belongs.
+- **Parts meet through the shop's state, not through ids**: the cart, the visitor's lists, the order in hand and the live answer. Two Wishlist Buttons, a header count and a wishlist loop agree with no class or id between them.
+- Where a control asks for an **Element id** (the set **Pinned on an image**, `bfbeShopHotspots`; **BFB Product moments**, `bfbeShopMomentsPlayer`), leave it empty to take the nearest BFB Image Hotspots or BFB Video Player.
+
+### The Shop settings screens
+
+WordPress menu **BFB Elements, Shop**: what applies to the whole shop, on sub-pages picked from pills and kept in the address as `&tab=`. A sub-page shows only when a part adds a card to it; the free plugin alone has General, Pricing, Customers and Search. Each Save stores its own sub-page only. Each element's own options stay on the element.
+
+| Sub-page (`tab`) | Cards |
+|---|---|
+| General (`general`) | Page caching, Sorting, Search engines; Pro: Recently viewed, and a card to move lists another add-on kept, shown only when it finds some |
+| Products (`products`) | Pro: Product badges, Size guides, Product tabs, Reviews, Age check |
+| Pricing (`pricing`) | Price information for the EU; Pro: Prices with or without tax, Quantity discounts by category, Catalogue mode |
+| Cart & checkout (`checkout`) | Pro: Cart goals, Coupons, Payment method fees, Free shipping, Checkout fields |
+| Delivery (`delivery`) | Pro: Processing time, Working days and cut-off times, Transit times, Holidays, Delivery dates and time slots |
+| Customers (`customers`) | Your account pages, WooCommerce's account pages, Where customers land; Pro: Wishlist and compare pages, Stock and price alerts |
+| Search (`search`) | What shoppers search for; Pro: Search suggestions, Synonyms |
+
+### Which skill for which job
+
+| Job | Skill |
+|---|---|
+| Shop tags, conditions, interaction triggers | `bfbe-shop-tags-and-conditions` |
+| Query loops: product sets, reviews, images, variations, lists, orders | `bfbe-shop-loops` |
+| Shop archive: promo tiles, sorting, filters, swatch filters, brand breadcrumbs | `bfbe-shop-catalogue` |
+| Add to cart and Products: option lists, swatches, ask for a price, cards | `bfbe-shop-add-to-cart` |
+| Product gallery: first image, thumbnails, video and 3D slides | `bfbe-shop-product-gallery` |
+| Product price and stock: lowest price, unit price, stock bar, sold count | `bfbe-shop-price-and-stock` |
+| Product reviews and tabs: photos, votes, sort, tabs from templates | `bfbe-shop-reviews` |
+| Search and Filter - Search: recent and popular searches, suggestions | `bfbe-shop-search` |
+| Mini cart: accessible panel, empty state, undo, save for later | `bfbe-shop-mini-cart` |
+| Cart page: cart table, coupons anywhere, live cart regions | `bfbe-shop-cart-page` |
+| Checkout and thank-you: fields look, own checkout fields, delivery slots | `bfbe-shop-checkout` |
+| Account page and registration | `bfbe-shop-account` |
+| Badges from rules | `bfbe-product-badges` |
+| Grid or list, columns, per page | `bfbe-view-switch` |
+| Size table and size finder | `bfbe-size-guide` |
+| Average and bars per star | `bfbe-rating-summary` |
+| Questions and answers | `bfbe-product-questions` |
+| Attributes as scales | `bfbe-spec-scales` |
+| With or without VAT, site-wide | `bfbe-tax-switch` |
+| A bar that follows the scroll with the buy button | `bfbe-sticky-buy-bar` |
+| Products bought together, one button | `bfbe-bought-together` |
+| Choose any N for a price | `bfbe-bundle-builder` |
+| 360 degree spin, AR and 3D model | `bfbe-product-3d` |
+| Straight to the checkout | `bfbe-buy-now` |
+| Price table by quantity | `bfbe-quantity-breaks` |
+| One product per colour, as swatches | `bfbe-linked-products` |
+| Review form, sort and helpful votes as parts | `bfbe-review-form`, `bfbe-review-sort`, `bfbe-review-votes` |
+| Delivery estimate with a postcode check | `bfbe-delivery-estimate` |
+| Goals on one track: free shipping, gifts, discounts | `bfbe-cart-goals` |
+| An add-on offer with a checkbox | `bfbe-offer` |
+| Empty the cart | `bfbe-empty-cart-button` |
+| Coupons on the cart, each with Remove | `bfbe-applied-coupons` |
+| A cart page laid out yourself: quantity, shipping choice | `bfbe-cart-quantity`, `bfbe-cart-shipping` |
+| Save for later on a v2 cart line, and its saved rows | `bfbe-save-later-button`, `bfbe-saved-item-button` |
+| Order lookup with a timeline | `bfbe-order-status` |
+| Payment method icons | `bfbe-payment-icons` |
+| WooCommerce's online withdrawal page | `bfbe-withdrawal-button` |
+| Wishlist: the button, the lists bar and its actions | `bfbe-wishlist-button`, `bfbe-wishlist-bar`, `bfbe-wishlist-action` |
+| Compare: the button and the tray | `bfbe-compare-button`, `bfbe-compare-tray` |
+| Quote list | `bfbe-quote-list-button` |
+| A switch that pauses the page's motion | `bfbe-motion-switch` |
+| Product options priced on the server, stock and price alerts, the product finder, a quote's draft order, cart extras | `bfbe-form` |
+| A quick order table of products, a shoppable list | `bfbe-dynamic-table` |
+| The products being compared as a table | `bfbe-comparison-table` |
+| A coupon to copy and apply | `bfbe-copy` |
+| Product pins on an image | `bfbe-hotspots` |
+| The gallery's video, products at moments of a video | `bfbe-video-player` |
+| Added to the cart, a viewed product back or on sale | `bfbe-toast` |
+| WooCommerce's store notice as a bar | `bfbe-notification-bar` |
+| An order's delivery date or a product's release date | `bfbe-add-to-calendar` |
+| An age check on products for adults | `bfbe-age-gate` |
 
 ## Verified patterns
 
-_Not written yet._
+**A buy box laid out with Bricks' blocks.** From the demo shop's product template (`bfb-demo-product`, "Buy box"). Bricks' product elements carry their BFB groups (the lowest price and unit price on Product price, the stock bar on Product stock); BFB parts sit between them, each where the layout wants it. Trimmed: the demo's look, the brand and rating rows, Linked Products, Spec Scales and the two alert forms.
+
+```json
+{
+  "name": "block",
+  "settings": { "_cssClasses": "buy-box" },
+  "children": [
+    { "name": "product-title", "settings": { "tag": "h1" } },
+    { "name": "bfbe-product-badges", "settings": { "max": 3, "layout": "inline" } },
+    { "name": "product-price", "settings": { "bfbeShopLowest": true, "bfbeShopUnit": true } },
+    { "name": "bfbe-quantity-breaks", "settings": {} },
+    { "name": "product-stock", "settings": { "bfbeShopStockBar": true, "bfbeShopStockBarText": "Only {left} left" } },
+    { "name": "block", "settings": { "_cssClasses": "buy-row" }, "children": [
+      { "name": "product-add-to-cart", "settings": { "buttonText": "Add to cart" } },
+      { "name": "bfbe-buy-now", "settings": { "text": "Buy now", "takes": "alone" } }
+    ] },
+    { "name": "block", "settings": {}, "children": [
+      { "name": "bfbe-wishlist-button", "settings": { "content": "both", "textAdd": "Save", "textOn": "Saved" } },
+      { "name": "bfbe-compare-button", "settings": { "content": "both" } },
+      { "name": "bfbe-size-guide", "settings": { "text": "Size guide" } }
+    ] },
+    { "name": "bfbe-delivery-estimate", "settings": { "show": "both" } }
+  ]
+}
+```
+
+**A review area with Bricks' form set aside.** From the same template ("Reviews"). Product reviews hides its own form (`bfbeShopReviewsFormShow: "hide"`) and BFB Review Form stands under the list; Rating Summary and Review Sort sit in their own column above. Trimmed: the form's and the list's look.
+
+```json
+{
+  "name": "block",
+  "settings": {},
+  "children": [
+    { "name": "block", "settings": {}, "children": [
+      { "name": "heading", "settings": { "text": "What people say", "tag": "h2" } },
+      { "name": "bfbe-rating-summary", "settings": { "stars": true, "text": "{average} out of 5, from {count} reviews", "figure": "count" } },
+      { "name": "bfbe-review-sort", "settings": { "as": "select", "label": "Sort reviews" } }
+    ] },
+    { "name": "block", "settings": {}, "children": [
+      { "name": "product-reviews", "settings": { "bfbeShopReviewsFormShow": "hide", "bfbeShopReviewsListTitle": "hide" } },
+      { "name": "bfbe-review-form", "settings": {} }
+    ] }
+  ]
+}
+```
+
+**Header icons that stay right on a cached page.** From the demo shop's header template (`bfb-demo-header`, "Icons"). The compare count is a live tag in a Bricks Text; the wishlist count is a second Wishlist Button with `shows: "count"`; Bricks' Mini cart carries its BFB group (`bfbeShopMiniCartTitle` names the panel). Trimmed: the icons, links and look.
+
+```json
+{
+  "name": "block",
+  "settings": { "_cssClasses": "header-icons" },
+  "children": [
+    { "name": "block", "settings": { "tag": "a", "link": { "type": "external", "url": "/compare/" } }, "children": [
+      { "name": "text-basic", "settings": { "text": "Compare", "tag": "span" } },
+      { "name": "text-basic", "settings": { "text": "{bfbe_compare_count}", "tag": "span" } }
+    ] },
+    { "name": "bfbe-wishlist-button", "settings": { "shows": "count", "countPlace": "beside" } },
+    { "name": "woocommerce-mini-cart", "settings": { "bfbeShopMiniCartTitle": "My cart" } }
+  ]
+}
+```
 
 ## Gotchas
 
-_Not written yet._
+- **No WooCommerce, no shop.** Without WooCommerce active the set adds nothing: no controls, no tags, no loop types, no admin page, no files. Settings saved earlier stay and act again once it is back. <!-- src: plugins/bfb-elements/includes/shop/class-shop.php:57-61 --> <!-- src: docs/elements/shop.md "Only with WooCommerce" -->
+- **Pro's shop needs the free plugin at 2.0.0.** With an older free plugin, Pro stops its own boot and shows a notice; nothing of Pro's shop registers. <!-- src: plugins/bfb-elements-pro/bfb-elements-pro.php:27 --> <!-- src: plugins/bfb-elements-pro/includes/class-requirements.php:28 --> <!-- src: docs/SHOP-ARCHITECTURE-2026-10-21.md §3.1 -->
+- **A switched-off feature registers nothing.** Its controls, tags, conditions or loop types are missing from Bricks' panels and pickers, so a key written for it is never read. Check the switch on BFB Elements, Elements before concluding a control is absent. <!-- src: plugins/bfb-elements/includes/shop/class-shop.php:49-52 --> <!-- src: plugins/bfb-elements/includes/class-element-switches.php:224-226 -->
+- **A Shop sub-page appears only with a card on it.** The free plugin alone offers General, Pricing, Customers and Search; Products, Cart & checkout and Delivery come with Pro's parts. <!-- src: plugins/bfb-elements/includes/shop/class-admin.php:72-75 --> <!-- src: docs/SHOP-ARCHITECTURE-2026-10-21.md §3.12 -->
+- **Live tags are live in text only.** In a link, an image or an attribute such as `href`, `src` or `style`, a live tag prints the server's value once and is never corrected after load, so a cached page keeps the first visitor's figure there. <!-- src: plugins/bfb-elements/includes/shop/class-tags.php:232-233 --> <!-- src: src/elements/shop-live/shop-live.js:163 -->
+- **Visitor conditions decide on the server by default.** On a site behind a page cache, switch on **Check visitor conditions after the page loads** (Shop, General): elements with a personal condition then start hidden and appear after the answer, so they are absent without JavaScript. <!-- src: plugins/bfb-elements/includes/shop/class-admin.php:142-151 --> <!-- src: plugins/bfb-elements/includes/shop/class-conditions.php:10-24 -->
+- **A cart condition puts a wrapper round its element.** `div.bfbe-shop-when` with `display:contents` keeps the flex or grid layout, but a child combinator (`.row > .note`) or `:nth-child()` on that element no longer matches. <!-- src: plugins/bfb-elements/includes/shop/class-conditions.php:353-355 -->
+- **Hidden by a cart condition is not secret.** The element is in the page, hidden, so it can appear after a cart change. Only the customer conditions (bought, order count, total spent) leave a false element out of the page. <!-- src: plugins/bfb-elements/includes/shop/class-conditions.php:16, 26-33 -->
+- **The theme style groups print nothing until set.** **BFB Form fields** leaves fields inside BFB Advanced Forms alone, and its tick box controls act only with **Look** (`wooTickLook`) set to `custom`. <!-- src: plugins/bfb-elements/includes/shop/class-theme-styles.php:17-18, 50, 241 -->
+- **The 2.3 builder can lag one save.** On Bricks 2.3.10 the canvas's single-element re-render skips the seam a feature uses to change a shop element's finished markup, so such a change can show only after the next save; the page is right. <!-- src: plugins/bfb-elements/includes/shop/class-woo-elements.php:13-17 --> <!-- src: docs/SHOP-ARCHITECTURE-2026-10-21.md §3.2 -->
+- **A part outside its parent shows a note in the builder.** Offer Checkbox, Bought Together Products and Total, and the three Bundle parts say "Place this inside" their parent in the canvas; BFB Saved Item Button prints nothing outside a Saved for later loop. <!-- src: plugins/bfb-elements-pro/elements/bundle-title.php:95 --> <!-- src: docs/elements/saved-item-button.md "Saved item" -->
+- **Passive browser storage waits for consent.** Recently viewed products are kept only with consent where BFB Cookie Consent is on the site (its Preferences category); lists a visitor builds are kept regardless, as they asked for them. <!-- src: docs/elements/shop.md "What the visitor's browser keeps" --> <!-- src: docs/elements/shop-lists.md "What is kept where" -->
 
 ## Never do
 
-_Not written yet._
+- Do not build a stand-in for a Bricks shop element from other elements; use Bricks' element and its BFB group.
+- Do not put a live tag in a link, image or attribute where it must follow the visitor on a cached page.
+- Do not style an element that carries a cart condition through `>` or `:nth-child()`; give it a class.
+- Do not hide content meant for buyers only behind a cart condition; use a customer condition.
+- Do not set a tick box control in **BFB Form fields** without `wooTickLook: "custom"`.
+- Do not place Offer Checkbox, Bought Together or Bundle parts outside their parent, or a Saved Item Button outside a Saved for later loop.
+- Do not point a shop part at another by `_cssId`; leave Element id fields empty to take the nearest.

@@ -15,7 +15,7 @@
             "group": "bfbeShopQbfbeShopCompare",
             "groupTitle": "BFB Products being compared",
             "pack": "pro",
-            "switch": "",
+            "switch": "shop-lists",
             "source": "bfb-elements-pro/includes/shop/class-compare-set.php",
             "onHere": true,
             "controls": {
@@ -261,7 +261,7 @@
             "group": "bfbeShopQbfbeShopImages",
             "groupTitle": "BFB Shop images",
             "pack": "pro",
-            "switch": "",
+            "switch": "shop-loops",
             "source": "bfb-elements-pro/includes/shop/class-images-set.php",
             "onHere": true,
             "controls": {
@@ -550,7 +550,7 @@
             "group": "bfbeShopQbfbeShopProducts",
             "groupTitle": "BFB Shop products",
             "pack": "pro",
-            "switch": "",
+            "switch": "shop-loops",
             "source": "bfb-elements-pro/includes/shop/class-products-set.php",
             "onHere": true,
             "controls": {
@@ -761,7 +761,7 @@
             "group": "bfbeShopQbfbeShopQuote",
             "groupTitle": "BFB Quote list",
             "pack": "pro",
-            "switch": "",
+            "switch": "shop-lists",
             "source": "bfb-elements-pro/includes/shop/class-quote-set.php",
             "onHere": true,
             "controls": {
@@ -1009,7 +1009,7 @@
             "group": null,
             "groupTitle": null,
             "pack": "pro",
-            "switch": "",
+            "switch": "shop-cart-lines",
             "source": "bfb-elements-pro/includes/shop/class-saved-set.php",
             "onHere": true,
             "controls": []
@@ -1026,7 +1026,7 @@
             "group": "bfbeShopQbfbeShopVariations",
             "groupTitle": "BFB Shop variations",
             "pack": "pro",
-            "switch": "",
+            "switch": "shop-loops",
             "source": "bfb-elements-pro/includes/shop/class-variations-set.php",
             "onHere": true,
             "controls": {
@@ -1084,7 +1084,7 @@
             "group": "bfbeShopQbfbeShopWishlist",
             "groupTitle": "BFB Wishlist",
             "pack": "pro",
-            "switch": "",
+            "switch": "shop-lists",
             "source": "bfb-elements-pro/includes/shop/class-wishlist-set.php",
             "onHere": true,
             "controls": {
@@ -1828,13 +1828,8 @@
                         "product": "Products",
                         "post": "Posts",
                         "page": "Pages",
-                        "bfbe_shop_review": "Shop Reviews",
                         "bfbe_review": "Review",
-                        "bfbe_demo": "Demos",
                         "bfbe_feature": "Feature visuals",
-                        "bfbe_fixture": "Fixtures",
-                        "bfbe_sweep": "Sweeps",
-                        "bfbe_scratch": "Scratch",
                         "bricks_template": "My Templates"
                     },
                     "inline": true,

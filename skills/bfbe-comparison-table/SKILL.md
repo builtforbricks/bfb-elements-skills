@@ -1,6 +1,6 @@
 ---
 name: bfbe-comparison-table
-description: "Use when placing, wiring or styling BFB Comparison Table (`bfbe-comparison-table`): a plan or pricing comparison with plans across the top and features down the side, ticks, crosses or text in each cell, a highlighted plan, notes and group headings. Read before writing its settings."
+description: "Use when placing, wiring or styling BFB Comparison Table (`bfbe-comparison-table`): a plan or pricing comparison with plans across the top and features down the side, ticks, crosses or text in each cell, a highlighted plan, notes and group headings; in a shop, the products a visitor compares side by side, with their attributes, size, weight and SKU as rows and the differences marked. Read before writing its settings."
 ---
 
 # BFB Comparison Table (`bfbe-comparison-table`)
@@ -34,7 +34,7 @@ The whole group shows only when `source` is `compare`.
 - `cmpShow` (select) **Each column shows**: options: `image` Image, `name` Name, `price` Price, `rating` Rating, `stock` Stock, `cart` Add to cart, `remove` Remove
 - `cmpRows` (select) **Rows**: options: `attrs` Every attribute, `attr:pa_colour` Colour, `attr:pa_material` Material, `attr:pa_size` Size, `attr:pa_warmth` Warmth, `dimensions` Dimensions, `weight` Weight, `sku` SKU
 - `cmpMeta` (text) **Custom field rows**: placeholder care, origin. Field keys, commas between.
-- `cmpHighlight` (checkbox) **Highlight**. Tick it on a plan to give its whole column the highlight fill you set under Look.
+- `cmpHighlight` (checkbox) **Highlight**
 - `cmpOnlyDiff` (checkbox) **Only differences**
 - `cmpDiffMark` (select) **Mark with**: options: `fill` A fill on the row (default), `dot` A dot by the feature; only when `cmpHighlight` is set
 - `cmpDiffKey` (checkbox) **Dot on the first heading**: only when `cmpHighlight` is set and `cmpDiffMark` is `dot`. Its words then say what a dot means.
@@ -114,11 +114,32 @@ On the frontend, a real table inside a scroll wrapper. Square brackets mark what
 - The script handles the note buttons and nothing else: a click flips the note's `hidden` and the button's `aria-expanded`. It binds on load and again after Bricks' AJAX events (pagination, query results, popup loaded). Cards and the sticky column are CSS.
 - In the builder canvas every table tag is a `div` carrying the same classes, laid out with `display: table-*`.
 - Most colour and size controls write custom properties on the root: `--bfbe-cmp-hl`, `-bg`, `-head-bg`, `-feature-bg`, `-stripe`, `-line`, `-yes`, `-no`, `-yes-bg`, `-no-bg`, `-btn`, `-btn-hover`, `-hint`, `-icon`, `-mark-pad`, `-plan-min`, `-min`, `-col1`.
+- The caption sits in by the cells' own side padding, `padding: 12px 16px` (since 2026-10-30), so a rounded
+  `tableBorder` no longer clips it; **Caption padding** (`captionPadding`, per breakpoint) writes to `.bfbe-cmp__caption`.
+- The root always carries `data-bfbe-cmp-diff` (`fill` or `dot`), `data-bfbe-cmp-cols` (`lines` with **Lines between
+  columns**, `columnLines`) and `data-bfbe-cmp-key`.
+- **Products being compared** (`source: "compare"`, Pro 2.0) adds `bfbe-cmp--products`, `data-bfbe-list-row="compare:<page>:<element id>"`
+  and `data-bfbe-list-have` (the ids drawn) to the root. Each product's header is `th.bfbe-cmp__plan.bfbe-cmp__product`
+  holding, as **Each column shows** (`cmpShow`) picks, `span.bfbe-cmp__img`, `a.bfbe-cmp__name` (kept, `hidden`, when not
+  picked), `span.bfbe-cmp__price`, `span.bfbe-cmp__rating` with `.bfbe-cmp__rating-words`, `span.bfbe-cmp__stock`
+  (`--out` when sold out), `form.bfbe-cmp__cart` with `button.bfbe-cmp__btn[name=add-to-cart]` or an `a.bfbe-cmp__btn`,
+  and `form.bfbe-cmp__remove-form` with `button.bfbe-cmp__remove`. Each fact row is
+  `tr.bfbe-cmp__row[data-bfbe-cmp-fact="attr:pa_material|dimensions|weight|sku|meta:care"]`, plus
+  `bfbe-cmp__row--differs` with **Highlight**; an empty cell is `span.bfbe-cmp__none` and a hidden "Not given". With
+  nothing to compare the root holds only `p.bfbe-cmp__empty`.
 - Controls that write to parts: `cellPadding` to `.bfbe-cmp__cell`, `tableBorder` to `.bfbe-cmp__scroll`, `markBorder` to `.bfbe-cmp__yes` and `.bfbe-cmp__no`, `buttonColor` to `.bfbe-cmp__btn span`, `valueAlign` to `.bfbe-cmp__value` and `.bfbe-cmp__plan`, `groupBackground` to `.bfbe-cmp__group`, `hintColor` to `.bfbe-cmp__hint`. Each typography control writes to the part it names.
 
 ## Wiring to other elements
 
-Stands alone; nothing targets it and it targets nothing. Plan buttons are plain links from each plan row's **Link** (`link`).
+With the typed source it stands alone: plan buttons are plain links from each plan row's **Link** (`link`).
+
+- **Products being compared** draws the visitor's compare list, four products at most, filled by **BFB Compare Button**
+  (`bfbe-compare-button`) on product pages and cards and shown in **BFB Compare Tray** (`bfbe-compare-tray`). Put the
+  table on the page chosen as the compare page (Shop, Customers) and link to it with `{bfbe_compare_url}`. Needs the
+  shop's **Lists** switch (hub: `bfbe-shop`).
+- A Remove redraws every such table on the page; on a cached page the lists' script
+  draws it again from the visitor's own list after load. A query loop of `bfbeShopCompare` (`bfbe-shop-loops`) is the
+  card-by-card alternative.
 
 - On a site with the Dark Mode Toggle, its dark state turns the plan button's words black or white from the fill behind them. A **Label colour** (`buttonColor`) you set wins in both states.
 - To style it from a stylesheet, add a class in `_cssClasses` and scope part selectors under it (`.plans-compare .bfbe-cmp__btn`), never under `_cssId`: component instances share ids.
@@ -191,9 +212,20 @@ Chosen icons in place of the drawn tick and cross, two plans, no buttons. From t
 }}
 ```
 
+Products being compared, with the material, size, weight, SKU and two custom fields as rows and the rows that differ
+filled. From the fixture `fixture-shop-p9-compare` (its `tbl-hl` table). Its twin there sets `cmpOnlyDiff: true` and
+`cmpShow: ["name", "price", "remove"]` instead of `cmpHighlight`.
+
+```json
+{"name": "bfbe-comparison-table", "settings": {
+  "source": "compare", "caption": "Your products side by side", "cmpHighlight": true, "_cssClasses": "tbl-hl",
+  "cmpRows": ["attr:pa_material", "dimensions", "weight", "sku"], "cmpMeta": "p9_origin, p9_care"
+}}
+```
+
 ## Gotchas
 
-- **Both repeaters need a row.** With no plan or no feature the page gets no markup at all; the canvas shows "Add a plan and a feature." <!-- src: plugins/bfb-elements-pro/elements/comparison-table.php:630 -->
+- **Both repeaters need a row.** With the typed source and no plan or no feature the page gets no markup at all; the canvas shows "Add a plan and a feature." <!-- src: plugins/bfb-elements-pro/elements/comparison-table.php:630 -->
 - **A fixed set of words draws marks.** `yes`, `true`, `y`, `✓` and `✔` draw a tick; `no`, `false`, `n`, `✗`, `✕` and a lone hyphen draw a cross, case and spaces ignored. `1` and `0` stay text. <!-- src: plugins/bfb-elements-pro/elements/comparison-table.php:606-617 -->
 - **Per plan is matched by position.** **Per plan** (`values`) splits on `|` after dynamic data resolves: values past the plan count are dropped, a missing one leaves its cell empty, and a tag whose value holds a bar adds cells. <!-- src: plugins/bfb-elements-pro/elements/comparison-table.php:709,718-721 -->
 - **A plan button needs both Button label and Link.** A **Button label** (`button`) without a **Link** (`link`) draws nothing, on the page and in the canvas. <!-- src: plugins/bfb-elements-pro/elements/comparison-table.php:690-697 -->
@@ -207,9 +239,25 @@ Chosen icons in place of the drawn tick and cross, two plans, no buttons. From t
 - **The canvas draws divs.** In the builder every table, row, cell and caption tag is a `div` with the same classes; `scope`, the caption and the table semantics exist on the frontend. <!-- src: plugins/bfb-elements/includes/abstract-element.php:411-421; plugins/bfb-elements-pro/elements/comparison-table.php:656-661 -->
 - **A group heading row drops its values and counts in the stripe.** **Use as a group heading** (`heading`) spans every column, ignores **Per plan** and **Note**, and takes a place in the alternate-row count. <!-- src: plugins/bfb-elements-pro/elements/comparison-table.php:705-708; src/elements/comparison-table/comparison-table.css:38 -->
 
+- **The compare source needs WooCommerce and Lists.** It is offered only while WooCommerce is active; without the
+  Lists switch the builder says "Needs WooCommerce and the Lists feature on." and the page draws nothing. <!-- src: plugins/bfb-elements-pro/elements/comparison-table.php:59-61, :886-893 -->
+- **The builder shows three products, the page the visitor's.** Before anything is compared the canvas draws three of
+  the shop's products to design with; the page shows **While there is nothing** (`cmpEmpty`) in place of the table. <!-- src: plugins/bfb-elements-pro/elements/comparison-table.php:899-916, :926-930 -->
+- **The typed parts leave with the typed source.** With `source: "compare"`, Plans, Features, Ticks and crosses, the
+  badge, the plan highlight, group headings and notes are hidden and do nothing; product cells are words, never marks. <!-- src: plugins/bfb-elements-pro/elements/comparison-table.php:41-51, :716-726 -->
+- **Highlight marks rows, not a plan.** `cmpHighlight` marks every row whose values differ (case ignored), with
+  `cmpDiffMark` `fill` or `dot`; **Only differences** (`cmpOnlyDiff`) acts from two products, and a row no product has a
+  value for is always left out. <!-- src: plugins/bfb-elements-pro/elements/comparison-table.php:980-988 -->
+- **Rows unset means every attribute, then size, weight and SKU.** Attributes come in the order they first appear; a
+  custom field key that starts with `_` is skipped and its row is named from the key (`p9_care` reads "P9 care"). <!-- src: plugins/bfb-elements-pro/elements/comparison-table.php:849-877 -->
+- **Add to cart is a post only for a simple product.** A simple, purchasable product in stock gets WooCommerce's add to
+  cart post with **Add to cart words** (`cmpCartText`); any other is a link to its page in WooCommerce's own words. <!-- src: plugins/bfb-elements-pro/elements/comparison-table.php:964-971 -->
+- **The caption moved in (2026-10-30).** A caption saved before now sits in 16px at the sides with 12px above and below;
+  set `captionPadding` to place it otherwise. <!-- src: src/elements/comparison-table/comparison-table.css:31-33; docs/SHOP-LABELS-2.0.0.md "BFB Comparison Table: the caption" -->
+
 ## Never do
 
-- Do not add the element without a row in both `plans` and `features`.
+- Do not add a typed table without a row in both `plans` and `features`.
 - Do not write a hyphen for "not applicable" or `1` and `0` for yes and no: a hyphen draws a cross and digits stay text.
 - Do not set a plan's `button` without its `link`.
 - Do not colour the plan button through `highlightColor` or `buttonTypography`; set `buttonBackground` and `buttonColor`.
@@ -217,3 +265,6 @@ Chosen icons in place of the drawn tick and cross, two plans, no buttons. From t
 - Do not give a `sticky: true` table a translucent `tableBackground` or `featureBackground`.
 - Do not set `tableMinWidth` and expect `planMinWidth` to widen the table.
 - Do not judge the table's semantics from the builder canvas; check the frontend.
+- Do not set `plans`, `features`, `tickIcon` or the badge and highlight colours with `source: "compare"`; they are hidden there.
+- Do not read `cmpHighlight` as a plan highlight; it marks the rows that differ.
+- Do not judge a compare table in the builder by its three sample products; check a page with a compare list.

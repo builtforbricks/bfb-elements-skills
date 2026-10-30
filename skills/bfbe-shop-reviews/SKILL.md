@@ -1,6 +1,6 @@
 ---
 name: bfbe-shop-reviews
-description: "Use for the shop's settings on Bricks' Product reviews and Product tabs: review photos, helpful votes, sorting, the review list and form look, extra tabs from templates (BFB Shop reviews, `shop-reviews`). Read before writing these settings."
+description: "Use when building a product page's reviews with Bricks' Product reviews or Product tabs: review photos, helpful votes, the list and form look, hiding Bricks' form for a BFB Review Form, extra tabs from templates, and review lists of your own with the BFB Shop reviews query loop (`shop-reviews`)."
 ---
 
 # BFB Shop reviews (`shop-reviews`)
@@ -65,20 +65,114 @@ Styling, in the schema file: `bfbeShopTabsGap`, `bfbeShopTabsTabBackground`, `bf
 
 ## Rendered DOM
 
-_Not written yet._
+The feature adds no wrapper. It writes into the markup WooCommerce's review template prints inside Bricks' Product reviews, and inside the Reviews tab of Product tabs.
+
+```html
+<div class="brxe-product-reviews">
+  <div id="reviews" class="woocommerce-Reviews">
+    <div id="comments">
+      <h2 class="woocommerce-Reviews-title">…</h2>
+      <ol class="commentlist">
+        <li class="review …">… <div class="description">…</div>
+          <ul class="bfbe-rv__photos" aria-label="Photos from this review"><li><a class="bfbe-rv__photo" href="{full image}" target="_blank"><img …></a></li></ul>
+          <form class="bfbe-rv__vote" method="post" data-bfbe-review="{comment id}">…</form>
+        </li>
+      </ol>
+    </div>
+    <div id="review_form_wrapper"><div id="review_form">
+      <form id="commentform" class="comment-form" enctype="multipart/form-data">… <p class="comment-form-bfbe-photos bfbe-rv__upload">…</p> …</form>
+    </div></div>
+  </div>
+</div>
+```
+
+- Photos, then the Helpful form, follow each review's text (WooCommerce's `woocommerce_review_after_comment_text`); the vote form shows on approved reviews only. Its markup is BFB Review Votes' (skill `bfbe-review-votes`).
+- With **Review form** `bfbeShopReviewsFormShow: "hide"` the form is never printed: `#review_form_wrapper` and `#review_form` stay empty, `hidden` and without their ids, and WooCommerce's verified-owners line is `hidden` too.
+- The photo field follows the review box: the browser's file input in `p.bfbe-rv__upload`, or with **Look** `bfbeShopReviewsUploadLook: "custom"` a `div.bfbe-rv__upload--drop` whose `.bfbe-rv__drop` holds the same input, unseen, over the area, and a `ul.bfbe-rv__picked` of previews.
+- Where the controls write: `bfbeShopReviewsPhoto*` to `.bfbe-rv__photos` and `.bfbe-rv__photo img` (72 px squares when empty); `bfbeShopReviewsVote*` to `.bfbe-rv__vote` and `.bfbe-rv__btn`; `bfbeShopReviewsItem*` to `.commentlist > li`; `bfbeShopReviewsTextBorder` to `.commentlist .description`; `bfbeShopReviewsListTitle: "hide"` hides `.woocommerce-Reviews-title`.
+- The form keys write to `#review_form_wrapper` (area), `.comment-respond` (card), `.comment-reply-title`, `.comment-form` (the **Columns** grid), `.comment-form-comment textarea`, `.comment-form-rating .stars a` and the `.form-submit` button.
+- Product tabs: `bfbeShopTabs*` write to `.wc-tabs` and `.wc-tabs li`, the cell keys to `.shop_attributes th` and `td`. Extra tabs are WooCommerce tabs, drawn by Bricks as its own.
+- A reviews loop (`query.objectType: "bfbeShopReviews"`) prints Bricks' own row markup; with this feature on, each row carries `data-bfbe-rv-row="{looping element id}"`, which the sort's script uses to put sorted rows in place.
 
 ## Wiring to other elements
 
-_Not written yet._
+- **Every part is an element, placed with Bricks' containers.** BFB Rating Summary, BFB Review Sort, BFB Review Form and BFB Review Votes each have a skill. Nothing in this feature has a position or arrangement control.
+- **One form per page.** Set `bfbeShopReviewsFormShow: "hide"` on Product reviews (or Product tabs) and place a `bfbe-review-form` where the form belongs. Style it there: it carries the same `bfbeShopReviewsForm*` and upload keys.
+- **The sort.** A `bfbe-review-sort` anywhere on the product page sorts Product reviews, the Reviews tab of Product tabs and every reviews loop whose **Reviews of** (`bfbeShopReviewsProduct`) is This product. **Default order** (`bfbeShopReviewsDefault`) on Product reviews is the order before a shopper chooses.
+- **The stars filter.** BFB Rating Summary's bars link to `?bfbe_stars=N#reviews`, which the same lists read. `#reviews` is WooCommerce's block inside Product reviews, so the default anchor needs no id of yours.
+- **A list of your own.** A Container, Block or Div with `hasLoop: true` and `query.objectType: "bfbeShopReviews"` repeats a row per approved review (skill `bfbe-shop-loops`). The row's current post is the reviewed product. Fill it with the review tags (`{bfbe_review_stars:svg}`, `{bfbe_review_author}`, `{bfbe_review_date}`, `{bfbe_review_text}`, `{bfbe_review_photos}`; skill `bfbe-shop-tags-and-conditions`) and a `bfbe-review-votes`.
+- **One review, one vote.** A review shown in Bricks' list and in a loop on the same page shows a vote on both at once.
+- **Product tabs beside Product reviews.** When the reviews have a section of their own, set **Leave out WooCommerce's tabs** `bfbeShopTabsLeaveOut: ["reviews"]` on Product tabs, so the page carries one list and one form.
+- **Extra tabs** come from the Shop page (BFB Elements, Shop, Products, card **Product tabs**: Title, Bricks template, Shown on, Position) and from a product's own **BFB Extra tab** panel. Product tabs shows them with no setting; each template renders for the product shown.
+- The sort's script finds Bricks' list by WooCommerce's `#comments` and a loop's rows by `data-bfbe-rv-row`, never by your classes. Give elements a class in `_cssClasses` for your own CSS; avoid `_cssId`, which component instances share.
 
 ## Verified patterns
 
-_Not written yet._
+**The demo's review area: the summary and the sort in one column, the list and the form in the other.** From the demo shop's product template (Fernhouse product page, section "Reviews"). A Bricks grid of 380 px and the rest, one column from `tablet_portrait`. Product reviews hides its form and title and spaces its reviews by `bfbeShopReviewsListGap` alone; BFB Review Form stands under the list, **Columns** 1, its review box opening 120 px tall. Trimmed: the brand's colour variables (hex kept), the open list's look, most of the form's look and the section's `_cssId`. Use on a product template.
+
+```json
+{
+  "name": "block",
+  "settings": { "_display": "grid", "_gridTemplateColumns": "380px minmax(0, 1fr)", "_gridTemplateColumns:tablet_portrait": "minmax(0, 1fr)", "_gridGap": "32px 48px", "_alignItems": "start", "_cssClasses": "reviews-area" },
+  "children": [
+    { "name": "block", "settings": { "_rowGap": "20px" }, "children": [
+      { "name": "heading", "settings": { "text": "What people say", "tag": "h2" } },
+      { "name": "bfbe-rating-summary", "settings": { "stars": true, "text": "{average} out of 5, from {count} reviews", "figure": "count", "barHeight": "8", "barColor": { "hex": "#f5a524" }, "trackColor": { "hex": "#e9ecf1" }, "rowGap": "8" } },
+      { "name": "bfbe-review-sort", "settings": { "as": "select", "look": "custom", "label": "Sort reviews" } }
+    ] },
+    { "name": "block", "settings": { "_rowGap": "20px" }, "children": [
+      { "name": "product-reviews", "settings": { "bfbeShopReviewsFormShow": "hide", "bfbeShopReviewsListTitle": "hide", "bfbeShopReviewsListGap": "12px", "bfbeShopReviewsItemBorder": { "width": { "top": "1", "right": "1", "bottom": "1", "left": "1" }, "style": "solid", "color": { "hex": "#e9ecf1" }, "radius": { "top": "16", "right": "16", "bottom": "16", "left": "16" } }, "bfbeShopReviewsItemPadding": { "top": "20", "right": "20", "bottom": "20", "left": "20" }, "_cssClasses": "reviews-list" } },
+      { "name": "bfbe-review-form", "settings": { "bfbeShopReviewsFormColumns": 1, "bfbeShopReviewsFormRowGap": "20px", "bfbeShopReviewsFormTextHeight": "120px", "bfbeShopReviewsFormStarSize": "32px", "bfbeShopReviewsUploadLook": "custom", "_cssClasses": "reviews-form" } }
+    ] }
+  ]
+}
+```
+
+**The same reviews as rows of your own.** From the fixture template `bfbe-shop-product-p4-reviews` ("Reviews loop"), the row's words rewritten. A Block repeats per review of this product, 50 to a page because a product page cannot page through them; each row prints the review's tags, its photos through Bricks' Image Gallery and its votes. A Review Sort or a Rating Summary bar on the page reorders or filters these rows as it does Bricks' list.
+
+```json
+{
+  "name": "block",
+  "settings": { "_rowGap": "12px", "_cssClasses": "review-rows" },
+  "children": [
+    { "name": "block", "settings": { "hasLoop": true, "query": { "objectType": "bfbeShopReviews" }, "bfbeShopReviewsCount": 50, "_cssClasses": "review-row" }, "children": [
+      { "name": "text-basic", "settings": { "text": "{bfbe_review_stars:svg} {bfbe_review_author}, {bfbe_review_date}" } },
+      { "name": "text-basic", "settings": { "text": "{bfbe_review_text}" } },
+      { "name": "image-gallery", "settings": { "items": { "useDynamicData": "{bfbe_review_photos}" }, "columns": 4 } },
+      { "name": "bfbe-review-votes", "settings": { "_cssClasses": "review-row-votes" } }
+    ] }
+  ]
+}
+```
+
+**Product tabs without the Reviews tab, drawn as pills.** From the demo shop's product template ("Tabs"). The page's reviews sit in Product reviews below, so `bfbeShopTabsLeaveOut` drops WooCommerce's Reviews tab; BFB Tabs gives every tab a fill, round corners, padding inside the link and a hover fill. Trimmed: Bricks' own tab and panel settings.
+
+```json
+{ "name": "product-tabs", "settings": { "bfbeShopTabsLeaveOut": ["reviews"], "bfbeShopTabsGap": "8px", "bfbeShopTabsTabBackground": { "hex": "#f6f6f8" }, "bfbeShopTabsTabBorder": { "radius": { "top": "999", "right": "999", "bottom": "999", "left": "999" } }, "bfbeShopTabsLinkPadding": { "top": "11", "right": "20", "bottom": "11", "left": "20" }, "bfbeShopTabsHoverBackground": { "hex": "#f0ecff" }, "_cssClasses": "product-tabs" } }
+```
 
 ## Gotchas
 
-_Not written yet._
+- **The switch decides everything.** With **Reviews** (`shop-reviews`) off on the Elements page, Product reviews and Product tabs lose the BFB groups, and BFB Review Form, Sort and Votes print nothing (the canvas says why). The Rating Summary's star filter keeps working. <!-- src: plugins/bfb-elements-pro/includes/shop/class-reviews.php:98-103 ; plugins/bfb-elements-pro/elements/review-form.php:101 ; plugins/bfb-elements-pro/includes/shop/class-rating-summary.php:26-30 -->
+- **Product tabs has no BFB Reviews group.** Its Reviews tab shows photos at Gallery thumbnail and the votes, in WooCommerce's order: `bfbeShopReviewsDefault`, `bfbeShopReviewsPhotos` and `bfbeShopReviewsVotes` act on Product reviews only. <!-- src: plugins/bfb-elements-pro/includes/shop/class-reviews.php:103 ; plugins/bfb-elements-pro/includes/shop/class-reviews.php:891-895 ; docs/elements/shop-reviews.md "BFB Review list" -->
+- **A hidden form takes its look with it.** With `bfbeShopReviewsFormShow: "hide"`, the element's own BFB Review form keys style nothing; the form's look belongs on the BFB Review Form. <!-- src: plugins/bfb-elements-pro/includes/shop/class-reviews.php:870-886 ; plugins/bfb-elements-pro/includes/shop/class-reviews.php:1668-1686 -->
+- **Two forms on a page break the stars.** Each carries WooCommerce's `#commentform` and `#rating`, and its script draws the stars for the first only. <!-- src: docs/elements/review-form.md "Placing it" -->
+- **List Gap is the only space.** `bfbeShopReviewsListGap` makes `.commentlist` a grid and zeroes each review's bottom margin, so nothing follows the last review. Unset, Bricks' 30 px stays under every review. <!-- src: plugins/bfb-elements-pro/includes/shop/class-reviews.php:347-357 ; docs/SHOP-LABELS-2.0.0.md "Fixed with no setting changed (30 October)" -->
+- **Review box Height is where it opens.** `bfbeShopReviewsFormTextHeight` writes height and min-height, so the box opens that tall and a shopper's drag cannot shrink it below. <!-- src: plugins/bfb-elements-pro/includes/shop/class-reviews.php:540-551 ; docs/SHOP-LABELS-2.0.0.md "BFB Review Form and the Reviews form: the text box height" -->
+- **The Shop page's switches come first.** **Photos on the review form** off removes the upload field, the multipart form and the photos under reviews; **Helpful votes** off removes every vote form. The Show keys only hide what the switches allow. <!-- src: plugins/bfb-elements-pro/includes/shop/class-reviews.php:1135-1146 ; plugins/bfb-elements-pro/includes/shop/class-reviews.php:1289-1292 ; plugins/bfb-elements-pro/includes/shop/class-reviews.php:1693-1696 -->
+- **The upload's two looks have separate keys.** `bfbeShopReviewsUpload*` colours style the browser's file box, `bfbeShopReviewsDrop*` and `bfbeShopReviewsPicked*` the drop area; the panel offers only the set of the chosen **Look**. <!-- src: plugins/bfb-elements-pro/includes/shop/class-reviews.php:398-403 -->
+- **Sorts and the filter are addresses.** `?bfbe_reviews=highest` and `?bfbe_stars=5` are read by each list's own comment query, so a page cache keeps them apart. Highest, Lowest and Most helpful put reviews with no rating or vote last. <!-- src: plugins/bfb-elements-pro/includes/shop/class-reviews.php:899-915 ; plugins/bfb-elements-pro/includes/shop/class-reviews.php:1018-1041 -->
+- **Only a loop of this product follows them.** A reviews loop with `bfbeShopReviewsProduct` set to `all` or `chosen` keeps its own **Order** and ignores the stars filter. <!-- src: plugins/bfb-elements-pro/includes/shop/class-reviews.php:1067-1069 -->
+- **A reviews loop does not page on a product page.** WordPress sends page two of a single post back to the post, so Bricks' Pagination does nothing there; raise **Reviews per page** (`bfbeShopReviewsCount`). Live filters never reach a reviews loop. <!-- src: docs/elements/shop-reviews-loop.md "Limits" -->
+- **The sort reaches one Bricks list.** Its script replaces the first `#comments` on the page, so a Reviews tab left in Product tabs above Product reviews is the one sorted. <!-- src: src/elements/shop-reviews/shop-reviews.js:57-59 -->
+- **Removed keys do nothing.** `bfbeShopReviewsSort`, `bfbeShopReviewsSortAs`, `bfbeShopReviewsSortLabel`, `bfbeShopReviewsFormPlace` and `bfbeShopReviewsFormOrder` went on 29 October; a saved value is ignored. <!-- src: docs/SHOP-LABELS-2.0.0.md "layout round", Product reviews and Product tabs tables -->
 
 ## Never do
 
-_Not written yet._
+- Do not leave Bricks' form shown when a BFB Review Form is on the page; set `bfbeShopReviewsFormShow: "hide"`.
+- Do not style the form on Product reviews' BFB Review form group once its form is hidden; style the BFB Review Form.
+- Do not keep WooCommerce's Reviews tab in Product tabs beside a Product reviews element; set `bfbeShopTabsLeaveOut: ["reviews"]`.
+- Do not write `bfbeShopReviewsSort`, `bfbeShopReviewsFormPlace` or `bfbeShopReviewsFormOrder`; place a BFB Review Sort and a BFB Review Form.
+- Do not rely on Bricks' Pagination for a reviews loop on a product template; set `bfbeShopReviewsCount`.
+- Do not expect the sort or the stars filter to reach a loop whose `bfbeShopReviewsProduct` is `all` or `chosen`.
+- Do not set `bfbeShopReviewsDefault` or the Show keys for Product tabs; they belong to Product reviews.

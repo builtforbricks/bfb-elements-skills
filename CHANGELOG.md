@@ -4,6 +4,25 @@ Each release of this pack names the BFB Elements version it was exported from an
 (`verifiedUpTo` in `skills/bfbe-schemas/references/index.json`). Skills and plugins are released
 together; a pack never describes a plugin that has not shipped.
 
+## Unreleased (with BFB Elements 2.0, the shop)
+
+On the local `shop-2.0` branch until BFB Elements 2.0 ships. Exported from the 2.0 plugins on the dev site; the
+website's 2.0 words do not exist yet, so the new skills' "What it is" lines are placeholders the release export refills.
+
+- `bfbe-shop`, the hub: what the shop is, the Shop settings screens and switches, the place-anything model with Bricks'
+  own containers, and which skill covers which job.
+- `bfbe-shop-loops` and `bfbe-shop-tags-and-conditions`, with generated references for the 14 loop types, 120 tags,
+  12 conditions and 4 interaction triggers (`bfbe-schemas/references/shop/`).
+- Shop settings on Bricks' own elements, as feature skills that span several hosts: add to cart, product gallery,
+  price and stock, reviews, catalogue, search, mini cart, cart page, checkout and account.
+- One skill per shop element (34; a nestable's parts are covered by their parent): buying, product information,
+  reviews, the nestable forms (Bought Together, Bundle Builder, Offer), cart and cart extras, checkout and account,
+  wishlist, compare and quote; and `bfbe-motion-switch`.
+- Existing skills updated for what 2.0 adds to their elements: `bfbe-form`, `bfbe-dynamic-table`,
+  `bfbe-comparison-table`, `bfbe-copy`, `bfbe-hotspots`, `bfbe-video-player`, `bfbe-toast`, `bfbe-notification-bar`,
+  `bfbe-add-to-calendar`, `bfbe-age-gate`, `bfbe-hover-effects`; `bfbe-schemas` and `bfbe-start-here` describe the
+  new feature shape and point at the shop.
+
 ## 0.6.0, 2026-10-29
 
 Verified up to BFB Elements Pro 1.4.0 (BFB Elements stays 1.3.2), exported from the plugins and the website's live 1.4.0

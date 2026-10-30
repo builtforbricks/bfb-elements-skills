@@ -1,14 +1,14 @@
 ---
 name: bfbe-schemas
-description: "Consult before writing settings for any BFB Elements element or feature (bfbe-*): the bundled, release-exported control schemas, how to check the bundle against the plugin version on the site, and how to read a schema file. Saves the live bricks/get-element-schema call when the bundle is current."
+description: "Consult before writing settings for any BFB Elements element or feature (bfbe-*), the shop features on Bricks' own elements included: the bundled, release-exported control schemas, the shop's loop, tag, condition and trigger references, how to check the bundle against the plugin version on the site, and how to read a schema file. Saves the live bricks/get-element-schema call when the bundle is current."
 ---
 
 # BFB Elements: the bundled schemas
 
-`references/index.json` and `references/elements/*.json` (plus `references/features/*.json`) are every BFB
-element's controls as the plugin registers them, exported by the plugin's own release from the plugins as built:
-the same data the live `bricks/get-element-schema` ability returns for that element, minus Bricks' universal `_`
-controls. They are never edited by hand.
+`references/index.json` and `references/elements/*.json` (plus `references/features/*.json` and, for the shop,
+`references/shop/*.json`) are every BFB element's and feature's controls as the plugin registers them, exported by
+the plugin's own release from the plugins as built: the same data the live `bricks/get-element-schema` ability returns
+for that element, minus Bricks' universal `_` controls. They are never edited by hand.
 
 ## Workflow
 
@@ -23,8 +23,9 @@ controls. They are never edited by hand.
    - Site older: the bundle may name a setting the site does not have yet. Use the bundle, but if a write seems
      ignored, read the element live.
 2. **Find the element.** In `index.json`, `elements[]` has `name`, `label`, `pack` (`free` or `pro`), `nestable`,
-   `parent` (set for a child element), `skill` (the skill that covers it) and `schemaPath`. `features[]` lists the
-   four features the same way. Read the file at `schemaPath`.
+   `parent` (set for a child element), `skill` (the skill that covers it) and `schemaPath`. `features[]` lists every
+   feature the same way, with its `shape` and, for a feature on Bricks' own elements, the `hosts` it reaches. `shop`
+   names the four shop reference files. Read the file at `schemaPath`.
 3. **Element not in the index.** It is not a BFB element (check Bricks' own skills), or the pack is newer than the
    bundle (step 1). Say which; do not invent a schema.
 
@@ -60,11 +61,44 @@ Each control is the array the plugin registers, which is what the builder panel 
 A control key may be written with a breakpoint or pseudo-class suffix exactly as on any Bricks element
 (`width:tablet_portrait`, `color:hover`).
 
+## A feature file
+
+A feature adds controls to elements that are not its own. Its file says how by `shape`:
+
+- **No `shape`** (Hover Effects, Form Steps and the other features before the shop): `on` names where the controls
+  go, and `controlGroups` and `controls` read as in an element file.
+- **`hosts`** (the shop features, `shop-loops`, `shop-add-to-cart`, ...): one feature spans several of Bricks' own
+  elements. `hosts.<element name>` holds that host's `label`, `registered`, `controlGroups` and `controls`; write a
+  key only on a host that lists it. `groupInfo.<group>` gives each group's `pack`, `switch` (the feature switches it
+  needs) and `sources`. A loop feature adds `objectTypes`, the `query.objectType` values that show its groups.
+- **`registered: false`** on a host means the exporting site's Bricks did not register that element (Bricks 2.4's
+  experimental shop elements on 2.3); its controls were read through their filter and apply where Bricks has it.
+- **`hub`** (`shop.json`): no host. `switches` lists every shop feature switch with its label, summary and pack,
+  `adminPage` the Shop page's sub-pages, `themeStyles` the groups and controls added to Bricks' Theme Styles.
+- **`registries`** (`shop-tags-and-conditions.json`): no control. `counts` and `references` point at the shop files.
+
+Live, the controls of a host are part of that Bricks element: `bricks/get-element-schema` with `product-price`
+returns them among Bricks' own.
+
+## The shop references
+
+`references/shop/` holds what Bricks' pickers list, not controls. Each file has a `description` saying its fields.
+
+- `loops.json`: each query loop type (`objectType`, `label`, `loopObject`, `on`, `group`, `pack`, `switch`,
+  `controls`), chosen as `query.objectType` on a Container, Block or Div with `hasLoop`.
+- `tags.json`: each dynamic tag (`tag`, `name`, `label`, `argument`, `contexts` where it answers, `live` key,
+  `follows` fact, `inPageText`, `pack`, `source`).
+- `conditions.json`: each condition (`key`, `label`, `compare` operators, `value` control, `personal`,
+  `followsCart`), group `bfbe_shop` in Bricks' Conditions.
+- `interactions.json`: each trigger (`trigger`, `label`, `event`, `on`, `switch`) in Bricks' Interactions.
+
 ## Never do
 
 - Use the bundle without the version check: a stale shape fails silently.
 - Treat a per-element SKILL.md as the schema: it names the settings that decide a build; the schema file has them all.
 - Write a value the `required` condition does not admit, or guess an option value: the keys of `options` are the only
   stored values.
+- Write a host feature's key on a Bricks element its `hosts` does not list, or a loop group's key without its
+  `query.objectType`.
 - Edit anything under `references/`: the plugin's `dev/skills-export.php` writes it on every release, and the
   release refuses a bundle that does not equal the registered controls.

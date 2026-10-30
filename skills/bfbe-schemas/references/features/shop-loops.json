@@ -13,7 +13,10 @@
     ],
     "switches": [
         "shop-reviews-loop",
-        "shop-orders"
+        "shop-lists",
+        "shop-loops",
+        "shop-orders",
+        "shop-cart-lines"
     ],
     "groupInfo": {
         "bfbeShopQbfbeShopReviews": {
@@ -37,7 +40,9 @@
         "bfbeShopQbfbeShopWishlist": {
             "title": "BFB Wishlist",
             "pack": "pro",
-            "switch": [],
+            "switch": [
+                "shop-lists"
+            ],
             "sources": [
                 "bfb-elements-pro/includes/shop/class-wishlist-set.php"
             ]
@@ -45,7 +50,9 @@
         "bfbeShopQbfbeShopCompare": {
             "title": "BFB Products being compared",
             "pack": "pro",
-            "switch": [],
+            "switch": [
+                "shop-lists"
+            ],
             "sources": [
                 "bfb-elements-pro/includes/shop/class-compare-set.php"
             ]
@@ -53,7 +60,9 @@
         "bfbeShopQbfbeShopQuote": {
             "title": "BFB Quote list",
             "pack": "pro",
-            "switch": [],
+            "switch": [
+                "shop-lists"
+            ],
             "sources": [
                 "bfb-elements-pro/includes/shop/class-quote-set.php"
             ]
@@ -61,7 +70,9 @@
         "bfbeShopQbfbeShopProducts": {
             "title": "BFB Shop products",
             "pack": "pro",
-            "switch": [],
+            "switch": [
+                "shop-loops"
+            ],
             "sources": [
                 "bfb-elements-pro/includes/shop/class-products-set.php"
             ]
@@ -69,7 +80,9 @@
         "bfbeShopQbfbeShopVariations": {
             "title": "BFB Shop variations",
             "pack": "pro",
-            "switch": [],
+            "switch": [
+                "shop-loops"
+            ],
             "sources": [
                 "bfb-elements-pro/includes/shop/class-variations-set.php"
             ]
@@ -77,7 +90,9 @@
         "bfbeShopQbfbeShopImages": {
             "title": "BFB Shop images",
             "pack": "pro",
-            "switch": [],
+            "switch": [
+                "shop-loops"
+            ],
             "sources": [
                 "bfb-elements-pro/includes/shop/class-images-set.php"
             ]
@@ -1795,13 +1810,8 @@
                         "product": "Products",
                         "post": "Posts",
                         "page": "Pages",
-                        "bfbe_shop_review": "Shop Reviews",
                         "bfbe_review": "Review",
-                        "bfbe_demo": "Demos",
                         "bfbe_feature": "Feature visuals",
-                        "bfbe_fixture": "Fixtures",
-                        "bfbe_sweep": "Sweeps",
-                        "bfbe_scratch": "Scratch",
                         "bricks_template": "My Templates"
                     },
                     "inline": true,
@@ -3504,13 +3514,8 @@
                         "product": "Products",
                         "post": "Posts",
                         "page": "Pages",
-                        "bfbe_shop_review": "Shop Reviews",
                         "bfbe_review": "Review",
-                        "bfbe_demo": "Demos",
                         "bfbe_feature": "Feature visuals",
-                        "bfbe_fixture": "Fixtures",
-                        "bfbe_sweep": "Sweeps",
-                        "bfbe_scratch": "Scratch",
                         "bricks_template": "My Templates"
                     },
                     "inline": true,
@@ -5213,13 +5218,8 @@
                         "product": "Products",
                         "post": "Posts",
                         "page": "Pages",
-                        "bfbe_shop_review": "Shop Reviews",
                         "bfbe_review": "Review",
-                        "bfbe_demo": "Demos",
                         "bfbe_feature": "Feature visuals",
-                        "bfbe_fixture": "Fixtures",
-                        "bfbe_sweep": "Sweeps",
-                        "bfbe_scratch": "Scratch",
                         "bricks_template": "My Templates"
                     },
                     "inline": true,

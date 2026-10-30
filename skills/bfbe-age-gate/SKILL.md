@@ -119,6 +119,8 @@ The root is Bricks' own box (`#brxe-...`, class `bfbe-gate`). It stays where it 
 ```
 
 - `mode` and `effect` are root classes (`bfbe-gate--dob`, `bfbe-gate--fx-rise`). `fieldWidth: "compact"` adds `bfbe-gate__field--compact`; ticking `partLabels` drops `bfbe-sr` from the day, month and year words.
+- **Only on products in these categories** (`onlyCategories`, 2.0.0): filled, the gate prints nothing and loads no files on a page that is not one of those products'.
+- **The cart's own gate** (Shop, Products, **Age check before the cart**): the same markup, printed after a restricted product's add to cart form, with `bfbe-gate--guard` (`display: contents`) and `data-bfbe-gate-guard="<product id>"`, its content the card's question and line. It opens when that form is about to post, not on arrival.
 - In the builder the root adds `bfbe-gate--canvas` and the dialog is a `div`. For a logged-in administrator the root carries `data-bfbe-review="1"`.
 - While it asks: `dialog[open]` and `html.bfbe-gate-lock` (page scroll off). A fail or an impossible date un-hides `.bfbe-gate__message` with the root's `data-bfbe-fail` or `data-bfbe-invalid` text.
 - A pass closes the dialog and stores `bfbe-gate-pass-<minAge>` in `localStorage` (an expiry time in ms), or `"1"` in `sessionStorage` when `remember` is 0.
@@ -131,6 +133,8 @@ Stands alone: no attribute points at it and it points at nothing. Three things r
 
 - **Events.** A pass dispatches `bfbe/gate/pass` and a fail `bfbe/gate/fail` from the root, both bubbling. Listen on `document` and tell gates apart by a class in `_cssClasses` on `event.target`, never by `_cssId`: component instances share ids.
 - **One pass per age, across the site.** Every gate with the same `minAge` reads the same stored pass, so one answer opens every 18 gate on the site, and a 21 gate still asks.
+- **One product template, some adult products** (2.0.0, WooCommerce): place the gate in the single product template and set **Only on products in these categories** `onlyCategories` to category slugs, comma separated (`"spirits, wine"`); it asks only on products of those categories or of a child of one.
+- **The cart's age check.** Shop, Products, **Age check before the cart** names restricted categories and an age: WooCommerce refuses those products until the visitor confirms, and their add to cart form carries this element's gate. A pass on a gate placed on the page tells the shop too (the age it asked, kept for its **Remember for** days in WooCommerce's session and a signed cookie, `bfbe_age_ok`), so the visitor is not asked again at the cart.
 - **Dark Mode Toggle.** Under its dark state the Yes button's words, with no `yesColor` set, turn black or white from the button's fill.
 
 ## Verified patterns
@@ -195,20 +199,43 @@ A styled date field, from the fixture page `fixture-age-gate-styled`: day, month
 }
 ```
 
+A gate for spirits alone, from the Age check fixture's product template (`bfbe-shop-product-p5a-gate`), shown here in the template's own content beside Bricks' product title. It asks on products in **spirits** or a child category, and prints nothing on every other product.
+
+```json
+{
+  "name": "block",
+  "settings": {},
+  "children": [
+    { "name": "product-title", "settings": { "tag": "h1" } },
+    {
+      "name": "bfbe-age-gate",
+      "settings": { "mode": "confirm", "minAge": 18, "remember": 30, "onlyCategories": "spirits", "_cssClasses": "spirits-gate" },
+      "children": [
+        { "name": "heading", "settings": { "text": "Are you 18 or older?", "tag": "h2" } },
+        { "name": "text-basic", "settings": { "text": "This page sells spirits." } }
+      ]
+    }
+  ]
+}
+```
+
 ## Gotchas
 
-- **Background controls want an object.** `panelBackground`, `inputBackground` and `inputFocusBackground` are Background controls, so the colour goes under `color`: `{"color": {"hex": "#ffffff"}}`. A bare `{"hex": ...}` writes no CSS at all. <!-- src: docs/SESSION-HANDOFF.md:1162 "Demo data slips"; plugins/bfb-elements-pro/elements/age-gate.php:189; measured on demo-bfb-age-gate 2026-10-08, no panel background rule printed -->
+- **Background controls want an object.** `panelBackground`, `inputBackground` and `inputFocusBackground` are Background controls, so the colour goes under `color`: `{"color": {"hex": "#ffffff"}}`. A bare `{"hex": ...}` writes no CSS at all. <!-- src: docs/SESSION-HANDOFF.md:1162 "Demo data slips"; plugins/bfb-elements-pro/elements/age-gate.php:207; measured on demo-bfb-age-gate 2026-10-08, no panel background rule printed -->
 - **Buttons sit places the buttons.** Set, **Buttons sit** (`buttonsAlign`) also stops the answers growing, so they keep their own width and sit where it says; unset, the two answers share the row and Enter takes all of it (since BFB Elements 1.0.0; before it, it moved nothing). <!-- src: plugins/bfb-elements-pro/elements/age-gate.php buttonsAlign css; src/elements/age-gate/age-gate.css; measured 2026-10-12 with dev/age-gate-probe.mjs -->
-- **Button colours are custom properties.** The Yes words sit in a span with a colour of their own, so set **Text** (`yesColor`); a colour inside **Typography** (`buttonTypography`) reaches the No button and not the Yes. Custom CSS that writes `background` onto `.bfbe-gate__btn` outranks the hover rule. <!-- src: src/elements/age-gate/age-gate.css:45-52; plugins/bfb-elements-pro/elements/age-gate.php:327-331 -->
-- **An administrator always gets the gate.** Logged in with `manage_options`, the gate shows on every load whatever `skipLoggedIn` says, and no pass is stored. With `skipLoggedIn` ticked, other logged-in users get no markup at all. <!-- src: plugins/bfb-elements-pro/elements/age-gate.php:676-681; src/elements/age-gate/age-gate.js:30-53 -->
-- **A pass belongs to the age, not the gate.** The key is `bfbe-gate-pass-<minAge>` and its expiry is fixed when the visitor passes, so a later change to **Remember for** (`remember`) leaves stored passes as they are. Remove that key from the browser's storage to see the gate again. <!-- src: src/elements/age-gate/age-gate.js:26-53 -->
-- **A fail does not lock.** No, or a date under the age, shows **Fail message** (`failText`) and leaves the gate open with nothing stored, so the visitor can answer again. **Redirect on fail** (`redirect`) is what moves them, about 1.5 seconds later. <!-- src: src/elements/age-gate/age-gate.js:63-67 -->
-- **An impossible date is not a fail.** 31 February, a 0 or a two-digit year shows **Invalid date message** (`invalidText`) and never redirects. Empty boxes are stopped earlier by the browser's own required check. <!-- src: src/elements/age-gate/age-gate.js:89-105 (new Date reads a year under 100 as 19xx); plugins/bfb-elements-pro/elements/age-gate.php:663 -->
-- **The canvas shows it settled.** In the builder the dialog is a `div` in the flow with a dashed outline: no overlay, no motion, no scroll lock. Check those on the page, logged out. <!-- src: plugins/bfb-elements-pro/elements/age-gate.php:701-705; src/elements/age-gate/age-gate.css:60-62 -->
-- **Keep a heading among the children.** The dialog takes its name from the heading (h1 to h6) that comes earliest in its content; with none, it is named by every word in it. With no children the page shows the buttons alone. <!-- src: src/elements/age-gate/age-gate.js:16-23; plugins/bfb-elements-pro/elements/age-gate.php:710-717 -->
+- **Button colours are custom properties.** The Yes words sit in a span with a colour of their own, so set **Text** (`yesColor`); a colour inside **Typography** (`buttonTypography`) reaches the No button and not the Yes. Custom CSS that writes `background` onto `.bfbe-gate__btn` outranks the hover rule. <!-- src: src/elements/age-gate/age-gate.css:48-55; plugins/bfb-elements-pro/elements/age-gate.php:345-349 -->
+- **An administrator always gets the gate.** Logged in with `manage_options`, the gate shows on every load whatever `skipLoggedIn` says, and no pass is stored. With `skipLoggedIn` ticked, other logged-in users get no markup at all. <!-- src: plugins/bfb-elements-pro/elements/age-gate.php:754-765; src/elements/age-gate/age-gate.js:30-74 -->
+- **A pass belongs to the age, not the gate.** The key is `bfbe-gate-pass-<minAge>` and its expiry is fixed when the visitor passes, so a later change to **Remember for** (`remember`) leaves stored passes as they are. Remove that key from the browser's storage to see the gate again. <!-- src: src/elements/age-gate/age-gate.js:26-74 -->
+- **A fail does not lock.** No, or a date under the age, shows **Fail message** (`failText`) and leaves the gate open with nothing stored, so the visitor can answer again. **Redirect on fail** (`redirect`) is what moves them, about 1.5 seconds later. <!-- src: src/elements/age-gate/age-gate.js:91-97 -->
+- **An impossible date is not a fail.** 31 February, a 0 or a two-digit year shows **Invalid date message** (`invalidText`) and never redirects. Empty boxes are stopped earlier by the browser's own required check. <!-- src: src/elements/age-gate/age-gate.js:119-135 (new Date reads a year under 100 as 19xx); plugins/bfb-elements-pro/elements/age-gate.php:741 -->
+- **Categories mean slugs, and a product.** `onlyCategories` takes category slugs (a name with spaces becomes its slug form), and a child category counts as its parent. Filled, the gate shows nothing outside a product page or without WooCommerce, though the control is offered on any site; the canvas always shows it. <!-- src: plugins/bfb-elements-pro/elements/age-gate.php:110-118, 643-668, 768-771 -->
+- **A self-declared age is a confirmation, not verification.** The gate and the cart's check record what the visitor said; where the law asks for proof of age, add a verification service at checkout or delivery. The cart refuses a restricted add without JavaScript, but answering needs the script. <!-- src: plugins/bfb-elements-pro/includes/shop/class-age-check.php:1-14 --> <!-- src: docs/elements/age-gate.md "In a shop: products for adults (2.0.0, Pro, needs WooCommerce)" -->
+- **The cart's gate takes the Shop card's words, not a placed gate's.** Its question, line, age and a 30-day memory come from **Age check before the cart**; it needs BFB Age Gate switched on, and with the element off the cart's check is off too. <!-- src: plugins/bfb-elements-pro/includes/shop/class-age-check.php:92-93, 176-196 --> <!-- src: docs/elements/age-gate.md "In a shop: products for adults (2.0.0, Pro, needs WooCommerce)" -->
+- **The canvas shows it settled.** In the builder the dialog is a `div` in the flow with a dashed outline: no overlay, no motion, no scroll lock. Check those on the page, logged out. <!-- src: plugins/bfb-elements-pro/elements/age-gate.php:790-794; src/elements/age-gate/age-gate.css:63-65 -->
+- **Keep a heading among the children.** The dialog takes its name from the heading (h1 to h6) that comes earliest in its content; with none, it is named by every word in it. With no children the page shows the buttons alone. <!-- src: src/elements/age-gate/age-gate.js:16-23; plugins/bfb-elements-pro/elements/age-gate.php:799-806 -->
 - **The panel's shadow shows in full.** The dialog lets what overflows it show, and the panel scrolls a gate taller than the window (since BFB Elements 1.0.0; before it, a **Shadow** (`panelShadow`) was cut off at the panel's box). <!-- src: src/elements/age-gate/age-gate.css:3, .bfbe-gate__panel; measured 2026-10-12 with dev/age-gate-probe.mjs -->
-- **The date caption sits at the start.** The panel centres its text, but the legend follows **Align** (`fieldAlign`), Start by default. With Fill the row widths, Align moves the legend alone; set `fieldAlign: "center"` to line it up with a centred heading. <!-- src: src/elements/age-gate/age-gate.css:18-28; plugins/bfb-elements-pro/elements/age-gate.php:473-476 -->
-- **Follow the site date format reads one letter.** The opening letter of the WordPress date format decides: m, n, F or M leads with the month, Y with the year, anything else with the day, so `l, F j, Y` leads with the day. Set `fieldOrder` when the order matters. <!-- src: plugins/bfb-elements-pro/elements/age-gate.php:643-649 -->
+- **The date caption sits at the start.** The panel centres its text, but the legend follows **Align** (`fieldAlign`), Start by default. With Fill the row widths, Align moves the legend alone; set `fieldAlign: "center"` to line it up with a centred heading. <!-- src: src/elements/age-gate/age-gate.css:21-31; plugins/bfb-elements-pro/elements/age-gate.php:491-494 -->
+- **Follow the site date format reads one letter.** The opening letter of the WordPress date format decides: m, n, F or M leads with the month, Y with the year, anything else with the day, so `l, F j, Y` leads with the day. Set `fieldOrder` when the order matters. <!-- src: plugins/bfb-elements-pro/elements/age-gate.php:721-727 -->
 
 ## Never do
 
@@ -219,3 +246,5 @@ A styled date field, from the fixture page `fixture-age-gate-styled`: day, month
 - Do not leave the gate without a heading among its children.
 - Do not add a close button or an interaction that closes the dialog: the gate reopens until an answer passes.
 - Do not treat a No as a lock; set `redirect` when a fail must leave the page.
+- Do not write category names in `onlyCategories`; write their slugs, comma separated.
+- Do not present the gate as age verification.

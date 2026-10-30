@@ -1,6 +1,6 @@
 ---
 name: bfbe-dynamic-table
-description: "Use when a page needs a sortable, searchable or filterable data table with paging, built from typed rows, a CSV file or address (a Google Sheet published as CSV), an ACF repeater or a query loop of posts: BFB Dynamic Table (`bfbe-dynamic-table`), with seven cell formats and stacked or card rows on narrow screens. Read before writing its settings."
+description: "Use when a page needs a sortable, searchable or filterable data table with paging, built from typed rows, a CSV file or address (a Google Sheet published as CSV), an ACF repeater or a query loop of posts: BFB Dynamic Table (`bfbe-dynamic-table`), with seven cell formats and stacked or card rows on narrow screens. In a shop, a quick order table of products with a quantity on each row and one Add all to the cart, or a recipe's shoppable list. Read before writing its settings."
 ---
 
 # BFB Dynamic Table (`bfbe-dynamic-table`)
@@ -55,7 +55,7 @@ The whole group shows only when `source` is not `products`.
 - `sortLabel` (text) **Label**: placeholder Sort by; dynamic data accepted; only when `responsive` is not `` or `scroll`. Under Search, set the hidden name and the placeholder of the search field. It reads Search unless you change it.
 - `emptyText` (text) **Text**: placeholder No matching rows.; dynamic data accepted. Under Nothing found, type what shows when no row matches. It reads No matching rows unless you change it, and it takes dynamic data.
 - `pageSize` (number) **Rows per page**: placeholder All; only when `bfbeShopList` is not set. Set a number to page the table, with Previous page and Next page buttons and a count such as 1 to 10 of 42. All rows show unless set.
-- `pagerLayout` (select) **Position**: options: `range-start` Count left, arrows right (default), `range-end` Arrows left, count right, `start` Both left, `center` Both centred, `end` Both right; only when `pageSize` is set and `bfbeShopList` is not set. Under Search, put the search box Above the table (the default) or Below the table.
+- `pagerLayout` (select) **Position**: options: `range-start` Count left, arrows right (default), `range-end` Arrows left, count right, `start` Both left, `center` Both centred, `end` Both right; only when `pageSize` is set and `bfbeShopList` is not set
 Styling, in the schema file: `searchBackground`, `searchBorder`, `searchTypography`, `searchPadding`, `searchWidth`, `toolsGap`, `ddBackground`, `ddBorder`, `ddTypography`, `ddPadding`, `ddWidth`, `ddListBackground`, `ddListBorder`, `ddListShadow`, `ddListTypography`, `ddOptionPadding`, `ddOptionHover`, `ddChosenBackground`, `ddChosenColor`, `emptyTypography`, `pagerGap`.
 
 ### Filters: number arrows (`bfbeRangeArrows`)
@@ -157,6 +157,15 @@ On the frontend, one real table inside a scroll box, with tool rows around it. S
 - A dropdown gains `.bfbe-dt__dd--on` once its script runs (the select then hidden behind the button), `.is-open` while open and `.bfbe-dt__dd--up` when it opens upwards.
 - The root is a size container; Stack and Cards are `@container` rules keyed on `bfbe-dt--narrow-<width>`. In the builder canvas every table tag is a `div` with the same classes.
 - Most colours and sizes are custom properties on the root (`--bfbe-dt-head-bg`, `-row-bg`, `-row-on`, `-row-on-color`, `-zebra`, `-row-gap`, `-max`, `-col-min`, `-icon`, `-chip-*`, `-page-*`, `-dd-*`). `sortedBackground` writes `--bfbe-dt-col-on`, the tint of the column under the pointer, not the sorted one.
+- **Products from the shop (Pro 2.0).** The chosen columns, then the quantity cell: `label.bfbe-sr` ("Quantity of" the
+  product), a hidden `input[name="id[]"]` and `input.bfbe-qo__qty[type=number][name="qty[]"]`, both with
+  `form="bfbe-<uid>-order"`; a variable, grouped or external product's cell is `a.bfbe-qo__choose` instead. After the
+  table, `form.bfbe-qo#bfbe-<uid>-order[data-bfbe-qo-at="end|start"]` holds `button.bricks-button.bfbe-qo__add` and
+  `div.bfbe-qo__said[role=status]`. The Add to cart group's styling writes to `.bfbe-qo__qty` and `.bfbe-qo__add`.
+- **Arrows and the calendar (2.0).** **Arrows** other than the browser's (`rangeSpinArrows` on a number range,
+  `bfbeShopQtySpinArrows` on a quantity) wrap the input in `span.bfbe-spin.bfbe-spin--inside|stepper|none`, its buttons
+  `tabindex="-1"`. With `rangeDatePicker: "custom"` a date range's `.bfbe-dt__pair` adds `bfbe-cal` and its boxes stay
+  text with `data-bfbe-cal`, opened by the forms' calendar.
 - `headerBorder` writes to `.bfbe-dt__head .bfbe-dt__row` and `rowBorder` to `.bfbe-dt__body .bfbe-dt__row`, both drawn by the cells (the first and last take the sides and corners); `cellBorder` to the body cells, replacing the row's on the sides it sets; `tableBorder` to `.bfbe-dt__scroll`. The search box's styling controls write to `.bfbe-dt__search`, the `dd*` controls style every dropdown's button and list, and a column's **Width** and **Align** to `--bfbe-dt-col-w` and `--bfbe-dt-col-align` on `.bfbe-dt__cell:nth-child(n)`.
 
 ## Wiring to other elements
@@ -167,6 +176,10 @@ Stands alone; nothing targets it and it targets nothing. Its search box, filters
 - **Filters in the URL** (`filterUrl`) names each parameter after the root's HTML id, `brxe-<id>-f<n>`, n the zero-based column. A `_cssId` renames it, and two tables that share an id (two instances of one component) read the same parameter. Target the table by a class in `_cssClasses`, never `_cssId`.
 - The script runs again after Bricks' AJAX pagination, page load, query result and popup events, so a table in a Bricks popup or in AJAX-loaded content starts. For markup added another way, call `window.bfbeDynamicTable()`.
 - To style it from a stylesheet, scope part selectors under that class (`.price-table .bfbe-dt__cell`).
+- **Products from the shop** (`source: "products"`, WooCommerce active) feeds WooCommerce's cart: Add all posts product
+  or variation ids and quantities to the shop's live endpoint, the server adds each through WooCommerce, and the shop's
+  status region says it once ("Added 3 products. Cart: 7 items, 120,00 €"). WooCommerce's cart fragments are then refreshed.
+  **The list** (`bfbeShopItems`) takes dynamic data, so a recipe's own custom field can hold it.
 
 ## Verified patterns
 
@@ -217,6 +230,27 @@ Six pages, the last published at the top, one row each, from a query loop. From 
 }}
 ```
 
+A quick order table of one category, with picture, SKU and stock, a search box and four rows a page. From the fixture
+`fixture-shop-quick-order`; `product_cat::102` is that site's category id, so pick the category from the panel. A
+quantity typed on one page of the table is still posted from another.
+
+```json
+{"name": "bfbe-dynamic-table", "settings": {
+  "source": "products", "bfbeShopFrom": "category", "bfbeShopCategory": ["product_cat::102"],
+  "bfbeShopColumns": ["image", "name", "sku", "stock", "price"], "search": true, "pageSize": 4, "caption": "Kitchen", "_cssClasses": "p11-qo"
+}}
+```
+
+A recipe's shoppable list. From the fixture `fixture-shop-recipe`, its saved `search` and `pageSize` left out (the panel
+hides them with **Shoppable list**). The second line holds two items; the third names no product and is left out.
+
+```json
+{"name": "bfbe-dynamic-table", "settings": {
+  "source": "products", "bfbeShopList": true, "bfbeShopColumns": ["name", "price"], "bfbeShopAddAll": "Add the whole list", "_cssClasses": "p11-list",
+  "bfbeShopItems": "2 x Olive Oil, cold pressed\n1 x BFBE-KIT-01, 1 x Beeswax Candles, set of 4\n3 x A product nobody sells"
+}}
+```
+
 ## Gotchas
 
 - **A column sorts only with `sortable: true`.** The panel ticks **Sortable** when a column is added in the builder; a column written as data without it gets a plain heading and no sort button. <!-- src: plugins/bfb-elements-pro/elements/dynamic-table.php:288-292,1939-1947; docs/API-PROBE.md "12. Control defaults exist only in the builder" -->
@@ -234,6 +268,22 @@ Six pages, the last published at the top, one row each, from a query loop. From 
 - **With Cards, the rows' Border is the card's.** Below the width `rowBorder` outlines each card, and above it the same setting outlines each row of the wide table; unset, the cards keep their own line, corners, fill and shadow. <!-- src: src/elements/dynamic-table/dynamic-table.css:92,160; docs/elements/dynamic-table.md "Round 404" -->
 - **The sticky header sticks inside the table, not the page.** **Sticky header** (`stickyHeader`) caps the table's box at **Table height** (`maxHeight`, 70vh unless set) and the header sticks while rows scroll in it; a shorter table never scrolls. <!-- src: src/elements/dynamic-table/dynamic-table.css:112-116; plugins/bfb-elements-pro/elements/dynamic-table.php:840-854 -->
 
+- **Products need WooCommerce and their pick.** Without WooCommerce, or with **Products from** missing its Category,
+  Tag, Products or Product (or an empty **The list**), the builder says what is missing and the page draws nothing. <!-- src: plugins/bfb-elements-pro/elements/dynamic-table.php:1791-1792; plugins/bfb-elements-pro/includes/shop/class-quick-order.php:305-322 -->
+- **A products table picks its own columns.** **Columns** (`bfbeShopColumns`) stand in a fixed order whatever the
+  order picked, picture, name and price when none is, the quantity last; Picture and Options never sort, and the typed
+  Rows, Header row and Columns list are hidden. <!-- src: plugins/bfb-elements-pro/includes/shop/class-quick-order.php:325-355; docs/SHOP-LABELS-2.0.0.md "BFB Dynamic Table (C9" -->
+- **A shoppable list is read whole.** `bfbeShopList` turns the search box, filters and pages off, even ones saved before.
+  A comma starts another item only before a quantity and `x` (`2 x Olive oil, 1 x Oak board`); a line no product
+  answers to by id, SKU, slug or exact name is left out; 200 rows at most. <!-- src: plugins/bfb-elements-pro/elements/dynamic-table.php:1770-1775; plugins/bfb-elements-pro/includes/shop/class-quick-order.php:456-503 -->
+- **Variable products get a link, not a quantity.** In a category, tag or picked table a variable, grouped or external
+  product links to its page (Choose options, or View); `bfbeShopFrom: "variations"` with `bfbeShopParent` gives one
+  product a row per variation. <!-- src: plugins/bfb-elements-pro/includes/shop/class-quick-order.php:540-545; docs/elements/dynamic-table.md "In a shop" -->
+- **Every line is decided on the server.** A sold-out or unbuyable line is refused with WooCommerce's own reason and
+  the rest are added; prices and stock on a cached page are those it was drawn with, but the add reads them again. <!-- src: plugins/bfb-elements-pro/includes/shop/class-quick-order.php:18-24, :608-614; docs/elements/dynamic-table.md "In a shop" -->
+- **Arrows reach number ranges only.** `rangeSpinArrows` leaves a date range alone; its look is `rangeDatePicker`, and
+  the calendar's `rangeCal*` controls act only with `rangeDatePicker: "custom"`. <!-- src: plugins/bfb-elements-pro/elements/dynamic-table.php:499-521, :1968-1969 -->
+
 ## Never do
 
 - Do not leave `sortable` out of a column that should sort; write `"sortable": true`.
@@ -246,3 +296,6 @@ Six pages, the last published at the top, one row each, from a query loop. From 
 - Do not count CSV columns in a filter's `column`; count the **Columns** list from 1.
 - Do not shape the stacked or card rows with `colMin` or a column's `width` and `align`.
 - Do not use `stickyHeader` to pin a header to the page; it sticks only inside the table's own box.
+- Do not set `search`, `filters` or `pageSize` on a shoppable list (`bfbeShopList`); the list is read whole.
+- Do not put a variable product in a category quick order and expect a quantity; use `bfbeShopFrom: "variations"`.
+- Do not set `rangeCal*` keys without `rangeDatePicker: "custom"`.

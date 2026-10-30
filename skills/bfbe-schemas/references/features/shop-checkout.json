@@ -12,7 +12,8 @@
         "WooCommerce"
     ],
     "switches": [
-        "shop-checkout-fields"
+        "shop-checkout-fields",
+        "shop-delivery"
     ],
     "groupInfo": {
         "bfbeShopFields": {
@@ -36,7 +37,9 @@
         "bfbeShopFloat": {
             "title": "BFB Floating labels",
             "pack": "pro",
-            "switch": [],
+            "switch": [
+                "shop-checkout-fields"
+            ],
             "sources": [
                 "bfb-elements-pro/includes/shop/class-checkout-float.php"
             ]
@@ -44,7 +47,9 @@
         "bfbeShopSlot": {
             "title": "BFB Delivery day and time",
             "pack": "pro",
-            "switch": [],
+            "switch": [
+                "shop-delivery"
+            ],
             "sources": [
                 "bfb-elements-pro/includes/shop/class-delivery-slots.php"
             ]
@@ -52,7 +57,9 @@
         "bfbeShopSlotCal": {
             "title": "BFB Delivery calendar",
             "pack": "pro",
-            "switch": [],
+            "switch": [
+                "shop-delivery"
+            ],
             "sources": [
                 "bfb-elements-pro/includes/shop/class-delivery-slots.php"
             ]

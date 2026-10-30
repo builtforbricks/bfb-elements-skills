@@ -305,7 +305,7 @@
                 "css": [
                     {
                         "property": "font",
-                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *)"
+                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *, .bfbe-cartqty__stepper *)"
                     }
                 ],
                 "group": "bfbe-fields"
@@ -316,7 +316,7 @@
                 "css": [
                     {
                         "property": "background-color",
-                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *)"
+                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *, .bfbe-cartqty__stepper *)"
                     }
                 ],
                 "group": "bfbe-fields"
@@ -327,7 +327,7 @@
                 "css": [
                     {
                         "property": "border",
-                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *)"
+                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *, .bfbe-cartqty__stepper *)"
                     }
                 ],
                 "group": "bfbe-fields"
@@ -338,7 +338,7 @@
                 "css": [
                     {
                         "property": "padding",
-                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *)"
+                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *, .bfbe-cartqty__stepper *)"
                     }
                 ],
                 "group": "bfbe-fields"
@@ -350,7 +350,7 @@
                 "css": [
                     {
                         "property": "min-height",
-                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *)"
+                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *, .bfbe-cartqty__stepper *)"
                     }
                 ],
                 "group": "bfbe-fields"
@@ -382,7 +382,7 @@
                 "css": [
                     {
                         "property": "border-color",
-                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *):focus"
+                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *, .bfbe-cartqty__stepper *)"
                     }
                 ],
                 "group": "bfbe-fields"
@@ -393,7 +393,7 @@
                 "css": [
                     {
                         "property": "box-shadow",
-                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *):focus"
+                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *, .bfbe-cartqty__stepper *)"
                     }
                 ],
                 "group": "bfbe-fields"
@@ -407,7 +407,7 @@
                 "css": [
                     {
                         "property": "outline",
-                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *):focus"
+                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *, .bfbe-cartqty__stepper *)"
                     }
                 ],
                 "group": "bfbe-fields"

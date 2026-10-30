@@ -202,6 +202,19 @@ Styling, in the schema file: `bfbeShopMomentsWidth`, `bfbeShopMomentsBg`, `bfbeS
 - Playlists: root `bfbe-vp--list` plus `bfbe-vp--{right|left|top|below|strip}`, or `bfbe-vp--built` for Playlist Items; side lists add `bfbe-vp--scroll-bar` or `--scroll-fade` and toggle `is-list-above` and `is-list-more`. The current row has `aria-current="true"` and `is-current`, and `is-playing` while it plays.
 - Styling targets: `fg` writes `--bfbe-vp-fg` (everything over the picture, white unset, and a Studio bar, the page's colour unset); `accent` the played part and handle; `stageBackground`, `frameBorder` and `shadow` the stage (`frameBorder` the root in Studio); `barBackground` writes `--bfbe-vp-bar-bg`, the large button's fill, Studio's bar, Minimal's pill and Cinema's two clusters unless `groupBackground` is set; `overScrim` paints `.bfbe-vp__stage::after` across the whole picture; `overPadding` pads `.bfbe-vp__over`.
 - A Player Control renders `.bfbe-vc.bfbe-vc--{kind}` (plus `bfbe-vc--when-{show}`, and `bfbe-vc--wide` on `seek`) around the part the bar draws: `.bfbe-vp__btn`, `.bfbe-vp__seek`, `.bfbe-vp__time`, `.bfbe-vp__now` (title), `.bfbe-vp__chapter-now`, `img.bfbe-vp__cover`, `a.bfbe-vp__dl`.
+- **Product moments** (WooCommerce, 2.0.0): the root carries `data-bfbe-moments="over|beside|under"` and one layer holds a card per moment, each `hidden` until its time. Over the video the layer sits inside the stage after the layer of nested elements; beside or under, after the stage (Studio: after its bar). `shop-moments.js` shows the card whose time has come (`is-on`) until the next one's, from the `<video>`'s own `timeupdate` and `seeked`; before the first moment none shows, and print hides them.
+
+```html
+<div class="bfbe-moments" data-bfbe-moments-at="over" data-bfbe-moments-corner="end-end">
+  <div class="bfbe-moments__card" data-bfbe-at="65" hidden>
+    <p class="bfbe-moments__words">Worn in this scene</p>
+    <div class="bfbe-look bfbe-moments__look" data-bfbe-look-product="58">picture, p.bfbe-look__name (a link), p.bfbe-look__price,
+      form.bfbe-look__form with button.bricks-button.bfbe-look__add, or a.bricks-button.bfbe-look__view</div>
+  </div>
+</div>
+```
+
+- The card is ours, so Bricks' Style tab cannot reach it: `bfbeShopMomentsWidth` writes `--bfbe-moment-w` (260px); `bfbeShopMomentsBg`, `Border`, `Padding`, `Shadow` write to `.bfbe-moments__card`; the three typography keys to `.bfbe-moments__words`, `.bfbe-look__name` and `.bfbe-look__price`; the `bfbeShopMomentsBtn*` keys to the card's `.bricks-button`.
 - A Playlist Item renders `.bfbe-pi[data-bfbe-kind][data-bfbe-src]` with a visually hidden `button.bfbe-pi__pick` named "Play {title}" ("Play this item" with no `title`), its children, and `.bfbe-pi__bars` with `bars`. It takes `is-current`, `is-playing` and `aria-current`; with no video it is `.bfbe-pi--empty`.
 
 ## Wiring to other elements
@@ -212,6 +225,8 @@ Styling, in the schema file: `bfbeShopMomentsWidth`, `bfbeShopMomentsBg`, `bfbeS
 - **Query loop playlist**: `source: "loop"`, then `hasLoop: true` and `query` on the player itself, with `loopUrl`, `loopTitle`, `loopPoster` (a text field: give it a tag that returns an image address) and `loopNote` as dynamic tags read per result. The player renders once; Bricks does not repeat it. Playlist Items take a query loop on themselves or on a container around them.
 - **Other players**: starting a player with sound pauses every other player on the page that is playing with sound (`bfbe-vp:play` on `document`); a muted one keeps going.
 - **Addresses**: `?v=2` opens a playlist on its second video; Copy link copies the page's address with `?t=` at the current second. Both open ready, not playing.
+- **Product moments, listed** (2.0.0): the player prints no list of its moments. Build one with a query loop of type **BFB Product moments** (`query.objectType: "bfbeShopMoments"`) on a Container, Block or Div: a row per moment in time order, its product read by Bricks' Product title, Product price, Add to cart and Image, the moment by `{bfbe_moment_time}`, `{bfbe_moment_seconds}`, `{bfbe_moment_words}` and `{bfbe_moment_chapter}`. Leave its **Element id** `bfbeShopMomentsPlayer` empty and keep the loop and the player under one wrapper, so it takes the nearest player. See `bfbe-shop-loops`.
+- **Each moment row** in **Product moments** `bfbeShopMoments`: **At** `at` (seconds or `m:ss`, `"65"` or `"1:05"`), **Product** `product` (an id, as a string) or **Or from dynamic data** `productFrom` (a tag giving an id or SKU), and **Words** `words`.
 - **Targeting**: give the player a class in `_cssClasses` (`film-player` in the first pattern) and select `.film-player .bfbe-vp__bar`. Never `_cssId`: component instances share ids. The scripts scan again after Bricks' AJAX pagination, query results and popups; for markup added any other way, call `window.bfbeVideoPlayer()` and, for a playlist, `window.bfbeVideoPlayerPlaylist()`.
 
 ## Verified patterns
@@ -321,9 +336,33 @@ Styling, in the schema file: `bfbeShopMomentsWidth`, `bfbeShopMomentsBg`, `bfbeS
 }
 ```
 
+**A shoppable video and its list of moments.** From the demo shop's recipe page (`slow-breakfast`, "A pour-over, start to finish") and the fixture `fixture-shop-video`, with the dev site's file and product ids: use the target site's own. Cards sit beside the video; the loop below lists every moment with Bricks' own elements, and with **Element id** empty it finds the player in the same Block. Trimmed: the demo's colours and the row's layout blocks.
+
+```json
+{
+  "name": "block",
+  "settings": { "_cssClasses": "film-shop" },
+  "children": [
+    { "name": "bfbe-video-player", "settings": {
+      "file": { "id": 80246, "filename": "p11-moments.mp4", "url": "https://example.com/wp-content/uploads/p11-moments.mp4" },
+      "title": "A pour-over, start to finish", "muted": true,
+      "chapters": [ { "label": "The pour", "at": "0" }, { "label": "The table", "at": "4" } ],
+      "bfbeShopMoments": [ { "at": "0:01", "product": "79053", "words": "The oil" }, { "at": "0:03", "product": "79033" }, { "at": "0:05", "product": "78883", "words": "Worn in this scene" } ],
+      "bfbeShopMomentsAt": "beside", "bfbeShopMomentsWidth": "280px"
+    } },
+    { "name": "block", "settings": { "hasLoop": true, "query": { "objectType": "bfbeShopMoments" } }, "children": [
+      { "name": "image", "settings": { "image": { "useDynamicData": "{featured_image}", "size": "woocommerce_thumbnail" } } },
+      { "name": "text-basic", "settings": { "text": "{bfbe_moment_time} &middot; {bfbe_moment_words}" } },
+      { "name": "product-title", "settings": { "tag": "span", "linkToProduct": true } },
+      { "name": "product-price", "settings": {} }
+    ] }
+  ]
+}
+```
+
 ## Gotchas
 
-- **The Custom skin draws no bar.** With `skin: "custom"` the controls are the Player Controls you nest, the large play button and a click on the picture. The Buttons and Icons groups, `idle`, `share`, `abLoop` and `chapterMenu` are hidden there and dropped; nest the `share`, `ab` and `chapters` Player Controls instead. <!-- src: plugins/bfb-elements-pro/elements/video-player.php:2868; plugins/bfb-elements-pro/elements/video-player.php:212; plugins/bfb-elements-pro/elements/video-player.php:538 -->
+- **The Custom skin draws no bar.** With `skin: "custom"` the controls are the Player Controls you nest, the large play button and a click on the picture. The Buttons and Icons groups, `idle`, `share`, `abLoop` and `chapterMenu` are hidden there and dropped; nest the `share`, `ab` and `chapters` Player Controls instead. <!-- src: plugins/bfb-elements-pro/elements/video-player.php:2883; plugins/bfb-elements-pro/elements/video-player.php:212; plugins/bfb-elements-pro/elements/video-player.php:538 -->
 - **A Player Control with nothing to work with draws nothing on the page.** `cc` needs the player's `subtitles`, `chapters` and `chapter` need `chapters`, `poster` a poster on a single video, `download` a video file rather than a provider; outside a player every kind draws nothing. The canvas says why. `prev` and `next` render outside a playlist but do nothing. <!-- src: plugins/bfb-elements-pro/elements/video-control.php:552; plugins/bfb-elements-pro/elements/video-control.php:585; plugins/bfb-elements-pro/elements/video-control.php:669 -->
 - **Nothing of ours stays over a provider's player.** Once a YouTube, Vimeo or other-host frame is on the stage (`is-embedded`), the layer over the video, nested Player Controls included, and a Cinema or Minimal bar step aside, whatever `overWhen` says. A Studio bar keeps its Previous and Next, being under the picture. <!-- src: src/elements/video-player/video-player.css:190; src/elements/video-player/video-player.css:157; src/elements/video-player-skins/video-player-skins.css:33 -->
 - **A façade without a Poster shows only the frame background and the play button.** With `privacy`, YouTube's and Vimeo's thumbnails are not fetched, and Another host never brings a picture of its own. <!-- src: plugins/bfb-elements-pro/elements/video-player.php:2011; plugins/bfb-elements-pro/elements/video-player.php:2035; plugins/bfb-elements-pro/elements/video-player.php:2041; docs/elements/video-player.md "Where the video lives (round 2, 2026-09-21)" -->
@@ -334,7 +373,12 @@ Styling, in the schema file: `bfbeShopMomentsWidth`, `bfbeShopMomentsBg`, `bfbeS
 - **Visibility has two traps.** Studio sets no idle delay, so `overWhen: "idle"` and a Player Control's `show: "idle"` never hide there. `overWhen: "after"` hides the whole layer `overAfter` seconds into playback, nested Player Controls included, until a pause; for a Custom bar use `idle`. <!-- src: plugins/bfb-elements-pro/elements/video-player.php:2699; src/elements/video-player/video-player.js:104; src/elements/video-player/video-player.css:196; docs/elements/video-player.md "Alex's review, round one (round 366, 2026-09-21)" -->
 - **In Minimal the layer reaches the foot of the picture.** Minimal collapses the bar's row, so content placed at the bottom of the layer sits on its line and pill; in Cinema the layer stops above the bar. Justify the content to the top or give the layer `overPadding`. <!-- src: src/elements/video-player-skins/video-player-skins.css:11; src/elements/video-player-skins/video-player-skins.css:22; src/elements/video-player/video-player.css:169 -->
 - **A side list stacks under the video below 700px.** On screens narrower than that, `playlistLayout: "right"` or `"left"` puts the list under the picture, capped at 42% of the screen's height, and `playlistWidth` stops applying. <!-- src: src/elements/video-player-playlist/video-player-playlist.css:29 -->
-- **The canvas is not the page.** The Up next card never appears in the builder; a click on a Playlist Item there selects it rather than loading it; a `list` player shows "Place BFB Playlist Items on this page." until an item exists; a Player Control with `show` set is drawn faded rather than hidden. <!-- src: src/elements/video-player-playlist/video-player-playlist.js:245; src/elements/video-player-playlist/video-player-playlist.js:293; plugins/bfb-elements-pro/elements/video-player.php:2864; src/elements/video-control/video-control.css:63 -->
+- **Product moments need this site's file.** The group shows only for `source` empty or `self`, and a playlist or `source: "list"` reads no moments; YouTube and Vimeo give the cards no clock. <!-- src: plugins/bfb-elements-pro/includes/shop/class-product-moments.php:57 --> <!-- src: plugins/bfb-elements-pro/elements/video-player.php:2829 -->
+- **A moment needs a time and a product.** An **At** that is neither seconds nor `m:ss` or `h:mm:ss`, or a product that is gone or a tag with no answer, drops that moment, from the cards and the loop alike; the rest are sorted by time. <!-- src: plugins/bfb-elements-pro/includes/shop/class-product-moments.php:206-227 --> <!-- src: plugins/bfb-elements-pro/elements/video-player.php:2394-2406 -->
+- **A card offers one way on.** A simple product in stock gets a real Add to cart form, posting to the page; a variable, external, grouped or sold-out product gets **Link words** (View) to its page. One card shows at a time, and a card with focus inside stays until the focus leaves. <!-- src: plugins/bfb-elements-pro/includes/shop/class-look.php:121-131 --> <!-- src: src/elements/shop-moments/shop-moments.js:24-36 -->
+- **The cards are never announced.** They take no focus and the live region says nothing as they change, so the moments loop is how a keyboard, a screen reader or print reaches them. Beside the video becomes one column under 640px. <!-- src: src/elements/shop-moments/shop-moments.js:1-7 --> <!-- src: src/elements/shop-moments/shop-moments.css:19-24 -->
+- **The moments loop is one page.** It ignores per page and pagination, a product at two moments is two rows, and in the builder three of the shop's products stand in until the player's moments resolve. <!-- src: plugins/bfb-elements-pro/includes/shop/class-moments-set.php:9, 108-117 -->
+- **The canvas is not the page.** The Up next card never appears in the builder; a click on a Playlist Item there selects it rather than loading it; a `list` player shows "Place BFB Playlist Items on this page." until an item exists; a Player Control with `show` set is drawn faded rather than hidden. <!-- src: src/elements/video-player-playlist/video-player-playlist.js:245; src/elements/video-player-playlist/video-player-playlist.js:293; plugins/bfb-elements-pro/elements/video-player.php:2875; src/elements/video-control/video-control.css:63 -->
 
 ## Never do
 
@@ -346,3 +390,6 @@ Styling, in the schema file: `bfbeShopMomentsWidth`, `bfbeShopMomentsBg`, `bfbeS
 - Do not use `overWhen: "after"` over a bar built from Player Controls, or count on `idle` hiding anything in Studio.
 - Do not expect YouTube or Vimeo rows to advance with `playlistNext`; a list that plays through holds files or streams.
 - Do not name a player in `player` when it sits in a component used twice; keep the player and its items under one wrapper.
+- Do not set `bfbeShopMoments` on a playlist, a `list` player or a YouTube or Vimeo source; moments need this site's own file.
+- Do not count on the cards as the only way to the products; place a BFB Product moments loop as well.
+- Do not style a moment card through Bricks' Style tab or `_cssClasses`; use the `bfbeShopMoments*` look keys.

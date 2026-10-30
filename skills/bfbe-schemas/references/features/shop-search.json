@@ -5,7 +5,7 @@
     "feature": true,
     "shape": "hosts",
     "on": "Bricks' own Filter - Search (`filter-search`), Search (`search`)",
-    "job": "the shop's settings on Bricks' Search and Filter - Search: recent and popular searches, product suggestions and the search field's look",
+    "job": "the shop's settings on Bricks' Search and Filter - Search: recent and popular searches (words, not products) under the field, and the search field's look",
     "docs": "https://builtforbricks.com/bfb-elements/docs/shop-search/",
     "since": "2.0.0",
     "requires": [
