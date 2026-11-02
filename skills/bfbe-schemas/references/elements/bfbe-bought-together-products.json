@@ -486,7 +486,7 @@
             "css": [
                 {
                     "property": "border",
-                    "selector": ".bfbe-tick"
+                    "selector": "&[data-bfbe-tick] .bfbe-tick"
                 }
             ],
             "required": [

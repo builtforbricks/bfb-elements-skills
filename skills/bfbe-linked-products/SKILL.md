@@ -12,7 +12,13 @@ description: "Use when separate products sold as one family (one product per col
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/linked-products/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+Separate products sold as one family, such as one product per colour, shown as swatches that link to each other, placed wherever you want them: above the title, beside the price, under the gallery or in a row of a product loop. The family comes from a Linked products field you fill by hand, or from products that share every attribute but one. Plain links, so it needs no script.
+
+**Not for:** Not for variations of one product, which change in place: Bricks' own Add to cart with its swatches does that. Every link here loads the other product's own page.
+
+**Costs a page:** CSS 0.49 KB, JS none (gzipped), no dependencies, loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** no · **Reduced motion:** no
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -21,10 +27,15 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Linked products (`bfbeLinked`)
-- `linkedBy` (select) **Linked by**: options: `field` The Linked products field (default), `attribute` A shared attribute
-- `attribute` (select) **Attribute**: options: `pa_colour` Colour, `pa_material` Material, `pa_size` Size, `pa_warmth` Warmth. Its swatch colours the links.
-- `label` (text) **Label**: placeholder The attribute name; dynamic data accepted
+- `linkedBy` (select) **Linked by**: options: `field` The Linked products field (default), `attribute` A shared attribute. The Linked products field (the default), the list on the product's Linked Products tab, or A shared attribute: products in the same categories that match in every other attribute and differ in this one. Use the field to pick the family by hand, the attribute when new colours should join by themselves.
+- `attribute` (select) **Attribute**: options: `pa_colour` Colour, `pa_material` Material, `pa_q5-finish` Q5 Finish, `pa_q5-pattern` Q5 Pattern, `pa_size` Size, `pa_warmth` Warmth. Which attribute colours the links and, for a shared attribute, the one the products differ in; empty takes the product's first attribute with colour or image swatches in Bricks' swatch settings.
+- `label` (text) **Label**: placeholder The attribute name; dynamic data accepted. The words before the current product's value, such as Colour: Ink; empty takes the attribute's name. It takes dynamic data.
 Styling, in the schema file: `labelTypography`, `currentTypography`, `swatchSize`, `gap`, `swatchBorder`, `currentColor`.
+
+## What it guarantees for accessibility (do not undo)
+- Each swatch is a plain link with a name for screen readers, the product and its value, such as Linen Shirt, Ink.
+- The current product is marked aria-current and ringed.
+- It has no script, so it works without JavaScript.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

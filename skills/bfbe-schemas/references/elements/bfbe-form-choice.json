@@ -2423,26 +2423,26 @@
             "css": [
                 {
                     "property": "flex-direction",
-                    "selector": ".bfbe-pc__check .bfbe-pc__body"
+                    "selector": ".bfbe-pc__check--priced .bfbe-pc__body"
                 },
                 {
                     "property": "flex-grow",
-                    "selector": ".bfbe-pc__check .bfbe-pc__body",
+                    "selector": ".bfbe-pc__check--priced .bfbe-pc__body",
                     "value": "1"
                 },
                 {
                     "property": "justify-content",
-                    "selector": ".bfbe-pc__check .bfbe-pc__body",
+                    "selector": ".bfbe-pc__check--priced .bfbe-pc__body",
                     "value": "space-between"
                 },
                 {
                     "property": "align-items",
-                    "selector": ".bfbe-pc__check .bfbe-pc__body",
+                    "selector": ".bfbe-pc__check--priced .bfbe-pc__body",
                     "value": "baseline"
                 },
                 {
                     "property": "column-gap",
-                    "selector": ".bfbe-pc__check .bfbe-pc__body",
+                    "selector": ".bfbe-pc__check--priced .bfbe-pc__body",
                     "value": "12px"
                 }
             ],
@@ -2771,7 +2771,7 @@
             "css": [
                 {
                     "property": "--bfbe-pc-box-r",
-                    "selector": ""
+                    "selector": "&:not([data-bfbe-ticks=\"native\"])"
                 }
             ],
             "required": [
@@ -2803,7 +2803,7 @@
             "css": [
                 {
                     "property": "--bfbe-pc-box-bg",
-                    "selector": ""
+                    "selector": "&:not([data-bfbe-ticks=\"native\"])"
                 }
             ],
             "required": [
@@ -2820,7 +2820,7 @@
             "css": [
                 {
                     "property": "--bfbe-pc-box-line",
-                    "selector": ""
+                    "selector": "&:not([data-bfbe-ticks=\"native\"])"
                 }
             ],
             "required": [
@@ -2837,7 +2837,7 @@
             "css": [
                 {
                     "property": "--bfbe-pc-on-accent",
-                    "selector": ""
+                    "selector": "&:not([data-bfbe-ticks=\"native\"])"
                 }
             ],
             "required": [
@@ -3565,6 +3565,8 @@
             "options": {
                 "pa_colour": "Colour",
                 "pa_material": "Material",
+                "pa_q5-finish": "Q5 Finish",
+                "pa_q5-pattern": "Q5 Pattern",
                 "pa_size": "Size",
                 "pa_warmth": "Warmth"
             },

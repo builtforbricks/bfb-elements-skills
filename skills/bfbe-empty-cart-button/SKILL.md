@@ -12,9 +12,13 @@ description: "Use when placing, wiring or styling BFB Empty Cart Button (`bfbe-e
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/empty-cart-button/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+A button that empties the visitor's cart after asking. It is a real form with a submit button, so it works before any script runs; the script adds the question in the browser's own modal dialog. The cart is emptied on the server, and the button can hide itself while there is nothing to empty.
 
-**Costs a page:** CSS 0.59 KB, JS 0.74 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Not for:** It empties the whole cart; to take out one line, use BFB Cart Quantity's Remove or WooCommerce's own remove link. Without scripts no question can be asked, so the post empties the cart straight away.
+
+**Costs a page:** CSS 0.71 KB, JS 0.84 KB (gzipped), no dependencies, loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** no · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** no
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -23,22 +27,27 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Button (`bfbeButton`)
-- `text` (text) **Text**: placeholder Empty the cart; dynamic data accepted
+- `text` (text) **Text**: placeholder Empty the cart; dynamic data accepted. "Empty the cart" unless you set it; dynamic data works.
 - `style` (select) **Style**: options: `primary` Primary, `secondary` Secondary, `light` Light, `dark` Dark, `muted` Muted, `info` Info, `success` Success, `warning` Warning, `danger` Danger
 - `size` (select) **Size**: options: `sm` Small, `md` Medium (default), `lg` Large, `xl` Extra large
 - `outline` (checkbox) **Outline**
 - `icon` (icon) **Icon**. Before the text. None unless set.
-- `hideEmpty` (checkbox) **Hide when empty**
+- `hideEmpty` (checkbox) **Hide when empty**. Off unless you tick it. On, the button is not shown while the cart is empty, follows the live answer on cached pages, and goes once the cart has been emptied.
 Styling, in the schema file: `iconSize`, `iconGap`.
 
 ### Confirm (`bfbeConfirm`)
-- `question` (text) **Question**: placeholder Empty your cart?; dynamic data accepted
+- `question` (text) **Question**: placeholder Empty your cart?; dynamic data accepted. The dialog's name, "Empty your cart?" unless you set it; dynamic data works.
 - `confirmText` (text) **Yes button**: placeholder Yes, empty it
 - `cancelText` (text) **Cancel button**: placeholder Keep my cart
 
 ### Question box (`bfbeDialog`)
-- `builderPreview` (checkbox) **Preview in the builder**
+- `builderPreview` (checkbox) **Preview in the builder**. Draws the dialog open below the button while you style it.
 Styling, in the schema file: `boxTypography`, `boxBackground`, `boxBorder`, `boxPadding`, `boxWidth`, `boxShadow`, `backdrop`, `questionTypography`, `btnTypography`, `btnPadding`, `btnBorder`, `btnGap`, `btnJustify`, `okBackground`, `okColor`, `okHoverBackground`, `okHoverColor`, `okHoverBorder`, `cancelBackground`, `cancelColor`, `cancelHoverBackground`, `cancelHoverColor`, `cancelHoverBorder`.
+
+## What it guarantees for accessibility (do not undo)
+- The question is a modal dialog of the browser's own, named by the question. The focus lands on Cancel; Escape and a click outside keep the cart, and the focus goes back to the button when it closes.
+- "Your cart is now empty." is said once, politely.
+- When Hide when empty takes the button away, the focus goes to the place around it (a mini cart's panel, or the page's main area) rather than the top of the page.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

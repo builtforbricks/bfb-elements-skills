@@ -6,7 +6,7 @@
     "shape": "hosts",
     "on": "Bricks' own Add to cart (`product-add-to-cart`), Products (`woocommerce-products`)",
     "job": "the shop's settings on Bricks' Add to cart and Products: the buy form's layout, option lists and swatches, ask for a price, quantity breaks, and swatches with add to cart on product cards",
-    "docs": "https://builtforbricks.com/bfb-elements/docs/shop-add-to-cart/",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/shop/",
     "since": "2.0.0",
     "requires": [
         "WooCommerce"
@@ -283,7 +283,7 @@
                     "label": "Quantity buttons",
                     "type": "select",
                     "options": {
-                        "bricks": "Bricks&#039; − and +",
+                        "bricks": "The − and + Bricks adds",
                         "browser": "The browser&#039;s arrows",
                         "none": "None"
                     },
@@ -616,36 +616,6 @@
                             "property": "margin",
                             "selector": ".cart .single_add_to_cart_button",
                             "value": "0"
-                        },
-                        {
-                            "property": "order",
-                            "selector": ".cart .bfbe-buy",
-                            "value": "3"
-                        },
-                        {
-                            "property": "flex",
-                            "selector": ".cart .bfbe-buy",
-                            "value": "1 1 0"
-                        },
-                        {
-                            "property": "min-width",
-                            "selector": ".cart .bfbe-buy",
-                            "value": "0"
-                        },
-                        {
-                            "property": "justify-content",
-                            "selector": ".cart .bfbe-buy",
-                            "value": "center"
-                        },
-                        {
-                            "property": "text-align",
-                            "selector": ".cart .bfbe-buy",
-                            "value": "center"
-                        },
-                        {
-                            "property": "margin",
-                            "selector": ".cart .bfbe-buy",
-                            "value": "0"
                         }
                     ],
                     "group": "bfbeShopBuyForm",
@@ -658,11 +628,6 @@
                         {
                             "property": "flex",
                             "selector": ".cart .single_add_to_cart_button",
-                            "value": "1 1 100%"
-                        },
-                        {
-                            "property": "flex",
-                            "selector": ".cart .bfbe-buy",
                             "value": "1 1 100%"
                         }
                     ],
@@ -683,10 +648,6 @@
                         {
                             "property": "height",
                             "selector": ".cart .single_add_to_cart_button"
-                        },
-                        {
-                            "property": "height",
-                            "selector": ".cart .bfbe-buy"
                         }
                     ],
                     "group": "bfbeShopBuyForm",
@@ -1029,6 +990,8 @@
                     "options": {
                         "pa_colour": "Colour",
                         "pa_material": "Material",
+                        "pa_q5-finish": "Q5 Finish",
+                        "pa_q5-pattern": "Q5 Pattern",
                         "pa_size": "Size",
                         "pa_warmth": "Warmth"
                     },
@@ -1873,5 +1836,11 @@
                 }
             }
         }
+    },
+    "pages": {
+        "shop-product-page": "https://builtforbricks.com/bfb-elements/docs/shop-product-page/",
+        "shop-buy": "https://builtforbricks.com/bfb-elements/docs/shop-buy/",
+        "shop-cards": "https://builtforbricks.com/bfb-elements/docs/shop-cards/",
+        "shop-quantity-breaks": "https://builtforbricks.com/bfb-elements/docs/shop-quantity-breaks/"
     }
 }

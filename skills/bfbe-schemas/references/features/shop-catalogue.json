@@ -6,7 +6,7 @@
     "shape": "hosts",
     "on": "Bricks' own Block (`block`), Container (`container`), Div (`div`), Filter - Checkbox (`filter-checkbox`), Filter - Radio (`filter-radio`), Breadcrumbs (WooCommerce) (`woocommerce-breadcrumbs`), Products (`woocommerce-products`), Products orderby (`woocommerce-products-orderby`)",
     "job": "the shop's catalogue settings on Bricks' Products, Products orderby, Filter - Checkbox and Filter - Radio, Breadcrumbs and looping Containers: promo tiles in a product grid, extra sort orders and the sort dropdown's look, child terms and swatch filters, the brand in the breadcrumbs",
-    "docs": "https://builtforbricks.com/bfb-elements/docs/shop-catalogue/",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/shop/",
     "since": "2.0.0",
     "requires": [
         "WooCommerce"
@@ -455,6 +455,14 @@
                         {
                             "property": "block-size",
                             "selector": ".bfbe-filt__toggle"
+                        },
+                        {
+                            "property": "inline-size",
+                            "selector": ".bfbe-filt__parent::after"
+                        },
+                        {
+                            "property": "block-size",
+                            "selector": ".bfbe-filt__parent::after"
                         }
                     ],
                     "required": [
@@ -1066,6 +1074,14 @@
                         {
                             "property": "block-size",
                             "selector": ".bfbe-filt__toggle"
+                        },
+                        {
+                            "property": "inline-size",
+                            "selector": ".bfbe-filt__parent::after"
+                        },
+                        {
+                            "property": "block-size",
+                            "selector": ".bfbe-filt__parent::after"
                         }
                     ],
                     "required": [
@@ -2049,5 +2065,12 @@
                 }
             }
         }
+    },
+    "pages": {
+        "shop-promo-tiles": "https://builtforbricks.com/bfb-elements/docs/shop-promo-tiles/",
+        "shop-sorting": "https://builtforbricks.com/bfb-elements/docs/shop-sorting/",
+        "shop-filters": "https://builtforbricks.com/bfb-elements/docs/shop-filters/",
+        "shop-swatch-filters": "https://builtforbricks.com/bfb-elements/docs/shop-swatch-filters/",
+        "shop-brands": "https://builtforbricks.com/bfb-elements/docs/shop-brands/"
     }
 }

@@ -24,7 +24,7 @@
             {
                 "what": "BFB Toast, the shop triggers: a product added to the cart, a recently viewed product on sale or back in stock",
                 "css": "none",
-                "js": "1.39 KB",
+                "js": "1.47 KB",
                 "dependencies": "none"
             }
         ]

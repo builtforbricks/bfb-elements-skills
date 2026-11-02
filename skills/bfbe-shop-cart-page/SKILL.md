@@ -9,10 +9,13 @@ description: "Use for the shop's settings on Bricks' Cart items, Cart totals and
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
 **Requires** BFB Elements 2.0.0 or later, and BFB Elements Pro 2.0.0 or later for the groups marked Pro, WooCommerce active, the feature switches on (WordPress menu BFB Elements, Elements): `shop-live-cart`, `shop-coupons`, `shop-cart-lines`. Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/features/shop-cart-page.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
-**Documentation**: https://builtforbricks.com/bfb-elements/docs/shop-cart-page/
+**Documentation**: https://builtforbricks.com/bfb-elements/docs/shop/ (the Shop), and a page for each feature this skill spans: https://builtforbricks.com/bfb-elements/docs/shop-live-cart/, https://builtforbricks.com/bfb-elements/docs/shop-coupons/, https://builtforbricks.com/bfb-elements/docs/shop-cart-lines/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+The website documents this by feature; each line is the approved summary from that feature's page.
+- `shop-live-cart` (https://builtforbricks.com/bfb-elements/docs/shop-live-cart/): A feature on Bricks' own Container, Block and Div: tick Redraw when the cart changes and the element is drawn again on the server after every cart change, then swapped in place with no reload. Build a mini cart in a Bricks popup or a cart page of your own from Bricks' Cart contents loop and the cart tags, and its lines, quantities, totals, BFB Cart Goals and conditions follow the cart, with Bricks' experimental shop setting off.
+- `shop-coupons` (https://builtforbricks.com/bfb-elements/docs/shop-coupons/): A feature in three parts: Bricks' own Cart coupon element works on any page, a link with a coupon code applies it, and coupons you list apply themselves whenever WooCommerce finds them valid for the cart. Every coupon goes through WooCommerce's own apply and remove, so its rules, its notices and every coupon extension stay in charge. The applied coupons show through BFB Applied Coupons, placed where you like.
+- `shop-cart-lines` (https://builtforbricks.com/bfb-elements/docs/shop-cart-lines/): A feature on Bricks' own Mini cart and Cart items elements, with two halves under one switch. Undo: when a line is removed in the mini cart, a strip says what went and a real Undo button puts the exact line back. Save for later: a button on each cart line moves it into the visitor's saved list, shown wherever you place a Saved for later query loop with BFB Saved Item Button in each row.
 
 ## Where it lives
 A feature, not an element: its groups are added to Bricks' own elements, on the Content tab after Bricks' own groups. By element:
@@ -50,7 +53,7 @@ Styling, in the schema file: `bfbeShopCouponsNoticeTypography`, `bfbeShopCoupons
 
 #### BFB Table (`bfbeShopTable`)
 Free.
-- `bfbeShopTableQtyButtons` (select) **Quantity buttons**: options: `bricks` Bricks' − and +, `browser` The browser's arrows, `none` None
+- `bfbeShopTableQtyButtons` (select) **Quantity buttons**: options: `bricks` The − and + Bricks adds (default), `browser` The browser's arrows, `none` None
 Styling, in the schema file: `bfbeShopTableBorder`, `bfbeShopTableCellPadding`, `bfbeShopTableAlign`, `bfbeShopTableLine`, `bfbeShopTableLinkTypography`, `bfbeShopTableImageBorder`, `bfbeShopTableImageBackground`, `bfbeShopTableRemoveSize`, `bfbeShopTableRemoveBackground`, `bfbeShopTableRemoveBorder`, `bfbeShopTableQtyWidth`, `bfbeShopTableQtyAlign`, `bfbeShopTableQtyBorder`, `bfbeShopTableQtyBoxWidth`, `bfbeShopTableQtyHeight`, `bfbeShopTableQtyBoxPadding`, `bfbeShopTableQtyBoxBorder`, `bfbeShopTableQtyBtnWidth`, `bfbeShopTableQtyBtnColor`, `bfbeShopTableQtyBtnBg`, `bfbeShopTableQtyBtnBorder`, `bfbeShopTableQtyBtnHover`, `bfbeShopTableActionsAlign`, `bfbeShopTableStack`, `bfbeShopTableStackPadding`, `bfbeShopTableLabelTypography`.
 
 #### BFB Cart lines (`bfbeShopCartLines`)

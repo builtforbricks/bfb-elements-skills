@@ -170,6 +170,7 @@ Styling, in the schema file: `scrollDuration`, `scrollEasingCustom`.
 - Previous and next set aria-disabled at the ends of the row, and the counter is hidden from assistive technology because the buttons already show where you are.
 - Autoplay never starts under reduced motion, pauses on hover and focus, and stops for good after any click, key or pointer press inside it.
 - Under reduced motion smooth scrolling is switched off, so button and key moves jump straight to the slide.
+- The BFB Motion Switch's pause stops autoplay as reduced motion does, and lifting it starts autoplay again after a full interval.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

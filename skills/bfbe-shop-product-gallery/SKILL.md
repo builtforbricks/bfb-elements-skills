@@ -9,10 +9,12 @@ description: "Use for the shop's settings on Bricks' Product gallery (`product-g
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
 **Requires** BFB Elements 2.0.0 or later, and BFB Elements Pro 2.0.0 or later for the groups marked Pro, WooCommerce active, the feature switches on (WordPress menu BFB Elements, Elements): `shop-product-page`, `shop-gallery-video`. Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/features/shop-product-gallery.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
-**Documentation**: https://builtforbricks.com/bfb-elements/docs/shop-product-gallery/
+**Documentation**: https://builtforbricks.com/bfb-elements/docs/shop/ (the Shop), and a page for each feature this skill spans: https://builtforbricks.com/bfb-elements/docs/shop-product-page/, https://builtforbricks.com/bfb-elements/docs/shop-gallery-video/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+The website documents this by feature; each line is the approved summary from that feature's page.
+- `shop-product-page` (https://builtforbricks.com/bfb-elements/docs/shop-product-page/): A free feature for Bricks single product templates, not an element. It makes sure WooCommerce's own product data for search engines is printed once on every product page, even on a template built only from Bricks' product elements, and it has Bricks' Product gallery load the main picture at once with high priority, whatever sits above it. It also adds look controls to Bricks' Product gallery and to the buying form inside Bricks' Add to cart.
+- `shop-gallery-video` (https://builtforbricks.com/bfb-elements/docs/shop-gallery-video/): A Pro feature, not an element: a product's video as a slide in Bricks' own Product gallery, played by BFB Video Player, from a file in the media library or a YouTube or Vimeo address. The slide sits among the pictures with its own thumbnail, and Bricks' slider, thumbnails, lightbox and the variation's picture swap keep working. Nothing plays by itself, and a YouTube or Vimeo video loads nothing from the provider until the shopper presses play.
 
 ## Where it lives
 A feature, not an element: its groups are added to Bricks' own elements, on the Content tab after Bricks' own groups. By element:

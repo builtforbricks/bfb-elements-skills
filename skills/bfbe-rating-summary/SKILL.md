@@ -12,9 +12,13 @@ description: "Use when showing a product's average rating and one bar per star w
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/rating-summary/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+The product's average in words and figures, such as 4,4 out of 5, from 23 reviews, and one bar per star with its count, every figure WooCommerce's own. Each bar can be a link that filters Bricks' Product reviews list to that rating, so a shopper can read the one-star reviews first. It has no script: the figures are printed by the server and the bars are links.
 
-**Costs a page:** CSS 0.67 KB, JS none (gzipped), no dependencies, loaded only on pages that use it.
+**Not for:** It shows WooCommerce's approved reviews only, never ratings from another review service, and it works out no average of its own: when WooCommerce's figures are out of date, so are these. For the stars alone, use Bricks' own Product rating.
+
+**Costs a page:** CSS 0.71 KB, JS none (gzipped), no dependencies, loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** no · **Reduced motion:** no
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -23,20 +27,26 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Summary (`bfbeSummary`)
-- `shows` (select) **Shows**: options: `both` Summary and bars (default), `summary` Summary only, `bars` Bars only
-- `text` (text) **Text**: placeholder {average} out of 5, from {count} reviews; dynamic data accepted; only when `shows` is not `bars`. {average}, {count} and {max} are filled in.
-- `none` (text) **No reviews yet**: placeholder No reviews yet; dynamic data accepted; only when `shows` is not `bars`
-- `stars` (checkbox) **Stars**: only when `shows` is not `bars`
+- `shows` (select) **Shows**: options: `both` Summary and bars (default), `summary` Summary only, `bars` Bars only. Summary and bars by default, Summary only or Bars only. To put the big average beside the bars, place two Rating Summaries in a Bricks container of your own and set one to each part.
+- `text` (text) **Text**: placeholder {average} out of 5, from {count} reviews; dynamic data accepted; only when `shows` is not `bars`. The sentence, with {average}, {count} and {max} filled in; empty, it reads {average} out of 5, from {count} reviews. Dynamic data works.
+- `none` (text) **No reviews yet**: placeholder No reviews yet; dynamic data accepted; only when `shows` is not `bars`. What a product without reviews prints instead, and no bars.
+- `stars` (checkbox) **Stars**: only when `shows` is not `bars`. Adds WooCommerce's own star markup before the words, so your theme's star styles apply; for stars somewhere else, leave it off and place Bricks' Product rating.
 Styling, in the schema file: `textTypography`, `averageTypography`, `summaryGap`, `summaryJustify`, `summaryAlign`, `starsSize`, `starsColor`, `starsEmptyColor`.
 
 ### Bars (`bfbeBars`)
 The whole group shows only when `shows` is not `summary`.
-- `order` (select) **Order**: options: `desc` 5 stars first (default), `asc` 1 star first
-- `figure` (select) **Beside each bar**: options: `count` The count (default), `percent` The share in percent, `both` Both, `none` Nothing
-- `links` (select) **Filter the reviews**: options: `yes` Yes, as links (default), `no` No
+- `order` (select) **Order**: options: `desc` 5 stars first (default), `asc` 1 star first. 5 stars first by default, or 1 star first.
+- `figure` (select) **Beside each bar**: options: `count` The count (default), `percent` The share in percent, `both` Both, `none` Nothing. The count by default, The share in percent, Both or Nothing.
+- `links` (select) **Filter the reviews**: options: `yes` Yes, as links (default), `no` No. Yes, as links by default, or No. **Review list anchor**: where the link lands, #reviews when empty; change it when your Product reviews element sits under an anchor of your own. **Show all**: the words of the link back to every review, Show all reviews when empty.
 - `anchor` (text) **Review list anchor**: placeholder #reviews; only when `links` is not `no`
 - `allText` (text) **Show all**: placeholder Show all reviews; dynamic data accepted; only when `links` is not `no`
 Styling, in the schema file: `barHeight`, `barColor`, `trackColor`, `barBorder`, `rowGap`, `columnGap`, `labelWidth`, `barTypography`, `figuresTypography`, `rowHoverColor`, `rowHoverFill`, `rowChosenColor`, `allTypography`, `allBackground`, `allBorder`, `allPadding`, `allHoverBackground`, `allHoverColor`.
+
+## What it guarantees for accessibility (do not undo)
+- The bars are a list named by the summary sentence, or by the same words as an aria-label when the bars stand alone.
+- Each bar is a real meter, from 0 to the product's rating count, named such as 5 stars: 12 reviews; a star with no reviews keeps its bar at zero.
+- As links, the bar for the rating being shown carries aria-current, and a Show all reviews link appears.
+- WooCommerce's stars are hidden from screen readers, because the words beside them say the same.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

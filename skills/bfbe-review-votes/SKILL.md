@@ -12,7 +12,13 @@ description: "Use when adding Helpful yes or no votes to a review list built wit
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/review-votes/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+Helpful? with Yes and No for the review in hand, for a review list built with the BFB Shop reviews loop: the votes Bricks' Product reviews prints under each review, as an element you place in the loop's row wherever you like. It is the Reviews feature's own vote, one per visitor per review and decided on the server, so a vote here and under the same review in Bricks' list are one vote. It needs the Reviews feature, with Helpful votes on the Shop page.
+
+**Not for:** Outside a BFB Shop reviews loop it prints nothing: on Bricks' Product reviews the BFB Reviews group shows the votes already. It shows no vote on a review WooCommerce has not approved, and nothing while Helpful votes are off.
+
+**Costs a page:** CSS none, JS none (gzipped), plus shop-reviews, loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** yes · **Dynamic data:** no · **Keyboard:** yes · **Reduced motion:** no
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -22,6 +28,11 @@ Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `b
 
 ### Buttons (`bfbeVotes`)
 Styling only, every key in the schema file: `typography`, `countTypography`, `gap`, `buttonTypography`, `buttonBackground`, `buttonBorder`, `buttonPadding`, `hoverBackground`, `hoverColor`, `onBackground`, `onColor`.
+
+## What it guarantees for accessibility (do not undo)
+- Helpful? names a group of two real buttons, Yes and No, each with aria-pressed. After a vote they are marked aria-disabled rather than disabled, so the focus stays where it was.
+- The count updates in place, and a vote here shows pressed on every copy of the same review on the page.
+- Without JavaScript the vote is a form posted to the page, and WooCommerce's notice says Thank you for your vote.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

@@ -9,7 +9,7 @@
     "childrenDefault": [],
     "parent": null,
     "cost": {
-        "css": "0.61 KB",
+        "css": "0.63 KB",
         "js": "0.90 KB",
         "dependencies": "none"
     },
@@ -220,7 +220,7 @@
             "css": [
                 {
                     "property": "flex-direction",
-                    "selector": ".bfbe-copy__coupon"
+                    "selector": ".bfbe-copy__coupon--facts"
                 }
             ],
             "required": [

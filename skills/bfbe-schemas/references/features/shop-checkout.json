@@ -6,7 +6,7 @@
     "shape": "hosts",
     "on": "Bricks' own Checkout customer details (`woocommerce-checkout-customer-details`), Checkout order review (`woocommerce-checkout-order-review`), Checkout thank you (`woocommerce-checkout-thankyou`), `woocommerce-checkout-v2`, `woocommerce-form-field`",
     "job": "the shop's settings on Bricks' Checkout customer details, Order review and Thank you (and the 2.4 v2 checkout): the table and fields look, floating labels, your own checkout fields and their date pickers, delivery days and time slots, the payment list",
-    "docs": "https://builtforbricks.com/bfb-elements/docs/shop-checkout/",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/shop/",
     "since": "2.0.0",
     "requires": [
         "WooCommerce"
@@ -264,7 +264,7 @@
                     "label": "Date picker",
                     "type": "select",
                     "options": {
-                        "native": "The browser&#039;s",
+                        "native": "As the browser draws it",
                         "custom": "Styled with the controls"
                     },
                     "inline": true,
@@ -1123,7 +1123,7 @@
                     "css": [
                         {
                             "property": "border",
-                            "selector": ".bfbe-cf--cal .flatpickr-calendar .dayContainer .flatpickr-day.today"
+                            "selector": ".bfbe-cf--cal .flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed)"
                         }
                     ],
                     "required": [
@@ -1174,11 +1174,11 @@
                     "css": [
                         {
                             "property": "border",
-                            "selector": ".bfbe-cf--cal .flatpickr-calendar .dayContainer .flatpickr-day.today:hover"
+                            "selector": ".bfbe-cf--cal .flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed):hover"
                         },
                         {
                             "property": "border",
-                            "selector": ".bfbe-cf--cal .flatpickr-calendar .dayContainer .flatpickr-day.today:focus-visible"
+                            "selector": ".bfbe-cf--cal .flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed):focus-visible"
                         }
                     ],
                     "required": [
@@ -1725,7 +1725,7 @@
                     "label": "Day and time pickers",
                     "type": "select",
                     "options": {
-                        "native": "The browser&#039;s",
+                        "native": "As the browser draws them",
                         "custom": "Styled with the controls"
                     },
                     "inline": true,
@@ -2864,7 +2864,7 @@
                     "css": [
                         {
                             "property": "border",
-                            "selector": ".bfbe-slot .flatpickr-calendar .dayContainer .flatpickr-day.today"
+                            "selector": ".bfbe-slot .flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed)"
                         }
                     ],
                     "required": [
@@ -2915,11 +2915,11 @@
                     "css": [
                         {
                             "property": "border",
-                            "selector": ".bfbe-slot .flatpickr-calendar .dayContainer .flatpickr-day.today:hover"
+                            "selector": ".bfbe-slot .flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed):hover"
                         },
                         {
                             "property": "border",
-                            "selector": ".bfbe-slot .flatpickr-calendar .dayContainer .flatpickr-day.today:focus-visible"
+                            "selector": ".bfbe-slot .flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed):focus-visible"
                         }
                     ],
                     "required": [
@@ -3670,63 +3670,6 @@
                     "group": "bfbeShopFields",
                     "tab": "content"
                 },
-                "bfbeShopFieldsSepSelect": {
-                    "label": "Dropdowns",
-                    "type": "separator",
-                    "group": "bfbeShopFields",
-                    "tab": "content"
-                },
-                "bfbeShopFieldsSelectBorder": {
-                    "label": "Border",
-                    "type": "border",
-                    "css": [
-                        {
-                            "property": "border",
-                            "selector": ".select2-container .select2-selection--single"
-                        }
-                    ],
-                    "group": "bfbeShopFields",
-                    "tab": "content"
-                },
-                "bfbeShopFieldsSelectHeight": {
-                    "label": "Height",
-                    "type": "number",
-                    "units": true,
-                    "css": [
-                        {
-                            "property": "height",
-                            "selector": ".select2-container .select2-selection--single"
-                        },
-                        {
-                            "property": "--bfbe-select-h",
-                            "selector": ".select2-container .select2-selection--single"
-                        },
-                        {
-                            "property": "line-height",
-                            "selector": ".select2-container .select2-selection--single .select2-selection__rendered",
-                            "value": "calc(var(--bfbe-select-h) - 2px)"
-                        },
-                        {
-                            "property": "height",
-                            "selector": ".select2-container .select2-selection--single .select2-selection__arrow",
-                            "value": "calc(var(--bfbe-select-h) - 2px)"
-                        }
-                    ],
-                    "group": "bfbeShopFields",
-                    "tab": "content"
-                },
-                "bfbeShopFieldsSelectPadding": {
-                    "label": "Padding",
-                    "type": "dimensions",
-                    "css": [
-                        {
-                            "property": "padding",
-                            "selector": ".select2-container .select2-selection--single .select2-selection__rendered"
-                        }
-                    ],
-                    "group": "bfbeShopFields",
-                    "tab": "content"
-                },
                 "bfbeShopPaymentBorder": {
                     "label": "Box border",
                     "description": "The box around the payment methods.",
@@ -3906,7 +3849,7 @@
                     "label": "Date picker",
                     "type": "select",
                     "options": {
-                        "native": "The browser&#039;s",
+                        "native": "As the browser draws it",
                         "custom": "Styled with the controls"
                     },
                     "inline": true,
@@ -4765,7 +4708,7 @@
                     "css": [
                         {
                             "property": "border",
-                            "selector": ".bfbe-cf--cal .flatpickr-calendar .dayContainer .flatpickr-day.today"
+                            "selector": ".bfbe-cf--cal .flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed)"
                         }
                     ],
                     "required": [
@@ -4816,11 +4759,11 @@
                     "css": [
                         {
                             "property": "border",
-                            "selector": ".bfbe-cf--cal .flatpickr-calendar .dayContainer .flatpickr-day.today:hover"
+                            "selector": ".bfbe-cf--cal .flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed):hover"
                         },
                         {
                             "property": "border",
-                            "selector": ".bfbe-cf--cal .flatpickr-calendar .dayContainer .flatpickr-day.today:focus-visible"
+                            "selector": ".bfbe-cf--cal .flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed):focus-visible"
                         }
                     ],
                     "required": [
@@ -5447,7 +5390,7 @@
                     "label": "Day and time pickers",
                     "type": "select",
                     "options": {
-                        "native": "The browser&#039;s",
+                        "native": "As the browser draws them",
                         "custom": "Styled with the controls"
                     },
                     "inline": true,
@@ -6586,7 +6529,7 @@
                     "css": [
                         {
                             "property": "border",
-                            "selector": ".bfbe-slot .flatpickr-calendar .dayContainer .flatpickr-day.today"
+                            "selector": ".bfbe-slot .flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed)"
                         }
                     ],
                     "required": [
@@ -6637,11 +6580,11 @@
                     "css": [
                         {
                             "property": "border",
-                            "selector": ".bfbe-slot .flatpickr-calendar .dayContainer .flatpickr-day.today:hover"
+                            "selector": ".bfbe-slot .flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed):hover"
                         },
                         {
                             "property": "border",
-                            "selector": ".bfbe-slot .flatpickr-calendar .dayContainer .flatpickr-day.today:focus-visible"
+                            "selector": ".bfbe-slot .flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed):focus-visible"
                         }
                     ],
                     "required": [
@@ -7227,7 +7170,7 @@
                     "label": "Date picker",
                     "type": "select",
                     "options": {
-                        "native": "The browser&#039;s",
+                        "native": "As the browser draws it",
                         "custom": "Styled with the controls"
                     },
                     "inline": true,
@@ -8086,7 +8029,7 @@
                     "css": [
                         {
                             "property": "border",
-                            "selector": ".bfbe-cf--cal .flatpickr-calendar .dayContainer .flatpickr-day.today"
+                            "selector": ".bfbe-cf--cal .flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed)"
                         }
                     ],
                     "required": [
@@ -8137,11 +8080,11 @@
                     "css": [
                         {
                             "property": "border",
-                            "selector": ".bfbe-cf--cal .flatpickr-calendar .dayContainer .flatpickr-day.today:hover"
+                            "selector": ".bfbe-cf--cal .flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed):hover"
                         },
                         {
                             "property": "border",
-                            "selector": ".bfbe-cf--cal .flatpickr-calendar .dayContainer .flatpickr-day.today:focus-visible"
+                            "selector": ".bfbe-cf--cal .flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed):focus-visible"
                         }
                     ],
                     "required": [
@@ -8688,7 +8631,7 @@
                     "label": "Day and time pickers",
                     "type": "select",
                     "options": {
-                        "native": "The browser&#039;s",
+                        "native": "As the browser draws them",
                         "custom": "Styled with the controls"
                     },
                     "inline": true,
@@ -9827,7 +9770,7 @@
                     "css": [
                         {
                             "property": "border",
-                            "selector": ".bfbe-slot .flatpickr-calendar .dayContainer .flatpickr-day.today"
+                            "selector": ".bfbe-slot .flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed)"
                         }
                     ],
                     "required": [
@@ -9878,11 +9821,11 @@
                     "css": [
                         {
                             "property": "border",
-                            "selector": ".bfbe-slot .flatpickr-calendar .dayContainer .flatpickr-day.today:hover"
+                            "selector": ".bfbe-slot .flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed):hover"
                         },
                         {
                             "property": "border",
-                            "selector": ".bfbe-slot .flatpickr-calendar .dayContainer .flatpickr-day.today:focus-visible"
+                            "selector": ".bfbe-slot .flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed):focus-visible"
                         }
                     ],
                     "required": [
@@ -10316,7 +10259,7 @@
                     "label": "Date picker",
                     "type": "select",
                     "options": {
-                        "native": "The browser&#039;s",
+                        "native": "As the browser draws it",
                         "custom": "Styled with the controls"
                     },
                     "inline": true,
@@ -11175,7 +11118,7 @@
                     "css": [
                         {
                             "property": "border",
-                            "selector": ".bfbe-cf--cal .flatpickr-calendar .dayContainer .flatpickr-day.today"
+                            "selector": ".bfbe-cf--cal .flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed)"
                         }
                     ],
                     "required": [
@@ -11226,11 +11169,11 @@
                     "css": [
                         {
                             "property": "border",
-                            "selector": ".bfbe-cf--cal .flatpickr-calendar .dayContainer .flatpickr-day.today:hover"
+                            "selector": ".bfbe-cf--cal .flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed):hover"
                         },
                         {
                             "property": "border",
-                            "selector": ".bfbe-cf--cal .flatpickr-calendar .dayContainer .flatpickr-day.today:focus-visible"
+                            "selector": ".bfbe-cf--cal .flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed):focus-visible"
                         }
                     ],
                     "required": [
@@ -11643,7 +11586,7 @@
                     "label": "Day and time pickers",
                     "type": "select",
                     "options": {
-                        "native": "The browser&#039;s",
+                        "native": "As the browser draws them",
                         "custom": "Styled with the controls"
                     },
                     "inline": true,
@@ -12782,7 +12725,7 @@
                     "css": [
                         {
                             "property": "border",
-                            "selector": ".bfbe-slot .flatpickr-calendar .dayContainer .flatpickr-day.today"
+                            "selector": ".bfbe-slot .flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed)"
                         }
                     ],
                     "required": [
@@ -12833,11 +12776,11 @@
                     "css": [
                         {
                             "property": "border",
-                            "selector": ".bfbe-slot .flatpickr-calendar .dayContainer .flatpickr-day.today:hover"
+                            "selector": ".bfbe-slot .flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed):hover"
                         },
                         {
                             "property": "border",
-                            "selector": ".bfbe-slot .flatpickr-calendar .dayContainer .flatpickr-day.today:focus-visible"
+                            "selector": ".bfbe-slot .flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed):focus-visible"
                         }
                     ],
                     "required": [
@@ -13248,5 +13191,9 @@
                 }
             }
         }
+    },
+    "pages": {
+        "shop-checkout-fields": "https://builtforbricks.com/bfb-elements/docs/shop-checkout-fields/",
+        "shop-delivery": "https://builtforbricks.com/bfb-elements/docs/shop-delivery/"
     }
 }

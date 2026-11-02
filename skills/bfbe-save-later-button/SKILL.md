@@ -12,7 +12,11 @@ description: "Use for BFB Save for Later Button (`bfbe-save-later-button`): a Sa
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/save-later-button/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+The Save for later button of one cart line, for Bricks' experimental cart (v2), whose lines are a query loop of the cart. Place it anywhere inside the line; a press moves the line out of the cart into the visitor's saved list. It needs the Cart lines feature on; the classic Cart items element and the mini cart get their button from that feature.
+
+**Not for:** It is for the lines of Bricks' experimental cart; the classic Cart items element and the mini cart get their button from the Cart lines feature. A free gift, an offer's line, a line with product options or one in a bundle gets no button, and with WooCommerce's own Save for later on it prints nothing.
+
+**Nestable:** no · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** no
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -21,7 +25,11 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Save for later (`bfbeSaveLater`)
-- `label` (text) **Label**: placeholder Save for later. Place it inside a cart line.
+- `label` (text) **Label**: placeholder Save for later. "Save for later" unless you set it; screen readers hear it with the line added ("Save for later: Waffle Bath Towel"). The element is the button, so Bricks' Style tab draws its typography, background, border, padding and hover.
+
+## What it guarantees for accessibility (do not undo)
+- A real submit button, named with its line for screen readers.
+- After a press the result is said once ("Saved for later: Stoneware Mug Set."), and the focus goes to the same control where the cart is drawn again.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

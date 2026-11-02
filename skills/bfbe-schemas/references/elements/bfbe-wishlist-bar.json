@@ -148,12 +148,23 @@
                     "settings": {
                         "act": "surprise"
                     }
+                },
+                {
+                    "name": "bfbe-wishlist-action",
+                    "label": "Clear the marks",
+                    "settings": {
+                        "act": "clear"
+                    }
                 }
             ]
         }
     ],
     "parent": null,
-    "cost": null,
+    "cost": {
+        "css": "0.29 KB",
+        "js": "none",
+        "dependencies": "none"
+    },
     "requires": [
         "WooCommerce"
     ],

@@ -9,8 +9,8 @@
     "childrenDefault": [],
     "parent": null,
     "cost": {
-        "css": "0.68 KB",
-        "js": "1.42 KB",
+        "css": "0.70 KB",
+        "js": "2.11 KB",
         "dependencies": "shop-live"
     },
     "requires": [

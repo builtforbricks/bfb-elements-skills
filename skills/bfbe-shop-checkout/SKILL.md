@@ -9,10 +9,12 @@ description: "Use for the shop's settings on Bricks' Checkout customer details, 
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
 **Requires** BFB Elements 2.0.0 or later, and BFB Elements Pro 2.0.0 or later for the groups marked Pro, WooCommerce active, the feature switches on (WordPress menu BFB Elements, Elements): `shop-checkout-fields`, `shop-delivery`. Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/features/shop-checkout.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
-**Documentation**: https://builtforbricks.com/bfb-elements/docs/shop-checkout/
+**Documentation**: https://builtforbricks.com/bfb-elements/docs/shop/ (the Shop), and a page for each feature this skill spans: https://builtforbricks.com/bfb-elements/docs/shop-checkout-fields/, https://builtforbricks.com/bfb-elements/docs/shop-delivery/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+The website documents this by feature; each line is the approved summary from that feature's page.
+- `shop-checkout-fields` (https://builtforbricks.com/bfb-elements/docs/shop-checkout-fields/): A Pro feature that adds fields of your own to the WooCommerce checkout: text, multi-line text, a choice list, a checkbox or a date, in the billing, shipping or order notes section or after the order review. They join WooCommerce's own field list, so each answer is saved on the order and shows on the admin order screen, in the emails, on the thank-you page and in the account. A field can show for some countries, shipping methods or cart contents, decided in the browser as the shopper changes them and again on your server when the order is placed.
+- `shop-delivery` (https://builtforbricks.com/bfb-elements/docs/shop-delivery/): The delivery rules every delivery date in the shop counts from: processing days, working days with their cut-off times, holidays, and transit times per shipping zone and method, in your site's time zone. BFB Delivery Estimate, the delivery tags and the checkout read them. It also adds a Delivery date and time type to the checkout fields, where a shopper chooses a day and a time slot that the server judges again when the order is placed.
 
 ## Where it lives
 A feature, not an element: its groups are added to Bricks' own elements, on the Content tab after Bricks' own groups. By element:
@@ -32,7 +34,7 @@ Styling only, every key in the schema file: `bfbeShopFieldsTitleTypography`, `bf
 
 #### BFB Date fields (`bfbeShopCfDate`)
 Pro, switch `shop-checkout-fields`.
-- `bfbeShopCfDatePicker` (select) **Date picker**: options: `native` The browser's, `custom` Styled with the controls. Your checkout fields of the Date type.
+- `bfbeShopCfDatePicker` (select) **Date picker**: options: `native` As the browser draws it (default), `custom` Styled with the controls. Your checkout fields of the Date type.
 Styling, in the schema file: `bfbeShopCfDateCalWidth`, `bfbeShopCfDateCalBackground`, `bfbeShopCfDateCalBorder`, `bfbeShopCfDateCalShadow`, `bfbeShopCfDateCalPadding`, `bfbeShopCfDateCalOffset`, `bfbeShopCfDateCalHeadSpace`, `bfbeShopCfDateCalWeekSpace`, `bfbeShopCfDateCalDayGap`, `bfbeShopCfDateCalHeadLine`, `bfbeShopCfDateCalHeadLineColor`, `bfbeShopCfDateCalWeekLine`, `bfbeShopCfDateCalWeekLineColor`, `bfbeShopCfDateCalMonthTypography`, `bfbeShopCfDateCalMonthPadding`, `bfbeShopCfDateCalYearPadding`, `bfbeShopCfDateCalHeadHoverBg`, `bfbeShopCfDateCalYearArrow`, `bfbeShopCfDateCalYearArrowHover`, `bfbeShopCfDateCalArrowSize`, `bfbeShopCfDateCalArrowPadding`, `bfbeShopCfDateCalArrowColor`, `bfbeShopCfDateCalArrowHover`, `bfbeShopCfDateCalArrowBg`, `bfbeShopCfDateCalArrowHoverBg`, `bfbeShopCfDateCalArrowBorder`, `bfbeShopCfDateCalArrowHoverBorder`, `bfbeShopCfDateCalWeekdayTypography`, `bfbeShopCfDateCalDayTypography`, `bfbeShopCfDateCalDaySize`, `bfbeShopCfDateCalDayPadding`, `bfbeShopCfDateCalDayBg`, `bfbeShopCfDateCalDayColor`, `bfbeShopCfDateCalDayBorder`, `bfbeShopCfDateCalDayHoverBg`, `bfbeShopCfDateCalDayHoverColor`, `bfbeShopCfDateCalDayHoverBorder`, `bfbeShopCfDateCalTodayBg`, `bfbeShopCfDateCalTodayColor`, `bfbeShopCfDateCalTodayBorder`, `bfbeShopCfDateCalTodayHoverBg`, `bfbeShopCfDateCalTodayHoverColor`, `bfbeShopCfDateCalTodayHoverBorder`, `bfbeShopCfDateCalSelected`, `bfbeShopCfDateCalSelectedColor`, `bfbeShopCfDateCalSelectedBorder`, `bfbeShopCfDateCalSelectedHoverBg`, `bfbeShopCfDateCalSelectedHoverColor`, `bfbeShopCfDateCalSelectedHoverBorder`, `bfbeShopCfDateCalShutBg`, `bfbeShopCfDateCalShut`, `bfbeShopCfDateCalShutBorder`, `bfbeShopCfDateCalShutHoverBg`, `bfbeShopCfDateCalShutHoverColor`, `bfbeShopCfDateCalShutHoverBorder`, `bfbeShopCfDateCalOtherBg`, `bfbeShopCfDateCalOther`, `bfbeShopCfDateCalOtherBorder`, `bfbeShopCfDateCalOtherHoverBg`, `bfbeShopCfDateCalOtherHoverColor`, `bfbeShopCfDateCalOtherHoverBorder`.
 
 #### BFB Floating labels (`bfbeShopFloat`)
@@ -43,7 +45,7 @@ Styling, in the schema file: `bfbeShopFloatHeight`, `bfbeShopFloatInset`, `bfbeS
 
 #### BFB Delivery day and time (`bfbeShopSlot`)
 Pro, switch `shop-delivery`.
-- `bfbeShopSlotPicker` (select) **Day and time pickers**: options: `native` The browser's, `custom` Styled with the controls. Phones keep their own time list.
+- `bfbeShopSlotPicker` (select) **Day and time pickers**: options: `native` As the browser draws them (default), `custom` Styled with the controls. Phones keep their own time list.
 Styling, in the schema file: `bfbeShopSlotTimeTypography`, `bfbeShopSlotTimeBackground`, `bfbeShopSlotTimeBorder`, `bfbeShopSlotTimePadding`, `bfbeShopSlotTimeChevron`, `bfbeShopSlotTimePanelBg`, `bfbeShopSlotTimePanelBorder`, `bfbeShopSlotTimePanelShadow`, `bfbeShopSlotTimePanelPadding`, `bfbeShopSlotTimeOptTypography`, `bfbeShopSlotTimeOptPadding`, `bfbeShopSlotTimeOptHover`, `bfbeShopSlotTimeHoverText`, `bfbeShopSlotTimeOptOnBg`, `bfbeShopSlotTimeOptOnColor`, `bfbeShopSlotTimeTick`.
 
 #### BFB Delivery calendar (`bfbeShopSlotCal`)
@@ -58,7 +60,7 @@ Styling only, every key in the schema file: `bfbeShopTableBorder`, `bfbeShopTabl
 
 #### BFB Form fields (`bfbeShopFields`)
 Free.
-Styling only, every key in the schema file: `bfbeShopFieldsRowGap`, `bfbeShopFieldsRowSpacing`, `bfbeShopFieldsSelectBorder`, `bfbeShopFieldsSelectHeight`, `bfbeShopFieldsSelectPadding`.
+Styling only, every key in the schema file: `bfbeShopFieldsRowGap`, `bfbeShopFieldsRowSpacing`.
 
 #### BFB Payment (`bfbeShopPayment`)
 Free.

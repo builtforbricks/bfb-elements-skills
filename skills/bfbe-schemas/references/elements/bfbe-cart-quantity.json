@@ -9,7 +9,7 @@
     "childrenDefault": [],
     "parent": null,
     "cost": {
-        "css": "0.75 KB",
+        "css": "0.80 KB",
         "js": "2.33 KB",
         "dependencies": "shop-live"
     },
@@ -161,6 +161,11 @@
                     "property": "--bfbe-cartqty-size",
                     "selector": ""
                 }
+            ],
+            "required": [
+                "shows",
+                "!=",
+                "remove"
             ]
         },
         "inputWidth": {
@@ -176,6 +181,11 @@
                     "property": "--bfbe-cartqty-input",
                     "selector": ""
                 }
+            ],
+            "required": [
+                "shows",
+                "!=",
+                "remove"
             ]
         },
         "stepperBorder": {
@@ -188,6 +198,11 @@
                     "property": "border",
                     "selector": ".bfbe-cartqty__stepper"
                 }
+            ],
+            "required": [
+                "shows",
+                "!=",
+                "remove"
             ]
         },
         "stepperBackground": {
@@ -200,6 +215,11 @@
                     "property": "background-color",
                     "selector": ".bfbe-cartqty__stepper"
                 }
+            ],
+            "required": [
+                "shows",
+                "!=",
+                "remove"
             ]
         },
         "dividerColor": {
@@ -212,6 +232,11 @@
                     "property": "--bfbe-cartqty-line",
                     "selector": ""
                 }
+            ],
+            "required": [
+                "shows",
+                "!=",
+                "remove"
             ]
         },
         "numberTypography": {
@@ -228,6 +253,11 @@
                     "property": "font",
                     "selector": ".bfbe-cartqty__fixed"
                 }
+            ],
+            "required": [
+                "shows",
+                "!=",
+                "remove"
             ]
         },
         "sepButtons": {
@@ -254,6 +284,11 @@
                     "property": "--bfbe-cartqty-icon",
                     "selector": ""
                 }
+            ],
+            "required": [
+                "shows",
+                "!=",
+                "remove"
             ]
         },
         "buttonColor": {
@@ -266,6 +301,11 @@
                     "property": "color",
                     "selector": ".bfbe-cartqty__step"
                 }
+            ],
+            "required": [
+                "shows",
+                "!=",
+                "remove"
             ]
         },
         "buttonBackground": {
@@ -278,6 +318,11 @@
                     "property": "background-color",
                     "selector": ".bfbe-cartqty__step"
                 }
+            ],
+            "required": [
+                "shows",
+                "!=",
+                "remove"
             ]
         },
         "buttonHoverColor": {
@@ -294,6 +339,11 @@
                     "property": "color",
                     "selector": ".bfbe-cartqty__step:focus-visible"
                 }
+            ],
+            "required": [
+                "shows",
+                "!=",
+                "remove"
             ]
         },
         "buttonHoverBackground": {
@@ -310,6 +360,11 @@
                     "property": "background-color",
                     "selector": ".bfbe-cartqty__step:focus-visible"
                 }
+            ],
+            "required": [
+                "shows",
+                "!=",
+                "remove"
             ]
         },
         "sepRemove": {
@@ -333,6 +388,11 @@
                     "property": "font",
                     "selector": ".bfbe-cartqty__remove"
                 }
+            ],
+            "required": [
+                "shows",
+                "!=",
+                "qty"
             ]
         },
         "removeIconSize": {
@@ -350,9 +410,9 @@
                 }
             ],
             "required": [
-                "removeIcon",
+                "shows",
                 "!=",
-                ""
+                "qty"
             ]
         },
         "removeColor": {
@@ -365,6 +425,11 @@
                     "property": "color",
                     "selector": ".bfbe-cartqty__remove"
                 }
+            ],
+            "required": [
+                "shows",
+                "!=",
+                "qty"
             ]
         },
         "removeBackground": {
@@ -377,6 +442,11 @@
                     "property": "background-color",
                     "selector": ".bfbe-cartqty__remove"
                 }
+            ],
+            "required": [
+                "shows",
+                "!=",
+                "qty"
             ]
         },
         "removeBorder": {
@@ -389,6 +459,11 @@
                     "property": "border",
                     "selector": ".bfbe-cartqty__remove"
                 }
+            ],
+            "required": [
+                "shows",
+                "!=",
+                "qty"
             ]
         },
         "removePadding": {
@@ -401,6 +476,11 @@
                     "property": "padding",
                     "selector": ".bfbe-cartqty__remove"
                 }
+            ],
+            "required": [
+                "shows",
+                "!=",
+                "qty"
             ]
         },
         "removeHoverColor": {
@@ -417,6 +497,11 @@
                     "property": "color",
                     "selector": ".bfbe-cartqty__remove:focus-visible"
                 }
+            ],
+            "required": [
+                "shows",
+                "!=",
+                "qty"
             ]
         },
         "removeHoverBackground": {
@@ -433,6 +518,11 @@
                     "property": "background-color",
                     "selector": ".bfbe-cartqty__remove:focus-visible"
                 }
+            ],
+            "required": [
+                "shows",
+                "!=",
+                "qty"
             ]
         },
         "sepSpacing": {

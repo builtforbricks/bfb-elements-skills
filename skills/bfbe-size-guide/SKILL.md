@@ -12,9 +12,13 @@ description: "Use when adding a size chart, a cm and inches switch or a find-my-
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/size-guide/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+A button that opens the size table for the product in hand, with a switch between centimetres and inches and a size finder: the shopper types their measurements and reads Your size is M, worked out from the table's own rows. The tables live on the Shop page, one per kind of product, and the element picks the one that applies; it can also show the guide on the page, inside Bricks' own Tabs, an Accordion or any container. Every part works without JavaScript, and nothing the shopper types is stored.
 
-**Costs a page:** CSS 0.82 KB, JS 1.42 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Not for:** It compares numbers with your table and nothing else: it does not recommend a size from a body shape, a brand's fit or past orders, and a column of words shows as typed in both units. A product that needs two tables needs two guides and two elements, each set to its guide.
+
+**Costs a page:** CSS 0.82 KB, JS 1.44 KB (gzipped), no dependencies, loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** no · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** no
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -23,11 +27,11 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Guide (`bfbeGuide`)
-- `shows` (select) **Shows**: options: `button` A button that opens the guide (default), `page` The guide on the page
-- `guide` (select) **Guide**: options: `auto` The guide that applies to this product (default), `g0` Shirts
-- `title` (text) **Dialog title**: placeholder The guide name; dynamic data accepted; only when `shows` is not `page`
-- `units` (select) **Units shown first**: options: `guide` As the guide is typed (default), `cm` Centimetres, `in` Inches
-- `unitsLabel` (text) **Units label**: placeholder Units; dynamic data accepted
+- `shows` (select) **Shows**: options: `button` A button that opens the guide (default), `page` The guide on the page. A button that opens the guide by default, or The guide on the page, which prints the unit switch, the table and the finder where the element stands, without the button or the dialog, so you can give it your own heading.
+- `guide` (select) **Guide**: options: `auto` The guide that applies to this product (default), `g0` Shirts. The guide that applies to this product by default, or one guide by name, for a page that is not a product or a product the rules miss.
+- `title` (text) **Dialog title**: placeholder The guide name; dynamic data accepted; only when `shows` is not `page`. The guide's name when empty; dynamic data works.
+- `units` (select) **Units shown first**: options: `guide` As the guide is typed (default), `cm` Centimetres, `in` Inches. As the guide is typed by default, Centimetres or Inches; change it when most of your shoppers think in the other unit.
+- `unitsLabel` (text) **Units label**: placeholder Units; dynamic data accepted. Units when empty, the word before the unit buttons and the name of their group for screen readers; dynamic data works.
 
 ### Button (`bfbeButton`)
 The whole group shows only when `shows` is not `page`.
@@ -38,7 +42,7 @@ The whole group shows only when `shows` is not `page`.
 Styling, in the schema file: `buttonTypography`, `buttonBackground`, `buttonBorder`, `buttonPadding`, `buttonHoverBackground`, `buttonHoverColor`.
 
 ### Size finder (`bfbeFinder`)
-- `finder` (select) **Size finder**: options: `show` Shown (default), `hide` Hidden
+- `finder` (select) **Size finder**: options: `show` Shown (default), `hide` Hidden. Shown by default or Hidden. It needs a guide with at least one measurement column.
 - `finderTitle` (text) **Title**: placeholder Find my size; only when `finder` is not `hide`
 - `finderButton` (text) **Button**: placeholder Find my size; only when `finder` is not `hide`
 - `finderResult` (text) **Answer**: placeholder Your size is {size}; only when `finder` is not `hide`
@@ -54,12 +58,19 @@ Styling only, every key in the schema file: `headTypography`, `cellTypography`, 
 
 ### Size finder: arrows (`bfbeFinderArrows`)
 The whole group shows only when `finder` is not `hide`.
-- `finderSpinArrows` (select) **Arrows**: options: `browser` The browser's, `inside` Ours, inside the box, `stepper` A − and a + beside it, `none` None; only when `finder` is not `hide`
+- `finderSpinArrows` (select) **Arrows**: options: `browser` As the browser draws them (default), `inside` Ours, inside the box, `stepper` A − and a + beside it, `none` None; only when `finder` is not `hide`
 Styling, in the schema file: `finderSpinArrowSize`, `finderSpinArrowWidth`, `finderSpinArrowGap`, `finderSpinArrowColor`, `finderSpinArrowBg`, `finderSpinArrowHover`, `finderSpinArrowHoverBg`, `finderSpinArrowLine`, `finderSpinArrowBorder`.
 
 ### In the builder (`bfbeBuilder`)
 The whole group shows only when `shows` is not `page`.
-- `builderView` (select) **Show it**: options: `open` Open, so you can style it (default), `closed` Closed, as the site leaves it. Closed shows the button alone, as the site does.
+- `builderView` (select) **Show it**: options: `open` Open, so you can style it (default), `closed` Closed, as the site leaves it. Open, so you can style it by default, so the dialog is drawn under the button with a sample answer; Closed shows the button alone, as the site does.
+
+## What it guarantees for accessibility (do not undo)
+- The button carries aria-haspopup dialog and opens the browser's own dialog as a modal: focus moves into it, Escape and the close button, named Close, shut it, and focus returns to the button.
+- The table is a real table with column headers, row headers on the sizes, and a caption naming the guide and the unit for screen readers.
+- The unit switch is two buttons with aria-pressed in a labelled group; pressing one converts the table, its headers and the finder's labels in place.
+- The finder's answer shows under its fields and is said once by the shop's announcer.
+- Without JavaScript the button, the unit buttons and the finder are forms that bring the page back with the dialog open, the table in the unit asked for and the answer in it.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

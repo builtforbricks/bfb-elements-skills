@@ -12,9 +12,13 @@ description: "Use when adding an order bump, a one-time offer or an add-on check
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/offer/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+A nestable card with a real checkbox: "Add Woven Belt for 29,00 € instead of 39,00 €". You fill it with Bricks' own elements and the offer tags; it shows by its own cart conditions, decided on the server, and ticking adds the product as its own cart line at the offer price or a percent off. The price is worked out on your server from the element's saved settings on every cart calculation, never read from the browser.
 
-**Costs a page:** CSS 0.44 KB, JS 1.08 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Not for:** It is one product at one price per element, not a coupon or a bundle, and WooCommerce's coupons still apply to its line. An offer inside a query loop is not decided per row.
+
+**Costs a page:** CSS 0.31 KB, JS 1.20 KB (gzipped), no dependencies, loaded only on pages that use it.
+
+**Nestable:** yes · **In a query loop:** no · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** no
 
 ## Structure
 Nestable. Its own children: `bfbe-offer-checkbox`.
@@ -65,11 +69,11 @@ What the builder inserts, as a tree `bricks/add-element` accepts (ids omitted):
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Offer (`bfbeOffer`)
-- `product` (select) **Product**: placeholder Pick a product
-- `priceMode` (select) **Price**: options: `price` A price (default), `percent` Percent off
-- `price` (number) **Offer price**: placeholder 9.90; only when `priceMode` is not `percent`
-- `percent` (number) **Percent off**: placeholder 15; only when `priceMode` is `percent`. Off the current price, 1 to 99.
-- `updateWord` (text) **Button**: placeholder Update
+- `product` (select) **Product**: placeholder Pick a product. A simple product, or a variation picked by id. Variable, grouped and external products are refused with a note in the builder.
+- `priceMode` (select) **Price**: options: `price` A price (default), `percent` Percent off. A price (the default) or Percent off.
+- `price` (number) **Offer price**: placeholder 9.90; only when `priceMode` is not `percent`. With A price, the line's price while it is added through this offer, entered as the shop enters prices.
+- `percent` (number) **Percent off**: placeholder 15; only when `priceMode` is `percent`. With Percent off, a whole number from 1 to 99 off the product's current price (a sale price while one runs), rounded as WooCommerce rounds prices.
+- `updateWord` (text) **Button**: placeholder Update. The no-script submit button, "Update"; the script hides it and posts on change.
 
 ### Show when (`bfbeWhen`)
 - `minTotal` (number) **Cart total at least**: placeholder 0
@@ -78,6 +82,11 @@ Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `b
 
 ### Card (`bfbeCard`)
 Styling only, every key in the schema file: `chosenBorder`, `chosenBackground`, `chosenShadow`.
+
+## What it guarantees for accessibility (do not undo)
+- The tick is a real checkbox whose label is the offer's sentence.
+- Each change is said once: "Added: Woven Belt at 29,00 €." or "Removed: Woven Belt."
+- Without the script the offer is a form whose Update button posts the box's state.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

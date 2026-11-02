@@ -12,7 +12,11 @@ description: "Use when building a product page's reviews with Bricks' Product re
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/shop-reviews/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+A Pro feature on WooCommerce's own reviews, not an element: photos on the review form, a Helpful yes or no under each review, and a default order, on Bricks' Product reviews (and inside Bricks' Product tabs) and on a review list built with the BFB Shop reviews loop. Everything rides WordPress' and WooCommerce's own comment form, moderation and comment query, so a review is still a WooCommerce review in the admin, the emails and the REST API. Shoppers pick the sort with BFB Review Sort; the form and votes can also stand alone as BFB Review Form and BFB Review Votes.
+
+**Not for:** It does not send review reminder emails, import reviews or show reviews from another service. It does not moderate photos for you: a photo is approved with its review, so read both.
+
+**Nestable:** no · **In a query loop:** yes · **Dynamic data:** no · **Keyboard:** yes · **Reduced motion:** no
 
 ## Where it lives
 A feature, not an element: its groups are added to Bricks' own elements, on the Content tab after Bricks' own groups. By element:
@@ -34,12 +38,12 @@ Styling, in the schema file: `bfbeShopReviewsPhotoWidth`, `bfbeShopReviewsPhotoB
 #### BFB Review list (`bfbeShopReviewList`)
 Pro, switch `shop-reviews`.
 - `bfbeShopReviewsFormShow` (select) **Review form**: options: `show` Shown (default), `hide` Hidden. Hidden: place a BFB Review Form elsewhere.
-- `bfbeShopReviewsListTitle` (select) **List title**: options: `show` Shown (default), `hide` Hidden; writes CSS
+- `bfbeShopReviewsListTitle` (select) **List title**: options: `show` Shown (default), `hide` Hidden; writes CSS. Shown by default or Hidden. Then **Gap**, and each review's **Review background**, **Review border**, **Review padding** and **Text border**.
 Styling, in the schema file: `bfbeShopReviewsListGap`, `bfbeShopReviewsItemBackground`, `bfbeShopReviewsItemBorder`, `bfbeShopReviewsItemPadding`, `bfbeShopReviewsTextBorder`.
 
 #### BFB Review form (`bfbeShopReviewForm`)
 Pro, switch `shop-reviews`.
-- `bfbeShopReviewsUploadLook` (select) **Look**: options: `native` The browser's file box, `custom` A drop area with previews
+- `bfbeShopReviewsUploadLook` (select) **Look**: options: `native` As the browser draws it (default), `custom` A drop area with previews
 - `bfbeShopReviewsDropTitle` (text) **Words**: placeholder Drag your photos here; only when `bfbeShopReviewsUploadLook` is `custom`
 - `bfbeShopReviewsDropButtonWords` (text) **Button words**: placeholder Choose photos; only when `bfbeShopReviewsUploadLook` is `custom`
 Styling, in the schema file: `bfbeShopReviewsFormSpace`, `bfbeShopReviewsFormAreaBackground`, `bfbeShopReviewsFormAreaBorder`, `bfbeShopReviewsFormAreaPadding`, `bfbeShopReviewsFormBackground`, `bfbeShopReviewsFormBorder`, `bfbeShopReviewsFormPadding`, `bfbeShopReviewsFormTitleGap`, `bfbeShopReviewsFormColumns`, `bfbeShopReviewsFormRowGap`, `bfbeShopReviewsFormColumnGap`, `bfbeShopReviewsFormNotes`, `bfbeShopReviewsFormLabelGap`, `bfbeShopReviewsFormRequired`, `bfbeShopReviewsFormConsentGap`, `bfbeShopReviewsFormConsent`, `bfbeShopReviewsFormTextHeight`, `bfbeShopReviewsFormTextPadding`, `bfbeShopReviewsFormTextBorder`, `bfbeShopReviewsFormTextTypography`, `bfbeShopReviewsFormStarSize`, `bfbeShopReviewsFormStarGap`, `bfbeShopReviewsFormStarColor`, `bfbeShopReviewsFormStarOn`, `bfbeShopReviewsUploadBackground`, `bfbeShopReviewsUploadBorder`, `bfbeShopReviewsUploadButton`, `bfbeShopReviewsUploadButtonHover`, `bfbeShopReviewsUploadButtonText`, `bfbeShopReviewsUploadHelp`, `bfbeShopReviewsDropBackground`, `bfbeShopReviewsDropBorder`, `bfbeShopReviewsDropPadding`, `bfbeShopReviewsDropGap`, `bfbeShopReviewsDropOver`, `bfbeShopReviewsDropOverLine`, `bfbeShopReviewsDropIconSize`, `bfbeShopReviewsDropIconColor`, `bfbeShopReviewsDropTypography`, `bfbeShopReviewsDropButtonBackground`, `bfbeShopReviewsDropButtonColor`, `bfbeShopReviewsDropButtonHover`, `bfbeShopReviewsDropButtonHoverColor`, `bfbeShopReviewsDropButtonBorder`, `bfbeShopReviewsDropButtonPadding`, `bfbeShopReviewsDropButtonTypography`, `bfbeShopReviewsPickedSize`, `bfbeShopReviewsPickedBorder`, `bfbeShopReviewsPickedRemove`, `bfbeShopReviewsFormButtonPadding`, `bfbeShopReviewsFormButtonTypography`.
@@ -52,7 +56,7 @@ The same 7 controls as on `product-reviews`.
 #### BFB Review form (`bfbeShopReviewForm`)
 Pro, switch `shop-reviews`.
 - `bfbeShopReviewsFormTextResize` (select) **Resize**: options: `none` None, `vertical` Vertical, `horizontal` Horizontal, `both` Both (default); writes CSS
-- `bfbeShopReviewsUploadLook` (select) **Look**: options: `native` The browser's file box, `custom` A drop area with previews
+- `bfbeShopReviewsUploadLook` (select) **Look**: options: `native` As the browser draws it (default), `custom` A drop area with previews
 - `bfbeShopReviewsDropTitle` (text) **Words**: placeholder Drag your photos here; only when `bfbeShopReviewsUploadLook` is `custom`
 - `bfbeShopReviewsDropButtonWords` (text) **Button words**: placeholder Choose photos; only when `bfbeShopReviewsUploadLook` is `custom`
 Styling, in the schema file: `bfbeShopReviewsFormSpace`, `bfbeShopReviewsFormAreaBackground`, `bfbeShopReviewsFormAreaBorder`, `bfbeShopReviewsFormAreaPadding`, `bfbeShopReviewsFormBackground`, `bfbeShopReviewsFormBorder`, `bfbeShopReviewsFormPadding`, `bfbeShopReviewsFormTitleTypography`, `bfbeShopReviewsFormTitleGap`, `bfbeShopReviewsFormColumns`, `bfbeShopReviewsFormRowGap`, `bfbeShopReviewsFormColumnGap`, `bfbeShopReviewsFormNotes`, `bfbeShopReviewsFormLabel`, `bfbeShopReviewsFormLabelGap`, `bfbeShopReviewsFormRequired`, `bfbeShopReviewsFormConsentGap`, `bfbeShopReviewsFormConsent`, `bfbeShopReviewsFormTextHeight`, `bfbeShopReviewsFormTextPadding`, `bfbeShopReviewsFormTextBorder`, `bfbeShopReviewsFormTextTypography`, `bfbeShopReviewsFormStarSize`, `bfbeShopReviewsFormStarGap`, `bfbeShopReviewsFormStarColor`, `bfbeShopReviewsFormStarOn`, `bfbeShopReviewsUploadBackground`, `bfbeShopReviewsUploadBorder`, `bfbeShopReviewsUploadButton`, `bfbeShopReviewsUploadButtonHover`, `bfbeShopReviewsUploadButtonText`, `bfbeShopReviewsUploadHelp`, `bfbeShopReviewsDropBackground`, `bfbeShopReviewsDropBorder`, `bfbeShopReviewsDropPadding`, `bfbeShopReviewsDropGap`, `bfbeShopReviewsDropOver`, `bfbeShopReviewsDropOverLine`, `bfbeShopReviewsDropIconSize`, `bfbeShopReviewsDropIconColor`, `bfbeShopReviewsDropTypography`, `bfbeShopReviewsDropButtonBackground`, `bfbeShopReviewsDropButtonColor`, `bfbeShopReviewsDropButtonHover`, `bfbeShopReviewsDropButtonHoverColor`, `bfbeShopReviewsDropButtonBorder`, `bfbeShopReviewsDropButtonPadding`, `bfbeShopReviewsDropButtonTypography`, `bfbeShopReviewsPickedSize`, `bfbeShopReviewsPickedBorder`, `bfbeShopReviewsPickedRemove`, `bfbeShopReviewsFormButtonPadding`, `bfbeShopReviewsFormButtonTypography`.
@@ -61,6 +65,12 @@ Styling, in the schema file: `bfbeShopReviewsFormSpace`, `bfbeShopReviewsFormAre
 Pro, switch `shop-tabs`.
 - `bfbeShopTabsLeaveOut` (select) **Leave out WooCommerce's tabs**: options: `description` Description, `additional_information` Additional information, `reviews` Reviews. Reviews: when the page shows its own reviews.
 Styling, in the schema file: `bfbeShopTabsGap`, `bfbeShopTabsTabBackground`, `bfbeShopTabsTabBorder`, `bfbeShopTabsLinkPadding`, `bfbeShopTabsActiveBorder`, `bfbeShopTabsHoverBackground`, `bfbeShopTabsHoverColor`, `bfbeShopTabsCellPadding`, `bfbeShopTabsCellBorder`.
+
+## What it guarantees for accessibility (do not undo)
+- Helpful? names a group of two real buttons, Yes and No, each with aria-pressed. After a vote the buttons are marked aria-disabled rather than disabled, so the focus stays where it was, and the count updates in place.
+- The sort is a real form: a labelled select, or radios under a legend. After a sort the form keeps the focus and the change is said once, such as Reviews sorted: Oldest first.
+- A review's photos are a list named Photos from this review, each a link to the full image with alt text naming the reviewer.
+- Without JavaScript all of it works: the photos post with the review, the votes are a form posted to the page, and the sort is a form with a Sort button.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

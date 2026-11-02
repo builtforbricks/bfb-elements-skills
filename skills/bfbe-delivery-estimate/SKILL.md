@@ -12,9 +12,13 @@ description: "Use when showing a delivery date, a cut-off countdown, a postcode 
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/delivery-estimate/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+A delivery estimate for the visitor, such as Order within 2 h 14 min for delivery Tuesday 27 to Wednesday 28 October, and a postcode check that answers with WooCommerce's own rates for another address. The dates are worked out on your server from the Delivery settings on the Shop page and WooCommerce's shipping zones, for the visitor's zone, on the site's clock, and a cached page is put right after load. The countdown is a real clock to the cut-off. It needs the Delivery switch on.
 
-**Costs a page:** CSS 0.78 KB, JS 1.71 KB (gzipped), plus shop-live, loaded only on pages that use it.
+**Not for:** Not a carrier's tracking: the dates come from your own rules, so a carrier's own delay is not known here. For the day and time slot a shopper books at checkout, use the Delivery feature's Delivery date and time checkout field.
+
+**Costs a page:** CSS 0.83 KB, JS 1.71 KB (gzipped), plus shop-live, loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** no · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** no
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -23,15 +27,15 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Estimate (`bfbeEstimate`)
-- `show` (select) **Show**: options: `both` Estimate and postcode check (default), `estimate` Estimate only, `check` Postcode check only, `pickup` Pickup hours only
-- `withinText` (text) **Before the cut-off**: placeholder Order within {time} for delivery {date}; only when `show` is not `check` or `pickup`. {time}, {date}, {from} and {to} are filled in.
-- `afterText` (text) **After the cut-off**: placeholder Delivery {date}; only when `show` is not `check` or `pickup`
-- `noneText` (text) **Without an estimate**: placeholder Nothing is shown; dynamic data accepted; only when `show` is not `check` or `pickup`. When no transit rule covers the visitor.
+- `show` (select) **Show**: options: `both` Estimate and postcode check (default), `estimate` Estimate only, `check` Postcode check only, `pickup` Pickup hours only. Estimate and postcode check (the default), Estimate only, Postcode check only, or Pickup hours only. Add a second element set to another part to place each part where you want it.
+- `withinText` (text) **Before the cut-off**: placeholder Order within {time} for delivery {date}; only when `show` is not `check` or `pickup`. The sentence while today's cut-off is ahead, Order within {time} for delivery {date} unless set; {time}, {date}, {from} and {to} are filled in. Change it when your shop says dispatched rather than delivered.
+- `afterText` (text) **After the cut-off**: placeholder Delivery {date}; only when `show` is not `check` or `pickup`. The sentence once today's orders are closed or on a day off, Delivery {date} unless set.
+- `noneText` (text) **Without an estimate**: placeholder Nothing is shown; dynamic data accepted; only when `show` is not `check` or `pickup`. What shows when no transit rule covers the visitor; empty, nothing shows. It takes dynamic data.
 
 ### Postcode check (`bfbeCheck`)
 The whole group shows only when `show` is not `estimate` or `pickup`.
-- `checkTitle` (text) **Title**: placeholder Delivery to your address; dynamic data accepted; only when `show` is not `estimate` or `pickup`
-- `checkFor` (select) **Check for**: options: `auto` This product, else the cart (default), `cart` The cart; only when `show` is not `estimate` or `pickup`
+- `checkTitle` (text) **Title**: placeholder Delivery to your address; dynamic data accepted; only when `show` is not `estimate` or `pickup`. Delivery to your address unless set; it names the form for screen readers too, and takes dynamic data.
+- `checkFor` (select) **Check for**: options: `auto` This product, else the cart (default), `cart` The cart; only when `show` is not `estimate` or `pickup`. This product, else the cart (the default), or The cart, for a product page that should answer for the whole basket.
 - `countryLabel` (text) **Country label**: placeholder Country; only when `show` is not `estimate` or `pickup`
 - `postcodeLabel` (text) **Postcode label**: placeholder Postcode; only when `show` is not `estimate` or `pickup`
 - `buttonText` (text) **Button text**: placeholder Check; only when `show` is not `estimate` or `pickup`
@@ -39,8 +43,8 @@ The whole group shows only when `show` is not `estimate` or `pickup`.
 Styling, in the schema file: `checkTitleTypography`, `fieldLabelTypography`, `fieldsGap`, `fieldTypography`, `fieldBackground`, `fieldBorder`, `fieldPadding`, `fieldFocusBorder`, `buttonTypography`, `buttonBackground`, `buttonColor`, `buttonBorder`, `buttonPadding`, `buttonHoverBackground`, `buttonHoverColor`, `rateGap`, `ratePadding`, `rateNameTypography`, `rateCostTypography`, `rateWhenTypography`, `rateLineColor`, `noneTypography`, `errorTypography`.
 
 ### Pickup (`bfbePickup`)
-- `pickup` (select) **Pickup hours**: options: `hours` From a BFB Business Hours element, `words` In words. Shown while Local pickup is offered to the visitor.
-- `pickupFrom` (select) **Business Hours in**: placeholder This page; only when `pickup` is `hours`
+- `pickup` (select) **Pickup hours**: options: `hours` From a BFB Business Hours element, `words` In words. None (the default), From a BFB Business Hours element, or In words; shown while WooCommerce offers the visitor Local pickup.
+- `pickupFrom` (select) **Business Hours in**: placeholder This page; only when `pickup` is `hours`. A template holding a BFB Business Hours element; empty, the page it is on. Days with the same hours are joined, such as Monday to Friday 09:00 to 18:00.
 - `pickupWords` (textarea) **Pickup hours in words**: placeholder Monday to Friday, 9:00 to 17:00; dynamic data accepted; only when `pickup` is `words`
 - `pickupTitle` (text) **Pickup title**: placeholder Pickup hours; dynamic data accepted; only when `pickup` is set
 
@@ -50,8 +54,14 @@ Styling, in the schema file: `gap`, `lineColor`, `lineWidth`, `estimateTypograph
 
 ### Country list (`bfbeCountryList`)
 The whole group shows only when `show` is not `estimate` or `pickup`.
-- `countryListLook` (select) **Open list**: options: `native` As the browser draws it (default), `custom` Styled with the controls below. Phones keep their own list either way.
+- `countryListLook` (select) **Open list**: options: `native` As the browser draws it (default), `custom` Styled with the controls below. The country select's open list As the browser draws it (the default) or Styled with the controls below; phones keep their own list either way.
 Styling, in the schema file: `countryListChevron`, `countryListPanelBg`, `countryListPanelBorder`, `countryListPanelShadow`, `countryListPanelPadding`, `countryListOptTypography`, `countryListOptPadding`, `countryListOptHover`, `countryListHoverText`, `countryListOptOnBg`, `countryListOptOnColor`, `countryListTick`.
+
+## What it guarantees for accessibility (do not undo)
+- The estimate is a paragraph whose ticking words are aria-live off; one polite sentence says the new date when the cut-off passes.
+- The check is a form named by its title, with a label for each field, autocomplete country and postal-code, and a real submit button.
+- Its answer is a list named for the destination, said in one sentence, such as 2 delivery options for Romania 030031.
+- The pickup hours are a group named by its title, written as a definition list.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

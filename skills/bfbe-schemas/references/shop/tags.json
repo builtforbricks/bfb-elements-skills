@@ -349,7 +349,7 @@
             "contexts": [
                 "text"
             ],
-            "live": null,
+            "live": "cart_free_shipping_min",
             "follows": null,
             "inPageText": true,
             "pack": "free",

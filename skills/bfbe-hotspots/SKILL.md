@@ -16,7 +16,7 @@ An image with pins, each a real button that opens its own nested block as a tool
 
 **Not for:** Pins sit at percentages of one picture, each a number or a post's own field, and each opens a block you place yourself. It does not zoom or pan, and it cannot make one pin per post of a query.
 
-**Costs a page:** CSS 1.82 KB, JS 2.41 KB (gzipped), no dependencies, loaded only on pages that use it. Only where used, a product card in Image Hotspots and the Video Player: shop the look, and the add from a video moment: CSS 0.79 KB, JS 1.08 KB.
+**Costs a page:** CSS 1.81 KB, JS 2.49 KB (gzipped), no dependencies, loaded only on pages that use it. Only where used, a product card in Image Hotspots and the Video Player: shop the look, and the add from a video moment: CSS 0.58 KB, JS 1.09 KB.
 
 **Nestable:** yes · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 
@@ -76,6 +76,7 @@ Styling, in the schema file: `duration`, `easingCustom`, `pulseSpeed`, `pulseSca
 - With Hover and click, a panel also opens as the pointer enters a pin; keyboard focus on a pin does not open it.
 - A pin's link is a real anchor laid over the panel and labeled with the pin's name.
 - Under reduced motion the pulse is switched off and panels beside the pin open without a transition.
+- A product pin's accessible name is its product's name.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

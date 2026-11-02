@@ -9,7 +9,7 @@
     "childrenDefault": [],
     "parent": null,
     "cost": {
-        "css": "0.55 KB",
+        "css": "0.63 KB",
         "js": "1.15 KB",
         "dependencies": "shop-live"
     },
@@ -269,7 +269,7 @@
             "css": [
                 {
                     "property": "border",
-                    "selector": ".bfbe-tick"
+                    "selector": "&[data-bfbe-tick] .bfbe-tick"
                 }
             ],
             "required": [

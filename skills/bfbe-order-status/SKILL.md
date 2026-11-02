@@ -12,9 +12,13 @@ description: "Use for an order lookup with BFB Order Status (`bfbe-order-status`
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/order-status/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+A form that asks for an order number and the email the order was placed with, and answers with the order's timeline: its steps with the current one marked, the date, status and shipping method, tracking numbers where WooCommerce has them, the history from WooCommerce's order notes and the items. The form posts to its own page and is answered on your server, with no script. A signed-in customer types the number alone for an order of their own.
 
-**Costs a page:** CSS 1.07 KB, JS none (gzipped), no dependencies, loaded only on pages that use it.
+**Not for:** Not a customer account: it shows one order at a time and changes nothing. For a customer's list of orders, use Bricks' Account page element or an orders query loop.
+
+**Costs a page:** CSS 1.09 KB, JS none (gzipped), no dependencies, loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** no · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** no
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -23,8 +27,8 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Lookup form (`bfbeForm`)
-- `shows` (select) **Show**: options: `both` Form and answer (default), `form` Form only, `answer` Answer only. Place the answer elsewhere with a second element.
-- `intro` (textarea) **Intro**: dynamic data accepted; only when `shows` is not `answer`
+- `shows` (select) **Show**: options: `both` Form and answer (default), `form` Form only, `answer` Answer only. Form and answer by default, Form only or Answer only. Use two elements, one Form only and one Answer only, to put the answer in another column or above the form.
+- `intro` (textarea) **Intro**: dynamic data accepted; only when `shows` is not `answer`. The text above the form; it takes dynamic data. **Gap** (16px) spaces the form's rows.
 - `numberLabel` (text) **Order number label**: placeholder Order number; only when `shows` is not `answer`
 - `emailLabel` (text) **Email label**: placeholder Email address used for the order; only when `shows` is not `answer`
 - `buttonText` (text) **Button**: placeholder Check my order; only when `shows` is not `answer`
@@ -44,6 +48,7 @@ The whole group shows only when `shows` is not `form`.
 - `titleText` (text) **Title**: placeholder Order #{number}. {number} is filled in.
 - `titleTag` (select) **Title tag**: options: `h2` H2, `h3` H3 (default), `h4` H4, `h5` H5, `h6` H6, `p` p
 - `placedLabel` (text) **Date label**: placeholder Placed
+- `dateFormat` (text) **Date format**: placeholder F j, Y. A PHP date format. Empty uses the site's own.
 - `statusLabel` (text) **Status label**: placeholder Status
 - `shippingLabel` (text) **Shipping label**: placeholder Shipping
 - `trackingLabel` (text) **Tracking label**: placeholder Tracking; only when `showTracking` is not `hide`
@@ -51,6 +56,12 @@ The whole group shows only when `shows` is not `form`.
 - `itemsHeading` (text) **Items heading**: placeholder Items; only when `showItems` is not `hide`
 - `headingTag` (select) **Heading tag**: options: `h2` H2, `h3` H3, `h4` H4 (default), `h5` H5, `h6` H6, `p` p
 Styling, in the schema file: `boxBackground`, `boxBorder`, `boxShadow`, `boxPadding`, `answerTitleTypography`, `headingTypography`, `historyTypography`, `factLabelTypography`, `factValueTypography`, `dateColor`, `trackingColor`, `trackingHoverColor`, `itemNameTypography`, `itemQtyTypography`, `itemDividerColor`, `itemDividerWidth`.
+
+## What it guarantees for accessibility (do not undo)
+- Each field has its own label; the number box asks phones for a number pad unless a plugin numbers orders its own way.
+- A refusal prints with role alert under the form, where the visitor typed.
+- The answer is a polite live region; the steps are an ordered list named Order progress, and the current step carries aria-current step.
+- A wrong number and a wrong email get the same sentence, so the form never confirms that an order number exists.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

@@ -12,9 +12,13 @@ description: "Use when placing, wiring or styling BFB Cart Quantity (`bfbe-cart-
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/cart-quantity/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+Plus, minus and Remove for each line of a cart page you lay out yourself, placed inside a row of Bricks' Cart contents query loop, with Bricks' experimental shop setting off. The stepper follows WooCommerce's quantity rules for the line, and every change is a real form post that works before any script runs; the script makes it instant. Inside a Live cart region the row is drawn again; elsewhere the page reloads once the change is answered.
 
-**Costs a page:** CSS 0.75 KB, JS 2.33 KB (gzipped), plus shop-live, loaded only on pages that use it.
+**Not for:** It is for a Cart contents loop, not a products loop or a product page, where Bricks' Add to cart element has its own quantity. It has no Undo after Remove; the mini cart's Undo is in the Cart lines feature.
+
+**Costs a page:** CSS 0.80 KB, JS 2.33 KB (gzipped), plus shop-live, loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** no
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -23,15 +27,21 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Quantity (`bfbeCartQty`)
-- `shows` (select) **Shows**: options: `both` Quantity and Remove (default), `qty` Quantity only, `remove` Remove only
-- `removeWord` (text) **Remove word**: placeholder Remove; only when `shows` is not `qty`
-- `removeIcon` (icon) **Remove icon**: only when `shows` is not `qty`. None unless set.
-- `removeWordHidden` (checkbox) **Icon only**: only when `shows` is not `qty` and `removeIcon` is set. Hides the word when an icon is set.
+- `shows` (select) **Shows**: options: `both` Quantity and Remove (default), `qty` Quantity only, `remove` Remove only. Quantity and Remove by default, or Quantity only, or Remove only. Place two elements in one row, one of each, to put the stepper and Remove apart.
+- `removeWord` (text) **Remove word**: placeholder Remove; only when `shows` is not `qty`. The word on the Remove button, "Remove" unless you set one.
+- `removeIcon` (icon) **Remove icon**: only when `shows` is not `qty`. None unless you set one; it sits before the word.
+- `removeWordHidden` (checkbox) **Icon only**: only when `shows` is not `qty` and `removeIcon` is set. With a Remove icon set, the word goes and the icon stands alone, such as an × in a circle; the button keeps its name for screen readers.
 - `minusIcon` (icon) **Minus icon**: only when `shows` is not `remove`. A plain minus unless set.
 - `plusIcon` (icon) **Plus icon**: only when `shows` is not `remove`. A plain plus unless set.
 
 ### Look (`bfbeCartQtyLook`)
 Styling only, every key in the schema file: `size`, `inputWidth`, `stepperBorder`, `stepperBackground`, `dividerColor`, `numberTypography`, `buttonIconSize`, `buttonColor`, `buttonBackground`, `buttonHoverColor`, `buttonHoverBackground`, `removeTypography`, `removeIconSize`, `removeColor`, `removeBackground`, `removeBorder`, `removePadding`, `removeHoverColor`, `removeHoverBackground`, `gap`.
+
+## What it guarantees for accessibility (do not undo)
+- The stepper is a group named "Quantity: <the line>", its buttons "Decrease quantity: ..." and "Increase quantity: ...", and Remove "Remove: ...".
+- Each change is said once, politely: "Quantity 3: <the line>. Cart: 3 items, 84,00 €." A refusal is said assertively, in WooCommerce's words where it has them.
+- After a redraw or a reload the focus goes back to the same control.
+- Without the script plus, minus and Remove are real submit buttons, and Enter in the number presses Update.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

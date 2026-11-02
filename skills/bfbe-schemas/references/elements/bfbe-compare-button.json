@@ -9,8 +9,8 @@
     "childrenDefault": [],
     "parent": null,
     "cost": {
-        "css": "1.17 KB",
-        "js": "0.78 KB",
+        "css": "0.54 KB",
+        "js": "none",
         "dependencies": "none"
     },
     "requires": [
@@ -316,7 +316,7 @@
             "css": [
                 {
                     "property": "flex-direction",
-                    "selector": ".bfbe-list__btn"
+                    "selector": "&.bfbe-list--both .bfbe-list__btn"
                 }
             ]
         },

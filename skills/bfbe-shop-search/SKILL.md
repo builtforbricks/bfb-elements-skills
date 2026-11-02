@@ -12,7 +12,11 @@ description: "Use for the shop's settings on Bricks' Search and Filter - Search:
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/shop-search/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+A Pro feature with two things for the shop's search: recent and popular searches that open under an empty search box, and synonyms, so a search for one word also finds products holding another. Suggestions go on Bricks' Search and Filter - Search elements and, with a Shop page switch, on WooCommerce's own product search form. Popular searches come from the free Search insights feature, which counts the words shoppers search for, never who searched.
+
+**Not for:** It does not suggest products as the visitor types (Bricks' live search shows results for that) and does not correct spelling. Synonyms do not reach Filter - Search's custom search criteria or the admin's product list.
+
+**Nestable:** no · **In a query loop:** no · **Dynamic data:** no · **Keyboard:** yes · **Reduced motion:** no
 
 ## Where it lives
 A feature, not an element: its groups are added to Bricks' own elements, on the Content tab after Bricks' own groups. By element:
@@ -25,7 +29,7 @@ A feature, not an element: its groups are added to Bricks' own elements, on the 
 
 #### BFB Search suggestions (`bfbeShopSearch`)
 Pro, switch `shop-search`.
-- `bfbeShopSuggest` (checkbox) **Recent and popular searches**
+- `bfbeShopSuggest` (checkbox) **Recent and popular searches**. On Bricks' Search and Filter - Search, off by default; ticked, a list opens under the box when it gets the focus while empty, and closes as soon as the visitor types.
 Styling, in the schema file: `bfbeShopSuggestBackground`, `bfbeShopSuggestBorder`, `bfbeShopSuggestShadow`, `bfbeShopSuggestPadding`, `bfbeShopSuggestTitleTypography`, `bfbeShopSuggestItemTypography`, `bfbeShopSuggestItemBackground`, `bfbeShopSuggestItemBorder`, `bfbeShopSuggestItemPadding`, `bfbeShopSuggestItemGap`, `bfbeShopSuggestItemHover`, `bfbeShopSuggestClearTypography`.
 
 ### Search (`search`)
@@ -36,6 +40,11 @@ The same 15 controls as on `filter-search`.
 #### BFB Search field (`bfbeShopSearchLook`)
 Pro, switch `shop-search`.
 Styling only, every key in the schema file: `bfbeShopSearchFieldPadding`, `bfbeShopSearchFieldMinHeight`, `bfbeShopSearchInside`, `bfbeShopSearchInset`.
+
+## What it guarantees for accessibility (do not undo)
+- The list sits right after the box, so Tab reaches it in order, and each search is a button.
+- Down from the box goes to the list; Up and Down move, Home and End go to the ends, and Escape closes it and gives the box its focus back.
+- Each group is named, Recent searches and Popular searches; the page says once how many suggestions are below the box, and Clear says it cleared.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

@@ -16,7 +16,7 @@ A short message that slides in at a corner of the window and closes by itself, h
 
 **Not for:** Not for a message that must be answered or must stay in view: use Modal for a dialog. A toast does not send email or store anything on the site. It is shown by its script, so a visitor with scripts off never sees it.
 
-**Costs a page:** CSS 0.97 KB, JS 2.21 KB (gzipped), no dependencies, loaded only on pages that use it. Only where used, the shop triggers: a product added to the cart, a recently viewed product on sale or back in stock: JS 1.39 KB.
+**Costs a page:** CSS 0.97 KB, JS 2.21 KB (gzipped), no dependencies, loaded only on pages that use it. Only where used, the shop triggers: a product added to the cart, a recently viewed product on sale or back in stock: JS 1.47 KB.
 
 **Nestable:** yes · **In a query loop:** no · **Dynamic data:** no · **Keyboard:** yes · **Reduced motion:** yes
 

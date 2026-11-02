@@ -9,8 +9,8 @@
     "childrenDefault": [],
     "parent": null,
     "cost": {
-        "css": "0.99 KB",
-        "js": "1.77 KB",
+        "css": "1.01 KB",
+        "js": "1.95 KB",
         "dependencies": "none"
     },
     "requires": [
@@ -104,7 +104,15 @@
                 "hide": "Hide"
             },
             "inline": true,
-            "placeholder": "Show"
+            "placeholder": "Show",
+            "required": [
+                "shows",
+                "!=",
+                [
+                    "sentence",
+                    "gifts"
+                ]
+            ]
         },
         "toGo": {
             "tab": "content",
@@ -277,7 +285,7 @@
             "css": [
                 {
                     "property": "gap",
-                    "selector": ".bfbe-goals__gift-choice"
+                    "selector": "&:not([data-bfbe-choices=\"pills\"]) .bfbe-goals__gift-choice"
                 }
             ],
             "required": [
@@ -405,7 +413,7 @@
             "css": [
                 {
                     "property": "accent-color",
-                    "selector": ".bfbe-goals__gift-choice input"
+                    "selector": "&:not([data-bfbe-choices=\"pills\"]) .bfbe-goals__gift-choice input"
                 },
                 {
                     "property": "--bfbe-tick-on",
@@ -494,7 +502,7 @@
             "css": [
                 {
                     "property": "border",
-                    "selector": ".bfbe-tick"
+                    "selector": "&[data-bfbe-tick] .bfbe-tick"
                 }
             ],
             "required": [
@@ -870,11 +878,11 @@
             "css": [
                 {
                     "property": "row-gap",
-                    "selector": ""
+                    "selector": "&:not([data-bfbe-goals-shows=\"gifts\"])"
                 },
                 {
                     "property": "--bfbe-goals-gap",
-                    "selector": ""
+                    "selector": "&:not([data-bfbe-goals-shows=\"gifts\"])"
                 }
             ]
         },
@@ -882,7 +890,12 @@
             "tab": "content",
             "group": "bfbeTrack",
             "label": "Sentence",
-            "type": "separator"
+            "type": "separator",
+            "required": [
+                "shows",
+                "!=",
+                "track"
+            ]
         },
         "textTypography": {
             "tab": "content",
@@ -894,13 +907,23 @@
                     "property": "font",
                     "selector": ".bfbe-goals__text"
                 }
+            ],
+            "required": [
+                "shows",
+                "!=",
+                "track"
             ]
         },
         "sepTrack": {
             "tab": "content",
             "group": "bfbeTrack",
             "label": "Track",
-            "type": "separator"
+            "type": "separator",
+            "required": [
+                "shows",
+                "!=",
+                "sentence"
+            ]
         },
         "trackHeight": {
             "tab": "content",
@@ -915,6 +938,11 @@
                     "property": "--bfbe-goals-h",
                     "selector": ""
                 }
+            ],
+            "required": [
+                "shows",
+                "!=",
+                "sentence"
             ]
         },
         "trackColor": {
@@ -927,6 +955,11 @@
                     "property": "background-color",
                     "selector": ".bfbe-goals__track"
                 }
+            ],
+            "required": [
+                "shows",
+                "!=",
+                "sentence"
             ]
         },
         "fillColor": {
@@ -943,6 +976,11 @@
                     "property": "background-color",
                     "selector": ".bfbe-goals__step.is-reached .bfbe-goals__mark"
                 }
+            ],
+            "required": [
+                "shows",
+                "!=",
+                "sentence"
             ]
         },
         "trackBorder": {
@@ -955,6 +993,11 @@
                     "property": "border",
                     "selector": ".bfbe-goals__track"
                 }
+            ],
+            "required": [
+                "shows",
+                "!=",
+                "sentence"
             ]
         },
         "sepSteps": {
@@ -963,9 +1006,16 @@
             "label": "Steps",
             "type": "separator",
             "required": [
-                "steps",
-                "!=",
-                "hide"
+                [
+                    "steps",
+                    "!=",
+                    "hide"
+                ],
+                [
+                    "shows",
+                    "!=",
+                    "sentence"
+                ]
             ]
         },
         "labelDisplay": {
@@ -986,9 +1036,16 @@
                 }
             ],
             "required": [
-                "steps",
-                "!=",
-                "hide"
+                [
+                    "steps",
+                    "!=",
+                    "hide"
+                ],
+                [
+                    "shows",
+                    "!=",
+                    "sentence"
+                ]
             ]
         },
         "stepTypography": {
@@ -1003,9 +1060,16 @@
                 }
             ],
             "required": [
-                "steps",
-                "!=",
-                "hide"
+                [
+                    "steps",
+                    "!=",
+                    "hide"
+                ],
+                [
+                    "shows",
+                    "!=",
+                    "sentence"
+                ]
             ]
         },
         "thresholdTypography": {
@@ -1020,9 +1084,16 @@
                 }
             ],
             "required": [
-                "steps",
-                "!=",
-                "hide"
+                [
+                    "steps",
+                    "!=",
+                    "hide"
+                ],
+                [
+                    "shows",
+                    "!=",
+                    "sentence"
+                ]
             ]
         },
         "reachedTypography": {
@@ -1037,9 +1108,16 @@
                 }
             ],
             "required": [
-                "steps",
-                "!=",
-                "hide"
+                [
+                    "steps",
+                    "!=",
+                    "hide"
+                ],
+                [
+                    "shows",
+                    "!=",
+                    "sentence"
+                ]
             ]
         },
         "markColor": {
@@ -1055,9 +1133,16 @@
                 }
             ],
             "required": [
-                "steps",
-                "!=",
-                "hide"
+                [
+                    "steps",
+                    "!=",
+                    "hide"
+                ],
+                [
+                    "shows",
+                    "!=",
+                    "sentence"
+                ]
             ]
         },
         "markBorder": {
@@ -1072,9 +1157,16 @@
                 }
             ],
             "required": [
-                "steps",
-                "!=",
-                "hide"
+                [
+                    "steps",
+                    "!=",
+                    "hide"
+                ],
+                [
+                    "shows",
+                    "!=",
+                    "sentence"
+                ]
             ]
         },
         "bfbeHoverEffect": {

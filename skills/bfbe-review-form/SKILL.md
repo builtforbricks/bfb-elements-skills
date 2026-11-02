@@ -12,7 +12,13 @@ description: "Use when placing WooCommerce's review form anywhere on a product p
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/review-form/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+WooCommerce's own review form for the page's product, placed wherever you like on a product page: beside the review list, in a column of its own, in a popup. Bricks' Product reviews prints the form under its list; this element puts the same form inside any of Bricks' own containers, with the Reviews feature's photo field and look controls. Set BFB Review list, Review form to Hidden on Bricks' element, so the page carries one form.
+
+**Not for:** Not a second form for a page that already shows Bricks' form: two forms on one page share WooCommerce's ids and its stars script finds only one, so hide one. It does not post a review without a page load, and on a page that is not a product it prints nothing.
+
+**Costs a page:** CSS none, JS none (gzipped), plus shop-reviews, loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** no · **Dynamic data:** yes · **Keyboard:** no · **Reduced motion:** no
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -21,7 +27,7 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Form (`bfbeRvf`)
-- `title` (text) **Title**: placeholder Add a review; dynamic data accepted. Empty: WooCommerce words it.
+- `title` (text) **Title**: placeholder Add a review; dynamic data accepted. Empty, WooCommerce's own words: Add a review, or its invitation for a product without reviews. Type your own to match the page, with dynamic data if you like.
 
 ### Area and card (`bfbeRvfArea`)
 Styling only, every key in the schema file: `bfbeShopReviewsFormSpace`, `bfbeShopReviewsFormAreaBackground`, `bfbeShopReviewsFormAreaBorder`, `bfbeShopReviewsFormAreaPadding`, `bfbeShopReviewsFormBackground`, `bfbeShopReviewsFormBorder`, `bfbeShopReviewsFormPadding`.
@@ -34,13 +40,17 @@ Styling only, every key in the schema file: `bfbeShopReviewsFormTitleTypography`
 Styling, in the schema file: `bfbeShopReviewsFormTextHeight`, `bfbeShopReviewsFormTextPadding`, `bfbeShopReviewsFormTextBorder`, `bfbeShopReviewsFormTextTypography`, `bfbeShopReviewsFormStarSize`, `bfbeShopReviewsFormStarGap`, `bfbeShopReviewsFormStarColor`, `bfbeShopReviewsFormStarOn`.
 
 ### Photo upload (`bfbeRvfUpload`)
-- `bfbeShopReviewsUploadLook` (select) **Look**: options: `native` The browser's file box, `custom` A drop area with previews
+- `bfbeShopReviewsUploadLook` (select) **Look**: options: `native` As the browser draws it (default), `custom` A drop area with previews. The browser's file box, or A drop area with previews, with the box's background, border and button colours, **Words** (Drag your photos here), **Button words** (Choose photos) and **Help typography**.
 - `bfbeShopReviewsDropTitle` (text) **Words**: placeholder Drag your photos here; only when `bfbeShopReviewsUploadLook` is `custom`
 - `bfbeShopReviewsDropButtonWords` (text) **Button words**: placeholder Choose photos; only when `bfbeShopReviewsUploadLook` is `custom`
 Styling, in the schema file: `bfbeShopReviewsUploadBackground`, `bfbeShopReviewsUploadBorder`, `bfbeShopReviewsUploadButton`, `bfbeShopReviewsUploadButtonHover`, `bfbeShopReviewsUploadButtonText`, `bfbeShopReviewsUploadHelp`, `bfbeShopReviewsDropBackground`, `bfbeShopReviewsDropBorder`, `bfbeShopReviewsDropPadding`, `bfbeShopReviewsDropGap`, `bfbeShopReviewsDropOver`, `bfbeShopReviewsDropOverLine`, `bfbeShopReviewsDropIconSize`, `bfbeShopReviewsDropIconColor`, `bfbeShopReviewsDropTypography`, `bfbeShopReviewsDropButtonBackground`, `bfbeShopReviewsDropButtonColor`, `bfbeShopReviewsDropButtonHover`, `bfbeShopReviewsDropButtonHoverColor`, `bfbeShopReviewsDropButtonBorder`, `bfbeShopReviewsDropButtonPadding`, `bfbeShopReviewsDropButtonTypography`, `bfbeShopReviewsPickedSize`, `bfbeShopReviewsPickedBorder`, `bfbeShopReviewsPickedRemove`.
 
 ### Button (`bfbeRvfButton`)
 Styling only, every key in the schema file: `bfbeShopReviewsFormButtonPadding`, `bfbeShopReviewsFormButtonTypography`.
+
+## What it guarantees for accessibility (do not undo)
+- It is WordPress' comment form with WooCommerce's arguments: labelled name and email fields when the site asks for them, WooCommerce's rating select drawn as stars by WooCommerce's script, the review box and the consent box.
+- Without JavaScript the form posts to WordPress as it does inside Bricks' Product reviews, and the rating is WooCommerce's plain select.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

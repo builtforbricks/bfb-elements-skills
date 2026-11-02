@@ -9,10 +9,12 @@ description: "Use for the {bfbe_*} dynamic tags of the group BFB Shop (product, 
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
 **Requires** BFB Elements 2.0.0 or later, and BFB Elements Pro 2.0.0 or later for the groups marked Pro, WooCommerce active, the feature switches on (WordPress menu BFB Elements, Elements): `shop-data`, `shop-variation`. Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/features/shop-tags-and-conditions.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
-**Documentation**: https://builtforbricks.com/bfb-elements/docs/shop-tags-and-conditions/
+**Documentation**: https://builtforbricks.com/bfb-elements/docs/shop/ (the Shop), and a page for each feature this skill spans: https://builtforbricks.com/bfb-elements/docs/shop-data/, https://builtforbricks.com/bfb-elements/docs/shop-variation/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+The website documents this by feature; each line is the approved summary from that feature's page.
+- `shop-data` (https://builtforbricks.com/bfb-elements/docs/shop-data/): The shop facts Bricks has no tag or condition for, in Bricks' own pickers: dynamic data tags under BFB Shop for products, coupons and orders, conditions under BFB Shop for the cart, the customer, the product and the order, and four shop triggers in the Interactions panel. These are Pro. The live cart tags (number of items, subtotal, total, tax, shipping, coupon discount, what is left to free shipping) are free: they come with the free plugin wherever WooCommerce is active, with no switch, and stay right on cached pages.
+- `shop-variation` (https://builtforbricks.com/bfb-elements/docs/shop-variation/): Dynamic data tags under BFB Shop that print the parent product's value and change as the shopper chooses a variation: SKU, price, stock status, stock quantity, weight, dimensions, GTIN, description and the meta values you allow. Put them in any element on the product page; the follower watches WooCommerce's own variations form, and a reset puts the product's own values back.
 
 ## Where it lives
 Not an element and no control: Bricks' own dynamic data picker (group BFB Shop), Conditions (group BFB Shop) and Interactions (triggers under BFB Shop). Tags and triggers come with the switch `shop-data` (Pro) and the free parts that register their own; variation facts with `shop-variation`.

@@ -43,8 +43,8 @@
     ],
     "parent": null,
     "cost": {
-        "css": "0.87 KB",
-        "js": "1.37 KB",
+        "css": "0.91 KB",
+        "js": "1.45 KB",
         "dependencies": "shop-live"
     },
     "requires": [

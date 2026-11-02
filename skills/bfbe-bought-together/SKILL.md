@@ -12,9 +12,13 @@ description: "Use when adding a frequently bought together set, complete the loo
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/bought-together/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+Two to four products that go together, this one first, each with a real checkbox, its image, its name and its price, a total of the ticked ones, and one button that adds them all. Companions are picked by hand, taken from WooCommerce's upsells or cross-sells, or drawn from your own paid orders. It is a nestable form whose parts you place in Bricks' own containers, and an optional set discount comes off once the set's own button has added it, while the whole set is in the cart, worked out on your server.
 
-**Costs a page:** CSS 1.37 KB, JS 1.13 KB (gzipped), plus shop-live, loaded only on pages that use it.
+**Not for:** Not for quantities: it adds one of each product, and the quantity is changed in the cart. For an offer where the shopper picks any three from a category, use BFB Bundle Builder.
+
+**Costs a page:** CSS 1.43 KB, JS 1.14 KB (gzipped), plus shop-live, loaded only on pages that use it.
+
+**Nestable:** yes · **In a query loop:** no · **Dynamic data:** no · **Keyboard:** yes · **Reduced motion:** yes
 
 ## Structure
 Nestable. Its own children: `bfbe-bought-together-products`, `bfbe-bought-together-total`.
@@ -61,13 +65,20 @@ What the builder inserts, as a tree `bricks/add-element` accepts (ids omitted):
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Set (`bfbeSet`)
-- `product` (select) **Product**: placeholder The product of the page
-- `source` (select) **Companions from**: options: `pick` Picked here (default), `upsells` Its upsells, `cross` Its cross-sells, `orders` Bought with it in your orders
-- `products` (select) **Companions**: placeholder Pick up to three products; only when `source` is not `upsells` or `cross` or `orders`
-- `most` (number) **Products in the set**: placeholder 3. This product included.
-- `variable` (select) **Other variable products**: options: `choose` With a select of their options (default), `leave` Left out
-- `unticked` (checkbox) **Start the others unticked**
-- `discount` (number) **Set discount (%)**: placeholder 0. While the whole set is in the cart.
+- `product` (select) **Product**: placeholder The product of the page. The set's own product, ticked and fixed; the product of the page unless chosen, so in a product template every product gets its own set.
+- `source` (select) **Companions from**: options: `pick` Picked here (default), `upsells` Its upsells, `cross` Its cross-sells, `orders` Bought with it in your orders. Picked here (the default), Its upsells, Its cross-sells, or Bought with it in your orders, the products most often in the same paid order, kept for an hour and counted again when an order's status changes.
+- `products` (select) **Companions**: placeholder Pick up to three products; only when `source` is not `upsells` or `cross` or `orders`. The products to offer, picked in the panel, with Picked here.
+- `most` (number) **Products in the set**: placeholder 3. 2 to 4, this one included, 3 unless set. A product that cannot be bought now drops out and the next takes its place.
+- `variable` (select) **Other variable products**: options: `choose` With a select of their options (default), `leave` Left out. With a select of their options (the default) or Left out.
+- `unticked` (checkbox) **Start the others unticked**. For a set that is a suggestion rather than a deal; the companions start ticked otherwise.
+- `discount` (number) **Set discount (%)**: placeholder 0. 0 to 90, none unless set, taken off while every product of the set is in the cart.
+
+## What it guarantees for accessibility (do not undo)
+- Each product has a real checkbox named by its product, ticked with a press or the space bar; the set's own product is ticked and cannot be unticked.
+- The total is an output element, so its new sum is read out once as the ticks change.
+- A variable product's select is named for its product (Options for ...) and set aside while that product is unticked.
+- After the add one sentence says what happened, such as Added to your cart: Oak Serving Board, Stoneware Mug Set.
+- Under reduced motion the tick on the picture changes without a transition.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

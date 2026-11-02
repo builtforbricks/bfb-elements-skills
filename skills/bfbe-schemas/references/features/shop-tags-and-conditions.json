@@ -4,7 +4,7 @@
     "pack": "free and pro",
     "feature": true,
     "shape": "registries",
-    "docs": "https://builtforbricks.com/bfb-elements/docs/shop-tags-and-conditions/",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/shop/",
     "since": "2.0.0",
     "requires": [
         "WooCommerce"
@@ -24,5 +24,9 @@
         "tags": "./shop/tags.json",
         "conditions": "./shop/conditions.json",
         "interactions": "./shop/interactions.json"
+    },
+    "pages": {
+        "shop-data": "https://builtforbricks.com/bfb-elements/docs/shop-data/",
+        "shop-variation": "https://builtforbricks.com/bfb-elements/docs/shop-variation/"
     }
 }

@@ -12,7 +12,13 @@ description: "Use when showing tiered or bulk prices as a price-by-quantity tabl
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/quantity-breaks/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+The product's price by quantity as a real table, placed wherever you want it on the product page. Its rows come from the Quantity breaks rule set on the product or its category, the same rule the cart is priced by. The row the quantity falls in is marked and moves as the shopper changes the quantity, and on a variable product the prices follow the chosen variation. It needs the Quantity breaks switch on.
+
+**Not for:** Not the place to set prices: the rows are the Quantity breaks rule on the product or its category. The price per item beside the quantity is not this element either; it is the BFB Quantity breaks group on Bricks' Add to cart.
+
+**Costs a page:** CSS none, JS none (gzipped), plus shop-quantity-breaks, loaded only on pages that use it. Only where used, quantity breaks: a price table by quantity, the same on the page and in the cart: CSS 0.34 KB, JS 1.80 KB.
+
+**Nestable:** no · **In a query loop:** no · **Dynamic data:** no · **Keyboard:** no · **Reduced motion:** no
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -22,6 +28,10 @@ Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `b
 
 ### Table (`bfbeTable`)
 Styling only, every key in the schema file: `headTypography`, `headBackground`, `cellTypography`, `cellPadding`, `numberAlign`, `line`, `currentBg`, `currentColor`.
+
+## What it guarantees for accessibility (do not undo)
+- It is a real table with a caption for screen readers, Price by quantity, and column headers Quantity, Price per item and You save.
+- Each row's quantity range (3 to 5, 6 or more) is its row header, and the row the quantity falls in carries aria-current.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

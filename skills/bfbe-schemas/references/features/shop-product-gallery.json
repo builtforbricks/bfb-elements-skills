@@ -6,7 +6,7 @@
     "shape": "hosts",
     "on": "Bricks' own Product gallery (`product-gallery`)",
     "job": "the shop's settings on Bricks' Product gallery: the gallery's layout and first image, the 3D view, and video in the gallery",
-    "docs": "https://builtforbricks.com/bfb-elements/docs/shop-product-gallery/",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/shop/",
     "since": "2.0.0",
     "requires": [
         "WooCommerce"
@@ -88,7 +88,7 @@
                     "css": [
                         {
                             "property": "border",
-                            "selector": ".woocommerce-product-gallery__image img"
+                            "selector": ".woocommerce-product-gallery__wrapper > .woocommerce-product-gallery__image > a > img"
                         }
                     ],
                     "group": "bfbeShopGallery",
@@ -457,5 +457,9 @@
                 }
             }
         }
+    },
+    "pages": {
+        "shop-product-page": "https://builtforbricks.com/bfb-elements/docs/shop-product-page/",
+        "shop-gallery-video": "https://builtforbricks.com/bfb-elements/docs/shop-gallery-video/"
     }
 }

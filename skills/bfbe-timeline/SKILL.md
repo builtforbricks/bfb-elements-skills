@@ -197,6 +197,7 @@ Styling, in the schema file: `duration`, `easingCustom`.
 - The line, dot and markers are hidden from assistive technology, so Story and Ledger read as ordinary content in order.
 - Play through never starts under reduced motion, pauses while a pointer or focus is inside, and stops for good once the visitor picks a moment.
 - Under reduced motion, scrolling to a chosen moment jumps rather than glides, and the line, reveal and switch durations are zero.
+- With the BFB Motion Switch's pause on, Play through stops as under reduced motion; lifted, the ring starts again from empty.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

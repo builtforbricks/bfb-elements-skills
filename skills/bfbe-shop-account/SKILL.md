@@ -12,7 +12,11 @@ description: "Use for the shop's settings on Bricks' Account page and Register f
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/shop-account/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+A free feature with three parts on WooCommerce's account: pages of your own drawn from Bricks templates, with WooCommerce's own pages renamed, reordered or hidden; a chosen page after logging in, registering or logging out, by role; and confirm email and password fields on Bricks' register forms. Everything goes through WooCommerce's own hooks, so its account menu, its endpoints and its redirects stay WooCommerce's.
+
+**Not for:** Not a membership or a sign-in page builder: an account page needs a signed-in visitor, as WooCommerce's own do, and takes one template. To design the whole account, use Bricks' Account page element and its templates.
+
+**Nestable:** no · **In a query loop:** no · **Dynamic data:** no · **Keyboard:** no · **Reduced motion:** no
 
 ## Where it lives
 A feature, not an element: its groups are added to Bricks' own elements, on the Content tab after Bricks' own groups. By element:
@@ -51,6 +55,11 @@ Not registered on the export site (Bricks 2.3.10): a Bricks 2.4 element. The con
 
 #### BFB Registration (`bfbeShopRegister`)
 The same 6 controls as on `woocommerce-account-form-register`.
+
+## What it guarantees for accessibility (do not undo)
+- Each confirm field has its own label, is marked required and carries autocomplete email or new-password.
+- A mismatch is said in a polite live region tied to the field with aria-describedby, and the field is marked aria-invalid, once the visitor leaves it.
+- The server refuses a mismatch with a WooCommerce notice, so the check holds with the script off.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

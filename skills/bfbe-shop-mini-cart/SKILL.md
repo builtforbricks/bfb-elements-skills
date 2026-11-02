@@ -12,7 +12,11 @@ description: "Use for the shop's settings on Bricks' Mini cart (BFB Shop mini ca
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/shop-mini-cart/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+A feature on Bricks' own Mini cart element, the classic one, that leaves its look alone and adds the behaviour: the cart link reads as a button named with the count, the panel is a dialog that takes and gives back the focus, and each cart change is said once to screen readers. It also gives the mini cart an empty state of your own, or hides it while the cart is empty, and stays right on cached pages.
+
+**Not for:** It does not draw a mini cart: it works on Bricks' classic Mini cart element and leaves its look to Bricks' controls. For a mini cart you lay out in a popup, use Bricks' Cart contents loop with Live cart.
+
+**Nestable:** no · **In a query loop:** no · **Dynamic data:** no · **Keyboard:** yes · **Reduced motion:** no
 
 ## Where it lives
 A feature, not an element: its groups are added to Bricks' own elements, on the Content tab after Bricks' own groups. By element:
@@ -24,11 +28,11 @@ A feature, not an element: its groups are added to Bricks' own elements, on the 
 
 #### BFB Mini cart (`bfbeShopMiniCart`)
 Free, switch `shop-mini-cart`.
-- `bfbeShopMiniCartTitle` (text) **Panel title**. At the top of the panel, beside the close button.
-- `bfbeShopMiniCartAdded` (text) **Announcement after adding**: placeholder Added: {product}. {cart}
-- `bfbeShopMiniCartRemoved` (text) **Announcement after removing**: placeholder Removed: {product}. {cart}
-- `bfbeShopMiniCartEmpty` (select) **When empty**: options: `woo` Show WooCommerce's text (default), `template` Show a template, `hide` Hide the whole mini cart
-- `bfbeShopMiniCartTemplate` (select) **Template**: options: the site's own, read when the panel opens; only when `bfbeShopMiniCartEmpty` is `template`
+- `bfbeShopMiniCartTitle` (text) **Panel title**. Empty by default. A heading at the top of the panel, beside the close button, which also names the panel for screen readers; set it when the drawer needs a visible "Your cart".
+- `bfbeShopMiniCartAdded` (text) **Announcement after adding**: placeholder Added: {product}. {cart}. What a screen reader hears once after an add, "Added: {product}. {cart}" unless you set it. {product} is the line, {cart} the cart's count and subtotal.
+- `bfbeShopMiniCartRemoved` (text) **Announcement after removing**: placeholder Removed: {product}. {cart}. "Removed: {product}. {cart}" unless you set it.
+- `bfbeShopMiniCartEmpty` (select) **When empty**: options: `woo` Show WooCommerce's text (default), `template` Show a template, `hide` Hide the whole mini cart. Show WooCommerce's text by default, or Show a template, or Hide the whole mini cart. Pick a template for a message, a button to the shop or a products loop in the empty panel.
+- `bfbeShopMiniCartTemplate` (select) **Template**: options: the site's own, read when the panel opens; only when `bfbeShopMiniCartEmpty` is `template`. With Show a template, a Bricks section or content template drawn inside the panel with its own styles. **Padding** sets the room around it.
 Styling, in the schema file: `bfbeShopMiniCartEmptyPadding`.
 
 #### BFB Mini cart look (`bfbeShopMiniCartLook`)
@@ -43,6 +47,13 @@ Pro, switch `shop-cart-lines`.
 - `bfbeShopCartLinesSave` (select) **Show**: options: `on` On (default), `off` Off. A button on each line.
 - `bfbeShopCartLinesSaveText` (text) **Label**: placeholder Save for later; only when `bfbeShopCartLinesSave` is not `off`
 Styling, in the schema file: `bfbeShopCartLinesUndoTypography`, `bfbeShopCartLinesUndoBackground`, `bfbeShopCartLinesUndoBorder`, `bfbeShopCartLinesUndoPadding`, `bfbeShopCartLinesUndoShadow`, `bfbeShopCartLinesUndoOver`, `bfbeShopCartLinesUndoPosition`, `bfbeShopCartLinesUndoBtnTypography`, `bfbeShopCartLinesUndoBtnBackground`, `bfbeShopCartLinesUndoBtnBorder`, `bfbeShopCartLinesUndoBtnPadding`, `bfbeShopCartLinesUndoBtnHover`, `bfbeShopCartLinesUndoBtnHoverColor`, `bfbeShopCartLinesSaveTypography`, `bfbeShopCartLinesSaveBackground`, `bfbeShopCartLinesSaveBorder`, `bfbeShopCartLinesSavePadding`, `bfbeShopCartLinesSaveHover`.
+
+## What it guarantees for accessibility (do not undo)
+- The cart link gets the button role, aria-expanded, aria-controls and aria-haspopup, and is named with the count ("Cart, 3 items"), kept right after every change.
+- Space opens the panel as Enter does. Escape closes it and puts the focus back on the link.
+- The panel is a dialog named "Shopping cart", or by the Panel title. Opening it from the link moves the focus in; closing gives it back to the link.
+- An off-canvas drawer is modal and keeps Tab inside while open; a dropdown closes when the focus leaves it.
+- Each cart change is said once through one live region. WooCommerce's own add-to-cart sentence is quieted, and where a BFB Toast shows the added product, the toast speaks for adds.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

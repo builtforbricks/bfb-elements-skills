@@ -12,9 +12,13 @@ description: "Use for BFB Cart Goals (`bfbe-cart-goals`): a progress bar towards
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/cart-goals/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+Several goals on one track: free shipping, a free gift, a percentage or a fixed amount off, or just a message, by cart total or by number of items. The goals live on the Shop page and their rewards are worked out on your server from your settings on every cart calculation; this element draws them as a sentence, a progress bar with a step per goal and a gift chooser, and keeps the figures right as the cart changes.
 
-**Costs a page:** CSS 0.99 KB, JS 1.77 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Not for:** It is not a discount rules engine: one track of up to twelve goals by cart total or item count, read from one shipping zone. For a coupon code, use WooCommerce's coupons with the Coupons feature; for one product at a lower price, use BFB Offer.
+
+**Costs a page:** CSS 1.01 KB, JS 1.95 KB (gzipped), no dependencies, loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** no · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -23,16 +27,16 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Goals (`bfbeGoals`)
-- `shows` (select) **Shows**: options: `all` Sentence, track and gift choice (default), `sentence` Sentence only, `track` Track only, `gifts` Gift choice only. Place a second one to put a part elsewhere.
-- `nextOnly` (checkbox) **Next goal only**
-- `steps` (select) **Steps**: options: `show` Show (default), `hide` Hide
+- `shows` (select) **Shows**: options: `all` Sentence, track and gift choice (default), `sentence` Sentence only, `track` Track only, `gifts` Gift choice only. Sentence, track and gift choice by default, or Sentence only, Track only or Gift choice only. Place a second Cart Goals to put a part elsewhere, such as the sentence in a header.
+- `nextOnly` (checkbox) **Next goal only**. Off unless you tick it; on, the track shows the next goal not yet reached, for a small space such as a mini cart.
+- `steps` (select) **Steps**: options: `show` Show (default), `hide` Hide; only when `shows` is not `sentence` or `gifts`. Show (the default) draws each goal as a step with its name and threshold, the reached ones marked; Hide keeps the sentence and the bar.
 - `toGo` (text) **Before a goal**: placeholder {amount} to go for {label}
 - `reachedText` (text) **Goal reached**: placeholder Reached: {label}
 - `allText` (text) **All reached**: placeholder You have every reward.
 
 ### Gift choice (`bfbeGift`)
 The whole group shows only when `shows` is not `sentence` or `track`.
-- `gifts` (text) **Gift choices**: placeholder Ids or SKUs, comma-separated
+- `gifts` (text) **Gift choices**: placeholder Ids or SKUs, comma-separated. Ids or SKUs, comma-separated. With two or more products, a reached gift goal shows a chooser that swaps the gift line; the server checks the choice against this element's saved set.
 - `giftWord` (text) **Chooser heading**: placeholder Choose your free gift; only when `gifts` is set
 - `chooseWord` (text) **Button**: placeholder Choose; only when `gifts` is set
 - `choicesAs` (select) **Choices as**: options: `radios` Radios (default), `pills` Pills; only when `gifts` is set
@@ -41,8 +45,14 @@ Styling, in the schema file: `legendTypography`, `choiceTypography`, `legendSpac
 
 ### Track (`bfbeTrack`)
 The whole group shows only when `shows` is not `gifts`.
-- `labelDisplay` (select) **Goal names**: options: `block` Show (default), `none` Hide; writes CSS; only when `steps` is not `hide`
+- `labelDisplay` (select) **Goal names**: options: `block` Show (default), `none` Hide; writes CSS; only when `steps` is not `hide` and `shows` is not `sentence`
 Styling, in the schema file: `gap`, `textTypography`, `trackHeight`, `trackColor`, `fillColor`, `trackBorder`, `stepTypography`, `thresholdTypography`, `reachedTypography`, `markColor`, `markBorder`.
+
+## What it guarantees for accessibility (do not undo)
+- The track is a progressbar named "Cart goals", with its value and maximum, described by the sentence; a track shown alone carries the sentence as hidden words.
+- Each goal reached is announced once ("Reached: Free shipping") and remembered for the tab, so a reload says nothing twice.
+- The gift chooser is real radios under a heading, with a real Choose button without the script.
+- Under reduced motion the bar's fill moves to its new width with no animation.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

@@ -9,10 +9,12 @@ description: "Use for the shop's settings on Bricks' Product price and Product s
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
 **Requires** BFB Elements 2.0.0 or later, and BFB Elements Pro 2.0.0 or later for the groups marked Pro, WooCommerce active, the feature switches on (WordPress menu BFB Elements, Elements): `shop-legal`, `shop-stock`. Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/features/shop-price-and-stock.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
-**Documentation**: https://builtforbricks.com/bfb-elements/docs/shop-price-and-stock/
+**Documentation**: https://builtforbricks.com/bfb-elements/docs/shop/ (the Shop), and a page for each feature this skill spans: https://builtforbricks.com/bfb-elements/docs/shop-legal/, https://builtforbricks.com/bfb-elements/docs/shop-stock/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+The website documents this by feature; each line is the approved summary from that feature's page.
+- `shop-legal` (https://builtforbricks.com/bfb-elements/docs/shop-legal/): A free feature on Bricks' own Product price element and the product edit screen, not an element: the lowest price of the last 30 days beside a reduced price, the unit price, and the maker and safety details. Each prints what the shop recorded or what you typed, through WooCommerce's own hooks and tags in Bricks' dynamic data picker. These are tools to help a shop show what it must; whether what prints meets the law where you sell is yours to judge.
+- `shop-stock` (https://builtforbricks.com/bfb-elements/docs/shop-stock/): A Pro feature on Bricks' own Product stock element, not an element: a bar for the stock left that follows the variation the shopper chooses, and a line for what sold lately, such as 12 sold in the last 7 days. Both read WooCommerce's own figures: a product that does not manage stock gets no bar, and nothing sold prints no line unless you ask for one.
 
 ## Where it lives
 A feature, not an element: its groups are added to Bricks' own elements, on the Content tab after Bricks' own groups. By element:
@@ -39,7 +41,7 @@ Styling, in the schema file: `bfbeShopLowestTypography`, `bfbeShopUnitTypography
 Pro, switch `shop-stock`.
 - `bfbeShopStockBar` (checkbox) **Show**
 - `bfbeShopStockBase` (select) **Full means**: options: `start` The starting stock (default), `sold` Stock plus sold; only when `bfbeShopStockBar` is set
-- `bfbeShopStockBarText` (text) **Text**: placeholder Only {left} left; dynamic data accepted; only when `bfbeShopStockBar` is set. {left}, {percent} and {start} are filled in.
+- `bfbeShopStockBarText` (text) **Text**: placeholder Only {left} left; dynamic data accepted; only when `bfbeShopStockBar` is set. {left}, {percent} and {start} are filled in. Shown at or under the low stock threshold; "Sold out" at zero.
 - `bfbeShopStockBarPlace` (select) **Position**: options: `below` Below the stock text (default), `above` Above the stock text, `instead` In place of the stock text; only when `bfbeShopStockBar` is set
 - `bfbeShopStockSold` (checkbox) **Show**
 - `bfbeShopStockSoldDays` (number) **Days**: placeholder 7; only when `bfbeShopStockSold` is set

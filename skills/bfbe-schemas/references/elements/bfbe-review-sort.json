@@ -8,7 +8,11 @@
     "children": [],
     "childrenDefault": [],
     "parent": null,
-    "cost": null,
+    "cost": {
+        "css": "none",
+        "js": "none",
+        "dependencies": "shop-reviews"
+    },
     "requires": [
         "WooCommerce"
     ],

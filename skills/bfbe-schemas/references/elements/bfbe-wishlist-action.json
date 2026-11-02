@@ -8,7 +8,11 @@
     "children": [],
     "childrenDefault": [],
     "parent": null,
-    "cost": null,
+    "cost": {
+        "css": "0.70 KB",
+        "js": "none",
+        "dependencies": "none"
+    },
     "requires": [
         "WooCommerce"
     ],
@@ -88,7 +92,8 @@
                 "delete": "Delete the list",
                 "share": "Share link",
                 "registry": "Gift registry switch",
-                "surprise": "Keep what friends buy a surprise"
+                "surprise": "Keep what friends buy a surprise",
+                "clear": "Clear the marks"
             },
             "inline": true,
             "placeholder": "Make a new list",
@@ -275,6 +280,19 @@
                 "surprise"
             ]
         },
+        "clearButton": {
+            "tab": "content",
+            "group": "bfbeAction",
+            "label": "Button words",
+            "type": "text",
+            "inline": true,
+            "placeholder": "Clear the marks",
+            "required": [
+                "act",
+                "=",
+                "clear"
+            ]
+        },
         "labelTypography": {
             "tab": "content",
             "group": "bfbeField",
@@ -283,7 +301,7 @@
             "css": [
                 {
                     "property": "typography",
-                    "selector": ".bfbe-wlact__label"
+                    "selector": "&:not(.bfbe-wlact--clear) .bfbe-wlact__label"
                 }
             ]
         },

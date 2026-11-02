@@ -12,9 +12,13 @@ description: "Use when showing product attributes as scales on a product page or
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/spec-scales/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+Product attributes drawn as scales, such as Warmth: Warm, 3 of 4, or Softness: 4 of 5, each a real meter with its figure in words beside it. It reads the attributes you already keep in WooCommerce, so the scale changes when the product does, and a product without an attribute prints nothing for it.
 
-**Costs a page:** CSS 0.46 KB, JS none (gzipped), no dependencies, loaded only on pages that use it.
+**Not for:** It does not make a scale of an attribute that is not one: a colour, a material or the sizes a product comes in prints nothing. It does not follow the chosen variation or compare products side by side; for that, use BFB Comparison Table.
+
+**Costs a page:** CSS 0.60 KB, JS none (gzipped), no dependencies, loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** yes · **Dynamic data:** no · **Keyboard:** no · **Reduced motion:** no
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -23,11 +27,16 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Scales (`bfbeScales`)
-- `scales` (repeater) **Scales**: placeholder Scale
+- `scales` (repeater) **Scales**: placeholder Scale. A list, one row per scale.
 
 ### Look (`bfbeLook`)
-- `layout` (select) **Layout**: options: `rows` Name, scale and figure in a row (default), `stacked` Name above the scale
+- `layout` (select) **Layout**: options: `rows` Name, scale and figure in a row (default), `stacked` Name above the scale. Name, scale and figure in a row by default, or Name above the scale for a narrow column; **Name width** (9em when empty, in the row layout), **Row gap** (10px when empty) and **Column gap**.
 Styling, in the schema file: `nameWidth`, `gap`, `columnGap`, `rowBackground`, `rowBorder`, `rowPadding`, `height`, `fill`, `track`, `border`, `nameTypography`, `figureTypography`.
+
+## What it guarantees for accessibility (do not undo)
+- A description list: the name is the term, the meter and its figure the description.
+- Each meter carries 0, the maximum and the value, is named by its row's name, and its own text says the name and the figure where a meter is not drawn.
+- The figure is printed text, so the value never depends on reading a bar.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

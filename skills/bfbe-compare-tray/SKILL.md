@@ -12,7 +12,13 @@ description: "Use when placing the bar of products being compared at the foot of
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/compare-tray/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+The products being compared in a bar fixed to the foot of the window, built from Bricks' own elements and placed once, in the footer template. It comes with a live count, a Block looping Products being compared with a picture, a name and a Remove on each row, and a Compare now button to your compare page. It hides while nothing is compared and shows the moment something is, with no reload.
+
+**Not for:** Not the comparison itself: the table is a Comparison Table set to Products being compared, on your compare page. One tray per page is enough, and the footer template gives every page one.
+
+**Costs a page:** CSS 0.50 KB, JS 0.90 KB (gzipped), no dependencies, loaded only on pages that use it.
+
+**Nestable:** yes · **In a query loop:** no · **Dynamic data:** no · **Keyboard:** yes · **Reduced motion:** yes
 
 ## Structure
 Nestable: any Bricks element goes inside (blocks, headings, text, images, a form).
@@ -123,10 +129,16 @@ What the builder inserts, as a tree `bricks/add-element` accepts (ids omitted):
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Tray (`bfbeTray`)
-- `trayName` (text) **Tray name**: placeholder Compare. Read out as the name of the tray.
+- `trayName` (text) **Tray name**: placeholder Compare. "Compare" unless set; what a screen reader announces as the tray's name.
 
 ### In the builder (`bfbeBuilder`)
-- `builderView` (select) **Show it**: options: `open` In the flow, so you can style it (default), `live` Working, as on the site. Working means it shows and hides as outside.
+- `builderView` (select) **Show it**: options: `open` In the flow, so you can style it (default), `live` Working, as on the site. In the flow, so you can style it (the default), or Working, which shows and hides it as on the site.
+
+## What it guarantees for accessibility (do not undo)
+- The tray is a section named with its Tray name.
+- One polite region says each change once: the sentence of a change made on the page, the count for a change made in another tab, and nothing for an answer that changes nothing.
+- Removing from the tray with the keyboard keeps the focus in the tray, on the Remove of the row now in its place.
+- It slides in with the pack's duration and appears at once under reduced motion.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

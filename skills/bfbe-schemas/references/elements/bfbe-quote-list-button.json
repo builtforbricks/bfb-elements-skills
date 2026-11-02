@@ -9,7 +9,7 @@
     "childrenDefault": [],
     "parent": null,
     "cost": {
-        "css": "0.55 KB",
+        "css": "0.59 KB",
         "js": "none",
         "dependencies": "none"
     },
@@ -331,7 +331,7 @@
             "css": [
                 {
                     "property": "flex-direction",
-                    "selector": ".bfbe-list__btn"
+                    "selector": "&.bfbe-list--both .bfbe-list__btn"
                 }
             ]
         },
@@ -499,7 +499,7 @@
             "label": "Arrows",
             "type": "select",
             "options": {
-                "browser": "The browser&#039;s",
+                "browser": "As the browser draws them",
                 "inside": "Ours, inside the box",
                 "stepper": "A − and a + beside it",
                 "none": "None"
@@ -801,7 +801,7 @@
             "css": [
                 {
                     "property": "gap",
-                    "selector": ""
+                    "selector": "&.bfbe-list--qty"
                 }
             ]
         },

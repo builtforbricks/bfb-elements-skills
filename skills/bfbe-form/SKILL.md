@@ -16,7 +16,7 @@ A nestable form you build from field elements and step elements, with uploads an
 
 **Not for:** Not for taking card details on your own page: payment happens on Stripe's own Checkout page. Uploads, signatures, steps, totals and other repeaters cannot sit inside a Repeater's rows, which suit rows of simple fields.
 
-**Costs a page:** CSS 2.69 KB, JS 3.06 KB (gzipped), no dependencies, loaded only on pages that use it. Only where used, the steps engine: JS 3.00 KB. Only where used, the checks and their words: CSS 0.34 KB, JS 2.63 KB. Only where used, the formula: JS 1.00 KB. Only where used, a warning before leaving: JS 0.39 KB. Only where used, values from rules and the address: JS 0.94 KB. Only where used, the pricing: JS 2.59 KB. Only where used, the pricing rules: JS 1.37 KB. Only where used, floating labels: CSS 0.83 KB, JS 1.34 KB. Only where used, alerts: the chosen variation in a back-in-stock or price-drop form: JS 0.25 KB. Only where used, the product finder: BFB Advanced Forms answers drawn as a Product finder loop on the result step: CSS 0.22 KB, JS 1.15 KB.
+**Costs a page:** CSS 2.69 KB, JS 3.06 KB (gzipped), no dependencies, loaded only on pages that use it. Only where used, the steps engine: JS 3.00 KB. Only where used, the checks and their words: CSS 0.34 KB, JS 2.63 KB. Only where used, the formula: JS 1.00 KB. Only where used, a warning before leaving: JS 0.39 KB. Only where used, values from rules and the address: JS 0.94 KB. Only where used, the pricing: JS 2.59 KB. Only where used, the pricing rules: JS 1.37 KB. Only where used, floating labels: CSS 0.83 KB, JS 1.34 KB. Only where used, alerts: the chosen variation in a back-in-stock or price-drop form: JS 0.25 KB. Only where used, the product finder: BFB Advanced Forms answers drawn as a Product finder loop on the result step: CSS 0.24 KB, JS 1.15 KB.
 
 **Nestable:** yes · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 
@@ -250,10 +250,10 @@ The whole group shows only when `actions` is `unlock-password-protection`.
 
 ### Stock and price alerts (`bfbeAlerts`)
 The whole group shows only when `actions` is `bfbe-alert-stock` or `bfbe-alert-price`.
-- `alertEmail` (text) **Email from the field**: placeholder The first email field
+- `alertEmail` (text) **Email from the field**: placeholder The first email field. The first email field unless named. **Variation from the field** is a hidden field, variation unless named, filled as the shopper chooses. **Product from the field** is the product the form is on unless named.
 - `alertVariation` (text) **Variation from the field**: placeholder variation. A hidden field: filled as the shopper chooses.
 - `alertProduct` (text) **Product from the field**: placeholder The product the form is on
-- `alertDone` (text) **Message after signing up**: placeholder Check your inbox to confirm.
+- `alertDone` (text) **Message after signing up**: placeholder Check your inbox: we sent a link to confirm.. The words shown once someone signs up. On a product that is in stock, Tell me when it is back says It is in stock now.
 
 ### Update the user (`bfbeUser`)
 The whole group shows only when `actions` is `bfbe-user`.
@@ -360,7 +360,7 @@ Styling only, every key in the schema file: `accent`, `trackHeight`, `trackColor
 Styling only, every key in the schema file: `optPadding`, `optAlign`, `optBorder`, `optBackground`, `optHover`, `optChosen`, `optChosenText`, `optChosenBorder`, `optsBackground`, `optsBorder`, `optsPadding`, `optsShadow`, `optGap`, `optMin`, `optColumns`, `optTitleTypography`, `optNoteTypography`, `optPriceTypography`, `optIconSize`, `optIconColor`, `badgeBackground`, `badgeColor`, `badgeTypography`, `badgeGap`, `badgePadding`, `badgeBorder`, `wasTypography`.
 
 ### Tick box (`bfbeCheck`)
-- `checkLook` (select) **Look**: options: `native` The browser's. Tick boxes and radios alike.
+- `checkLook` (select) **Look**: options: `native` The browser's. The **Font** (a family the page loads), **Size (% of its width)**, 6 unless set, so the words keep their place as the picture scales, the **Colour**, **Text shadow**, **Opacity** (0 to 1) and **Alignment**.
 Styling, in the schema file: `checkSize`, `checkRadius`, `checkGap`, `checkBackground`, `checkLine`, `checkMarkColor`.
 
 ### Switch (`bfbeSwitch`)
@@ -407,19 +407,19 @@ Styling, in the schema file: `errorTypography`, `errorSpace`, `errorBorder`, `er
 - `floatPreview` (select) **Floating labels**: options: `page` As the page shows them (default), `up` Risen, so you can style them; only when `labelsAt` is `border`. With floating labels on, show them As the page shows them (the default) or Risen, so you can style them.
 
 ### Find products from the answers (`bfbeShopFind`)
-- `bfbeShopFind` (checkbox) **Find products from the answers**. The choices become filters; a Product finder loop shows matches.
-- `bfbeShopFindTo` (select) **Show the matches**: options: `here` On this page (default), `page` On another page; only when `bfbeShopFind` is set
+- `bfbeShopFind` (checkbox) **Find products from the answers**. Tick it for a product finder. The form's choice fields become filters on your shop's products: each BFB Choice Field says what it filters by under Product finder, and the matches show in a query loop of the type BFB Shop product finder. Your server makes the filters from the checked answers, each one checked against your catalogue, and the answers are not kept.
+- `bfbeShopFindTo` (select) **Show the matches**: options: `here` On this page (default), `page` On another page; only when `bfbeShopFind` is set. On this page, the default, in **The loop** named by its element id, else the page's first such loop; or On another page, chosen in **The page**. The filters travel in the address, so a result can be shared and comes back on a reload. Without a script every step shows at once, and Send still takes the visitor to the matches.
 - `bfbeShopFindPage` (link) **The page**: only when `bfbeShopFind` is set and `bfbeShopFindTo` is `page`
 - `bfbeShopFindLoop` (text) **The loop**: placeholder Its element id; only when `bfbeShopFind` is set and `bfbeShopFindTo` is not `page`. Empty: the first Product finder loop on the page.
 
 ### Draft order (`bfbeQuoteOrder`)
 The whole group shows only when `actions` is `bfbe-quote-order`.
-- `bfbeQuoteEmail` (text) **Email from the answer**: placeholder The first email field
+- `bfbeQuoteEmail` (text) **Email from the answer**: placeholder The first email field. The field whose address becomes the order's billing email, the first email field unless named. **Name from the answer** gives the billing name, the field keyed name unless named.
 - `bfbeQuoteName` (text) **Name from the answer**: placeholder name
-- `bfbeQuoteEmpty` (text) **When the list is empty**: placeholder Your quote list is empty.
+- `bfbeQuoteEmpty` (text) **When the list is empty**: placeholder Your quote list is empty.. The words a send with an empty quote list is refused with, Your quote list is empty. unless set. At most five such orders an hour come from one network address.
 
 ### WooCommerce (`bfbeShopWoo`)
-- `bfbeCartExtras` (checkbox) **Extras for this cart**. Priced choices become cart fees, priced on the server.
+- `bfbeCartExtras` (checkbox) **Extras for this cart**. The form's priced choices become cart fees, worked out on your server from the form's settings and the answers. **Fees**: One per priced choice, the default, or One for the total, named in **Fee name**, Extras unless set. Tick **Taxed** for the standard tax rate. It needs no action of Bricks' own.
 - `bfbeCartExtrasAs` (select) **Fees**: options: `each` One per priced choice (default), `total` One for the total; only when `bfbeCartExtras` is set
 - `bfbeCartExtrasName` (text) **Fee name**: placeholder Extras; only when `bfbeCartExtras` is set and `bfbeCartExtrasAs` is `total`
 - `bfbeCartExtrasTax` (checkbox) **Taxed**: only when `bfbeCartExtras` is set

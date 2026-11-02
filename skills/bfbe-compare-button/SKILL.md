@@ -12,9 +12,13 @@ description: "Use when adding a compare toggle to product cards or a product pag
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/compare-button/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+A real toggle that puts a product among the products being compared, up to four, on a product page or in a product query loop. What is compared shows in a BFB Compare Tray you place, and the table is the Comparison Table with its source Products being compared. The button prints no tray of its own: a page with compare buttons and no Compare Tray has no tray, though the buttons still work and say what they did.
 
-**Costs a page:** CSS 1.17 KB, JS 0.78 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Not for:** Not a tray or a table: place a BFB Compare Tray for the bar and a Comparison Table set to Products being compared for the table. Variations are not compared on their own; a variable product is compared as itself.
+
+**Costs a page:** CSS 0.54 KB, JS none (gzipped), no dependencies, loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -25,13 +29,19 @@ Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `b
 ### Button (`bfbeButton`)
 - `textAdd` (text) **Words to add**: placeholder Compare; dynamic data accepted
 - `textOn` (text) **Words when added**: placeholder Comparing; dynamic data accepted
-- `content` (select) **Button shows**: options: `both` Icon and words (default), `icon` Icon only, `words` Words only
+- `content` (select) **Button shows**: options: `both` Icon and words (default), `icon` Icon only, `words` Words only. Icon and words by default, Icon only or Words only. **Icon to add** and **Icon when added**: any icon; unset, two columns, the second filled with a tick.
 - `iconAdd` (icon) **Icon to add**: only when `content` is not `words`
 - `iconOn` (icon) **Icon when added**: only when `content` is not `words`
 
 ### Look (`bfbeLook`)
 - `iconPlace` (select) **Icon sits**: options: `row` Before the words (default), `row-reverse` After the words; writes CSS; only when `content` is not `icon` or `words`
 Styling, in the schema file: `btnType`, `btnBackground`, `btnBorder`, `btnShadow`, `btnPadding`, `hoverBackground`, `hoverColor`, `hoverBorderColor`, `iconSize`, `iconColor`, `gap`, `onBackground`, `onColorText`, `onBorderColor`, `onColor`.
+
+## What it guarantees for accessibility (do not undo)
+- A submit in a real form with aria-pressed, named with its words and the product: "Comparing: Oak board".
+- A press is said once: by the Compare Tray's own region when one is on screen, otherwise by the page's shared status.
+- A fifth product is refused and the reason is said at once; the button stays unpressed.
+- Hover colours also apply on keyboard focus, and the colour changes take the pack's duration, which is zero under reduced motion.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

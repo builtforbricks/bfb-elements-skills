@@ -12,7 +12,7 @@ description: "Use for what Shop 2.0 is: the Shop settings page and its sub-pages
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/shop/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+The Shop in BFB Elements: features on Bricks' own WooCommerce elements and new shop elements, the Shop page, cached pages, live tags and what the visitor's browser keeps.
 
 ## Where it lives
 WooCommerce active, then the WordPress menu BFB Elements, Elements (a switch per shop feature and per shop element) and BFB Elements, Shop (the settings, on sub-pages: General, Products, Pricing, Cart & checkout, Delivery, Customers, Search). A sub-page shows only when a part of the shop adds to it.
@@ -26,7 +26,7 @@ WooCommerce active, then the WordPress menu BFB Elements, Elements (a switch per
 - `shop-product-page` **Product page essentials** (free): Product data for search engines on every Bricks product template, and a first gallery image that loads at once.
 - `shop-mini-cart` **Mini cart** (free): A mini cart that works for keyboard and screen readers, with your own empty state.
 - `shop-account` **Account** (free): Your own account pages, a page after login or logout, and confirm fields on registration.
-- `shop-filters` **Filters** (free): Collapsible categories in product filters, and filters that understand variations.
+- `shop-filters` **Filters** (free): Collapsible categories in product filters.
 - `shop-search-insights` **Search insights** (free): What shoppers search for, and the searches that found nothing.
 - `shop-variation` **Variation data** (Pro): Price, SKU, stock and any detail that follow the variation the shopper chooses, in any element.
 - `shop-loops` **Shop loops** (Pro): Best sellers, trending, top rated, new arrivals, recently viewed, bought before and more, as query loops.

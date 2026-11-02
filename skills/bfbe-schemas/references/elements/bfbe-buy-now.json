@@ -8,7 +8,19 @@
     "children": [],
     "childrenDefault": [],
     "parent": null,
-    "cost": null,
+    "cost": {
+        "css": "none",
+        "js": "none",
+        "dependencies": "shop-buy",
+        "also": [
+            {
+                "what": "Shop, buying: the BFB Buy Now's post and look, and catalogue mode with ask for a price",
+                "css": "0.25 KB",
+                "js": "1.40 KB",
+                "dependencies": "none"
+            }
+        ]
+    },
     "requires": [
         "WooCommerce"
     ],

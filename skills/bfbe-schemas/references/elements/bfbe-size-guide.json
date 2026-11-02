@@ -10,7 +10,7 @@
     "parent": null,
     "cost": {
         "css": "0.82 KB",
-        "js": "1.42 KB",
+        "js": "1.44 KB",
         "dependencies": "none"
     },
     "requires": [
@@ -1121,7 +1121,7 @@
             "label": "Arrows",
             "type": "select",
             "options": {
-                "browser": "The browser&#039;s",
+                "browser": "As the browser draws them",
                 "inside": "Ours, inside the box",
                 "stepper": "A − and a + beside it",
                 "none": "None"

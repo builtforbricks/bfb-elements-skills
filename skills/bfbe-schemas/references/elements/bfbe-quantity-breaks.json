@@ -8,7 +8,19 @@
     "children": [],
     "childrenDefault": [],
     "parent": null,
-    "cost": null,
+    "cost": {
+        "css": "none",
+        "js": "none",
+        "dependencies": "shop-quantity-breaks",
+        "also": [
+            {
+                "what": "Shop, quantity breaks: a price table by quantity, the same on the page and in the cart",
+                "css": "0.34 KB",
+                "js": "1.80 KB",
+                "dependencies": "shop-variation"
+            }
+        ]
+    },
     "requires": [
         "WooCommerce"
     ],

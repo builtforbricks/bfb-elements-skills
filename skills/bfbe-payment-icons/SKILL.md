@@ -12,9 +12,13 @@ description: "Use when showing the payment methods a shop accepts as a row of ic
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/payment-icons/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+The icons of the payment methods switched on in WooCommerce, read every time the page renders, so a method you turn off leaves the row by itself. Each method shows the gateway's own icon where it has one, or a small mark of ours for the common ones, always with the gateway's title as its text alternative. Names can print beside the marks.
+
+**Not for:** Not for a brand's official logo: the marks of ours are small glyphs, so a shop that must show an official mark uses the gateway's own icon or Bricks' Image element. It shows what is switched on, not what one cart can use.
 
 **Costs a page:** CSS 0.41 KB, JS none (gzipped), no dependencies, loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** no · **Dynamic data:** no · **Keyboard:** no · **Reduced motion:** no
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -23,9 +27,14 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Icons (`bfbeIcons`)
-- `gateways` (select) **Show**: options: `bacs` Direct bank transfer, `cod` Cash on delivery
-- `titles` (checkbox) **Names**
+- `gateways` (select) **Show**: options: `bacs` Direct bank transfer, `cod` Cash on delivery. Every method that is on by default; pick some from the gateways switched on in WooCommerce, Settings, Payments for a row that shows fewer.
+- `titles` (checkbox) **Names**. Off by default; ticked, each method's title prints beside its mark, and the mark steps back for screen readers so the name is said once.
 Styling, in the schema file: `justify`, `gap`, `size`, `color`, `chipBackground`, `chipBorder`, `chipShadow`, `chipPadding`, `nameTypography`, `nameGap`.
+
+## What it guarantees for accessibility (do not undo)
+- The row is a list named Payment methods, one item per method.
+- Each mark of ours is an image named with the method's title; a gateway's own image without a text alternative gets the title.
+- With Names ticked, the marks are hidden from screen readers and the printed name says the method once.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

@@ -12,9 +12,13 @@ description: "Use when adding a save-to-wishlist toggle to a product page, a pro
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/wishlist-button/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+A real toggle that saves a product to the visitor's wishlist, named with the product and its state, with words and an icon for each state. On a product page it saves that product, in a query loop the loop's, and set to another post type it saves posts of that type. Set to A count for the header, it is a heart with the number saved, linking to the wishlist page.
 
-**Costs a page:** CSS 1.02 KB, JS none (gzipped), no dependencies, loaded only on pages that use it.
+**Not for:** Not the wishlist page itself: build that with a Wishlist query loop and a BFB Wishlist Bar. It needs WooCommerce and the Lists feature on.
+
+**Costs a page:** CSS 0.81 KB, JS none (gzipped), no dependencies, loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -27,17 +31,17 @@ Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `b
 
 ### Button (`bfbeButton`)
 The whole group shows only when `shows` is not `count`.
-- `postType` (select) **Saves**: options: `product` Products (default), `post` Posts, `page` Pages, `bfbe_review` Review, `bfbe_feature` Feature visuals, `bricks_template` My Templates
+- `postType` (select) **Saves**: options: `product` Products (default), `post` Posts, `page` Pages, `bfbe_review` Review, `bfbe_feature` Feature visuals, `bricks_template` My Templates. Products unless set, or any public post type; the button saves the post of that type it stands in.
 - `textAdd` (text) **Words to add**: placeholder Add to wishlist; dynamic data accepted
 - `textOn` (text) **Words when saved**: placeholder In your wishlist; dynamic data accepted
-- `content` (select) **Button shows**: options: `both` Icon and words (default), `icon` Icon only, `words` Words only
+- `content` (select) **Button shows**: options: `both` Icon and words (default), `icon` Icon only, `words` Words only. Icon and words by default, Icon only (its name still says both) or Words only. **Icon to add** and **Icon when saved**: any icon; unset, the pack's heart, outlined and filled.
 - `iconAdd` (icon) **Icon to add**: only when `content` is not `words`
 - `iconOn` (icon) **Icon when saved**: only when `content` is not `words`
 
 ### Header count (`bfbeCount`)
 The whole group shows only when `shows` is `count`.
-- `countHide` (select) **Hide while empty**: options: `on` On (default), `off` Off. Appears once something is added, with no reload.
-- `countPlace` (select) **Badge place**: options: `corner` Over the icon corner (default), `beside` Beside the icon
+- `countHide` (select) **Hide while empty**: options: `on` On (default), `off` Off. On by default, so the count appears once something is saved, with no reload; Off shows 0, for a header that keeps its place.
+- `countPlace` (select) **Badge place**: options: `corner` Over the icon corner (default), `beside` Beside the icon. Over the icon corner by default, or Beside the icon.
 - `countIcon` (icon) **Icon**
 Styling, in the schema file: `countIconSize`, `countIconColor`, `countBadgeBg`, `countBadgeColor`, `countBadgeSize`, `countBadgeBorder`, `countBadgeTypography`.
 
@@ -45,6 +49,13 @@ Styling, in the schema file: `countIconSize`, `countIconColor`, `countBadgeBg`, 
 The whole group shows only when `shows` is not `count`.
 - `iconPlace` (select) **Icon sits**: options: `row` Before the words (default), `row-reverse` After the words; writes CSS; only when `content` is not `icon` or `words`
 Styling, in the schema file: `btnType`, `btnBackground`, `btnBorder`, `btnShadow`, `btnPadding`, `hoverBackground`, `hoverColor`, `hoverBorderColor`, `iconSize`, `iconColor`, `gap`, `onBackground`, `onColorText`, `onBorderColor`, `onColor`.
+
+## What it guarantees for accessibility (do not undo)
+- The button is a submit in a real form with aria-pressed, named with its words and the product: "In your wishlist: Linen shirt".
+- Its icons are hidden from screen readers; with Icon only the name still says the words and the product.
+- A press is said once through the shop's live region, such as "Added to your wishlist: Linen shirt. 3 in your wishlist."
+- The header count's link is named "Wishlist, 3 items", kept right as the count changes, and the badge is not read twice.
+- Hover colours also apply on keyboard focus, and the colour changes take the pack's duration, which is zero under reduced motion.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

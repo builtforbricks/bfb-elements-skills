@@ -12,9 +12,13 @@ description: "Use when placing, wiring or styling BFB Cart Shipping (`bfbe-cart-
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/cart-shipping/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+The cart's shipping choices as radio cards you style, on a cart page you lay out yourself: each rate WooCommerce offers for the cart, with its label and cost as WooCommerce prints them. Choosing a rate sets it the way WooCommerce's own cart does, and the totals follow with no reload. It works with Bricks' experimental shop setting off.
 
-**Costs a page:** CSS 0.55 KB, JS 1.15 KB (gzipped), plus shop-live, loaded only on pages that use it.
+**Not for:** It is not a shipping calculator: it has no address fields, so a shop whose rates depend on the address needs WooCommerce's cart calculator or the checkout for that. It adds no rates and changes no costs.
+
+**Costs a page:** CSS 0.63 KB, JS 1.15 KB (gzipped), plus shop-live, loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** no · **Dynamic data:** no · **Keyboard:** yes · **Reduced motion:** no
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -25,6 +29,11 @@ Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `b
 ### Cards (`bfbeCartShip`)
 - `radioLook` (select) **Radios**: options: `native` As the browser draws it (default), `custom` Styled with the controls below
 Styling, in the schema file: `listDirection`, `cardGap`, `cardBackground`, `cardBorder`, `cardPadding`, `cardShadow`, `hoverBorderColor`, `chosenBackground`, `chosenBorderColor`, `accentColor`, `radioTickSize`, `radioTickBg`, `radioTickBorder`, `radioTickHover`, `radioTickOnLine`, `radioTickMarkColor`, `labelTypography`, `nameTypography`, `contentsTypography`, `noteTypography`.
+
+## What it guarantees for accessibility (do not undo)
+- Each rate is a real radio inside its card's label, so a click, the arrow keys and a screen reader read it as any radio.
+- The keyboard focus ring is the pack's own, round the radio, and a focused card takes the Hover border colour.
+- A choice is said once: "Shipping: Express, 9,00 €. Total: 93,00 €."
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

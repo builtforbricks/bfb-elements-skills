@@ -12,7 +12,11 @@ description: "Use for BFB Applied Coupons (`bfbe-applied-coupons`): the coupons 
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/applied-coupons/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+The coupons on the cart, each with WooCommerce's label, its amount and a Remove button, placed anywhere: beside Bricks' Cart coupon element, above the totals, in the cart's sidebar or on any page. Remove goes through WooCommerce's own remove without leaving the page. It needs the Coupons feature on, and it hides while no coupon is applied.
+
+**Not for:** It is not a coupon field: shoppers type codes in Bricks' Cart coupon element. It lists and removes the coupons already on the cart.
+
+**Nestable:** no · **In a query loop:** no · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** no
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -21,8 +25,13 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Applied coupons (`bfbeCoupons`)
-- `removeWord` (text) **Remove word**: placeholder Remove
+- `removeWord` (text) **Remove word**: placeholder Remove. "Remove" unless you set it.
 Styling, in the schema file: `direction`, `gap`, `chipBackground`, `chipBorder`, `chipPadding`, `labelTypography`, `amountTypography`, `removeTypography`, `removeBackground`, `removeBorder`, `removePadding`, `removeHover`.
+
+## What it guarantees for accessibility (do not undo)
+- The coupons are a list named "Applied coupons".
+- Each Remove is a real button named with its code ("Remove: welcome10").
+- "Coupon has been removed." is announced once, and the focus moves to the Remove now at the pressed one's place, or else to the coupon field.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

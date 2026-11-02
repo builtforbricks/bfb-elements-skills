@@ -40,7 +40,7 @@
             {
                 "what": "Shop, the personalisation preview: a BFB Text Field drawn over the product picture as it is typed",
                 "css": "0.33 KB",
-                "js": "0.92 KB",
+                "js": "0.96 KB",
                 "dependencies": "none"
             }
         ]
@@ -307,7 +307,7 @@
             "label": "Colour picker",
             "type": "select",
             "options": {
-                "native": "The browser&#039;s",
+                "native": "As the browser draws it",
                 "custom": "Styled with the controls"
             },
             "inline": true,

@@ -9,7 +9,7 @@
     "childrenDefault": [],
     "parent": null,
     "cost": {
-        "css": "2.80 KB",
+        "css": "2.84 KB",
         "js": "2.66 KB",
         "dependencies": "none",
         "also": [
@@ -1124,7 +1124,7 @@
             "label": "Arrows",
             "type": "select",
             "options": {
-                "browser": "The browser&#039;s",
+                "browser": "As the browser draws them",
                 "inside": "Ours, inside the box",
                 "stepper": "A − and a + beside it",
                 "none": "None"
@@ -1473,7 +1473,7 @@
             "label": "Date picker",
             "type": "select",
             "options": {
-                "native": "The browser&#039;s",
+                "native": "As the browser draws it",
                 "custom": "Styled with the controls"
             },
             "inline": true,
@@ -2907,7 +2907,7 @@
             "css": [
                 {
                     "property": "border",
-                    "selector": ".flatpickr-calendar .dayContainer .flatpickr-day.today"
+                    "selector": ".flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed)"
                 }
             ],
             "required": [
@@ -2994,11 +2994,11 @@
             "css": [
                 {
                     "property": "border",
-                    "selector": ".flatpickr-calendar .dayContainer .flatpickr-day.today:hover"
+                    "selector": ".flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed):hover"
                 },
                 {
                     "property": "border",
-                    "selector": ".flatpickr-calendar .dayContainer .flatpickr-day.today:focus-visible"
+                    "selector": ".flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed):focus-visible"
                 }
             ],
             "required": [
@@ -5495,7 +5495,7 @@
             "label": "Arrows",
             "type": "select",
             "options": {
-                "browser": "The browser&#039;s",
+                "browser": "As the browser draws them",
                 "inside": "Ours, inside the box",
                 "stepper": "A − and a + beside it",
                 "none": "None"

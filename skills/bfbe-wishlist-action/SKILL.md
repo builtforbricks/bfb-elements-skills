@@ -12,7 +12,11 @@ description: "Use when placing one wishlist action for customers (choose a list,
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/wishlist-action/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+A part of BFB Wishlist Bar, documented on its page. The website says of it: The wishlist page's lists bar: a box you fill with Bricks' own elements and BFB Wishlist Action elements, each one thing a customer does to their lists. It comes with the list's name, its count, a Gift registry badge and two rows of actions, and keeps WooCommerce's notice of what an action just did, a sign-in note for guests and a note on a shared list. Every action is a real form, with or without the script.
+
+**Costs a page:** CSS 0.70 KB, JS none (gzipped), no dependencies, loaded only on pages that use it.
+
+**Nestable:** yes · **In a query loop:** no · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -21,7 +25,7 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Action (`bfbeAction`)
-- `act` (select) **Does**: options: `new` Make a new list (default), `pick` Choose the list shown, `rename` Rename the list, `delete` Delete the list, `share` Share link, `registry` Gift registry switch, `surprise` Keep what friends buy a surprise. Shown to a signed-in customer only.
+- `act` (select) **Does**: options: `new` Make a new list (default), `pick` Choose the list shown, `rename` Rename the list, `delete` Delete the list, `share` Share link, `registry` Gift registry switch, `surprise` Keep what friends buy a surprise, `clear` Clear the marks. Shown to a signed-in customer only.
 - `newLabel` (text) **Field label**: placeholder New list; only when `act` is `` or `new`
 - `newButton` (text) **Button words**: placeholder Create; only when `act` is `` or `new`
 - `pickLabel` (text) **Field label**: placeholder Your lists; only when `act` is `pick`
@@ -35,6 +39,7 @@ Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `b
 - `shareStop` (text) **Stop words**: placeholder Stop sharing; only when `act` is `share`
 - `registryButton` (text) **Button words**: placeholder Gift registry; only when `act` is `registry`
 - `surpriseButton` (text) **Button words**: placeholder Keep what friends buy a surprise; only when `act` is `surprise`
+- `clearButton` (text) **Button words**: placeholder Clear the marks; only when `act` is `clear`
 
 ### Field (`bfbeField`)
 The whole group shows only when `act` is `` or `new` or `pick` or `rename` or `share`.
@@ -47,6 +52,13 @@ Styling, in the schema file: `listChevron`, `listPanelBg`, `listPanelBorder`, `l
 
 ### Button (`bfbeLook`)
 Styling only, every key in the schema file: `btnType`, `btnBackground`, `btnBorder`, `btnShadow`, `btnPadding`, `hoverBackground`, `hoverColor`, `hoverBorderColor`, `onBackground`, `onColorText`, `onBorderColor`.
+
+## What it guarantees for accessibility (do not undo)
+- Each action is a real form with a submit button, its field labelled where it has one, so it works from the keyboard and with scripts off.
+- The Gift registry and surprise switches carry aria-pressed, saying whether they are on.
+- Clear the marks is described by its count, such as "3 marked as bought".
+- The share link's Copy shows where the browser can copy, and says "Link copied."
+- The action buttons' colour changes take the pack's duration, which is zero under reduced motion.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

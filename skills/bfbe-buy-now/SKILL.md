@@ -12,7 +12,13 @@ description: "Use when placing a Buy now button that goes straight to the checko
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/buy-now/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+A Buy now button you place anywhere on a product page or in a product query loop row, which takes the shopper straight to the checkout with this product. It joins the product's own add to cart form, so the chosen variation, the quantity and any option fields go with it, and WooCommerce adds the product with its own checks. By default the rest of the cart is set aside and comes back on the cart page or after the order. It needs the Buying switch on.
+
+**Not for:** Not for external products, sold-out products or products under catalogue mode, which get no button. Bricks' Products element prints its own cards, so the button cannot stand inside them: use a query loop for cards with a Buy now.
+
+**Costs a page:** CSS none, JS none (gzipped), plus shop-buy, loaded only on pages that use it. Only where used, buying: the BFB Buy Now's post and look, and catalogue mode with ask for a price: CSS 0.25 KB, JS 1.40 KB.
+
+**Nestable:** no · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** no
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -21,8 +27,14 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Buy now (`bfbeBuy`)
-- `text` (text) **Label**: placeholder Buy now; dynamic data accepted
-- `takes` (select) **Buy now takes**: options: `alone` This item alone, the cart kept for later (default), `with` This item with the cart
+- `text` (text) **Label**: placeholder Buy now; dynamic data accepted. The button's words, Buy now unless set; it takes dynamic data.
+- `takes` (select) **Buy now takes**: options: `alone` This item alone, the cart kept for later (default), `with` This item with the cart. This item alone, the cart kept for later (the default) sets the cart's lines and coupons aside, so the checkout holds this item alone, and puts them back on the cart page or after the order. Choose This item with the cart for a shop where people buy several things at once.
+
+## What it guarantees for accessibility (do not undo)
+- It is a real submit button joined to the product's form by the HTML form attribute, so Enter and Space press it, and it posts before and without JavaScript.
+- On a variable product's page it is disabled while no variation is chosen, following WooCommerce's own add button, and dimmed to half while it waits.
+- In a product card, pressed before every swatch is chosen, it says what is missing through the shop's live region and moves the focus to a swatch group still open; nothing is posted.
+- Its focus ring is the pack's own focus outline.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

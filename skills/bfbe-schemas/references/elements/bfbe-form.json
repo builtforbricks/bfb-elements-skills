@@ -121,7 +121,7 @@
             },
             {
                 "what": "Shop, the product finder: BFB Advanced Forms answers drawn as a Product finder loop on the result step",
-                "css": "0.22 KB",
+                "css": "0.24 KB",
                 "js": "1.15 KB",
                 "dependencies": "shop-live"
             }
@@ -2072,7 +2072,7 @@
             "group": "bfbeAlerts",
             "label": "Message after signing up",
             "type": "text",
-            "placeholder": "Check your inbox to confirm."
+            "placeholder": "Check your inbox: we sent a link to confirm."
         },
         "userRows": {
             "tab": "content",
@@ -3868,7 +3868,7 @@
             "css": [
                 {
                     "property": "--bfbe-pc-box-r",
-                    "selector": ""
+                    "selector": "&:not([data-bfbe-ticks=\"native\"])"
                 }
             ],
             "required": [
@@ -3900,7 +3900,7 @@
             "css": [
                 {
                     "property": "--bfbe-pc-box-bg",
-                    "selector": ""
+                    "selector": "&:not([data-bfbe-ticks=\"native\"])"
                 }
             ],
             "required": [
@@ -3917,7 +3917,7 @@
             "css": [
                 {
                     "property": "--bfbe-pc-box-line",
-                    "selector": ""
+                    "selector": "&:not([data-bfbe-ticks=\"native\"])"
                 }
             ],
             "required": [
@@ -3934,7 +3934,7 @@
             "css": [
                 {
                     "property": "--bfbe-pc-on-accent",
-                    "selector": ""
+                    "selector": "&:not([data-bfbe-ticks=\"native\"])"
                 }
             ],
             "required": [
@@ -5156,7 +5156,7 @@
             "css": [
                 {
                     "property": "border",
-                    "selector": ".flatpickr-calendar .dayContainer .flatpickr-day.today"
+                    "selector": ".flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed)"
                 }
             ],
             "tab": "content"
@@ -5192,11 +5192,11 @@
             "css": [
                 {
                     "property": "border",
-                    "selector": ".flatpickr-calendar .dayContainer .flatpickr-day.today:hover"
+                    "selector": ".flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed):hover"
                 },
                 {
                     "property": "border",
-                    "selector": ".flatpickr-calendar .dayContainer .flatpickr-day.today:focus-visible"
+                    "selector": ".flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed):focus-visible"
                 }
             ],
             "tab": "content"

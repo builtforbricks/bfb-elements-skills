@@ -12,9 +12,13 @@ description: "Use when adding shopper questions and the shop's answers to a prod
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/product-questions/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+Questions shoppers asked about the product, with the shop's answers, as a list where each question opens, and a form to ask a new one. A question is a WordPress comment of its own type on the product, held until the shop answers it, so it never mixes with the reviews or their rating. Show the list, the form or both, so the form can sit in a popup, a tab or a sidebar of your own.
 
-**Costs a page:** CSS 0.79 KB, JS 0.60 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Not for:** It does not answer questions by itself, suggest answers or email the asker when the answer is published, and other shoppers cannot answer: only the shop does. For reviews with a star rating, use Bricks' Product reviews.
+
+**Costs a page:** CSS 0.82 KB, JS 0.64 KB (gzipped), no dependencies, loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** no · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -23,13 +27,13 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Questions (`bfbeQuestions`)
-- `shows` (select) **Shows**: options: `both` Questions and the form (default), `list` Questions only, `form` Form only
-- `title` (text) **Title**: placeholder Questions and answers; dynamic data accepted; only when `shows` is not `form`. Still names the section when the tag is None.
+- `shows` (select) **Shows**: options: `both` Questions and the form (default), `list` Questions only, `form` Form only. Questions and the form by default, Questions only or Form only. The form is whole on its own, so a second Product Questions set to the form can sit in a popup, a tab or a sidebar.
+- `title` (text) **Title**: placeholder Questions and answers; dynamic data accepted; only when `shows` is not `form`. Questions and answers when empty, with dynamic data. **Title tag**: H3 by default, or H2, H4, p, or None for a list under a Bricks heading of your own, when the section takes the title's words as its name.
 - `titleTag` (select) **Title tag**: options: `h2` H2, `h3` H3 (default), `h4` H4, `p` p, `none` None; only when `shows` is not `form`
-- `most` (number) **Questions shown**: placeholder 10; only when `shows` is not `form`
+- `most` (number) **Questions shown**: placeholder 10; only when `shows` is not `form`. The newest answered questions, 10 when empty, up to 100. **None yet**: what shows while no question has an answer.
 - `none` (text) **None yet**: placeholder No questions answered yet. Be the first to ask.; dynamic data accepted; only when `shows` is not `form`
-- `meta` (select) **Under each question**: options: `both` Who asked and when (default), `who` Who asked, `none` Nothing; only when `shows` is not `form`
-- `helpful` (select) **Was this helpful**: options: `show` Under each answer (default), `hide` Hidden; only when `shows` is not `form`
+- `meta` (select) **Under each question**: options: `both` Who asked and when (default), `who` Who asked, `none` Nothing; only when `shows` is not `form`. Who asked and when by default, Who asked, or Nothing; the same goes under each answer.
+- `helpful` (select) **Was this helpful**: options: `show` Under each answer (default), `hide` Hidden; only when `shows` is not `form`. Under each answer by default, or Hidden. It is the Reviews feature's Helpful vote, so it shows only where that feature and its Helpful votes switch are on.
 Styling, in the schema file: `titleTypography`, `titleMargin`, `noneTypography`, `listGap`, `cardBackground`, `cardBorder`, `cardPadding`, `cardShadow`, `openBackground`, `openBorder`, `questionTypography`, `questionHoverColor`, `questionPadding`, `markSize`, `markBackground`, `markColor`, `markBorder`, `answerTypography`, `metaTypography`, `voteTypography`, `voteBackground`, `voteBorder`, `votePadding`, `votePressedBackground`, `votePressedColor`.
 
 ### Ask a question (`bfbeAsk`)
@@ -41,6 +45,13 @@ The whole group shows only when `shows` is not `list`.
 - `button` (text) **Button**: placeholder Ask; only when `shows` is not `list`
 - `thanks` (text) **Thank you text**: placeholder Thank you. Your question is with the shop and will show here once it is answered.; only when `shows` is not `list`
 Styling, in the schema file: `askBackground`, `askBorder`, `askPadding`, `askTitleTypography`, `fieldLabelTypography`, `fieldsGap`, `inputTypography`, `inputBackground`, `inputBorder`, `inputPadding`, `inputFocusBorder`, `buttonTypography`, `buttonBackground`, `buttonBorder`, `buttonPadding`, `buttonHoverBackground`, `buttonHoverColor`, `statusTypography`, `errorColor`.
+
+## What it guarantees for accessibility (do not undo)
+- The list is a list of details elements, newest first, the top one open; each question is the summary, so it opens and closes from the keyboard as any disclosure does.
+- The Q and A marks are hidden from screen readers. With Title tag None, the section takes the title's words as its name.
+- The form is a real form with labelled fields and a legend naming it. After sending, a line under it says the question is with the shop, and the shop's announcer says it once.
+- With reduced motion requested, the open and close arrow turns at once.
+- Without JavaScript the form posts to the product's own page, which comes back with WooCommerce's notice in Bricks' WooCommerce Notice element.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

@@ -654,6 +654,27 @@
                         ]
                     ]
                 },
+                "bfbeShopWishlistUndoText": {
+                    "label": "Undo word",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Undo",
+                    "description": "Lets a friend take back their own mark.",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
                 "bfbeShopWishlistMoveLook": {
                     "label": "Move to list: open list",
                     "type": "select",
@@ -1665,6 +1686,8 @@
                         "off": "Off",
                         "pa_colour": "Colour",
                         "pa_material": "Material",
+                        "pa_q5-finish": "Q5 Finish",
+                        "pa_q5-pattern": "Q5 Pattern",
                         "pa_size": "Size",
                         "pa_warmth": "Warmth"
                     },
@@ -2358,6 +2381,27 @@
                         ]
                     ]
                 },
+                "bfbeShopWishlistUndoText": {
+                    "label": "Undo word",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Undo",
+                    "description": "Lets a friend take back their own mark.",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
                 "bfbeShopWishlistMoveLook": {
                     "label": "Move to list: open list",
                     "type": "select",
@@ -3369,6 +3413,8 @@
                         "off": "Off",
                         "pa_colour": "Colour",
                         "pa_material": "Material",
+                        "pa_q5-finish": "Q5 Finish",
+                        "pa_q5-pattern": "Q5 Pattern",
                         "pa_size": "Size",
                         "pa_warmth": "Warmth"
                     },
@@ -4062,6 +4108,27 @@
                         ]
                     ]
                 },
+                "bfbeShopWishlistUndoText": {
+                    "label": "Undo word",
+                    "type": "text",
+                    "inline": true,
+                    "placeholder": "Undo",
+                    "description": "Lets a friend take back their own mark.",
+                    "tab": "content",
+                    "group": "bfbeShopQbfbeShopWishlist",
+                    "required": [
+                        [
+                            "query.objectType",
+                            "=",
+                            "bfbeShopWishlist"
+                        ],
+                        [
+                            "hasLoop",
+                            "!=",
+                            ""
+                        ]
+                    ]
+                },
                 "bfbeShopWishlistMoveLook": {
                     "label": "Move to list: open list",
                     "type": "select",
@@ -5073,6 +5140,8 @@
                         "off": "Off",
                         "pa_colour": "Colour",
                         "pa_material": "Material",
+                        "pa_q5-finish": "Q5 Finish",
+                        "pa_q5-pattern": "Q5 Pattern",
                         "pa_size": "Size",
                         "pa_warmth": "Warmth"
                     },

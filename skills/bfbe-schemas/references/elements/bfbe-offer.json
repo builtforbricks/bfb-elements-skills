@@ -46,8 +46,8 @@
     ],
     "parent": null,
     "cost": {
-        "css": "0.44 KB",
-        "js": "1.08 KB",
+        "css": "0.31 KB",
+        "js": "1.20 KB",
         "dependencies": "none"
     },
     "requires": [

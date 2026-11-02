@@ -9,7 +9,7 @@
     "childrenDefault": [],
     "parent": null,
     "cost": {
-        "css": "0.46 KB",
+        "css": "0.60 KB",
         "js": "none",
         "dependencies": "none"
     },
@@ -71,6 +71,8 @@
                     "options": {
                         "pa_colour": "Colour",
                         "pa_material": "Material",
+                        "pa_q5-finish": "Q5 Finish",
+                        "pa_q5-pattern": "Q5 Pattern",
                         "pa_size": "Size",
                         "pa_warmth": "Warmth"
                     },

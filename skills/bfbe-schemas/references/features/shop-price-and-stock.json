@@ -6,7 +6,7 @@
     "shape": "hosts",
     "on": "Bricks' own Product price (`product-price`), Product stock (`product-stock`)",
     "job": "the shop's settings on Bricks' Product price and Product stock: the lowest price of 30 days, the unit price, tax notes, the stock bar and the sold count",
-    "docs": "https://builtforbricks.com/bfb-elements/docs/shop-price-and-stock/",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/shop/",
     "since": "2.0.0",
     "requires": [
         "WooCommerce"
@@ -201,7 +201,7 @@
                     "hasDynamicData": "text",
                     "inline": true,
                     "placeholder": "Only {left} left",
-                    "description": "{left}, {percent} and {start} are filled in.",
+                    "description": "{left}, {percent} and {start} are filled in. Shown at or under the low stock threshold; &quot;Sold out&quot; at zero.",
                     "required": [
                         "bfbeShopStockBar",
                         "!=",
@@ -406,5 +406,9 @@
                 }
             }
         }
+    },
+    "pages": {
+        "shop-legal": "https://builtforbricks.com/bfb-elements/docs/shop-legal/",
+        "shop-stock": "https://builtforbricks.com/bfb-elements/docs/shop-stock/"
     }
 }

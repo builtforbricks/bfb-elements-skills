@@ -53,13 +53,13 @@ Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `b
 - `position` (select) **Edge**: options: `top` Top (default), `bottom` Bottom. Top is the default, or pick Bottom.
 - `behaviour` (select) **Stays**: options: `flow` In place, `sticky` Sticky (default), `fixed` Fixed over the page. Sticky is the default. Choose In place to let the bar scroll with the page, or Fixed over the page to keep it on screen over your content.
 - `offBelow` (select) **Hide below**: options: `never` Never (default), `480` 480px, `640` 640px, `768` 768px, `992` 992px. Never by default. Choose 480, 640, 768 or 992px to drop the bar on narrow screens.
-- `wcNotice` (checkbox) **Use the WooCommerce store notice**. Shown while it is on in WooCommerce.
+- `wcNotice` (checkbox) **Use the WooCommerce store notice**. With WooCommerce active, tick it and the bar's message is WooCommerce's own store notice, the words you set in WooCommerce's settings. It follows WooCommerce's switch: while the notice is on there, the bar shows its words, and while it is off, the bar is left out of the page (the builder says so). Tags such as {bfbe_shop_free_shipping_minimum} work in the notice's words. A button you nest in the bar follows the notice, so remove the Message text the bar starts with.
 Styling, in the schema file: `align`.
 
 ### Closing (`bfbeDismiss`)
 - `dismiss` (checkbox) **Close button**. Off by default. Tick it to add a real button named Close, at the end of the bar unless Side under Look moves it.
 - `remember` (select) **Stay closed for**: options: `session` This visit, `1` A day, `7` A week (default), `30` A month, `forever` Forever; only when `dismiss` is set. A week by default. Choose This visit, A day, A month or Forever instead. The choice is stored in the visitor's browser.
-- `key` (text) **Message key**: placeholder summer-sale; only when `dismiss` is set. The name the choice is stored under, such as summer-sale. Change it to show a closed bar again.
+- `key` (text) **Message key**: placeholder summer-sale; only when `dismiss` is set. The name the choice is stored under, such as summer-sale. Change it to show a closed bar again. With Use the WooCommerce store notice ticked and no key of your own, the key comes from the notice's words, so a new notice shows again to a visitor who closed the last one.
 - `closeEffect` (select) **Closing effect**: options: `fade` Fade (default), `slide` Slide away, `collapse` Collapse, `none` None. Fade by default. Choose Slide away, Collapse or None instead.
 - `easing` (select) **Easing**: options: `cubic-bezier(0.45, 0.05, 0.55, 0.95)` Soft, `cubic-bezier(0.65, 0, 0.35, 1)` Medium, `cubic-bezier(0.16, 1, 0.3, 1)` Snappy (default), `ease-in` Ease in, `ease-out` Ease out, `ease-in-out` Ease in and out, `linear` Linear, `cubic-bezier(0.34, 1.56, 0.64, 1)` Overshoot, `linear(0, .38 8%, .78 17%, 1.02 25%, 1.08 30%, 1.03 40%, .99 50%, 1)` Soft spring, `var(--bfbe-ease-custom, ease)` Custom; writes CSS. How it speeds up and slows down, Snappy by default. Pick Custom and type your own curve in Custom curve.
 Styling, in the schema file: `duration`, `easingCustom`.

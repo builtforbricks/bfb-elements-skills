@@ -16,7 +16,7 @@ A button that copies fixed text, dynamic data, or the contents of another elemen
 
 **Not for:** Anything it copies must already be in the page, either typed here or inside the element your selector finds. It cannot fetch text from a server when clicked, and it never pastes into fields.
 
-**Costs a page:** CSS 0.61 KB, JS 0.90 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 0.63 KB, JS 0.90 KB (gzipped), no dependencies, loaded only on pages that use it.
 
 **Nestable:** no · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 
@@ -32,7 +32,7 @@ Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query
 - `selector` (text) **CSS selector**: placeholder #coupon; only when `source` is `selector`. The element to read, such as #coupon. A form field gives its value and other elements give their text.
 - `couponPick` (select) **Coupon**: options: the site's own, read when the panel opens; only when `source` is `coupon`
 - `coupon` (text) **Or type a code**: placeholder WELCOME10; dynamic data accepted; only when `source` is `coupon`
-- `couponFacts` (checkbox) **Discount and expiry**: only when `source` is `coupon`
+- `couponFacts` (checkbox) **Discount and expiry**: only when `source` is `coupon`. Tick it to add the coupon's discount in words, such as 10% off or Free shipping, and the day it ends, if it has one. **Apply now link** adds a link that applies the coupon in the cart, with **Apply now words**, Apply now unless set. An expired or disabled coupon shows nothing on the site, and the builder says why.
 - `couponApply` (checkbox) **Apply now link**: only when `source` is `coupon`
 - `couponApplyText` (text) **Apply now words**: placeholder Apply now; only when `source` is `coupon` and `couponApply` is set
 

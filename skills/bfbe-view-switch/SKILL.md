@@ -12,9 +12,13 @@ description: "Use when placing, wiring or styling BFB View Switch (`bfbe-view-sw
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/view-switch/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+Buttons that let a visitor change how a product grid shows: grid or list, how many columns, how many products per page. Grid, list and columns act at once and are remembered in the visitor's own browser; Per page is a real link that reloads the page with that count.
 
-**Costs a page:** CSS 0.68 KB, JS 1.42 KB (gzipped), plus shop-live, loaded only on pages that use it.
+**Not for:** It does not re-query without a reload, and it does not sort: sorting is Bricks' Sort filter, with the Shop sorting feature's orders.
+
+**Costs a page:** CSS 0.70 KB, JS 2.11 KB (gzipped), plus shop-live, loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** no · **Dynamic data:** no · **Keyboard:** yes · **Reduced motion:** no
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -23,10 +27,10 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Switch (`bfbeSwitch`)
-- `target` (text) **Loop element id**: placeholder The next product loop
-- `layouts` (checkbox) **Grid and list buttons**
-- `columns` (text) **Column choices**: placeholder 2, 3, 4. Numbers, comma separated; empty for none.
-- `perPage` (text) **Per page choices**: placeholder 12, 24, 48. Numbers, comma separated; empty for none.
+- `target` (text) **Loop element id**: placeholder The next product loop. The id of the loop the switch drives, a Products element or a looping container, as the structure panel shows it. Empty, it drives the next product loop after it on the page.
+- `layouts` (checkbox) **Grid and list buttons**. The layout pair.
+- `columns` (text) **Column choices**: placeholder 2, 3, 4. Numbers, comma separated, such as 2, 3, 4; empty for no column buttons.
+- `perPage` (text) **Per page choices**: placeholder 12, 24, 48. Numbers, comma separated, such as 12, 24, 48; empty for none.
 
 ### Words (`bfbeWords`)
 - `gridText` (text) **Grid**: placeholder Grid; only when `layouts` is set
@@ -36,6 +40,11 @@ Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `b
 
 ### Look (`bfbeLook`)
 Styling only, every key in the schema file: `gap`, `justify`, `groupBackground`, `groupBorder`, `groupPadding`, `groupGap`, `wordTypography`, `wordPadding`, `buttonTypography`, `buttonPadding`, `buttonBorder`, `buttonBackground`, `hoverBackground`, `hoverColor`, `onBackground`, `onColor`.
+
+## What it guarantees for accessibility (do not undo)
+- Grid, list and column choices are real buttons that say whether they are pressed (aria-pressed); per page choices are links, the current one marked aria-current.
+- Each group of buttons has a name (Layout, Columns, Per page), and the keyboard reaches every button.
+- Grid, list and column buttons need the script, so they stay hidden until it runs; per page links work without it.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

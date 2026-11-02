@@ -12,7 +12,7 @@ description: "Use when adding a hover effect to any element, Bricks' own include
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/hover-effects/
 
 ## What it is
-A feature on every element, Bricks' own included, not an element of its own: the Hover effect group on the Style tab, after Bricks' own style groups, offers nine effects with Strength, Speed and Delay. A card can tick Children respond to hover, so parts inside it set to A hovered parent play when the card is hovered, and a Delay on each part, except Tilt and Follow the pointer, staggers them. The stylesheet loads on a page where an element has an Effect or Children respond to hover ticked, the script where an element uses Tilt or Follow the pointer, and the builder canvas loads both.
+A feature on every element, Bricks' own included, not an element of its own: the Hover effect group on the Style tab, after Bricks' own style groups, offers nine effects with Strength, Speed and Delay. A card can tick Children respond to hover, so parts inside it set to A hovered parent play when the card is hovered, and a Delay on each part, except Tilt and Follow the pointer, staggers them. The stylesheet loads on a page where an element has an Effect or Children respond to hover ticked, the script where an element uses Tilt, Follow the pointer or the product's second image, and the builder canvas loads both.
 
 **Not for:** Not for changing one property on hover, such as a colour or a shadow, which is a hover state on Bricks' own style controls; an effect here answers its own element or a parent with Children respond to hover ticked.
 
@@ -38,6 +38,7 @@ Styling, in the schema file: `bfbeHoverStrength`, `bfbeHoverSpeed`, `bfbeHoverDe
 - On a screen with no hover, such as a touch screen, Fade in, Slide in and Grow show in their finished state, so nothing waits behind a hover. The other effects need a screen that can hover.
 - Fade in changes opacity alone, so an element waiting to fade in can still be reached by keyboard and assistive technology, and it shows itself when it receives focus.
 - With reduced motion requested, transitions and animations stop: Lift, Zoom the picture, Fade in, Slide in and Grow change at once, the Shine sweep is removed, the Gradient border stops spinning, and Tilt and Follow the pointer ignore the pointer.
+- The product's second image carries an empty alt and aria-hidden, and under reduced motion it appears with no transition.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

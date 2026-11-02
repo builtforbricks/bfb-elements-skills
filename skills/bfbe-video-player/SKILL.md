@@ -16,7 +16,7 @@ Plays a file from your site, YouTube, Vimeo or another host, with a control bar 
 
 **Not for:** Not for restyling a provider's own controls: YouTube, Vimeo and other hosts play inside their own frame, which this page cannot reach. Chapters are offered for a single video file, and the A-B loop and the Settings menu for video files and streams, alone or in a playlist. For YouTube, Use our bar adds the pack's own bar under their player.
 
-**Costs a page:** CSS 2.75 KB, JS 2.99 KB (gzipped), no dependencies, loaded only on pages that use it. Only where used, the provider façade: JS 0.77 KB. Only where used, the menus: CSS 0.99 KB, JS 1.77 KB. Only where used, the Minimal and Studio skins: CSS 0.65 KB. Only where used, the extras: CSS 0.66 KB, JS 2.08 KB. Only where used, the playlist: CSS 1.81 KB, JS 2.83 KB. Only where used, our controls on YouTube: JS 1.53 KB. Only where used, hLS streams: JS 0.81 KB. Only where used, product moments: a card at chosen times of a Video Player's video, and the list of them: CSS 0.76 KB, JS 0.57 KB.
+**Costs a page:** CSS 2.75 KB, JS 2.99 KB (gzipped), no dependencies, loaded only on pages that use it. Only where used, the provider façade: JS 0.77 KB. Only where used, the menus: CSS 0.99 KB, JS 1.77 KB. Only where used, the Minimal and Studio skins: CSS 0.65 KB. Only where used, the extras: CSS 0.66 KB, JS 2.08 KB. Only where used, the playlist: CSS 1.81 KB, JS 2.83 KB. Only where used, our controls on YouTube: JS 1.53 KB. Only where used, hLS streams: JS 0.81 KB. Only where used, product moments: a card at chosen times of a Video Player's video, and the list of them: CSS 0.62 KB, JS 0.57 KB.
 
 **Nestable:** yes · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** no
 
@@ -148,8 +148,8 @@ Styling, in the schema file: `duration`, `easingCustom`.
 
 ### Product moments (`bfbeShopMoments`)
 The whole group shows only when `source` is `` or `self`.
-- `bfbeShopMoments` (repeater) **Product moments**: placeholder Moment
-- `bfbeShopMomentsAt` (select) **Cards sit**: options: `over` Over the video (default), `beside` Beside the video, `under` Under the video; only when `bfbeShopMoments` is set
+- `bfbeShopMoments` (repeater) **Product moments**: placeholder Moment. With WooCommerce, for a file on this site. One row per moment: **At** (seconds, or minutes and seconds, such as 65 or 1:05), the **Product** (picked, or **Or from dynamic data**, a tag giving a product id or SKU) and **Words** of its own, such as Worn in this scene. From its time, the moment's card shows the product's picture, name and price, with Add to cart, or View for a variable product, until the next moment.
+- `bfbeShopMomentsAt` (select) **Cards sit**: options: `over` Over the video (default), `beside` Beside the video, `under` Under the video; only when `bfbeShopMoments` is set. Over the video, the default, in a **Corner** (Bottom right unless set); Beside the video, a column of its own that moves under the video on a narrow screen; or Under the video.
 - `bfbeShopMomentsCorner` (select) **Corner**: options: `end-end` Bottom right (default), `end-start` Bottom left, `start-end` Top right, `start-start` Top left; only when `bfbeShopMoments` is set and `bfbeShopMomentsAt` is `` or `over`
 - `bfbeShopMomentsAdd` (text) **Button words**: placeholder Add to cart; only when `bfbeShopMoments` is set
 - `bfbeShopMomentsView` (text) **Link words**: placeholder View; only when `bfbeShopMoments` is set
@@ -167,6 +167,7 @@ Styling, in the schema file: `bfbeShopMomentsWidth`, `bfbeShopMomentsBg`, `bfbeS
 - The Settings menu opens with aria-expanded, moves with the arrow keys, Home and End, and Escape closes it and returns focus to its button.
 - Bar transitions run on the shared motion duration, which reduced motion sets to zero, and the playlist's playing marker stands still; reduced motion also stops the loading ring.
 - Autoplay, muted, waits for a press when the visitor has asked for reduced motion.
+- Moment cards take no focus and are not announced; click, double click and Space on a card stop there and never reach the player.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

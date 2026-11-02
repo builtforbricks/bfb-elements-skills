@@ -129,6 +129,8 @@
                 "attrs": "Every attribute",
                 "attr:pa_colour": "Colour",
                 "attr:pa_material": "Material",
+                "attr:pa_q5-finish": "Q5 Finish",
+                "attr:pa_q5-pattern": "Q5 Pattern",
                 "attr:pa_size": "Size",
                 "attr:pa_warmth": "Warmth",
                 "dimensions": "Dimensions",

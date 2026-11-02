@@ -9,7 +9,7 @@
     "childrenDefault": [],
     "parent": null,
     "cost": {
-        "css": "1.07 KB",
+        "css": "1.09 KB",
         "js": "none",
         "dependencies": "none"
     },
@@ -697,6 +697,15 @@
             "type": "text",
             "inline": true,
             "placeholder": "Placed"
+        },
+        "dateFormat": {
+            "tab": "content",
+            "group": "bfbeAnswer",
+            "label": "Date format",
+            "type": "text",
+            "inline": true,
+            "placeholder": "F j, Y",
+            "description": "A PHP date format. Empty uses the site&#039;s own."
         },
         "statusLabel": {
             "tab": "content",

@@ -46,6 +46,7 @@ Styling only, every key in the schema file: `width`, `ratio`, `align`, `stageBac
 - Its name is the Description, or Play animation when that is empty.
 - The other triggers have no keyboard action: a filled Description gives the frame the img role with that label, and an empty one hides it.
 - With reduced motion requested, the animation stays on its opening frame for every trigger except On click, where a visitor can still start it.
+- The BFB Motion Switch's pause holds every trigger but On click on the opening frame, as reduced motion does, and lifting it plays them again.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

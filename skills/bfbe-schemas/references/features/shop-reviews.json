@@ -634,6 +634,16 @@
                             "property": "grid-column",
                             "selector": ".comment-form-email",
                             "value": "auto"
+                        },
+                        {
+                            "property": "row-gap",
+                            "selector": ".comment-form",
+                            "value": "var(--bfbe-rv-form-row-gap, normal)"
+                        },
+                        {
+                            "property": "column-gap",
+                            "selector": ".comment-form",
+                            "value": "var(--bfbe-rv-form-column-gap, normal)"
                         }
                     ],
                     "group": "bfbeShopReviewForm",
@@ -645,7 +655,7 @@
                     "units": true,
                     "css": [
                         {
-                            "property": "row-gap",
+                            "property": "--bfbe-rv-form-row-gap",
                             "selector": ".comment-form"
                         }
                     ],
@@ -663,7 +673,7 @@
                     "units": true,
                     "css": [
                         {
-                            "property": "column-gap",
+                            "property": "--bfbe-rv-form-column-gap",
                             "selector": ".comment-form"
                         }
                     ],
@@ -903,7 +913,7 @@
                     "tab": "content"
                 },
                 "bfbeShopReviewsFormStarColor": {
-                    "label": "Color",
+                    "label": "Colour",
                     "type": "color",
                     "css": [
                         {
@@ -923,7 +933,7 @@
                     "tab": "content"
                 },
                 "bfbeShopReviewsFormStarOn": {
-                    "label": "Chosen color",
+                    "label": "Chosen colour",
                     "type": "color",
                     "description": "Up to the star pointed at or chosen.",
                     "css": [
@@ -949,7 +959,7 @@
                     "label": "Look",
                     "type": "select",
                     "options": {
-                        "native": "The browser&#039;s file box",
+                        "native": "As the browser draws it",
                         "custom": "A drop area with previews"
                     },
                     "inline": true,
@@ -1772,6 +1782,16 @@
                             "property": "grid-column",
                             "selector": ".comment-form-email",
                             "value": "auto"
+                        },
+                        {
+                            "property": "row-gap",
+                            "selector": ".comment-form",
+                            "value": "var(--bfbe-rv-form-row-gap, normal)"
+                        },
+                        {
+                            "property": "column-gap",
+                            "selector": ".comment-form",
+                            "value": "var(--bfbe-rv-form-column-gap, normal)"
                         }
                     ],
                     "group": "bfbeShopReviewForm",
@@ -1783,7 +1803,7 @@
                     "units": true,
                     "css": [
                         {
-                            "property": "row-gap",
+                            "property": "--bfbe-rv-form-row-gap",
                             "selector": ".comment-form"
                         }
                     ],
@@ -1801,7 +1821,7 @@
                     "units": true,
                     "css": [
                         {
-                            "property": "column-gap",
+                            "property": "--bfbe-rv-form-column-gap",
                             "selector": ".comment-form"
                         }
                     ],
@@ -2073,7 +2093,7 @@
                     "tab": "content"
                 },
                 "bfbeShopReviewsFormStarColor": {
-                    "label": "Color",
+                    "label": "Colour",
                     "type": "color",
                     "css": [
                         {
@@ -2093,7 +2113,7 @@
                     "tab": "content"
                 },
                 "bfbeShopReviewsFormStarOn": {
-                    "label": "Chosen color",
+                    "label": "Chosen colour",
                     "type": "color",
                     "description": "Up to the star pointed at or chosen.",
                     "css": [
@@ -2119,7 +2139,7 @@
                     "label": "Look",
                     "type": "select",
                     "options": {
-                        "native": "The browser&#039;s file box",
+                        "native": "As the browser draws it",
                         "custom": "A drop area with previews"
                     },
                     "inline": true,

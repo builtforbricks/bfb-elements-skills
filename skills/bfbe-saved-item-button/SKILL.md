@@ -12,7 +12,11 @@ description: "Use for BFB Saved Item Button (`bfbe-saved-item-button`): Move to 
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/saved-item-button/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+Move to cart or Remove for one row of a Saved for later query loop, placed anywhere in the row. Move to cart adds the product back through WooCommerce's own add to cart in the saved quantity; Remove takes it off the visitor's saved list, and the block is drawn again. It needs the Cart lines feature on.
+
+**Not for:** It works inside a Saved for later loop and prints nothing elsewhere. It is not a wishlist button: for lists a shopper keeps and shares, use BFB Wishlist Button and BFB Wishlist Bar.
+
+**Nestable:** no · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** no
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -21,8 +25,13 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Saved item (`bfbeSavedItem`)
-- `does` (select) **Button**: options: `move` Move to cart (default), `remove` Remove. Place it inside a Saved for later loop.
-- `label` (text) **Label**: placeholder Move to cart
+- `does` (select) **Button**: options: `move` Move to cart (default), `remove` Remove. Move to cart by default, or Remove. Place one of each in a row for both.
+- `label` (text) **Label**: placeholder Move to cart. "Move to cart" or "Remove" unless you set it; screen readers hear it with the product's name ("Move to cart: Stoneware Mug Set"). The element is the button, so Bricks' Style tab draws its typography, background, border, padding and hover.
+
+## What it guarantees for accessibility (do not undo)
+- A real submit button, named with the product for screen readers.
+- Each press is said once: "Moved to the cart: Stoneware Mug Set." or "Removed from your saved list: Stoneware Mug Set."
+- When the block is drawn again, the focus goes to the same control at the pressed one's place.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

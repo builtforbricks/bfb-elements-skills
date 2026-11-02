@@ -12,9 +12,13 @@ description: "Use when a product page needs a sticky add to cart bar that appear
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/sticky-buy-bar/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+A bar you fill with your own elements, fixed to the bottom or the top of the window, that appears once shoppers scroll past the product's add to cart form and goes away when the form is back. Its button presses the product's real add to cart button, so Bricks' AJAX add or WooCommerce's form post happens as it would there. It follows the chosen variation, keeps clear of a cookie banner at the same edge, and on a variable product takes the shopper back to the choice they skipped.
 
-**Costs a page:** CSS 0.60 KB, JS 2.34 KB (gzipped), plus shop-live, loaded only on pages that use it.
+**Not for:** Not for pages that are not a product's, or for a product that cannot be bought: it renders nothing there. For a bar with news or offers on every page, use BFB Notification Bar.
+
+**Costs a page:** CSS 0.64 KB, JS 2.83 KB (gzipped), plus shop-live, loaded only on pages that use it.
+
+**Nestable:** yes · **In a query loop:** no · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 
 ## Structure
 Nestable: any Bricks element goes inside (blocks, headings, text, images, a form).
@@ -64,10 +68,10 @@ What the builder inserts, as a tree `bricks/add-element` accepts (ids omitted):
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Bar (`bfbeBar`)
-- `edge` (select) **Edge**: options: `bottom` Bottom (default), `top` Top
-- `buttonClass` (text) **Buy button class**: placeholder bfbe-buybar-go. The child that presses the real add to cart button.
-- `missingText` (text) **Missing choice words**: placeholder Choose a %s first; dynamic data accepted. %s is the attribute.
-- `clear` (text) **Keep clear of**: placeholder #bfbcc. A fixed element at the same edge, by selector.
+- `edge` (select) **Edge**: options: `bottom` Bottom (default), `top` Top. Bottom (the default) or Top. At the bottom the bar leaves room for the phone's safe area, so a home indicator never covers the button.
+- `buttonClass` (text) **Buy button class**: placeholder bfbe-buybar-go. The child that presses the real add to cart button, bfbe-buybar-go unless you name another; without a child carrying it, the bar's opening button is taken.
+- `missingText` (text) **Missing choice words**: placeholder Choose a %s first; dynamic data accepted. What is said when the button is pressed before every attribute is chosen, Choose a %s first, where %s is the attribute's name. It takes dynamic data.
+- `clear` (text) **Keep clear of**: placeholder #bfbcc. A fixed element at the same edge the bar must not cover, BFB Cookie Consent's #bfbcc unless you name another selector; a fixed BFB Notification Bar at that edge is kept clear of without being named.
 - `wrap` (select) **Wrap**: options: `nowrap` No wrap (default), `wrap` Wrap, `wrap-reverse` Wrap reverse; writes CSS
 Styling, in the schema file: `width`, `direction`, `align`, `alignItems`, `gap`, `padding`, `pictureMax`, `choiceTypography`.
 
@@ -76,7 +80,13 @@ Styling, in the schema file: `width`, `direction`, `align`, `alignItems`, `gap`,
 Styling, in the schema file: `duration`, `easingCustom`.
 
 ### In the builder (`bfbeBuilder`)
-- `builderView` (select) **Show it**: options: `open` In the flow, so you can style it (default), `live` Working, as on the site. Working means it shows and hides as outside.
+- `builderView` (select) **Show it**: options: `open` In the flow, so you can style it (default), `live` Working, as on the site. In the flow, so you can style it (the default), where the bar sits in the canvas with its children selectable, or Working, as on the site, where it shows and hides as it does outside.
+
+## What it guarantees for accessibility (do not undo)
+- While hidden the bar is aria-hidden and inert, so a screen reader does not meet it and the keyboard does not land in it.
+- Pressed with a choice still missing, it scrolls to the form, moves the focus to that attribute's swatches or select, and says which choice is missing once through the shop's live region.
+- When every choice is made but that combination is not sold, WooCommerce's own words for an unavailable choice are said instead.
+- Under reduced motion the bar appears at once and the scroll back to the form jumps rather than glides.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

@@ -12,9 +12,13 @@ description: "Use when building a mix and match bundle, build a box or any 3 for
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/bundle-builder/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+A pick your own bundle, such as Choose any 3 for 30,00 € or 3 for 20% off: the shopper picks a set number of products from a category, a tag or a list of your own, sees how far along they are, and adds the bundle once it is complete. It is a nestable form with three parts placed in Bricks' own containers. The bundle's price is worked out on your server from the element's settings, and its lines add up to it exactly.
 
-**Costs a page:** CSS 0.87 KB, JS 1.37 KB (gzipped), plus shop-live, loaded only on pages that use it.
+**Not for:** Not for variable products, which need a choice the cards do not offer, so they are not shown. For a fixed set of companions to one product, use BFB Bought Together.
+
+**Costs a page:** CSS 0.91 KB, JS 1.45 KB (gzipped), plus shop-live, loaded only on pages that use it.
+
+**Nestable:** yes · **In a query loop:** no · **Dynamic data:** no · **Keyboard:** yes · **Reduced motion:** yes
 
 ## Structure
 Nestable. Its own children: `bfbe-bundle-title`, `bfbe-bundle-progress`, `bfbe-bundle-products`.
@@ -67,18 +71,24 @@ What the builder inserts, as a tree `bricks/add-element` accepts (ids omitted):
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Bundle (`bfbeBundle`)
-- `source` (select) **Products from**: options: `category` A category (default), `tag` A tag, `ids` Products chosen here
+- `source` (select) **Products from**: options: `category` A category (default), `tag` A tag, `ids` Products chosen here. A category (the default), A tag, or Products chosen here, with **Category slug**, **Tag slug** or **Products** naming them. Only simple products that can be bought now are offered, never one whose options require an answer.
 - `category` (text) **Category slug**: placeholder kitchen; only when `source` is not `tag` or `ids`
 - `tag` (text) **Tag slug**: placeholder gift; only when `source` is `tag`
 - `products` (select) **Products**: placeholder Pick the products; only when `source` is `ids`
-- `most` (number) **Products shown**: placeholder 12
+- `most` (number) **Products shown**: placeholder 12. How many cards, 12 unless set, at most 24.
 - `count` (number) **Products to choose**: placeholder 3
-- `kind` (select) **Bundle price**: options: `price` A set price (default), `percent` A percentage off each
+- `kind` (select) **Bundle price**: options: `price` A set price (default), `percent` A percentage off each. A set price (the default) with **Set price**, split across the bundle's lines to the cent, or A percentage off each with **Percentage off**, 1 to 90.
 - `price` (number) **Set price**: placeholder 30; only when `kind` is not `percent`
 - `percent` (number) **Percentage off**: placeholder 20; only when `kind` is `percent`
 
 ### Button (`bfbeButton`)
 Styling only, every key in the schema file: `disabledOpacity`.
+
+## What it guarantees for accessibility (do not undo)
+- Cards carry a real checkbox, or a stepper whose two buttons are named for the product, such as One more Wool Beanie and One fewer Wool Beanie; a stepper stops at the bundle's count.
+- The progress is a real progress bar named by the offer, its value and its words following each choice, said once.
+- The add button stays reachable but is marked aria-disabled until exactly the bundle's count is chosen; pressed early it says what is missing, such as Choose 1 more.
+- Under reduced motion the progress bar fills without moving.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

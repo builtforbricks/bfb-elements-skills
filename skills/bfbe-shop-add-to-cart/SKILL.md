@@ -9,10 +9,14 @@ description: "Use for the shop's settings on Bricks' Add to cart and Products (B
 <!-- Written by dev/skills-export.php in the plugin repository from the installed plugins. Edit the plugin or the website's words, not this block. -->
 **Requires** BFB Elements 2.0.0 or later, and BFB Elements Pro 2.0.0 or later for the groups marked Pro, WooCommerce active, the feature switches on (WordPress menu BFB Elements, Elements): `shop-product-page`, `shop-buy`, `shop-cards`, `shop-quantity-breaks`. Bricks 2.4 or later connects an agent to the site (MCP).
 **Schema**: `../bfbe-schemas/references/features/shop-add-to-cart.json` (every control, as the builder registers it). Read it before writing settings; this file names the ones that decide the build.
-**Documentation**: https://builtforbricks.com/bfb-elements/docs/shop-add-to-cart/
+**Documentation**: https://builtforbricks.com/bfb-elements/docs/shop/ (the Shop), and a page for each feature this skill spans: https://builtforbricks.com/bfb-elements/docs/shop-product-page/, https://builtforbricks.com/bfb-elements/docs/shop-buy/, https://builtforbricks.com/bfb-elements/docs/shop-cards/, https://builtforbricks.com/bfb-elements/docs/shop-quantity-breaks/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+The website documents this by feature; each line is the approved summary from that feature's page.
+- `shop-product-page` (https://builtforbricks.com/bfb-elements/docs/shop-product-page/): A free feature for Bricks single product templates, not an element. It makes sure WooCommerce's own product data for search engines is printed once on every product page, even on a template built only from Bricks' product elements, and it has Bricks' Product gallery load the main picture at once with high priority, whatever sits above it. It also adds look controls to Bricks' Product gallery and to the buying form inside Bricks' Add to cart.
+- `shop-buy` (https://builtforbricks.com/bfb-elements/docs/shop-buy/): A Pro feature with two sides. It is what sends a BFB Buy Now press on to the checkout, setting the shopper's cart aside when the item goes alone, and it adds catalogue mode: rules on the Shop page that show chosen products without selling them online, with an Ask for a price button where the add to cart was. Catalogue mode is decided on the server, so the cart refuses those products too.
+- `shop-cards` (https://builtforbricks.com/bfb-elements/docs/shop-cards/): Swatches and an add to cart button on product cards, on Bricks' own Add to cart element in a product loop and on Bricks' Products element: a shopper picks colour and size on the card, the picture and price follow, and the exact variation goes in the cart without leaving the page. On the product page the same group sets how Bricks' Add to cart picker behaves: preselect an in-stock variation, the earliest in the list,, and hide or cross out sold-out options.
+- `shop-quantity-breaks` (https://builtforbricks.com/bfb-elements/docs/shop-quantity-breaks/): A price per item that falls as the quantity rises, set per product or per category. One rule prices the cart line on the server and draws the table on the product page, so the page and the cart show the same number. This page is the rule, the cart and the price per item beside the quantity; the table is the BFB Quantity Breaks element.
 
 ## Where it lives
 A feature, not an element: its groups are added to Bricks' own elements, on the Content tab after Bricks' own groups. By element:
@@ -25,7 +29,7 @@ A feature, not an element: its groups are added to Bricks' own elements, on the 
 
 #### BFB Buying form (`bfbeShopBuyForm`)
 Free, switch `shop-product-page`.
-- `bfbeShopQtyButtons` (select) **Quantity buttons**: options: `bricks` Bricks' − and +, `browser` The browser's arrows, `none` None
+- `bfbeShopQtyButtons` (select) **Quantity buttons**: options: `bricks` The − and + Bricks adds (default), `browser` The browser's arrows, `none` None
 Styling, in the schema file: `bfbeShopVarStack`, `bfbeShopVarGap`, `bfbeShopVarLabelGap`, `bfbeShopVarClearTypography`, `bfbeShopSwatchFill`, `bfbeShopQtyOne`, `bfbeShopQtyHeight`, `bfbeShopQtyBorder`, `bfbeShopQtyTypography`, `bfbeShopQtyButtonWidth`, `bfbeShopQtyButtonColor`, `bfbeShopQtyButtonHover`, `bfbeShopQtyDisabled`, `bfbeShopRowStack`, `bfbeShopRowWide`, `bfbeShopRowHeight`.
 
 #### BFB Options list (`bfbeShopOptsList`)
@@ -41,7 +45,7 @@ Styling only, every key in the schema file: `bfbeShopAskWidth`.
 Pro, switch `shop-cards`.
 - `bfbeShopCardSwatches` (checkbox) **Swatches on the card**. Inside a product loop.
 - `bfbeShopCardSimple` (select) **On simple products**: options: `swatch` Show its swatch (default), `none` Nothing; only when `bfbeShopCardSwatches` is set
-- `bfbeShopCardSimpleAttr` (select) **Attribute**: options: `pa_colour` Colour, `pa_material` Material, `pa_size` Size, `pa_warmth` Warmth; only when `bfbeShopCardSwatches` is set and `bfbeShopCardSimple` is not `none`
+- `bfbeShopCardSimpleAttr` (select) **Attribute**: options: `pa_colour` Colour, `pa_material` Material, `pa_q5-finish` Q5 Finish, `pa_q5-pattern` Q5 Pattern, `pa_size` Size, `pa_warmth` Warmth; only when `bfbeShopCardSwatches` is set and `bfbeShopCardSimple` is not `none`
 - `bfbeShopCardAddText` (text) **Label**: placeholder Add to cart; only when `bfbeShopCardSwatches` is set
 - `bfbeShopFirst` (checkbox) **Preselect first variation**
 - `bfbeShopSoldOut` (select) **Sold-out options**: options: `hidden` Hidden, `crossed` Crossed out

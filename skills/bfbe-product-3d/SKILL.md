@@ -12,9 +12,13 @@ description: "Use when placing, wiring or styling BFB 3D View (`bfbe-product-3d`
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/product-3d/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+A product that turns: a still image, then a 360 degree spin from a set of frames, turned by dragging, by the arrow keys or by a Spin button. From your product's GLB file it shows the product's 3D model in the page or in the product gallery, and links to view it in your room on phones that can. Nothing heavy loads with the page: the frames come when the shopper turns it, the 3D model when they press View in 3D.
 
-**Costs a page:** CSS 1.05 KB, JS 2.37 KB (gzipped), plus model-viewer 4.4.0 (Apache-2.0, the 3D model, on a press), loaded only on pages that use it.
+**Not for:** Not a product configurator: it turns the photographs or the GLB model you give it and changes nothing on the product. A product with no frames and no model file shows its still image alone.
+
+**Costs a page:** CSS 1.09 KB, JS 2.55 KB (gzipped), plus model-viewer 4.4.0 (Apache-2.0, the 3D model, on a press), loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** no · **Dynamic data:** no · **Keyboard:** yes · **Reduced motion:** yes
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -23,14 +27,14 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### View (`bfbeView`)
-- `product` (select) **Product**: placeholder The product of the page
-- `image` (image) **Still image**. The product image unless chosen.
-- `frames` (select) **Frames from**: options: `product` The product field (default), `here` Images chosen here
+- `product` (select) **Product**: placeholder The product of the page. The product of the page unless chosen.
+- `image` (image) **Still image**. What shows before any turn, and all that shows without frames; the product image unless chosen.
+- `frames` (select) **Frames from**: options: `product` The product field (default), `here` Images chosen here. The product field (the default) or Images chosen here, with **Frames** in turning order.
 - `framesHere` (image-gallery) **Frames**: only when `frames` is `here`
-- `load` (select) **Load the frames**: options: `turn` On the first turn (default), `view` Once it comes into view
-- `auto` (checkbox) **Turn once in view**. Never under reduced motion.
-- `time` (number) **One turn takes (s)**: placeholder 4
-- `model` (select) **3D model**: options: `press` On a press (default), `view` Once in view, `off` Off. From the product's GLB file.
+- `load` (select) **Load the frames**: options: `turn` On the first turn (default), `view` Once it comes into view. On the first turn (the default: a drag, an arrow key or Spin fetches them) or Once it comes into view, for a spin high on a page where shoppers will surely turn it.
+- `auto` (checkbox) **Turn once in view**. The product turns once round by itself when it comes on screen; never under reduced motion or while a BFB Motion Switch has paused the page's motion.
+- `time` (number) **One turn takes (s)**: placeholder 4. The Spin button's pace, 4 unless set, from 1 to 30.
+- `model` (select) **3D model**: options: `press` On a press (default), `view` Once in view, `off` Off. On a press (the default: a View in 3D button shows when the product has a GLB file), Once in view, or Off, which leaves the GLB for View in your room on Android.
 
 ### Words (`bfbeWords`)
 - `spoken` (text) **Spoken name**: placeholder {product}, 360 degree view
@@ -41,6 +45,12 @@ Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `b
 ### Look (`bfbeLook`)
 - `fit` (select) **Fit**: options: `contain` Contain (default), `cover` Cover; writes CSS
 Styling, in the schema file: `ratio`, `stageBackground`, `stageBorder`, `stageShadow`, `stagePadding`, `barAlign`, `barGap`, `buttonGap`, `buttonTypography`, `buttonBackground`, `buttonBorder`, `buttonShadow`, `buttonPadding`, `buttonHoverBackground`, `buttonHoverColor`, `spinPressedBackground`, `spinPressedColor`, `spinPressedBorder`.
+
+## What it guarantees for accessibility (do not undo)
+- Once the script runs the image is a focusable picture (role img) named for the product, such as Ceramic Pitcher, 360 degree view, with a description saying how to turn it.
+- The arrow keys turn it a frame at a time and Home and End jump to either end; Spin turns it once round and reports pressed while it turns, and a second press stops it.
+- View in 3D reports pressed while the model shows. The model is named for the product and turns with the arrow keys once it has the focus, and the still image leaves the tab order meanwhile.
+- It never turns by itself under reduced motion, or while a BFB Motion Switch has paused the page's motion.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

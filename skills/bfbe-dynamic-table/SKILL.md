@@ -12,11 +12,11 @@ description: "Use when a page needs a sortable, searchable or filterable data ta
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/dynamic-table/
 
 ## What it is
-A real table built on the server from typed rows, a CSV file, an ACF repeater or a query loop, with seven cell formats. Sorting, search, filters and paging work on the rows already in the page, which are all there before any script runs. Those four sources are the bounds of what it reads, and nothing in it edits the data.
+A real table built on the server from typed rows, a CSV file, an ACF repeater or a query loop, with seven cell formats. Sorting, search, filters and paging work on the rows already in the page, which are all there before any script runs. Those four sources, and with WooCommerce the shop's products, are the bounds of what it reads, and nothing in it edits the data.
 
 **Not for:** Sorting, search, filters and paging run in the browser over rows already in the page, and nothing in it edits data. A large data set that needs paging on the server, or rows that visitors edit, needs a different approach.
 
-**Costs a page:** CSS 2.80 KB, JS 2.66 KB (gzipped), no dependencies, loaded only on pages that use it. Only where used, the dropdowns (the sort field and the filters' selects): JS 1.05 KB. Only where used, the quick order table and the shoppable list: Dynamic Table rows of products with quantities and one Add all: CSS 0.36 KB, JS 0.61 KB.
+**Costs a page:** CSS 2.84 KB, JS 2.66 KB (gzipped), no dependencies, loaded only on pages that use it. Only where used, the dropdowns (the sort field and the filters' selects): JS 1.05 KB. Only where used, the quick order table and the shoppable list: Dynamic Table rows of products with quantities and one Add all: CSS 0.36 KB, JS 0.61 KB.
 
 **Nestable:** no · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** no
 
@@ -33,15 +33,15 @@ Also on this element, as on every element: Bricks' query loop (`hasLoop`, `query
 - `csvUrl` (text) **CSV address**: placeholder /wp-content/uploads/figures.csv; dynamic data accepted; only when `source` is `csv`. Here or on another site, or a dynamic tag.
 - `headerRow` (checkbox) **Header row**: only when `source` is not `acf` or `loop` or `products`. Tick it to use the top row as headings for any column whose Heading is empty. With no columns set, it makes one column per cell.
 - `acfField` (text) **Repeater field name**: placeholder price_list; only when `source` is `acf`. Type the name of the ACF repeater to read. Each column's Value then names a sub field.
-- `bfbeShopList` (checkbox) **Shoppable list**: only when `source` is `products`. A recipe or a guide: the list, with its quantities.
+- `bfbeShopList` (checkbox) **Shoppable list**: only when `source` is `products`. Tick it to make the table a recipe's or a guide's list. **The list** takes one line each, a quantity, x, and a product's id, SKU, slug or exact name, such as 2 x Olive oil, and it takes dynamic data. The quantities start at the list's own, search, filters and pages are off, and a line no product answers to is left out.
 - `bfbeShopItems` (textarea) **The list**: placeholder 2 x Olive oil 1 x BFBE-KIT-01; dynamic data accepted; only when `source` is `products` and `bfbeShopList` is set. One a line: a quantity, x, a product or SKU.
-- `bfbeShopFrom` (select) **Products from**: options: `category` A category (default), `tag` A tag, `ids` Products picked here, `variations` One product and its variations; only when `source` is `products` and `bfbeShopList` is not set
+- `bfbeShopFrom` (select) **Products from**: options: `category` A category (default), `tag` A tag, `ids` Products picked here, `variations` One product and its variations; only when `source` is `products` and `bfbeShopList` is not set. A category (the default, its subcategories too), A tag, Products picked here, or One product and its variations, a row for each variation. **Rows at most** is 50 unless set.
 - `bfbeShopCategory` (select) **Category**: placeholder Pick a category; only when `source` is `products` and `bfbeShopList` is not set and `bfbeShopFrom` is `` or `category`
 - `bfbeShopTag` (select) **Tag**: placeholder Pick a tag; only when `source` is `products` and `bfbeShopList` is not set and `bfbeShopFrom` is `tag`
 - `bfbeShopIds` (select) **Products**: placeholder Pick the products; only when `source` is `products` and `bfbeShopList` is not set and `bfbeShopFrom` is `ids`
 - `bfbeShopParent` (select) **Product**: placeholder Pick a variable product; only when `source` is `products` and `bfbeShopList` is not set and `bfbeShopFrom` is `variations`
 - `bfbeShopMost` (number) **Rows at most**: placeholder 50; only when `source` is `products` and `bfbeShopList` is not set
-- `bfbeShopColumns` (select) **Columns**: options: `image` Picture, `name` Name, `sku` SKU, `attributes` Options, `stock` Stock, `price` Price; only when `source` is `products`. The quantity always comes last.
+- `bfbeShopColumns` (select) **Columns**: options: `image` Picture, `name` Name, `sku` SKU, `attributes` Options, `stock` Stock, `price` Price; only when `source` is `products`. Picture, Name, SKU, Options, Stock and Price, in that order whatever order you pick them in. Picture, name and price when none is picked, and the quantity always comes last.
 
 ### Columns (`bfbeColumns`)
 The whole group shows only when `source` is not `products`.
@@ -60,12 +60,12 @@ Styling, in the schema file: `searchBackground`, `searchBorder`, `searchTypograp
 
 ### Filters: number arrows (`bfbeRangeArrows`)
 The whole group shows only when `filters` is set and `bfbeShopList` is not set.
-- `rangeSpinArrows` (select) **Arrows**: options: `browser` The browser's, `inside` Ours, inside the box, `stepper` A − and a + beside it, `none` None; only when `filters` is set and `bfbeShopList` is not set
+- `rangeSpinArrows` (select) **Arrows**: options: `browser` As the browser draws them (default), `inside` Ours, inside the box, `stepper` A − and a + beside it, `none` None; only when `filters` is set and `bfbeShopList` is not set
 Styling, in the schema file: `rangeSpinArrowSize`, `rangeSpinArrowWidth`, `rangeSpinArrowGap`, `rangeSpinArrowColor`, `rangeSpinArrowBg`, `rangeSpinArrowHover`, `rangeSpinArrowHoverBg`, `rangeSpinArrowLine`, `rangeSpinArrowBorder`.
 
 ### Filters: date picker (`bfbeRangeCal`)
 The whole group shows only when `filters` is set and `bfbeShopList` is not set.
-- `rangeDatePicker` (select) **Date picker**: options: `native` The browser's, `custom` Styled with the controls; only when `filters` is set and `bfbeShopList` is not set. Every date range filter.
+- `rangeDatePicker` (select) **Date picker**: options: `native` As the browser draws it (default), `custom` Styled with the controls; only when `filters` is set and `bfbeShopList` is not set. Every date range filter.
 Styling, in the schema file: `rangeCalWidth`, `rangeCalBackground`, `rangeCalBorder`, `rangeCalShadow`, `rangeCalPadding`, `rangeCalOffset`, `rangeCalHeadSpace`, `rangeCalWeekSpace`, `rangeCalDayGap`, `rangeCalHeadLine`, `rangeCalHeadLineColor`, `rangeCalWeekLine`, `rangeCalWeekLineColor`, `rangeCalMonthTypography`, `rangeCalMonthPadding`, `rangeCalYearPadding`, `rangeCalHeadHoverBg`, `rangeCalYearArrow`, `rangeCalYearArrowHover`, `rangeCalArrowSize`, `rangeCalArrowPadding`, `rangeCalArrowColor`, `rangeCalArrowHover`, `rangeCalArrowBg`, `rangeCalArrowHoverBg`, `rangeCalArrowBorder`, `rangeCalArrowHoverBorder`, `rangeCalWeekdayTypography`, `rangeCalDayTypography`, `rangeCalDaySize`, `rangeCalDayPadding`, `rangeCalDayBg`, `rangeCalDayColor`, `rangeCalDayBorder`, `rangeCalDayHoverBg`, `rangeCalDayHoverColor`, `rangeCalDayHoverBorder`, `rangeCalTodayBg`, `rangeCalTodayColor`, `rangeCalTodayBorder`, `rangeCalTodayHoverBg`, `rangeCalTodayHoverColor`, `rangeCalTodayHoverBorder`, `rangeCalSelected`, `rangeCalSelectedColor`, `rangeCalSelectedBorder`, `rangeCalSelectedHoverBg`, `rangeCalSelectedHoverColor`, `rangeCalSelectedHoverBorder`, `rangeCalShutBg`, `rangeCalShut`, `rangeCalShutBorder`, `rangeCalShutHoverBg`, `rangeCalShutHoverColor`, `rangeCalShutHoverBorder`, `rangeCalOtherBg`, `rangeCalOther`, `rangeCalOtherBorder`, `rangeCalOtherHoverBg`, `rangeCalOtherHoverColor`, `rangeCalOtherHoverBorder`.
 
 ### Filters (`bfbeFilter`)
@@ -113,10 +113,10 @@ Styling only, every key in the schema file: `pageBackground`, `pageColor`, `page
 
 ### Add to cart (`bfbeShopOrder`)
 The whole group shows only when `source` is `products`.
-- `bfbeShopAddAll` (text) **Button words**: placeholder Add all to the cart
-- `bfbeShopQtyHead` (text) **Quantity heading**: placeholder Quantity
+- `bfbeShopAddAll` (text) **Button words**: placeholder Add all to the cart. The words on the button under the table, Add all to the cart unless set. It posts the quantities, and your server reads every product again: one that is sold out or cannot be bought is refused with WooCommerce's own reason, and the rest go in the cart at WooCommerce's own prices. It works without a script too.
+- `bfbeShopQtyHead` (text) **Quantity heading**: placeholder Quantity. The quantity column's heading, Quantity unless set. **Button sits** At the end, the default, or At the start.
 - `bfbeShopButtonAt` (select) **Button sits**: options: `end` At the end (default), `start` At the start
-- `bfbeShopQtySpinArrows` (select) **Arrows**: options: `browser` The browser's, `inside` Ours, inside the box, `stepper` A − and a + beside it, `none` None
+- `bfbeShopQtySpinArrows` (select) **Arrows**: options: `browser` As the browser draws them (default), `inside` Ours, inside the box, `stepper` A − and a + beside it, `none` None
 Styling, in the schema file: `bfbeShopQtyTypography`, `bfbeShopQtyBackground`, `bfbeShopQtyBorder`, `bfbeShopQtyPadding`, `bfbeShopQtyWidth`, `bfbeShopAddTypography`, `bfbeShopAddBackground`, `bfbeShopAddBorder`, `bfbeShopAddPadding`, `bfbeShopAddShadow`, `bfbeShopAddSpace`, `bfbeShopChooseColor`, `bfbeShopSaidTypography`, `bfbeShopQtySpinArrowSize`, `bfbeShopQtySpinArrowWidth`, `bfbeShopQtySpinArrowGap`, `bfbeShopQtySpinArrowColor`, `bfbeShopQtySpinArrowBg`, `bfbeShopQtySpinArrowHover`, `bfbeShopQtySpinArrowHoverBg`, `bfbeShopQtySpinArrowLine`, `bfbeShopQtySpinArrowBorder`.
 
 ## What it guarantees for accessibility (do not undo)
@@ -125,6 +125,7 @@ Styling, in the schema file: `bfbeShopQtyTypography`, `bfbeShopQtyBackground`, `
 - Changes from search, filters and paging are announced in a polite live region as a row count, a range or the Nothing found text.
 - Filter chips are buttons with aria-pressed; a select filter is a combobox with a listbox that answers arrow keys, Home, End, Enter, Space and Escape.
 - With Stack each row or Cards, the header row is hidden and sorting moves to a Sort by combobox, so no unseen button stays reachable.
+- Each quick order quantity is an input type number labelled Quantity of and the product's name, and Add all writes one status message.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

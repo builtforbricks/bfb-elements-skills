@@ -54,7 +54,7 @@ Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `b
 - `minAge` (number) **Minimum age**. The age a visitor must be, 18 unless set. Empty button labels use it too.
 - `remember` (number) **Remember for (days)**. How long a pass is kept in the visitor's browser, 30 unless set. Enter 0 to keep it until the browser tab is closed.
 - `redirect` (text) **Redirect on fail**: placeholder https://example.com; dynamic data accepted. An address to send the visitor to about 1.5 seconds after a failed answer. It can come from dynamic data.
-- `onlyCategories` (text) **Only on products in these categories**: placeholder Every page. Category slugs, comma separated; a child category counts.
+- `onlyCategories` (text) **Only on products in these categories**: placeholder Every page. With WooCommerce, category slugs, comma separated, such as spirits, wine; a child category counts. Left empty, the gate asks on every page it is placed on, as before. Filled, a gate in a product template asks on the pages of those products and prints nothing on any other page, so one template can serve the whole shop.
 - `skipLoggedIn` (checkbox) **Skip for logged-in users**. Off by default. Tick it to let logged-in users skip the gate. A logged-in administrator still sees it on every load, and a pass is never stored for them.
 
 ### Labels and messages (`bfbeText`)

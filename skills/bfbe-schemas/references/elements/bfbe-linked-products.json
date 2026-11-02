@@ -8,7 +8,11 @@
     "children": [],
     "childrenDefault": [],
     "parent": null,
-    "cost": null,
+    "cost": {
+        "css": "0.49 KB",
+        "js": "none",
+        "dependencies": "none"
+    },
     "requires": [
         "WooCommerce"
     ],
@@ -68,6 +72,8 @@
             "options": {
                 "pa_colour": "Colour",
                 "pa_material": "Material",
+                "pa_q5-finish": "Q5 Finish",
+                "pa_q5-pattern": "Q5 Pattern",
                 "pa_size": "Size",
                 "pa_warmth": "Warmth"
             },

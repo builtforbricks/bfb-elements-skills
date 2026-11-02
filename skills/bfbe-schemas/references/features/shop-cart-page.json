@@ -6,7 +6,7 @@
     "shape": "hosts",
     "on": "Bricks' own Block (`block`), Container (`container`), Div (`div`), Cart totals (`woocommerce-cart-collaterals`), Cart coupon (`woocommerce-cart-coupon`), Cart items (`woocommerce-cart-items`)",
     "job": "the shop's settings on Bricks' Cart items, Cart totals (collaterals) and Cart coupon: the cart table and fields look, coupons anywhere, save for later on the lines, and the live cart switch on Containers that redraws a cart of your own layout",
-    "docs": "https://builtforbricks.com/bfb-elements/docs/shop-cart-page/",
+    "docs": "https://builtforbricks.com/bfb-elements/docs/shop/",
     "since": "2.0.0",
     "requires": [
         "WooCommerce"
@@ -972,6 +972,26 @@
                             "property": "overflow",
                             "selector": ".quantity",
                             "value": "hidden"
+                        },
+                        {
+                            "property": "box-shadow",
+                            "selector": ".quantity input.qty:focus",
+                            "value": "none"
+                        },
+                        {
+                            "property": "outline",
+                            "selector": ".quantity input.qty:focus",
+                            "value": "none"
+                        },
+                        {
+                            "property": "outline",
+                            "selector": ".quantity:focus-within",
+                            "value": "var(--bfbe-focus, 2px solid currentColor)"
+                        },
+                        {
+                            "property": "outline-offset",
+                            "selector": ".quantity:focus-within",
+                            "value": "2px"
                         }
                     ],
                     "group": "bfbeShopTable",
@@ -981,7 +1001,7 @@
                     "label": "Quantity buttons",
                     "type": "select",
                     "options": {
-                        "bricks": "Bricks&#039; − and +",
+                        "bricks": "The − and + Bricks adds",
                         "browser": "The browser&#039;s arrows",
                         "none": "None"
                     },
@@ -1409,5 +1429,10 @@
                 }
             }
         }
+    },
+    "pages": {
+        "shop-live-cart": "https://builtforbricks.com/bfb-elements/docs/shop-live-cart/",
+        "shop-coupons": "https://builtforbricks.com/bfb-elements/docs/shop-coupons/",
+        "shop-cart-lines": "https://builtforbricks.com/bfb-elements/docs/shop-cart-lines/"
     }
 }

@@ -14,7 +14,7 @@ description: "Use when placing, wiring or styling BFB Comparison Table (`bfbe-co
 ## What it is
 Plans across the top and features down the side, with ticks, crosses or text in each cell. It is a real table with scoped headers, an optional caption, an optional sticky features column and notes behind small buttons. On narrow screens it scrolls sideways, or stacks into one card per feature below a width measured on the table itself.
 
-**Not for:** Plans and features are rows you enter in two repeaters, so it suits a short, hand-written comparison. Records from posts or a file fit a table that reads its rows from a source; this one does not sort or filter.
+**Not for:** Plans and features are rows you enter in two repeaters, so it suits a short, hand-written comparison; with WooCommerce, Products being compared reads the visitor's compare list instead, up to four products. Records from posts or a file fit a table that reads its rows from a source; this one does not sort or filter.
 
 **Costs a page:** CSS 2.00 KB, JS 0.47 KB (gzipped), no dependencies, loaded only on pages that use it.
 
@@ -27,12 +27,12 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Ungrouped
-- `source` (select) **Rows and columns from**: options: `typed` Typed in (default), `compare` Products being compared
+- `source` (select) **Rows and columns from**: options: `typed` Typed in (default), `compare` Products being compared. At the top of the panel, Typed in, the default, for your plans and features, or, with WooCommerce, Products being compared: the products a visitor puts side by side with BFB Compare Button, up to four, as the columns, and the facts you choose as the rows. The Plans, Features and Ticks and crosses groups leave the panel with it, and Table, Look and Plan header style both. In the builder the table shows three of your shop's products, so you can design it before anything is compared.
 
 ### Products being compared (`bfbeProducts`)
 The whole group shows only when `source` is `compare`.
-- `cmpShow` (select) **Each column shows**: options: `image` Image, `name` Name, `price` Price, `rating` Rating, `stock` Stock, `cart` Add to cart, `remove` Remove
-- `cmpRows` (select) **Rows**: options: `attrs` Every attribute, `attr:pa_colour` Colour, `attr:pa_material` Material, `attr:pa_size` Size, `attr:pa_warmth` Warmth, `dimensions` Dimensions, `weight` Weight, `sku` SKU
+- `cmpShow` (select) **Each column shows**: options: `image` Image, `name` Name, `price` Price, `rating` Rating, `stock` Stock, `cart` Add to cart, `remove` Remove. Image, Name, Price, Rating, Stock, Add to cart and Remove, all of them unless you pick some. The price is WooCommerce's own, and Add to cart is WooCommerce's add for a simple product that can be bought, a link to the product for any other.
+- `cmpRows` (select) **Rows**: options: `attrs` Every attribute, `attr:pa_colour` Colour, `attr:pa_material` Material, `attr:pa_q5-finish` Q5 Finish, `attr:pa_q5-pattern` Q5 Pattern, `attr:pa_size` Size, `attr:pa_warmth` Warmth, `dimensions` Dimensions, `weight` Weight, `sku` SKU. Every attribute any compared product has, or the ones you pick, and Dimensions, Weight and SKU. **Custom field rows** adds a row for each field key you type, commas between, such as care, origin.
 - `cmpMeta` (text) **Custom field rows**: placeholder care, origin. Field keys, commas between.
 - `cmpHighlight` (checkbox) **Highlight**
 - `cmpOnlyDiff` (checkbox) **Only differences**
@@ -80,6 +80,7 @@ Styling only, every key in the schema file: `cmpImgWidth`, `cmpImgBorder`, `cmpP
 - A Caption becomes the table's own caption element, and ticks and crosses carry visually hidden text, Yes or No.
 - Each note button is a native button with aria-expanded and aria-controls and a hidden name, Details; Enter or Space shows and hides its note.
 - Plan buttons are real links in the Tab order, and the plan names repeated for the card layout are hidden from assistive technology.
+- With Products being compared, each product's header cell is th scope col and each fact th scope row.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

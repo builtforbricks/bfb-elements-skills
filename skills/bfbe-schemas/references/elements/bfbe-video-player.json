@@ -60,7 +60,7 @@
             },
             {
                 "what": "Shop, product moments: a card at chosen times of a Video Player's video, and the list of them",
-                "css": "0.76 KB",
+                "css": "0.62 KB",
                 "js": "0.57 KB",
                 "dependencies": "none"
             }

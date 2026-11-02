@@ -12,9 +12,13 @@ description: "Use when adding a switch or button that pauses the page's animatio
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/motion-switch/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+A switch the visitor presses to pause the page's motion: the pack's own animations, Bricks' animations and videos that play by themselves, on this page and every page after, until they press it again. It starts pressed for a visitor whose device asks for reduced motion, and the choice is applied before the page is drawn. Free, on any site, shop or not.
 
-**Costs a page:** CSS 0.55 KB, JS 0.91 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Not for:** It does not stop a YouTube or Vimeo embed, Bricks' sliders' autoplay, other plugins' CSS animations or scrolling effects. Behind a page cache, add the bfbe_motion_switch_everywhere filter so every page applies the choice.
+
+**Costs a page:** CSS 0.56 KB, JS 0.91 KB (gzipped), no dependencies, loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** no · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -23,11 +27,17 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Switch (`bfbeMotion`)
-- `text` (text) **Text**: placeholder Pause animations; dynamic data accepted
-- `look` (select) **Look**: options: `switch` Switch (default), `button` Button
+- `text` (text) **Text**: placeholder Pause animations; dynamic data accepted. "Pause animations" unless you set it; dynamic data works. The words say what pressing does, and the pressed state is said with them.
+- `look` (select) **Look**: options: `switch` Switch (default), `button` Button. Switch by default, a track with a knob before the words, filled with the accent when pressed; or Button, the words in a pill, ringed when pressed.
 
 ### Look (`bfbeMotionLook`)
 Styling only, every key in the schema file: `trackOn`, `trackOff`, `knob`, `trackWidth`, `trackBorder`, `pressedBackground`, `pressedColor`, `pressedBorder`, `gap`.
+
+## What it guarantees for accessibility (do not undo)
+- A real button with aria-pressed: a screen reader hears "Pause animations, toggle button, pressed".
+- It starts from the device's reduced-motion setting, and a device set to reduce motion keeps the pack's own elements still whatever the switch says.
+- Without JavaScript nothing can be paused, so the switch is sent hidden and shown by its own script.
+- Pressing it in the builder does nothing, so the canvas keeps its motion while you design.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

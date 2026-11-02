@@ -12,7 +12,13 @@ description: "Use when building the wishlist page's lists bar: the list's name a
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/wishlist-bar/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+The wishlist page's lists bar: a box you fill with Bricks' own elements and BFB Wishlist Action elements, each one thing a customer does to their lists. It comes with the list's name, its count, a Gift registry badge and two rows of actions, and keeps WooCommerce's notice of what an action just did, a sign-in note for guests and a note on a shared list. Every action is a real form, with or without the script.
+
+**Not for:** Not for guests or the visitors of a share link: the actions draw nothing for them, since named lists and sharing need an account. It holds no rows: the list itself is a Wishlist query loop.
+
+**Costs a page:** CSS 0.29 KB, JS none (gzipped), no dependencies, loaded only on pages that use it.
+
+**Nestable:** yes · **In a query loop:** no · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 
 ## Structure
 Nestable: any Bricks element goes inside (blocks, headings, text, images, a form).
@@ -151,6 +157,12 @@ What the builder inserts, as a tree `bricks/add-element` accepts (ids omitted):
                     "settings": {
                         "act": "surprise"
                     }
+                },
+                {
+                    "name": "bfbe-wishlist-action",
+                    "settings": {
+                        "act": "clear"
+                    }
                 }
             ]
         }
@@ -168,6 +180,13 @@ Styling, in the schema file: `barNoteTypography`, `barLinkColor`.
 
 ### Notice (`bfbeNotice`)
 Styling only, every key in the schema file: `noticeTypography`, `noticeBackground`, `noticeBorder`, `noticePadding`.
+
+## What it guarantees for accessibility (do not undo)
+- Each action is a real form with a submit button, its field labelled where it has one, so it works from the keyboard and with scripts off.
+- The Gift registry and surprise switches carry aria-pressed, saying whether they are on.
+- Clear the marks is described by its count, such as "3 marked as bought".
+- The share link's Copy shows where the browser can copy, and says "Link copied."
+- The action buttons' colour changes take the pack's duration, which is zero under reduced motion.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

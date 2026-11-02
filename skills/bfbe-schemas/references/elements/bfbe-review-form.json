@@ -8,7 +8,11 @@
     "children": [],
     "childrenDefault": [],
     "parent": null,
-    "cost": null,
+    "cost": {
+        "css": "none",
+        "js": "none",
+        "dependencies": "shop-reviews"
+    },
     "requires": [
         "WooCommerce"
     ],
@@ -232,6 +236,16 @@
                     "property": "grid-column",
                     "selector": ".comment-form-email",
                     "value": "auto"
+                },
+                {
+                    "property": "row-gap",
+                    "selector": ".comment-form",
+                    "value": "var(--bfbe-rv-form-row-gap, normal)"
+                },
+                {
+                    "property": "column-gap",
+                    "selector": ".comment-form",
+                    "value": "var(--bfbe-rv-form-column-gap, normal)"
                 }
             ]
         },
@@ -243,7 +257,7 @@
             "units": true,
             "css": [
                 {
-                    "property": "row-gap",
+                    "property": "--bfbe-rv-form-row-gap",
                     "selector": ".comment-form"
                 }
             ],
@@ -261,7 +275,7 @@
             "units": true,
             "css": [
                 {
-                    "property": "column-gap",
+                    "property": "--bfbe-rv-form-column-gap",
                     "selector": ".comment-form"
                 }
             ],
@@ -527,7 +541,7 @@
         "bfbeShopReviewsFormStarColor": {
             "tab": "content",
             "group": "bfbeRvfText",
-            "label": "Color",
+            "label": "Colour",
             "type": "color",
             "css": [
                 {
@@ -547,7 +561,7 @@
         "bfbeShopReviewsFormStarOn": {
             "tab": "content",
             "group": "bfbeRvfText",
-            "label": "Chosen color",
+            "label": "Chosen colour",
             "type": "color",
             "description": "Up to the star pointed at or chosen.",
             "css": [
@@ -567,7 +581,7 @@
             "label": "Look",
             "type": "select",
             "options": {
-                "native": "The browser&#039;s file box",
+                "native": "As the browser draws it",
                 "custom": "A drop area with previews"
             },
             "inline": true,

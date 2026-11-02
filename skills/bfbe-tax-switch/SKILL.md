@@ -12,9 +12,13 @@ description: "Use when placing, wiring or styling BFB Tax Switch (`bfbe-tax-swit
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/tax-switch/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+Two buttons, With VAT and Without VAT, that switch product prices and the classic cart's item prices and subtotal between the two. The server prints both figures, worked out by WooCommerce itself, and the choice only decides which one shows, so it stays right on cached pages and applies before the page paints. It needs WooCommerce with taxes on.
+
+**Not for:** It does not change what a customer pays: the checkout and the order charge what WooCommerce works out. It does not reach WooCommerce's block cart, block checkout or mini cart block, and it does not work out a visitor's country.
 
 **Costs a page:** CSS 0.26 KB, JS 0.62 KB (gzipped), no dependencies, loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** no · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** no
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -23,11 +27,16 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Switch (`bfbeSwitch`)
-- `label` (text) **Label**: placeholder Prices; dynamic data accepted
+- `label` (text) **Label**: placeholder Prices; dynamic data accepted. Prices when empty, with dynamic data. **Label shown**: Beside the buttons by default, or Hidden, where the label stays for screen readers.
 - `labelShow` (select) **Label shown**: options: `show` Beside the buttons (default), `sr` Hidden
 - `inclText` (text) **With tax**: placeholder With VAT; dynamic data accepted
 - `exclText` (text) **Without tax**: placeholder Without VAT; dynamic data accepted
 Styling, in the schema file: `labelTypography`, `buttonTypography`, `buttonBackground`, `buttonBorder`, `buttonShadow`, `buttonPadding`, `buttonGap`, `hoverBackground`, `hoverColor`, `pressedTypography`, `pressedBackground`, `pressedColor`, `pressedBorder`.
+
+## What it guarantees for accessibility (do not undo)
+- The two buttons are a labelled group, each with aria-pressed. Pressing one switches the prices on the page at once and says the change once, such as Prices are shown with tax.
+- Every switch on the page moves together, and the choice holds on every page that follows.
+- Without JavaScript the buttons post a form, and the page comes back with the prices as chosen.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

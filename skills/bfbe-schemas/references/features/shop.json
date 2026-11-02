@@ -63,7 +63,7 @@
         {
             "switch": "shop-filters",
             "label": "Filters",
-            "summary": "Collapsible categories in product filters, and filters that understand variations.",
+            "summary": "Collapsible categories in product filters.",
             "pack": "free"
         },
         {
@@ -382,7 +382,7 @@
                 "css": [
                     {
                         "property": "border-color",
-                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *, .bfbe-cartqty__stepper *)"
+                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *, .bfbe-cartqty__stepper *):focus"
                     }
                 ],
                 "group": "bfbe-fields"
@@ -393,7 +393,7 @@
                 "css": [
                     {
                         "property": "box-shadow",
-                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *, .bfbe-cartqty__stepper *)"
+                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *, .bfbe-cartqty__stepper *):focus"
                     }
                 ],
                 "group": "bfbe-fields"
@@ -407,7 +407,7 @@
                 "css": [
                     {
                         "property": "outline",
-                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *, .bfbe-cartqty__stepper *)"
+                        "selector": ":is(input[type=text],input[type=email],input[type=tel],input[type=number],input[type=password],input[type=search],input[type=date],select,textarea):not(.bfbe-form *, .flatpickr-calendar *, .bfbe-cartqty__stepper *):focus"
                     }
                 ],
                 "group": "bfbe-fields"
@@ -1087,7 +1087,7 @@
                 "css": [
                     {
                         "property": "color",
-                        "selector": ".star-rating"
+                        "selector": ".star-rating span::before"
                     }
                 ],
                 "group": "bfbe-woo-product"
@@ -1098,7 +1098,7 @@
                 "css": [
                     {
                         "property": "color",
-                        "selector": ".star-rating::before"
+                        "selector": ".star-rating"
                     }
                 ],
                 "group": "bfbe-woo-product"

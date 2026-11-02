@@ -9,8 +9,8 @@
     "childrenDefault": [],
     "parent": null,
     "cost": {
-        "css": "0.59 KB",
-        "js": "0.74 KB",
+        "css": "0.71 KB",
+        "js": "0.84 KB",
         "dependencies": "none"
     },
     "requires": [
@@ -146,7 +146,7 @@
             "css": [
                 {
                     "property": "gap",
-                    "selector": ".bfbe-emptycart__button"
+                    "selector": ".bfbe-emptycart__button--icon"
                 }
             ],
             "required": [

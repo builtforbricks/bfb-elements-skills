@@ -12,7 +12,13 @@ description: "Use when letting shoppers sort a product's reviews (newest, highes
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/review-sort/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+The shopper's choice of review order, as a dropdown or radio buttons, placed wherever you like on a product page: beside the rating summary, above the reviews, in a sticky bar. It sorts Bricks' Product reviews (and the Reviews tab of Product tabs) and a BFB Shop reviews loop of this product's reviews, wherever they sit on the page. It is a real form, so it works without JavaScript, and each order has its own address.
+
+**Not for:** It sorts this product's reviews only: a reviews loop of all products, or of chosen products, keeps its own order. The order a list opens in belongs to the list, so set that on Bricks' Product reviews or the loop.
+
+**Costs a page:** CSS none, JS none (gzipped), plus shop-reviews, loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** no · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** no
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -21,18 +27,23 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Sort (`bfbeSort`)
-- `as` (select) **Show as**: options: `select` A dropdown (default), `radios` Radio buttons
-- `label` (text) **Label**: placeholder Sort reviews; dynamic data accepted
+- `as` (select) **Show as**: options: `select` A dropdown (default), `radios` Radio buttons. A dropdown by default, or Radio buttons, the choices side by side.
+- `label` (text) **Label**: placeholder Sort reviews; dynamic data accepted. Sort reviews when empty; dynamic data works.
 Styling, in the schema file: `labelTypography`, `gap`.
 
 ### Dropdown (`bfbeDropdown`)
 The whole group shows only when `as` is not `radios`.
-- `look` (select) **Open list**: options: `native` As the browser draws it (default), `custom` Styled with the controls below. Phones keep their own list either way.
+- `look` (select) **Open list**: options: `native` As the browser draws it (default), `custom` Styled with the controls below. As the browser draws it by default, or Styled with the controls below; phones keep their own list either way.
 Styling, in the schema file: `ddTypography`, `ddBackground`, `ddBorder`, `ddPadding`, `ddChevron`, `ddPanelBg`, `ddPanelBorder`, `ddPanelShadow`, `ddPanelPadding`, `ddOptTypography`, `ddOptPadding`, `ddOptHover`, `ddHoverText`, `ddOptOnBg`, `ddOptOnColor`, `ddTick`.
 
 ### Radio buttons (`bfbeChoices`)
 The whole group shows only when `as` is `radios`.
 Styling only, every key in the schema file: `chipTypography`, `chipBackground`, `chipBorder`, `chipPadding`, `chipHover`, `chipOnBackground`, `chipOnColor`, `chipOnBorder`.
+
+## What it guarantees for accessibility (do not undo)
+- A real form: a labelled select, or a group of radios under its legend.
+- Choosing a sort fetches the sorted reviews and puts them in place; the form stays where it is with the focus on it, the address bar follows, and the change is said once, such as Reviews sorted: Oldest first.
+- Without JavaScript it is a GET form with a Sort button, which is hidden once the script runs.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

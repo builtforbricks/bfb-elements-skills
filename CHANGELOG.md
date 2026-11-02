@@ -4,10 +4,10 @@ Each release of this pack names the BFB Elements version it was exported from an
 (`verifiedUpTo` in `skills/bfbe-schemas/references/index.json`). Skills and plugins are released
 together; a pack never describes a plugin that has not shipped.
 
-## Unreleased (with BFB Elements 2.0, the shop)
+## 0.7.0, 2026-11-02
 
-On the local `shop-2.0` branch until BFB Elements 2.0 ships. Exported from the 2.0 plugins on the dev site; the
-website's 2.0 words do not exist yet, so the new skills' "What it is" lines are placeholders the release export refills.
+Verified up to BFB Elements 2.0.1 and BFB Elements Pro 2.0.1, exported from the plugins and the website's live 2.0 words.
+The Shop, for WooCommerce: 49 new skills, and 16 existing skills that gained shop roles.
 
 - `bfbe-shop`, the hub: what the shop is, the Shop settings screens and switches, the place-anything model with Bricks'
   own containers, and which skill covers which job.
@@ -22,6 +22,10 @@ website's 2.0 words do not exist yet, so the new skills' "What it is" lines are 
   `bfbe-comparison-table`, `bfbe-copy`, `bfbe-hotspots`, `bfbe-video-player`, `bfbe-toast`, `bfbe-notification-bar`,
   `bfbe-add-to-calendar`, `bfbe-age-gate`, `bfbe-hover-effects`; `bfbe-schemas` and `bfbe-start-here` describe the
   new feature shape and point at the shop.
+- Seven shop skills group their settings by the Bricks element they sit on (add to cart, product gallery, price and
+  stock, catalogue, cart page, checkout, tags and conditions). The website documents the shop by feature, so each one
+  links the Shop's page and the page of every feature it spans, and its "What it is" quotes those pages.
+- `bfbe-wishlist-action` is documented on the Wishlist Bar's page, and links there.
 
 ## 0.6.0, 2026-10-29
 

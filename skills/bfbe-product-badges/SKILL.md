@@ -12,9 +12,13 @@ description: "Use when placing, wiring or styling BFB Product Badges (`bfbe-prod
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/product-badges/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+Badges a product earns from rules, decided on the server when the page renders: Sale, Save 24%, New, Best seller, Only a few left, Sold out, Back-order, a pre-order with its date, Featured, a category, a tag or a field of your own. The rules live in one list for the whole shop on the Shop page; you place the element where the badges go, in a product card or on the product page.
+
+**Not for:** It does not change Bricks' own Sale and New badges on its product elements, which stay as they are, and it does not read a sale scheduled for later as a sale. A pre-order badge shows a date; taking payment later is a pre-order extension's job.
 
 **Costs a page:** CSS 0.38 KB, JS none (gzipped), no dependencies, loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** yes · **Dynamic data:** no · **Keyboard:** no · **Reduced motion:** no
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -23,13 +27,17 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Badges (`bfbeBadges`)
-- `max` (number) **Badges at most**: placeholder 2
-- `rules` (select) **Rules shown**: options: `0` Sold out, `1` Back-order, `2` Pre-order: ships {date}, `3` Only a few left, `4` Save {percent}%, `5` Sale, `6` Best seller, `7` New, `8` Featured, `9` Kitchen, `10` A gift, `11` Sold per litre. Set the badges in BFB Elements > Shop > Products.
-- `layout` (select) **Layout**: options: `stacked` Stacked (default), `inline` Inline
+- `max` (number) **Badges at most**: placeholder 2. How many show, highest priority first. 2 by default, up to 10.
+- `rules` (select) **Rules shown**: options: `0` Sold out, `1` Back-order, `2` Pre-order: ships {date}, `3` Only a few left, `4` Save {percent}%, `5` Sale, `6` Best seller, `7` New, `8` Featured, `9` Kitchen, `10` A gift, `11` Sold per litre. All of them by default, or the rows you choose, for a card that shows only Sale and New, say.
+- `layout` (select) **Layout**: options: `stacked` Stacked (default), `inline` Inline. Stacked by default (a column), or Inline (a row that wraps).
 Styling, in the schema file: `alignStacked`, `alignInline`.
 
 ### Look (`bfbeLook`)
 Styling only, every key in the schema file: `gap`, `badgeBackground`, `badgeColor`, `badgeTypography`, `badgePadding`, `badgeBorder`, `badgeShadow`.
+
+## What it guarantees for accessibility (do not undo)
+- A badge is always words; its colours sit behind the text and never carry the meaning alone.
+- The badges are a list in the markup, one item per badge.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

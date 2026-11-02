@@ -12,9 +12,13 @@ description: "Use when linking to WooCommerce's online withdrawal page with BFB 
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/withdrawal-button/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+A link or a button to WooCommerce's own online withdrawal page, the one WooCommerce 11.1 added. On a thank-you page, an account order page or, with Pro, inside an orders loop it carries that order's number, and WooCommerce's form opens with the number filled in. It is a tool, not a promise: WooCommerce's form handles the withdrawal, and whether a shop meets a law is for the shop to judge.
+
+**Not for:** It never processes a withdrawal and does not stand in for WooCommerce's form: it links to it. While WooCommerce's Order withdrawal feature is off, or before WooCommerce 11.1, it prints nothing.
 
 **Costs a page:** CSS 0.24 KB, JS none (gzipped), no dependencies, loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** no
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -23,12 +27,15 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### Button (`bfbeButton`)
-- `text` (text) **Text**: placeholder Withdraw from this order; dynamic data accepted
-- `look` (select) **Look**: options: `button` Button (default), `link` Link
+- `text` (text) **Text**: placeholder Withdraw from this order; dynamic data accepted. "Withdraw from this order" unless you set it; dynamic data works.
+- `look` (select) **Look**: options: `button` Button (default), `link` Link. Button by default, wearing Bricks' own button classes so your theme's button styles apply, or Link, a plain underlined link in the text colour.
 - `style` (select) **Style**: options: `primary` Primary, `secondary` Secondary, `light` Light, `dark` Dark, `muted` Muted, `info` Info, `success` Success, `warning` Warning, `danger` Danger; only when `look` is not `link`
 - `size` (select) **Size**: options: `sm` Small, `md` Medium (default), `lg` Large, `xl` Extra large; only when `look` is not `link`
 - `outline` (checkbox) **Outline**: only when `look` is not `link`
-- `newTab` (checkbox) **Open in a new tab**
+- `newTab` (checkbox) **Open in a new tab**. Off unless you tick it.
+
+## What it guarantees for accessibility (do not undo)
+- It is a real link, reached with Tab and followed with Enter, named by its words.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

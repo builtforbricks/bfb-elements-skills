@@ -12,9 +12,13 @@ description: "Use when adding Add to quote to products, building a quote list pa
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/quote-list-button/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+"Add to quote": a real toggle that puts a product on the visitor's quote list, with a quantity and, on a variable product, the variation chosen. The quote page lists the lines through a Quote list query loop, and a BFB Advanced Forms form with Create a draft order from the quote list turns them into a WooCommerce order in Pending payment, which the shop prices and sends with WooCommerce's own pay link. For shops that quote before they sell.
 
-**Costs a page:** CSS 0.55 KB, JS none (gzipped), no dependencies, loaded only on pages that use it.
+**Not for:** Not a checkout: the draft order's prices are WooCommerce's at the moment of the request, and the shop edits them in the order. Grouped and external products cannot be quoted.
+
+**Costs a page:** CSS 0.59 KB, JS none (gzipped), no dependencies, loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -28,7 +32,7 @@ Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `b
 - `content` (select) **Button shows**: options: `both` Icon and words (default), `icon` Icon only, `words` Words only
 - `iconAdd` (icon) **Icon to add**: only when `content` is not `words`
 - `iconOn` (icon) **Icon when added**: only when `content` is not `words`
-- `quantity` (checkbox) **Quantity field**
+- `quantity` (checkbox) **Quantity field**. Off by default; ticked, a number box beside the button sets the line's quantity. Off, the quantity is the product form's own on a product page, else 1.
 
 ### Look (`bfbeLook`)
 - `iconPlace` (select) **Icon sits**: options: `row` Before the words (default), `row-reverse` After the words; writes CSS; only when `content` is not `icon` or `words`
@@ -36,8 +40,14 @@ Styling, in the schema file: `btnType`, `btnBackground`, `btnBorder`, `btnShadow
 
 ### Quantity arrows (`bfbeQtyArrows`)
 The whole group shows only when `quantity` is set.
-- `qtySpinArrows` (select) **Arrows**: options: `browser` The browser's, `inside` Ours, inside the box, `stepper` A − and a + beside it, `none` None; only when `quantity` is set
+- `qtySpinArrows` (select) **Arrows**: options: `browser` As the browser draws them (default), `inside` Ours, inside the box, `stepper` A − and a + beside it, `none` None; only when `quantity` is set
 Styling, in the schema file: `qtySpinArrowSize`, `qtySpinArrowWidth`, `qtySpinArrowGap`, `qtySpinArrowColor`, `qtySpinArrowBg`, `qtySpinArrowHover`, `qtySpinArrowHoverBg`, `qtySpinArrowLine`, `qtySpinArrowBorder`.
+
+## What it guarantees for accessibility (do not undo)
+- A submit in a real form with aria-pressed, named with its words and the product: "On your quote list: Crew tee".
+- The quantity box has a label screen readers read, "Quantity", and the arrow keys step it.
+- A press is said once, such as "Added to your quote list: Salt cellar. 3 lines on your quote list."; on a card, a variable product is refused and the visitor is asked to choose its options.
+- Hover colours also apply on keyboard focus, and the colour changes take the pack's duration, which is zero under reduced motion.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

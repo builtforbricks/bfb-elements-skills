@@ -20,14 +20,14 @@
     ],
     "parent": null,
     "cost": {
-        "css": "1.82 KB",
-        "js": "2.41 KB",
+        "css": "1.81 KB",
+        "js": "2.49 KB",
         "dependencies": "none",
         "also": [
             {
                 "what": "Shop, a product card in Image Hotspots and the Video Player: shop the look, and the add from a video moment",
-                "css": "0.79 KB",
-                "js": "1.08 KB",
+                "css": "0.58 KB",
+                "js": "1.09 KB",
                 "dependencies": "shop-live"
             }
         ]

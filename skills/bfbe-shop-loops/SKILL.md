@@ -12,7 +12,11 @@ description: "Use for the shop's query loop types on Bricks' Container, Block an
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/shop-loops/
 
 ## What it is
-_Not in the website's approved words yet: the 2.0.0 release export fills in the summary, Not for, the badges and the accessibility list here._
+Three query loop types in Bricks' own Query Loop picker: BFB Shop products (a chosen set such as best sellers, trending, price drops, back in stock or recently viewed), BFB Shop variations (a variable product's variations as rows) and BFB Shop images (a product's pictures as rows, following the chosen variation). You put the type on a Container, Block or Div and build the row with Bricks' own elements, so product elements, dynamic data, conditions, pagination and live filters work inside as in any posts loop.
+
+**Not for:** For a shop or category page with WooCommerce's own sorting and archive behaviour, use Bricks' Products element; these sets are for a chosen set in a layout of your own. Trending counts paid orders, not views, so a store with no orders yet shows nothing there, and Bought before is a customer's own history, not a recommendation engine.
+
+**Nestable:** no · **In a query loop:** yes · **Dynamic data:** yes · **Keyboard:** no · **Reduced motion:** no
 
 ## Where it lives
 A feature, not an element: its groups are added to Bricks' own elements, on the Content tab after Bricks' own groups. By element:
@@ -64,6 +68,7 @@ The whole group shows only when `query.objectType` is `bfbeShopWishlist`.
 - `bfbeShopWishlistMoveText` (text) **Move to cart word**: placeholder Move to cart; only when `query.objectType` is `bfbeShopWishlist` and `hasLoop` is set and `bfbeShopWishlistActions` is not `off`. Add to cart while the row stays on the list.
 - `bfbeShopWishlistRemoveText` (text) **Remove word**: placeholder Remove; only when `query.objectType` is `bfbeShopWishlist` and `hasLoop` is set and `bfbeShopWishlistActions` is not `off`
 - `bfbeShopWishlistBoughtText` (text) **Mark as bought word**: placeholder Mark as bought; only when `query.objectType` is `bfbeShopWishlist` and `hasLoop` is set
+- `bfbeShopWishlistUndoText` (text) **Undo word**: placeholder Undo; only when `query.objectType` is `bfbeShopWishlist` and `hasLoop` is set. Lets a friend take back their own mark.
 - `bfbeShopWishlistMoveLook` (select) **Move to list: open list**: options: `native` As the browser draws it (default), `custom` Styled with the controls below; only when `query.objectType` is `bfbeShopWishlist` and `hasLoop` is set and `bfbeShopWishlistActions` is not `off`. Phones keep their own list either way.
 - `bfbeShopWishlistType` (select) **Post type**: options: `product` Products (default), `post` Posts, `page` Pages, `bfbe_review` Review, `bfbe_feature` Feature visuals, `bricks_template` My Templates; only when `query.objectType` is `bfbeShopWishlist` and `hasLoop` is set
 Styling, in the schema file: `bfbeShopWishlistMoveTypography`, `bfbeShopWishlistMoveBackground`, `bfbeShopWishlistMoveBorder`, `bfbeShopWishlistMovePadding`, `bfbeShopWishlistMoveChevron`, `bfbeShopWishlistMovePanelBg`, `bfbeShopWishlistMovePanelBorder`, `bfbeShopWishlistMovePanelShadow`, `bfbeShopWishlistMovePanelPadding`, `bfbeShopWishlistMoveOptTypography`, `bfbeShopWishlistMoveOptPadding`, `bfbeShopWishlistMoveOptHover`, `bfbeShopWishlistMoveHoverText`, `bfbeShopWishlistMoveOptOnBg`, `bfbeShopWishlistMoveOptOnColor`, `bfbeShopWishlistMoveTick`.
@@ -84,27 +89,27 @@ The whole group shows only when `query.objectType` is `bfbeShopQuote`.
 #### BFB Shop products (`bfbeShopQbfbeShopProducts`)
 Pro, switch `shop-loops`.
 The whole group shows only when `query.objectType` is `bfbeShopProducts`.
-- `bfbeShopSet` (select) **Set**: options: `best_sellers` Best sellers (default), `trending` Trending, `top_rated` Top rated, `new` New arrivals, `on_sale` On sale, `price_drops` Price drops, `back_in_stock` Back in stock, `bought` Bought before, `recent` Recently viewed, `hotspots` Pinned on an image; only when `query.objectType` is `bfbeShopProducts` and `hasLoop` is set
-- `bfbeShopCount` (number) **Products per page**: placeholder 8; only when `query.objectType` is `bfbeShopProducts` and `hasLoop` is set
-- `bfbeShopDays` (number) **Within the last days**: placeholder 30; only when `query.objectType` is `bfbeShopProducts` and `hasLoop` is set and `bfbeShopSet` is `trending` or `new` or `price_drops` or `back_in_stock`. New arrivals: 0 means the newest, however old.
-- `bfbeShopMinReviews` (number) **Minimum reviews**: placeholder 1; only when `query.objectType` is `bfbeShopProducts` and `hasLoop` is set and `bfbeShopSet` is `top_rated`
-- `bfbeShopHotspots` (text) **Element id**: placeholder abc123; only when `query.objectType` is `bfbeShopProducts` and `hasLoop` is set and `bfbeShopSet` is `hotspots`. Empty: the nearest BFB Image Hotspots.
-- `bfbeShopRecentWhile` (select) **While there is nothing yet**: options: `` Nothing (default), `best_sellers` Best sellers, `trending` Trending, `top_rated` Top rated, `new` New arrivals, `on_sale` On sale, `price_drops` Price drops, `back_in_stock` Back in stock; only when `query.objectType` is `bfbeShopProducts` and `hasLoop` is set and `bfbeShopSet` is `recent`
-- `bfbeShopSkipCurrent` (checkbox) **Leave out the product on this page**: only when `query.objectType` is `bfbeShopProducts` and `hasLoop` is set
+- `bfbeShopSet` (select) **Set**: options: `best_sellers` Best sellers (default), `trending` Trending, `top_rated` Top rated, `new` New arrivals, `on_sale` On sale, `price_drops` Price drops, `back_in_stock` Back in stock, `bought` Bought before, `recent` Recently viewed, `hotspots` Pinned on an image; only when `query.objectType` is `bfbeShopProducts` and `hasLoop` is set. Which products, in which order. Best sellers by default (units sold all time; products that never sold are left out), or Trending (units in paid orders of the last days), Top rated, New arrivals, On sale, Price drops, Back in stock, Bought before (the signed-in customer's paid orders), Recently viewed (this visitor's, kept in their browser) and Pinned on an image (a BFB Image Hotspots' product pins, in pin order).
+- `bfbeShopCount` (number) **Products per page**: placeholder 8; only when `query.objectType` is `bfbeShopProducts` and `hasLoop` is set. 8 by default, up to 100. Bricks' Pagination element pages through the rest.
+- `bfbeShopDays` (number) **Within the last days**: placeholder 30; only when `query.objectType` is `bfbeShopProducts` and `hasLoop` is set and `bfbeShopSet` is `trending` or `new` or `price_drops` or `back_in_stock`. For Trending, New arrivals, Price drops and Back in stock, 30 by default. For New arrivals, 0 means the newest however old.
+- `bfbeShopMinReviews` (number) **Minimum reviews**: placeholder 1; only when `query.objectType` is `bfbeShopProducts` and `hasLoop` is set and `bfbeShopSet` is `top_rated`. For Top rated, 1 by default. Raise it when one five-star review should not outrank a product with fifty.
+- `bfbeShopHotspots` (text) **Element id**: placeholder abc123; only when `query.objectType` is `bfbeShopProducts` and `hasLoop` is set and `bfbeShopSet` is `hotspots`. For Pinned on an image, the BFB Image Hotspots whose pins it lists. Empty takes the nearest one.
+- `bfbeShopRecentWhile` (select) **While there is nothing yet**: options: `` Nothing (default), `best_sellers` Best sellers, `trending` Trending, `top_rated` Top rated, `new` New arrivals, `on_sale` On sale, `price_drops` Price drops, `back_in_stock` Back in stock; only when `query.objectType` is `bfbeShopProducts` and `hasLoop` is set and `bfbeShopSet` is `recent`. For Recently viewed, the set shown until the visitor has viewed something. Nothing by default, or one of the other sets.
+- `bfbeShopSkipCurrent` (checkbox) **Leave out the product on this page**: only when `query.objectType` is `bfbeShopProducts` and `hasLoop` is set. On a product page, keeps the product itself out of its own Trending or Recently viewed row.
 
 #### BFB Shop variations (`bfbeShopQbfbeShopVariations`)
 Pro, switch `shop-loops`.
 The whole group shows only when `query.objectType` is `bfbeShopVariations`.
-- `bfbeShopVariationsProduct` (text) **Product**: placeholder This product; dynamic data accepted; only when `query.objectType` is `bfbeShopVariations` and `hasLoop` is set. An id or SKU; empty means this product.
-- `bfbeShopVariationsInStock` (checkbox) **In stock only**: only when `query.objectType` is `bfbeShopVariations` and `hasLoop` is set
+- `bfbeShopVariationsProduct` (text) **Product**: placeholder This product; dynamic data accepted; only when `query.objectType` is `bfbeShopVariations` and `hasLoop` is set. An id or SKU, and it takes dynamic data. Empty means the product in hand: the product page's, or an outer loop's row.
+- `bfbeShopVariationsInStock` (checkbox) **In stock only**: only when `query.objectType` is `bfbeShopVariations` and `hasLoop` is set. Leaves out variations that are out of stock. Inside a row, Bricks' Product title, price, stock and gallery print the variation's own.
 
 #### BFB Shop images (`bfbeShopQbfbeShopImages`)
 Pro, switch `shop-loops`.
 The whole group shows only when `query.objectType` is `bfbeShopImages`.
-- `bfbeShopImagesProduct` (text) **Product**: placeholder This product; dynamic data accepted; only when `query.objectType` is `bfbeShopImages` and `hasLoop` is set. An id or SKU; empty means this product.
-- `bfbeShopImagesFollow` (checkbox) **Follow the chosen variation**: only when `query.objectType` is `bfbeShopImages` and `hasLoop` is set
-- `bfbeShopImagesOption` (select) **Follow one option before the rest**: options: `off` Off, `pa_colour` Colour, `pa_material` Material, `pa_size` Size, `pa_warmth` Warmth; only when `query.objectType` is `bfbeShopImages` and `hasLoop` is set and `bfbeShopImagesFollow` is set. Its images show as soon as it is chosen.
-- `bfbeShopImagesFeatured` (checkbox) **Leave out the featured image**: only when `query.objectType` is `bfbeShopImages` and `hasLoop` is set
+- `bfbeShopImagesProduct` (text) **Product**: placeholder This product; dynamic data accepted; only when `query.objectType` is `bfbeShopImages` and `hasLoop` is set. An id or SKU; empty means the product in hand. The featured image comes first, then the gallery.
+- `bfbeShopImagesFollow` (checkbox) **Follow the chosen variation**: only when `query.objectType` is `bfbeShopImages` and `hasLoop` is set. On a variable product's page, the rows are drawn again for the variation the shopper chooses, led by its own image; a reset brings the parent's images back.
+- `bfbeShopImagesOption` (select) **Follow one option before the rest**: options: `off` Off, `pa_colour` Colour, `pa_material` Material, `pa_q5-finish` Q5 Finish, `pa_q5-pattern` Q5 Pattern, `pa_size` Size, `pa_warmth` Warmth; only when `query.objectType` is `bfbeShopImages` and `hasLoop` is set and `bfbeShopImagesFollow` is set. Shown with Follow the chosen variation. The first attribute with swatches by default: as soon as a colour is chosen, before any size, the rows become that colour's pictures. Off follows the full choice only; pick an attribute to follow another one.
+- `bfbeShopImagesFeatured` (checkbox) **Leave out the featured image**: only when `query.objectType` is `bfbeShopImages` and `hasLoop` is set. For a layout that shows the featured image elsewhere.
 
 #### BFB Order totals (`bfbeShopQbfbeShopOrderTotals`)
 Pro, switch `shop-orders`.
@@ -120,7 +125,7 @@ The whole group shows only when `query.objectType` is `bfbeShopOrders`.
 #### BFB Product moments (`bfbeShopQbfbeShopMoments`)
 Pro.
 The whole group shows only when `query.objectType` is `bfbeShopMoments`.
-- `bfbeShopMomentsPlayer` (text) **Element id**: placeholder abc123; only when `query.objectType` is `bfbeShopMoments` and `hasLoop` is set. Empty: the nearest BFB Video Player.
+- `bfbeShopMomentsPlayer` (text) **Element id**: placeholder abc123; only when `query.objectType` is `bfbeShopMoments` and `hasLoop` is set. For Pinned on an image, the BFB Image Hotspots whose pins it lists. Empty takes the nearest one.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

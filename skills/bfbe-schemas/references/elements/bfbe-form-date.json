@@ -1532,7 +1532,7 @@
             "css": [
                 {
                     "property": "border",
-                    "selector": ".flatpickr-calendar.flatpickr-calendar .dayContainer .flatpickr-day.today"
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed)"
                 }
             ],
             "tab": "content"
@@ -1568,11 +1568,11 @@
             "css": [
                 {
                     "property": "border",
-                    "selector": ".flatpickr-calendar.flatpickr-calendar .dayContainer .flatpickr-day.today:hover"
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed):hover"
                 },
                 {
                     "property": "border",
-                    "selector": ".flatpickr-calendar.flatpickr-calendar .dayContainer .flatpickr-day.today:focus-visible"
+                    "selector": ".flatpickr-calendar.flatpickr-calendar .flatpickr-day.today:not(.flatpickr-disabled, .notAllowed):focus-visible"
                 }
             ],
             "tab": "content"
