@@ -16,7 +16,7 @@ Several goals on one track: free shipping, a free gift, a percentage or a fixed 
 
 **Not for:** It is not a discount rules engine: one track of up to twelve goals by cart total or item count, read from one shipping zone. For a coupon code, use WooCommerce's coupons with the Coupons feature; for one product at a lower price, use BFB Offer.
 
-**Costs a page:** CSS 1.01 KB, JS 1.95 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 1.01 KB, JS 1.97 KB (gzipped), no dependencies, loaded only on pages that use it.
 
 **Nestable:** no · **In a query loop:** no · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** yes
 

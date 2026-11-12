@@ -67,7 +67,7 @@ The settings the shop adds to Bricks' own elements, one skill per job:
 - `bfbe-shop-checkout`: on `woocommerce-checkout-customer-details`, `woocommerce-checkout-order-review`, `woocommerce-checkout-thankyou`, `woocommerce-checkout-v2`, `woocommerce-form-field`.
 - `bfbe-shop-account`: on `woocommerce-account-form-register`, `woocommerce-account-page`, `woocommerce-account-register-form`.
 
-The shop's own elements, a skill each (a part inside one of them is in its parent's skill): `bfbe-applied-coupons`, `bfbe-bought-together`, `bfbe-bundle-builder`, `bfbe-buy-now`, `bfbe-cart-goals`, `bfbe-cart-quantity`, `bfbe-cart-shipping`, `bfbe-compare-button`, `bfbe-compare-tray`, `bfbe-delivery-estimate`, `bfbe-empty-cart-button`, `bfbe-linked-products`, `bfbe-offer`, `bfbe-order-status`, `bfbe-payment-icons`, `bfbe-product-3d`, `bfbe-product-badges`, `bfbe-product-questions`, `bfbe-quantity-breaks`, `bfbe-quote-list-button`, `bfbe-rating-summary`, `bfbe-review-form`, `bfbe-review-sort`, `bfbe-review-votes`, `bfbe-save-later-button`, `bfbe-saved-item-button`, `bfbe-size-guide`, `bfbe-spec-scales`, `bfbe-sticky-buy-bar`, `bfbe-tax-switch`, `bfbe-view-switch`, `bfbe-wishlist-action`, `bfbe-wishlist-bar`, `bfbe-wishlist-button`, `bfbe-withdrawal-button`.
+The shop's own elements, a skill each (a part inside one of them is in its parent's skill): `bfbe-applied-coupons`, `bfbe-bought-together`, `bfbe-bundle-builder`, `bfbe-buy-now`, `bfbe-cart-goals`, `bfbe-cart-quantity`, `bfbe-cart-shipping`, `bfbe-compare-button`, `bfbe-compare-tray`, `bfbe-delivery-estimate`, `bfbe-empty-cart-button`, `bfbe-linked-products`, `bfbe-offer`, `bfbe-order-status`, `bfbe-payment-icons`, `bfbe-product-3d`, `bfbe-product-badges`, `bfbe-product-layers`, `bfbe-product-questions`, `bfbe-quantity-breaks`, `bfbe-quote-list-button`, `bfbe-rating-summary`, `bfbe-review-form`, `bfbe-review-sort`, `bfbe-review-votes`, `bfbe-save-later-button`, `bfbe-saved-item-button`, `bfbe-size-guide`, `bfbe-spec-scales`, `bfbe-sticky-buy-bar`, `bfbe-tax-switch`, `bfbe-view-switch`, `bfbe-wishlist-action`, `bfbe-wishlist-bar`, `bfbe-wishlist-button`, `bfbe-withdrawal-button`.
 
 ## References
 - `../bfbe-schemas/references/shop/loops.json`: 14 loops.
@@ -172,6 +172,7 @@ WordPress menu **BFB Elements, Shop**: what applies to the whole shop, on sub-pa
 | Products bought together, one button | `bfbe-bought-together` |
 | Choose any N for a price | `bfbe-bundle-builder` |
 | 360 degree spin, AR and 3D model | `bfbe-product-3d` |
+| A product picture in layers, one per chosen option | `bfbe-product-layers` |
 | Straight to the checkout | `bfbe-buy-now` |
 | Price table by quantity | `bfbe-quantity-breaks` |
 | One product per colour, as swatches | `bfbe-linked-products` |
@@ -194,7 +195,7 @@ WordPress menu **BFB Elements, Shop**: what applies to the whole shop, on sub-pa
 | A quick order table of products, a shoppable list | `bfbe-dynamic-table` |
 | The products being compared as a table | `bfbe-comparison-table` |
 | A coupon to copy and apply | `bfbe-copy` |
-| Product pins on an image | `bfbe-hotspots` |
+| Product pins on an image, a pin per linked post | `bfbe-hotspots` |
 | The gallery's video, products at moments of a video | `bfbe-video-player` |
 | Added to the cart, a viewed product back or on sale | `bfbe-toast` |
 | WooCommerce's store notice as a bar | `bfbe-notification-bar` |

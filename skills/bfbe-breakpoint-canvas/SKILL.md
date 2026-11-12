@@ -18,7 +18,7 @@ it never builds with it.
 ## What it is
 A builder tool, not an element: every breakpoint of the page side by side in the Bricks builder, on an infinite canvas you pan and zoom, or as frames under Bricks' own canvas in a row or a grid. Click an element in any frame to select it in Bricks and switch to that breakpoint, in every layout. The frames are read-only copies of the canvas without scripts, and it adds nothing to a page.
 
-**Not for:** The frames are read-only: you edit in Bricks' panels, and nothing is typed, dragged or dropped into a frame. Scripts do not run in a frame, so sliders, animations and anything a script draws are checked on the front end. Verified on Bricks 2.3.10 and 2.4.4, measured in Chrome.
+**Not for:** The frames are read-only: you edit in Bricks' panels, and nothing is typed, dragged or dropped into a frame. Scripts do not run in a frame, so sliders, animations and anything a script draws are checked on the front end. Verified on Bricks 2.3.10 and 2.4.5, measured in Chrome.
 
 **Nestable:** no · **In a query loop:** no · **Dynamic data:** no · **Keyboard:** yes · **Reduced motion:** no
 

@@ -20,8 +20,8 @@
     ],
     "parent": null,
     "cost": {
-        "css": "1.81 KB",
-        "js": "2.49 KB",
+        "css": "1.83 KB",
+        "js": "2.51 KB",
         "dependencies": "none",
         "also": [
             {
@@ -94,7 +94,7 @@
             "group": "bfbePins",
             "label": "Pins",
             "titleProperty": "name",
-            "description": "One nested block per pin.",
+            "description": "One block per pin. A looping block repeats its pin.",
             "fields": {
                 "bfbeShopContent": {
                     "label": "Shows",

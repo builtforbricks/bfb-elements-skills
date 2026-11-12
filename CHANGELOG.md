@@ -4,6 +4,23 @@ Each release of this pack names the BFB Elements version it was exported from an
 (`verifiedUpTo` in `skills/bfbe-schemas/references/index.json`). Skills and plugins are released
 together; a pack never describes a plugin that has not shipped.
 
+## Unreleased (with BFB Elements Pro 2.1.0)
+
+Exported from BFB Elements 2.0.3 and BFB Elements Pro 2.1.0. The website's 2.1.0 words are not written yet, so the
+release's export fills in Product Layers' summary and the Image Hotspots words that change.
+
+- `bfbe-product-layers`, new: BFB Product Layers, a product picture built from layers, one transparent image per
+  attribute value over a base picture, following the product's variations form. The product's BFB Layers tab and its
+  `_bfbe_layers` shape (base, layers, second, swap), the second image and "Others show their second image", the first
+  paint, the canvas, and the Text Field's Draw over a picture on it.
+- `bfbe-hotspots`: pins from a query. A pin whose nested block loops repeats once per result, its Left, Top, Name,
+  Text and link read per result; two patterns (numbered pins from posts' fields, a product's ACF Relationship field),
+  the markup of the repeated pins, and the limits: 200 pins per block, no pins for results loaded by AJAX, the canvas
+  reading the query as saved, a pin with no Name named for its post, Colour and Size for every copy.
+- `bfbe-shop`: Product Layers in the shop's elements and in the table of jobs.
+- Generated blocks refreshed from the plugins as built: costs for Image Hotspots, Cart Goals and Offer, the Pins
+  control's description, and Breakpoint Canvas's tested Bricks versions.
+
 ## 0.7.0, 2026-11-02
 
 Verified up to BFB Elements 2.0.1 and BFB Elements Pro 2.0.1, exported from the plugins and the website's live 2.0 words.

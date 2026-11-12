@@ -47,7 +47,7 @@
     "parent": null,
     "cost": {
         "css": "0.31 KB",
-        "js": "1.20 KB",
+        "js": "1.23 KB",
         "dependencies": "none"
     },
     "requires": [

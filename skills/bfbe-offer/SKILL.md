@@ -16,7 +16,7 @@ A nestable card with a real checkbox: "Add Woven Belt for 29,00 € instead of 3
 
 **Not for:** It is one product at one price per element, not a coupon or a bundle, and WooCommerce's coupons still apply to its line. An offer inside a query loop is not decided per row.
 
-**Costs a page:** CSS 0.31 KB, JS 1.20 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Costs a page:** CSS 0.31 KB, JS 1.23 KB (gzipped), no dependencies, loaded only on pages that use it.
 
 **Nestable:** yes · **In a query loop:** no · **Dynamic data:** yes · **Keyboard:** yes · **Reduced motion:** no
 
