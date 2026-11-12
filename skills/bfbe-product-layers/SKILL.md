@@ -12,9 +12,13 @@ description: "Use when a product picture should be built from layers that change
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/product-layers/
 
 ## What it is
-_The website has no approved words for this yet; the next export after it does fills in the summary, Not for, the badges and the accessibility list here._
+A product picture built from layers: the base picture, and one transparent image over it for each attribute, showing the value the shopper has chosen. A choice changes its own layer at once, before every option is chosen, with no request to the server. The images are set on the product's own BFB Layers tab, never the variations' images, and the server draws the first picture, which stays without JavaScript.
 
-**Costs a page:** CSS 0.26 KB, JS 1.03 KB (gzipped), no dependencies, loaded only on pages that use it.
+**Not for:** Not a product configurator: a layer adds no price of its own, and the cart, the order emails and product cards show the product's or the variation's own picture. It gives one second image per value, not rules for every pairing, and no lightbox or zoom.
+
+**Costs a page:** CSS 0.25 KB, JS 1.03 KB (gzipped), no dependencies, loaded only on pages that use it.
+
+**Nestable:** no · **In a query loop:** no · **Dynamic data:** no · **Keyboard:** no · **Reduced motion:** yes
 
 ## Structure
 Not nestable: nothing goes inside it.
@@ -23,11 +27,16 @@ Not nestable: nothing goes inside it.
 Also on this element, as on every element: Hover Effects (`bfbeHover*`, skill `bfbe-hover-effects`); Advanced Header Scroll (`bfbeHs*`, skill `bfbe-advanced-header-scroll`); Tooltips (`bfbeTooltip*`, skill `bfbe-tooltips`).
 
 ### View (`bfbeView`)
-- `product` (select) **Product**: placeholder The product of the page. Its layer images are on its BFB Layers tab.
+- `product` (select) **Product**: placeholder The product of the page. The product of the page unless chosen; in a product template it follows the product shown. Its layer images are on its BFB Layers tab.
 
 ### Motion (`bfbeMotion`)
 - `easing` (select) **Easing**: options: `cubic-bezier(0.45, 0.05, 0.55, 0.95)` Soft, `cubic-bezier(0.65, 0, 0.35, 1)` Medium, `cubic-bezier(0.16, 1, 0.3, 1)` Snappy (default), `ease-in` Ease in, `ease-out` Ease out, `ease-in-out` Ease in and out, `linear` Linear, `cubic-bezier(0.34, 1.56, 0.64, 1)` Overshoot, `linear(0, .38 8%, .78 17%, 1.02 25%, 1.08 30%, 1.03 40%, .99 50%, 1)` Soft spring, `var(--bfbe-ease-custom, ease)` Custom; writes CSS
 Styling, in the schema file: `duration`, `easingCustom`.
+
+## What it guarantees for accessibility (do not undo)
+- The base picture carries the product's name as its alternative text.
+- The layers are decoration with an empty alternative text: the options form is where a choice is read and made, by keyboard and screen reader as before.
+- Under reduced motion a layer changes with no fade.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

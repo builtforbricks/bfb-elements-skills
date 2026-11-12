@@ -12,9 +12,9 @@ description: "Use when building an image with clickable pins, such as a shop-the
 **Documentation**: https://builtforbricks.com/bfb-elements/docs/hotspots/
 
 ## What it is
-An image with pins, each a real button that opens its own nested block as a tooltip or as a card grown from the pin. Each pin's expanded state is written into the HTML, opening a panel moves focus into it, and Escape returns focus to the pin. Color, size and icon can be set per pin in the same list, and a link can lie over a whole panel.
+An image with pins, each a real button that opens its own nested block as a tooltip or as a card grown from the pin. Each pin's expanded state is written into the HTML, opening a panel moves focus into it, and Escape returns focus to the pin. Color, size and icon can be set per pin in the same list, and a link can lie over a whole panel. A pin whose block is a query loop repeats for every result, placed by each post's own fields.
 
-**Not for:** Pins sit at percentages of one picture, each a number or a post's own field, and each opens a block you place yourself. It does not zoom or pan, and it cannot make one pin per post of a query.
+**Not for:** Pins sit at percentages of one picture, each a number or a post's own field, and each opens a block you place yourself. It does not zoom or pan, and results a loop adds later by AJAX, through infinite scroll, a Load more button or live filters, get no pins.
 
 **Costs a page:** CSS 1.83 KB, JS 2.51 KB (gzipped), no dependencies, loaded only on pages that use it. Only where used, a product card in Image Hotspots and the Video Player: shop the look, and the add from a video moment: CSS 0.58 KB, JS 1.09 KB.
 
@@ -77,6 +77,7 @@ Styling, in the schema file: `duration`, `easingCustom`, `pulseSpeed`, `pulseSca
 - A pin's link is a real anchor laid over the panel and labeled with the pin's name.
 - Under reduced motion the pulse is switched off and panels beside the pin open without a transition.
 - A product pin's accessible name is its product's name.
+- A pin from a query with no Name is named for its result's post.
 <!-- bfbe:generated:end -->
 
 ## Rendered DOM

@@ -4,10 +4,10 @@ Each release of this pack names the BFB Elements version it was exported from an
 (`verifiedUpTo` in `skills/bfbe-schemas/references/index.json`). Skills and plugins are released
 together; a pack never describes a plugin that has not shipped.
 
-## Unreleased (with BFB Elements Pro 2.1.0)
+## 0.8.0, 2026-11-12
 
-Exported from BFB Elements 2.0.3 and BFB Elements Pro 2.1.0. The website's 2.1.0 words are not written yet, so the
-release's export fills in Product Layers' summary and the Image Hotspots words that change.
+Verified up to BFB Elements 2.0.3 and BFB Elements Pro 2.1.0, exported from the plugins and the website's live 2.1.0
+words (Product Layers' summary, Not for and accessibility list; Image Hotspots' new words and Not for).
 
 - `bfbe-product-layers`, new: BFB Product Layers, a product picture built from layers, one transparent image per
   attribute value over a base picture, following the product's variations form. The product's BFB Layers tab and its
