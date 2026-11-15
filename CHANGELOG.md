@@ -4,6 +4,17 @@ Each release of this pack names the BFB Elements version it was exported from an
 (`verifiedUpTo` in `skills/bfbe-schemas/references/index.json`). Skills and plugins are released
 together; a pack never describes a plugin that has not shipped.
 
+## 0.8.1, 2026-11-15
+
+Verified up to BFB Elements 2.0.4 and BFB Elements Pro 2.1.1, exported from the plugins and the website's live words.
+No control changed; four skills say what the release changed.
+
+- `bfbe-product-questions`: a question is taken only while the element is switched on; the site's comment settings
+  are not followed, and the filter `bfbe/shop/questions/may_ask` decides who may ask.
+- `bfbe-shop-reviews`: Bricks' Load more and infinite scroll on a reviews loop follow the chosen stars and order.
+- `bfbe-review-sort`: a sort starts a reviews loop from its first page; a loop left empty fills again.
+- `bfbe-product-3d`: uploads by other roles are left to WordPress and other plugins; the rule follows the switch.
+
 ## 0.8.0, 2026-11-12
 
 Verified up to BFB Elements 2.0.3 and BFB Elements Pro 2.1.0, exported from the plugins and the website's live 2.1.0
